@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css"
+	href="./tools/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="./tools/bootstrap-table/dist/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="./tools/bootstrap-fileinput/css/fileinput.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="./css/bootstrap-editable.css" />
+<script type="text/javascript" src="./tools/jquery-1.9.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="./tools/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="./tools/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script type="text/javascript"
+	src="./tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript"
+	src="./tools/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+<script type="text/javascript" src="./js/tableExport.js"></script>
+<script type="text/javascript" src="./js/bootstrap-editable.js"></script>
+<script type="text/javascript"
+	src="./tools/bootstrap-table/dist/extensions/editable/bootstrap-table-editable.js"></script>
+<script type="text/javascript"
+	src="./tools/bootstrap-fileinput/js/fileinput.min.js"></script>
+<script type="text/javascript"
+	src="./tools/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//1.初始化Table
+		var oTable = new TableInit();
+		oTable.Init();
+		//2.初始化Button的点击事件
+		/* var oButtonInit = new ButtonInit();
+		oButtonInit.Init(); */
+		//初始化文件上传控件
+		initFileInput("myFile", "./wflx/uploadfiles");
+		$('#btsubmit').click(function() {
+			var fwdm = $('#fwdm').val();
+			var ms = $('#ms').val();
+			if (fwdm == "" || fwdm == null) {
+				alert("xxx");
+			}
+			if (ms == "" || fwdm == null) {
+				alert("xxx")
+			}
+			/* $('#uploadForm').submit(); */
+			/*ie11一下不支持，formdata的方法  */
+			var formData = new FormData($("#uploadForm")[0]);
+			$.ajax({
+				type : "post",
+				url : "./wflx/insertWflx",
+				data : formData,
+				dataType : 'JSON',
+				cache : false,
+				processData : false,
+				contentType : false,
+				success : function(data, status) {
+					$("#myModal-ADD").modal('hide');
+					$('#myModal-ADD').on('hidden.bs.modal', function() {
+						$('#uploadForm')[0].reset(); 
+						$('#myTable').bootstrapTable('refresh');
+					})
+					$("#myModal-success").modal('show');
+				},
+				error : function() {
+					$("#myModal-ADD").modal('hide');
+					$("#myModal-fail").modal('show');
+				}
+			});
+		});
+	});
+	var TableInit = function() {
+		var oTableInit = new Object();
+		//初始化Table
+		oTableInit.Init = function() {
+			$('#myTable').bootstrapTable({
+				url : './wflx/showWflx',
+				method : 'get', //请求方式（*）
+				toolbar : '#toolbar', //工具按钮用哪个容器
+				striped : true, //是否显示行间隔色
+				cache : false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+				pagination : true, //是否显示分页（*）
+				sortable : false, //是否启用排序
+				sortOrder : "asc", //排序方式
+				queryParamsType : "undefined",
+				queryParams : oTableInit.queryParams,//传递参数（*）
+				sidePagination : "server", //分页方式：client客户端分页，server服务端分页（*）
+				pageSize : 10,
+				pageList : [ 10, 25, 50, 100 ], //可供选择的每页的行数（*）
+				search : true,
+				showToggle : true,
+				showRefresh : true,//显示刷新按钮
+				strictSearch : true,//设置为 true启用 全匹配搜索，否则为模糊搜索
+				clickToSelect : true, //是否启用点击选中行
+				height : 520, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
+				cardView : false, //是否显示详细视图
+				detailView : true, //是否显示父子表
+				columns : [ {
+					field : 'wfId',
+					title : 'Item ID',
+					align : 'center',
+					width : '30%'
+				}, {
+					field : 'fwdm',
+					title : '废物代码',
+					editable : true,
+					align : 'center',
+					width : '30%'
+				}, {
+					field : 'ms',
+					title : '描述',
+					align : 'center',
+					width : '60%'
+				} ],
+				onEditableSave : function(field, row, oldValue, $el) {
+					$.ajax({
+						type : "post",
+						url : "./wflx/updateWflx",
+						data : row,
+						dataType : 'JSON',
+						success : function(data, status) {
+							$("#myModal-success").modal('show');
+						},
+						error : function() {
+							/* $("#alertError").show();
+							 $(function() {
+							 setTimeout(function() {
+							 $("#alertError").hide();
+							 }, 2000);
+							 }); */
+							$("#myModal-fail").modal('show');
+						},
+						complete : function() {
+						}
+					});
+				}
+			});
+		};
+		/*
+		$table = $('#myTable');
+		 $table.on('expand-row.bs.table', function(e, index, row, $detail) {
+			if (index % 2 == 1) {
+				$detail.html('Loading from ajax request...');
+				$.get('LICENSE', function(res) {
+					$detail.html(res.replace(/\n/g, '<br>'));
+				});
+			} 
+		});*/
+		oTableInit.queryParams = function(params) {
+			if (params.searchText == undefined) {
+				params.searchText = "";
+			}
+			var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+				limit : params.pageSize, //页面大小
+				offset : params.offset, //页码
+				maxrows : params.limit,
+				pageindex : params.pageNumber,
+				search : encodeURI(params.searchText)
+			};
+			return temp;
+		};
+		return oTableInit;
+	};
+	function detailFormatter(index, row) {
+		var html = [];
+		var local = window.location;
+		var contextPath = local.pathname.split("/")[1];
+		var basePath = local.protocol + "//" + local.host;
+		$
+				.each(
+						row,
+						function(key, value) {
+							if (key == 'img') {
+								html
+										.push('<p><b>'
+												+ '图片'
+												+ ':</b> '
+												+ '<img src='+basePath+value+' class=img-thumbnail width="250" height="250">'
+												+ '</p>');
+							} else if (key == 'fwdm') {
+								html.push('<p><b>' + '危废代码' + ':</b> ' + value
+										+ '</p>');
+							} else if (key == 'ms') {
+								html.push('<p><b>' + '描述' + ':</b> ' + value
+										+ '</p>');
+							}
+						});
+		return html.join('');
+	}
+	//初始化fileinput控件（第一次初始化）
+	function initFileInput(ctrlName, uploadUrl) {
+		var control = $('#' + ctrlName);
+		control.fileinput({
+			language : 'zh', //设置语言
+			/* uploadUrl : uploadUrl, //上传的地址 */
+			allowedFileExtensions : [ 'jpg', 'png', 'gif' ],//接收的文件后缀
+			showUpload : false, //是否显示上传按钮
+			showCaption : false,//是否显示标题
+			layoutTemplates : {
+				actions : ''
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<div style="padding-right:20px;padding-left:20px;padding-top:10px;">
+		<div class="row-fluid">
+			<div class="col-lg-12">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#">首页</a></li>
+					<li><a href="#">资料</a></li>
+					<li class="disabled"><a href="#">信息</a></li>
+					<li class="dropdown pull-right"><a href="#"
+						data-toggle="dropdown"  style="background-color:#e5e5e5;color:#555555;">下拉<strong
+							class="caret"></strong></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">操作</a></li>
+							<li><a href="#">设置栏目</a></li>
+							<li><a href="#">更多设置</a></li>
+							<li class="divider"></li>
+							<li><a href="#">分割线</a></li>
+						</ul></li>
+				</ul>
+<!-- 				<form class="form-search">
+					<input class="input-medium search-query" type="text" />
+					<button type="submit" class="btn">查找</button>
+				</form> -->
+				<div class="row-fluid">
+					<div class="span2" style="padding-top:20px;">
+						<blockquote>
+							<p>github是一个全球化的开源社区.</p>
+							<small>关键词 <cite>开源</cite></small>
+						</blockquote>
+						<blockquote>
+							<p>github是一个全球化的开源社区.</p>
+							<small>关键词 <cite>开源</cite></small>
+						</blockquote>
+						<blockquote>
+							<p>github是一个全球化的开源社区.</p>
+							<small>关键词 <cite>开源</cite></small>
+						</blockquote>
+					</div>
+					<!-- <div class="alert alert-success fade" id="alertSuccess">提交成功!</div>
+					<div class="alert alert-danger" id="alertError">提交失败!</div> -->
+					<div id="toolbar">
+						<button id="insert" class="btn btn-default" data-toggle="modal"
+							data-target="#myModal-ADD">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>新增
+						</button>
+					</div>
+					<table id="myTable" data-show-export="true" data-detail-view="true"
+						data-detail-formatter="detailFormatter">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 模态框（Modal） success-->
+	<div class="modal fade" id="myModal-success" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+		style="padding-top: 15%;">
+		<div class="modal-dialog" style="width: 300px">
+			<div class="modal-content">
+				<div class="modal-body" align="center">保存成功!</div>
+			</div>
+		</div>
+	</div>
+	<!-- 模态框（Modal） fail-->
+	<div class="modal fade" id="myModal-fail" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="padding-top: 15%;">
+		<div class="modal-dialog" style="width: 300px">
+			<div class="modal-content">
+				<div class="modal-body" align="center">保存失败!</div>
+			</div>
+		</div>
+	</div>
+	<!-- 模态框（Modal） ADD-->
+	<div class="modal fade" id="myModal-ADD" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" style="padding-top: 10%;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">新增危废信息</h4>
+				</div>
+				<div class="modal-body">
+					<form enctype="multipart/form-data" id="uploadForm" method="post"
+						action="./wflx/insertWflx">
+						<label for="name">危废代码:</label> <input type="text"
+							class="form-control" style="width: 150px" id="fwdm" name="fwdm">
+						<label for="name">图片:</label>
+						<div class="form-goup">
+							<input id="myFile" type="file" name="myFile">
+						</div>
+						<label for="name">描述:</label>
+						<textarea class="form-control" rows="3" id="ms" name="ms"></textarea>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="btsubmit">提交更改</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+</body>
+</html>

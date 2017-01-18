@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.wflxDao">
+	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_wflx_new" />
+	<select id="queryWflx" parameterType="com.hkay.weifei.pojo.Tb_wflx_new"
+		resultMap="BaseResultMap">
+		select o.*,rownum as wfId from(
+		select t.* from tb_wflx_new t
+		where 1=1
+		<if test="search!=null and search!=''">
+			and ( t.id like '%${search}%' or t.fwdm like
+			'%${search}%'
+			or t.ms like '%${search}%')
+		</if>
+		order by id desc
+		)o
+	</select>
+	<select id="queryCountOfWflx" parameterType="com.hkay.weifei.pojo.Tb_wflx_new"
+		resultType="Integer">
+		select count(*) from tb_wflx_new t
+		where 1=1
+		<if test="search!=null and search!=''">
+			and ( t.id like '%${search}%' or t.fwdm like
+			'%${search}%'
+			or t.ms like '%${search}%')
+		</if>
+	</select>
+	<update id="updateWflx" parameterType="com.hkay.weifei.pojo.Tb_wflx_new">
+		update tb_wflx_new set
+		fwdm=#{fwdm} where id=#{id}
+	</update>
+	<insert id="insertWflx" parameterType="com.hkay.weifei.pojo.Tb_wflx_new">
+		insert into
+		tb_wflx_new(id,fwdm,ms,img) values (tb_wflx_new_seq.nextval,#{fwdm},#{ms},#{testImgPath})
+	</insert>
+</mapper>
