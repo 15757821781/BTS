@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"	href="./tools/bootstrap-table/dist/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css"	href="./css/bootstrap-editable.css" />
+</head>
+<body>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Forms</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+ 	<div class="row">
+		<div class="col-lg-12">
+			<table id="test-table" data-show-export="true" data-detail-view="true"
+						data-detail-formatter="detailFormatter">
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript"	src="./tools/bootstrap-table/dist/bootstrap-table.js"></script>
+<script type="text/javascript"	src="./tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap-editable.js"></script>
+<script type="text/javascript"	src="./tools/bootstrap-table/dist/extensions/editable/bootstrap-table-editable.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//1.初始化Table
+		var oTable = new TableInit();
+		oTable.Init();
+		//2.初始化Button的点击事件
+		/* var oButtonInit = new ButtonInit();
+		oButtonInit.Init(); */
+		$('#btsubmit').click(function() {
+			var fwdm = $('#fwdm').val();
+			var ms = $('#ms').val();
+			if (fwdm == "" || fwdm == null) {
+				alert("xxx");
+				return;
+			}
+			if (ms == "" || fwdm == null) {
+				alert("xxx");
+				return;
+			}
+			/* $('#uploadForm').submit(); */
+			/*ie11一下不支持，formdata的方法  */
+			var formData = new FormData($("#uploadForm")[0]);
+			$.ajax({
+				type : "post",
+				url : "./wflx/insertWflx",
+				data : formData,
+				dataType : 'JSON',
+				cache : false,
+				processData : false,
+				contentType : false,
+				success : function(data, status) {
+					$("#myModal-ADD").modal('hide');
+					$('#myModal-ADD').on('hidden.bs.modal', function() {
+						$('#uploadForm')[0].reset(); 
+						$('#test-table').bootstrapTable('refresh');
+					})
+					$("#myModal-success").modal('show');
+				},
+				error : function() {
+					$("#myModal-ADD").modal('hide');
+					$("#myModal-fail").modal('show');
+				}
+			});
+		});
+		//页面跳转测试
+		$('#turn').click(function() {
+			window.location.href=window.location.href+"html/index.html";
+		});
+	});
+	var TableInit = function() {
+		var oTableInit = new Object();
+		//初始化Table
+		oTableInit.Init = function() {
+			$('#test-table').bootstrapTable({
+				url : './wflx/showWflx',
+				method : 'get', //请求方式（*）
+				toolbar : '#toolbar', //工具按钮用哪个容器
+				striped : true, //是否显示行间隔色
+				cache : false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+				pagination : true, //是否显示分页（*）
+				sortable : false, //是否启用排序
+				sortOrder : "asc", //排序方式
+				queryParamsType : "undefined",
+				queryParams : oTableInit.queryParams,//传递参数（*）
+				sidePagination : "server", //分页方式：client客户端分页，server服务端分页（*）
+				pageSize : 10,
+				pageList : [ 10, 25, 50, 100 ], //可供选择的每页的行数（*）
+				search : true,
+				showToggle : true,
+				showRefresh : true,//显示刷新按钮
+				strictSearch : true,//设置为 true启用 全匹配搜索，否则为模糊搜索
+				clickToSelect : true, //是否启用点击选中行
+				height : 520, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
+				cardView : false, //是否显示详细视图
+				detailView : true, //是否显示父子表
+				columns : [ {
+					field : 'wfId',
+					title : 'Item ID',
+					align : 'center',
+					width : '30%'
+				}, {
+					field : 'fwdm',
+					title : '废物代码',
+					editable : true,
+					align : 'center',
+					width : '30%'
+				}, {
+					field : 'ms',
+					title : '描述',
+					align : 'center',
+					width : '60%'
+				} ],
+				onEditableSave : function(field, row, oldValue, $el) {
+					$.ajax({
+						type : "post",
+						url : "./wflx/updateWflx",
+						data : row,
+						dataType : 'JSON',
+						success : function(data, status) {
+							$("#myModal-success").modal('show');
+						},
+						error : function() {
+							/* $("#alertError").show();
+							 $(function() {
+							 setTimeout(function() {
+							 $("#alertError").hide();
+							 }, 2000);
+							 }); */
+							$("#myModal-fail").modal('show');
+						},
+						complete : function() {
+						}
+					});
+				}
+			});
+		};
+		/*
+		$table = $('#test-table');
+		 $table.on('expand-row.bs.table', function(e, index, row, $detail) {
+			if (index % 2 == 1) {
+				$detail.html('Loading from ajax request...');
+				$.get('LICENSE', function(res) {
+					$detail.html(res.replace(/\n/g, '<br>'));
+				});
+			} 
+		});*/
+		oTableInit.queryParams = function(params) {
+			if (params.searchText == undefined) {
+				params.searchText = "";
+			}
+			var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+				limit : params.pageSize, //页面大小
+				offset : params.offset, //页码
+				maxrows : params.limit,
+				pageindex : params.pageNumber,
+				search : encodeURI(params.searchText)
+			};
+			return temp;
+		};
+		return oTableInit;
+	};
+	function detailFormatter(index, row) {
+		var html = [];
+		var local = window.location;
+		var contextPath = local.pathname.split("/")[1];
+		var basePath = local.protocol + "//" + local.host;
+		$
+				.each(
+						row,
+						function(key, value) {
+							if (key == 'img') {
+								html.push('<p><b>'
+												+ '图片'
+												+ ':</b> '
+												+ '<img src='+basePath+value+' class=img-thumbnail width="250" height="250">'
+												+ '</p>');
+							} else if (key == 'fwdm') {
+								html.push('<p><b>' + '危废代码' + ':</b> ' + value
+										+ '</p>');
+							} else if (key == 'ms') {
+								html.push('<p><b>' + '描述' + ':</b> ' + value
+										+ '</p>');
+							}
+						});
+		return html.join('');
+	}
+</script>
+</body>
+</html>
