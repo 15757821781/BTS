@@ -1,9 +1,5 @@
 package com.hkay.weifei.pojo;
 
-import java.io.File;
-
-import javax.mail.Multipart;
-
 public class Tb_wflx_new {
 	private int wfId;
 	private int id;
@@ -17,9 +13,9 @@ public class Tb_wflx_new {
 	private String limit;
 	private String offset;
 	private String pageNumber;
-	// 全局模糊搜索参数
+	// 鍏ㄥ眬妯＄硦鎼滅储鍙傛暟
 	private String search;
-	// 图片
+	// 鍥剧墖
 	private String testImgPath;
 	private String img;
 
