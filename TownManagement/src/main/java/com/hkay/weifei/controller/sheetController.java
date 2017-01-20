@@ -19,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.hkay.weifei.pojo.Pages;
 import com.hkay.weifei.pojo.Tb_wflx_new;
+import com.hkay.weifei.pojo.User;
 import com.hkay.weifei.service.wflxService;
 import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
@@ -97,5 +99,25 @@ public class sheetController {
 	public ModelAndView login(HttpServletResponse response) {  
 		  
 		return new ModelAndView("redirect:../html/index.html");  
-		}  
+		}
+	
+	@RequestMapping("/loadPages")
+	@ResponseBody
+	public String loadPages(Pages page) {
+		String li="";
+		List<Pages> pages = this.wflxservice.loadPages(page);
+		for(Pages tmp:pages){
+			//若为一级界面
+			if(tmp.getPagelevel()==1){
+				if(tmp.getUrl()==null){
+					li+="<li><a id="+tmp.getPageid()+"><i class='fa fa-dashboard fa-fw'></i> "+tmp.getPagename()+"<span class='fa arrow'></span></a></li>";
+				}else{
+					li+="<li><a target="+tmp.getUrl()+" id="+tmp.getPageid()+"><i class='fa fa-dashboard fa-fw'></i> "+tmp.getPagename()+"<span class='fa arrow'></span></a></li>";
+				}
+			}else if(tmp.getPagelevel()==2){//若为2级界面
+				li+="<li><a target="+tmp.getUrl()+" id="+tmp.getPageid()+"> "+tmp.getPagename()+"</a></li>";
+			}
+		}
+		return li;
+	}
 }

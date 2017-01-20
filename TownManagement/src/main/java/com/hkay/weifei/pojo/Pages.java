@@ -3,7 +3,7 @@ package com.hkay.weifei.pojo;
 public class Pages {
 	private String pagename;
 	private int pagelevel;
-	private int pagegroup;
+	private int parentid;
 	private int pageid;
 	private String url;
 	
@@ -39,13 +39,12 @@ public class Pages {
 		this.pagename = pagename;
 	}
 
-	public int getPagegroup() {
-		return pagegroup;
+	public int getParentid() {
+		return parentid;
 	}
 
-	public void setPagegroup(int pagegroup) {
-		this.pagegroup = pagegroup;
+	public void setParentid(int parentid) {
+		this.parentid = parentid;
 	}
-
 
 }
