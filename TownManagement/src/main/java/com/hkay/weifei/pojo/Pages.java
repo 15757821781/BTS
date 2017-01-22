@@ -6,7 +6,16 @@ public class Pages {
 	private int parentid;
 	private int pageid;
 	private String url;
+	private int pagegroup;
 	
+	public int getPagegroup() {
+		return pagegroup;
+	}
+
+	public void setPagegroup(int pagegroup) {
+		this.pagegroup = pagegroup;
+	}
+
 	public String getUrl() {
 		return url;
 	}
