@@ -42,6 +42,6 @@
 	    <if test="pagelevel!=null and pagelevel!=''">
 	        and t.pagelevel=#{pagelevel}
 	    </if>
-	    order by t.pagegroup,t.pagelevel
+	    order by t.pagegroup,t.pagelevel,t.pageid
 	</select>
 </mapper>
