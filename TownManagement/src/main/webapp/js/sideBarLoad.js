@@ -27,7 +27,6 @@ $(document).ready(function() {
 	    $('#side-menu li').click(function(){
 	        var current = $(this),  
 	        target = current.find('a').attr('target');
-
 	        if(target!=null&&target!=undefined){
 		        $.get(target,function(data){
 		            $("#page-wrapper").html(data);   
