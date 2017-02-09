@@ -5,6 +5,8 @@
 <title>录入</title>
 <!-- select CSS -->
 <link href="./dist/css/bootstrap-select.css" rel="stylesheet">
+<!-- 表单验证 -->
+<link rel="stylesheet" href="dist/css/bootstrapValidator.css" />
 </head>
 <body>
 	<div class="row">
@@ -21,22 +23,23 @@
 					<!-- 一行行开始写 -->
 					<label class="col-sm-2 control-label">名称</label>
 					<div class="col-sm-6">
-						<input class="form-control" type="text" placeholder="请填写小镇名称" />
+						<input name="townname" class="form-control" type="text"
+							placeholder="请填写小镇名称" />
 					</div>
 					<label class="col-sm-2 control-label">编号</label>
 					<div class="col-sm-2">
-						<input class="form-control" />
+						<input name="bianhao" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">所属地区</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input class="form-control" type="text" name="suoshudiqu">
 					</div>
 					<label class="col-sm-2 control-label">中心镇</label>
 					<div class="col-sm-2">
-						<select class="selectpicker show-tick form-control">
-							<option value="">请选择</option>
+						<select name="centertown" class="selectpicker show-tick form-control">
+							<option></option>
 							<option>省级</option>
 							<option>市级</option>
 						</select>
@@ -44,7 +47,7 @@
 					<label class="col-sm-2 control-label">合作情况</label>
 					<div class="col-sm-2">
 						<select class="selectpicker show-tick form-control">
-							<option value="">请选择</option>
+							<option></option>
 							<option>咨询顾问</option>
 							<option>建立联系</option>
 							<option>未建联系</option>
@@ -93,7 +96,7 @@
 					<label class="col-sm-2 control-label">是否为全国百强区县</label>
 					<div class="col-sm-2">
 						<select class="selectpicker show-tick form-control">
-							<option value="">请选择</option>
+							<option></option>
 							<option>是</option>
 							<option>否</option>
 						</select>
@@ -101,7 +104,7 @@
 					<label class="col-sm-2 control-label">是否小城市试点</label>
 					<div class="col-sm-2">
 						<select class="selectpicker show-tick form-control">
-							<option value="">请选择</option>
+							<option></option>
 							<option>是</option>
 							<option>否</option>
 						</select>
@@ -207,14 +210,67 @@
 						<input class="form-control" type="text">
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="col-sm-5 control-label"></label>
+					<button type="submit" name="submit"
+						class="col-sm-2 btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
+					<label class="col-sm-5 control-label"></label>
+				</div>
 			</form>
 		</div>
 	</div>
 	<!-- Select JavaScript -->
 	<script src="./dist/js/bootstrap-select.js"></script>
+	<!-- 表单验证 -->
+	<script type="text/javascript" src="./dist/js/bootstrapValidator.js"></script>
+	<script type="text/javascript" src="./dist/js/language/zh_CN.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('.selectpicker').selectpicker();
+			//初始化下拉框
+			$('.selectpicker').selectpicker({
+				noneSelectedText : "请选择"
+			});
+			//初始化表单验证
+			$('form').bootstrapValidator({
+				message : 'This value is not valid',
+				excluded : [':disabled'],
+				feedbackIcons : {
+					valid : 'glyphicon glyphicon-ok',
+					invalid : 'glyphicon glyphicon-remove',
+					validating : 'glyphicon glyphicon-refresh'
+				},
+				fields : {
+					townname : {
+						validators : {
+							notEmpty : {
+								message : '小镇名不能为空'
+							}
+						}
+					},
+					bianhao : {
+						validators : {
+							notEmpty : {
+								message : '编号不能为空'
+							}
+						}
+					},
+					centertown : {
+						validators : {
+							notEmpty : {
+								message : '等级不能为空'
+							}
+						}
+					},
+					suoshudiqu:{
+						validators : {
+							notEmpty : {
+								message : '所属地区不能为空'
+							}
+						}
+					}
+				}
+			});
 		})
 	</script>
 </body>
