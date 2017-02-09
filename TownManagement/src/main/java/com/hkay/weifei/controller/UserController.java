@@ -25,4 +25,14 @@ public class UserController {
         model.addAttribute("user", userList);  
         return "showUser"; 
     }
+
+    @RequestMapping("/showUser11")
+    public String toIndex11(HttpServletRequest request,Model model){
+        int userId = Integer.parseInt(request.getParameter("id"));
+        User user=new User();
+        user.setId(userId);
+        User userList = this.userService.getUserById(user);
+        model.addAttribute("user", userList);
+        return "showUser";
+    }
 }
