@@ -18,7 +18,7 @@ $(document).ready(function() {
  	        }
  	    });
 	    $.ajax({
-	         url: "pages/blank.html",
+	         url: "pages/town/townManage.html",
 	         cache: false,
 	         success: function(html){
 	             $("#page-wrapper").html(html);
