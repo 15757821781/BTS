@@ -38,7 +38,8 @@
 					</div>
 					<label class="col-sm-2 control-label">中心镇</label>
 					<div class="col-sm-2">
-						<select name="centertown" class="selectpicker show-tick form-control">
+						<select name="centertown"
+							class="selectpicker show-tick form-control">
 							<option></option>
 							<option>省级</option>
 							<option>市级</option>
@@ -181,7 +182,10 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">产业方向</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<select class="selectpicker show-tick form-control" multiple data-live-search="false">
+							<option>化纤织造</option>
+							<option>五金制造</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -234,7 +238,7 @@
 			//初始化表单验证
 			$('form').bootstrapValidator({
 				message : 'This value is not valid',
-				excluded : [':disabled'],
+				excluded : [ ':disabled' ],
 				feedbackIcons : {
 					valid : 'glyphicon glyphicon-ok',
 					invalid : 'glyphicon glyphicon-remove',
@@ -262,7 +266,7 @@
 							}
 						}
 					},
-					suoshudiqu:{
+					suoshudiqu : {
 						validators : {
 							notEmpty : {
 								message : '所属地区不能为空'
