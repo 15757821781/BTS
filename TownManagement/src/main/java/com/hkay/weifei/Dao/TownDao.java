@@ -12,4 +12,6 @@ public interface TownDao {
 
 	int querytowninfocnt(Tb_zhongxinzhen tb_zhongxinzhen);
 
+	List<Tb_zhongxinzhen> querytowndetail(Tb_zhongxinzhen tb_zhongxinzhen);
+
 }

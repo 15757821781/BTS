@@ -20,6 +20,19 @@
 			</table>
 		</div>
 	</div>
+	<!-- 模态框（Modal） 小镇详情-->
+	<div class="modal fade" id="towninfomodal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" style="padding-top: 5%;">
+		<div class="modal-dialog" style="width:60%;">
+			<div class="modal-content">
+				<div class="modal-body" id="towninfobody">
+					页面初始化失败
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
 	<script type="text/javascript" src="./tools/bootstrap-table/dist/bootstrap-table.js"></script>
 	<script type="text/javascript" src="./tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 	<script type="text/javascript">
@@ -50,26 +63,69 @@
 					field : 'number',
 					title : '编号',
 					align : 'center',
-					width : '25%'
+					width : '20%'
 				}, {
 					field : 'centertownname',
 					title : '中心镇名称',
 					editable : true,
 					align : 'center',
-					width : '25%'
+					width : '20%'
 				}, {
 					field : 'attributionarea',
 					title : '归属地',
 					align : 'center',
-					width : '25%'
-				} , {
+					width : '20%'
+				}, {
 					field : 'townlevel',
 					title : '小镇等级',
 					align : 'center',
-					width : '25%'
+					width : '20%'
+				}, {
+                    title : '操作',
+                    field : 'centertownid',
+                    width :	'20%',
+                    align : 'center',
+                    formatter:function(value,row,index){
+                    	var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.centertownid+')">查看</a>';
+                    	var update = '<a href="javascript:void(0)" onclick="updatetowninfo('+row.centertownid+')">修改</a>'
+                    	return query+"&nbsp"+update;
+                    }
 				} ]
 			});
 		})
+		//展示详情modal
+		function querytowndetail(centertownid) {
+			$.ajax({
+				url : "pages/town/townEntry.html",
+				cache : false,
+				async: false,
+				success : function(html) {
+					$("#towninfobody").html(html);
+					$("#towninfomodal").modal('show');
+					$.ajax({
+						url : "./townmanage/querytowndetail",
+						data : {"centertownid":centertownid},
+						dataType : 'JSON',
+						success : function(data, status) {
+							values = $("#townform").serializeArray(); 
+							alert(data[0].townlevel);
+							$('#townlevel').val(data[0].townlevel);
+							/* $.each(values,function(i){
+								var id=values[i].name;
+								var dataStr=data[0];
+								$.each(dataStr,function(i){  
+								    var key = i;  
+								    var value = dataStr[i];
+								    if(id==key){
+								    	$('#'+id).val(value);
+								    }
+								});  
+							}); */
+						}
+					});
+				}
+			});
+		}
 	</script>
 </body>
 </html>
