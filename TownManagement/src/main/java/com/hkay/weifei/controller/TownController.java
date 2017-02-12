@@ -26,8 +26,10 @@ import com.hkay.weifei.util.PageUtil;
 public class TownController {
 	@Resource
 	private TownService townservice;
+
 	/**
 	 * 新增中心镇信息
+	 * 
 	 * @param request
 	 * @param tb_zhongxinzhen
 	 * @return
@@ -50,12 +52,12 @@ public class TownController {
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
 		Map map = new HashMap();
 		Tb_zhongxinzhen tb_zhongxinzhen = new Tb_zhongxinzhen();
-//		if (search != null) {
-//			search = URLDecoder.decode(search, "utf-8");
-//			tb_wflx_new.setSearch(search);
-//		} else {
-//			tb_wflx_new.setSearch("");
-//		}
+		// if (search != null) {
+		// search = URLDecoder.decode(search, "utf-8");
+		// tb_wflx_new.setSearch(search);
+		// } else {
+		// tb_wflx_new.setSearch("");
+		// }
 		Page page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_zhongxinzhen> tb_zhongxinzhens = this.townservice.querytowninfo(tb_zhongxinzhen);
@@ -63,5 +65,12 @@ public class TownController {
 		map.put("rows", tb_zhongxinzhens);
 		map.put("total", count);
 		return map;
+	}
+
+	@RequestMapping("/querytowndetail")
+	@ResponseBody
+	public List<Tb_zhongxinzhen> querytowndetail(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen) throws UnsupportedEncodingException{
+		List<Tb_zhongxinzhen> tb_zhongxinzhens = this.townservice.querytowndetail(tb_zhongxinzhen);
+		return tb_zhongxinzhens;
 	}
 }

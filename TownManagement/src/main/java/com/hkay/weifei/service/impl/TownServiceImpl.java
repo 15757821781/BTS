@@ -30,5 +30,10 @@ public class TownServiceImpl implements TownService{
 		// TODO Auto-generated method stub
 		return this.towndao.querytowninfocnt(tb_zhongxinzhen);
 	}
+	@Override
+	public List<Tb_zhongxinzhen> querytowndetail(Tb_zhongxinzhen tb_zhongxinzhen) {
+		// TODO Auto-generated method stub
+		return this.towndao.querytowndetail(tb_zhongxinzhen);
+	}
 
 }

@@ -10,11 +10,15 @@
 	</insert>
 	<select id="querytowninfo" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
 		resultMap="BaseResultMap">
-		select * from tb_zhongxinzhen where 1=1
+		select t.* from tb_zhongxinzhen t where 1=1
 	</select>
 	<select id="querytowninfocnt" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
 		resultType="Integer">
 		select count(*) from tb_zhongxinzhen t
 		where 1=1
+	</select>
+	<select id="querytowndetail" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
+		resultMap="BaseResultMap">
+		select t.* from tb_zhongxinzhen t where t.centertownid=#{centertownid}
 	</select>
 </mapper>
