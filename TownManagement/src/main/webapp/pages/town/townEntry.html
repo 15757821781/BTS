@@ -18,8 +18,7 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<form class="form-horizontal" role="form"
-				enctype="multipart/form-data" id="townform" method="post"
-				action="./townmanage/inserttowninfo">
+				enctype="multipart/form-data" id="townform" method="post">
 				<!-- 表单 -->
 				<div class="form-group">
 					<!-- 一行行开始写 -->
@@ -226,7 +225,12 @@
 					<button type="button" id="townentry_submit"
 						class="col-sm-2 btn btn-primary"
 						style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
+					<button type="button" id="townentry_update"
+						class="col-sm-2 btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px;display:none;">更新</button>
 					<label class="col-sm-5 control-label"></label>
+					<!-- id -->
+					<input type="hidden" value="" name="centertownid" id="centertownid">
 				</div>
 			</form>
 		</div>
@@ -262,37 +266,7 @@
 			$('.selectpicker').selectpicker({
 				noneSelectedText : "请选择"
 			});
-			bootstrapvail();
-			$('#townentry_submit').click(function() {
-				/*ie11一下不支持，formdata的方法  */
-				var formData = new FormData($("#townform")[0]);
-				$.ajax({
-					type : "post",
-					url : "./townmanage/inserttowninfo",
-					data : formData,
-					dataType : 'JSON',
-					cache : false,
-					processData : false,
-					contentType : false,
-					success : function(data, status) {
- 						if(data.returnInfo=="success"){
-							$("#myModal-success").modal('show');
-							//$('#townform').bootstrapValidator('resetForm', true);
-							$('#townentry_submit').prop('disabled', true);
-							//$('#townentry_submit').hide();
-						}else{
-							$("#myModal-fail").modal('show');
-						}
-					},
-					error : function() {
-						$("#myModal-fail").modal('show');
-					}
-				});
-			});
-		})
-		function bootstrapvail(){
-			//初始化表单验证
-			$('form').bootstrapValidator({
+			$('#townform').bootstrapValidator({
 				message : 'This value is not valid',
 				excluded : [ ':disabled' ],
 				feedbackIcons : {
@@ -598,7 +572,72 @@
 					}
 				}
 			});
-		}
+			//表单提交
+			$('#townentry_submit').click(function() {
+				$('#townform').data('bootstrapValidator').validate();
+				if(!$('#townform').data('bootstrapValidator').isValid()){  
+		         	return ;
+		         }
+				/*ie11一下不支持，formdata的方法  */
+				var formData = new FormData($("#townform")[0]);
+				$.ajax({
+					type : "post",
+					url : "./townmanage/inserttowninfo",
+					data : formData,
+					dataType : 'JSON',
+					cache : false,
+					processData : false,
+					contentType : false,
+					success : function(data, status) {
+ 						if(data.returnInfo=="success"){
+							$("#myModal-success").modal('show');
+							$('#myModal-success').on('hidden.bs.modal', function() {
+								$.ajax({
+						   	         url: 'pages/town/townEntry.html',
+						   	         cache: false,
+						   	         success: function(html){
+						   	             $("#page-wrapper").html(html);
+						   	         }
+						   	     });
+							})
+						}else{
+							$("#myModal-fail").modal('show');
+						}
+					},
+					error : function() {
+						$("#myModal-fail").modal('show');
+					}
+				});
+			});
+			$('#townentry_update').click(function() {
+				$('#townform').data('bootstrapValidator').validate();
+				if(!$('#townform').data('bootstrapValidator').isValid()){  
+		         	return ;
+		         }
+				/*ie11一下不支持，formdata的方法  */
+				var formData = new FormData($("#townform")[0]);
+				$.ajax({
+					type : "post",
+					url : "./townmanage/updatetowninfo",
+					data : formData,
+					dataType : 'JSON',
+					cache : false,
+					processData : false,
+					contentType : false,
+					success : function(data, status) {
+						if(data.returnInfo=="success"){
+							$("#towninfomodal").modal('hide');
+							setTimeout(function(){
+								$("#townmanage-success").modal('show');
+							},200);
+						}
+					},
+					error : function() {
+						$("#townmanage-fail").modal('show');
+					}
+				});
+			});
+		})
 	</script>
 </body>
 </html>

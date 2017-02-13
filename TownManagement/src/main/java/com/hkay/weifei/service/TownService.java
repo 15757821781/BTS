@@ -14,4 +14,6 @@ public interface TownService {
 
 	public List<Tb_zhongxinzhen> querytowndetail(Tb_zhongxinzhen tb_zhongxinzhen);
 
+	public int updatetowninfo(Tb_zhongxinzhen tb_zhongxinzhen);
+
 }

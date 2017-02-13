@@ -21,4 +21,42 @@
 		resultMap="BaseResultMap">
 		select t.* from tb_zhongxinzhen t where t.centertownid=#{centertownid}
 	</select>
+	<update id="updatetowninfo" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen">
+	update tb_zhongxinzhen
+	set
+	centertownname=#{centertownname},
+	number=#{number},
+	attributionarea=#{attributionarea},
+	townlevel=#{townlevel},
+	cooperation=#{cooperation},
+	townarea=#{townarea},
+	builtuparea=#{builtuparea},
+	townpopulation=#{townpopulation},
+	floatepopulation=#{floatepopulation},
+	countygdp=#{countygdp},
+	countyrevenue=#{countyrevenue},
+	townrevenue=#{townrevenue},
+	hundredcounties=#{hundredcounties},
+	citypilot=#{citypilot},
+	community=#{community},
+	adminvillage=#{adminvillage},
+	farmingoutvalue=#{farmingoutvalue},
+	partycommittee=#{partycommittee},
+	committelnumber=#{committelnumber},
+	industryoutvalue=#{industryoutvalue},
+	mayor=#{mayor},
+	mayortelnumber=#{mayortelnumber},
+	serviceoutvalue=#{serviceoutvalue},
+	weather=#{weather},
+	terrain=#{terrain},
+	traffic=#{traffic},
+	currentindustry=#{currentindustry},
+	industrialorientation=#{industrialorientation},
+	honorarytitle=#{honorarytitle},
+	historyculture=#{historyculture},
+	statuspic=#{statuspic},
+	planpic=#{planpic},
+	docking=#{docking}
+	where centertownid=#{centertownid}
+	</update>
 </mapper>
