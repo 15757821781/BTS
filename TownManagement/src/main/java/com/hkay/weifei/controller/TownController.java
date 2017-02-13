@@ -38,7 +38,7 @@ public class TownController {
 	@ResponseBody
 	public Map<String, String> inserttowninfo(Tb_zhongxinzhen tb_zhongxinzhen){
 		int flag = this.townservice.inserttowninfo(tb_zhongxinzhen);
-		Map<String, String> map=new HashMap<>();
+		Map<String, String> map=new HashMap<String, String>();
 		if(flag==1){
 			map.put("returnInfo", "success");
 			return map;
@@ -75,5 +75,25 @@ public class TownController {
 	public List<Tb_zhongxinzhen> querytowndetail(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen) throws UnsupportedEncodingException{
 		List<Tb_zhongxinzhen> tb_zhongxinzhens = this.townservice.querytowndetail(tb_zhongxinzhen);
 		return tb_zhongxinzhens;
+	}
+	
+	/**
+	 * update中心镇信息
+	 * 
+	 * @param request
+	 * @param tb_zhongxinzhen
+	 * @return
+	 */
+	@RequestMapping(value="/updatetowninfo")
+	@ResponseBody
+	public Map<String, String> updatetowninfo(Tb_zhongxinzhen tb_zhongxinzhen){
+		Map<String, String> map=new HashMap<String, String>();
+		int flag = this.townservice.updatetowninfo(tb_zhongxinzhen);
+		if(flag==1){
+			map.put("returnInfo", "success");
+		}else{
+			map.put("returnInfo", "fail");
+		}
+		return map;
 	}
 }
