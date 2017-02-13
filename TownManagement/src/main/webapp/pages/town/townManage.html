@@ -15,9 +15,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
-			<table id="townmanagetable" data-show-export="true"
-				data-detail-view="true" data-detail-formatter="detailFormatter">
-			</table>
+			<table id="townmanagetable" ></table>
 		</div>
 	</div>
 	<!-- 模态框（Modal） 小镇详情-->
@@ -47,7 +45,7 @@
 				sortable : false, //是否启用排序
 				sortOrder : "asc", //排序方式
 				queryParamsType : "undefined",
-				//queryParams : oTableInit.queryParams,//传递参数（*）
+				queryParams : queryParams,//传递参数（*）
 				sidePagination : "server", //分页方式：client客户端分页，server服务端分页（*）
 				pageSize : 10,
 				pageList : [ 10, 25, 50, 100 ], //可供选择的每页的行数（*）
@@ -57,8 +55,8 @@
 				strictSearch : true,//设置为 true启用 全匹配搜索，否则为模糊搜索
 				clickToSelect : true, //是否启用点击选中行
 				height : 520, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
-				cardView : false, //是否显示详细视图
-				detailView : true, //是否显示父子表
+				//cardView : false, //是否显示详细视图
+				//detailView : true, //是否显示父子表
 				columns : [ {
 					field : 'number',
 					title : '编号',
@@ -93,6 +91,20 @@
 				} ]
 			});
 		})
+		//查询方法
+		function queryParams(params){
+			if (params.searchText == undefined) {
+				params.searchText = "";
+			}
+			var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+				limit : params.pageSize, //页面大小
+				offset : params.offset, //页码
+				maxrows : params.limit,
+				pageindex : params.pageNumber,
+				search : encodeURI(params.searchText)
+			};
+			return temp;
+		}
 		//展示详情modal
 		function querytowndetail(centertownid) {
 			$.ajax({
@@ -101,16 +113,14 @@
 				async: false,
 				success : function(html) {
 					$("#towninfobody").html(html);
-					$("#towninfomodal").modal('show');
 					$.ajax({
 						url : "./townmanage/querytowndetail",
+						async: false,
 						data : {"centertownid":centertownid},
 						dataType : 'JSON',
 						success : function(data, status) {
 							values = $("#townform").serializeArray(); 
-							alert(data[0].townlevel);
-							$('#townlevel').val(data[0].townlevel);
-							/* $.each(values,function(i){
+							$.each(values,function(i){
 								var id=values[i].name;
 								var dataStr=data[0];
 								$.each(dataStr,function(i){  
@@ -120,9 +130,14 @@
 								    	$('#'+id).val(value);
 								    }
 								});  
-							}); */
+							});
+							var arr=data[0].industrialorientation.split(",");
+							$('#industrialorientation').selectpicker();  
+							$('#industrialorientation').selectpicker('val', arr);
 						}
 					});
+					$("#towninfomodal").modal('show');
+					$("#townentry_submit").hide();
 				}
 			});
 		}

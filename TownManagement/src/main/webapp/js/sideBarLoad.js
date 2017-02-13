@@ -28,9 +28,13 @@ $(document).ready(function() {
 	        var current = $(this),  
 	        target = current.find('a').attr('target');
 	        if(target!=null&&target!=undefined){
-		        $.get(target,function(data){
-		            $("#page-wrapper").html(data);   
-		         });
+	        	$.ajax({
+	   	         url: target,
+	   	         cache: false,
+	   	         success: function(html){
+	   	             $("#page-wrapper").html(html);
+	   	         }
+	   	     });
 	        }
 	    }); 
 	}) 
