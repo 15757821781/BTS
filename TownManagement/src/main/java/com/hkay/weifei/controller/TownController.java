@@ -1,7 +1,6 @@
 package com.hkay.weifei.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,13 +9,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.hkay.weifei.pojo.Tb_wflx_new;
 import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.TownService;
 import com.hkay.weifei.util.PageUtil;
@@ -34,14 +34,17 @@ public class TownController {
 	 * @param tb_zhongxinzhen
 	 * @return
 	 */
-	@RequestMapping("/inserttowninfo")
+	@RequestMapping(value="/inserttowninfo")
 	@ResponseBody
-	public String inserttowninfo(HttpServletRequest request, Tb_zhongxinzhen tb_zhongxinzhen) {
+	public Map<String, String> inserttowninfo(Tb_zhongxinzhen tb_zhongxinzhen){
 		int flag = this.townservice.inserttowninfo(tb_zhongxinzhen);
-		if (flag == 1) {
-			return "success";
-		} else {
-			return "fail";
+		Map<String, String> map=new HashMap<>();
+		if(flag==1){
+			map.put("returnInfo", "success");
+			return map;
+		}else {
+			map.put("returnInfo", "fail");
+			return map;
 		}
 	}
 
