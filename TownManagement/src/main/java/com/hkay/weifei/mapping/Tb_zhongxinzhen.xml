@@ -11,6 +11,9 @@
 	<select id="querytowninfo" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
 		resultMap="BaseResultMap">
 		select t.* from tb_zhongxinzhen t where 1=1
+		<if test="search!=null and search!=''">
+		    and (t.number like '%${search}%' or t.centertownname like '%${search}%' or t.attributionarea like '%${search}%' or t.townlevel like '%${search}%')
+		</if>
 	</select>
 	<select id="querytowninfocnt" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
 		resultType="Integer">
