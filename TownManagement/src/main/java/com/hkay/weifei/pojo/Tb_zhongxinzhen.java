@@ -35,6 +35,15 @@ public class Tb_zhongxinzhen {
 	private String statuspic;// 现状地图
 	private String planpic;// 规划图
 	private int docking;// 对接人
+	private String search;// 搜索
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
 
 	public double getServiceoutvalue() {
 		return serviceoutvalue;
