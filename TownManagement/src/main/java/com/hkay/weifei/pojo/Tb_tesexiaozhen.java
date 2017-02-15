@@ -3,7 +3,7 @@ package com.hkay.weifei.pojo;
 public class Tb_tesexiaozhen {
 	private int featuretownid;// 特色小镇id
 	private String featuretownname;// 特色小镇名称
-	private int number;// 编号
+	private int featuretownnumber;// 编号
 	private String attributionarea;// 所属地区
 	private String townlevel;// 小镇等级
 	private String foundbatch;// 创建批次
@@ -29,6 +29,15 @@ public class Tb_tesexiaozhen {
 	private String traffic;// 交通条件
 	private String currentindustry;// 现状产业
 	private String planmap;// 规划图
+
+	
+	public int getFeaturetownnumber() {
+		return featuretownnumber;
+	}
+
+	public void setFeaturetownnumber(int featuretownnumber) {
+		this.featuretownnumber = featuretownnumber;
+	}
 
 	public double getPlanarea() {
 		return planarea;
@@ -68,14 +77,6 @@ public class Tb_tesexiaozhen {
 
 	public void setFeaturetownname(String featuretownname) {
 		this.featuretownname = featuretownname;
-	}
-
-	public int getNumber() {
-		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
 	}
 
 	public String getAttributionarea() {
