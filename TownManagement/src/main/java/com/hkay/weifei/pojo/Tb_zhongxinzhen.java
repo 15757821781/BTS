@@ -1,7 +1,7 @@
 package com.hkay.weifei.pojo;
 
 public class Tb_zhongxinzhen {
-	private int centertownid;// 中心镇id
+	private String centertownid;// 中心镇id
 	private String centertownname;// 中心镇名称
 	private int number;// 编号
 	private String attributionarea;// 归属地区
@@ -37,6 +37,15 @@ public class Tb_zhongxinzhen {
 	private int docking;// 对接人
 	private String search;// 搜索
 
+	
+	public String getCentertownid() {
+		return centertownid;
+	}
+
+	public void setCentertownid(String centertownid) {
+		this.centertownid = centertownid;
+	}
+
 	public String getSearch() {
 		return search;
 	}
@@ -51,14 +60,6 @@ public class Tb_zhongxinzhen {
 
 	public void setServiceoutvalue(double serviceoutvalue) {
 		this.serviceoutvalue = serviceoutvalue;
-	}
-
-	public int getCentertownid() {
-		return centertownid;
-	}
-
-	public void setCentertownid(int centertownid) {
-		this.centertownid = centertownid;
 	}
 
 	public String getCentertownname() {

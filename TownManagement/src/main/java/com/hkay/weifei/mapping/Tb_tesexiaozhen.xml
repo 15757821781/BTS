@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.FeaturetownDao">
+	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_tesexiaozhen" />
+	<insert id="insertfeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen">
+		insert into
+		Tb_tesexiaozhen(featuretownname,featuretownnumber,attributionarea,townlevel,foundbatch,towngenre,position,developer,developername,developertel,partner,partnername,partnertel,cooperatecondition,functions,industrygenre,planarea,planinvest,schedule,plancontent,weather,statemap,programme,contacts,traffic,currentindustry,planmap)
+		values
+		(#{featuretownname},#{featuretownnumber},#{attributionarea},#{townlevel},#{foundbatch},#{towngenre},#{position},#{developer},#{developername},#{developertel},#{partner},#{partnername},#{partnertel},#{cooperatecondition},#{functions},#{industrygenre},#{planarea},#{planinvest},#{schedule},#{plancontent},#{weather},#{statemap},#{programme},#{contacts},#{traffic},#{currentindustry},#{planmap})
+	</insert>
+	<select id="querytowninfo" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
+		resultMap="BaseResultMap">
+		select t.* from tb_zhongxinzhen t where 1=1
+		<if test="search!=null and search!=''">
+		    and (t.number like '%${search}%' or t.centertownname like '%${search}%' or t.attributionarea like '%${search}%' or t.townlevel like '%${search}%')
+		</if>
+	</select>
+	<select id="querytowninfocnt" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
+		resultType="Integer">
+		select count(*) from tb_zhongxinzhen t
+		where 1=1
+	</select>
+	<select id="querytowndetail" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
+		resultMap="BaseResultMap">
+		select t.* from tb_zhongxinzhen t where t.centertownid=#{centertownid}
+	</select>
+	<update id="updatetowninfo" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen">
+	update tb_zhongxinzhen
+	set
+	centertownname=#{centertownname},
+	number=#{number},
+	attributionarea=#{attributionarea},
+	townlevel=#{townlevel},
+	cooperation=#{cooperation},
+	townarea=#{townarea},
+	builtuparea=#{builtuparea},
+	townpopulation=#{townpopulation},
+	floatepopulation=#{floatepopulation},
+	countygdp=#{countygdp},
+	countyrevenue=#{countyrevenue},
+	townrevenue=#{townrevenue},
+	hundredcounties=#{hundredcounties},
+	citypilot=#{citypilot},
+	community=#{community},
+	adminvillage=#{adminvillage},
+	farmingoutvalue=#{farmingoutvalue},
+	partycommittee=#{partycommittee},
+	committelnumber=#{committelnumber},
+	industryoutvalue=#{industryoutvalue},
+	mayor=#{mayor},
+	mayortelnumber=#{mayortelnumber},
+	serviceoutvalue=#{serviceoutvalue},
+	weather=#{weather},
+	terrain=#{terrain},
+	traffic=#{traffic},
+	currentindustry=#{currentindustry},
+	industrialorientation=#{industrialorientation},
+	honorarytitle=#{honorarytitle},
+	historyculture=#{historyculture},
+	statuspic=#{statuspic},
+	planpic=#{planpic},
+	docking=#{docking}
+	where centertownid=#{centertownid}
+	</update>
+</mapper>
