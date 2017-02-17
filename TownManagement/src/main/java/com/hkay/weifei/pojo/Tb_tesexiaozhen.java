@@ -29,8 +29,16 @@ public class Tb_tesexiaozhen {
 	private String traffic;// 交通条件
 	private String currentindustry;// 现状产业
 	private String planmap;// 规划图
+	private String search;//搜索
 
-	
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
 	public int getFeaturetownnumber() {
 		return featuretownnumber;
 	}
