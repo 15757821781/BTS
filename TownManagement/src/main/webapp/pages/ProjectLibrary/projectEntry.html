@@ -742,7 +742,8 @@
 						if (data.returnInfo == "success") {
 							$("#myModal-success").modal('show');
 							$('#myModal-success').on('hidden.bs.modal',function() {
-								$.ajax({url : 'pages/ProjectLibrary/projectEntry.html',
+								$.ajax({
+									url : 'pages/ProjectLibrary/projectEntry.html',
 									cache : false,
 									success : function(html) {
 										$("#page-wrapper").html(html);
@@ -778,7 +779,8 @@
 						if (data.returnInfo == "success") {
 							$("#myModal-success").modal('show');
 							$('#myModal-success').on('hidden.bs.modal',function() {
-								$.ajax({url : 'pages/town/townEntry.html',
+								$.ajax({
+									url : 'pages/town/townEntry.html',
 									cache : false,
 									success : function(html) {
 										$("#page-wrapper").html(html);
