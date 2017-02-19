@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.RegionDao">
+	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_quyuxingxiangmu" />
+	<insert id="insertregion" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu">
+		insert into
+		Tb_tesexiaozhen(featuretownname,featuretownnumber,attributionarea,townlevel,foundbatch,towngenre,position,developer,developername,developertel,partner,partnername,partnertel,cooperatecondition,functions,industrygenre,planarea,planinvest,schedule,plancontent,weather,statemap,programme,contacts,traffic,currentindustry,planmap)
+		values
+		(#{featuretownname},#{featuretownnumber},#{attributionarea},#{townlevel},#{foundbatch},#{towngenre},#{position},#{developer},#{developername},#{developertel},#{partner},#{partnername},#{partnertel},#{cooperatecondition},#{functions},#{industrygenre},#{planarea},#{planinvest},#{schedule},#{plancontent},#{weather},#{statemap},#{programme},#{contacts},#{traffic},#{currentindustry},#{planmap})
+	</insert>
+	<select id="queryfeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
+		resultMap="BaseResultMap">
+		select t.* from Tb_tesexiaozhen t where 1=1
+		<if test="search!=null and search!=''">
+		    and (t.featuretownname like '%${search}%' or t.featuretownnumber like '%${search}%' or t.attributionarea like '%${search}%' or t.townlevel like '%${search}%')
+		</if>
+	</select>
+	<select id="queryfeaturetowncnt" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
+		resultType="Integer">
+		select count(*) from Tb_tesexiaozhen t
+		where 1=1
+	</select>
+	<select id="queryfeaturetowndetail" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
+		resultMap="BaseResultMap">
+		select t.* from Tb_tesexiaozhen t where t.featuretownid=#{featuretownid}
+	</select>
+	<update id="updatefeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen">
+		update Tb_tesexiaozhen
+		set
+		featuretownname=#{featuretownname},
+		featuretownnumber=#{featuretownnumber},
+		attributionarea=#{attributionarea},
+		townlevel=#{townlevel},
+		foundbatch=#{foundbatch},
+		towngenre=#{towngenre},
+		position=#{position},
+		developer=#{developer},
+		developername=#{developername},
+		developertel=#{developertel},
+		partner=#{partner},
+		partnername=#{partnername},
+		partnertel=#{partnertel},
+		cooperatecondition=#{cooperatecondition},
+		functions=#{functions},
+		industrygenre=#{industrygenre},
+		planarea=#{planarea},
+		planinvest=#{planinvest},
+		schedule=#{schedule},
+		plancontent=#{plancontent},
+		weather=#{weather},
+		statemap=#{statemap},
+		programme=#{programme},
+		contacts=#{contacts},
+		traffic=#{traffic},
+		currentindustry=#{currentindustry},
+		planmap=#{planmap}
+		where featuretownid=#{featuretownid}
+	</update>
+</mapper>
