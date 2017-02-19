@@ -6,7 +6,9 @@
 <!-- select CSS -->
 <link href="./dist/css/bootstrap-select.css" rel="stylesheet">
 <!-- 表单验证 -->
-<link rel="stylesheet" href="dist/css/bootstrapValidator.css" />
+<link rel="stylesheet" href="./dist/css/bootstrapValidator.css" />
+<!-- 时间插件 -->
+<link rel="stylesheet" href="./css/bootstrap-datetimepicker.css" />
 </head>
 <body>
 	<div class="row">
@@ -323,9 +325,13 @@
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">合作时间</label>
-								<div class="col-sm-6">
-									<input id="regtime" name="regtime" class="form-control"
-										type="text">
+								<div class="col-sm-3">
+									<input id="regtimebegin" name="regtimebegin" class="datepicker form-control"
+										type="text" placeholder="合作开始时间">
+								</div>
+								<div class="col-sm-3">
+									<input id="regtimeend" name="regtimeend" class="datepicker form-control"
+										type="text" placeholder="合作结束时间">
 								</div>
 								<label class="col-sm-2 control-label">协议情况</label>
 								<div class="col-sm-2">
@@ -716,12 +722,26 @@
 	<!-- 表单验证 -->
 	<script type="text/javascript" src="./dist/js/bootstrapValidator.js"></script>
 	<script type="text/javascript" src="./dist/js/language/zh_CN.js"></script>
+	<!-- 时间插件 -->
+	<script type="text/javascript" src="./js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="./js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			//初始化下拉框
 			$('.selectpicker').selectpicker({
 				noneSelectedText : "请选择"
 				});
+			$('.datepicker').datetimepicker({
+				language: "zh-CN",
+	            autoclose: true,//选中之后自动隐藏日期选择框
+	            todayBtn: true,//今日按钮
+	            minView: 2,
+	            format: "yyyy-mm-dd"
+			}).on('hide', function(e) {  
+		        // Revalidate the date when user change it  
+		        $('#regionitem').bootstrapValidator('revalidateField', 'regtimebegin');
+		        $('#regionitem').bootstrapValidator('revalidateField', 'regtimeend');
+			});
 			//特色小镇表单提交
 			$('#featuretown_submit').click(function() {
 				$('#featuretown').data('bootstrapValidator').validate();
@@ -1119,10 +1139,31 @@
 							}
 						}
 					},
-					regtime : {
+					regtimebegin : {
 						validators : {
 							notEmpty : {
 								message : '合作时间不能为空'
+							},  
+							callback: {
+								message: '开始日期不能大于结束日期',
+								callback:function(value, validator,$field,options){
+									var end = $('#regionitem').find("input[name='regtimeend']").val();
+									return value<=end;
+								}
+							}
+						}
+					},
+					regtimeend : {
+						validators : {
+							notEmpty : {
+								message : '合作时间不能为空'
+							},  
+							callback: {
+								message: '结束日期不能小于开始日期',
+								callback:function(value, validator,$field){
+									var begin = $('#regionitem').find("input[name='regtimebegin']").val();
+									return value>=begin;
+								}
 							}
 						}
 					},
