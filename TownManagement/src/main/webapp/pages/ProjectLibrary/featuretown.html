@@ -245,12 +245,8 @@
 								$("#featuretown-success").modal('show');
 								$('#featuretownManage').bootstrapTable('refresh');
 							},200);
-							$('#featuretown-success').on('hidden.bs.modal',function() {
-								//更新表格
-								//$('#featuretownManage').bootstrapTable('refresh');
-								})
-							} else {
-								$("#featuretown-fail").modal('show');
+						} else {
+							$("#featuretown-fail").modal('show');
 						}
 					},
 					error : function() {

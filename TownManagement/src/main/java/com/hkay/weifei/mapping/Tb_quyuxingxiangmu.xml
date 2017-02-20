@@ -4,56 +4,59 @@
 	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_quyuxingxiangmu" />
 	<insert id="insertregion" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu">
 		insert into
-		Tb_tesexiaozhen(featuretownname,featuretownnumber,attributionarea,townlevel,foundbatch,towngenre,position,developer,developername,developertel,partner,partnername,partnertel,cooperatecondition,functions,industrygenre,planarea,planinvest,schedule,plancontent,weather,statemap,programme,contacts,traffic,currentindustry,planmap)
+		Tb_quyuxingxiangmu(regname,regnumber,regarea,regproperty,regschedule,regposition,regdeveloper,regcharge,regchargetel,regpartner,regpartcharge,regparttel,regterms,regtimebegin,regtimeend,regprotocol,regadvisory,regadvisorypro,regplanarea,regplaninvest,reglandarea,regfirstplanarea,regfirstplaninvest,regfirstlandarea,regprimeindustry,regplancontent,regstatemap,regplanscheme,regcontacts,regplanmap)
 		values
-		(#{featuretownname},#{featuretownnumber},#{attributionarea},#{townlevel},#{foundbatch},#{towngenre},#{position},#{developer},#{developername},#{developertel},#{partner},#{partnername},#{partnertel},#{cooperatecondition},#{functions},#{industrygenre},#{planarea},#{planinvest},#{schedule},#{plancontent},#{weather},#{statemap},#{programme},#{contacts},#{traffic},#{currentindustry},#{planmap})
+		(#{regname},#{regnumber},#{regarea},#{regproperty},#{regschedule},#{regposition},#{regdeveloper},#{regcharge},#{regchargetel},#{regpartner},#{regpartcharge},#{regparttel},#{regterms},#{regtimebegin},#{regtimeend},#{regprotocol},#{regadvisory},#{regadvisorypro},#{regplanarea},#{regplaninvest},#{reglandarea},#{regfirstplanarea},#{regfirstplaninvest},#{regfirstlandarea},#{regprimeindustry},#{regplancontent},#{regstatemap},#{regplanscheme},#{regcontacts},#{regplanmap})
 	</insert>
-	<select id="queryfeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
+	<select id="queryregioninfo" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
 		resultMap="BaseResultMap">
-		select t.* from Tb_tesexiaozhen t where 1=1
+		select regid,regname,regnumber,regarea,regproperty,regschedule,regposition,regdeveloper,regcharge,regchargetel,regpartner,regpartcharge,regparttel,regterms,date_format(regtimebegin,'%Y-%c-%d') as regtimebegin,date_format(regtimeend,'%Y-%c-%d') as regtimeend,regprotocol,regadvisory,regadvisorypro,regplanarea,regplaninvest,reglandarea,regfirstplanarea,regfirstplaninvest,regfirstlandarea,regprimeindustry,regplancontent,regstatemap,regplanscheme,regcontacts,regplanmap from Tb_quyuxingxiangmu t where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.featuretownname like '%${search}%' or t.featuretownnumber like '%${search}%' or t.attributionarea like '%${search}%' or t.townlevel like '%${search}%')
+		    and (t.regname like '%${search}%' or t.regnumber like '%${search}%' or t.regarea like '%${search}%' or t.regproperty like '%${search}%')
 		</if>
 	</select>
-	<select id="queryfeaturetowncnt" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
+	<select id="queryregioninfocnt" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
 		resultType="Integer">
-		select count(*) from Tb_tesexiaozhen t
+		select count(*) from Tb_quyuxingxiangmu t
 		where 1=1
 	</select>
-	<select id="queryfeaturetowndetail" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
+	<select id="queryregionitemdetail" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
 		resultMap="BaseResultMap">
-		select t.* from Tb_tesexiaozhen t where t.featuretownid=#{featuretownid}
+		select regid,regname,regnumber,regarea,regproperty,regschedule,regposition,regdeveloper,regcharge,regchargetel,regpartner,regpartcharge,regparttel,regterms,date_format(regtimebegin,'%Y-%c-%d') as regtimebegin,date_format(regtimeend,'%Y-%c-%d') as regtimeend,regprotocol,regadvisory,regadvisorypro,regplanarea,regplaninvest,reglandarea,regfirstplanarea,regfirstplaninvest,regfirstlandarea,regprimeindustry,regplancontent,regstatemap,regplanscheme,regcontacts,regplanmap from Tb_quyuxingxiangmu t where t.regid=#{regid}
 	</select>
-	<update id="updatefeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen">
-		update Tb_tesexiaozhen
+	<update id="updateregion" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu">
+		update Tb_quyuxingxiangmu
 		set
-		featuretownname=#{featuretownname},
-		featuretownnumber=#{featuretownnumber},
-		attributionarea=#{attributionarea},
-		townlevel=#{townlevel},
-		foundbatch=#{foundbatch},
-		towngenre=#{towngenre},
-		position=#{position},
-		developer=#{developer},
-		developername=#{developername},
-		developertel=#{developertel},
-		partner=#{partner},
-		partnername=#{partnername},
-		partnertel=#{partnertel},
-		cooperatecondition=#{cooperatecondition},
-		functions=#{functions},
-		industrygenre=#{industrygenre},
-		planarea=#{planarea},
-		planinvest=#{planinvest},
-		schedule=#{schedule},
-		plancontent=#{plancontent},
-		weather=#{weather},
-		statemap=#{statemap},
-		programme=#{programme},
-		contacts=#{contacts},
-		traffic=#{traffic},
-		currentindustry=#{currentindustry},
-		planmap=#{planmap}
-		where featuretownid=#{featuretownid}
+		regname=#{regname},
+		regnumber=#{regnumber},
+		regarea=#{regarea},
+		regproperty=#{regproperty},
+		regschedule=#{regschedule},
+		regposition=#{regposition},
+		regdeveloper=#{regdeveloper},
+		regcharge=#{regcharge},
+		regchargetel=#{regchargetel},
+		regpartner=#{regpartner},
+		regpartcharge=#{regpartcharge},
+		regparttel=#{regparttel},
+		regterms=#{regterms},
+		regtimebegin=#{regtimebegin},
+		regtimeend=#{regtimeend},
+		regprotocol=#{regprotocol},
+		regadvisory=#{regadvisory},
+		regadvisorypro=#{regadvisorypro},
+		regplanarea=#{regplanarea},
+		regplaninvest=#{regplaninvest},
+		reglandarea=#{reglandarea},
+		regfirstplanarea=#{regfirstplanarea},
+		regfirstplaninvest=#{regfirstplaninvest},
+		regfirstlandarea=#{regfirstlandarea},
+		regprimeindustry=#{regprimeindustry},
+		regplancontent=#{regplancontent},
+		regstatemap=#{regstatemap},
+		regplanscheme=#{regplanscheme},
+		regcontacts=#{regcontacts},
+		regplanmap=#{regplanmap}
+		where regid=#{regid}
 	</update>
 </mapper>
