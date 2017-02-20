@@ -436,8 +436,6 @@
 								<button type="button" id="regitem_submit" class="col-sm-2 btn btn-primary"
 									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
 								<label class="col-sm-5 control-label"></label>
-								<!-- id -->
-								<input type="hidden" value="" name="regid" id="regid">
 							</div>
 						</form>
 					</div>
@@ -789,7 +787,7 @@
 				var formData = new FormData($("#regionitem")[0]);
 				$.ajax({
 					type : "post",
-					//url : "./townmanage/inserttowninfo",
+					url : "./regionmanage/insertregion",
 					data : formData,
 					dataType : 'JSON',
 					cache : false,
