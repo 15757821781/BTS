@@ -104,8 +104,8 @@
                     width :	'20%',
                     align : 'center',
                     formatter:function(value,row,index){
-                    	var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.regid+')">查看</a>';
-                    	var update = '<a href="javascript:void(0)" onclick="updatetowninfo('+row.regid+')">修改</a>'
+                    	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.regid+')">查看</a>';
+                    	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.regid+')">修改</a>'
                     	return query+"&nbsp"+update;
                     }
 				} ]
@@ -126,7 +126,7 @@
 			return temp;
 		}
 		//展示详情modal
-		function querytowndetail(regid) {
+		function querydetail(regid) {
 			$.ajax({
 				url : "pages/ProjectLibrary/regionitem.html",
 				cache : false,
@@ -161,7 +161,7 @@
 			});
 		}
 		//展示修改界面
-		function updatetowninfo(regid){
+		function updateinfo(regid){
 			$.ajax({
 				url : "pages/ProjectLibrary/regionitem.html",
 				cache : false,
