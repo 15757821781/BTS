@@ -1,7 +1,5 @@
 package com.hkay.weifei.pojo;
 
-import java.sql.Date;
-
 public class Tb_quyuxingxiangmu {
 	private int regid;//区域性项目id
 	private String regname;//区域性项目名称
@@ -17,8 +15,8 @@ public class Tb_quyuxingxiangmu {
 	private String regpartcharge;//合作单位负责人
 	private String regparttel;//合作单位负责人电话
 	private String regterms;//合作条件
-	private Date regtimebegin;//合作开始时间
-	private Date regtimeend;//合作结束时间
+	private String regtimebegin;//合作开始时间
+	private String regtimeend;//合作结束时间
 	private String regprotocol;//协议情况
 	private String regadvisory;//咨询顾问单位
 	private String regadvisorypro;//咨询顾问单位协议情况
@@ -34,17 +32,25 @@ public class Tb_quyuxingxiangmu {
 	private String regplanscheme;//规划方案
 	private String regcontacts;//对接人
 	private String regplanmap;//规划图
+	private String search;//搜索内容
 	
-	public Date getRegtimebegin() {
+	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public String getRegtimebegin() {
 		return regtimebegin;
 	}
-	public void setRegtimebegin(Date regtimebegin) {
+	public void setRegtimebegin(String regtimebegin) {
 		this.regtimebegin = regtimebegin;
 	}
-	public Date getRegtimeend() {
+	public String getRegtimeend() {
 		return regtimeend;
 	}
-	public void setRegtimeend(Date regtimeend) {
+	public void setRegtimeend(String regtimeend) {
 		this.regtimeend = regtimeend;
 	}
 	public int getRegid() {

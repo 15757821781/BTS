@@ -18,7 +18,7 @@
 			<table id="regionManage" ></table>
 		</div>
 	</div>
-	<!-- 模态框（Modal） 小镇详情-->
+	<!-- 模态框（Modal） 区域项目详情-->
 	<div class="modal fade" id="regionmodal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" style="padding-top: 5%;">
 		<div class="modal-dialog" style="width:60%;">
@@ -56,7 +56,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#regionManage').bootstrapTable({
-				url : './featuretownmanage/queryfeaturetown',
+				url : './regionmanage/queryregioninfo',
 				method : 'get', //请求方式（*）
 				toolbar : '#toolbar', //工具按钮用哪个容器
 				striped : true, //是否显示行间隔色
@@ -78,34 +78,34 @@
 				//cardView : false, //是否显示详细视图
 				//detailView : true, //是否显示父子表
 				columns : [ {
-					field : 'featuretownnumber',
+					field : 'regnumber',
 					title : '编号',
 					align : 'center',
 					width : '20%'
 				}, {
-					field : 'featuretownname',
-					title : '中心镇名称',
+					field : 'regname',
+					title : '项目名称',
 					editable : true,
 					align : 'center',
 					width : '20%'
 				}, {
-					field : 'attributionarea',
-					title : '归属地',
+					field : 'regarea',
+					title : '所属地区',
 					align : 'center',
 					width : '20%'
 				}, {
-					field : 'townlevel',
-					title : '小镇等级',
+					field : 'regproperty',
+					title : '项目属性',
 					align : 'center',
 					width : '20%'
 				}, {
                     title : '操作',
-                    field : 'featuretownid',
+                    field : 'regid',
                     width :	'20%',
                     align : 'center',
                     formatter:function(value,row,index){
-                    	var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.featuretownid+')">查看</a>';
-                    	var update = '<a href="javascript:void(0)" onclick="updatetowninfo('+row.featuretownid+')">修改</a>'
+                    	var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.regid+')">查看</a>';
+                    	var update = '<a href="javascript:void(0)" onclick="updatetowninfo('+row.regid+')">修改</a>'
                     	return query+"&nbsp"+update;
                     }
 				} ]
@@ -126,20 +126,20 @@
 			return temp;
 		}
 		//展示详情modal
-		function querytowndetail(featuretownid) {
+		function querytowndetail(regid) {
 			$.ajax({
-				url : "pages/ProjectLibrary/featuretown.html",
+				url : "pages/ProjectLibrary/regionitem.html",
 				cache : false,
 				async: false,
 				success : function(html) {
-					$("#featuretownbody").html(html);
+					$("#regionbody").html(html);
 					$.ajax({
-						url : "./featuretownmanage/queryfeaturetowndetail",
+						url : "./regionmanage/queryregionitemdetail",
 						async: false,
-						data : {"featuretownid":featuretownid},
+						data : {"regid":regid},
 						dataType : 'JSON',
 						success : function(data, status) {
-							values = $("#featuretown").serializeArray(); 
+							values = $("#regionitem").serializeArray(); 
 							$.each(values,function(i){
 								var id=values[i].name;
 								var dataStr=data[0];
@@ -156,25 +156,25 @@
 							//$('#industrialorientation').selectpicker('val', arr);
 						}
 					});
-					$("#featuretownmodal").modal('show');
+					$("#regionmodal").modal('show');
 				}
 			});
 		}
 		//展示修改界面
-		function updatetowninfo(featuretownid){
+		function updatetowninfo(regid){
 			$.ajax({
-				url : "pages/ProjectLibrary/featuretown.html",
+				url : "pages/ProjectLibrary/regionitem.html",
 				cache : false,
 				async: false,
 				success : function(html) {
-					$("#featuretownbody").html(html);
+					$("#regionbody").html(html);
 					$.ajax({
-						url : "./featuretownmanage/queryfeaturetowndetail",
+						url : "./regionmanage/queryregionitemdetail",
 						async: false,
-						data : {"featuretownid":featuretownid},
+						data : {"regid":regid},
 						dataType : 'JSON',
 						success : function(data, status) {
-							values = $("#featuretown").serializeArray(); 
+							values = $("#regionitem").serializeArray(); 
 							$.each(values,function(i){
 								var id=values[i].name;
 								var dataStr=data[0];
@@ -191,8 +191,8 @@
 							//$('#industrialorientation').selectpicker('val', arr);
 						}
 					});
-					$("#featuretownmodal").modal('show');
-					$("#featuretown_update").show();
+					$("#regionmodal").modal('show');
+					$("#regionitem_update").show();
 				}
 			});
 		}
