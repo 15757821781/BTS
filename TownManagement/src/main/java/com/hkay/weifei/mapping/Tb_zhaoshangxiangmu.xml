@@ -8,55 +8,51 @@
 		values
 		(#{invname},#{invnumber},#{invarea},#{invlocal},#{invjoinway},#{invcharge},#{invindustry},#{invlandscale},#{invplotratio},#{invplanuse},#{investment},#{investmentall},#{invexpectbuild},#{invplanaddress},#{invbuildcontent},#{invbuildcondition},#{invincentives},#{invessential},#{invbenefit},#{invremark},#{invunit},#{invcontact},#{invcontactway})
 	</insert>
-	<select id="queryregioninfo" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
+	<select id="queryinvinfo" parameterType="com.hkay.weifei.pojo.Tb_zhaoshangxiangmu"
 		resultMap="BaseResultMap">
-		select regid,regname,regnumber,regarea,regproperty,regschedule,regposition,regdeveloper,regcharge,regchargetel,regpartner,regpartcharge,regparttel,regterms,date_format(regtimebegin,'%Y-%c-%d') as regtimebegin,date_format(regtimeend,'%Y-%c-%d') as regtimeend,regprotocol,regadvisory,regadvisorypro,regplanarea,regplaninvest,reglandarea,regfirstplanarea,regfirstplaninvest,regfirstlandarea,regprimeindustry,regplancontent,regstatemap,regplanscheme,regcontacts,regplanmap from Tb_quyuxingxiangmu t where 1=1
+		select invid,invname,invnumber,invarea,invlocal,invjoinway,invcharge,invindustry,invlandscale,invplotratio,invplanuse,investment,investmentall,invexpectbuild,invplanaddress,invbuildcontent,invbuildcondition,invincentives,invessential,invbenefit,invremark,invunit,invcontact,invcontactway from Tb_zhaoshangxiangmu t where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.regname like '%${search}%' or t.regnumber like '%${search}%' or t.regarea like '%${search}%' or t.regproperty like '%${search}%')
+		    and (t.invname like '%${search}%' or t.invnumber like '%${search}%' or t.invarea like '%${search}%' or t.invcharge like '%${search}%')
 		</if>
 	</select>
-	<select id="queryregioninfocnt" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
+	<select id="queryinvinfocnt" parameterType="com.hkay.weifei.pojo.Tb_zhaoshangxiangmu"
 		resultType="Integer">
-		select count(*) from Tb_quyuxingxiangmu t
+		select count(*) from Tb_zhaoshangxiangmu t
 		where 1=1
+		<if test="search!=null and search!=''">
+		    and (t.invname like '%${search}%' or t.invnumber like '%${search}%' or t.invarea like '%${search}%' or t.invcharge like '%${search}%')
+		</if>
 	</select>
-	<select id="queryregionitemdetail" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
+	<select id="queryinvitemdetail" parameterType="com.hkay.weifei.pojo.Tb_zhaoshangxiangmu"
 		resultMap="BaseResultMap">
-		select regid,regname,regnumber,regarea,regproperty,regschedule,regposition,regdeveloper,regcharge,regchargetel,regpartner,regpartcharge,regparttel,regterms,date_format(regtimebegin,'%Y-%c-%d') as regtimebegin,date_format(regtimeend,'%Y-%c-%d') as regtimeend,regprotocol,regadvisory,regadvisorypro,regplanarea,regplaninvest,reglandarea,regfirstplanarea,regfirstplaninvest,regfirstlandarea,regprimeindustry,regplancontent,regstatemap,regplanscheme,regcontacts,regplanmap from Tb_quyuxingxiangmu t where t.regid=#{regid}
+		select invid,invname,invnumber,invarea,invlocal,invjoinway,invcharge,invindustry,invlandscale,invplotratio,invplanuse,investment,investmentall,invexpectbuild,invplanaddress,invbuildcontent,invbuildcondition,invincentives,invessential,invbenefit,invremark,invunit,invcontact,invcontactway from Tb_zhaoshangxiangmu t where t.invid=#{invid}
 	</select>
-	<update id="updateregion" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu">
-		update Tb_quyuxingxiangmu
+	<update id="updateinv" parameterType="com.hkay.weifei.pojo.Tb_zhaoshangxiangmu">
+		update Tb_zhaoshangxiangmu
 		set
-		regname=#{regname},
-		regnumber=#{regnumber},
-		regarea=#{regarea},
-		regproperty=#{regproperty},
-		regschedule=#{regschedule},
-		regposition=#{regposition},
-		regdeveloper=#{regdeveloper},
-		regcharge=#{regcharge},
-		regchargetel=#{regchargetel},
-		regpartner=#{regpartner},
-		regpartcharge=#{regpartcharge},
-		regparttel=#{regparttel},
-		regterms=#{regterms},
-		regtimebegin=#{regtimebegin},
-		regtimeend=#{regtimeend},
-		regprotocol=#{regprotocol},
-		regadvisory=#{regadvisory},
-		regadvisorypro=#{regadvisorypro},
-		regplanarea=#{regplanarea},
-		regplaninvest=#{regplaninvest},
-		reglandarea=#{reglandarea},
-		regfirstplanarea=#{regfirstplanarea},
-		regfirstplaninvest=#{regfirstplaninvest},
-		regfirstlandarea=#{regfirstlandarea},
-		regprimeindustry=#{regprimeindustry},
-		regplancontent=#{regplancontent},
-		regstatemap=#{regstatemap},
-		regplanscheme=#{regplanscheme},
-		regcontacts=#{regcontacts},
-		regplanmap=#{regplanmap}
-		where regid=#{regid}
+		invname=#{invname},
+		invnumber=#{invnumber},
+		invarea=#{invarea},
+		invlocal=#{invlocal},
+		invjoinway=#{invjoinway},
+		invcharge=#{invcharge},
+		invindustry=#{invindustry},
+		invlandscale=#{invlandscale},
+		invplotratio=#{invplotratio},
+		invplanuse=#{invplanuse},
+		investment=#{investment},
+		investmentall=#{investmentall},
+		invexpectbuild=#{invexpectbuild},
+		invplanaddress=#{invplanaddress},
+		invbuildcontent=#{invbuildcontent},
+		invbuildcondition=#{invbuildcondition},
+		invincentives=#{invincentives},
+		invessential=#{invessential},
+		invbenefit=#{invbenefit},
+		invremark=#{invremark},
+		invunit=#{invunit},
+		invcontact=#{invcontact},
+		invcontactway=#{invcontactway}
+		where invid=#{invid}
 	</update>
 </mapper>

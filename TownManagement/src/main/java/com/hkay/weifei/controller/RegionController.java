@@ -86,9 +86,9 @@ public class RegionController {
 	@RequestMapping("/queryregionitemdetail")
 	@ResponseBody
 	public List<Tb_quyuxingxiangmu> queryregionitemdetail(HttpServletRequest request,Tb_quyuxingxiangmu tb_quyuxingxiangmu) throws UnsupportedEncodingException{
-		Tb_quyuxingxiangmu regiontime=new Tb_quyuxingxiangmu();
-		regiontime.setRegid(tb_quyuxingxiangmu.getRegid());
-		List<Tb_quyuxingxiangmu> tb_quyuxingxiangmus = this.regionservice.queryregionitemdetail(regiontime);
+		Tb_quyuxingxiangmu regionitme=new Tb_quyuxingxiangmu();
+		regionitme.setRegid(tb_quyuxingxiangmu.getRegid());
+		List<Tb_quyuxingxiangmu> tb_quyuxingxiangmus = this.regionservice.queryregionitemdetail(regionitme);
 		return tb_quyuxingxiangmus;
 	}
 	
