@@ -609,7 +609,12 @@
 								</div>
 								<label class="col-sm-2 control-label">合作方式</label>
 								<div class="col-sm-2">
-									<input id="resjoinway" name="resjoinway" class="form-control" />
+									<select name="resjoinway" id="resjoinway"
+										class="selectpicker show-tick form-control">
+										<option></option>
+										<option value="租凭">租凭</option>
+										<option value="购置">购置</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
@@ -753,6 +758,7 @@
 		        $('#regionitem').bootstrapValidator('revalidateField', 'regtimebegin');
 		        $('#regionitem').bootstrapValidator('revalidateField', 'regtimeend');
 			});
+			
 			//特色小镇表单提交
 			$('#featuretown_submit').click(function() {
 				formsubmit('#featuretown','./featuretownmanage/insertfeaturetown');
