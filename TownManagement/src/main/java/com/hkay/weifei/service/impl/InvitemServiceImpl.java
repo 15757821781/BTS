@@ -1,5 +1,7 @@
 package com.hkay.weifei.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -17,6 +19,30 @@ public class InvitemServiceImpl implements InvitemService{
 	public int insertinvitem(Tb_zhaoshangxiangmu tb_zhaoshangxiangmu) {
 		// TODO Auto-generated method stub
 		return this.invitemdao.insertinvitem(tb_zhaoshangxiangmu);
+	}
+
+	@Override
+	public List<Tb_zhaoshangxiangmu> queryinvinfo(Tb_zhaoshangxiangmu tb_zhaoshangxiangmu) {
+		// TODO Auto-generated method stub
+		return this.invitemdao.queryinvinfo(tb_zhaoshangxiangmu);
+	}
+
+	@Override
+	public int queryinvinfocnt(Tb_zhaoshangxiangmu tb_zhaoshangxiangmu) {
+		// TODO Auto-generated method stub
+		return this.invitemdao.queryinvinfocnt(tb_zhaoshangxiangmu);
+	}
+
+	@Override
+	public List<Tb_zhaoshangxiangmu> queryinvitemdetail(Tb_zhaoshangxiangmu invitem) {
+		// TODO Auto-generated method stub
+		return this.invitemdao.queryinvitemdetail(invitem);
+	}
+
+	@Override
+	public int updateinv(Tb_zhaoshangxiangmu tb_zhaoshangxiangmu) {
+		// TODO Auto-generated method stub
+		return this.invitemdao.updateinv(tb_zhaoshangxiangmu);
 	}
 
 }

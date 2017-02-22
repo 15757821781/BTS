@@ -25,6 +25,14 @@ public class Tb_zhaoshangxiangmu {
 	private String invunit;//联系单位
 	private String invcontact;//联系人
 	private String invcontactway;//联系方式
+	private String search;//搜索内容
+	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public int getInvid() {
 		return invid;
 	}
