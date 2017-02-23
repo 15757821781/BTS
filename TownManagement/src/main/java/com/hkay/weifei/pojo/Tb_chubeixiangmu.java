@@ -23,6 +23,14 @@ public class Tb_chubeixiangmu {
 	private String rescontactunit;//联系单位
 	private String rescontacts;//联系人
 	private String rescontactway;//联系方式
+	private String search;//搜索
+	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public int getResid() {
 		return resid;
 	}

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>储备项目</title>
+</head>
+<!-- select CSS -->
+<link href="./dist/css/bootstrap-select.css" rel="stylesheet">
+<!-- 表单验证 -->
+<link rel="stylesheet" href="dist/css/bootstrapValidator.css" />
+<body>
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header">储备项目信息</h3>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<form class="form-horizontal" role="form" id="resitem">
+				<!-- 表单 -->
+				<div class="form-group">
+					<!-- 一行行开始写 -->
+					<label class="col-sm-2 control-label">政府储备项目名称</label>
+					<div class="col-sm-6">
+						<input id="resitemname" name="resitemname" class="form-control"
+							type="text" placeholder="请填写项目名称" />
+					</div>
+					<label class="col-sm-2 control-label">项目编号</label>
+					<div class="col-sm-2">
+						<input id="resnumber" name="resnumber" class="form-control"
+							placeholder="自动生成" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">所属地区</label>
+					<div class="col-sm-2">
+						<input id="resarea" name="resarea" class="form-control"
+							type="text" />
+					</div>
+					<label class="col-sm-2 control-label">所在镇/街道/开发区</label>
+					<div class="col-sm-2">
+						<input id="reslocal" name="reslocal" class="form-control" />
+					</div>
+					<label class="col-sm-2 control-label">合作方式</label>
+					<div class="col-sm-2">
+						<select name="resjoinway" id="resjoinway"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="租凭">租凭</option>
+							<option value="购置">购置</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">主管单位</label>
+					<div class="col-sm-10">
+						<input id="rescompetentunit" name="rescompetentunit"
+							class="form-control" type="text" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">所属行业</label>
+					<div class="col-sm-10">
+						<input id="restrade" name="restrade" class="form-control"
+							type="text" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用地规模</label>
+					<div class="col-sm-2">
+						<input id="reslandscale" name="reslandscale" class="form-control"
+							type="text" />
+					</div>
+					<label class="col-sm-2 control-label">容积率</label>
+					<div class="col-sm-2">
+						<input id="resvolumerate" name="resvolumerate"
+							class="form-control" />
+					</div>
+					<label class="col-sm-2 control-label">规划用途</label>
+					<div class="col-sm-2">
+						<input id="resplanuses" name="resplanuses" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">投资强度</label>
+					<div class="col-sm-2">
+						<input id="resinvest" name="resinvest" class="form-control"
+							type="text" />
+					</div>
+					<label class="col-sm-2 control-label">投资总额</label>
+					<div class="col-sm-2">
+						<input id="resgrossassets" name="resgrossassets"
+							class="form-control" />
+					</div>
+					<label class="col-sm-2 control-label">预计建设期</label>
+					<div class="col-sm-2">
+						<input id="resplantime" name="resplantime" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">规划地址</label>
+					<div class="col-sm-10">
+						<input id="resplanaddress" name="resplanaddress"
+							class="form-control" type="text" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">规划设想</label>
+					<div class="col-sm-10">
+						<input id="resplanideas" name="resplanideas" class="form-control"
+							type="text" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">建设条件</label>
+					<div class="col-sm-10">
+						<input id="resbuildterm" name="resbuildterm" class="form-control"
+							type="text" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">优惠政策</label>
+					<div class="col-sm-10">
+						<input id="respolicy" name="respolicy" class="form-control"
+							type="text" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">要素分析</label>
+					<div class="col-sm-10">
+						<input id="reselement" name="reselement" class="form-control"
+							type="text" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">联系单位</label>
+					<div class="col-sm-2">
+						<input id="rescontactunit" name="rescontactunit"
+							class="form-control" type="text" />
+					</div>
+					<label class="col-sm-2 control-label">联系人</label>
+					<div class="col-sm-2">
+						<input id="rescontacts" name="rescontacts" class="form-control"
+							type="text" />
+					</div>
+					<label class="col-sm-2 control-label">联系方式</label>
+					<div class="col-sm-2">
+						<input id="rescontactway" name="rescontactway"
+							class="form-control" type="text" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-5 control-label"></label>
+					<button type="button" id="resitem_update"
+						class="col-sm-2 btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px;display:none;">提交</button>
+					<label class="col-sm-5 control-label"></label>
+					<input type="hidden" value="" name="resid" id="resid">
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Select JavaScript -->
+	<script src="./dist/js/bootstrap-select.js"></script>
+	<!-- 表单验证 -->
+	<script type="text/javascript" src="./dist/js/bootstrapValidator.js"></script>
+	<script type="text/javascript" src="./dist/js/language/zh_CN.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//初始化下拉框
+			$('.selectpicker').selectpicker({
+				noneSelectedText : "请选择"
+			});
+			//区域性项目表单更新
+			$('#resitem_update').click(function() {
+				$('#resitem').data('bootstrapValidator').validate();
+				if (!$('#resitem').data('bootstrapValidator').isValid()) {
+					return;
+					}
+				/*ie11一下不支持，formdata的方法  */
+				var formData = new FormData($("#resitem")[0]);
+				$.ajax({
+					type : "post",
+					url : "./resitemmanage/updateres",
+					data : formData,
+					dataType : 'JSON',
+					cache : false,
+					processData : false,
+					contentType : false,
+					success : function(data,status) {
+						if (data.returnInfo == "success") {
+							$("#resmodal").modal('hide');
+							setTimeout(function(){
+								$("#res-success").modal('show');
+								$('#resManage').bootstrapTable('refresh');
+							},200);
+						} else {
+							$("#res-fail").modal('show');
+						}
+					},
+					error : function() {
+						$("#res-fail").modal('show');
+					}
+				});
+			});
+			//储备项目验证
+			$('#resitem').bootstrapValidator({
+				message : 'This value is not valid',
+				excluded : [ ':disabled' ],
+				feedbackIcons : {
+					valid : 'glyphicon glyphicon-ok',
+					invalid : 'glyphicon glyphicon-remove',
+					validating : 'glyphicon glyphicon-refresh'
+				},
+				fields : {
+					resitemname : {
+						validators : {
+							notEmpty : {
+								message : '项目名称不能为空'
+							}
+						}
+					},
+					resnumber : {
+						validators : {
+							notEmpty : {
+								message : '编号不能为空'
+							},
+							regexp : {
+								regexp : /^[0-9]*$/,
+								message : '请输入整数'
+							}
+						}
+					},
+					resarea : {
+						validators : {
+							notEmpty : {
+								message : '所属地区不能为空'
+							}
+						}
+					},
+					reslocal : {
+						validators : {
+							notEmpty : {
+								message : '所在地不能为空'
+							}
+						}
+					},
+					resjoinway : {
+						validators : {
+							notEmpty : {
+								message : '合作方式不能为空'
+							}
+						}
+					},
+					rescompetentunit : {
+						validators : {
+							notEmpty : {
+								message : '主管单位不能为空'
+							}
+						}
+					},
+					restrade : {
+						validators : {
+							notEmpty : {
+								message : '所属行业不能为空'
+							}
+						}
+					},
+					reslandscale : {
+						validators : {
+							notEmpty : {
+								message : '用地规模不能为空'
+							},
+							regexp : {
+								regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+								message : '请输入最多3位小数的数字'
+							}
+						}
+					},
+					resvolumerate : {
+						validators : {
+							notEmpty : {
+								message : '容积率不能为空'
+							},
+							regexp : {
+								regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+								message : '请输入最多3位小数的数字'
+							}
+						}
+					},
+					resplanuses : {
+						validators : {
+							notEmpty : {
+								message : '规划用途不能为空'
+							}
+						}
+					},
+					resinvest : {
+						validators : {
+							notEmpty : {
+								message : '投资强度不能为空'
+							},
+							regexp : {
+								regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+								message : '请输入最多3位小数的数字'
+							}
+						}
+					},
+					resgrossassets : {
+						validators : {
+							notEmpty : {
+								message : '投资总额不能为空'
+							},
+							regexp : {
+								regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+								message : '请输入最多3位小数的数字'
+							}
+						}
+					},
+					resplantime : {
+						validators : {
+							notEmpty : {
+								message : '预计建设期不能为空'
+							},
+							regexp : {
+								regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+								message : '请输入最多3位小数的数字'
+							}
+						}
+					},
+					resplanaddress : {
+						validators : {
+							notEmpty : {
+								message : '规划地址不能为空'
+							}
+						}
+					},
+					resplanideas : {
+						validators : {
+							notEmpty : {
+								message : '建设内容不能为空'
+							}
+						}
+					},
+					resbuildterm : {
+						validators : {
+							notEmpty : {
+								message : '建设条件不能为空'
+							}
+						}
+					},
+					respolicy : {
+						validators : {
+							notEmpty : {
+								message : '优惠政策不能为空'
+							}
+						}
+					},
+					reselement : {
+						validators : {
+							notEmpty : {
+								message : '要素分析不能为空'
+							}
+						}
+					},
+					rescontactunit : {
+						validators : {
+							notEmpty : {
+								message : '联系单位不能为空'
+							}
+						}
+					},
+					rescontacts : {
+						validators : {
+							notEmpty : {
+								message : '联系人不能为空'
+							}
+						}
+					},
+					rescontactway : {
+						validators : {
+							notEmpty : {
+								message : '联系方式不能为空'
+							}
+						}
+					}
+				}
+			});
+		})
+	</script>
+</body>
+</html>
