@@ -6,7 +6,7 @@ $(document).ready(function() {
  	       	dataType: "json",
  	        success: function(list){
  	        	if(list.length!=0){
- 	        		$.each(list, function(i) {     
+ 	        		$.each(list, function(i) {
  	        		    if(list[i].pagelevel=="1"){
  	        		    	$('#side-menu').append('<li><a><i class="fa fa-dashboard fa-fw"></i> '+list[i].pagename+'<span class="fa arrow"></span></a><ul class="nav nav-second-level" id=pageName_'+list[i].pageid+'></ul></li>');
  	        		    }
