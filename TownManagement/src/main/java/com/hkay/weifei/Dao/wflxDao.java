@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.hkay.weifei.pojo.Pages;
 import com.hkay.weifei.pojo.Tb_wflx_new;
-import com.hkay.weifei.pojo.User;
 
 public interface wflxDao {
 
