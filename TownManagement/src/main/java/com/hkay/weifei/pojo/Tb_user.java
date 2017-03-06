@@ -1,13 +1,21 @@
 package com.hkay.weifei.pojo;
 
-public class User {
+public class Tb_user {
     private int id;
 
-    private String username;
+    private String account;
 
     private String password;
 
     private int age;
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
 
 	public int getId() {
 		return id;
@@ -15,14 +23,6 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {
