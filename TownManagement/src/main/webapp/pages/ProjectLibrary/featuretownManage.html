@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>特色小镇管理</title>
 <link rel="stylesheet"
-	href="./tools/bootstrap-table/dist/bootstrap-table.min.css" />
+	href="../tools/bootstrap-table/dist/bootstrap-table.min.css" />
 </head>
 <body>
 	<div class="row">
@@ -50,12 +50,12 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="./tools/bootstrap-table/dist/bootstrap-table.js"></script>
-	<script type="text/javascript" src="./tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script type="text/javascript" src="../tools/bootstrap-table/dist/bootstrap-table.js"></script>
+	<script type="text/javascript" src="../tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#featuretownManage').bootstrapTable({
-				url : './featuretownmanage/queryfeaturetown',
+				url : '../featuretownmanage/queryfeaturetown',
 				method : 'get', //请求方式（*）
 				toolbar : '#toolbar', //工具按钮用哪个容器
 				striped : true, //是否显示行间隔色
@@ -127,13 +127,13 @@
 		//展示详情modal
 		function querytowndetail(featuretownid) {
 			$.ajax({
-				url : "pages/ProjectLibrary/featuretown.html",
+				url : "ProjectLibrary/featuretown.html",
 				cache : false,
 				async: false,
 				success : function(html) {
 					$("#featuretownbody").html(html);
 					$.ajax({
-						url : "./featuretownmanage/queryfeaturetowndetail",
+						url : "../featuretownmanage/queryfeaturetowndetail",
 						async: false,
 						data : {"featuretownid":featuretownid},
 						dataType : 'JSON',
@@ -162,13 +162,13 @@
 		//展示修改界面
 		function updatetowninfo(featuretownid){
 			$.ajax({
-				url : "pages/ProjectLibrary/featuretown.html",
+				url : "ProjectLibrary/featuretown.html",
 				cache : false,
 				async: false,
 				success : function(html) {
 					$("#featuretownbody").html(html);
 					$.ajax({
-						url : "./featuretownmanage/queryfeaturetowndetail",
+						url : "../featuretownmanage/queryfeaturetowndetail",
 						async: false,
 						data : {"featuretownid":featuretownid},
 						dataType : 'JSON',

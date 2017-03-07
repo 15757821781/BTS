@@ -5,6 +5,10 @@
  */
 body {
   background-color: #eeeeee;
+  overflow: auto !important;
+} 
+ .modal { 
+	overflow: auto !important;
 }
 #wrapper {
   width: 100%;
