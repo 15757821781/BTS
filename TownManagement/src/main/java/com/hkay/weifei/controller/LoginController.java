@@ -1,10 +1,12 @@
 package com.hkay.weifei.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/login")
 	@ResponseBody
-	public Map<String, String> login(Tb_user tb_user) {
+	public Map<String, String> login(HttpServletRequest request,Tb_user tb_user)throws UnsupportedEncodingException {
 		Map<String, String> map = new HashMap<String, String>();
 		Tb_user user = new Tb_user();
 		user.setPassword(new MD5().encryption(tb_user.getPassword()));

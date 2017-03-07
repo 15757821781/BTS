@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>区域性项目管理</title>
 <link rel="stylesheet"
-	href="./tools/bootstrap-table/dist/bootstrap-table.min.css" />
+	href="../tools/bootstrap-table/dist/bootstrap-table.min.css" />
 </head>
 <body>
 	<div class="row">
@@ -50,12 +50,12 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="./tools/bootstrap-table/dist/bootstrap-table.js"></script>
-	<script type="text/javascript" src="./tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script type="text/javascript" src="../tools/bootstrap-table/dist/bootstrap-table.js"></script>
+	<script type="text/javascript" src="../tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#regionManage').bootstrapTable({
-				url : './regionmanage/queryregioninfo',
+				url : '../regionmanage/queryregioninfo',
 				method : 'get', //请求方式（*）
 				toolbar : '#toolbar', //工具按钮用哪个容器
 				striped : true, //是否显示行间隔色
@@ -127,13 +127,13 @@
 		//展示详情modal
 		function querydetail(regid) {
 			$.ajax({
-				url : "pages/ProjectLibrary/regionitem.html",
+				url : "ProjectLibrary/regionitem.html",
 				cache : false,
 				async: false,
 				success : function(html) {
 					$("#regionbody").html(html);
 					$.ajax({
-						url : "./regionmanage/queryregionitemdetail",
+						url : "../regionmanage/queryregionitemdetail",
 						async: false,
 						data : {"regid":regid},
 						dataType : 'JSON',
@@ -162,13 +162,13 @@
 		//展示修改界面
 		function updateinfo(regid){
 			$.ajax({
-				url : "pages/ProjectLibrary/regionitem.html",
+				url : "ProjectLibrary/regionitem.html",
 				cache : false,
 				async: false,
 				success : function(html) {
 					$("#regionbody").html(html);
 					$.ajax({
-						url : "./regionmanage/queryregionitemdetail",
+						url : "../regionmanage/queryregionitemdetail",
 						async: false,
 						data : {"regid":regid},
 						dataType : 'JSON',

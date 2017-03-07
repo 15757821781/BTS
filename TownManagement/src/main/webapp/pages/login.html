@@ -7,16 +7,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Login">
 <meta name="author" content="zhu">
-
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
 <title>登录</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<!-- Custom CSS -->
-<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-<!-- Custom Fonts -->
-<link href="../vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+<link href="./vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -46,7 +43,7 @@
 }
 
 .loginbackimg {
-	background-image: url(../img/beijin.jpg);
+	background-image: url(./img/beijin.jpg);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
@@ -114,32 +111,24 @@
 		</div>
 	</div>
 	<!-- jQuery -->
-	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="./vendor/jquery/jquery.min.js"></script>
 	<!-- Bootstrap Core JavaScript -->
-	<script src="../vendor/bootstrap/js/bootstrap.js"></script>
+	<script src="./vendor/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		//表单提交
 		$('#login_submit').click(function() {
-			var formData = new FormData($("#loginform")[0]);
+			var formData  = $("#loginform").serializeArray();
 			$.ajax({
 				type : "post",
-				url : "./townmanage/inserttowninfo",
+				url : "./Login/login",
 				data : formData,
 				dataType : 'JSON',
 				cache : false,
 				success : function(data, status) {
 						if(data.returnInfo=="success"){
-						$("#logni-success").modal('show');
-						$('#logni-success').on('show.bs.modal', function() {
-/* 							$.ajax({
-					   	         url: 'pages/town/townEntry.html',
-					   	         cache: false,
-					   	         success: function(html){
-					   	             $("#page-wrapper").html(html);
-					   	         }
-					   	     }); */
-						})
+						//$("#login-success").modal('show');
+						window.location.href='pages/index.html';
 					}else{
 						$("#logni-fail").modal('show');
 					}
