@@ -13,9 +13,9 @@
 <title>登录</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="./vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="/TownManagement/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <!-- font-awesome Css -->
-<link href="./vendor/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="/TownManagement/vendor/font-awesome/css/font-awesome.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -45,7 +45,7 @@
 }
 
 .loginbackimg {
-	background-image: url(./img/beijin.jpg);
+	background-image: url(/TownManagement/img/beijin.jpg);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
@@ -113,9 +113,9 @@
 		</div>
 	</div>
 	<!-- jQuery -->
-	<script src="./vendor/jquery/jquery.min.js"></script>
+	<script src="/TownManagement/vendor/jquery/jquery.min.js"></script>
 	<!-- Bootstrap Core JavaScript -->
-	<script src="./vendor/bootstrap/js/bootstrap.js"></script>
+	<script src="/TownManagement/vendor/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		//表单提交
@@ -123,14 +123,14 @@
 			var formData  = $("#loginform").serializeArray();
 			$.ajax({
 				type : "post",
-				url : "./Login/login",
+				url : "/TownManagement/Login/login",
 				data : formData,
 				dataType : 'JSON',
 				cache : false,
 				success : function(data, status) {
 						if(data.returnInfo=="success"){
 						//$("#login-success").modal('show');
-						window.location.href='pages/index.html';
+						window.location.href='/TownManagement/pages/LoginAndOut/index.html';
 					}else{
 						$("#logni-fail").modal('show');
 					}
