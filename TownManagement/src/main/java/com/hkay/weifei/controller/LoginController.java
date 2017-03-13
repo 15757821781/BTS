@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,9 @@ public class LoginController {
 		user.setAccount(tb_user.getAccount());
 		List<Tb_user> users = this.loginservice.queryuserinfo(user);
 		if (users.size() == 1) {
+			//将登录信息写入session
+			HttpSession session = request.getSession();
+			session.setAttribute("town_LoginData", users);
 			map.put("returnInfo", "success");
 			return map;
 		} else {
