@@ -1,7 +1,7 @@
 //@laozhu 	
 $(document).ready(function() {
   	    $.ajax({
- 	        url: "../wflx/loadPages",
+ 	        url: "/TownManagement/wflx/loadPages",
  	       	async: false,
  	       	dataType: "json",
  	        success: function(list){
@@ -18,7 +18,7 @@ $(document).ready(function() {
  	        }
  	    });
 	    $.ajax({
-	         url: "../pages/town/townManage.html",
+	         url: "/TownManagement/pages/town/townManage.html",
 	         cache: false,
 	         success: function(html){
 	             $("#page-wrapper").html(html);
