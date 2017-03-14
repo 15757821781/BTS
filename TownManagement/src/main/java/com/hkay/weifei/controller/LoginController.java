@@ -34,7 +34,7 @@ public class LoginController {
 		if (users.size() == 1) {
 			//将登录信息写入session
 			HttpSession session = request.getSession();
-			session.setAttribute("town_LoginData", users);
+			session.setAttribute("town_LoginData", users.get(0));
 			map.put("returnInfo", "success");
 			return map;
 		} else {
