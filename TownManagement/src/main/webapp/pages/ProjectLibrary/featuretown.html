@@ -5,9 +5,9 @@
 <title>特色小镇</title>
 </head>
 <!-- select CSS -->
-<link href="./dist/css/bootstrap-select.css" rel="stylesheet">
+<link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
 <!-- 表单验证 -->
-<link rel="stylesheet" href="dist/css/bootstrapValidator.css" />
+<link rel="stylesheet" href="/TownManagement/dist/css/bootstrapValidator.css" />
 <body>
 	<div class="row">
 		<div class="col-lg-12">
@@ -212,10 +212,10 @@
 		</div>
 	</div>
 		<!-- Select JavaScript -->
-	<script src="./dist/js/bootstrap-select.js"></script>
+	<script src="/TownManagement/dist/js/bootstrap-select.js"></script>
 	<!-- 表单验证 -->
-	<script type="text/javascript" src="./dist/js/bootstrapValidator.js"></script>
-	<script type="text/javascript" src="./dist/js/language/zh_CN.js"></script>
+	<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
+	<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			//初始化下拉框
@@ -232,7 +232,7 @@
 				var formData = new FormData($("#featuretown")[0]);
 				$.ajax({
 					type : "post",
-					url : "./featuretownmanage/updatefeaturetown",
+					url : "/TownManagement/featuretownmanage/updatefeaturetown",
 					data : formData,
 					dataType : 'JSON',
 					cache : false,

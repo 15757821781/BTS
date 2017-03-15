@@ -9,7 +9,9 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,10 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Pages;
+import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_wflx_new;
 import com.hkay.weifei.service.wflxService;
 import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
+import com.hkay.weifei.util.TypeStatusConstant;
 
 @Controller
 @RequestMapping("/wflx")
@@ -31,6 +35,7 @@ public class sheetController {
 	@Resource
 	private wflxService wflxservice;
 	private FileUpload fileupload = new FileUpload();
+	private static  Logger Log =Logger.getLogger(sheetController.class);
 
 	@RequestMapping("/showWflx")
 	@ResponseBody
@@ -95,28 +100,32 @@ public class sheetController {
 	}
 
 	@RequestMapping("/turnPage")
-	public ModelAndView login(HttpServletResponse response) {  
-		  
-		return new ModelAndView("redirect:../html/index.html");  
-		}
-	
+	public ModelAndView login(HttpServletResponse response) {
+
+		return new ModelAndView("redirect:../html/index.html");
+	}
+
 	@RequestMapping("/loadPages")
 	@ResponseBody
-	public List<Pages> loadPages(Pages page) {
-		String li="";
-		List<Pages> pages = this.wflxservice.loadPages(page);
-//		for(Pages tmp:pages){
-//			//若为一级界面
-//			if(tmp.getPagelevel()==1){
-//				if(tmp.getUrl()==null){
-//					li+="<li><a id="+tmp.getPageid()+"><i class='fa fa-dashboard fa-fw'></i> "+tmp.getPagename()+"<span class='fa arrow'></span></a></li>";
-//				}else{
-//					li+="<li><a target="+tmp.getUrl()+" id="+tmp.getPageid()+"><i class='fa fa-dashboard fa-fw'></i> "+tmp.getPagename()+"<span class='fa arrow'></span></a></li>";
-//				}
-//			}else if(tmp.getPagelevel()==2){//若为2级界面
-//				li+="<li><a target="+tmp.getUrl()+" id="+tmp.getPageid()+"> "+tmp.getPagename()+"</a></li>";
-//			}
-//		}
-		return pages;
+	public HashMap<String, Object> loadPages(HttpServletRequest request,Pages page) {
+		HashMap<String, Object> map=new HashMap<>();
+		HttpSession session = request.getSession();
+		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+		if(user==null){
+			map.put("data", "");
+			map.put("state", TypeStatusConstant.login_out);
+			map.put("message",TypeStatusConstant.session_lost );
+		}else{
+			try{
+				List<Pages> pages = this.wflxservice.loadPages(page);
+				map.put("data", pages);
+				map.put("state", TypeStatusConstant.success);
+				map.put("message", "");
+			}catch(Exception e){
+				Log.error("error----------loadPages:"+e.getMessage());
+				Log.error(page);
+			}
+		}
+		return map;
 	}
 }
