@@ -7,4 +7,10 @@
 		select * from tb_user t where t.account=#{account} and
 		t.password=#{password}
 	</select>
+	<select id="queryuserinfo1111" parameterType="com.hkay.weifei.pojo.Tb_user"
+		resultMap="BaseResultMap">
+		select * from tb_user t where t.account=#{account} and
+		t.password=#{password}
+	</select>
+	
 </mapper>
