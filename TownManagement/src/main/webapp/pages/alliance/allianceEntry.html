@@ -32,11 +32,24 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位性质</label>
 					<div class="col-sm-2">
-						<input name="allnature"  id="allnature"  class="form-control" type="text">
+						<select name="allnature" id="allnature" class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="国有">国有</option>
+							<option value="民营">民营</option>
+							<option value="港资">港资</option>
+							<option value="台资">台资</option>
+							<option value="外资(欧美)">外资(欧美)</option>
+							<option value="外资(其他)">外资(其他)</option>
+							<option value="中外合资">中外合资</option>
+						</select>
 					</div>
 					<label class="col-sm-2 control-label">上市公司</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<select name="alllisted" id="alllisted" class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="是">是</option>
+							<option value="否">否</option>
+						</select>
 					</div>
 					<label class="col-sm-2 control-label">合作状态</label>
 					<div class="col-sm-2">
