@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>联盟单位-录入</title>
+<!-- select CSS -->
+<link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
+<!-- 表单验证 -->
+<link href="/TownManagement/dist/css/bootstrapValidator.css"  rel="stylesheet" />
 </head>
 <body>
 	<div class="row">
@@ -18,17 +22,17 @@
 					<!-- 一行行开始写 -->
 					<label class="col-sm-2 control-label">单位名称</label>
 					<div class="col-sm-6">
-						<input class="form-control" type="text" placeholder="请填写单位名称" />
+						<input name="allname"  id="allname" class="form-control" type="text" placeholder="请填写单位名称" />
 					</div>
 					<label class="col-sm-2 control-label">编号</label>
 					<div class="col-sm-2">
-						<input class="form-control" />
+						<input name="allnumber" id="allnumber" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位性质</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="allnature"  id="allnature"  class="form-control" type="text">
 					</div>
 					<label class="col-sm-2 control-label">上市公司</label>
 					<div class="col-sm-2">
