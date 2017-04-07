@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,6 +28,7 @@ import com.hkay.weifei.pojo.Tb_wflx_new;
 import com.hkay.weifei.service.wflxService;
 import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
+import com.hkay.weifei.util.RetAjax;
 import com.hkay.weifei.util.TypeStatusConstant;
 
 @Controller
@@ -36,6 +38,7 @@ public class sheetController {
 	private wflxService wflxservice;
 	private FileUpload fileupload = new FileUpload();
 	private static  Logger Log =Logger.getLogger(sheetController.class);
+	private RetAjax result;
 
 	@RequestMapping("/showWflx")
 	@ResponseBody
@@ -107,25 +110,20 @@ public class sheetController {
 
 	@RequestMapping("/loadPages")
 	@ResponseBody
-	public HashMap<String, Object> loadPages(HttpServletRequest request,Pages page) {
-		HashMap<String, Object> map=new HashMap<>();
+	public RetAjax loadPages(HttpServletRequest request,Pages page) {
 		HttpSession session = request.getSession();
 		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		if(user==null){
-			map.put("data", "");
-			map.put("state", TypeStatusConstant.login_out);
-			map.put("message",TypeStatusConstant.session_lost );
+			result = RetAjax.lostLoginInfo();
 		}else{
 			try{
 				List<Pages> pages = this.wflxservice.loadPages(page);
-				map.put("data", pages);
-				map.put("state", TypeStatusConstant.success);
-				map.put("message", "");
+				result = RetAjax.onSuccess(pages,"");
 			}catch(Exception e){
+				e.printStackTrace();
 				Log.error("error----------loadPages:"+e.getMessage());
-				Log.error(page);
 			}
 		}
-		return map;
+		return result;
 	}
 }

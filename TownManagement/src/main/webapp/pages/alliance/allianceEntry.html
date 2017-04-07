@@ -16,10 +16,9 @@
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<form class="form-horizontal" role="form">
+			<form class="form-horizontal" role="form" enctype="multipart/form-data" id="allform" method="post">
 				<!-- 表单 -->
 				<div class="form-group">
-					<!-- 一行行开始写 -->
 					<label class="col-sm-2 control-label">单位名称</label>
 					<div class="col-sm-6">
 						<input name="allname"  id="allname" class="form-control" type="text" placeholder="请填写单位名称" />
@@ -34,130 +33,162 @@
 					<div class="col-sm-2">
 						<select name="allnature" id="allnature" class="selectpicker show-tick form-control">
 							<option></option>
-							<option value="国有">国有</option>
-							<option value="民营">民营</option>
-							<option value="港资">港资</option>
-							<option value="台资">台资</option>
-							<option value="外资(欧美)">外资(欧美)</option>
-							<option value="外资(其他)">外资(其他)</option>
-							<option value="中外合资">中外合资</option>
+							<optgroup label="企业">
+								<option value="国有">国有</option>
+								<option value="民营">民营</option>
+								<option value="港资">港资</option>
+								<option value="台资">台资</option>
+								<option value="外资(欧美)">外资(欧美)</option>
+								<option value="外资(其他)">外资(其他)</option>
+								<option value="中外合资">中外合资</option>
+								<option value="中外合作">中外合作</option>
+							</optgroup>
+							<optgroup label="社会组织">
+								<option value="学校">学校</option>
+							</optgroup>
 						</select>
 					</div>
 					<label class="col-sm-2 control-label">上市公司</label>
 					<div class="col-sm-2">
 						<select name="alllisted" id="alllisted" class="selectpicker show-tick form-control">
 							<option></option>
-							<option value="是">是</option>
-							<option value="否">否</option>
+							<option value="1">上海证券交易所</option>
+							<option value="2">深圳证券交易所</option>
+							<option value="3">香港证券交易所</option>
+							<option value="4">纳斯达克证券交易所</option>
+							<option value="5">纽约证券交易所</option>
+							<option value="6">东京证券交易所</option>
+							<option value="7">伦敦证券交易所</option>
+							<option value="8">欧洲证券交易所</option>
+							<option value="9">德国证券交易所</option>
+							<option value="10">多伦多证券交易所</option>
+							<option value="11">澳大利亚证券交易所</option>
+							<option value="-1">未上市</option>
 						</select>
 					</div>
 					<label class="col-sm-2 control-label">合作状态</label>
 					<div class="col-sm-2">
-						<input class="form-control">
+						<select name="allcooperative"  id="allcooperative" class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">联盟单位</option>
+							<option value="2">意向联盟</option>
+							<option value="3">未建联系</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">世界五百强</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<select name="allworldfive"  id="allworldfive" class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
 					</div>
 					<label class="col-sm-2 control-label">中国五百强</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<select name="allcountryfive"  id="allcountryfive" class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
 					</div>
 					<label class="col-sm-2 control-label">民企五百强</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<select name="allprivate"  id="allprivate" class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">办公地点</label>
 					<div class="col-sm-6">
-						<input class="form-control" type="text">
+						<input name="alloffice"  id="alloffice"  class="form-control" type="text">
 					</div>
 					<label class="col-sm-2 control-label">注册地</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="allregist"  id="allregist" class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">法人代表</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="allrepresent"  id="allrepresent"  class="form-control" type="text">
 					</div>
 					<label class="col-sm-2 control-label">注册资本</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="allcapital"  id="allcapital"  class="form-control" type="text">
 					</div>
 					<label class="col-sm-2 control-label">成立时间</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="allestablish"  id="allestablish"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">股东</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<input name="allshareholder"  id="allshareholder"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">所属行业</label>
-					<div class="col-sm-2">
-						<input class="form-control" type="text">
-					</div>
-					<div class="col-sm-2">
-						<input class="form-control" type="text">
-					</div>
-					<div class="col-sm-2">
-						<input class="form-control" type="text">
+					<div class="col-sm-6">
+						<select name="allindustry"  id="allindustry" class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">教育建设</option>
+							<option value="2">城镇建设</option>
+							<option value="3">工业</option>
+						</select>
 					</div>
 					<label class="col-sm-2 control-label">信用代码</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input  name="allcreditcode"  id="allcreditcode"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">经营范围</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<input name="allscope"  id="allscope"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位简介</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<input name="allabstract" id="allabstract" class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">资质证书</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<input name="allcertificate" id="allcertificate" class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位荣誉</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<input name="allhonor" id="allhonor" class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">上年度营业总收入</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text" placeholder="(亿元)">
+						<input name="allincomelastyear" id="allincomelastyear"  class="form-control" type="text" placeholder="(亿元)">
 					</div>
 					<label class="col-sm-2 control-label">上年度资产总额</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text" placeholder="(亿元)">
+						<input name="allassetslastyear" id="allassetslastyear"  class="form-control" type="text" placeholder="(亿元)">
 					</div>
 					<label class="col-sm-2 control-label">上年度净利润</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="allnetprofit" id="allnetprofit"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">上年度资产负债比</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="alldebtratiolastyear" id="alldebtratiolastyear"  class="form-control" type="text">
 					</div>
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-2"></div>
@@ -167,37 +198,145 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">发展方向</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<input name="alldevelop" id="alldevelop"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">投资偏好</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<input name="allInvestpreference" id="allInvestpreference"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位官网</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text">
+						<input name="allofficeweb" id="allofficeweb"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位联系人*</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="allcontact" id="allcontact"  class="form-control" type="text">
 					</div>
 					<label class="col-sm-2 control-label">联系电话*</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="allcontacttel" id="allcontacttel" class="form-control" type="text">
 					</div>
 					<label class="col-sm-2 control-label">对接人*</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text">
+						<input name="alldocking" id="alldocking" class="form-control" type="text">
 					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-5 control-label"></label>
+					<button type="button" id="allentry_submit" class="col-sm-2 btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
+					<button type="button" id="allentry_update" class="col-sm-2 btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px;display:none;">更新</button>
+					<label class="col-sm-5 control-label"></label>
+					<!-- id -->
+					<input type="hidden" value="" name="allid" id="allid">
 				</div>
 			</form>
 		</div>
 	</div>
+	<!-- 模态框（Modal） success-->
+	<div class="modal fade" id="myModal-success" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+		style="padding-top: 15%;">
+		<div class="modal-dialog" style="width: 300px">
+			<div class="modal-content">
+				<div class="modal-body" align="center">保存成功!</div>
+			</div>
+		</div>
+	</div>
+	<!-- 模态框（Modal） fail-->
+	<div class="modal fade" id="myModal-fail" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="padding-top: 15%;">
+		<div class="modal-dialog" style="width: 300px">
+			<div class="modal-content">
+				<div class="modal-body" align="center">保存失败!</div>
+			</div>
+		</div>
+	</div>
+		<!-- Select JavaScript -->
+	<script src="/TownManagement/dist/js/bootstrap-select.js"></script>
+	<!-- 表单验证 -->
+	<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
+	<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//初始化下拉框
+			$('.selectpicker').selectpicker({
+				noneSelectedText : "请选择"
+			});
+			//表单提交
+			$('#allentry_submit').click(function() {
+				$('#allform').data('bootstrapValidator').validate();
+				if(!$('#allform').data('bootstrapValidator').isValid()){  
+		         	return ;
+		         }
+				/*ie11一下不支持，formdata的方法  */
+				var formData = new FormData($("#allform")[0]);
+				$.ajax({
+					type : "post",
+					url : "/TownManagement/townmanage/inserttowninfo",
+					data : formData,
+					dataType : 'JSON',
+					cache : false,
+					processData : false,
+					contentType : false,
+					success : function(data, status) {
+							if(data.returnInfo=="success"){
+							$("#myModal-success").modal('show');
+							$('#myModal-success').on('hidden.bs.modal', function() {
+								$.ajax({
+						   	         url: '/TownManagement/pages/town/townEntry.html',
+						   	         cache: false,
+						   	         success: function(html){
+						   	             $("#page-wrapper").html(html);
+						   	         }
+						   	     });
+							})
+						}else{
+							$("#myModal-fail").modal('show');
+						}
+					},
+					error : function() {
+						$("#myModal-fail").modal('show');
+					}
+				});
+			});
+			$('#allentry_update').click(function() {
+				$('#allform').data('bootstrapValidator').validate();
+				if(!$('#allform').data('bootstrapValidator').isValid()){  
+		         	return ;
+		         }
+				/*ie11一下不支持，formdata的方法  */
+				var formData = new FormData($("#allform")[0]);
+				$.ajax({
+					type : "post",
+					url : "/TownManagement/townmanage/updatetowninfo",
+					data : formData,
+					dataType : 'JSON',
+					cache : false,
+					processData : false,
+					contentType : false,
+					success : function(data, status) {
+						if(data.returnInfo=="success"){
+							$("#allinfomodal").modal('hide');
+							setTimeout(function(){
+								$("#allmanage-success").modal('show');
+							},200);
+						}
+					},
+					error : function() {
+						$("#allmanage-fail").modal('show');
+					}
+				});
+			});
+		})
+	</script>
 </body>
 </html>
