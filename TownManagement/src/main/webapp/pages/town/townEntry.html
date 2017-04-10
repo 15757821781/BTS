@@ -589,7 +589,10 @@
 					processData : false,
 					contentType : false,
 					success : function(data, status) {
- 						if(data.returnInfo=="success"){
+						if(data.state=="loginout"){
+		 	        		window.location.href='/TownManagement';
+		 	        		return false;
+						}else if(data.state=="success"){
 							$("#myModal-success").modal('show');
 							$('#myModal-success').on('hidden.bs.modal', function() {
 								$.ajax({

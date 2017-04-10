@@ -22,4 +22,11 @@ public class TypeStatusConstant {
 	/**
 	 * 数据库相关
 	 */
+	public static final String insert_success="新增成功";
+	public static final String insert_fail="新增失败";
+	public static final String delete_success="新增成功";
+	public static final String delete_fail="删除成功";
+	public static final String update_success="更新成功";
+	public static final String update_fail="更新失败";
+	
 }
