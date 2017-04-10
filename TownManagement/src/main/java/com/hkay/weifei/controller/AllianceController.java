@@ -17,7 +17,7 @@ import com.hkay.weifei.util.RetAjax;
 @Controller
 @RequestMapping("/alliance")
 public class AllianceController {
-	private static Logger Log = Logger.getLogger(sheetController.class);
+	private static Logger Log = Logger.getLogger(AllianceController.class);
 	@Resource
 	private AllianceService allianceService;
 	private RetAjax result;
@@ -32,11 +32,7 @@ public class AllianceController {
 		}
 		try {
 			int flag = this.allianceService.insertallinfo(tb_lianmengdanwei);
-			if(flag==1){
-				result = RetAjax.onSuccess(flag,"新增成功");
-			}else{
-				result = RetAjax.onFail("新增失败");
-			}
+			result = RetAjax.onDataBase(flag,1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			Log.error("error----------insertallinfo:" + e.getMessage());

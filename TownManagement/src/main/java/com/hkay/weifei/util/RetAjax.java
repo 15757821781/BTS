@@ -62,6 +62,41 @@ public class RetAjax {
 		return ret;
 	}
 	
+	/**
+	 * 
+		 * 方法名称: onDataBase
+		 * 内容摘要: 根据数据返回的值判断 1、增2、删3、改的操作是否成功
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年4月7日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	public static RetAjax onDataBase(int flag,int operation) {
+		RetAjax retAjax=new RetAjax();
+		retAjax.data=null;
+		if(flag==1){
+			retAjax.state=TypeStatusConstant.success;
+			if(operation==1){
+				retAjax.message=TypeStatusConstant.insert_success;
+			}else if(operation==2){
+				retAjax.message=TypeStatusConstant.delete_success;
+			}else if (operation==3) {
+				retAjax.message=TypeStatusConstant.update_success;
+			}
+		}else{
+			retAjax.state=TypeStatusConstant.fail;
+			if(operation==1){
+				retAjax.message=TypeStatusConstant.insert_fail;
+			}else if(operation==2){
+				retAjax.message=TypeStatusConstant.delete_fail;
+			}else if (operation==3) {
+				retAjax.message=TypeStatusConstant.update_fail;
+			}
+		}
+		return retAjax;
+	}
+	
 	public String getMessage() {
 		return message;
 	}
