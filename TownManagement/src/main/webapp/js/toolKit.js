@@ -7,43 +7,23 @@ tk.ajax = function(options) {
 //		fields : '',
 		dataType : '',
 //		validate : false,
-		responseType : 'json',
-//		timeout : 120000,
+//		responseType : 'json',
 		showErrorMsg : true,
-		mask : {
-			target : null,
-			msg : '正在加载数据...'
-		},
+//		mask : {
+//			target : null,
+//			msg : '正在加载数据...'
+//		},
 		data : {},
-		success : function(result) {
-			if (options.isBlocked) {
-				$(options.mask.target).unblock();
-			}
-			if (result == 'OverdueSession') {
-				top.window.location = '/common/jsp/error.jsp';
-				return;
-			}
-			var realParam = result;
-			if (result != '' && options.responseType == 'json') {
-				try {
-					realParam = result.toJson();
-				} catch (e) {
-				}
-			}
-			if (realParam.exception) {
-				if (options.exception) {
-					tk.execFn(options.exception, options.scope, realParam);
-				} else {
-					tk.showWindow({
-						url : '/power/common/jsp/exception.jsp',
-						title : '系统异常',
-						width : 600,
-						height : 500,
-						response : realParam
-					});
-				}
-			} else {
-				tk.execFn(options.succ, options.scope, realParam);
+		success : function(result,status) {
+			// 登出
+			if(result.state=="loginout"){
+				// 展示登出dialog框
+				$("#sys_alert").modal('show');
+				// 隐藏后跳转到登录页
+				$('#sys_alert').on('hidden.bs.modal',function() {
+					window.location.href='/TownManagement';
+				})
+ 	        	return false;
 			}
 		},
 		error : function(XMLHttpRequest, status, errorThrown) {
@@ -56,20 +36,11 @@ tk.ajax = function(options) {
 				} else if (XMLHttpRequest.status == 404) {
 					msg = '请求无法找到系统资源，请联系管理员！';
 				}
+				// 系统错误弹框
 				if (msg) {
-					if (options.failure) {
-						msgOpt.onclose = function() {
-							tk.execFn(options.failure, options.scope, status);
-						};
-					}
-					$.err(msg);
+					
 				}
-			} else if (options.failure) {
-				tk.execFn(options.failure, options.scope, status);
-			}
-			if (options.isBlocked) {
-				$(options.mask.target).unblock();
-			}
+			} 
 		}
 	}, options);
 //	if (options.form) {
