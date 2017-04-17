@@ -1638,7 +1638,7 @@
 			if (!$(form).data('bootstrapValidator').isValid()) {
 				return;
 				}
-			/*ie11一下不支持，formdata的方法  */
+			/*ie11以下不支持，formdata的方法  */
 			var formData = new FormData($(form)[0]);
 			$.ajax({
 				type : "post",

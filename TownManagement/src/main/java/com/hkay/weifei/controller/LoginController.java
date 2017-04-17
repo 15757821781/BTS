@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.LoginService;
 import com.hkay.weifei.util.MD5;
+import com.hkay.weifei.util.SysContent;
 
 @Controller
 @RequestMapping("/Login")

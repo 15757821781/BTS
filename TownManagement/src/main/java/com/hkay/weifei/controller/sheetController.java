@@ -115,7 +115,7 @@ public class sheetController {
 		HttpSession session = request.getSession();
 		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		if(user==null){
-			result = RetAjax.lostLoginInfo();
+//			result = RetAjax.lostLoginInfo();
 		}else{
 			try{
 				List<Pages> pages = this.wflxservice.loadPages(page);
