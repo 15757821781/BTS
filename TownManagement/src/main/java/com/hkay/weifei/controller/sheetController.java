@@ -121,8 +121,8 @@ public class sheetController {
 				List<Pages> pages = this.wflxservice.loadPages(page);
 				result = RetAjax.onSuccess(pages,"");
 			}catch(Exception e){
-				e.printStackTrace();
 				Log.error("error----------loadPages:"+e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		return result;

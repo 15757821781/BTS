@@ -132,12 +132,12 @@
 				async: false,
 				success : function(html) {
 					$("#towninfobody").html(html);
-					$.ajax({
+					tk.ajax({
 						url : "/TownManagement/townmanage/querytowndetail",
 						async: false,
 						data : {"centertownid":centertownid},
 						dataType : 'JSON',
-						success : function(data, status) {
+						succ : function(data, status) {
 							values = $("#townform").serializeArray(); 
 							$.each(values,function(i){
 								var id=values[i].name;
@@ -168,12 +168,12 @@
 				async: false,
 				success : function(html) {
 					$("#towninfobody").html(html);
-					$.ajax({
+					tk.ajax({
 						url : "/TownManagement/townmanage/querytowndetail",
 						async: false,
 						data : {"centertownid":centertownid},
 						dataType : 'JSON',
-						success : function(data, status) {
+						succ : function(data, status) {
 							values = $("#townform").serializeArray(); 
 							$.each(values,function(i){
 								var id=values[i].name;

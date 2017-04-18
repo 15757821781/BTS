@@ -102,11 +102,11 @@ public class TownController {
 	@RequestMapping(value="/updatetowninfo")
 	@ResponseBody
 	public RetAjax updatetowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen){
-		HttpSession session = request.getSession();
-		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
-		if(user == null){
-			result = RetAjax.lostLoginInfo();
-		}else{
+//		HttpSession session = request.getSession();
+//		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+//		if(user == null){
+//			result = RetAjax.lostLoginInfo();
+//		}else{
 			try {
 				int flag = this.townservice.updatetowninfo(tb_zhongxinzhen);
 				result = RetAjax.onDataBase(flag, 3);
@@ -114,7 +114,7 @@ public class TownController {
 				e.printStackTrace();
 				Log.error("error----------updatetowninfo:"+e.getMessage());
 			}
-		}
+//		}
 		return result;
 	}
 }

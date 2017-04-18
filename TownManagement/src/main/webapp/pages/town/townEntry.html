@@ -580,7 +580,7 @@
 		         }
 				/*ie11一下不支持，formdata的方法  */
 				var formData = new FormData($("#townform")[0]);
-				$.ajax({
+				tk.ajax({
 					type : "post",
 					url : "/TownManagement/townmanage/inserttowninfo",
 					data : formData,
@@ -588,11 +588,8 @@
 					cache : false,
 					processData : false,
 					contentType : false,
-					success : function(data, status) {
-						if(data.state=="loginout"){
-		 	        		window.location.href='/TownManagement';
-		 	        		return false;
-						}else if(data.state=="success"){
+					succ : function(data, status) {
+						if(data.state=="success"){
 							$("#myModal-success").modal('show');
 							$('#myModal-success').on('hidden.bs.modal', function() {
 								$.ajax({
@@ -619,7 +616,7 @@
 		         }
 				/*ie11一下不支持，formdata的方法  */
 				var formData = new FormData($("#townform")[0]);
-				$.ajax({
+				tk.ajax({
 					type : "post",
 					url : "/TownManagement/townmanage/updatetowninfo",
 					data : formData,
@@ -627,12 +624,12 @@
 					cache : false,
 					processData : false,
 					contentType : false,
-					success : function(data, status) {
-						if(data.returnInfo=="success"){
+					succ : function(result, status) {
+						if(result.state=="success"){
 							$("#towninfomodal").modal('hide');
-							setTimeout(function(){
-								$("#townmanage-success").modal('show');
-							},200);
+// 							setTimeout(function(){
+// 								$("#townmanage-success").modal('show');
+// 							},200);
 						}
 					},
 					error : function() {
