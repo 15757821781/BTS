@@ -20,7 +20,7 @@
 	<!-- 模态框（Modal） 小镇详情-->
 	<div class="modal fade" id="towninfomodal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" style="padding-top: 5%;">
-		<div class="modal-dialog" style="width:60%;">
+		<div class="modal-dialog" style="width:80%;">
 			<div class="modal-content">
 				<div class="modal-body" id="towninfobody">
 					页面初始化失败
@@ -138,21 +138,7 @@
 						data : {"centertownid":centertownid},
 						dataType : 'JSON',
 						succ : function(data, status) {
-							values = $("#townform").serializeArray(); 
-							$.each(values,function(i){
-								var id=values[i].name;
-								var dataStr=data[0];
-								$.each(dataStr,function(i){  
-								    var key = i;  
-								    var value = dataStr[i];
-								    if(id==key){
-								    	$('#'+id).val(value);
-								    }
-								});  
-							});
-							var arr=data[0].industrialorientation.split(",");
-							$('#industrialorientation').selectpicker();  
-							$('#industrialorientation').selectpicker('val', arr);
+							fillForm('townform',data);
 						}
 					});
 					$("#towninfomodal").modal('show');

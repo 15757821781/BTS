@@ -117,6 +117,10 @@ var dealWidthState=function(result){
 	} else if (result.state=="updatefail"){
 		showFailModal("sys_alert",result.message);
 		return false;
+		// 操作失败
+	} else if (result.state=="fail"){
+		showFailModal("sys_alert",result.message);
+		return false;
 	}
 	setTimeout(function() {
 		$("#sys_alert").modal('hide');
@@ -163,3 +167,24 @@ tk.ajax = function(options) {
 	}, options);
 	$.ajax(options);
 };
+
+//表单填充
+var fillForm = function(formid,data) {
+	values = $('#'+formid).serializeArray();
+	var dataStr=data[0];
+	$.each(dataStr,function(i){
+		var key = i;
+		var value = dataStr[i];
+		$.each(values,function(i){
+			var id=values[i].name;
+		    if(id==key){
+		    	$('#'+id).val(value);
+		    // 如果是复选框
+		    }else if($("#"+key).attr("multiple")=="multiple"){
+	    		var arr=value.split(",");
+				$('#'+key).selectpicker();
+				$('#'+key).selectpicker('val', arr);
+	    	}
+		});  
+	});
+}
