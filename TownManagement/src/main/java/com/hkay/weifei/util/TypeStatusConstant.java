@@ -22,7 +22,7 @@ public class TypeStatusConstant {
 	public static final String loginsuccess = "loginsuccess";
 	public static final String login_success = "登录成功";
 	// 登录失败
-	public static final String login_fail = "登录失败";
+	public static final String login_fail = "帐号或密码错误";
 	public static final String loginfail = "loginfail";
 
 	/**
