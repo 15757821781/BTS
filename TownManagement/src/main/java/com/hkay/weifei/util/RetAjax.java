@@ -107,6 +107,16 @@ public class RetAjax {
 		return retAjax;
 	}
 	
+	/**
+	 * 
+		 * 方法名称: onLogin
+		 * 内容摘要: 判断登陆
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年4月20日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
 	public static RetAjax onLogin(List<Tb_user> users,HttpSession session) {
 		RetAjax retAjax=new RetAjax();
 		if(users.size()==1&&!users.get(0).getAccount().equals("")&&!users.get(0).getPassword().equals("")){
@@ -122,6 +132,20 @@ public class RetAjax {
 		return retAjax;
 	}
 	
+	public static RetAjax onQueryDetail(List<?> list) {
+		RetAjax retAjax=new RetAjax();
+		if(!list.isEmpty()&&list.size()==1){
+			retAjax.state=TypeStatusConstant.success;
+			retAjax.message="";
+			retAjax.data=list;
+		}else{
+			retAjax.state=TypeStatusConstant.fail;
+			retAjax.message="查询失败";
+			retAjax.data=null;
+		}
+		return retAjax;
+		
+	}
 	public String getMessage() {
 		return message;
 	}
