@@ -73,14 +73,10 @@ public class TownController {
 
 	@RequestMapping("/querytowndetail")
 	@ResponseBody
-	public List<Tb_zhongxinzhen> querytowndetail(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen) throws UnsupportedEncodingException{
+	public RetAjax querytowndetail(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen) throws UnsupportedEncodingException{
 		List<Tb_zhongxinzhen> tb_zhongxinzhens = this.townservice.querytowndetail(tb_zhongxinzhen);
-		if(tb_zhongxinzhens.size()==1){
-			result=RetAjax.onSuccess(tb_zhongxinzhens, "查询成功");
-		}else{
-			result=RetAjax.onSuccess(tb_zhongxinzhens, "查询失败");
-		}
-		return tb_zhongxinzhens;
+		result=RetAjax.onQueryDetail(tb_zhongxinzhens);
+		return result;
 	}
 	
 	/**

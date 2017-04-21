@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,13 +21,15 @@ import com.hkay.weifei.pojo.Tb_quyuxingxiangmu;
 import com.hkay.weifei.pojo.Tb_tesexiaozhen;
 import com.hkay.weifei.service.RegionService;
 import com.hkay.weifei.util.PageUtil;
+import com.hkay.weifei.util.RetAjax;
 
 @Controller
 @RequestMapping("/regionmanage")
 public class RegionController {
 	@Resource
 	private RegionService regionservice;
-	
+	private RetAjax result;
+	private static  Logger Log =Logger.getLogger(RegionController.class);
 	/**
 	 * 新增区域性项目
 	 * @param tb_quyuxingxiangmu
@@ -34,16 +37,15 @@ public class RegionController {
 	 */
 	@RequestMapping(value="/insertregion")
 	@ResponseBody
-	public Map<String, String> insertregion(Tb_quyuxingxiangmu tb_quyuxingxiangmu){
-		int flag = this.regionservice.insertregion(tb_quyuxingxiangmu);
-		Map<String, String> map=new HashMap<String, String>();
-		if(flag==1){
-			map.put("returnInfo", "success");
-			return map;
-		}else {
-			map.put("returnInfo", "fail");
-			return map;
+	public RetAjax insertregion(Tb_quyuxingxiangmu tb_quyuxingxiangmu){
+		try{
+			int flag = this.regionservice.insertregion(tb_quyuxingxiangmu);
+			result=RetAjax.onDataBase(flag, 1);
+		}catch(Exception e){
+			Log.error("insertregion:"+e.getMessage());
+			e.printStackTrace();
 		}
+		return result;
 	}
 	
 	/**
@@ -85,11 +87,12 @@ public class RegionController {
 	 */
 	@RequestMapping("/queryregionitemdetail")
 	@ResponseBody
-	public List<Tb_quyuxingxiangmu> queryregionitemdetail(HttpServletRequest request,Tb_quyuxingxiangmu tb_quyuxingxiangmu) throws UnsupportedEncodingException{
+	public RetAjax queryregionitemdetail(HttpServletRequest request,Tb_quyuxingxiangmu tb_quyuxingxiangmu) throws UnsupportedEncodingException{
 		Tb_quyuxingxiangmu regionitme=new Tb_quyuxingxiangmu();
 		regionitme.setRegid(tb_quyuxingxiangmu.getRegid());
 		List<Tb_quyuxingxiangmu> tb_quyuxingxiangmus = this.regionservice.queryregionitemdetail(regionitme);
-		return tb_quyuxingxiangmus;
+		result=RetAjax.onQueryDetail(tb_quyuxingxiangmus);
+		return result;
 	}
 	
 	/**
@@ -99,14 +102,14 @@ public class RegionController {
 	 */
 	@RequestMapping(value="/updateregion")
 	@ResponseBody
-	public Map<String, String> updateregion(Tb_quyuxingxiangmu tb_quyuxingxiangmu){
-		Map<String, String> map=new HashMap<String, String>();
-		int flag = this.regionservice.updateregion(tb_quyuxingxiangmu);
-		if(flag==1){
-			map.put("returnInfo", "success");
-		}else{
-			map.put("returnInfo", "fail");
+	public RetAjax updateregion(Tb_quyuxingxiangmu tb_quyuxingxiangmu){
+		try{
+			int flag = this.regionservice.updateregion(tb_quyuxingxiangmu);
+			result=RetAjax.onDataBase(flag, 3);
+		}catch(Exception e){
+			Log.error("updateregion:"+e.getMessage());
+			e.printStackTrace();
 		}
-		return map;
+		return result;
 	}
 }

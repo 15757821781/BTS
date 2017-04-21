@@ -309,54 +309,12 @@ $(document).ready(function() {
 			}
 		}
 	});
+	
 	//表单提交
 	$('#townentry_submit').click(function() {
-		$('#townform').data('bootstrapValidator').validate();
-		if(!$('#townform').data('bootstrapValidator').isValid()){  
-         	return ;
-         }
-		/*ie11一下不支持，formdata的方法  */
-		var formData = new FormData($("#townform")[0]);
-		tk.ajax({
-			type : "post",
-			url : "/TownManagement/townmanage/inserttowninfo",
-			data : formData,
-			dataType : 'JSON',
-			cache : false,
-			processData : false,
-			contentType : false,
-			succ : function(result, status) {
-				$("#towninfomodal").modal('hide');
-				$('#sys_alert').on('hidden.bs.modal', function() {
-					$.ajax({
-			   	         url: '/TownManagement/pages/town/townEntry.html',
-			   	         cache: false,
-			   	         success: function(html){
-			   	             $("#page-wrapper").html(html);
-			   	         }
-			   	     });
-				})
-			}
-		});
+		formSubmit('#townform','townmanage/inserttowninfo','town/townEntry.html');
 	});
 	$('#townentry_update').click(function() {
-		$('#townform').data('bootstrapValidator').validate();
-		if(!$('#townform').data('bootstrapValidator').isValid()){  
-         	return ;
-         }
-		/*ie11一下不支持，formdata的方法  */
-		var formData = new FormData($("#townform")[0]);
-		tk.ajax({
-			type : "post",
-			url : "/TownManagement/townmanage/updatetowninfo",
-			data : formData,
-			dataType : 'JSON',
-			cache : false,
-			processData : false,
-			contentType : false,
-			succ : function(result, status) {
-				$("#towninfomodal").modal('hide');
-			}
-		});
+		formSubmit('#townform','townmanage/updatetowninfo','town/townManage.html');
 	});
 })

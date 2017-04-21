@@ -169,9 +169,9 @@ tk.ajax = function(options) {
 };
 
 //表单填充
-var fillForm = function(formid,data) {
-	values = $('#'+formid).serializeArray();
-	var dataStr=data[0];
+var fillForm = function(form,data) {
+	values = $(form).serializeArray();
+	var dataStr=data.data[0];
 	$.each(dataStr,function(i){
 		var key = i;
 		var value = dataStr[i];
@@ -186,5 +186,42 @@ var fillForm = function(formid,data) {
 				$('#'+key).selectpicker('val', arr);
 	    	}
 		});  
+	});
+}
+// 表单提交
+/**
+ * form,提交的表单
+ * url,提交路径
+ * target,完成后刷新的页面
+ */
+var formSubmit = function(form,url,target){
+	$(form).data('bootstrapValidator').validate();
+	if (!$(form).data('bootstrapValidator').isValid()) {
+		return;
+	}
+	/*ie11以下不支持，formdata的方法  */
+	var formData = new FormData($(form)[0]);
+	tk.ajax({
+		type : "post",
+		url : '/TownManagement/' + url,
+		data : formData,
+		dataType : 'JSON',
+		cache : false,
+		processData : false,
+		contentType : false,
+		succ : function(data, status) {
+			$('#sys_alert').on('hidden.bs.modal', function() {
+				$(".modal-backdrop").remove();
+				if (target != null && target != "") {
+					$.ajax({
+						url : '/TownManagement/pages/' + target,
+						cache : false,
+						success : function(html) {
+							$("#page-wrapper").html(html);
+						}
+					});
+				}
+			});
+		}
 	});
 }

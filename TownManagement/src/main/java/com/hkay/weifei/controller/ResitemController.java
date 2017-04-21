@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,12 +20,15 @@ import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_chubeixiangmu;
 import com.hkay.weifei.service.ResitemService;
 import com.hkay.weifei.util.PageUtil;
+import com.hkay.weifei.util.RetAjax;
 
 @Controller
 @RequestMapping("/resitemmanage")
 public class ResitemController {
 	@Resource
 	private ResitemService resitemservice;
+	private RetAjax result;
+	private static  Logger Log =Logger.getLogger(TownController.class);
 	
 	/**
 	 * 
@@ -38,16 +42,15 @@ public class ResitemController {
 	 */
 	@RequestMapping(value="/insertresitem")
 	@ResponseBody
-	public Map<String, String> insertresitem(Tb_chubeixiangmu tb_chubeixiangmu){
-		int flag = this.resitemservice.insertresitem(tb_chubeixiangmu);
-		Map<String, String> map=new HashMap<String, String>();
-		if(flag==1){
-			map.put("returnInfo", "success");
-			return map;
-		}else {
-			map.put("returnInfo", "fail");
-			return map;
+	public RetAjax insertresitem(Tb_chubeixiangmu tb_chubeixiangmu){
+		try {
+			int flag = this.resitemservice.insertresitem(tb_chubeixiangmu);
+			result=RetAjax.onDataBase(flag, 1);
+		} catch (Exception e) {
+			Log.error("insertresitem:"+e.getMessage());
+			e.printStackTrace();
 		}
+		return result;
 	}
 	
 	@RequestMapping("/queryresinfo")
@@ -74,23 +77,24 @@ public class ResitemController {
 	
 	@RequestMapping("/queryresitemdetail")
 	@ResponseBody
-	public List<Tb_chubeixiangmu> queryresitemdetail(HttpServletRequest request,Tb_chubeixiangmu tb_chubeixiangmu) throws UnsupportedEncodingException{
+	public RetAjax queryresitemdetail(HttpServletRequest request,Tb_chubeixiangmu tb_chubeixiangmu) throws UnsupportedEncodingException{
 		Tb_chubeixiangmu resitem=new Tb_chubeixiangmu();
 		resitem.setResid(tb_chubeixiangmu.getResid());
 		List<Tb_chubeixiangmu> tb_chubeixiangmus = this.resitemservice.queryresitemdetail(resitem);
-		return tb_chubeixiangmus;
+		result=RetAjax.onQueryDetail(tb_chubeixiangmus);
+		return result;
 	}
 	
 	@RequestMapping(value="/updateres")
 	@ResponseBody
-	public Map<String, String> updateres(Tb_chubeixiangmu tb_chubeixiangmu){
-		Map<String, String> map=new HashMap<String, String>();
-		int flag = this.resitemservice.updateres(tb_chubeixiangmu);
-		if(flag==1){
-			map.put("returnInfo", "success");
-		}else{
-			map.put("returnInfo", "fail");
+	public RetAjax updateres(Tb_chubeixiangmu tb_chubeixiangmu){
+		try {
+			int flag = this.resitemservice.updateres(tb_chubeixiangmu);
+			result=RetAjax.onDataBase(flag, 3);
+		} catch (Exception e) {
+			Log.error("updateres:"+e.getMessage());
+			e.printStackTrace();
 		}
-		return map;
+		return result;
 	}
 }
