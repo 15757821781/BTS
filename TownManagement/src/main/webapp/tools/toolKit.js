@@ -225,3 +225,8 @@ var formSubmit = function(form,url,target){
 		}
 	});
 }
+var province = function(){
+	tk.ajax({
+		
+	})
+}
