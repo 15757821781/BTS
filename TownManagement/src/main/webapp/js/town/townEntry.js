@@ -18,6 +18,7 @@ $(document).ready(function() {
 	selectCreate("townprovince","conditionmanage/queryProvince");
 	selectCreate('towncity', 'conditionmanage/queryCity');
 	selectCreate('towntown', 'conditionmanage/queryTown');
+//	createAreaSelect("townprovince","towncity","towntown");
 	// 加载气候下拉框
 	selectCreate("weather","conditionmanage/queryClimate");
 	// 加载地形下拉框
@@ -88,20 +89,20 @@ $(document).ready(function() {
 					}
 				}
 			},
-			towncity : {
-				validators : {
-					notEmpty : {
-						message : '市区不能为空'
-					}
-				}
-			},
-			towntown : {
-				validators : {
-					notEmpty : {
-						message : '乡镇不能为空'
-					}
-				}
-			},
+//			towncity : {
+//				validators : {
+//					notEmpty : {
+//						message : '市区不能为空'
+//					}
+//				}
+//			},
+//			towntown : {
+//				validators : {
+//					notEmpty : {
+//						message : '乡镇不能为空'
+//					}
+//				}
+//			},
 			cooperation : {
 				validators : {
 					notEmpty : {
@@ -423,13 +424,9 @@ $(document).ready(function() {
 	});
 	//表单提交
 	$('#townentry_submit').click(function() {
-		$('#townform').bootstrapValidator('revalidateField', 'towntown');
-		$('#townform').bootstrapValidator('revalidateField', 'towncity');
 		formSubmit('#townform','townmanage/inserttowninfo','town/townEntry.html');
 	});
 	$('#townentry_update').click(function() {
-		$('#townform').bootstrapValidator('revalidateField', 'towntown');
-		$('#townform').bootstrapValidator('revalidateField', 'towncity');
 		formSubmit('#townform','townmanage/updatetowninfo','town/townManage.html');
 	});
 });
@@ -439,6 +436,7 @@ function selectProvince(obj) {
 		"provincecode" : obj.value
 	}
 	selectCreate('towncity', 'conditionmanage/queryCity', data);
+	$("#towntown").find('option').remove();
 }
 // 选择城市后触发事件
 function selectCity(obj) {
