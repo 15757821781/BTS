@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.ConditionDao">
+	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Condition" />
+	<!-- 查询省份信息 -->
+	<select id="queryProvince" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.code as value,a.name from tb_area_province a where
+		1=1
+	</select>
+	<!-- 查询城市信息 -->
+	<select id="queryCity" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.code as value,a.name from tb_area_city a 
+		where 1=1
+		<if test="provincecode!=null">
+			and a.provincecode=#{provincecode}
+		</if>
+	</select>
+	<!-- 查询乡县信息 -->
+	<select id="queryTown" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.code as value,a.name from tb_area_town a 
+		where 1=1
+		<if test="citycode!=null">
+			and a.citycode=#{citycode}
+		</if>
+	</select>
+	<!-- 查询气候信息 -->
+	<select id="queryClimate" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_climate a
+		where 1=1
+	</select>
+	<!-- 查询地形信息 -->
+	<select id="queryTerrain" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_terrain a
+		where 1=1
+	</select>
+	<!-- 查询优势产业信息 -->
+	<select id="queryAdvIndustry" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_advantage_industry a
+		where 1=1
+	</select>
+	<!-- 查询产业方向信息 -->
+	<select id="queryDirIndustry" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_direction_industry a
+		where 1=1
+	</select>
+</mapper>

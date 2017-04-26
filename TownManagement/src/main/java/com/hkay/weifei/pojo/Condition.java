@@ -1,11 +1,12 @@
 package com.hkay.weifei.pojo;
 
-public class Area {
+public class Condition {
 	private int id;
-	private String code;
-	private String name;
-	private String provincecode;
-	private String citycode;
+	private String name;// 名称
+	private String value;// 值
+	private String provincecode;// 省编号
+	private String citycode;// 城市编号
+	private String code;// 区域编号
 
 	public int getId() {
 		return id;
@@ -15,20 +16,20 @@ public class Area {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 	public String getProvincecode() {
@@ -45,6 +46,14 @@ public class Area {
 
 	public void setCitycode(String citycode) {
 		this.citycode = citycode;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }

@@ -11,6 +11,12 @@ $(document).ready(function() {
 	        		    	$('#side-menu').append('<li><a><i class="fa fa-dashboard fa-fw"></i> '+list.data[i].pagename+'<span class="fa arrow"></span></a><ul class="nav nav-second-level" id=pageName_'+list.data[i].pageid+'></ul></li>');
 	        		    }
 	        		    else if(list.data[i].pagelevel=="2"){
+	        		    	if(list.data[i].url!=""&&list.data[i].url!=null){
+	        		    		$('#pageName_'+list.data[i].parentid).append('<li><a target='+list.data[i].url+'>'+list.data[i].pagename+'</a></li>');
+	        		    	}else{
+	        		    		$('#pageName_'+list.data[i].parentid).append('<li><a>'+list.data[i].pagename+'<span class="fa arrow"></span></a><ul class="nav nav-third-level" id=pageName_'+list.data[i].pageid+'></ul></li>');
+	        		    	}
+	        		    }else if(list.data[i].pagelevel=="3"){
 	        		    	$('#pageName_'+list.data[i].parentid).append('<li><a target='+list.data[i].url+'>'+list.data[i].pagename+'</a></li>');
 	        		    }
 	        		}); 

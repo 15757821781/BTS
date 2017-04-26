@@ -1,8 +1,4 @@
 var tk = tk || {};
-// success alert
-var success_content='<div class="alert alert-success" id="success_content">alert content</div>';
-// fail alert
-var fail_content='<div class="alert alert-fail" id="success_content">alert content</div>'
 tk.getFn = function(fnName, target, arg0, arg1, arg2, arg3) {
 	var fn = null;
 	var type = typeof(fnName);
@@ -178,12 +174,14 @@ var fillForm = function(form,data) {
 		$.each(values,function(i){
 			var id=values[i].name;
 		    if(id==key){
-		    	$('#'+id).val(value);
+		    	$('#'+key).val(value);
+		    	return false;
 		    // 如果是复选框
 		    }else if($("#"+key).attr("multiple")=="multiple"){
 	    		var arr=value.split(",");
 				$('#'+key).selectpicker();
 				$('#'+key).selectpicker('val', arr);
+				return false;
 	    	}
 		});  
 	});
@@ -225,8 +223,21 @@ var formSubmit = function(form,url,target){
 		}
 	});
 }
-var province = function(){
+// 动态加载下拉框
+var selectCreate = function(id,url,data){
 	tk.ajax({
-		
-	})
+		url : "/TownManagement/"+url,
+		data : data?data:"",
+		succ : function(result,state){
+			 $("#" + id).find('option').remove();
+			 $("#" + id).append("<option></option>");
+			 var data=result.data;
+			 if (data != null) {
+				 $.each(data,function(i){
+					 $("#"+id).append("<option value="+data[i].value+">"+data[i].name+"</option>")
+				 })
+			 }
+			 $("#" + id).selectpicker('refresh');
+		}
+	});
 }
