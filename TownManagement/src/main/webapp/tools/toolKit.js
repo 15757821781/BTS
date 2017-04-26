@@ -174,15 +174,20 @@ var fillForm = function(form,data) {
 		$.each(values,function(i){
 			var id=values[i].name;
 		    if(id==key){
-		    	$('#'+key).val(value);
+		    	if($("#"+key).hasClass("selectpicker")){
+		    		var arr=value.split(",");
+					$('#'+key).selectpicker();
+					$('#'+key).selectpicker('val', arr);
+		    	}else{
+		    		$('#'+key).val(value);
+		    	}
 		    	return false;
-		    // 如果是复选框
 		    }else if($("#"+key).attr("multiple")=="multiple"){
 	    		var arr=value.split(",");
 				$('#'+key).selectpicker();
 				$('#'+key).selectpicker('val', arr);
 				return false;
-	    	}
+		    }
 		});  
 	});
 }

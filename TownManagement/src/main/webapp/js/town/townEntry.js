@@ -10,9 +10,14 @@ $(document).ready(function() {
 		startView : 4,
 		minView : 4,
 		format : 'yyyy'
+	}).on('hide', function(e) {  
+        // 当用户改变值的时候进行验证
+		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
 	});
-	// 加载省信息下拉框
+	// 加载省市县信息下拉框
 	selectCreate("townprovince","conditionmanage/queryProvince");
+	selectCreate('towncity', 'conditionmanage/queryCity');
+	selectCreate('towntown', 'conditionmanage/queryTown');
 	// 加载气候下拉框
 	selectCreate("weather","conditionmanage/queryClimate");
 	// 加载地形下拉框
@@ -418,9 +423,13 @@ $(document).ready(function() {
 	});
 	//表单提交
 	$('#townentry_submit').click(function() {
+		$('#townform').bootstrapValidator('revalidateField', 'towntown');
+		$('#townform').bootstrapValidator('revalidateField', 'towncity');
 		formSubmit('#townform','townmanage/inserttowninfo','town/townEntry.html');
 	});
 	$('#townentry_update').click(function() {
+		$('#townform').bootstrapValidator('revalidateField', 'towntown');
+		$('#townform').bootstrapValidator('revalidateField', 'towncity');
 		formSubmit('#townform','townmanage/updatetowninfo','town/townManage.html');
 	});
 });

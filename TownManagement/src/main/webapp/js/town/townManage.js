@@ -54,6 +54,13 @@ $(document).ready(function() {
             }
 		} ]
 	});
+	$.ajax({
+		url : "/TownManagement/pages/town/townEntry.html",
+		cache : false,
+		success : function(html) {
+			$("#towninfobody").html(html);
+		}
+	});
 })
 //查询方法
 function queryParams(params){
@@ -71,21 +78,13 @@ function queryParams(params){
 }
 //展示详情modal
 function querytowndetail(centertownid) {
-	$.ajax({
-		url : "/TownManagement/pages/town/townEntry.html",
+	tk.ajax({
+		url : "/TownManagement/townmanage/querytowndetail",
+		data : {"centertownid":centertownid},
+		dataType : 'JSON',
 		cache : false,
-		async: false,
-		success : function(html) {
-			$("#towninfobody").html(html);
-			tk.ajax({
-				url : "/TownManagement/townmanage/querytowndetail",
-				async: false,
-				data : {"centertownid":centertownid},
-				dataType : 'JSON',
-				succ : function(data, status) {
-					fillForm('#townform',data);
-				}
-			});
+		succ : function(data, status) {
+			fillForm('#townform',data);
 			$("#towninfomodal").modal('show');
 			$("#townentry_submit").hide();
 		}
@@ -93,21 +92,13 @@ function querytowndetail(centertownid) {
 }
 //展示修改界面
 function updatetowninfo(centertownid){
-	$.ajax({
-		url : "/TownManagement/pages/town/townEntry.html",
+	tk.ajax({
+		url : "/TownManagement/townmanage/querytowndetail",
+		data : {"centertownid":centertownid},
+		dataType : 'JSON',
 		cache : false,
-		async: false,
-		success : function(html) {
-			$("#towninfobody").html(html);
-			tk.ajax({
-				url : "/TownManagement/townmanage/querytowndetail",
-				async: false,
-				data : {"centertownid":centertownid},
-				dataType : 'JSON',
-				succ : function(data, status) {
-					fillForm('#townform',data);
-				}
-			});
+		succ : function(data, status) {
+			fillForm('#townform',data);
 			$("#towninfomodal").modal('show');
 			$("#townentry_submit").hide();
 			$("#townentry_update").show();
