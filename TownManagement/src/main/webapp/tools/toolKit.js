@@ -305,23 +305,6 @@ var proOnChange = function(province, city, town){
 	}
 	$("#"+city).append(html);
 	$("#"+city).selectpicker('refresh');
-//	tk.ajax({
-//		url : "/TownManagement/conditionmanage/queryCity",
-//		data : data?data:"",
-//		succ : function(result,state){
-//			 $("#" + city).find('option').remove();
-//			 $("#" + town).find('option').remove();
-//			 var data=result.data;
-//			 if (data != null) {
-//				 $("#" + city).append("<option></option>");
-//				 $.each(data,function(i){
-//					 $("#"+city).append("<option value="+data[i].value+">"+data[i].name+"</option>");
-//				 })
-//			 }
-//			 $("#" + city).selectpicker('refresh');
-//			 $("#" + town).selectpicker('refresh');
-//		}
-//	});
 }
 // 选择城市后触发事件
 var cityOnChange = function(province, city, town){
@@ -339,19 +322,4 @@ var cityOnChange = function(province, city, town){
 	}
 	$("#"+town).append(html);
 	$("#"+town).selectpicker('refresh');
-//	tk.ajax({
-//		url : "/TownManagement/conditionmanage/queryTown",
-//		data : data?data:"",
-//		succ : function(result,state){
-//			 $("#" + town).find('option').remove();
-//			 var data=result.data;
-//			 if (data != null) {
-//				 $("#" + town).append("<option></option>");
-//				 $.each(data,function(i){
-//					 $("#"+town).append("<option value="+data[i].value+">"+data[i].name+"</option>");
-//				 })
-//			 }
-//			 $("#" + town).selectpicker('refresh');
-//		}
-//	});
 }
