@@ -175,9 +175,11 @@ var fillForm = function(form,data) {
 			var id=values[i].name;
 		    if(id==key){
 		    	if($("#"+key).hasClass("selectpicker")){
-		    		var arr=value.split(",");
+//		    		var arr=value.split(",");
 					$('#'+key).selectpicker();
-					$('#'+key).selectpicker('val', arr);
+//					$('#'+key).selectpicker('val', arr);
+					$("#"+key+" option[text="+value+"]").attr("selected",true);
+//		    		$('#'+key).text(value);
 		    	}else{
 		    		$('#'+key).val(value);
 		    	}
@@ -209,7 +211,6 @@ var formSubmit = function(form,url,target){
 		url : '/TownManagement/' + url,
 		data : formData,
 		dataType : 'JSON',
-		cache : false,
 		processData : false,
 		contentType : false,
 		succ : function(data, status) {
@@ -233,16 +234,81 @@ var selectCreate = function(id,url,data){
 	tk.ajax({
 		url : "/TownManagement/"+url,
 		data : data?data:"",
+		cache : true,
 		succ : function(result,state){
 			 $("#" + id).find('option').remove();
-			 $("#" + id).append("<option></option>");
 			 var data=result.data;
 			 if (data != null) {
+				 $("#" + id).append("<option></option>");
 				 $.each(data,function(i){
-					 $("#"+id).append("<option value="+data[i].value+">"+data[i].name+"</option>")
+					 $("#"+id).append("<option value="+data[i].value+">"+data[i].name+"</option>");
 				 })
 			 }
 			 $("#" + id).selectpicker('refresh');
 		}
 	});
+}
+
+var createAreaSelect = function(province, city, town) {
+	var provincehtml = "";
+	var cityhtml = "";
+	var townhtml = "";
+	$("#"+province).append(provincehtml);
+	$("#"+city).append(cityhtml);
+	$("#"+town).append(townhtml);
+	$.each(areadata, function(idx, item) {
+		if (parseInt(item.level) == 0) {
+			provincehtml += "<option value='" + item.code + "' exid='" + item.code
+					+ "'>" + item.names + "</option>";
+		}else if(parseInt(item.level) == 1){
+			cityhtml += "<option value='" + item.code + "' exid='" + item.code
+			+ "'>" + item.names + "</option>";
+		}else if(parseInt(item.level) == 2){
+			townhtml += "<option value='" + item.code + "' exid='" + item.code
+			+ "'>" + item.names + "</option>";
+		}
+	});
+	$("#"+province).append(provincehtml);
+	$("#"+city).append(cityhtml);
+	$("#"+town).append(townhtml);
+	$("#"+province).change(function() {
+		$("#"+city+" option").remove();
+		$("#"+town+" option").remove();
+		if ($(this).val() == ""){
+			return;
+		}
+		var code = $(this).find("option:selected").attr("exid");
+		code = code.substring(0, 2);
+		var html = "<option></option>";
+		$("#"+town).append(html);
+		$.each(areadata, function(idx, item) {
+			if (parseInt(item.level) == 1 && code == item.code.substring(0, 2)) {
+				html += "<option value='" + item.code + "' exid='"
+						+ item.code + "'>" + item.names + "</option>";
+			}
+		});
+		$("#"+city).append(html);
+		$("#" + city).selectpicker('refresh');
+	});
+
+	$("#"+city).change(function() {
+		$("#"+town+" option").remove();
+		if ($(this).val() == ""){
+			return;
+		}
+		var code = $(this).find("option:selected").attr("exid");
+		code = code.substring(0, 4);
+		var html = "<option></option>";
+		$.each(areadata, function(idx, item) {
+			if (parseInt(item.level) == 2 && code == item.code.substring(0, 4)) {
+				html += "<option value='" + item.code + "' exid='"
+						+ item.code + "'>" + item.names + "</option>";
+			}
+		});
+		$("#"+town).append(html);
+		$("#" + town).selectpicker('refresh');
+	});
+	$("#" + province).selectpicker('refresh');
+	$("#" + city).selectpicker('refresh');
+	$("#" + town).selectpicker('refresh');
 }
