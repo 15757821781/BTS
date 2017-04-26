@@ -1,5 +1,11 @@
 package com.hkay.weifei.util;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import com.hkay.weifei.pojo.Tb_user;
+
 public class RetAjax {
 	// 返回信息描述
 	private String message;
@@ -65,7 +71,7 @@ public class RetAjax {
 	/**
 	 * 
 		 * 方法名称: onDataBase
-		 * 内容摘要: 根据数据返回的值判断 1、增2、删3、改的操作是否成功
+		 * 内容摘要: 根据数据返回的值判断( 1:增   2:删  3:改  ) 的操作是否成功
 		 * 创建人：zhuwenjie
 		 * 创建日期： 2017年4月7日
 		 * 修改人：
@@ -76,27 +82,70 @@ public class RetAjax {
 		RetAjax retAjax=new RetAjax();
 		retAjax.data=null;
 		if(flag==1){
-			retAjax.state=TypeStatusConstant.success;
 			if(operation==1){
+				retAjax.state=TypeStatusConstant.insertsuccess;
 				retAjax.message=TypeStatusConstant.insert_success;
 			}else if(operation==2){
+				retAjax.state=TypeStatusConstant.deletesuccess;
 				retAjax.message=TypeStatusConstant.delete_success;
 			}else if (operation==3) {
+				retAjax.state=TypeStatusConstant.updatesuccess;
 				retAjax.message=TypeStatusConstant.update_success;
 			}
 		}else{
-			retAjax.state=TypeStatusConstant.fail;
 			if(operation==1){
+				retAjax.state=TypeStatusConstant.insertfail;
 				retAjax.message=TypeStatusConstant.insert_fail;
 			}else if(operation==2){
+				retAjax.state=TypeStatusConstant.deletefail;
 				retAjax.message=TypeStatusConstant.delete_fail;
 			}else if (operation==3) {
+				retAjax.state=TypeStatusConstant.updatefail;
 				retAjax.message=TypeStatusConstant.update_fail;
 			}
 		}
 		return retAjax;
 	}
 	
+	/**
+	 * 
+		 * 方法名称: onLogin
+		 * 内容摘要: 判断登陆
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年4月20日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	public static RetAjax onLogin(List<Tb_user> users,HttpSession session) {
+		RetAjax retAjax=new RetAjax();
+		if(users.size()==1&&!users.get(0).getAccount().equals("")&&!users.get(0).getPassword().equals("")){
+			retAjax.state=TypeStatusConstant.loginsuccess;
+			retAjax.message=TypeStatusConstant.login_success;
+			retAjax.data=null;
+			session.setAttribute("town_LoginData", users.get(0));
+		}else{
+			retAjax.state=TypeStatusConstant.loginfail;
+			retAjax.message=TypeStatusConstant.login_fail;
+			retAjax.data=null;
+		}
+		return retAjax;
+	}
+	
+	public static RetAjax onQueryDetail(List<?> list) {
+		RetAjax retAjax=new RetAjax();
+		if(!list.isEmpty()&&list.size()==1){
+			retAjax.state=TypeStatusConstant.success;
+			retAjax.message="";
+			retAjax.data=list;
+		}else{
+			retAjax.state=TypeStatusConstant.fail;
+			retAjax.message="查询失败";
+			retAjax.data=null;
+		}
+		return retAjax;
+		
+	}
 	public String getMessage() {
 		return message;
 	}

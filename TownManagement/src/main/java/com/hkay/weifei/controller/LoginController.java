@@ -16,30 +16,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.LoginService;
 import com.hkay.weifei.util.MD5;
+import com.hkay.weifei.util.RetAjax;
+import com.hkay.weifei.util.SysContent;
 
 @Controller
 @RequestMapping("/Login")
 public class LoginController {
 	@Resource
 	private LoginService loginservice;
+	private RetAjax result;
 
 	@RequestMapping(value = "/login")
 	@ResponseBody
-	public Map<String, String> login(HttpServletRequest request,Tb_user tb_user)throws UnsupportedEncodingException {
-		Map<String, String> map = new HashMap<String, String>();
+	public RetAjax login(HttpServletRequest request, Tb_user tb_user) throws UnsupportedEncodingException {
 		Tb_user user = new Tb_user();
 		user.setPassword(new MD5().encryption(tb_user.getPassword()));
 		user.setAccount(tb_user.getAccount());
 		List<Tb_user> users = this.loginservice.queryuserinfo(user);
-		if (users.size() == 1) {
-			//将登录信息写入session
-			HttpSession session = request.getSession();
-			session.setAttribute("town_LoginData", users.get(0));
-			map.put("returnInfo", "success");
-			return map;
-		} else {
-			map.put("returnInfo", "fail");
-			return map;
-		}
+		HttpSession session = request.getSession();
+		result = RetAjax.onLogin(users, session);
+		return result;
 	}
 }
