@@ -15,10 +15,10 @@ $(document).ready(function() {
 		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
 	});
 	// 加载省市县信息下拉框
-	selectCreate("townprovince","conditionmanage/queryProvince");
-	selectCreate('towncity', 'conditionmanage/queryCity');
-	selectCreate('towntown', 'conditionmanage/queryTown');
-//	createAreaSelect("townprovince","towncity","towntown");
+//	selectCreate("sys_province","conditionmanage/queryProvince");
+//	selectCreate('sys_city', 'conditionmanage/queryCity');
+//	selectCreate('sys_town', 'conditionmanage/queryTown');
+	createAreaSelect("sys_province","sys_city","sys_town");
 	// 加载气候下拉框
 	selectCreate("weather","conditionmanage/queryClimate");
 	// 加载地形下拉框
@@ -82,7 +82,7 @@ $(document).ready(function() {
 					}
 				}
 			},
-			townprovince : {
+			sys_province : {
 				validators : {
 					notEmpty : {
 						message : '省份不能为空'
@@ -430,18 +430,17 @@ $(document).ready(function() {
 		formSubmit('#townform','townmanage/updatetowninfo','town/townManage.html');
 	});
 });
-// 选择省份后触发事件
-function selectProvince(obj) {
-	var data = {
-		"provincecode" : obj.value
-	}
-	selectCreate('towncity', 'conditionmanage/queryCity', data);
-	$("#towntown").find('option').remove();
-}
-// 选择城市后触发事件
-function selectCity(obj) {
-	var data = {
-		"citycode" : obj.value
-	}
-	selectCreate('towntown', 'conditionmanage/queryTown', data);
-}
+//// 选择省份后触发事件
+//function selectProvince(obj) {
+//	var data = {
+//		"provincecode" : obj.value
+//	}
+//	selectCreate('towncity', 'conditionmanage/queryCity', data);
+//}
+//// 选择城市后触发事件
+//function selectCity(obj) {
+//	var data = {
+//		"citycode" : obj.value
+//	}
+//	selectCreate('towntown', 'conditionmanage/queryTown', data);
+//}
