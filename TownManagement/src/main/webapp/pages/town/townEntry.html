@@ -7,11 +7,13 @@
 <link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
 <!-- 表单验证 -->
 <link href="/TownManagement/dist/css/bootstrapValidator.css"  rel="stylesheet" />
+<!-- 时间插件 -->
+<link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
 </head>
 <body>
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header">中心镇基本信息</h3>
+			<h3 class="page-header">乡镇街道</h3>
 		</div>
 	</div>
 	<!-- /page头 -->
@@ -25,7 +27,7 @@
 					<label class="col-sm-2 control-label">名称</label>
 					<div class="col-sm-6">
 						<input name="centertownname" id="centertownname" class="form-control" type="text"
-							placeholder="请填写小镇名称" />
+							placeholder="请填写乡镇名称" />
 					</div>
 					<label class="col-sm-2 control-label">编号</label>
 					<div class="col-sm-2">
@@ -33,108 +35,213 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">所属地区</label>
+					<label class="col-sm-2 control-label">中心镇</label>
 					<div class="col-sm-2">
-						<select name="attributionarea" id="attributionarea"
-							class="selectpicker show-tick form-control">
-						</select>
-					</div>
-<!-- 					<label class="col-sm-2 control-label">中心镇</label> -->
-<!-- 					<div class="col-sm-2"> -->
-<!-- 						<select name="townlevel" id="townlevel" -->
-<!-- 							class="selectpicker show-tick form-control"> -->
-<!-- 							<option></option> -->
-<!-- 							<option value="省级">省级</option> -->
-<!-- 							<option value="市级">市级</option> -->
-<!-- 						</select> -->
-<!-- 					</div> -->
-					<label class="col-sm-2 control-label">合作情况</label>
-					<div class="col-sm-2">
-						<select name="cooperation" id="cooperation"
+						<select name="townlevel" id="townlevel"
 							class="selectpicker show-tick form-control">
 							<option></option>
-							<option value="咨询顾问">咨询顾问</option>
-							<option value="建立联系">建立联系</option>
-							<option value="未建联系">未建联系</option>
+							<option value="1">市级</option>
+							<option value="2">省级</option>
+							<option value="0">否</option>
 						</select>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">镇域面积(平方公里)</label>
-					<div class="col-sm-2">
-						<input name="townarea" id="townarea" class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label">建成区面积(平方公里)</label>
-					<div class="col-sm-2">
-						<input name="builtuparea" id="builtuparea" class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label"></label>
-					<div class="col-sm-2"></div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">镇域人口(万人)</label>
-					<div class="col-sm-2">
-						<input name="townpopulation" id="townpopulation" class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label">其中流动人口(万人)</label>
-					<div class="col-sm-2">
-						<input name="floatepopulation" id="floatepopulation" class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label"></label>
-					<div class="col-sm-2"></div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">区县级GDP(亿元)</label>
-					<div class="col-sm-2">
-						<input name="countygdp" id="countygdp" class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label">区县级财政收入(亿元)</label>
-					<div class="col-sm-2">
-						<input name="countyrevenue" id="countyrevenue" class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label">镇级财政总收入(亿元)</label>
-					<div class="col-sm-2">
-						<input name="townrevenue" id="townrevenue" class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">是否为全国百强区县</label>
-					<div class="col-sm-2">
-						<select name="hundredcounties" id="hundredcounties"
-							class="selectpicker show-tick form-control">
-							<option></option>
-							<option>是</option>
-							<option>否</option>
-						</select>
-					</div>
-					<label class="col-sm-2 control-label">是否小城市试点</label>
+					<label class="col-sm-2 control-label">小城市试点</label>
 					<div class="col-sm-2">
 						<select name="citypilot" id="citypilot"
 							class="selectpicker show-tick form-control">
 							<option></option>
-							<option>是</option>
-							<option>否</option>
+							<option value="1">是</option>
+							<option value="0">否</option>
 						</select>
 					</div>
-					<label class="col-sm-2 control-label"></label>
-					<div class="col-sm-2"></div>
+					<label class="col-sm-2 control-label">国家特色小镇</label>
+					<div class="col-sm-2">
+						<select name="townfeature" id="townfeature"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">第一批</option>
+							<option value="2">第二批</option>
+							<option value="0">否</option>
+						</select>
+					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">社区</label>
+					<label class="col-sm-2 control-label">所属地区</label>
+					<div class="col-sm-2">
+						<select name="townprovince" id="townprovince"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" 
+							onchange="selectProvince(this)"
+							title="选择省份">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="towncity" id="towncity"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5" 
+							onchange="selectCity(this)"
+							title="选择市区">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="towntown" id="towntown"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5" 
+							title="选择乡县">
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">关系情况</label>
+					<div class="col-sm-2">
+						<select name="cooperation" id="cooperation"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">待建联系</option>
+							<option value="2">已建联系</option>
+							<option value="3">咨询顾问</option>
+							<option value="4">投资合作</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">数据年度</label>
+					<div class="col-sm-2">
+						<input name="towndatayear" id="towndatayear"
+							class="datepicker form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">全国百强区县</label>
+					<div class="col-sm-2">
+						<select name="hundredcounties" id="hundredcounties"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">区县GDP(亿元)</label>
+					<div class="col-sm-2">
+						<input name="countygdp" id="countygdp" class="form-control"
+							type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">区县财政收入(亿元)</label>
+					<div class="col-sm-2">
+						<input name="countyrevenue" id="countyrevenue"
+							class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">区县总人口(万人)</label>
+					<div class="col-sm-2">
+						<input name="townpopulation" id="townpopulation"
+							class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">区县人均可支配收入(万元)</label>
+					<div class="col-sm-2">
+						<input name="townpgdi" id="townpgdi"
+							class="form-control" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">行政面积(平方公里)</label>
+					<div class="col-sm-2">
+						<input name="townarea" id="townarea" class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">社区(个)</label>
 					<div class="col-sm-2">
 						<input name="community" id="community" class="form-control" type="text">
 					</div>
-					<label class="col-sm-2 control-label">行政村</label>
+					<label class="col-sm-2 control-label">行政村(个)</label>
 					<div class="col-sm-2">
 						<input name="adminvillage" id="adminvillage" class="form-control" type="text">
 					</div>
-					<label class="col-sm-2 control-label">农业总产值</label>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">地方GDP(亿元)</label>
 					<div class="col-sm-2">
-						<input name="farmingoutvalue" id="farmingoutvalue" class="form-control" type="text">
+						<input name="townlocalgdp" id="townlocalgdp"
+							class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">财政总收入(亿元)</label>
+					<div class="col-sm-2">
+						<input name="townrevenue" id="townrevenue" class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">总人口(万人)</label>
+					<div class="col-sm-2">
+						<input name="totalpopulation" id="totalpopulation"
+							class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">镇党委书记</label>
+					<label class="col-sm-2 control-label">农业总产值(亿元)</label>
+					<div class="col-sm-2">
+						<input name="farmingoutvalue" id="farmingoutvalue" class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">工业总产值(亿元)</label>
+					<div class="col-sm-2">
+						<input name="industryoutvalue" id="industryoutvalue"
+							class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">服务业总产值(亿元)</label>
+					<div class="col-sm-2">
+						<input name="serviceoutvalue" id="serviceoutvalue"
+							class="form-control" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">基本气候</label>
+					<div class="col-sm-6">
+						<select name="weather" id="weather"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5" >
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">基本地形</label>
+					<div class="col-sm-2">
+						<select name="terrain" id="terrain"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5" >
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">交通条件</label>
+					<div class="col-sm-10">
+						<input name="traffic" id="traffic" class="form-control" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">优势产业</label>
+					<div class="col-sm-10">
+						<select name="currentindustry" id="currentindustry"
+							class="selectpicker show-tick form-control" multiple
+							data-live-search="true" data-size="5" >
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">产业方向</label>
+					<div class="col-sm-10">
+						<select name="industrialorientation" id="industrialorientation"
+							class="selectpicker show-tick form-control" multiple
+							data-live-search="true" data-size="5" >
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">历史文化和旅游资源</label>
+					<div class="col-sm-10">
+						<input name="historyculture" id="historyculture"
+							class="form-control" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">荣誉称号</label>
+					<div class="col-sm-10">
+						<input name="honorarytitle" id="honorarytitle"
+							class="form-control" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">党委书记</label>
 					<div class="col-sm-2">
 						<input name="partycommittee" id="partycommittee" class="form-control" type="text">
 					</div>
@@ -142,9 +249,10 @@
 					<div class="col-sm-2">
 						<input name="committelnumber" id="committelnumber" class="form-control" type="text">
 					</div>
-					<label class="col-sm-2 control-label">工业总产值</label>
+					<label class="col-sm-2 control-label">手机</label>
 					<div class="col-sm-2">
-						<input name="industryoutvalue" id="industryoutvalue" class="form-control" type="text">
+						<input name="committel" id="committel"
+							class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
@@ -156,70 +264,42 @@
 					<div class="col-sm-2">
 						<input name="mayortelnumber" id="mayortelnumber" class="form-control" type="text">
 					</div>
-					<label class="col-sm-2 control-label">服务业总产值</label>
+					<label class="col-sm-2 control-label">手机</label>
 					<div class="col-sm-2">
-						<input name="serviceoutvalue" id="serviceoutvalue" class="form-control" type="text">
+						<input name="mayortel" id="mayortel" class="form-control"
+							type="text">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">气候条件</label>
-					<div class="col-sm-10">
-						<input name="weather" id="weather" class="form-control" type="text">
+					<label class="col-sm-2 control-label">联系人</label>
+					<div class="col-sm-2">
+						<input name="contacts" id="contacts" class="form-control"
+							type="text">
+					</div>
+					<label class="col-sm-2 control-label">职务</label>
+					<div class="col-sm-2">
+						<input name="post" id="post" class="form-control"
+							type="text">
+					</div>
+					<label class="col-sm-2 control-label">联系方式</label>
+					<div class="col-sm-2">
+						<input name="contactstel" id="contactstel" class="form-control"
+							type="text">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">地形条件</label>
-					<div class="col-sm-10">
-						<input name="terrain" id="terrain" class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">交通条件</label>
-					<div class="col-sm-10">
-						<input name="traffic" id="traffic" class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">现状产业</label>
-					<div class="col-sm-10">
-						<input name="currentindustry" id="currentindustry" class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">产业方向</label>
-					<div class="col-sm-10">
-						<select name="industrialorientation" id="industrialorientation"
-							class="selectpicker show-tick form-control" multiple
-							data-live-search="false">
-							<option value="化纤织造">化纤织造</option>
-							<option value="五金制造">五金制造</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">荣誉称号</label>
-					<div class="col-sm-10">
-						<input name="honorarytitle" id="honorarytitle" class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">历史文化及名人</label>
-					<div class="col-sm-10">
-						<input name="historyculture" id="historyculture" class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">现状地图</label>
+					<label class="col-sm-2 control-label">区位图</label>
 					<div class="col-sm-2">
 						<input name="statuspic" id="statuspic" class="form-control" type="text">
 					</div>
-					<label class="col-sm-2 control-label">规划图(2015)</label>
+					<label class="col-sm-2 control-label">规划图</label>
 					<div class="col-sm-2">
 						<input name="planpic" id="planpic" class="form-control" type="text">
 					</div>
-					<label class="col-sm-2 control-label">对接人</label>
+					<label class="col-sm-2 control-label">录入员</label>
 					<div class="col-sm-2">
-						<input name="docking" id="docking" class="form-control" type="text">
+						<input name="creator" id="creator" class="form-control"
+							type="text">
 					</div>
 				</div>
 				<div class="form-group">
@@ -242,6 +322,9 @@
 	<!-- 表单验证 -->
 	<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
 	<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
+	<!-- 时间插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
 	<script type="text/javascript" src="/TownManagement/js/town/townEntry.js"></script>
 </body>
 </html>
