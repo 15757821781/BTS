@@ -48,7 +48,8 @@
 	contactstel,
 	statuspic,
 	planpic,
-	creator)
+	creator,
+	updatetime)
 	values
 	(
 	#{centertownname},
@@ -93,13 +94,14 @@
 	#{contactstel},
 	#{statuspic},
 	#{planpic},
-	#{creator})
+	#{creator},
+	now())
 	</insert>
 	<select id="querytowninfo" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
 		resultMap="BaseResultMap">
 		select t.* from tb_zhongxinzhen t where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.number like '%${search}%' or t.centertownname like '%${search}%' or t.attributionarea like '%${search}%' or t.townlevel like '%${search}%')
+		    and (t.number like '%${search}%' or t.centertownname like '%${search}%' or t.townlevel like '%${search}%')
 		</if>
 	</select>
 	<select id="querytowninfocnt" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
@@ -107,7 +109,7 @@
 		select count(*) from tb_zhongxinzhen t
 		where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.number like '%${search}%' or t.centertownname like '%${search}%' or t.attributionarea like '%${search}%' or t.townlevel like '%${search}%')
+		    and (t.number like '%${search}%' or t.centertownname like '%${search}%' or t.townlevel like '%${search}%')
 		</if>
 	</select>
 	<select id="querytowndetail" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
@@ -119,37 +121,48 @@
 	set
 	centertownname=#{centertownname},
 	number=#{number},
-	attributionarea=#{attributionarea},
+	citypilot=#{citypilot},
 	townlevel=#{townlevel},
+	townfeature=#{townfeature},
+	townprovince=#{townprovince},
+	towncity=#{towncity},
+	towntown=#{towntown},
 	cooperation=#{cooperation},
-	townarea=#{townarea},
-	builtuparea=#{builtuparea},
-	townpopulation=#{townpopulation},
-	floatepopulation=#{floatepopulation},
+	towndatayear=#{towndatayear},
+	hundredcounties=#{hundredcounties},
 	countygdp=#{countygdp},
 	countyrevenue=#{countyrevenue},
-	townrevenue=#{townrevenue},
-	hundredcounties=#{hundredcounties},
-	citypilot=#{citypilot},
+	townpopulation=#{townpopulation},
+	townpgdi=#{townpgdi},
+	townarea=#{townarea},
 	community=#{community},
 	adminvillage=#{adminvillage},
+	townlocalgdp=#{townlocalgdp},
+	townrevenue=#{townrevenue},
+	totalpopulation=#{totalpopulation},
 	farmingoutvalue=#{farmingoutvalue},
-	partycommittee=#{partycommittee},
-	committelnumber=#{committelnumber},
 	industryoutvalue=#{industryoutvalue},
-	mayor=#{mayor},
-	mayortelnumber=#{mayortelnumber},
 	serviceoutvalue=#{serviceoutvalue},
 	weather=#{weather},
 	terrain=#{terrain},
 	traffic=#{traffic},
 	currentindustry=#{currentindustry},
 	industrialorientation=#{industrialorientation},
-	honorarytitle=#{honorarytitle},
 	historyculture=#{historyculture},
+	honorarytitle=#{honorarytitle},
+	partycommittee=#{partycommittee},
+	committelnumber=#{committelnumber},
+	committel=#{committel},
+	mayor=#{mayor},
+	mayortelnumber=#{mayortelnumber},
+	mayortel=#{mayortel},
+	contacts=#{contacts},
+	post=#{post},
+	contactstel=#{contactstel},
 	statuspic=#{statuspic},
 	planpic=#{planpic},
-	docking=#{docking}
+	creator=#{creator},
+	updatetime=now()
 	where centertownid=#{centertownid}
 	</update>
 </mapper>
