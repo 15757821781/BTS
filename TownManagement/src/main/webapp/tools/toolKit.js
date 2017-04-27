@@ -190,7 +190,7 @@ var fillForm = function(form,data) {
 		    		$('#'+key).val(value);
 		    	}
 		    	return false;
-		    }else if($("#"+key).attr("multiple")=="multiple"){
+		    }else if($("#"+key).attr("multiple")=="multiple"&&$("#"+key).hasClass("selectpicker")){
 	    		var arr=value.split(",");
 				$('#'+key).selectpicker();
 				$('#'+key).selectpicker('val', arr);
@@ -254,7 +254,7 @@ var selectCreate = function(id,url,data){
 		}
 	});
 }
-
+// 创建区域下拉框
 var createAreaSelect = function(province, city, town) {
 	var html = "<option></option>";
 	$("#"+city).append(html);
@@ -322,4 +322,69 @@ var cityOnChange = function(province, city, town){
 	}
 	$("#"+town).append(html);
 	$("#"+town).selectpicker('refresh');
+}
+
+function showPhotos(djson,fileid){
+    //后台返回json字符串转换为json对象      
+    var reData = eval(djson);  
+    // 预览图片json数据组  
+    var preList = new Array();  
+    for ( var i = 0; i < reData.length; i++) {  
+       var array_element = reData[i];  
+       // 此处指针对.txt判断，其余自行添加  
+//       if(array_element.fileIdFile.name.indexOf("txt")>0){  
+           // 非图片类型的展示  
+//           preList[i]= "<div class='file-preview-other-frame'><div class='file-preview-other'><span class='file-icon-4x'><i class='fa fa-file-text-o text-info'></i></span></div></div>"  
+//       }else{  
+           // 图片类型  
+           preList[i]= "<img src=\"/eim/upload/getIMG.do?savePath="+array_element.fileIdFile.filePath+"&name="+array_element.fileIdFile.name+"\" class=\"file-preview-image\">";  
+//       }  
+    }  
+    var previewJson = preList;  
+    // 与上面 预览图片json数据组 对应的config数据  
+    var preConfigList = new Array();  
+    for ( var i = 0; i < reData.length; i++) {  
+       var array_element = reData[i];  
+       var tjson = {caption: array_element.fileIdFile.fileName, // 展示的文件名  
+                   width: '120px',   
+//                   url: '/eim/project/deleteFile.do', // 删除url  
+                   key: array_element.id, // 删除是Ajax向后台传递的参数  
+                   extra: {id: 100}  
+                   };  
+       preConfigList[i] = tjson;  
+    }  
+    // 具体参数自行查询  
+    $('#'+fileid).fileinput({  
+//        uploadUrl: '/eim/upload/uploadFile.do',  
+        uploadAsync:true,  
+        showCaption: true,  
+        showUpload: true,//是否显示上传按钮
+        showRemove: false,//是否显示删除按钮  
+        showCaption: true,//是否显示输入框  
+        showPreview:true,   
+        showCancel:true,  
+        dropZoneEnabled: false,  
+        maxFileCount: 3,  
+        initialPreviewShowDelete:true,  
+        msgFilesTooMany: "选择上传的文件数量 超过允许的最大数值！",  
+        initialPreview: previewJson,  
+        previewFileIcon: '<i class="fa fa-file"></i>',  
+        allowedPreviewTypes: ['image'],   
+        previewFileIconSettings: {  
+            'docx': '<i class="fa fa-file-word-o text-primary"></i>',  
+            'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',  
+            'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',  
+            'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',  
+            'zip': '<i class="fa fa-file-archive-o text-muted"></i>',  
+            'sql': '<i class="fa fa-file-word-o text-primary"></i>',  
+        },  
+        initialPreviewConfig: preConfigList  
+    }).off('filepreupload').on('filepreupload', function() {  
+//                                 alert(data.url);  
+    }).on("fileuploaded", function(event, outData) {  
+           //文件上传成功后返回的数据， 此处我只保存返回文件的id  
+           var result = outData.response.id;  
+           // 对应的input 赋值  
+           $('#htestlogo').val(result).change();  
+    });  
 }

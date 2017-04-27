@@ -1,5 +1,6 @@
 package com.hkay.weifei.controller;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -7,13 +8,17 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -96,6 +101,29 @@ public class TownController {
 			Log.error("error----------updatetowninfo:" + e.getMessage());
 			e.printStackTrace();
 		}
+		return result;
+	}
+	
+	/**
+	 * 
+		 * 方法名称: uploadStatuspic
+		 * 内容摘要: 上传区位图
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年4月27日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	@RequestMapping("/uploadStatuspic")
+	@ResponseBody 
+	public RetAjax uploadStatuspic(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//转型为MultipartHttpServletRequest 
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request; 
+		//获取文件到map容器中 
+		Map<String,MultipartFile> fileMap = multipartRequest.getFileMap();
+		//获取页面传递过来的路径参数 
+		String path= request.getParameter("folder");
+		System.out.println(path);
 		return result;
 	}
 }

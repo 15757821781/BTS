@@ -47,7 +47,6 @@ public class Tb_zhongxinzhen {
 	private String creator;// 录入员
 	
 	private String search;// 搜索
-
 	
 	public String getCentertownid() {
 		return centertownid;
