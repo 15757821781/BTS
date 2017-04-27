@@ -175,11 +175,17 @@ var fillForm = function(form,data) {
 			var id=values[i].name;
 		    if(id==key){
 		    	if($("#"+key).hasClass("selectpicker")){
-//		    		var arr=value.split(",");
+		    		var arr=value.split(",");
 					$('#'+key).selectpicker();
-//					$('#'+key).selectpicker('val', arr);
-					$("#"+key+" option[text="+value+"]").attr("selected",true);
-//		    		$('#'+key).text(value);
+					$('#'+key).selectpicker('val', arr);
+					if(key=="sys_province"){
+						$("#sys_city option").remove();
+						$("#sys_town option").remove();
+						proOnChange("sys_province", "sys_city", "sys_town");
+					}else if(key=="sys_city"){
+						$("#sys_town option").remove();
+						cityOnChange("sys_province", "sys_city", "sys_town");
+					}
 		    	}else{
 		    		$('#'+key).val(value);
 		    	}
@@ -250,36 +256,45 @@ var selectCreate = function(id,url,data){
 }
 
 var createAreaSelect = function(province, city, town) {
-	var provincehtml = "";
-	var cityhtml = "";
-	var townhtml = "";
-	$("#"+province).append(provincehtml);
-	$("#"+city).append(cityhtml);
-	$("#"+town).append(townhtml);
+	var html = "<option></option>";
+	$("#"+city).append(html);
+	$("#"+town).append(html);
 	$.each(areadata, function(idx, item) {
 		if (parseInt(item.level) == 0) {
-			provincehtml += "<option value='" + item.code + "' exid='" + item.code
+			html += "<option value='" + item.code + "' exid='" + item.code
 					+ "'>" + item.names + "</option>";
-		}else if(parseInt(item.level) == 1){
-			cityhtml += "<option value='" + item.code + "' exid='" + item.code
-			+ "'>" + item.names + "</option>";
-		}else if(parseInt(item.level) == 2){
-			townhtml += "<option value='" + item.code + "' exid='" + item.code
-			+ "'>" + item.names + "</option>";
 		}
 	});
-	$("#"+province).append(provincehtml);
-	$("#"+city).append(cityhtml);
-	$("#"+town).append(townhtml);
+	$("#"+province).append(html);
+	
 	$("#"+province).change(function() {
 		$("#"+city+" option").remove();
 		$("#"+town+" option").remove();
+		$("#"+town).selectpicker('refresh');
 		if ($(this).val() == ""){
 			return;
 		}
-		var code = $(this).find("option:selected").attr("exid");
+		proOnChange(province, city, town);
+	});
+
+	$("#"+city).change(function() {
+		$("#"+town+" option").remove();
+		$("#"+town).selectpicker('refresh');
+		if ($(this).val() == ""){
+			return;
+		}
+		cityOnChange(province, city, town);
+	});
+	$("#" + province).selectpicker('refresh');
+	$("#" + city).selectpicker('refresh');
+	$("#" + town).selectpicker('refresh');
+}
+// 选择省份后触发事件
+var proOnChange = function(province, city, town){
+	var code = $('#'+province).find("option:selected").attr("exid");
+	var html = "<option></option>";
+	if(code!=undefined){
 		code = code.substring(0, 2);
-		var html = "<option></option>";
 		$("#"+town).append(html);
 		$.each(areadata, function(idx, item) {
 			if (parseInt(item.level) == 1 && code == item.code.substring(0, 2)) {
@@ -287,28 +302,24 @@ var createAreaSelect = function(province, city, town) {
 						+ item.code + "'>" + item.names + "</option>";
 			}
 		});
-		$("#"+city).append(html);
-		$("#" + city).selectpicker('refresh');
-	});
-
-	$("#"+city).change(function() {
-		$("#"+town+" option").remove();
-		if ($(this).val() == ""){
-			return;
-		}
-		var code = $(this).find("option:selected").attr("exid");
+	}
+	$("#"+city).append(html);
+	$("#"+city).selectpicker('refresh');
+}
+// 选择城市后触发事件
+var cityOnChange = function(province, city, town){
+	$("#"+town+" option").remove();
+	var code = $('#'+city).find("option:selected").attr("exid");
+	var html = "<option></option>";
+	if(code!=undefined){
 		code = code.substring(0, 4);
-		var html = "<option></option>";
 		$.each(areadata, function(idx, item) {
 			if (parseInt(item.level) == 2 && code == item.code.substring(0, 4)) {
 				html += "<option value='" + item.code + "' exid='"
 						+ item.code + "'>" + item.names + "</option>";
 			}
 		});
-		$("#"+town).append(html);
-		$("#" + town).selectpicker('refresh');
-	});
-	$("#" + province).selectpicker('refresh');
-	$("#" + city).selectpicker('refresh');
-	$("#" + town).selectpicker('refresh');
+	}
+	$("#"+town).append(html);
+	$("#"+town).selectpicker('refresh');
 }

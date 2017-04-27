@@ -7,9 +7,9 @@ public class Tb_zhongxinzhen {
 	private String citypilot;// 是否为小城市试点
 	private String townlevel;// 中心镇等级
 	private String townfeature;//是否为特色小镇
-	private String townprovince;//省
-	private String towncity;//市
-	private String towntown;//县
+	private String sys_province;//省
+	private String sys_city;//市
+	private String sys_town;//县
 	private String cooperation;// 关系情况
 	private String towndatayear;// 数据年度
 	private String hundredcounties;// 是否为百强区县
@@ -289,30 +289,6 @@ public class Tb_zhongxinzhen {
 		this.planpic = planpic;
 	}
 
-	public String getTownprovince() {
-		return townprovince;
-	}
-
-	public void setTownprovince(String townprovince) {
-		this.townprovince = townprovince;
-	}
-
-	public String getTowncity() {
-		return towncity;
-	}
-
-	public void setTowncity(String towncity) {
-		this.towncity = towncity;
-	}
-
-	public String getTowntown() {
-		return towntown;
-	}
-
-	public void setTowntown(String towntown) {
-		this.towntown = towntown;
-	}
-
 	public String getTownfeature() {
 		return townfeature;
 	}
@@ -407,6 +383,30 @@ public class Tb_zhongxinzhen {
 
 	public String getNumber() {
 		return number;
+	}
+
+	public String getSys_province() {
+		return sys_province;
+	}
+
+	public void setSys_province(String sys_province) {
+		this.sys_province = sys_province;
+	}
+
+	public String getSys_city() {
+		return sys_city;
+	}
+
+	public void setSys_city(String sys_city) {
+		this.sys_city = sys_city;
+	}
+
+	public String getSys_town() {
+		return sys_town;
+	}
+
+	public void setSys_town(String sys_town) {
+		this.sys_town = sys_town;
 	}
 
 }
