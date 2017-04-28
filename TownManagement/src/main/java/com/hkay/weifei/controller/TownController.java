@@ -24,8 +24,10 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.TownService;
+import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
+import com.hkay.weifei.util.TypeStatusConstant;
 
 @Controller
 @RequestMapping("/townmanage")
@@ -33,6 +35,7 @@ public class TownController {
 	@Resource
 	private TownService townservice;
 	private RetAjax result;
+	private FileUpload fileupload = new FileUpload();
 	private static  Logger Log =Logger.getLogger(TownController.class);
 	/**
 	 * 新增中心镇信息
@@ -43,8 +46,10 @@ public class TownController {
 	 */
 	@RequestMapping(value="/inserttowninfo")
 	@ResponseBody
-	public RetAjax inserttowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen){
+	public RetAjax inserttowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen,@RequestParam("statusfile") MultipartFile[] files){
 		try {
+			String imgpath=fileupload.fileUpload(files, request,TypeStatusConstant.statusmap);
+			tb_zhongxinzhen.setStatuspic(imgpath);
 			int flag = this.townservice.inserttowninfo(tb_zhongxinzhen);
 			result = RetAjax.onDataBase(flag, 1);
 		} catch (Exception e) {

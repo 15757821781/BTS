@@ -15,7 +15,7 @@ $(document).ready(function() {
 		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
 	});
 	//初始化文件上传控件
-	initFileInput("statuspic");
+	initFileInput("statusfile",3);
 	// 加载省市县信息下拉框
 	createAreaSelect("sys_province","sys_city","sys_town");
 	// 加载气候下拉框
@@ -398,14 +398,14 @@ $(document).ready(function() {
 					}
 				}
 			},
-			statuspic : {
-				validators : {
-					notEmpty : {
-						message : '区位图不能为空'
-					}
-				}
-			},
-			planpic : {
+//			statusfile : {
+//				validators : {
+//					notEmpty : {
+//						message : '区位图不能为空'
+//					}
+//				}
+//			},
+			planfile : {
 				validators : {
 					notEmpty : {
 						message : '规划图不能为空'
@@ -429,23 +429,3 @@ $(document).ready(function() {
 		formSubmit('#townform','townmanage/updatetowninfo','town/townManage.html');
 	});
 });
-//初始化fileinput控件
-function initFileInput(ctrlName) {
-	var control = $('#' + ctrlName);
-	control.fileinput({
-		uploadUrl: '/TownManagement/townmanage/uploadStatuspic', 
-		uploadAsync:true,
-		dropZoneEnabled: false,//是否显示拖拽区域
-		language : 'zh', //设置语言
-		allowedFileExtensions : [ 'jpg', 'png', 'jpeg' ],//接收的文件后缀
-		showUpload : true, //是否显示上传按钮
-		showRemove: false,//是否显示删除按钮  
-		showCaption: true,//是否显示输入框
-		maxFileCount: 3,
-		enctype: 'multipart/form-data',
-		layoutTemplates:{
-			actionUpload: '',
-		},
-        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
-	});
-}
