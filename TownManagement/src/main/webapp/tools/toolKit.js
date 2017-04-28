@@ -388,3 +388,74 @@ function showPhotos(djson,fileid){
            $('#htestlogo').val(result).change();  
     });  
 }
+
+//初始化fileinput控件
+function initFileInput(ctrlName,count) {
+	var control = $('#' + ctrlName);
+	control.fileinput({
+		uploadAsync:false,
+		dropZoneEnabled: false,//是否显示拖拽区域
+		language : 'zh', //设置语言
+		allowedFileExtensions : [ 'jpg', 'png', 'jpeg' ],//接收的文件后缀
+		showUpload : false, //是否显示上传按钮
+		showRemove: false,//是否显示删除按钮  
+		showCaption: true,//是否显示输入框
+		maxFileCount: count,
+		layoutTemplates:{
+			actionUpload: '',
+		},
+		previewSettings:{
+			image:{width: "100px", height: "100px"}
+		},
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
+	});
+}
+//详情初始化
+function initDeatilFileInput(ctrlName,count,data) {
+	var local = window.location;
+	var contextPath = local.pathname.split("/")[1];
+	var basePath = local.protocol + "//" + local.host;
+    //后台返回json字符串转换为json对象      
+//    var reData = eval(data);  
+    var reData = data.split(",");
+    // 预览图片json数据组  
+    var preList = new Array();
+    var preConfigList = new Array();
+    for ( var i = 0; i < reData.length; i++) {
+		if (reData[i] != "") {
+			var name = reData[i].substring(reData[i].lastIndexOf("/"));
+			name = name.replace("/", "")
+			preList[i] = "<img src=" + basePath + reData[i]	+ " class='file-preview-image kv-preview-data' style='width:100px;height:100px;' alt="+name+" title="+name+">";
+			var tjson = {
+				// 展示的文件名
+				caption : name,
+				url:'',
+				width:'100px',
+		        key: i, 
+		        extra: {id: 100}
+			};
+			preConfigList[i] = tjson;  
+		}
+    }  
+    var previewJson = preList;  
+	var control = $('#' + ctrlName);
+	control.fileinput('refresh',{
+		uploadAsync:false,
+		dropZoneEnabled: false,//是否显示拖拽区域
+		language : 'zh', //设置语言
+		allowedFileExtensions : [ 'jpg', 'png', 'jpeg' ],//接收的文件后缀
+		showUpload : false, //是否显示上传按钮
+		showRemove: false,//是否显示删除按钮  
+		showCaption: true,//是否显示输入框
+		maxFileCount: count,
+		layoutTemplates:{
+			actionUpload: '',
+		},
+		previewSettings:{
+			image:{width: "100px", height: "100px"}
+		},
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+		initialPreview: previewJson,
+        initialPreviewConfig: preConfigList
+	});
+}
