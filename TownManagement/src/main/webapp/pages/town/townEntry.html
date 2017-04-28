@@ -10,7 +10,7 @@
 <!-- 时间插件 -->
 <link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
 <!-- 文件上传插件 -->
-<link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
 </head>
 <body>
 	<div class="row">
@@ -21,7 +21,7 @@
 	<!-- /page头 -->
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<form class="form-horizontal" role="form"
+			<form class="form-horizontal" role="form" 
 				enctype="multipart/form-data" id="townform" method="post">
 				<!-- 表单 -->
 				<div class="form-group">
@@ -106,7 +106,8 @@
 					<label class="col-sm-2 control-label">数据年度</label>
 					<div class="col-sm-2">
 						<input name="towndatayear" id="towndatayear"
-							class="datepicker form-control" type="text">
+							class="datepicker form-control" type="text" 
+							placeholder="选择数据年度">
 					</div>
 					<label class="col-sm-2 control-label">全国百强区县</label>
 					<div class="col-sm-2">
@@ -289,13 +290,18 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">区位图</label>
-					<div class="col-sm-2">
-						<input name="statuspic" id="statuspic" class="form-control" type="text">
+					<div class="col-sm-10">
+						<input name="statusfile" id="statusfile" type="file"  multiple class="file-loading">
 					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-2 control-label">规划图</label>
-					<div class="col-sm-2">
-						<input name="planpic" id="planpic" class="form-control" type="text">
+					<div class="col-sm-10">
+						<input name="planpic" id="planpic" class="form-control"
+							type="text">
 					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-2 control-label">录入员</label>
 					<div class="col-sm-2">
 						<input name="creator" id="creator" class="form-control"
@@ -327,7 +333,7 @@
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
 	<!-- 文件上传插件 -->
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
-	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script>
 	<script type="text/javascript" src="/TownManagement/js/town/townEntry.js"></script>
 </body>
 </html>

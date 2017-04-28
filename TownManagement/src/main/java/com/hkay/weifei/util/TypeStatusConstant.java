@@ -43,4 +43,15 @@ public class TypeStatusConstant {
 	public static final String updatesuccess="updatesuccess";
 	public static final String updatefail="updatefail";
 	
+	/**
+	 * 文件上传
+	 */
+	/**
+	 * 区位图
+	 */
+	public static final String statusmap="statusmap/";
+	/**
+	 * 规划图
+	 */
+	public static final String planmap="planmap/";
 }

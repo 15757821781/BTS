@@ -85,6 +85,7 @@ function querytowndetail(centertownid) {
 		cache : false,
 		succ : function(data, status) {
 			fillForm('#townform',data);
+			initDeatilFileInput('statusfile',3,data.data[0].statuspic);
 			$("#towninfomodal").modal('show');
 			$("#townentry_submit").hide();
 		}
@@ -99,6 +100,7 @@ function updatetowninfo(centertownid){
 		cache : false,
 		succ : function(data, status) {
 			fillForm('#townform',data);
+			initDeatilFileInput('statusfile',3,data.statuspic);
 			$("#towninfomodal").modal('show');
 			$("#townentry_submit").hide();
 			$("#townentry_update").show();

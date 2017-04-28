@@ -14,6 +14,8 @@ $(document).ready(function() {
         // 当用户改变值的时候进行验证
 		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
 	});
+	//初始化文件上传控件
+	initFileInput("statusfile",3);
 	// 加载省市县信息下拉框
 	createAreaSelect("sys_province","sys_city","sys_town");
 	// 加载气候下拉框
@@ -396,14 +398,14 @@ $(document).ready(function() {
 					}
 				}
 			},
-			statuspic : {
-				validators : {
-					notEmpty : {
-						message : '区位图不能为空'
-					}
-				}
-			},
-			planpic : {
+//			statusfile : {
+//				validators : {
+//					notEmpty : {
+//						message : '区位图不能为空'
+//					}
+//				}
+//			},
+			planfile : {
 				validators : {
 					notEmpty : {
 						message : '规划图不能为空'
