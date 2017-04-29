@@ -85,7 +85,7 @@ function querytowndetail(centertownid) {
 		cache : false,
 		succ : function(data, status) {
 			fillForm('#townform',data);
-			initDeatilFileInput('statusfile',3,data.data[0].statuspic);
+			initDeatilFileInput('statusfile',data.data[0].statuspic);
 			$("#towninfomodal").modal('show');
 			$("#townentry_submit").hide();
 		}
@@ -100,7 +100,13 @@ function updatetowninfo(centertownid){
 		cache : false,
 		succ : function(data, status) {
 			fillForm('#townform',data);
-			initDeatilFileInput('statusfile',3,data.statuspic);
+			var param={
+					tablename : 'tb_zhongxinzhen',
+					field : 'statuspic',
+					id : 'centertownid' ,
+					value : data.data[0].statuspic
+			}
+			initDeatilFileInput('statusfile',data.data[0].statuspic,param);
 			$("#towninfomodal").modal('show');
 			$("#townentry_submit").hide();
 			$("#townentry_update").show();

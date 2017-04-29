@@ -50,4 +50,8 @@
 		select a.id as value,a.name from tb_direction_industry a
 		where 1=1
 	</select>
+	<!-- 更新图片 -->
+	<update id="updatePic" parameterType="com.hkay.weifei.pojo.Condition">
+		update ${tablename} set ${field}=#{value} where ${primary}=#{id}
+	</update>
 </mapper>

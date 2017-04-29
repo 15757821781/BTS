@@ -324,71 +324,6 @@ var cityOnChange = function(province, city, town){
 	$("#"+town).selectpicker('refresh');
 }
 
-function showPhotos(djson,fileid){
-    //后台返回json字符串转换为json对象      
-    var reData = eval(djson);  
-    // 预览图片json数据组  
-    var preList = new Array();  
-    for ( var i = 0; i < reData.length; i++) {  
-       var array_element = reData[i];  
-       // 此处指针对.txt判断，其余自行添加  
-//       if(array_element.fileIdFile.name.indexOf("txt")>0){  
-           // 非图片类型的展示  
-//           preList[i]= "<div class='file-preview-other-frame'><div class='file-preview-other'><span class='file-icon-4x'><i class='fa fa-file-text-o text-info'></i></span></div></div>"  
-//       }else{  
-           // 图片类型  
-           preList[i]= "<img src=\"/eim/upload/getIMG.do?savePath="+array_element.fileIdFile.filePath+"&name="+array_element.fileIdFile.name+"\" class=\"file-preview-image\">";  
-//       }  
-    }  
-    var previewJson = preList;  
-    // 与上面 预览图片json数据组 对应的config数据  
-    var preConfigList = new Array();  
-    for ( var i = 0; i < reData.length; i++) {  
-       var array_element = reData[i];  
-       var tjson = {caption: array_element.fileIdFile.fileName, // 展示的文件名  
-                   width: '120px',   
-//                   url: '/eim/project/deleteFile.do', // 删除url  
-                   key: array_element.id, // 删除是Ajax向后台传递的参数  
-                   extra: {id: 100}  
-                   };  
-       preConfigList[i] = tjson;  
-    }  
-    // 具体参数自行查询  
-    $('#'+fileid).fileinput({  
-//        uploadUrl: '/eim/upload/uploadFile.do',  
-        uploadAsync:true,  
-        showCaption: true,  
-        showUpload: true,//是否显示上传按钮
-        showRemove: false,//是否显示删除按钮  
-        showCaption: true,//是否显示输入框  
-        showPreview:true,   
-        showCancel:true,  
-        dropZoneEnabled: false,  
-        maxFileCount: 3,  
-        initialPreviewShowDelete:true,  
-        msgFilesTooMany: "选择上传的文件数量 超过允许的最大数值！",  
-        initialPreview: previewJson,  
-        previewFileIcon: '<i class="fa fa-file"></i>',  
-        allowedPreviewTypes: ['image'],   
-        previewFileIconSettings: {  
-            'docx': '<i class="fa fa-file-word-o text-primary"></i>',  
-            'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',  
-            'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',  
-            'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',  
-            'zip': '<i class="fa fa-file-archive-o text-muted"></i>',  
-            'sql': '<i class="fa fa-file-word-o text-primary"></i>',  
-        },  
-        initialPreviewConfig: preConfigList  
-    }).off('filepreupload').on('filepreupload', function() {  
-//                                 alert(data.url);  
-    }).on("fileuploaded", function(event, outData) {  
-           //文件上传成功后返回的数据， 此处我只保存返回文件的id  
-           var result = outData.response.id;  
-           // 对应的input 赋值  
-           $('#htestlogo').val(result).change();  
-    });  
-}
-
 //初始化fileinput控件
 function initFileInput(ctrlName,count) {
 	var control = $('#' + ctrlName);
@@ -401,49 +336,62 @@ function initFileInput(ctrlName,count) {
 		showRemove: false,//是否显示删除按钮  
 		showCaption: true,//是否显示输入框
 		maxFileCount: count,
+//		initialPreviewCount : count,
+		validateInitialCount:true,
+		overwriteInitial:false,
 		layoutTemplates:{
 			actionUpload: '',
 		},
 		previewSettings:{
-			image:{width: "100px", height: "100px"}
+			image:{width: "200px", height: "160px"}
 		},
         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
 	});
 }
 //详情初始化
-function initDeatilFileInput(ctrlName,count,data) {
+function initDeatilFileInput(ctrlName,data,param) {
 	var local = window.location;
 	var contextPath = local.pathname.split("/")[1];
 	var basePath = local.protocol + "//" + local.host;
-    //后台返回json字符串转换为json对象      
-//    var reData = eval(data);  
-    var reData = data.split(",");
     // 预览图片json数据组  
     var preList = new Array();
     var preConfigList = new Array();
+    var reData = data.split(",");
     for ( var i = 0; i < reData.length; i++) {
 		if (reData[i] != "") {
 			var name = reData[i].substring(reData[i].lastIndexOf("/"));
 			name = name.replace("/", "")
-			preList[i] = "<img src=" + basePath + reData[i]	+ " class='file-preview-image kv-preview-data' alt="+name+" title="+name+">";
+			preList[i] = "<img src="+ basePath + reData[i]
+					+ " class='file-preview-image' "
+					+ "style='width:200px;height:160px;max-width:100%;max-height:100%;' "
+					+ "alt=" + name + " title=" + name + ">";
 			var tjson = {
 				// 展示的文件名
+				url:'/TownManagement/conditionmanage/deletePic',
 				caption : name,
-				url:'',
-				width:'100px',
-		        key: i, 
-		        extra: {id: 100}
+		        key : reData[i]
 			};
 			preConfigList[i] = tjson;  
 		}
-    }  
-    var previewJson = preList;  
+    }
 	var control = $('#' + ctrlName);
 	control.fileinput('refresh',{
-		maxImageWidth: 100,//图片的最大宽度
-		maxImageHeight: 100,//图片的最大高度
-		resizeImage:true,
-		initialPreview: previewJson,
-        initialPreviewConfig: preConfigList
+		initialPreview: preList,
+        initialPreviewConfig: preConfigList,
+        deleteExtraData : function() {
+            return {
+            value: $("#"+param.field).val(),
+        	tablename : param.tablename,
+        	field : param.field,
+        	id : $("#"+param.id).val(),
+        	primary : param.id}
+        },
+        layoutTemplates : {
+        	zoomCache : ''
+        }
+	});
+	control.on('filedeleted', function(event, data, result) {
+		var value = JSON.parse(result.responseText);
+		$("#"+param.field).val(value.data);
 	});
 }

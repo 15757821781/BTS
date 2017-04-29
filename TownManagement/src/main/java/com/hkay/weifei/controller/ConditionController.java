@@ -1,7 +1,7 @@
 package com.hkay.weifei.controller;
 
-import java.awt.geom.Area;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hkay.weifei.pojo.Condition;
@@ -146,6 +147,35 @@ public class ConditionController {
 	public RetAjax queryDirIndustry(HttpServletRequest request, Condition condition) {
 		List<Condition> conditions = this.conditionservice.queryDirIndustry();
 		result = RetAjax.onSuccess(conditions, "");
+		return result;
+	}
+	
+	/**
+	 * 删除图片
+	 * @param request
+	 * @param picname
+	 * @param extra
+	 * @return
+	 */
+	@RequestMapping("/deletePic")
+	@ResponseBody
+	public RetAjax deletePic(HttpServletRequest request,Condition condition) {
+		try {
+			if(!condition.getTablename().equals("")&&condition.getId()!=0){
+				String key = condition.getKey()+",";
+				String value = condition.getValue();
+				value = value.replace(key, "");
+				condition.setValue(value);
+				int flag = this.conditionservice.updatePic(condition);
+				if(flag==1){
+					result = RetAjax.onSuccess(value, "删除成功");
+					System.out.println(condition.getValue());
+				}
+			}
+		} catch (Exception e) {
+			Log.error("图片删除失败---deletePic:"+e.getMessage());
+			e.printStackTrace();
+		}
 		return result;
 	}
 }
