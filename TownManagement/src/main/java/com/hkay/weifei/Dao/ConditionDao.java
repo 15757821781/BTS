@@ -20,4 +20,6 @@ public interface ConditionDao {
 
 	List<Condition> queryDirIndustry();
 
+	int updatePic(Condition condition);
+
 }

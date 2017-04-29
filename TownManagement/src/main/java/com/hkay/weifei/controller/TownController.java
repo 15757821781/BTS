@@ -48,7 +48,7 @@ public class TownController {
 	@ResponseBody
 	public RetAjax inserttowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen,@RequestParam("statusfile") MultipartFile[] files){
 		try {
-			String imgpath=fileupload.fileUpload(files, request,TypeStatusConstant.statusmap);
+			String imgpath=fileupload.fileUpload(files, request,TypeStatusConstant.statusmap,"");
 			tb_zhongxinzhen.setStatuspic(imgpath);
 			int flag = this.townservice.inserttowninfo(tb_zhongxinzhen);
 			result = RetAjax.onDataBase(flag, 1);
@@ -98,8 +98,10 @@ public class TownController {
 	 */
 	@RequestMapping(value="/updatetowninfo")
 	@ResponseBody
-	public RetAjax updatetowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen){
+	public RetAjax updatetowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen,@RequestParam("statusfile") MultipartFile[] files){
 		try {
+			String imgpath=fileupload.fileUpload(files, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getStatuspic());
+			tb_zhongxinzhen.setStatuspic(imgpath);
 			int flag = this.townservice.updatetowninfo(tb_zhongxinzhen);
 			result = RetAjax.onDataBase(flag, 3);
 		} catch (Exception e) {

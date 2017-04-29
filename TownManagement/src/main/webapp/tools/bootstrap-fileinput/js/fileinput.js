@@ -3407,6 +3407,7 @@
         },
         refresh: function (options) {
             var self = this, $el = self.$element;
+            self.options.initialPreview=options.initialPreview;
             options = options ? $.extend(true, {}, self.options, options) : self.options;
             self.destroy();
             $el.fileinput(options);
