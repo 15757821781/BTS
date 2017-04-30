@@ -15,7 +15,11 @@ $(document).ready(function() {
 		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
 	});
 	//初始化文件上传控件
-	initFileInput("statusfile",3);
+	initFileInput("statusfile1","城市背景图",1);
+	initFileInput("statusfile2","区县背景图",1);
+	initFileInput("statusfile3","行政范围图",1);
+	initFileInput("planfile1","总体规划图",1);
+	initFileInput("planfile2","详细规划图",1);
 	// 加载省市县信息下拉框
 	createAreaSelect("sys_province","sys_city","sys_town");
 	// 加载气候下拉框

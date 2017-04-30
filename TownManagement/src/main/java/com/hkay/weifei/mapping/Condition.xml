@@ -52,6 +52,6 @@
 	</select>
 	<!-- 更新图片 -->
 	<update id="updatePic" parameterType="com.hkay.weifei.pojo.Condition">
-		update ${tablename} set ${field}=#{value} where ${primary}=#{id}
+		update ${tbname} set ${field}=#{value} where ${primary}=#{id}
 	</update>
 </mapper>

@@ -42,12 +42,55 @@ public class Tb_zhongxinzhen {
 	private String contacts;// 联系人
 	private String post;// 职务
 	private int contactstel;// 联系方式
-	private String statuspic;// 区位图
-	private String planpic;// 规划图
+	private String citypic;//地市背景
+	private String townpic;//区县背景
+	private String scopeopic;//行政范围图
+	private String totalplanpic;// 城镇总体规划
+	private String detailplanpic;// 控制性详细规划
 	private String creator;// 录入员
 	
 	private String search;// 搜索
 	
+	public String getTotalplanpic() {
+		return totalplanpic;
+	}
+
+	public void setTotalplanpic(String totalplanpic) {
+		this.totalplanpic = totalplanpic;
+	}
+
+	public String getDetailplanpic() {
+		return detailplanpic;
+	}
+
+	public void setDetailplanpic(String detailplanpic) {
+		this.detailplanpic = detailplanpic;
+	}
+
+	public String getCitypic() {
+		return citypic;
+	}
+
+	public void setCitypic(String citypic) {
+		this.citypic = citypic;
+	}
+
+	public String getTownpic() {
+		return townpic;
+	}
+
+	public void setTownpic(String townpic) {
+		this.townpic = townpic;
+	}
+
+	public String getScopeopic() {
+		return scopeopic;
+	}
+
+	public void setScopeopic(String scopeopic) {
+		this.scopeopic = scopeopic;
+	}
+
 	public String getCentertownid() {
 		return centertownid;
 	}
@@ -270,22 +313,6 @@ public class Tb_zhongxinzhen {
 
 	public void setHistoryculture(String historyculture) {
 		this.historyculture = historyculture;
-	}
-
-	public String getStatuspic() {
-		return statuspic;
-	}
-
-	public void setStatuspic(String statuspic) {
-		this.statuspic = statuspic;
-	}
-
-	public String getPlanpic() {
-		return planpic;
-	}
-
-	public void setPlanpic(String planpic) {
-		this.planpic = planpic;
 	}
 
 	public String getTownfeature() {
