@@ -1,6 +1,5 @@
 package com.hkay.weifei.controller;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -8,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -46,10 +42,21 @@ public class TownController {
 	 */
 	@RequestMapping(value="/inserttowninfo")
 	@ResponseBody
-	public RetAjax inserttowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen,@RequestParam("statusfile") MultipartFile[] files){
+	public RetAjax inserttowninfo(HttpServletRequest request, Tb_zhongxinzhen tb_zhongxinzhen,
+			@RequestParam("statusfile1") MultipartFile[] files1, @RequestParam("statusfile2") MultipartFile[] files2,
+			@RequestParam("statusfile3") MultipartFile[] files3,@RequestParam("planfile1") MultipartFile[] files4,
+			@RequestParam("planfile2") MultipartFile[] files5) {
 		try {
-			String imgpath=fileupload.fileUpload(files, request,TypeStatusConstant.statusmap,"");
-			tb_zhongxinzhen.setStatuspic(imgpath);
+			String imgpath1 = fileupload.fileUpload(files1, request, TypeStatusConstant.statusmap, "");
+			String imgpath2 = fileupload.fileUpload(files2, request, TypeStatusConstant.statusmap, "");
+			String imgpath3 = fileupload.fileUpload(files3, request, TypeStatusConstant.statusmap, "");
+			String imgpath4 = fileupload.fileUpload(files4, request, TypeStatusConstant.statusmap, "");
+			String imgpath5 = fileupload.fileUpload(files5, request, TypeStatusConstant.statusmap, "");
+			tb_zhongxinzhen.setCitypic(imgpath1);
+			tb_zhongxinzhen.setTownpic(imgpath2);
+			tb_zhongxinzhen.setScopeopic(imgpath3);
+			tb_zhongxinzhen.setTotalplanpic(imgpath4);
+			tb_zhongxinzhen.setDetailplanpic(imgpath5);
 			int flag = this.townservice.inserttowninfo(tb_zhongxinzhen);
 			result = RetAjax.onDataBase(flag, 1);
 		} catch (Exception e) {
@@ -98,39 +105,27 @@ public class TownController {
 	 */
 	@RequestMapping(value="/updatetowninfo")
 	@ResponseBody
-	public RetAjax updatetowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen,@RequestParam("statusfile") MultipartFile[] files){
+	public RetAjax updatetowninfo(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen,
+			@RequestParam("statusfile1") MultipartFile[] files1, @RequestParam("statusfile2") MultipartFile[] files2,
+			@RequestParam("statusfile3") MultipartFile[] files3,@RequestParam("planfile1") MultipartFile[] files4,
+			@RequestParam("planfile2") MultipartFile[] files5){
 		try {
-			String imgpath=fileupload.fileUpload(files, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getStatuspic());
-			tb_zhongxinzhen.setStatuspic(imgpath);
+			String imgpath1=fileupload.fileUpload(files1, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getCitypic());
+			String imgpath2=fileupload.fileUpload(files2, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getTownpic());
+			String imgpath3=fileupload.fileUpload(files3, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getScopeopic());
+			String imgpath4=fileupload.fileUpload(files4, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getTotalplanpic());
+			String imgpath5=fileupload.fileUpload(files5, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getDetailplanpic());
+			tb_zhongxinzhen.setCitypic(imgpath1);
+			tb_zhongxinzhen.setTownpic(imgpath2);
+			tb_zhongxinzhen.setScopeopic(imgpath3);
+			tb_zhongxinzhen.setTotalplanpic(imgpath4);
+			tb_zhongxinzhen.setDetailplanpic(imgpath5);
 			int flag = this.townservice.updatetowninfo(tb_zhongxinzhen);
 			result = RetAjax.onDataBase(flag, 3);
 		} catch (Exception e) {
 			Log.error("error----------updatetowninfo:" + e.getMessage());
 			e.printStackTrace();
 		}
-		return result;
-	}
-	
-	/**
-	 * 
-		 * 方法名称: uploadStatuspic
-		 * 内容摘要: 上传区位图
-		 * 创建人：zhuwenjie
-		 * 创建日期： 2017年4月27日
-		 * 修改人：
-		 * 修改内容：
-		 * 修改日期：
-	 */
-	@RequestMapping("/uploadStatuspic")
-	@ResponseBody 
-	public RetAjax uploadStatuspic(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//转型为MultipartHttpServletRequest 
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request; 
-		//获取文件到map容器中 
-		Map<String,MultipartFile> fileMap = multipartRequest.getFileMap();
-		//获取页面传递过来的路径参数 
-		String path= request.getParameter("folder");
-		System.out.println(path);
 		return result;
 	}
 }

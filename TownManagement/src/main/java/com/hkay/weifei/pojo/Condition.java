@@ -15,9 +15,17 @@ public class Condition {
 	 */
 	private String primary;//主键
 	private String key;//图片名称
-	private String tablename;// 表名
+	private String tbname;// 表名
 	private String field;// 字段名
 	
+	public String getTbname() {
+		return tbname;
+	}
+
+	public void setTbname(String tbname) {
+		this.tbname = tbname;
+	}
+
 	public String getPrimary() {
 		return primary;
 	}
@@ -32,14 +40,6 @@ public class Condition {
 
 	public void setKey(String key) {
 		this.key = key;
-	}
-
-	public String getTablename() {
-		return tablename;
-	}
-
-	public void setTablename(String tablename) {
-		this.tablename = tablename;
 	}
 
 	public String getField() {

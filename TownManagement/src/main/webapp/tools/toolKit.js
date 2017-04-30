@@ -325,10 +325,11 @@ var cityOnChange = function(province, city, town){
 }
 
 //初始化fileinput控件
-function initFileInput(ctrlName,count) {
+function initFileInput(ctrlName,msg,count) {
 	var control = $('#' + ctrlName);
 	control.fileinput({
 		uploadAsync:false,
+		browseLabel : msg,
 		dropZoneEnabled: false,//是否显示拖拽区域
 		language : 'zh', //设置语言
 		allowedFileExtensions : [ 'jpg', 'png', 'jpeg' ],//接收的文件后缀
@@ -336,40 +337,37 @@ function initFileInput(ctrlName,count) {
 		showRemove: false,//是否显示删除按钮  
 		showCaption: true,//是否显示输入框
 		maxFileCount: count,
-//		initialPreviewCount : count,
 		validateInitialCount:true,
 		overwriteInitial:false,
-		layoutTemplates:{
-			actionUpload: '',
-		},
 		previewSettings:{
-			image:{width: "200px", height: "160px"}
+			image:{width: "92%", height: "100%"}
 		},
         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
 	});
 }
 //详情初始化
-function initDeatilFileInput(ctrlName,data,param) {
+function initDeatilFileInput(ctrlName,param) {
 	var local = window.location;
 	var contextPath = local.pathname.split("/")[1];
 	var basePath = local.protocol + "//" + local.host;
     // 预览图片json数据组  
     var preList = new Array();
     var preConfigList = new Array();
-    var reData = data.split(",");
+    var reData = param.value.split(",");
     for ( var i = 0; i < reData.length; i++) {
 		if (reData[i] != "") {
 			var name = reData[i].substring(reData[i].lastIndexOf("/"));
 			name = name.replace("/", "")
 			preList[i] = "<img src="+ basePath + reData[i]
 					+ " class='file-preview-image' "
-					+ "style='width:200px;height:160px;max-width:100%;max-height:100%;' "
+					+ "style='width: 92%;height:90%;' "
 					+ "alt=" + name + " title=" + name + ">";
 			var tjson = {
 				// 展示的文件名
 				url:'/TownManagement/conditionmanage/deletePic',
 				caption : name,
-		        key : reData[i]
+		        key : reData[i],
+		        showDelete : param.showdelete
 			};
 			preConfigList[i] = tjson;  
 		}
@@ -381,13 +379,10 @@ function initDeatilFileInput(ctrlName,data,param) {
         deleteExtraData : function() {
             return {
             value: $("#"+param.field).val(),
-        	tablename : param.tablename,
+            tbname : param.tbname,
         	field : param.field,
         	id : $("#"+param.id).val(),
         	primary : param.id}
-        },
-        layoutTemplates : {
-        	zoomCache : ''
         }
 	});
 	control.on('filedeleted', function(event, data, result) {

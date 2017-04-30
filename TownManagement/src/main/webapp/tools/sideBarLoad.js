@@ -2,7 +2,6 @@
 $(document).ready(function() {
   	    tk.ajax({
  	        url: "/TownManagement/wflx/loadPages",
- 	       	async: false,
  	       	dataType: "json",
  	        succ: function(list){
 	        	if(list.data.length!=0){
@@ -21,26 +20,27 @@ $(document).ready(function() {
 	        		    }
 	        		}); 
 	        	}
-	 	   	    $.ajax({
-	 		         url: "/TownManagement/pages/town/townManage.html",
-	 		         cache: false,
-	 		         success: function(html){
-	 		             $("#page-wrapper").html(html);
-	 		         }
-	 		     });	
+	    	    $('#side-menu li').click(function(){
+	    	        var current = $(this),  
+	    	        target = current.find('a').attr('target');
+	    	        if(target!=null&&target!=undefined){
+	    	        	$.ajax({
+	    	   	         url: target,
+	    	   	         cache: false,
+	    	   	         success: function(html){
+	    	   	             $("#page-wrapper").html(html);
+	    	   	         }
+	    	   	     });
+	    	        }
+	    	    }); 
+	        	$('#side-menu').metisMenu();
  	        }
  	    });
-	    $('#side-menu li').click(function(){
-	        var current = $(this),  
-	        target = current.find('a').attr('target');
-	        if(target!=null&&target!=undefined){
-	        	$.ajax({
-	   	         url: target,
-	   	         cache: false,
-	   	         success: function(html){
-	   	             $("#page-wrapper").html(html);
-	   	         }
-	   	     });
-	        }
-	    }); 
+	    $.ajax({
+	         url: "/TownManagement/pages/town/townManage.html",
+	         cache: false,
+	         success: function(html){
+	             $("#page-wrapper").html(html);
+	         }
+	     });
 	}) 

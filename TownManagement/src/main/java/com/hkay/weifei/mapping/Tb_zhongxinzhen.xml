@@ -46,8 +46,11 @@
 	contacts,
 	post,
 	contactstel,
-	statuspic,
-	planpic,
+	citypic,
+	townpic,
+	scopeopic,
+	totalplanpic,
+	detailplanpic,
 	creator,
 	updatetime)
 	values
@@ -92,8 +95,11 @@
 	#{contacts},
 	#{post},
 	#{contactstel},
-	#{statuspic},
-	#{planpic},
+	#{citypic},
+	#{townpic},
+	#{scopeopic},
+	#{totalplanpic},
+	#{detailplanpic},
 	#{creator},
 	now())
 	</insert>
@@ -157,8 +163,11 @@
 		t.contacts,
 		t.post,
 		t.contactstel,
-		t.statuspic,
-		t.planpic,
+		t.citypic,
+		t.townpic,
+		t.scopeopic,
+		t.totalplanpic,
+		t.detailplanpic,
 		t.creator from tb_zhongxinzhen t where t.centertownid=#{centertownid}
 	</select>
 	<update id="updatetowninfo" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen">
@@ -204,8 +213,11 @@
 	contacts=#{contacts},
 	post=#{post},
 	contactstel=#{contactstel},
-	statuspic=#{statuspic},
-	planpic=#{planpic},
+	citypic=#{citypic},
+	townpic=#{townpic},
+	scopeopic=#{scopeopic},
+	totalplanpic=#{totalplanpic},
+	detailplanpic=#{detailplanpic},
 	creator=#{creator},
 	updatetime=now()
 	where centertownid=#{centertownid}
