@@ -195,6 +195,8 @@ var fillForm = function(form,data) {
 				$('#'+key).selectpicker();
 				$('#'+key).selectpicker('val', arr);
 				return false;
+		    }else if($("#"+key).attr("disabled")=="disabled"){
+		    	$('#'+key).val(value);
 		    }
 		});  
 	});

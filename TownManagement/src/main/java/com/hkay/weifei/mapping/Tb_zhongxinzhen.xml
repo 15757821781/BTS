@@ -10,7 +10,7 @@
 	number,
 	citypilot,
 	townlevel,
-	townfeature,
+<!-- 	townfeature, -->
 	province,
 	city,
 	town,
@@ -59,7 +59,7 @@
 	#{number},
 	#{citypilot},
 	#{townlevel},
-	#{townfeature},
+<!-- 	#{townfeature}, -->
 	#{sys_province},
 	#{sys_city},
 	#{sys_town},
@@ -127,7 +127,7 @@
 		t.number,
 		t.citypilot,
 		t.townlevel ,
-		t.townfeature ,
+<!-- 		t.townfeature , -->
 		t.province as sys_province,
 		t.city as sys_city,
 		t.town as sys_town,
@@ -177,7 +177,7 @@
 	number=#{number},
 	citypilot=#{citypilot},
 	townlevel=#{townlevel},
-	townfeature=#{townfeature},
+<!-- 	townfeature=#{townfeature}, -->
 	province=#{sys_province},
 	city=#{sys_city},
 	town=#{sys_town},

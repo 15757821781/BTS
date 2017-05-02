@@ -1,11 +1,21 @@
 package com.hkay.weifei.pojo;
 
 public class Tb_user {
-	private int id;
+	private int id;//用户ID
 
-	private String account;
+	private String account;//用户帐号
 
-	private String password;
+	private String password;//密码
+	
+	private String number;//编号
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
 
 	public String getAccount() {
 		return account;
