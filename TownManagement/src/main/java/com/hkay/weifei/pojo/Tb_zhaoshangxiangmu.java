@@ -2,16 +2,16 @@ package com.hkay.weifei.pojo;
 
 public class Tb_zhaoshangxiangmu {
 	private int invid;
-	private String invname;//政府招商项目名称
+	private String invname;//项目名称
 	private int invnumber;//项目编号
 	private String invarea;//所属地区
-	private String invlocal;//所在镇/街道/开发区
+	private String invlocal;//乡镇街道/开发区
 	private String invjoinway;//合作方式
 	private String invcharge;//主管单位
 	private String invindustry;//所属行业
 	private double invlandscale;//用地规模
 	private double invplotratio;//容积率
-	private String invplanuse;//规划用途
+	private String invplanuse;//土地用途
 	private double investment;//投资强度
 	private double investmentall;//投资总额
 	private double invexpectbuild;//预计建设期
@@ -21,18 +21,15 @@ public class Tb_zhaoshangxiangmu {
 	private String invincentives;//优惠政策
 	private String invessential;//要素分析
 	private String invbenefit;//效益分析
-	private String invremark;//备注
-	private String invunit;//联系单位
+//	private String invremark;//备注
+	private String invstatemap;//区位图
+	private String invplanmap;//规划图
+//	private String invunit;//联系单位
 	private String invcontact;//联系人
-	private String invcontactway;//联系方式
+	private String invcallnumber;//联系电话
 	private String search;//搜索内容
-	
-	public String getSearch() {
-		return search;
-	}
-	public void setSearch(String search) {
-		this.search = search;
-	}
+	private String invpost;//职务
+	private String inventry;//录入员
 	public int getInvid() {
 		return invid;
 	}
@@ -153,17 +150,17 @@ public class Tb_zhaoshangxiangmu {
 	public void setInvbenefit(String invbenefit) {
 		this.invbenefit = invbenefit;
 	}
-	public String getInvremark() {
-		return invremark;
+	public String getInvstatemap() {
+		return invstatemap;
 	}
-	public void setInvremark(String invremark) {
-		this.invremark = invremark;
+	public void setInvstatemap(String invstatemap) {
+		this.invstatemap = invstatemap;
 	}
-	public String getInvunit() {
-		return invunit;
+	public String getInvplanmap() {
+		return invplanmap;
 	}
-	public void setInvunit(String invunit) {
-		this.invunit = invunit;
+	public void setInvplanmap(String invplanmap) {
+		this.invplanmap = invplanmap;
 	}
 	public String getInvcontact() {
 		return invcontact;
@@ -171,11 +168,30 @@ public class Tb_zhaoshangxiangmu {
 	public void setInvcontact(String invcontact) {
 		this.invcontact = invcontact;
 	}
-	public String getInvcontactway() {
-		return invcontactway;
+	public String getInvcallnumber() {
+		return invcallnumber;
 	}
-	public void setInvcontactway(String invcontactway) {
-		this.invcontactway = invcontactway;
+	public void setInvcallnumber(String invcallnumber) {
+		this.invcallnumber = invcallnumber;
 	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public String getInvpost() {
+		return invpost;
+	}
+	public void setInvpost(String invpost) {
+		this.invpost = invpost;
+	}
+	public String getInventry() {
+		return inventry;
+	}
+	public void setInventry(String inventry) {
+		this.inventry = inventry;
+	}
+	
 	
 }

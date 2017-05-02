@@ -1,222 +1,285 @@
 package com.hkay.weifei.pojo;
 
 public class Tb_lianmengdanwei {
-	private String allid; // 联盟单位ID
-	private String allname;// 联盟单位名称
-	private String allnumber;// 联盟单位编号
-	private String allnature;// 单位性质
-	private String alllisted;// 上市公司
-	private String allcooperative;// 合作状态
-	private String allworldfive;// 世界五百强
-	private String allcountryfive;// 中国五百强
-	private String allprivate;// 民企五百强
-	private String alloffice;// 办公地点
-	private String allregist;// 注册地
-	private String allrepresent;// 法人代表
-	private String allcapital;// 注册资本
-	private String allestablish;// 成立时间
-	private String allshareholder;// 股东
-	private String allindustry;// 所属行业
-	private String allcreditcode;// 信用代码
-	private String allscope;//经营范围
-	private String allabstract;//单位简介
-	private String allcertificate;//资质证书
-	private String allhonor;//单位荣誉
-	private String allincomelastyear;//上年度营业总收入
-	private String allassetslastyear;//上年度资产总额
-	private String allnetprofitlastyear;//上年度净利润
-	private String alldebtratiolastyear;//上年度资产负债比
-	private String alldevelop;//发展方向
-	private String allInvestpreference;//投资偏好
-	private String allofficeweb;//单位官网
-	private String allcontact;//单位联系人
-	private String allcontacttel;//联系电话
-	private String alldocking;//对接人
-	public String getAllid() {
-		return allid;
+	private int comid; // 企业单位ID
+	private String comname;// 企业单位名称
+	private int comnumber;// 企业单位编号
+	private String comnature;// 单位性质
+	private String comcategory;// 单位类别
+	private String comtype;// 单位类型
+	private String comlisted;// 上市情况
+	private String comstockcode;// 股票代码
+	private String comrelation ;// 关系情况
+	private String comworldfive;// 世界五百强
+	private String comcountryfive;// 中国五百强
+	private String comprivate;// 民企五百强
+	private String comoffice;// 办公地点
+	private String comregist;// 注册地址
+	private String comrepresent;// 法人代表
+	private double comcapital;// 注册资本
+	private String comestablish;// 成立时间
+	private String comshareholder;// 股东情况
+	private String comindustrytype;// 产业类别
+	private String commajorindustry;// 主要产业
+	private String comcreditcode;// 信用代码
+	private String comscope;//经营范围
+	private String comabstract;//单位简介
+	private String comcertificate;//有关证书
+	private String comhonor;//单位荣誉
+	private String comdatayear;//数据年度
+	private double comlassets;//资产总额
+	private double comliabilities;//负债总额
+	private double comincomeyear;//年度营业收入
+	private double comnetprofiyear;//年度净利润
+	private double comtaxesyear;//年度纳税额
+	private String comdevelop;//发展方向
+	private String comInvestpreference;//投资偏好
+	private String comindustry;//行业
+	private String comregion;//地域
+	private String cominvestment;//投资规模
+	private String comofficeweb;//单位官网
+	private String comcontact;//单位联系人
+	private String comcontacttel;//联系电话
+	private String compost;//职务
+	private String comentry;//录入员
+	public void setComid(int comid) {
+		this.comid = comid;
 	}
-	public void setAllid(String allid) {
-		this.allid = allid;
+	public void setComnumber(int comnumber) {
+		this.comnumber = comnumber;
 	}
-	public String getAllname() {
-		return allname;
+	public String getComname() {
+		return comname;
 	}
-	public void setAllname(String allname) {
-		this.allname = allname;
+	public void setComname(String comname) {
+		this.comname = comname;
 	}
-	public String getAllnumber() {
-		return allnumber;
+	public String getComnature() {
+		return comnature;
 	}
-	public void setAllnumber(String allnumber) {
-		this.allnumber = allnumber;
+	public void setComnature(String comnature) {
+		this.comnature = comnature;
 	}
-	public String getAllnature() {
-		return allnature;
+	public String getComcategory() {
+		return comcategory;
 	}
-	public void setAllnature(String allnature) {
-		this.allnature = allnature;
+	public void setComcategory(String comcategory) {
+		this.comcategory = comcategory;
 	}
-	public String getAlllisted() {
-		return alllisted;
+	public String getComstockcode() {
+		return comstockcode;
 	}
-	public void setAlllisted(String alllisted) {
-		this.alllisted = alllisted;
+	public void setComstockcode(String comstockcode) {
+		this.comstockcode = comstockcode;
 	}
-	public String getAllcooperative() {
-		return allcooperative;
+	public String getComtype() {
+		return comtype;
 	}
-	public void setAllcooperative(String allcooperative) {
-		this.allcooperative = allcooperative;
+	public void setComtype(String comtype) {
+		this.comtype = comtype;
 	}
-	public String getAllworldfive() {
-		return allworldfive;
+	public String getComlisted() {
+		return comlisted;
 	}
-	public void setAllworldfive(String allworldfive) {
-		this.allworldfive = allworldfive;
+	public void setComlisted(String comlisted) {
+		this.comlisted = comlisted;
 	}
-	public String getAllcountryfive() {
-		return allcountryfive;
+	public String getComrelation() {
+		return comrelation;
 	}
-	public void setAllcountryfive(String allcountryfive) {
-		this.allcountryfive = allcountryfive;
+	public void setComrelation(String comrelation) {
+		this.comrelation = comrelation;
 	}
-	public String getAllprivate() {
-		return allprivate;
+	public String getComworldfive() {
+		return comworldfive;
 	}
-	public void setAllprivate(String allprivate) {
-		this.allprivate = allprivate;
+	public void setComworldfive(String comworldfive) {
+		this.comworldfive = comworldfive;
 	}
-	public String getAlloffice() {
-		return alloffice;
+	public String getComcountryfive() {
+		return comcountryfive;
 	}
-	public void setAlloffice(String alloffice) {
-		this.alloffice = alloffice;
+	public void setComcountryfive(String comcountryfive) {
+		this.comcountryfive = comcountryfive;
 	}
-	public String getAllregist() {
-		return allregist;
+	public String getComprivate() {
+		return comprivate;
 	}
-	public void setAllregist(String allregist) {
-		this.allregist = allregist;
+	public void setComprivate(String comprivate) {
+		this.comprivate = comprivate;
 	}
-	public String getAllrepresent() {
-		return allrepresent;
+	public String getComoffice() {
+		return comoffice;
 	}
-	public void setAllrepresent(String allrepresent) {
-		this.allrepresent = allrepresent;
+	public void setComoffice(String comoffice) {
+		this.comoffice = comoffice;
 	}
-	public String getAllcapital() {
-		return allcapital;
+	public String getComregist() {
+		return comregist;
 	}
-	public void setAllcapital(String allcapital) {
-		this.allcapital = allcapital;
+	public void setComregist(String comregist) {
+		this.comregist = comregist;
 	}
-	public String getAllestablish() {
-		return allestablish;
+	public String getComrepresent() {
+		return comrepresent;
 	}
-	public void setAllestablish(String allestablish) {
-		this.allestablish = allestablish;
+	public void setComrepresent(String comrepresent) {
+		this.comrepresent = comrepresent;
 	}
-	public String getAllshareholder() {
-		return allshareholder;
+	public double getComcapital() {
+		return comcapital;
 	}
-	public void setAllshareholder(String allshareholder) {
-		this.allshareholder = allshareholder;
+	public void setComcapital(double comcapital) {
+		this.comcapital = comcapital;
 	}
-	public String getAllindustry() {
-		return allindustry;
+	public String getComestablish() {
+		return comestablish;
 	}
-	public void setAllindustry(String allindustry) {
-		this.allindustry = allindustry;
+	public void setComestablish(String comestablish) {
+		this.comestablish = comestablish;
 	}
-	public String getAllcreditcode() {
-		return allcreditcode;
+	public String getComshareholder() {
+		return comshareholder;
 	}
-	public void setAllcreditcode(String allcreditcode) {
-		this.allcreditcode = allcreditcode;
+	public void setComshareholder(String comshareholder) {
+		this.comshareholder = comshareholder;
 	}
-	public String getAllscope() {
-		return allscope;
+	public String getComindustrytype() {
+		return comindustrytype;
 	}
-	public void setAllscope(String allscope) {
-		this.allscope = allscope;
+	public void setComindustrytype(String comindustrytype) {
+		this.comindustrytype = comindustrytype;
 	}
-	public String getAllabstract() {
-		return allabstract;
+	public String getCommajorindustry() {
+		return commajorindustry;
 	}
-	public void setAllabstract(String allabstract) {
-		this.allabstract = allabstract;
+	public void setCommajorindustry(String commajorindustry) {
+		this.commajorindustry = commajorindustry;
 	}
-	public String getAllcertificate() {
-		return allcertificate;
+	public String getComcreditcode() {
+		return comcreditcode;
 	}
-	public void setAllcertificate(String allcertificate) {
-		this.allcertificate = allcertificate;
+	public void setComcreditcode(String comcreditcode) {
+		this.comcreditcode = comcreditcode;
 	}
-	public String getAllhonor() {
-		return allhonor;
+	public String getComscope() {
+		return comscope;
 	}
-	public void setAllhonor(String allhonor) {
-		this.allhonor = allhonor;
+	public void setComscope(String comscope) {
+		this.comscope = comscope;
 	}
-	public String getAllincomelastyear() {
-		return allincomelastyear;
+	public String getComabstract() {
+		return comabstract;
 	}
-	public void setAllincomelastyear(String allincomelastyear) {
-		this.allincomelastyear = allincomelastyear;
+	public void setComabstract(String comabstract) {
+		this.comabstract = comabstract;
 	}
-	public String getAllassetslastyear() {
-		return allassetslastyear;
+	public String getComcertificate() {
+		return comcertificate;
 	}
-	public void setAllassetslastyear(String allassetslastyear) {
-		this.allassetslastyear = allassetslastyear;
+	public void setComcertificate(String comcertificate) {
+		this.comcertificate = comcertificate;
 	}
-	public String getAllnetprofitlastyear() {
-		return allnetprofitlastyear;
+	public String getComhonor() {
+		return comhonor;
 	}
-	public void setAllnetprofitlastyear(String allnetprofitlastyear) {
-		this.allnetprofitlastyear = allnetprofitlastyear;
+	public void setComhonor(String comhonor) {
+		this.comhonor = comhonor;
 	}
-	public String getAlldebtratiolastyear() {
-		return alldebtratiolastyear;
+	public String getComdatayear() {
+		return comdatayear;
 	}
-	public void setAlldebtratiolastyear(String alldebtratiolastyear) {
-		this.alldebtratiolastyear = alldebtratiolastyear;
+	public void setComdatayear(String comdatayear) {
+		this.comdatayear = comdatayear;
 	}
-	public String getAlldevelop() {
-		return alldevelop;
+	public double getComlassets() {
+		return comlassets;
 	}
-	public void setAlldevelop(String alldevelop) {
-		this.alldevelop = alldevelop;
+	public void setComlassets(double comlassets) {
+		this.comlassets = comlassets;
 	}
-	public String getAllInvestpreference() {
-		return allInvestpreference;
+	public double getComliabilities() {
+		return comliabilities;
 	}
-	public void setAllInvestpreference(String allInvestpreference) {
-		this.allInvestpreference = allInvestpreference;
+	public void setComliabilities(double comliabilities) {
+		this.comliabilities = comliabilities;
 	}
-	public String getAllofficeweb() {
-		return allofficeweb;
+	public double getComincomeyear() {
+		return comincomeyear;
 	}
-	public void setAllofficeweb(String allofficeweb) {
-		this.allofficeweb = allofficeweb;
+	public void setComincomeyear(double comincomeyear) {
+		this.comincomeyear = comincomeyear;
 	}
-	public String getAllcontact() {
-		return allcontact;
+	public double getComnetprofiyear() {
+		return comnetprofiyear;
 	}
-	public void setAllcontact(String allcontact) {
-		this.allcontact = allcontact;
+	public void setComnetprofiyear(double comnetprofiyear) {
+		this.comnetprofiyear = comnetprofiyear;
 	}
-	public String getAllcontacttel() {
-		return allcontacttel;
+	public double getComtaxesyear() {
+		return comtaxesyear;
 	}
-	public void setAllcontacttel(String allcontacttel) {
-		this.allcontacttel = allcontacttel;
+	public void setComtaxesyear(double comtaxesyear) {
+		this.comtaxesyear = comtaxesyear;
 	}
-	public String getAlldocking() {
-		return alldocking;
+	public String getComdevelop() {
+		return comdevelop;
 	}
-	public void setAlldocking(String alldocking) {
-		this.alldocking = alldocking;
+	public void setComdevelop(String comdevelop) {
+		this.comdevelop = comdevelop;
 	}
-	
+	public String getComInvestpreference() {
+		return comInvestpreference;
+	}
+	public void setComInvestpreference(String comInvestpreference) {
+		this.comInvestpreference = comInvestpreference;
+	}
+	public String getComindustry() {
+		return comindustry;
+	}
+	public void setComindustry(String comindustry) {
+		this.comindustry = comindustry;
+	}
+	public String getComregion() {
+		return comregion;
+	}
+	public void setComregion(String comregion) {
+		this.comregion = comregion;
+	}
+	public String getCominvestment() {
+		return cominvestment;
+	}
+	public void setCominvestment(String cominvestment) {
+		this.cominvestment = cominvestment;
+	}
+	public String getComofficeweb() {
+		return comofficeweb;
+	}
+	public void setComofficeweb(String comofficeweb) {
+		this.comofficeweb = comofficeweb;
+	}
+	public String getComcontact() {
+		return comcontact;
+	}
+	public void setComcontact(String comcontact) {
+		this.comcontact = comcontact;
+	}
+	public String getComcontacttel() {
+		return comcontacttel;
+	}
+	public void setComcontacttel(String comcontacttel) {
+		this.comcontacttel = comcontacttel;
+	}
+	public String getCompost() {
+		return compost;
+	}
+	public void setCompost(String compost) {
+		this.compost = compost;
+	}
+	public String getComentry() {
+		return comentry;
+	}
+	public void setComentry(String comentry) {
+		this.comentry = comentry;
+	}
 }
