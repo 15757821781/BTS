@@ -33,15 +33,38 @@ $(document).ready(function() {
 			align : 'center',
 			width : '20%'
 		}, {
-			field : 'attributionarea',
+//			field : 'attributionarea',
 			title : '归属地',
 			align : 'center',
-			width : '20%'
+			width : '20%',
+            formatter:function(value,row,index){
+            	var area="";
+            	console.log("aaa"+row.sys_province);
+            	$.each(areadata, function(idx, item) {
+            		if (item.code == row.sys_province) {
+            			area+=item.names+"/";
+            		}else if(item.code == row.sys_city){
+            			area+=item.names+"/";
+            		}else if(item.code == row.sys_town){
+            			area+=item.names;
+            		}
+            	});
+            	return area;
+            }
 		}, {
 			field : 'townlevel',
 			title : '小镇等级',
 			align : 'center',
-			width : '20%'
+			width : '20%',
+            formatter:function(value,row,index){
+            	if(value=="0"){
+            		return "非中心镇";
+            	}else if(value=="1"){
+            		return "市级";
+            	}else if(value=="2"){
+            		return "省级";
+            	}
+            }
 		}, {
             title : '操作',
             field : 'centertownid',

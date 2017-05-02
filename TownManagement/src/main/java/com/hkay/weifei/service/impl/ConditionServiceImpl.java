@@ -55,5 +55,15 @@ public class ConditionServiceImpl implements ConditionService{
 		// TODO Auto-generated method stub
 		return this.conditiondao.updatePic(condition);
 	}
+	@Override
+	public List<Condition> queryMajorIndustry() {
+		// TODO Auto-generated method stub
+		return this.conditiondao.queryMajorIndustry();
+	}
+	@Override
+	public List<Condition> queryDevelopDir() {
+		// TODO Auto-generated method stub
+		return this.conditiondao.queryDevelopDir();
+	}
 	
 }
