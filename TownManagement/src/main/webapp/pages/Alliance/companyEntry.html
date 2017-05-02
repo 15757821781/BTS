@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>联盟单位-录入</title>
+<title>企业单位录入</title>
 <!-- select CSS -->
 <link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
 <!-- 表单验证 -->
@@ -11,75 +11,99 @@
 <body>
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header">联盟单位基本信息录入</h3>
+			<h3 class="page-header">企业单位基本信息录入</h3>
 		</div>
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<form class="form-horizontal" role="form" enctype="multipart/form-data" id="allform" method="post">
+			<form class="form-horizontal" role="form" enctype="multipart/form-data" id="comform" method="post">
 				<!-- 表单 -->
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位名称</label>
 					<div class="col-sm-6">
-						<input name="allname"  id="allname" class="form-control" type="text" placeholder="请填写单位名称" />
+						<input name="comname"  id="comname" class="form-control" type="text" placeholder="请填写单位名称" />
 					</div>
 					<label class="col-sm-2 control-label">编号</label>
 					<div class="col-sm-2">
-						<input name="allnumber" id="allnumber" class="form-control" />
+						<input name="comnumber" id="comnumber" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位性质</label>
 					<div class="col-sm-2">
-						<select name="allnature" id="allnature" class="selectpicker show-tick form-control">
+						<input name="comnature" id="comnature" class="form-control"
+							type="text" value="国企单位" readonly />
+					</div>
+					<label class="col-sm-2 control-label">单位类别</label>
+					<div class="col-sm-2">
+						<select name="comcategory" id="comcategory"
+							class="selectpicker show-tick form-control">
 							<option></option>
-							<optgroup label="企业">
-								<option value="国有">国有</option>
-								<option value="民营">民营</option>
-								<option value="港资">港资</option>
-								<option value="台资">台资</option>
-								<option value="外资(欧美)">外资(欧美)</option>
-								<option value="外资(其他)">外资(其他)</option>
-								<option value="中外合资">中外合资</option>
-								<option value="中外合作">中外合作</option>
-							</optgroup>
-							<optgroup label="社会组织">
-								<option value="学校">学校</option>
-							</optgroup>
+							<option value="1">国有企业</option>
+							<option value="2">集体企业</option>
+							<option value="3">民营企业</option>
+							<option value="4">三资外企</option>
 						</select>
 					</div>
-					<label class="col-sm-2 control-label">上市公司</label>
+					<label class="col-sm-2 control-label">单位类型</label>
 					<div class="col-sm-2">
-						<select name="alllisted" id="alllisted" class="selectpicker show-tick form-control">
+						<select name="comtype" id="comtype"
+							class="selectpicker show-tick form-control">
 							<option></option>
-							<option value="1">上海证券交易所</option>
-							<option value="2">深圳证券交易所</option>
-							<option value="3">香港证券交易所</option>
-							<option value="4">纳斯达克证券交易所</option>
-							<option value="5">纽约证券交易所</option>
-							<option value="6">东京证券交易所</option>
-							<option value="7">伦敦证券交易所</option>
-							<option value="8">欧洲证券交易所</option>
-							<option value="9">德国证券交易所</option>
-							<option value="10">多伦多证券交易所</option>
-							<option value="11">澳大利亚证券交易所</option>
-							<option value="-1">未上市</option>
+							<option value="1">央企</option>
+							<option value="2">省属</option>
+							<option value="3">市属</option>
+							<option value="4">区县属</option>
+							<option value="5">经济合作社</option>
+							<option value="6">股份经济合作社</option>
+							<option value="7">中外合资</option>
+							<option value="8">中外合作</option>
 						</select>
 					</div>
-					<label class="col-sm-2 control-label">合作状态</label>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">上市情况</label>
 					<div class="col-sm-2">
-						<select name="allcooperative"  id="allcooperative" class="selectpicker show-tick form-control">
+						<select name="comlisted" id="comlisted"
+							class="selectpicker show-tick form-control">
 							<option></option>
-							<option value="1">联盟单位</option>
-							<option value="2">意向联盟</option>
-							<option value="3">未建联系</option>
+							<option value="0">否</option>
+							<option value="1">上交所</option>
+							<option value="2">深交所</option>
+							<option value="3">港交所</option>
+							<option value="4">纽交所</option>
+							<option value="5">美交所</option>
+							<option value="6">纳斯达克</option>
+							<option value="7">东交所</option>
+							<option value="8">伦交所</option>
+							<option value="9">欧交所</option>
+							<option value="10">德交所</option>
+							<option value="11">多交所</option>
+							<option value="12">澳交所</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">股票代码</label>
+					<div class="col-sm-2">
+						<input name="comstockcode" id="comstockcode" class="form-control"
+							type="text" placeholder="可填写多项" />
+					</div>
+					<label class="col-sm-2 control-label">关系情况</label>
+					<div class="col-sm-2">
+						<select name="comrelation" id="comrelation"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">待建联系</option>
+							<option value="2">已建联系</option>
+							<option value="3">意向联盟</option>
+							<option value="4">合作联盟</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">世界五百强</label>
 					<div class="col-sm-2">
-						<select name="allworldfive"  id="allworldfive" class="selectpicker show-tick form-control">
+						<select name="comworldfive" id="comworldfive"
+							class="selectpicker show-tick form-control">
 							<option></option>
 							<option value="1">是</option>
 							<option value="0">否</option>
@@ -87,7 +111,8 @@
 					</div>
 					<label class="col-sm-2 control-label">中国五百强</label>
 					<div class="col-sm-2">
-						<select name="allcountryfive"  id="allcountryfive" class="selectpicker show-tick form-control">
+						<select name="comcountryfive" id="comcountryfive"
+							class="selectpicker show-tick form-control">
 							<option></option>
 							<option value="1">是</option>
 							<option value="0">否</option>
@@ -95,7 +120,8 @@
 					</div>
 					<label class="col-sm-2 control-label">民企五百强</label>
 					<div class="col-sm-2">
-						<select name="allprivate"  id="allprivate" class="selectpicker show-tick form-control">
+						<select name="comprivate" id="comprivate"
+							class="selectpicker show-tick form-control">
 							<option></option>
 							<option value="1">是</option>
 							<option value="0">否</option>
@@ -103,128 +129,196 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">办公地点</label>
-					<div class="col-sm-6">
-						<input name="alloffice"  id="alloffice"  class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label">注册地</label>
-					<div class="col-sm-2">
-						<input name="allregist"  id="allregist" class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
 					<label class="col-sm-2 control-label">法人代表</label>
 					<div class="col-sm-2">
-						<input name="allrepresent"  id="allrepresent"  class="form-control" type="text">
+						<input name="comrepresent" id="comrepresent" class="form-control"
+							type="text">
 					</div>
 					<label class="col-sm-2 control-label">注册资本</label>
-					<div class="col-sm-2">
-						<input name="allcapital"  id="allcapital"  class="form-control" type="text">
+					<div class="col-sm-1">
+						<select name="comcapital" id="comcapital"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">万元</option>
+							<option value="2">万美元</option>
+						</select>
+					</div>
+					<div class="col-sm-1">
+						<input name="comcapital" id="comcapital" class="form-control"
+							type="text">
 					</div>
 					<label class="col-sm-2 control-label">成立时间</label>
 					<div class="col-sm-2">
-						<input name="allestablish"  id="allestablish"  class="form-control" type="text">
+						<input id="comestablish" name="comestablish"
+							class="datepicker form-control" type="text" placeholder="">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">股东</label>
+					<label class="col-sm-2 control-label">股东情况</label>
 					<div class="col-sm-10">
-						<input name="allshareholder"  id="allshareholder"  class="form-control" type="text">
+						<input name="comshareholder" id="comshareholder"
+							class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">所属行业</label>
+					<label class="col-sm-2 control-label">办公地点</label>
 					<div class="col-sm-6">
-						<select name="allindustry"  id="allindustry" class="selectpicker show-tick form-control">
+						<input name="comoffice" id="comoffice" class="form-control"
+							type="text">
+					</div>
+					<label class="col-sm-2 control-label">注册地址</label>
+					<div class="col-sm-2">
+						<input name=comregist id="comregist" class="form-control"
+							type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">产业类别</label>
+					<div class="col-sm-2">
+						<select name="comindustrytype" id="comindustrytype"
+							class="selectpicker show-tick form-control">
 							<option></option>
-							<option value="1">教育建设</option>
-							<option value="2">城镇建设</option>
-							<option value="3">工业</option>
+							<option value="1">建筑业</option>
+							<option value="2">农业</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">主要产业</label>
+					<div class="col-sm-2">
+						<select name=commajorindustry id="commajorindustry"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">第一产业</option>
+							<option value="2">第二产业</option>
+							<option value="3">第三产业</option>
 						</select>
 					</div>
 					<label class="col-sm-2 control-label">信用代码</label>
 					<div class="col-sm-2">
-						<input  name="allcreditcode"  id="allcreditcode"  class="form-control" type="text">
+						<input name="comcreditcode" id="comcreditcode"
+							class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">经营范围</label>
 					<div class="col-sm-10">
-						<input name="allscope"  id="allscope"  class="form-control" type="text">
+						<input name="comscope"  id="comscope"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位简介</label>
 					<div class="col-sm-10">
-						<input name="allabstract" id="allabstract" class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">资质证书</label>
-					<div class="col-sm-10">
-						<input name="allcertificate" id="allcertificate" class="form-control" type="text">
+						<input name="comabstract" id="comabstract" class="form-control"
+							type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位荣誉</label>
 					<div class="col-sm-10">
-						<input name="allhonor" id="allhonor" class="form-control" type="text">
+						<input name="comhonor" id="comhonor" class="form-control"
+							type="text">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">上年度营业总收入</label>
-					<div class="col-sm-2">
-						<input name="allincomelastyear" id="allincomelastyear"  class="form-control" type="text" placeholder="(亿元)">
-					</div>
-					<label class="col-sm-2 control-label">上年度资产总额</label>
-					<div class="col-sm-2">
-						<input name="allassetslastyear" id="allassetslastyear"  class="form-control" type="text" placeholder="(亿元)">
-					</div>
-					<label class="col-sm-2 control-label">上年度净利润</label>
-					<div class="col-sm-2">
-						<input name="allnetprofit" id="allnetprofit"  class="form-control" type="text">
+					<label class="col-sm-2 control-label">有关证书</label>
+					<div class="col-sm-10">
+						<input name="comcertificate" id="comcertificate"
+							class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">上年度资产负债比</label>
+					<label class="col-sm-2 control-label">数据年度</label>
 					<div class="col-sm-2">
-						<input name="alldebtratiolastyear" id="alldebtratiolastyear"  class="form-control" type="text">
+						<input name="comdatayear" id="comdatayear" class="form-control"
+							type="text">
 					</div>
-					<label class="col-sm-2 control-label"></label>
-					<div class="col-sm-2"></div>
-					<label class="col-sm-2 control-label"></label>
-					<div class="col-sm-2"></div>
+					<label class="col-sm-2 control-label">资产总额</label>
+					<div class="col-sm-2">
+						<input name="comlassets" id="comlassets" class="form-control"
+							type="text" placeholder="(亿元)">
+					</div>
+					<label class="col-sm-2 control-label">负债总额</label>
+					<div class="col-sm-2">
+						<input name="comliabilities" id="comliabilities"
+							class="form-control" type="text" placeholder="(亿元)">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">年度营业收入</label>
+					<div class="col-sm-2">
+						<input name="comincomeyear" id="comincomeyear"
+							class="form-control" type="text" placeholder="(亿元)">
+					</div>
+					<label class="col-sm-2 control-label">年度净利润</label>
+					<div class="col-sm-2">
+						<input name="comnetprofiyear" id="comnetprofiyear"
+							class="form-control" type="text" placeholder="(亿元)">
+					</div>
+					<label class="col-sm-2 control-label">年度纳税额</label>
+					<div class="col-sm-2">
+						<input name="comtaxesyear" id="comtaxesyear" class="form-control"
+							type="text" placeholder="(亿元)">
+					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">发展方向</label>
 					<div class="col-sm-10">
-						<input name="alldevelop" id="alldevelop"  class="form-control" type="text">
+						<select name="comdevelop" id="comdevelop"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">建筑业</option>
+							<option value="2">服务业</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">投资偏好</label>
-					<div class="col-sm-10">
-						<input name="allInvestpreference" id="allInvestpreference"  class="form-control" type="text">
+					<div class="col-sm-2">
+					<select name="comindustry" id="comindustry"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" 
+							onchange="selectProvince(this)"
+							title="行业">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="comregion" id="comregion"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" 
+							onchange="selectProvince(this)"
+							title="地域">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="cominvestment" id="cominvestment"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" 
+							onchange="selectProvince(this)"
+							title="投资规模">
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">联系人</label>
+					<div class="col-sm-2">
+						<input name="comcontact" id="comcontact"  class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">职务</label>
+					<div class="col-sm-2">
+						<input name="compost" id="compost" class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">联系电话</label>
+					<div class="col-sm-2">
+						<input name="comcontacttel" id="comcontacttel" class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位官网</label>
-					<div class="col-sm-10">
+					<div class="col-sm-6">
 						<input name="allofficeweb" id="allofficeweb"  class="form-control" type="text">
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">单位联系人*</label>
+					<label class="col-sm-2 control-label">录入员</label>
 					<div class="col-sm-2">
-						<input name="allcontact" id="allcontact"  class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label">联系电话*</label>
-					<div class="col-sm-2">
-						<input name="allcontacttel" id="allcontacttel" class="form-control" type="text">
-					</div>
-					<label class="col-sm-2 control-label">对接人*</label>
-					<div class="col-sm-2">
-						<input name="alldocking" id="alldocking" class="form-control" type="text">
+						<input name="comentry" id="comentry"  class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-group">
@@ -292,7 +386,7 @@
 							$("#myModal-success").modal('show');
 							$('#myModal-success').on('hidden.bs.modal', function() {
 								$.ajax({
-						   	         url: '/TownManagement/pages/town/townEntry.html',
+						   	         url: '/TownManagement/pages/Alliance/companyEntry.html',
 						   	         cache: false,
 						   	         success: function(html){
 						   	             $("#page-wrapper").html(html);
@@ -338,5 +432,9 @@
 			});
 		})
 	</script>
+	<!-- 时间插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="/TownManagement/js/project/regionitem.js"></script>
 </body>
 </html>
