@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.TownService;
 import com.hkay.weifei.util.FileUpload;
@@ -38,6 +40,7 @@ public class TownController {
 	 * 
 	 * @param request
 	 * @param tb_zhongxinzhen
+	 * @param session 
 	 * @return
 	 */
 	@RequestMapping(value="/inserttowninfo")
@@ -47,6 +50,10 @@ public class TownController {
 			@RequestParam("statusfile3") MultipartFile[] files3,@RequestParam("planfile1") MultipartFile[] files4,
 			@RequestParam("planfile2") MultipartFile[] files5) {
 		try {
+			HttpSession session = request.getSession();
+			Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+			String number = user.getNumber();
+			tb_zhongxinzhen.setCreator(number);
 			String imgpath1 = fileupload.fileUpload(files1, request, TypeStatusConstant.statusmap, "");
 			String imgpath2 = fileupload.fileUpload(files2, request, TypeStatusConstant.statusmap, "");
 			String imgpath3 = fileupload.fileUpload(files3, request, TypeStatusConstant.statusmap, "");
