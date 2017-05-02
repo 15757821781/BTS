@@ -10,8 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUpload {
-	public String fileUpload(MultipartFile[] files, HttpServletRequest request,String syspath) {
-		String targetFilePath = "";
+	/**
+	 * 图片处理
+	 * @param files
+	 * @param request
+	 * @param syspath
+	 * @return
+	 */
+	public String fileUpload(MultipartFile[] files, HttpServletRequest request,String syspath,String targetFilePath) {
 		if (files != null) {
 			// 获得日期
 			Date sysDate = new Date();
@@ -25,12 +31,17 @@ public class FileUpload {
 			for (int i = 0; i < files.length; i++) {
 				// 获得文件名称，判断是否存在
 				String fileName = files[i].getOriginalFilename();
-				// 获得文件在服务器上的路径
-				String filePath = request.getSession().getServletContext().getRealPath("upload/"+syspath+fileName);
-				File file = new File(filePath);
-				if (file.exists()) {
+				if(fileName.equals("")||fileName==null){
 					continue;
 				}
+				// 获得文件在服务器上的路径
+//				String filePath = request.getSession().getServletContext().getRealPath("upload/"+syspath+fileName);
+//				File file = new File(filePath);
+//				if (file.exists()) {
+//					// 如果文件存在就保留路径,跳出本次循环
+//					targetFilePath += request.getContextPath() + "/upload/"+syspath + fileName+",";
+//					continue;
+//				}
 				// 生成目标文件名
 				String targetFileName = format.format(sysDate) +"_"+FileUpload.getSixRandom()+ fileName.substring(fileName.lastIndexOf("."));
 				// 生成目标文件
@@ -46,7 +57,7 @@ public class FileUpload {
 			}
 			return targetFilePath;
 		} else {
-			return "";
+			return targetFilePath;
 		}
 	}
 	

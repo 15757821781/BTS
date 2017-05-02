@@ -20,4 +20,6 @@ public interface ConditionService {
 
 	List<Condition> queryDirIndustry();
 
+	int updatePic(Condition condition);
+
 }
