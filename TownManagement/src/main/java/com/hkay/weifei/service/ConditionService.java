@@ -26,4 +26,6 @@ public interface ConditionService {
 
 	List<Condition> queryDevelopDir();
 
+	List<Condition> queryBusinessDir();
+
 }

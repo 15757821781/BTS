@@ -178,13 +178,8 @@ var fillForm = function(form,data) {
 		    		var arr=value.split(",");
 					$('#'+key).selectpicker();
 					$('#'+key).selectpicker('val', arr);
-					if(key=="sys_province"){
-						$("#sys_city option").remove();
-						$("#sys_town option").remove();
-						proOnChange("sys_province", "sys_city", "sys_town");
-					}else if(key=="sys_city"){
-						$("#sys_town option").remove();
-						cityOnChange("sys_province", "sys_city", "sys_town");
+					if($("#"+key).attr("areagroup")!=undefined){
+						resetAreagroup(key);
 					}
 		    	}else{
 		    		$('#'+key).val(value);
@@ -194,6 +189,9 @@ var fillForm = function(form,data) {
 	    		var arr=value.split(",");
 				$('#'+key).selectpicker();
 				$('#'+key).selectpicker('val', arr);
+				if($("#"+key).attr("areagroup")!=undefined){
+					resetAreagroup(key);
+				} 
 				return false;
 		    }else if($("#"+key).attr("disabled")=="disabled"){
 		    	$('#'+key).val(value);
@@ -256,6 +254,22 @@ var selectCreate = function(id,url,data){
 		}
 	});
 }
+// 重置区域
+var resetAreagroup = function(key){
+	var areagroup=$("#"+key).attr("areagroup");
+	var arealevel=$("#"+key).attr("arealevel");
+	var id1=$("select[arealevel="+parseInt(arealevel)+"][areagroup="+parseInt(areagroup)+"]").attr("id");
+	var id2=$("select[arealevel="+(parseInt(arealevel)+1)+"][areagroup="+parseInt(areagroup)+"]").attr("id");
+	var id3=$("select[arealevel="+(parseInt(arealevel)+2)+"][areagroup="+parseInt(areagroup)+"]").attr("id");
+	if(arealevel=="1"){
+		$("#"+id2+" option").remove();
+		$("#"+id3+" option").remove();
+		proOnChange(id1, id2, id3);
+	}else if(arealevel=="2"){
+		$("#"+id3+" option").remove();
+		cityOnChange("", id1, id2);
+	}
+}
 // 创建区域下拉框
 var createAreaSelect = function(province, city, town) {
 	var html = "<option></option>";
@@ -263,8 +277,7 @@ var createAreaSelect = function(province, city, town) {
 	$("#"+town).append(html);
 	$.each(areadata, function(idx, item) {
 		if (parseInt(item.level) == 0) {
-			html += "<option value='" + item.code + "' exid='" + item.code
-					+ "'>" + item.names + "</option>";
+			html += "<option value='" + item.code + "'>" + item.names + "</option>";
 		}
 	});
 	$("#"+province).append(html);
@@ -293,15 +306,24 @@ var createAreaSelect = function(province, city, town) {
 }
 // 选择省份后触发事件
 var proOnChange = function(province, city, town){
-	var code = $('#'+province).find("option:selected").attr("exid");
+	var code = $('#'+province).val();
 	var html = "<option></option>";
-	if(code!=undefined){
-		code = code.substring(0, 2);
+	if(typeof(code)=="object"){
+		$.each(code, function(i, item1) {
+			item1 = item1.substring(0, 2);
+			$("#"+town).append(html);
+			$.each(areadata, function(idx, item) {
+				if (parseInt(item.level) == 1 && item1 == item.code.substring(0, 2)) {
+					html += "<option value='" + item.code + "'>" + item.names + "</option>";
+				}
+			});
+		});
+	}else{
 		$("#"+town).append(html);
+		code = code.substring(0, 2);
 		$.each(areadata, function(idx, item) {
 			if (parseInt(item.level) == 1 && code == item.code.substring(0, 2)) {
-				html += "<option value='" + item.code + "' exid='"
-						+ item.code + "'>" + item.names + "</option>";
+				html += "<option value='" + item.code + "'>" + item.names + "</option>";
 			}
 		});
 	}
@@ -311,14 +333,22 @@ var proOnChange = function(province, city, town){
 // 选择城市后触发事件
 var cityOnChange = function(province, city, town){
 	$("#"+town+" option").remove();
-	var code = $('#'+city).find("option:selected").attr("exid");
+	var code = $('#'+city).val();
 	var html = "<option></option>";
-	if(code!=undefined){
+	if(typeof(code)=="object"){
+		$.each(code, function(i, item1) {
+			item1 = item1.substring(0, 4);
+			$.each(areadata, function(idx, item) {
+				if (parseInt(item.level) == 2 && item1 == item.code.substring(0, 4)) {
+					html += "<option value='" + item.code + "'>" + item.names + "</option>";
+				}
+			});
+		});
+	}else{
 		code = code.substring(0, 4);
 		$.each(areadata, function(idx, item) {
 			if (parseInt(item.level) == 2 && code == item.code.substring(0, 4)) {
-				html += "<option value='" + item.code + "' exid='"
-						+ item.code + "'>" + item.names + "</option>";
+				html += "<option value='" + item.code + "'>" + item.names + "</option>";
 			}
 		});
 	}
@@ -341,9 +371,9 @@ function initFileInput(ctrlName,msg,count) {
 		maxFileCount: count,
 		validateInitialCount:true,
 		overwriteInitial:false,
-		previewSettings:{
-			image:{width: "92%", height: "100%"}
-		},
+//		previewSettings:{
+//			image:{width: "92%", height: "100%",'max-width':'250px'}
+//		},
         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
 	});
 }
@@ -362,13 +392,14 @@ function initDeatilFileInput(ctrlName,param) {
 			name = name.replace("/", "")
 			preList[i] = "<img src="+ basePath + reData[i]
 					+ " class='file-preview-image' "
-					+ "style='width: 92%;height:90%;' "
+					+ "style='width: 95%;height:90%;' "
 					+ "alt=" + name + " title=" + name + ">";
 			var tjson = {
 				// 展示的文件名
 				url:'/TownManagement/conditionmanage/deletePic',
 				caption : name,
 		        key : reData[i],
+		        width : 100,
 		        showDelete : param.showdelete
 			};
 			preConfigList[i] = tjson;  

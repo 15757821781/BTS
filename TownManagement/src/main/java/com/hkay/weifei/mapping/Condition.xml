@@ -62,6 +62,12 @@
 		select a.id as value,a.name from tb_develop_direction a
 		where 1=1
 	</select>
+	<!-- 查询发展方向信息 -->
+	<select id="queryBusinessDir" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_business_direction a
+		where 1=1
+	</select>
 	<!-- 更新图片 -->
 	<update id="updatePic" parameterType="com.hkay.weifei.pojo.Condition">
 		update ${tbname} set ${field}=#{value} where ${primary}=#{id}
