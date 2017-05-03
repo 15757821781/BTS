@@ -26,4 +26,6 @@ public interface ConditionDao {
 
 	List<Condition> queryDevelopDir();
 
+	List<Condition> queryBusinessDir();
+
 }

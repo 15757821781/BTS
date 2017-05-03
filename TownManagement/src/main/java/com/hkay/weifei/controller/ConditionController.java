@@ -166,8 +166,38 @@ public class ConditionController {
 		return result;
 	}
 	
+	/**
+	 * 
+		 * 方法名称: queryDevelopDir
+		 * 内容摘要: 查询发展方向
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年5月3日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	@RequestMapping("/queryDevelopDir")
+	@ResponseBody
 	public RetAjax queryDevelopDir(HttpServletRequest request) {
 		List<Condition> conditions = this.conditionservice.queryDevelopDir();
+		result = RetAjax.onSuccess(conditions, "");
+		return result;
+	}
+	
+	/**
+	 * 
+		 * 方法名称: queryBusinessDir
+		 * 内容摘要: 查询行业方向信息
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年5月3日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	@RequestMapping("/queryBusinessDir")
+	@ResponseBody
+	public RetAjax queryBusinessDir(HttpServletRequest request) {
+		List<Condition> conditions = this.conditionservice.queryBusinessDir();
 		result = RetAjax.onSuccess(conditions, "");
 		return result;
 	}

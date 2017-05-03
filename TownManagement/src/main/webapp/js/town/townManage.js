@@ -39,7 +39,6 @@ $(document).ready(function() {
 			width : '20%',
             formatter:function(value,row,index){
             	var area="";
-            	console.log("aaa"+row.sys_province);
             	$.each(areadata, function(idx, item) {
             		if (item.code == row.sys_province) {
             			area+=item.names+"/";
