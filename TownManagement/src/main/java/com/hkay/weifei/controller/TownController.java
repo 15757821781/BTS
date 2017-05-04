@@ -57,8 +57,8 @@ public class TownController {
 			String imgpath1 = fileupload.fileUpload(files1, request, TypeStatusConstant.statusmap, "");
 			String imgpath2 = fileupload.fileUpload(files2, request, TypeStatusConstant.statusmap, "");
 			String imgpath3 = fileupload.fileUpload(files3, request, TypeStatusConstant.statusmap, "");
-			String imgpath4 = fileupload.fileUpload(files4, request, TypeStatusConstant.statusmap, "");
-			String imgpath5 = fileupload.fileUpload(files5, request, TypeStatusConstant.statusmap, "");
+			String imgpath4 = fileupload.fileUpload(files4, request, TypeStatusConstant.planmap, "");
+			String imgpath5 = fileupload.fileUpload(files5, request, TypeStatusConstant.planmap, "");
 			tb_zhongxinzhen.setCitypic(imgpath1);
 			tb_zhongxinzhen.setTownpic(imgpath2);
 			tb_zhongxinzhen.setScopeopic(imgpath3);
@@ -120,8 +120,8 @@ public class TownController {
 			String imgpath1=fileupload.fileUpload(files1, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getCitypic());
 			String imgpath2=fileupload.fileUpload(files2, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getTownpic());
 			String imgpath3=fileupload.fileUpload(files3, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getScopeopic());
-			String imgpath4=fileupload.fileUpload(files4, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getTotalplanpic());
-			String imgpath5=fileupload.fileUpload(files5, request,TypeStatusConstant.statusmap,tb_zhongxinzhen.getDetailplanpic());
+			String imgpath4=fileupload.fileUpload(files4, request,TypeStatusConstant.planmap,tb_zhongxinzhen.getTotalplanpic());
+			String imgpath5=fileupload.fileUpload(files5, request,TypeStatusConstant.planmap,tb_zhongxinzhen.getDetailplanpic());
 			tb_zhongxinzhen.setCitypic(imgpath1);
 			tb_zhongxinzhen.setTownpic(imgpath2);
 			tb_zhongxinzhen.setScopeopic(imgpath3);

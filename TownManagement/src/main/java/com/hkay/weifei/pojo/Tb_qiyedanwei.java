@@ -7,6 +7,7 @@ public class Tb_qiyedanwei {
 	private String comnature;// 单位性质
 	private String comcategory;// 单位类别
 	private String comtype;// 单位类型
+	private String combustype;// 业务类型
 	private String comlisted;// 上市情况
 	private String comstockcode;// 股票代码
 	private String comrelation ;// 关系情况
@@ -40,14 +41,32 @@ public class Tb_qiyedanwei {
 	private String comindustry;//投资偏好
 	private String comregpro;//投资省份
 	private String comregcity;//投资城市
-	private String comregtown;//投资乡镇
+//	private String comregtown;//投资乡镇
 	private String cominvestment;//投资规模
 	private String comcontact;//联系人
 	private String compost;//职务
 	private String comcontacttel;//联系电话
 	private String comofficeweb;//单位官网
-
 	private String comcreator;//录入员
+	
+	private String search;// 查询条件
+
+	
+	public String getCombustype() {
+		return combustype;
+	}
+
+	public void setCombustype(String combustype) {
+		this.combustype = combustype;
+	}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
 
 	public String getComid() {
 		return comid;
@@ -362,13 +381,13 @@ public class Tb_qiyedanwei {
 		this.comregcity = comregcity;
 	}
 
-	public String getComregtown() {
-		return comregtown;
-	}
-
-	public void setComregtown(String comregtown) {
-		this.comregtown = comregtown;
-	}
+//	public String getComregtown() {
+//		return comregtown;
+//	}
+//
+//	public void setComregtown(String comregtown) {
+//		this.comregtown = comregtown;
+//	}
 
 	public String getCominvestment() {
 		return cominvestment;
