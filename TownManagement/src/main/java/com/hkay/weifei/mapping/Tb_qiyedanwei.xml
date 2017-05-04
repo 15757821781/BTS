@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.CompanyDao">
+	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_qiyedanwei" />
+	<insert id="insertcominfo" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei">
+		insert into tb_qiyedanwei
+		(
+		comname,
+		comnumber,
+		comnature,
+		comcategory,
+		comtype,
+		combustype,
+		comlisted,
+		comstockcode,
+		comrelation,
+		comworldfive,
+		comcountryfive,
+		comprivatefive,
+		comrepresent,
+		comcapital,
+		comcapitalunit,
+		comestablish,
+		comprovince,
+		comcity,
+		comtown,
+		comaddress,
+		comoffice,
+		comshareholder,
+		comindustrytype,
+		commajorindustry,
+		comcreditcode,
+		comscope,
+		comabstract,
+		comhonor,
+		comcertificate,
+		comdatayear,
+		comlassets,
+		comliabilities,
+		comincomeyear,
+		comnetprofiyear,
+		comtaxesyear,
+		comdevelop,
+		comindustry,
+		comregpro,
+		comregcity,
+<!-- 		comregtown, -->
+		cominvestment,
+		comcontact,
+		compost,
+		comcontacttel,
+		comofficeweb,
+		comcreator,
+		updatetime)
+		values
+		(
+		#{comname},
+		#{comnumber},
+		#{comnature},
+		#{comcategory},
+		#{comtype},
+		#{combustype},
+		#{comlisted},
+		#{comstockcode},
+		#{comrelation},
+		#{comworldfive},
+		#{comcountryfive},
+		#{comprivatefive},
+		#{comrepresent},
+		#{comcapital},
+		#{comcapitalunit},
+		#{comestablish},
+		#{comprovince},
+		#{comcity},
+		#{comtown},
+		#{comaddress},
+		#{comoffice},
+		#{comshareholder},
+		#{comindustrytype},
+		#{commajorindustry},
+		#{comcreditcode},
+		#{comscope},
+		#{comabstract},
+		#{comhonor},
+		#{comcertificate},
+		#{comdatayear},
+		#{comlassets},
+		#{comliabilities},
+		#{comincomeyear},
+		#{comnetprofiyear},
+		#{comtaxesyear},
+		#{comdevelop},
+		#{comindustry},
+		#{comregpro},
+		#{comregcity},
+<!-- 		#{comregtown}, -->
+		#{cominvestment},
+		#{comcontact},
+		#{compost},
+		#{comcontacttel},
+		#{comofficeweb},
+		#{comcreator},
+		now())
+	</insert>
+	<!-- 查询信息总数 -->
+	<select id="querycomcnt" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei"
+		resultType="Integer">
+		select count(*) from tb_qiyedanwei t
+		where 1=1
+		<if test="search!=null and search!=''">
+		    and (t.number like '%${search}%' or t.centertownname like '%${search}%' or t.townlevel like '%${search}%')
+		</if>
+	</select>
+	<select id="queryComList" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei"
+	resultMap="BaseResultMap">
+		select * from tb_qiyedanwei a where 1=1
+		<if test="search!=null and search!=''">
+		    and (a.comnumber like '%${search}%' or a.comname like '%${search}%' or a.comcategory like '%${search}%')
+		</if>
+	</select>
+	<select id="queryComDetail" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei"
+	resultMap="BaseResultMap">
+		select a.comid,
+				a.comname,
+				a.comnumber,
+				a.comnature,
+				a.comcategory,
+				a.comtype,
+				a.combustype,
+				a.comlisted,
+				a.comstockcode,
+				a.comrelation,
+				a.comworldfive,
+				a.comcountryfive,
+				a.comprivatefive,
+				a.comrepresent,
+				a.comcapital,
+				a.comcapitalunit,
+				a.comestablish,
+				a.comprovince,
+				a.comcity,
+				a.comtown,
+				a.comaddress,
+				a.comoffice,
+				a.comshareholder,
+				a.comindustrytype,
+				a.commajorindustry,
+				a.comcreditcode,
+				a.comscope,
+				a.comabstract,
+				a.comhonor,
+				a.comcertificate,
+				a.comdatayear,
+				a.comlassets,
+				a.comliabilities,
+				a.comincomeyear,
+				a.comnetprofiyear,
+				a.comtaxesyear,
+				a.comdevelop,
+				a.comindustry,
+				a.comregpro,
+				a.comregcity,
+<!-- 				a.comregtown, -->
+				a.cominvestment,
+				a.comcontact,
+				a.compost,
+				a.comcontacttel,
+				a.comofficeweb,
+				a.comcreator from tb_qiyedanwei a where a.comid = #{comid}
+	</select>
+	<!-- 更新企业信息 -->
+	<update id="updateComInfo" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei">
+		update tb_qiyedanwei set
+		comname=#{comname},
+		comnature=#{comnature},
+		comcategory=#{comcategory},
+		comtype=#{comtype},
+		combustype=#{combustype},
+		comlisted=#{comlisted},
+		comstockcode=#{comstockcode},
+		comrelation=#{comrelation},
+		comworldfive=#{comworldfive},
+		comcountryfive=#{comcountryfive},
+		comprivatefive=#{comprivatefive},
+		comrepresent=#{comrepresent},
+		comcapital=#{comcapital},
+		comcapitalunit=#{comcapitalunit},
+		comestablish=#{comestablish},
+		comprovince=#{comprovince},
+		comcity=#{comcity},
+		comtown=#{comtown},
+		comaddress=#{comaddress},
+		comoffice=#{comoffice},
+		comshareholder=#{comshareholder},
+		comindustrytype=#{comindustrytype},
+		commajorindustry=#{commajorindustry},
+		comcreditcode=#{comcreditcode},
+		comscope=#{comscope},
+		comabstract=#{comabstract},
+		comhonor=#{comhonor},
+		comcertificate=#{comcertificate},
+		comdatayear=#{comdatayear},
+		comlassets=#{comlassets},
+		comliabilities=#{comliabilities},
+		comincomeyear=#{comincomeyear},
+		comnetprofiyear=#{comnetprofiyear},
+		comtaxesyear=#{comtaxesyear},
+		comdevelop=#{comdevelop},
+		comindustry=#{comindustry},
+		comregpro=#{comregpro},
+		comregcity=#{comregcity},
+<!-- 		comregtown=#{comregtown}, -->
+		cominvestment=#{cominvestment},
+		comcontact=#{comcontact},
+		compost=#{compost},
+		comcontacttel=#{comcontacttel},
+		comofficeweb=#{comofficeweb},
+		updatetime=now()
+		where comid=#{comid}
+	</update>
+</mapper>

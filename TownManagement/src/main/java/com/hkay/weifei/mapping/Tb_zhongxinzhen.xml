@@ -221,7 +221,6 @@
 	update tb_zhongxinzhen
 	set
 	centertownname=#{centertownname},
-	number=#{number},
 	citypilot=#{citypilot},
 	townlevel=#{townlevel},
 <!-- 	townfeature=#{townfeature}, -->
@@ -265,7 +264,6 @@
 	scopeopic=#{scopeopic},
 	totalplanpic=#{totalplanpic},
 	detailplanpic=#{detailplanpic},
-	creator=#{creator},
 	updatetime=now()
 	where centertownid=#{centertownid}
 	</update>

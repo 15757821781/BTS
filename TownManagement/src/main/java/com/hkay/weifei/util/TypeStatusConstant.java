@@ -54,4 +54,8 @@ public class TypeStatusConstant {
 	 * 规划图
 	 */
 	public static final String planmap="planmap/";
+	/**
+	 * 证书
+	 */
+	public static final String proof="proof/";
 }
