@@ -37,13 +37,25 @@ $(document).ready(function() {
 	// 加载发展方向下拉框
 	selectCreate("comdevelop","conditionmanage/queryDevelopDir");
 	// 加载行业方向下拉框
-	selectCreate("comindustry","conditionmanage/queryDevelopDir");
+	selectCreate("comindustry","conditionmanage/queryBusinessDir");
+	// 动态增减行初始化
+    $('.addel').addel({
+        events: {
+            delete: function (event) {
+                var plugin = event.data.plugin;
+                
+            }
+        },
+		animation: {
+			duration: 300
+		}
+    });
 	//表单提交
 	$('#comentry_submit').click(function() {
-		formSubmit('#comform','commanage/insertcominfo','Alliance/companyEntry.html');
+		formSubmit('#comform','commanage/insertComInfo','Alliance/companyEntry.html');
 	});
 	$('#comentry_update').click(function() {
-		formSubmit('#comform','commanage/updatecominfo','Alliance/companyManage.html');
+		formSubmit('#comform','commanage/updateComInfo','Alliance/companyManage.html');
 	});
 	$('#comform').bootstrapValidator({
 		message : 'This value is not valid',
@@ -64,6 +76,13 @@ $(document).ready(function() {
 			comnature : {
 				validators : {
 					notEmpty : {
+						message : '单位性质不能为空'
+					}
+				}
+			},
+			comcategory : {
+				validators : {
+					notEmpty : {
 						message : '单位类别不能为空'
 					}
 				}
@@ -72,6 +91,13 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '单位类型不能为空'
+					}
+				}
+			},
+			combustype : {
+				validators : {
+					notEmpty : {
+						message : '业务类型不能为空'
 					}
 				}
 			},
