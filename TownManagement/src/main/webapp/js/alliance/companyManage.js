@@ -106,6 +106,15 @@ function querydetail(id) {
 		cache : false,
 		succ : function(data, status) {
 			fillForm('#comform',data);
+			// 二级联动
+			var select = {
+					value : data.data[0].comcategory
+			}
+			typeChanage(select);
+			var arr=(data.data[0].comtype).split(",");
+			$('#comtype').selectpicker();
+			$('#comtype').selectpicker('val', arr);
+			
 			var param={
 					tbname : 'tb_qiyedanwei',
 					field : 'comcertificate',
@@ -114,6 +123,32 @@ function querydetail(id) {
 					showdelete : false
 			}
 			initDeatilFileInput('comcertificatepic',param);
+			var comcontact=data.data[0].comcontact.split(",");
+			var compost=data.data[0].compost.split(",");
+			var comcontacttel=data.data[0].comcontacttel.split(",");
+			$(".addel-target:gt(0)").remove();
+			$.each(comcontact,function(i,item){
+				if(i==0){
+					$("#comcontact").val(comcontact[i]);
+					$("#compost").val(compost[i]);
+					$("#comcontacttel").val(comcontacttel[i]);
+				}else{
+					$('<div class="form-group addel-target has-feedback">'
+						+'<div class="col-sm-2" style="text-align: right;">'
+						+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+						+'<i class="fa fa-plus"></i></button>'
+						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+						+'<i class="fa fa-remove"></i></button>'
+						+'<label class="control-label">联系人</label></div>'
+						+'<div class="col-sm-2">'
+						+'<input name="comcontact" id="comcontact"  class="form-control" type="text" value='+comcontact[i]+'></div>'
+						+'<label class="col-sm-2 control-label">职务</label>'
+						+'<div class="col-sm-2"><input name="compost" id="compost" class="form-control" type="text" value='+compost[i]+'>'
+						+'</div><label class="col-sm-2 control-label">联系电话</label>'
+						+'<div class="col-sm-2"><input name="comcontacttel" id="comcontacttel" class="form-control" type="text" value='+comcontacttel[i]+'>'
+						+'</div></div>').insertAfter(".addel-target:last");
+				}
+			});
 			$("#cominfomodal").modal('show');
 			$("#comentry_submit").hide();
 			$("#comentry_update").hide();
@@ -129,6 +164,15 @@ function updateinfo(id){
 		cache : false,
 		succ : function(data, status) {
 			fillForm('#comform',data);
+			// 二级联动
+			var select = {
+					value : data.data[0].comcategory
+			}
+			typeChanage(select);
+			var arr=(data.data[0].comtype).split(",");
+			$('#comtype').selectpicker();
+			$('#comtype').selectpicker('val', arr);
+			// 图片初始化
 			var param={
 					tbname : 'tb_qiyedanwei',
 					field : 'comcertificate',
@@ -137,6 +181,34 @@ function updateinfo(id){
 					showdelete : true
 			}
 			initDeatilFileInput('comcertificatepic',param);
+			// 动态行初始化
+			var comcontact=data.data[0].comcontact.split(",");
+			var compost=data.data[0].compost.split(",");
+			var comcontacttel=data.data[0].comcontacttel.split(",");
+			$(".addel-target:gt(0)").remove();
+			$.each(comcontact,function(i,item){
+				if(i==0){
+					$("#comcontact").val(comcontact[i]);
+					$("#compost").val(compost[i]);
+					$("#comcontacttel").val(comcontacttel[i]);
+				}else{
+					$('<div class="form-group addel-target has-feedback">'
+						+'<div class="col-sm-2" style="text-align: right;">'
+						+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+						+'<i class="fa fa-plus"></i></button>'
+						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+						+'<i class="fa fa-remove"></i></button>'
+						+'<label class="control-label">联系人</label></div>'
+						+'<div class="col-sm-2">'
+						+'<input name="comcontact" id="comcontact"  class="form-control" type="text" value='+comcontact[i]+'></div>'
+						+'<label class="col-sm-2 control-label">职务</label>'
+						+'<div class="col-sm-2"><input name="compost" id="compost" class="form-control" type="text" value='+compost[i]+'>'
+						+'</div><label class="col-sm-2 control-label">联系电话</label>'
+						+'<div class="col-sm-2"><input name="comcontacttel" id="comcontacttel" class="form-control" type="text" value='+comcontacttel[i]+'>'
+						+'</div></div>').insertAfter(".addel-target:last");
+				}
+			});
+			// 展示
 			$("#cominfomodal").modal('show');
 			$("#comentry_submit").hide();
 			$("#comentry_update").show();

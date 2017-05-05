@@ -70,7 +70,6 @@ if (typeof jQuery === 'undefined') {
         },
 
         add: function add(event) {
-
             var plugin = event.data.plugin;
             var $target = plugin.getLastTarget();
             // gives the button's data-attribute precedence over the setting
@@ -139,8 +138,10 @@ if (typeof jQuery === 'undefined') {
         },
 
         delete: function del(event) {
-
             var plugin = event.data.plugin;
+        	if(plugin.getVisibleTargetsCount()==1){
+        		return false;
+        	}
             var $target = $(this).closest(plugin.selectors.target);
 
             // gives the user the possibility to opt out
