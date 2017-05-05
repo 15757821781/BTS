@@ -120,7 +120,7 @@ var dealWidthState=function(result){
 	}
 	setTimeout(function() {
 		$("#sys_alert").modal('hide');
-	}, 1500);
+	}, 1000);
 }
 
 //对ajax进行封装
@@ -272,6 +272,9 @@ var resetAreagroup = function(key){
 }
 // 创建区域下拉框
 var createAreaSelect = function(province, city, town) {
+	$("#"+province+" option").remove();
+	$("#"+city+" option").remove();
+	$("#"+town+" option").remove();
 	var html = "<option></option>";
 	$("#"+city).append(html);
 	$("#"+town).append(html);

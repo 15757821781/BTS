@@ -42,7 +42,8 @@
 					<label class="col-sm-2 control-label">单位类别</label>
 					<div class="col-sm-2">
 						<select name="comcategory" id="comcategory"
-							class="selectpicker show-tick form-control">
+							class="selectpicker show-tick form-control"
+							onchange="typeChanage(this)">
 							<option></option>
 							<option value="1">国有企业</option>
 							<option value="2">集体企业</option>
@@ -54,15 +55,6 @@
 					<div class="col-sm-2">
 						<select name="comtype" id="comtype"
 							class="selectpicker show-tick form-control">
-							<option></option>
-							<option value="1">央企</option>
-							<option value="2">省属</option>
-							<option value="3">市属</option>
-							<option value="4">区县属</option>
-							<option value="5">经济合作社</option>
-							<option value="6">股份经济合作社</option>
-							<option value="7">中外合资</option>
-							<option value="8">中外合作</option>
 						</select>
 					</div>
 				</div>
