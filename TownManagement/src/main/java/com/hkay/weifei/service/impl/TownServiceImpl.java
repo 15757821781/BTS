@@ -1,5 +1,6 @@
 package com.hkay.weifei.service.impl;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.hkay.weifei.Dao.TownDao;
-import com.hkay.weifei.pojo.Tb_wflx_new;
 import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.TownService;
 
@@ -17,7 +17,20 @@ public class TownServiceImpl implements TownService{
 	private TownDao towndao;
 	@Override
 	public int inserttowninfo(Tb_zhongxinzhen tb_zhongxinzhen) {
-		// TODO Auto-generated method stub
+		String towncode = tb_zhongxinzhen.getSys_town();
+		int seq = this.towndao.querytowninfocnt(tb_zhongxinzhen);
+		towncode += new DecimalFormat("00").format(seq + 1);
+		// 如果不是中心镇
+		if (tb_zhongxinzhen.getTownlevel().equals("0")) {
+			towncode += "F";
+		} else {
+			towncode += "Z";
+		}
+		//如果是国家特色小镇
+//		if(!tb_zhongxinzhen.getTownfeature().equals("0")){
+//			towncode+="G";
+//		}
+		tb_zhongxinzhen.setNumber(towncode);
 		return this.towndao.inserttowninfo(tb_zhongxinzhen);
 	}
 	@Override

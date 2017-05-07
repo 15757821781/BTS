@@ -10,7 +10,7 @@
 	number,
 	citypilot,
 	townlevel,
-	townfeature,
+<!-- 	townfeature, -->
 	province,
 	city,
 	town,
@@ -59,7 +59,7 @@
 	#{number},
 	#{citypilot},
 	#{townlevel},
-	#{townfeature},
+<!-- 	#{townfeature}, -->
 	#{sys_province},
 	#{sys_city},
 	#{sys_town},
@@ -105,7 +105,54 @@
 	</insert>
 	<select id="querytowninfo" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
 		resultMap="BaseResultMap">
-		select t.* from tb_zhongxinzhen t where 1=1
+				select 
+		t.centertownid,
+		t.centertownname,
+		t.number,
+		t.citypilot,
+		t.townlevel ,
+<!-- 		t.townfeature , -->
+		t.province as sys_province,
+		t.city as sys_city,
+		t.town as sys_town,
+		t.cooperation,
+		t.towndatayear,
+		t.hundredcounties,
+		t.countygdp,
+		t.countyrevenue,
+		t.townpopulation,
+		t.townpgdi,
+		t.townarea,
+		t.community,
+		t.adminvillage,
+		t.townlocalgdp,
+		t.townrevenue,
+		t.totalpopulation,
+		t.farmingoutvalue,
+		t.industryoutvalue,
+		t.serviceoutvalue,
+		t.weather,
+		t.terrain,
+		t.traffic,
+		t.currentindustry,
+		t.industrialorientation,
+		t.historyculture,
+		t.honorarytitle,
+		t.partycommittee,
+		t.committelnumber,
+		t.committel,
+		t.mayor,
+		t.mayortelnumber,
+		t.mayortel,
+		t.contacts,
+		t.post,
+		t.contactstel,
+		t.citypic,
+		t.townpic,
+		t.scopeopic,
+		t.totalplanpic,
+		t.detailplanpic,
+		t.creator from tb_zhongxinzhen t where 1=1
 		<if test="search!=null and search!=''">
 			and (t.number like '%${search}%' or t.centertownname like '%${search}%'
 			or t.townlevel like '%${search}%')
@@ -127,7 +174,7 @@
 		t.number,
 		t.citypilot,
 		t.townlevel ,
-		t.townfeature ,
+<!-- 		t.townfeature , -->
 		t.province as sys_province,
 		t.city as sys_city,
 		t.town as sys_town,
@@ -174,10 +221,9 @@
 	update tb_zhongxinzhen
 	set
 	centertownname=#{centertownname},
-	number=#{number},
 	citypilot=#{citypilot},
 	townlevel=#{townlevel},
-	townfeature=#{townfeature},
+<!-- 	townfeature=#{townfeature}, -->
 	province=#{sys_province},
 	city=#{sys_city},
 	town=#{sys_town},
@@ -218,7 +264,6 @@
 	scopeopic=#{scopeopic},
 	totalplanpic=#{totalplanpic},
 	detailplanpic=#{detailplanpic},
-	creator=#{creator},
 	updatetime=now()
 	where centertownid=#{centertownid}
 	</update>

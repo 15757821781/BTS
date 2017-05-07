@@ -6,7 +6,7 @@ public class Tb_zhongxinzhen {
 	private String number;// 编号
 	private String citypilot;// 是否为小城市试点
 	private String townlevel;// 中心镇等级
-	private String townfeature;//是否为特色小镇
+//	private String townfeature;//是否为特色小镇
 	private String sys_province;//省
 	private String sys_city;//市
 	private String sys_town;//县
@@ -313,14 +313,6 @@ public class Tb_zhongxinzhen {
 
 	public void setHistoryculture(String historyculture) {
 		this.historyculture = historyculture;
-	}
-
-	public String getTownfeature() {
-		return townfeature;
-	}
-
-	public void setTownfeature(String townfeature) {
-		this.townfeature = townfeature;
 	}
 
 	public String getTowndatayear() {

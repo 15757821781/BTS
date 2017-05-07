@@ -22,4 +22,10 @@ public interface ConditionDao {
 
 	int updatePic(Condition condition);
 
+	List<Condition> queryMajorIndustry();
+
+	List<Condition> queryDevelopDir();
+
+	List<Condition> queryBusinessDir();
+
 }

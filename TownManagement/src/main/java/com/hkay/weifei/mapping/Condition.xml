@@ -47,7 +47,25 @@
 	<!-- 查询产业方向信息 -->
 	<select id="queryDirIndustry" parameterType="com.hkay.weifei.pojo.Condition"
 		resultMap="BaseResultMap">
-		select a.id as value,a.name from tb_direction_industry a
+		select a.id as value,a.name from tb_industry_direction a
+		where 1=1
+	</select>
+	<!-- 查询主要产业信息 -->
+	<select id="queryMajorIndustry" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_major_industry a
+		where 1=1
+	</select>
+	<!-- 查询发展方向信息 -->
+	<select id="queryDevelopDir" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_develop_direction a
+		where 1=1
+	</select>
+	<!-- 查询发展方向信息 -->
+	<select id="queryBusinessDir" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_business_direction a
 		where 1=1
 	</select>
 	<!-- 更新图片 -->

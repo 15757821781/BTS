@@ -28,7 +28,7 @@ $(document).ready(function() {
 	selectCreate("terrain","conditionmanage/queryTerrain");
 	// 加载优势产业下拉框
 	selectCreate("currentindustry","conditionmanage/queryAdvIndustry");
-	// 加载优势产业下拉框
+	// 加载产业方向下拉框
 	selectCreate("industrialorientation","conditionmanage/queryDirIndustry");
 	$('#townform').bootstrapValidator({
 		message : 'This value is not valid',

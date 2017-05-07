@@ -1,7 +1,6 @@
 package com.hkay.weifei.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hkay.weifei.pojo.Condition;
@@ -146,6 +144,60 @@ public class ConditionController {
 	@ResponseBody
 	public RetAjax queryDirIndustry(HttpServletRequest request, Condition condition) {
 		List<Condition> conditions = this.conditionservice.queryDirIndustry();
+		result = RetAjax.onSuccess(conditions, "");
+		return result;
+	}
+	
+	/**
+	 * 
+		 * 方法名称: queryMajorIndustry
+		 * 内容摘要: 查询主要产业信息
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年5月2日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	@RequestMapping("/queryMajorIndustry")
+	@ResponseBody
+	public RetAjax queryMajorIndustry(HttpServletRequest request, Condition condition) {
+		List<Condition> conditions = this.conditionservice.queryMajorIndustry();
+		result = RetAjax.onSuccess(conditions, "");
+		return result;
+	}
+	
+	/**
+	 * 
+		 * 方法名称: queryDevelopDir
+		 * 内容摘要: 查询发展方向
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年5月3日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	@RequestMapping("/queryDevelopDir")
+	@ResponseBody
+	public RetAjax queryDevelopDir(HttpServletRequest request) {
+		List<Condition> conditions = this.conditionservice.queryDevelopDir();
+		result = RetAjax.onSuccess(conditions, "");
+		return result;
+	}
+	
+	/**
+	 * 
+		 * 方法名称: queryBusinessDir
+		 * 内容摘要: 查询行业方向信息
+		 * 创建人：zhuwenjie
+		 * 创建日期： 2017年5月3日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	@RequestMapping("/queryBusinessDir")
+	@ResponseBody
+	public RetAjax queryBusinessDir(HttpServletRequest request) {
+		List<Condition> conditions = this.conditionservice.queryBusinessDir();
 		result = RetAjax.onSuccess(conditions, "");
 		return result;
 	}
