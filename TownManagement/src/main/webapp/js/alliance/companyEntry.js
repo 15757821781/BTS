@@ -98,7 +98,7 @@ $(document).ready(function() {
 			comlisted : {
 				validators : {
 					notEmpty : {
-						message : '上市情况能为空'
+						message : '上市情况不能为空'
 					}
 				}
 			},
