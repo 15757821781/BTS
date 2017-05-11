@@ -19,7 +19,7 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public int insertcominfo(Tb_qiyedanwei qiyedanwei) {
 		// 获得企业注册区县
-		String number = qiyedanwei.getComprovince();
+		String number = qiyedanwei.getComtown();
 		// 获得企业单位信息总数
 		int seq = this.companyDao.querycomcnt(qiyedanwei);
 		// 加上企业类别

@@ -14,5 +14,5 @@ public interface wflxService {
 
 	public int insertWflx(Tb_wflx_new tb_wflx_new);
 
-	public List<Pages> loadPages(Pages page);
+	public List<Pages> queryPages(Pages page);
 }
