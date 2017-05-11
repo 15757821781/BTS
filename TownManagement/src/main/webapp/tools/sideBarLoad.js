@@ -1,7 +1,7 @@
 //@laozhu 	
 $(document).ready(function() {
   	    tk.ajax({
- 	        url: "/TownManagement/wflx/loadPages",
+ 	        url: "/TownManagement/wflx/queryPages",
  	       	dataType: "json",
  	        succ: function(list){
 	        	if(list.data.length!=0){

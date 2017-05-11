@@ -88,28 +88,13 @@ public class sheetController {
 		}
 	}
 
-	@RequestMapping("/insertWflx")
-	@ResponseBody
-	public String insertWflx(HttpServletRequest request, Tb_wflx_new tb_wflx_new,
-			@RequestParam("myFile") MultipartFile[] files) {
-		String imgPath = fileupload.fileUpload(files[0], request);
-		System.out.println(imgPath);
-		tb_wflx_new.setTestImgPath(imgPath);
-		int flag = this.wflxservice.insertWflx(tb_wflx_new);
-		if (flag == 1) {
-			return "success";
-		} else {
-			return "fail";
-		}
-	}
-
 	@RequestMapping("/turnPage")
 	public ModelAndView login(HttpServletResponse response) {
 
 		return new ModelAndView("redirect:../html/index.html");
 	}
 
-	@RequestMapping(value="/loadPages")
+	@RequestMapping(value="/queryPages")
 	@ResponseBody
 	public RetAjax loadPages(HttpServletRequest request,Pages page) {
 		HttpSession session = request.getSession();
@@ -118,7 +103,7 @@ public class sheetController {
 //			result = RetAjax.lostLoginInfo();
 		}else{
 			try{
-				List<Pages> pages = this.wflxservice.loadPages(page);
+				List<Pages> pages = this.wflxservice.queryPages(page);
 				result = RetAjax.onSuccess(pages,"");
 			}catch(Exception e){
 				Log.error("error----------loadPages:"+e.getMessage());

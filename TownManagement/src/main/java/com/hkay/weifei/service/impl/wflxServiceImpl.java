@@ -41,9 +41,9 @@ public class wflxServiceImpl implements wflxService {
 	}
 
 	@Override
-	public List<Pages> loadPages(Pages pages) {
+	public List<Pages> queryPages(Pages page) {
 		// TODO Auto-generated method stub
-		return this.wflxdao.loadPages(pages);
+		return this.wflxdao.queryPages(page);
 	}
 
 }

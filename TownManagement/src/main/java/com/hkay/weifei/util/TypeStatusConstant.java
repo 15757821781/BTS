@@ -47,13 +47,21 @@ public class TypeStatusConstant {
 	 * 文件上传
 	 */
 	/**
-	 * 区位图
+	 * 乡镇街道区位图
 	 */
-	public static final String statusmap="statusmap/";
+	public static final String town_statusmap="TownStatusMap/";
 	/**
-	 * 规划图
+	 * 特色小镇区位图
 	 */
-	public static final String planmap="planmap/";
+	public static final String fea_statusmap="FeaStatusMap/";
+	/**
+	 * 乡镇街道规划图
+	 */
+	public static final String town_planmap="TownPlanMap/";
+	/**
+	 * 特色小镇规划图
+	 */
+	public static final String fea_planmap="FeaPlanMap/";
 	/**
 	 * 证书
 	 */

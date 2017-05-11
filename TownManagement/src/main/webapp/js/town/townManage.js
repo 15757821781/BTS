@@ -33,22 +33,11 @@ $(document).ready(function() {
 			align : 'center',
 			width : '20%'
 		}, {
-//			field : 'attributionarea',
 			title : '归属地',
 			align : 'center',
 			width : '20%',
             formatter:function(value,row,index){
-            	var area="";
-            	$.each(areadata, function(idx, item) {
-            		if (item.code == row.sys_province) {
-            			area+=item.names+"/";
-            		}else if(item.code == row.sys_city){
-            			area+=item.names+"/";
-            		}else if(item.code == row.sys_town){
-            			area+=item.names;
-            		}
-            	});
-            	return area;
+            	return row.sys_province+"/"+row.sys_city+"/"+row.sys_town;
             }
 		}, {
 			field : 'townlevel',
