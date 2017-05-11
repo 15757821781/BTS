@@ -46,17 +46,6 @@ $(document).ready(function() {
 					}
 				}
 			},
-			number : {
-				validators : {
-					notEmpty : {
-						message : '编号不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
-				}
-			},
 			citypilot : {
 				validators : {
 					notEmpty : {
@@ -399,27 +388,6 @@ $(document).ready(function() {
 					regexp : {
 						regexp : /^[0-9]*$/,
 						message : '请输入整数'
-					}
-				}
-			},
-//			statusfile : {
-//				validators : {
-//					notEmpty : {
-//						message : '区位图不能为空'
-//					}
-//				}
-//			},
-			planfile : {
-				validators : {
-					notEmpty : {
-						message : '规划图不能为空'
-					}
-				}
-			},
-			creator : {
-				validators : {
-					notEmpty : {
-						message : '规划图不能为空'
 					}
 				}
 			}

@@ -37,35 +37,26 @@ $(document).ready(function() {
 			align : 'center',
 			width : '20%',
             formatter:function(value,row,index){
-            	var area="";
-            	$.each(areadata, function(idx, item) {
-            		if (item.code == row.comprovince) {
-            			area+=item.names+"/";
-            		}else if(item.code == row.comcity){
-            			area+=item.names+"/";
-            		}else if(item.code == row.comtown){
-            			area+=item.names;
-            		}
-            	});
-            	return area;
+            	return row.comprovince+"/"+row.comcity+"/"+row.comtown;
             }
 		}, {
-			field : 'comtype',
+			field : 'comcategory',
 			title : '单位类型',
 			align : 'center',
 			width : '20%',
             formatter:function(value,row,index){
-            	if(value=="0"){
-            		return "非中心镇";
-            	}else if(value=="1"){
-            		return "市级";
+            	if(value=="1"){
+            		return "国有企业";
             	}else if(value=="2"){
-            		return "省级";
+            		return "集体企业";
+            	}else if(value=="3"){
+            		return "民营企业";
+            	}else if(value=="4"){
+            		return "三资外企";
             	}
             }
 		}, {
             title : '操作',
-            field : 'comid',
             width :	'20%',
             align : 'center',
             formatter:function(value,row,index){
@@ -114,7 +105,7 @@ function querydetail(id) {
 			var arr=(data.data[0].comtype).split(",");
 			$('#comtype').selectpicker();
 			$('#comtype').selectpicker('val', arr);
-			
+			// 处理图片
 			var param={
 					tbname : 'tb_qiyedanwei',
 					field : 'comcertificate',
@@ -123,6 +114,7 @@ function querydetail(id) {
 					showdelete : false
 			}
 			initDeatilFileInput('comcertificatepic',param);
+			// 多行展示
 			var comcontact=data.data[0].comcontact.split(",");
 			var compost=data.data[0].compost.split(",");
 			var comcontacttel=data.data[0].comcontacttel.split(",");

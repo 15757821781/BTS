@@ -42,7 +42,44 @@ $(document).ready(function() {
     $('.addel').addel({
 		animation: {
 			duration: 100
-		}
+		},
+	    events: {
+	        added: function (event) {
+	        	$('#comform').bootstrapValidator('addField', 'comcontact', {
+	        		validators : {
+	        			notEmpty : {
+	        				message : '联系人不能为空'
+	        			},
+						regexp : {
+							regexp : /[\u4e00-\u9fa5]/,
+							message : '请输入中文'
+						}
+	        		}
+	        	});
+	        	$('#comform').bootstrapValidator('addField', 'compost', {
+	        		validators : {
+	        			notEmpty : {
+	        				message : '职务不能为空'
+	        			},
+						regexp : {
+							regexp : /[\u4e00-\u9fa5]/,
+							message : '请输入中文'
+						}
+	        		}
+	        	});  
+	        	$('#comform').bootstrapValidator('addField', 'comcontacttel', {
+	        		validators : {
+	        			notEmpty : {
+	        				message : '联系电话不能为空'
+	        			},
+						regexp : {
+							regexp : /^[0-9]*$/,
+							message : '请输入整数'
+						}
+	        		}
+	        	});
+	        }
+	    }
     });
 	//表单提交
 	$('#comentry_submit').click(function() {
@@ -319,6 +356,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '联系人不能为空'
+					},
+					regexp : {
+						regexp : /[\u4e00-\u9fa5]/,
+						message : '请输入中文'
 					}
 				}
 			},
@@ -326,6 +367,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '职务不能为空'
+					},
+					regexp : {
+						regexp : /[\u4e00-\u9fa5]/,
+						message : '请输入中文'
 					}
 				}
 			},
@@ -333,6 +378,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '联系电话不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]*$/,
+						message : '请输入整数'
 					}
 				}
 			}

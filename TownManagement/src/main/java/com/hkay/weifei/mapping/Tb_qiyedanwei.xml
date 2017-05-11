@@ -105,15 +105,40 @@
 	<!-- 查询信息总数 -->
 	<select id="querycomcnt" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei"
 		resultType="Integer">
-		select count(*) from tb_qiyedanwei t
-		where 1=1
+		select count(*) from (		
+		SELECT
+			a.comid,
+			a.comnumber,
+			a.comcategory,
+			a.comname,
+			b.name as comprovince,
+			c.name as comcity,
+			d.name as comtown
+		FROM
+			tb_qiyedanwei a
+		LEFT JOIN tb_area_province b on a.comprovince=b.code 
+		LEFT JOIN tb_area_city c on a.comcity=c.code 
+		LEFT JOIN tb_area_town d on a.comtown=d.code where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.number like '%${search}%' or t.centertownname like '%${search}%' or t.townlevel like '%${search}%')
+		    and (a.comnumber like '%${search}%' or a.comname like '%${search}%' or a.comcategory like '%${search}%')
 		</if>
+		) t
 	</select>
 	<select id="queryComList" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei"
 	resultMap="BaseResultMap">
-		select * from tb_qiyedanwei a where 1=1
+		SELECT
+			a.comid,
+			a.comnumber,
+			a.comcategory,
+			a.comname,
+			b.name as comprovince,
+			c.name as comcity,
+			d.name as comtown
+		FROM
+			tb_qiyedanwei a
+		LEFT JOIN tb_area_province b on a.comprovince=b.code 
+		LEFT JOIN tb_area_city c on a.comcity=c.code 
+		LEFT JOIN tb_area_town d on a.comtown=d.code where 1=1
 		<if test="search!=null and search!=''">
 		    and (a.comnumber like '%${search}%' or a.comname like '%${search}%' or a.comcategory like '%${search}%')
 		</if>
