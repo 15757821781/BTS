@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>社会组织和事业单位管理</title>
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.min.css" />
+</head>
+<body>
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header">社会组织和事业单位管理</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<table id="orgmanagetable" ></table>
+		</div>
+	</div>
+	<!-- 模态框（Modal） 单位详情-->
+	<div class="modal fade" id="orginfomodal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" style="padding-top: 5%;">
+		<div class="modal-dialog" style="width:80%;">
+			<div class="modal-content">
+				<div class="modal-body" id="orginfobody">
+					页面初始化失败
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script type="text/javascript" src="/TownManagement/js/alliance/organizeManage.js"></script>
+</body>

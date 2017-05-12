@@ -56,6 +56,12 @@
 		select a.id as value,a.name from tb_major_industry a
 		where 1=1
 	</select>
+	<!-- 查询机构优势 -->
+	<select id="queryAdvantage" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select a.id as value,a.name from tb_advantage_industry a
+		where 1=1
+	</select>
 	<!-- 查询发展方向信息 -->
 	<select id="queryDevelopDir" parameterType="com.hkay.weifei.pojo.Condition"
 		resultMap="BaseResultMap">
