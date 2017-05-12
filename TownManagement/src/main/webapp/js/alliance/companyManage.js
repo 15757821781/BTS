@@ -18,7 +18,7 @@ $(document).ready(function() {
 		showRefresh : true,//显示刷新按钮
 		strictSearch : true,//设置为 true启用 全匹配搜索，否则为模糊搜索
 		clickToSelect : true, //是否启用点击选中行
-		height : 520, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
+		height : 650, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {

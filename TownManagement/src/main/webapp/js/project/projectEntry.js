@@ -3,23 +3,43 @@ $(document).ready(function() {
 	$('.selectpicker').selectpicker({
 		noneSelectedText : "请选择"
 		});
-	$('.datepicker').datetimepicker({
+	$('#regbegtime').datetimepicker({
 		language: "zh-CN",
         autoclose: true,//选中之后自动隐藏日期选择框
         todayBtn: true,//今日按钮
-        minView: 2,
-        format: "yyyy-mm-dd"
+        minView: 4,
+        startView : 4,
+        format: "yyyy"
 	}).on('hide', function(e) {  
         // 当用户改变值的时候进行验证
-        $('#regionitem').bootstrapValidator('revalidateField', 'regtimebegin');
-        $('#regionitem').bootstrapValidator('revalidateField', 'regtimeend');
+        $('#regionitem').bootstrapValidator('revalidateField', 'regbegtime');
+        $('#regionitem').bootstrapValidator('revalidateField', 'regendtime');
+	});
+	$('#regendtime').datetimepicker({
+		language: "zh-CN",
+        autoclose: true,//选中之后自动隐藏日期选择框
+        todayBtn: true,//今日按钮
+        minView: 4,
+        startView : 4,
+        format: "yyyy"
+	}).on('hide', function(e) {  
+        // 当用户改变值的时候进行验证
+        $('#regionitem').bootstrapValidator('revalidateField', 'regbegtime');
+        $('#regionitem').bootstrapValidator('revalidateField', 'regendtime');
 	});
 	
+	//初始化文件上传控件
+	initFileInput("regfile1","城市背景图",1);
+	initFileInput("regfile2","区县背景图",1);
+	initFileInput("regfile3","规划范围图",1);
+	initFileInput("regfile4","规划方案图",1);
+	initFileInput("regfile5","总体规划图",1);
+	initFileInput("regfile6","详细规划图",1);
 	var loadpage="ProjectLibrary/projectEntry.html";
 	//特色小镇表单提交
-	$('#featuretown_submit').click(function() {
-		formSubmit('#featuretown','featuretownmanage/insertfeaturetown',loadpage);
-	});
+//	$('#featuretown_submit').click(function() {
+//		formSubmit('#featuretown','featuretownmanage/insertfeaturetown',loadpage);
+//	});
 	//区域性项目表单提交
 	$('#regitem_submit').click(function() {
 		formSubmit('#regionitem','regionmanage/insertregion',loadpage);
@@ -29,9 +49,9 @@ $(document).ready(function() {
 		formSubmit('#invitem','invitemmanage/insertinvitem',loadpage);
 	});
 	//储备项目表单提交
-	$('#resitem_submit').click(function() {
-		formSubmit('#resitem','resitemmanage/insertresitem',loadpage);
-	});
+//	$('#resitem_submit').click(function() {
+//		formSubmit('#resitem','resitemmanage/insertresitem',loadpage);
+//	});
 	
 	//特色小镇表单验证
 	$('#featuretown').bootstrapValidator({
