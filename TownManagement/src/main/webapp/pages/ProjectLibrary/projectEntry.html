@@ -411,25 +411,25 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label">合作内容</label>
 								<div class="col-sm-10">
-									<input id="regcontent" name="regcontent" class="datepicker form-control"
+									<input id="regcontent" name="regcontent" class="form-control" 
 										type="text" placeholder="">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">联系人</label>
 								<div class="col-sm-2">
-									<input id="regcontacts" name="regcontacts" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="regcontacts" name="regcontacts" class="form-control" 
+										type="text">
 								</div>
 								<label class="col-sm-2 control-label">职务</label>
 								<div class="col-sm-2">
-									<input id="regpost" name="regpost" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="regpost" name="regpost" class="form-control" 
+										type="text" >
 								</div>
 								<label class="col-sm-2 control-label">联系电话</label>
 								<div class="col-sm-2">
-									<input id="regcallnumber" name="regcallnumber" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="regcallnumber" name="regcallnumber" class="form-control" type="text"
+										>
 								</div>
 							</div>
 							<div class="form-group">
@@ -465,8 +465,8 @@
 							<div class="form-group">
 							<label class="col-sm-2 control-label">录入员</label>
 								<div class="col-sm-2">
-									<input id="regentry" name="regentry" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="regentry" name="regentry" class="form-control" 
+										type="text" >
 								</div>
 							</div>
 							<div class="form-group">
@@ -492,7 +492,7 @@
 								</div>
 								<label class="col-sm-2 control-label">项目编号</label>
 								<div class="col-sm-2">
-									<input id="invnumber" name="invnumber" class="form-control" placeholder="自动生成" />
+									<input id="invnumber" name="invnumber" class="form-control"  disabled="disabled" placeholder="系统自动生成" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -593,35 +593,37 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label">联系人</label>
 								<div class="col-sm-2">
-									<input id="invcontact" name="invcontact" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="invcontact" name="invcontact"  class="form-control"
+										type="text" >
 								</div>
 								<label class="col-sm-2 control-label">职务</label>
 								<div class="col-sm-2">
-									<input id="invpost" name="invpost" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="invpost" name="invpost"  class="form-control"
+										type="text" >
 								</div>
 								<label class="col-sm-2 control-label">联系电话</label>
 								<div class="col-sm-2">
-									<input id="invcallnumber" name="invcallnumber" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="invcallnumber" name="invcallnumber"  class="form-control"
+										type="text" >
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">区位图</label>
 								<div class="col-sm-2">
-									<input id="invstatemap" name="invstatemap" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="invfile1" name="invfile1"  multiple class="file-loading"
+										type="file" >
+										<input type="hidden" name="invstatemap" id="invstatemap"/>
 								</div>
 								<label class="col-sm-2 control-label">规划方案/规划图</label>
 								<div class="col-sm-2">
-									<input id="invplanmap" name="invplanmap" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="invfile2" name="invfile2"   multiple class="file-loading"
+										type="file" >
+										<input type="hidden" name="invplanmap" id="invplanmap"/>
 								</div>
 								<label class="col-sm-2 control-label">录入员</label>
 								<div class="col-sm-2">
-									<input id="inventry" name="inventry" class="datepicker form-control"
-										type="text" placeholder="">
+									<input id="inventry" name="inventry"  class="form-control"
+										type="text" disabled="disabled" placeholder="系统自动生成">
 								</div>
 							</div>
 							<div class="form-group">
