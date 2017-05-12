@@ -183,6 +183,23 @@ public class ConditionController {
 		result = RetAjax.onSuccess(conditions, "");
 		return result;
 	}
+	/**
+	 * 
+		 * 方法名称: queryAdvantage
+		 * 内容摘要: 机构优势查询
+		 * 创建人：caixuyang
+		 * 创建日期： 2017年5月10日
+		 * 修改人：
+		 * 修改内容：
+		 * 修改日期：
+	 */
+	@RequestMapping("/queryAdvantage")
+	@ResponseBody
+	public RetAjax queryAdvantage(HttpServletRequest request) {
+		List<Condition> conditions = this.conditionservice.queryAdvantage();
+		result = RetAjax.onSuccess(conditions, "");
+		return result;
+	}
 	
 	/**
 	 * 

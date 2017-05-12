@@ -70,5 +70,10 @@ public class ConditionServiceImpl implements ConditionService{
 		// TODO Auto-generated method stub
 		return this.conditiondao.queryBusinessDir();
 	}
+	@Override
+	public List<Condition> queryAdvantage() {
+		// TODO Auto-generated method stub
+		return this.conditiondao.queryAdvantage();
+	}
 	
 }

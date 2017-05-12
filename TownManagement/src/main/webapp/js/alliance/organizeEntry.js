@@ -18,19 +18,56 @@ $(document).ready(function() {
 	// 加载区县信息下拉框
 	createAreaSelect("orgprovince","orgcity","orgtown");
 	// 加载机构优势下拉框
-	selectCreate("orgadvantaget","conditionmanage/queryadvantage");
+	selectCreate("orgadvantaget","conditionmanage/queryAdvantage");
 	// 动态增减行初始化
-    $('.addel').addel({
-		animation: {
-			duration: 100
-		}
-    });
+	 $('.addel').addel({
+			animation: {
+				duration: 100
+			},
+		    events: {
+		        added: function (event) {
+		        	$('#orgform').bootstrapValidator('addField', 'orgcontact', {
+		        		validators : {
+		        			notEmpty : {
+		        				message : '联系人不能为空'
+		        			},
+							regexp : {
+								regexp : /[\u4e00-\u9fa5]/,
+								message : '请输入中文'
+							}
+		        		}
+		        	});
+		        	$('#orgform').bootstrapValidator('addField', 'orgpost', {
+		        		validators : {
+		        			notEmpty : {
+		        				message : '职务不能为空'
+		        			},
+							regexp : {
+								regexp : /[\u4e00-\u9fa5]/,
+								message : '请输入中文'
+							}
+		        		}
+		        	});  
+		        	$('#orgform').bootstrapValidator('addField', 'orgcontacttel', {
+		        		validators : {
+		        			notEmpty : {
+		        				message : '联系电话不能为空'
+		        			},
+							regexp : {
+								regexp : /^[0-9]*$/,
+								message : '请输入整数'
+							}
+		        		}
+		        	});
+		        }
+		    }
+	    });
 	//表单提交
 	$('#orgentry_submit').click(function() {
-		formSubmit('#orgform','commanage/insertComInfo','Alliance/organizeEntry.html');
+		formSubmit('#orgform','orgmanage/insertOrgInfo','Alliance/organizeEntry.html');
 	});
 	$('#orgentry_update').click(function() {
-		formSubmit('#orgform','commanage/updateComInfo','Alliance/organizeManage.html');
+		formSubmit('#orgform','orgmanage/updateOrgInfo','Alliance/organizeManage.html');
 	});
 	//表单验证
 	$('#orgform').bootstrapValidator({

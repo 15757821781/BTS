@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.OrganizeDao">
+	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei" />
+	<insert id="insertOrgInfo" parameterType="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei">
+		insert into tb_shehuizuzhidanwei
+		(   
+		 orgname,         
+		 orgnumber,       
+		 orgnature,       
+		 orgcategory,     
+		 orgtype,         
+		 orgsponsor,      
+		 orgrelation,    
+		 orgcompetent,    
+		 orgoffice,       
+		 orgrepresent,    
+		 orgprovince,     
+		 orgcity,         
+		 orgtown,         
+		 orgaddress,      
+		 orgestablish,    
+		 orgcreditcode,   
+		 orgscope,        
+		 orgadvantaget,   
+		 orgofficeweb,   
+		 orgcontact,    
+		 orgcontacttel,   
+		 orgpost,   
+		 orgentry,
+		 updatetime)
+		 values
+		 (	
+			#{orgname},
+			#{orgnumber},
+			#{orgnature},
+			#{orgcategory},
+			#{orgtype},
+			#{orgsponsor},
+			#{orgrelation},
+			#{orgcompetent},
+			#{orgoffice},
+			#{orgrepresent},
+			#{orgprovince},
+			#{orgcity},
+			#{orgtown},
+			#{orgaddress},
+			#{orgestablish},
+			#{orgcreditcode},
+			#{orgscope},
+			#{orgadvantaget},
+			#{orgofficeweb},
+			#{orgcontact},
+			#{orgcontacttel},
+			#{orgpost},
+			#{orgentry},
+			now())
+	</insert>
+	<!-- 查询信息总数 -->
+	<select id="queryOrgcnt" parameterType="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei"
+		resultType="Integer">
+		select count(*) from (
+		SELECT
+			a.orgid,
+			a.orgnumber,
+			a.orgcategory,
+			a.orgname,
+			b.name as orgprovince,
+			c.name as orgcity,
+			d.name as orgtown
+		FROM
+			tb_shehuizuzhidanwei a
+		LEFT JOIN tb_area_province b on a.orgprovince=b.code 
+		LEFT JOIN tb_area_city c on a.orgcity=c.code 
+		LEFT JOIN tb_area_town d on a.orgtown=d.code where 1=1
+		<if test="search!=null and search!=''">
+		    and (a.orgnumber like '%${search}%' or a.orgname like '%${search}%' or a.orgcategory like '%${search}%')
+		</if>
+		)t
+	</select>
+	<select id="queryOrgList" parameterType="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei"
+	resultMap="BaseResultMap">
+		SELECT
+			a.orgid,
+			a.orgnumber,
+			a.orgcategory,
+			a.orgname,
+			b.name as orgprovince,
+			c.name as orgcity,
+			d.name as orgtown
+		FROM
+			tb_shehuizuzhidanwei a
+		LEFT JOIN tb_area_province b on a.orgprovince=b.code 
+		LEFT JOIN tb_area_city c on a.orgcity=c.code 
+		LEFT JOIN tb_area_town d on a.orgtown=d.code where 1=1
+		<if test="search!=null and search!=''">
+		    and (a.orgnumber like '%${search}%' or a.orgname like '%${search}%' or a.orgcategory like '%${search}%')
+		</if>
+	</select>
+	<select id="queryOrgDetail" parameterType="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei"
+	resultMap="BaseResultMap">
+		select a.orgid,
+				a.orgname,
+				a.orgnumber,
+				a.orgnature,
+				a.orgcategory,
+				a.orgtype,
+				a.orgsponsor,
+				a.orgrelation,
+				a.orgcompetent,
+				a.orgoffice,
+				a.orgrepresent,
+				a.orgprovince,
+				a.orgcity,
+				a.orgtown,
+				a.orgaddress,
+				a.orgestablish,
+				a.orgcreditcode,
+				a.orgscope,
+				a.orgadvantaget,
+				a.orgofficeweb,
+				a.orgcontact,
+				a.orgcontacttel,
+				a.orgpost,
+				a.orgentry from tb_shehuizuzhidanwei a where a.orgid = #{orgid}
+		</select>
+		<!-- 更新企业信息 -->
+	<update id="updateOrgInfo" parameterType="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei">
+		update tb_shehuizuzhidanwei set
+			orgname=#{orgname},
+			orgnature=#{orgnature},
+			orgcategory=#{orgcategory},
+			orgtype=#{orgtype},
+			orgsponsor=#{orgsponsor},
+			orgrelation=#{orgrelation},
+			orgcompetent=#{orgcompetent},
+			orgoffice=#{orgoffice},
+			orgrepresent=#{orgrepresent},
+			orgprovince=#{orgprovince},
+			orgcity=#{orgcity},
+			orgtown=#{orgtown},
+			orgaddress=#{orgaddress},
+			orgestablish=#{orgestablish},
+			orgcreditcode=#{orgcreditcode},
+			orgscope=#{orgscope},
+			orgadvantaget=#{orgadvantaget},
+			orgofficeweb=#{orgofficeweb},
+			orgcontact=#{orgcontact},
+			orgcontacttel=#{orgcontacttel},
+			orgpost=#{orgpost},
+			updatetime=now()
+			where orgid=#{orgid}
+	</update>
+</mapper>
+		 
