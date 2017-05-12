@@ -3,6 +3,7 @@ $(document).ready(function() {
 	$('.selectpicker').selectpicker({
 		noneSelectedText : "请选择"
 		});
+	//-----------区域性项目---------------//
 	$('#regbegtime').datetimepicker({
 		language: "zh-CN",
         autoclose: true,//选中之后自动隐藏日期选择框
@@ -27,8 +28,7 @@ $(document).ready(function() {
         $('#regionitem').bootstrapValidator('revalidateField', 'regbegtime');
         $('#regionitem').bootstrapValidator('revalidateField', 'regendtime');
 	});
-	//-----------区域性项目---------------//
-	
+	createAreaSelect("regprovince","regcity","regtown");
 	//初始化文件上传控件
 	initFileInput("regfile1","城市背景图",1);
 	initFileInput("regfile2","区县背景图",1);
@@ -36,6 +36,50 @@ $(document).ready(function() {
 	initFileInput("regfile4","规划方案图",1);
 	initFileInput("regfile5","总体规划图",1);
 	initFileInput("regfile6","详细规划图",1);
+    $('.addel-reg').addel({
+		animation: {
+			duration: 100
+		},
+	    events: {
+	        added: function (event) {
+//	        	$('#comform').bootstrapValidator('addField', 'comcontact', {
+//	        		validators : {
+//	        			notEmpty : {
+//	        				message : '联系人不能为空'
+//	        			},
+//						regexp : {
+//							regexp : /[\u4e00-\u9fa5]/,
+//							message : '请输入中文'
+//						}
+//	        		}
+//	        	});
+//	        	$('#comform').bootstrapValidator('addField', 'compost', {
+//	        		validators : {
+//	        			notEmpty : {
+//	        				message : '职务不能为空'
+//	        			},
+//						regexp : {
+//							regexp : /[\u4e00-\u9fa5]/,
+//							message : '请输入中文'
+//						}
+//	        		}
+//	        	});  
+//	        	$('#comform').bootstrapValidator('addField', 'comcontacttel', {
+//	        		validators : {
+//	        			notEmpty : {
+//	        				message : '联系电话不能为空'
+//	        			},
+//						regexp : {
+//							regexp : /^[0-9]*$/,
+//							message : '请输入整数'
+//						}
+//	        		}
+//	        	});
+	        }
+	    }
+    }).on('addel:add', function (event) {
+       (event.target)[0]="111";
+    });
 	//------------结束--------------------//
 	//-----------招商项目---------------//
 	// 加载区县信息下拉框
