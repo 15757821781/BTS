@@ -482,7 +482,7 @@
 			<div class="tab-pane fade" id="InvestmentProject">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form class="form-horizontal" role="form" id="invitem">
+						<form class="form-horizontal addel" role="form" id="invitem" enctype="multipart/form-data" method="post">
 							<!-- 表单 -->
 							<div class="form-group">
 								<!-- 一行行开始写 -->
@@ -495,29 +495,48 @@
 									<input id="invnumber" name="invnumber" class="form-control"  disabled="disabled" placeholder="系统自动生成" />
 								</div>
 							</div>
-							<div class="form-group">
+								<div class="form-group">
 								<label class="col-sm-2 control-label">所属地区</label>
 								<div class="col-sm-2">
-									<input id="invarea" name="invarea" class="form-control" type="text">
+									<input id="invprovince" name="invprovince"
+										class="selectpicker show-tick form-control"
+										data-live-search="true" data-size="5" arealevel="1"
+										areagroup="1" title="选择省份">
 								</div>
-								<label class="col-sm-2 control-label">乡镇街道/开发区</label>
 								<div class="col-sm-2">
-									<input id="invlocal" name="invlocal" class="form-control" type="text">
+									<input id="invcity" name="invcity"
+										class="selectpicker show-tick form-control"
+										data-live-search="true" data-size="5" arealevel="2"
+										areagroup="1" title="选择地市">
 								</div>
-								<label class="col-sm-2 control-label">合作方式</label>
 								<div class="col-sm-2">
-									<select name="invjoinway" id="invjoinway"
-										class="selectpicker show-tick form-control">
-										<option></option>
-										<option value="租凭">租凭</option>
-										<option value="购置">购置</option>
-									</select>
+									<input id="invtown" name="invtown" class="form-control"
+										type="text">
+								</div>
+								<label class="col-sm-2 control-label">乡镇街道</label>
+								<div class="col-sm-2">
+									<input id="invtownship" name="invtownship"
+										class="selectpicker show-tick form-control"
+										data-live-search="true" data-size="5" arealevel="3"
+										areagroup="1" title="选择区县(市)">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">主管单位</label>
-								<div class="col-sm-10">
+								<div class="col-sm-6">
 									<input id="invcharge" name="invcharge"  class="form-control" type="text">
+								</div>
+								<label class="col-sm-2 control-label">合作方式</label>
+								<div class="col-sm-2">
+									<select name="invjoinway" id="invjoinway"
+										class="selectpicker show-tick form-control" multiple
+										data-live-search="true" data-size="5">
+										<option></option>
+										<option value="租凭">租凭</option>
+										<option value="购置">购置</option>
+										<option value="直接投资">直接投资</option>
+										<option value="合作投资">合作投资</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
@@ -603,32 +622,50 @@
 								</div>
 								<label class="col-sm-2 control-label">联系电话</label>
 								<div class="col-sm-2">
-									<input id="invcallnumber" name="invcallnumber"  class="form-control"
+									<input id="invcontacttel" name="invcontacttel"  class="form-control"
 										type="text" >
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">区位图</label>
-								<div class="col-sm-2">
-									<input id="invfile1" name="invfile1"  multiple class="file-loading"
-										type="file" >
-										<input type="hidden" name="invstatemap" id="invstatemap"/>
+								<div class="col-sm-3">
+									<input id="invfile1" name="invfile1" type="file" multiple class="file-loading">
+									<input type="hidden" name="invcitypic" id="invcitypic"/>
 								</div>
-								<label class="col-sm-2 control-label">规划方案/规划图</label>
-								<div class="col-sm-2">
-									<input id="invfile2" name="invfile2"   multiple class="file-loading"
-										type="file" >
-										<input type="hidden" name="invplanmap" id="invplanmap"/>
+								<div class="col-sm-3">
+									<input id="invfile2" name="invfile2" type="file" multiple	 class="file-loading">
+									<input type="hidden" name="invgtownpic" id="invtownpic"/>
 								</div>
-								<label class="col-sm-2 control-label">录入员</label>
+								<div class="col-sm-3">
+									<input id="invfile3" name="invfile3" type="file" multiple	 class="file-loading">
+									<input type="hidden" name="invscopeopic" id="invscopeopic"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">规划图</label>
+								<div class="col-sm-3">
+									<input id="invfile4" name="invfile4" type="file" multiple class="file-loading">
+									<input type="hidden" name="invplanpic" id="invplanpic"/>
+								</div>
+								<div class="col-sm-3">
+									<input id="invfile5" name="invfile5" type="file" multiple class="file-loading">
+									<input type="hidden" name="invallplanpic" id="invallplanpic"/>
+								</div>
+								<div class="col-sm-3">
+									<input id="invfile6" name="invfile6" type="file" multiple class="file-loading">
+									<input type="hidden" name="invdetailplanpic" id="invdetailplanpic"/>
+								</div>
+							</div>
+							<div class="form-group">
+							<label class="col-sm-2 control-label">录入员</label>
 								<div class="col-sm-2">
-									<input id="inventry" name="inventry"  class="form-control"
+									<input id="regentry" name="regentry" class="form-control" 
 										type="text" disabled="disabled" placeholder="系统自动生成">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-5 control-label"></label>
-								<button type="button" id="invitem_submit" class="col-sm-2 btn btn-primary"
+								<button type="button" id="regitem_submit" class="col-sm-2 btn btn-primary"
 									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
 								<label class="col-sm-5 control-label"></label>
 							</div>

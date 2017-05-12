@@ -38,7 +38,16 @@ $(document).ready(function() {
 	initFileInput("regfile6","详细规划图",1);
 	//------------结束--------------------//
 	//-----------招商项目---------------//
-	
+	// 加载区县信息下拉框
+	createAreaSelect("invprovince","invcity","invtown");
+//		
+	//初始化文件上传控件
+	initFileInput("invfile1","城市背景图",1);
+	initFileInput("invfile2","区县背景图",1);
+	initFileInput("invfile3","规划范围图",1);
+	initFileInput("invfile4","规划方案图",1);
+	initFileInput("invfile5","总体规划图",1);
+	initFileInput("invfile6","详细规划图",1);
 	//------------结束-------------------//
 	var loadpage="ProjectLibrary/projectEntry.html";
 	//特色小镇表单提交
@@ -338,35 +347,31 @@ $(document).ready(function() {
 					}
 				}
 			},
-			invnumber : {
+			invprovince : {
 				validators : {
 					notEmpty : {
-						message : '编号不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
+						message : '省份不能为空'
 					}
 				}
 			},
-			invarea : {
+			invcity : {
 				validators : {
 					notEmpty : {
-						message : '所属地区不能为空'
+						message : '城市不能为空'
 					}
 				}
 			},
-			invlocal : {
+			invtown : {
 				validators : {
 					notEmpty : {
-						message : '所在地不能为空'
+						message : '区县不能为空'
 					}
 				}
 			},
-			invjoinway : {
+			invtownship : {
 				validators : {
 					notEmpty : {
-						message : '合作方式不能为空'
+						message : '街道不能为空'
 					}
 				}
 			},
@@ -374,6 +379,13 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '主管单位不能为空'
+					}
+				}
+			},
+			invjoinway : {
+				validators : {
+					notEmpty : {
+						message : '合作方式不能为空'
 					}
 				}
 			},
@@ -409,7 +421,7 @@ $(document).ready(function() {
 			invplanuse : {
 				validators : {
 					notEmpty : {
-						message : '规划用途不能为空'
+						message : '土地用途不能为空'
 					}
 				}
 			},
@@ -488,13 +500,6 @@ $(document).ready(function() {
 					}
 				}
 			},
-			invunit : {
-				validators : {
-					notEmpty : {
-						message : '联系单位不能为空'
-					}
-				}
-			},
 			invcontact : {
 				validators : {
 					notEmpty : {
@@ -502,10 +507,17 @@ $(document).ready(function() {
 					}
 				}
 			},
-			invcontactway : {
+			invpost : {
 				validators : {
 					notEmpty : {
-						message : '联系方式不能为空'
+						message : '职务不能为空'
+					}
+				}
+			},
+			invcontacttel : {
+				validators : {
+					notEmpty : {
+						message : '联系电话不能为空'
 					}
 				}
 			}
