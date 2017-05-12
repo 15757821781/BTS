@@ -9,227 +9,229 @@
 <link rel="stylesheet" href="/TownManagement/dist/css/bootstrapValidator.css" />
 <!-- 时间插件 -->
 <link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
+<!-- 文件上传插件 -->
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
 </head>
 <body>
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header">项目库录入</h3>
+			<h3 class="page-header">项目库</h3>
 		</div>
 	</div>
 	<div class="panel-body">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#CharacteristicTown"
-				data-toggle="tab">特色小镇</a></li>
-			<li><a href="#RegionalProject" data-toggle="tab">区域性项目</a></li>
+<!-- 			<li class="active"><a href="#CharacteristicTown" -->
+<!-- 				data-toggle="tab">特色小镇</a></li> -->
+			<li class="active"><a href="#RegionalProject" data-toggle="tab">区域性项目</a></li>
 			<li><a href="#InvestmentProject" data-toggle="tab">政府招商项目</a></li>
-			<li><a href="#ReserveProject" data-toggle="tab">政府储备项目</a></li>
+<!-- 			<li><a href="#ReserveProject" data-toggle="tab">政府储备项目</a></li> -->
 		</ul>
 		<br>
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div class="tab-pane fade in active" id="CharacteristicTown">
+<!-- 			<div class="tab-pane fade in active" id="CharacteristicTown"> -->
+<!-- 				<div class="panel panel-default"> -->
+<!-- 					<div class="panel-body"> -->
+<!-- 						<form class="form-horizontal" role="form" id="featuretown"> -->
+<!-- 							表单 -->
+<!-- 							<div class="form-group"> -->
+<!-- 								一行行开始写 -->
+<!-- 								<label class="col-sm-2 control-label">特色小镇名称</label> -->
+<!-- 								<div class="col-sm-6"> -->
+<!-- 									<input id="featuretownname" name="featuretownname" -->
+<!-- 										class="form-control" type="text" placeholder="请填写特色小镇名称" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">编号</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="featuretownnumber" name="featuretownnumber" -->
+<!-- 										class="form-control" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">所属地区</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="attributionarea" name="attributionarea" -->
+<!-- 										class="form-control" type="text"> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">小镇等级</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<select name="townlevel" id="townlevel" -->
+<!-- 										class="selectpicker show-tick form-control"> -->
+<!-- 										<option></option> -->
+<!-- 										<option value="省级">省级</option> -->
+<!-- 										<option value="市级">市级</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">创建批次</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="foundbatch" name="foundbatch" class="form-control"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">所属乡镇/街道/开发区</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="towngenre" name="towngenre" class="form-control"> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">地理位置</label> -->
+<!-- 								<div class="col-sm-6"> -->
+<!-- 									<input id="position" name="position" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">开发主体</label> -->
+<!-- 								<div class="col-sm-4"> -->
+<!-- 									<input id="developer" name="developer" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">负责人</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="developername" name="developername" -->
+<!-- 										class="form-control" type="text" placeholder="姓名"> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="developertel" name="developertel" -->
+<!-- 										class="form-control" type="text" placeholder="电话"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">合作单位</label> -->
+<!-- 								<div class="col-sm-4"> -->
+<!-- 									<input id="partner" name="partner" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">负责人</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="partnername" name="partnername" class="form-control" -->
+<!-- 										type="text" placeholder="姓名"> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="partnertel" name="partnertel" class="form-control" -->
+<!-- 										type="text" placeholder="电话"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">合作条件</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="cooperatecondition" name="cooperatecondition" -->
+<!-- 										class="form-control" type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">功能定位</label> -->
+<!-- 								<div class="col-sm-6"> -->
+<!-- 									<select name="functions" id="functions" -->
+<!-- 										class="selectpicker show-tick form-control"> -->
+<!-- 										<option></option> -->
+<!-- 										<option value="休闲旅游">休闲旅游</option> -->
+<!-- 										<option value="养生旅游">养生旅游</option> -->
+<!-- 										<option value="运动">运动</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">产业类别</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<select name="industrygenre" id="industrygenre" -->
+<!-- 										class="selectpicker show-tick form-control"> -->
+<!-- 										<option></option> -->
+<!-- 										<option value="信息经济">信息经济</option> -->
+<!-- 										<option value="环保">环保</option> -->
+<!-- 										<option value="时尚">时尚</option> -->
+<!-- 										<option value="金融">金融</option> -->
+<!-- 										<option value="高端装备制造">高端装备制造</option> -->
+<!-- 										<option value="文化创意">文化创意</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">规划面积</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="planarea" name="planarea" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">计划总投资</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="planinvest" name="planinvest" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">当前进度</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<select name="schedule" id="schedule" -->
+<!-- 										class="selectpicker show-tick form-control"> -->
+<!-- 										<option></option> -->
+<!-- 										<option value="进度1">进度1</option> -->
+<!-- 										<option value="进度2">进度2</option> -->
+<!-- 										<option value="进度3">进度3</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">规划内容</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="plancontent" name="plancontent" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">气候条件</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="weather" name="weather" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">现状地图</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="statemap" name="statemap" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">规划方案</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="programme" name="programme" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">对接人</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="contacts" name="contacts" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">交通条件</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="traffic" name="traffic" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">现状产业</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="currentindustry" name="currentindustry" -->
+<!-- 										class="form-control" type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">规划图</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="planmap" name="planmap" class="form-control" -->
+<!-- 										type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-5 control-label"></label> -->
+<!-- 								<button type="button" id="featuretown_submit" -->
+<!-- 									class="col-sm-2 btn btn-primary" -->
+<!-- 									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button> -->
+<!-- 								<label class="col-sm-5 control-label"></label> -->
+<!-- 							</div> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			<div class="tab-pane fade  in active" id="RegionalProject">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form class="form-horizontal" role="form" id="featuretown">
-							<!-- 表单 -->
-							<div class="form-group">
-								<!-- 一行行开始写 -->
-								<label class="col-sm-2 control-label">特色小镇名称</label>
-								<div class="col-sm-6">
-									<input id="featuretownname" name="featuretownname"
-										class="form-control" type="text" placeholder="请填写特色小镇名称" />
-								</div>
-								<label class="col-sm-2 control-label">编号</label>
-								<div class="col-sm-2">
-									<input id="featuretownnumber" name="featuretownnumber"
-										class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">所属地区</label>
-								<div class="col-sm-2">
-									<input id="attributionarea" name="attributionarea"
-										class="form-control" type="text">
-								</div>
-								<label class="col-sm-2 control-label">小镇等级</label>
-								<div class="col-sm-2">
-									<select name="townlevel" id="townlevel"
-										class="selectpicker show-tick form-control">
-										<option></option>
-										<option value="省级">省级</option>
-										<option value="市级">市级</option>
-									</select>
-								</div>
-								<label class="col-sm-2 control-label">创建批次</label>
-								<div class="col-sm-2">
-									<input id="foundbatch" name="foundbatch" class="form-control">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">所属乡镇/街道/开发区</label>
-								<div class="col-sm-2">
-									<input id="towngenre" name="towngenre" class="form-control">
-								</div>
-								<label class="col-sm-2 control-label">地理位置</label>
-								<div class="col-sm-6">
-									<input id="position" name="position" class="form-control"
-										type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">开发主体</label>
-								<div class="col-sm-4">
-									<input id="developer" name="developer" class="form-control"
-										type="text">
-								</div>
-								<label class="col-sm-2 control-label">负责人</label>
-								<div class="col-sm-2">
-									<input id="developername" name="developername"
-										class="form-control" type="text" placeholder="姓名">
-								</div>
-								<div class="col-sm-2">
-									<input id="developertel" name="developertel"
-										class="form-control" type="text" placeholder="电话">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">合作单位</label>
-								<div class="col-sm-4">
-									<input id="partner" name="partner" class="form-control"
-										type="text">
-								</div>
-								<label class="col-sm-2 control-label">负责人</label>
-								<div class="col-sm-2">
-									<input id="partnername" name="partnername" class="form-control"
-										type="text" placeholder="姓名">
-								</div>
-								<div class="col-sm-2">
-									<input id="partnertel" name="partnertel" class="form-control"
-										type="text" placeholder="电话">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">合作条件</label>
-								<div class="col-sm-10">
-									<input id="cooperatecondition" name="cooperatecondition"
-										class="form-control" type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">功能定位</label>
-								<div class="col-sm-6">
-									<select name="functions" id="functions"
-										class="selectpicker show-tick form-control">
-										<option></option>
-										<option value="休闲旅游">休闲旅游</option>
-										<option value="养生旅游">养生旅游</option>
-										<option value="运动">运动</option>
-									</select>
-								</div>
-								<label class="col-sm-2 control-label">产业类别</label>
-								<div class="col-sm-2">
-									<select name="industrygenre" id="industrygenre"
-										class="selectpicker show-tick form-control">
-										<option></option>
-										<option value="信息经济">信息经济</option>
-										<option value="环保">环保</option>
-										<option value="时尚">时尚</option>
-										<option value="金融">金融</option>
-										<option value="高端装备制造">高端装备制造</option>
-										<option value="文化创意">文化创意</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">规划面积</label>
-								<div class="col-sm-2">
-									<input id="planarea" name="planarea" class="form-control"
-										type="text">
-								</div>
-								<label class="col-sm-2 control-label">计划总投资</label>
-								<div class="col-sm-2">
-									<input id="planinvest" name="planinvest" class="form-control"
-										type="text">
-								</div>
-								<label class="col-sm-2 control-label">当前进度</label>
-								<div class="col-sm-2">
-									<select name="schedule" id="schedule"
-										class="selectpicker show-tick form-control">
-										<option></option>
-										<option value="进度1">进度1</option>
-										<option value="进度2">进度2</option>
-										<option value="进度3">进度3</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">规划内容</label>
-								<div class="col-sm-10">
-									<input id="plancontent" name="plancontent" class="form-control"
-										type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">气候条件</label>
-								<div class="col-sm-10">
-									<input id="weather" name="weather" class="form-control"
-										type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">现状地图</label>
-								<div class="col-sm-2">
-									<input id="statemap" name="statemap" class="form-control"
-										type="text">
-								</div>
-								<label class="col-sm-2 control-label">规划方案</label>
-								<div class="col-sm-2">
-									<input id="programme" name="programme" class="form-control"
-										type="text">
-								</div>
-								<label class="col-sm-2 control-label">对接人</label>
-								<div class="col-sm-2">
-									<input id="contacts" name="contacts" class="form-control"
-										type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">交通条件</label>
-								<div class="col-sm-10">
-									<input id="traffic" name="traffic" class="form-control"
-										type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">现状产业</label>
-								<div class="col-sm-10">
-									<input id="currentindustry" name="currentindustry"
-										class="form-control" type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">规划图</label>
-								<div class="col-sm-10">
-									<input id="planmap" name="planmap" class="form-control"
-										type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-5 control-label"></label>
-								<button type="button" id="featuretown_submit"
-									class="col-sm-2 btn btn-primary"
-									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
-								<label class="col-sm-5 control-label"></label>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="tab-pane fade" id="RegionalProject">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<form class="form-horizontal" role="form" id="regionitem">
+						<form class="form-horizontal addel" role="form" id="regionitem" enctype="multipart/form-data" method="post">
 							<!-- 表单 -->
 							<div class="form-group">
 								<!-- 一行行开始写 -->
@@ -240,20 +242,44 @@
 								</div>
 								<label class="col-sm-2 control-label">编号</label>
 								<div class="col-sm-2">
-									<input id="regnumber" name="regnumber" class="form-control" />
+									<input id="regnumber" name="regnumber" class="form-control"
+									disabled="disabled" placeholder="系统自动生成" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">所属地区</label>
 								<div class="col-sm-2">
-									<input id="regarea" name="regarea" class="form-control"
+									<input id="regprovince" name="regprovince"
+										class="selectpicker show-tick form-control"
+										data-live-search="true" data-size="5" arealevel="1"
+										areagroup="1" title="选择省份">
+								</div>
+								<div class="col-sm-2">
+									<input id="regcity" name="regcity"
+										class="selectpicker show-tick form-control"
+										data-live-search="true" data-size="5" arealevel="2"
+										areagroup="1" title="选择地市">
+								</div>
+								<div class="col-sm-2">
+									<input id="regtown" name="regtown" class="form-control"
 										type="text">
 								</div>
 								<label class="col-sm-2 control-label">乡镇街道</label>
 								<div class="col-sm-2">
-								<input id="regtownship" name="regtownship" class="form-control"
+									<input id="regtownship" name="regtownship"
+										class="selectpicker show-tick form-control"
+										data-live-search="true" data-size="5" arealevel="3"
+										areagroup="1" title="选择区县(市)">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">地理位置</label>
+								<div class="col-sm-6">
+									<input id="regposition" name="regposition" class="form-control"
 										type="text">
 								</div>
+							</div>
+							<div class="form-group">
 								<label class="col-sm-2 control-label">项目阶段</label>
 								<div class="col-sm-2">
 									<select name="regschedule" id="regschedule"
@@ -262,13 +288,6 @@
 										<option value="1">谋划阶段</option>
 										<option value="2">实施阶段</option>
 									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">地理位置</label>
-								<div class="col-sm-6">
-									<input id="regposition" name="regposition" class="form-control"
-										type="text">
 								</div>
 								<label class="col-sm-2 control-label">关系情况</label>
 								<div class="col-sm-2">
@@ -299,23 +318,6 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">一期规划面积</label>
-								<div class="col-sm-2">
-									<input id="regfirstplanarea" name="regfirstplanarea"
-										class="form-control" type="text">
-								</div>
-								<label class="col-sm-2 control-label">一期计划投资</label>
-								<div class="col-sm-2">
-									<input id="regfirstplaninvest" name="regfirstplaninvest"
-										class="form-control" type="text">
-								</div>
-								<label class="col-sm-2 control-label">征地面积</label>
-								<div class="col-sm-2">
-									<input id="regfirstlandarea" name="regfirstlandarea"
-										class="form-control" type="text">
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-sm-2 control-label">基本情况</label>
 									<div class="col-sm-10">
 									<input id="regbasic" name="regbasic"
@@ -331,12 +333,12 @@
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">现状产业</label>
-									<div class="col-sm-2">
+									<div class="col-sm-4">
 									<input id="regnowindustry" name="regnowindustry"
 										class="form-control" type="text">
 									</div>
 								<label class="col-sm-2 control-label">主导产业</label>
-								<div class="col-sm-2">
+								<div class="col-sm-4">
 									<select name="regprimeindustry" id="regprimeindustry"
 										class="selectpicker show-tick form-control">
 										<option></option>
@@ -364,7 +366,7 @@
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">合作开发情况</label>
-								<div class="col-sm-10">
+								<div class="col-sm-2">
 									<input id="regdevelopment" name="regdevelopment"
 										class="form-control" type="text">
 								</div>
@@ -386,20 +388,24 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">合作方式</label>
+								<label class="col-sm-2 control-label">合作投资额(亿元)</label>
+								<div class="col-sm-2">
+									<input id="reinvest" name="reinvest" class="form-control"
+										type="text">
+								</div>
+								<label class="col-sm-1 control-label">合作方式</label>
 								<div class="col-sm-2">
 									<input id="regterms" name="regterms" class="form-control"
 										type="text" placeholder="">
 								</div>
-								<label class="col-sm-2 control-label">合作投资额</label>
+								<label class="col-sm-1 control-label">合作期限</label>
 								<div class="col-sm-2">
-									<input id="reinvest" name="reinvest" class="form-control"
-										type="text" placeholder="亿元">
+									<input id="regbegtime" name="regbegtime" class="datepicker form-control"
+										type="text" placeholder="选择开始时间">
 								</div>
-								<label class="col-sm-2 control-label">合作期限</label>
 								<div class="col-sm-2">
-									<input id="regtime" name="regtime" class="form-control"
-										type="text" placeholder="">
+									<input id="regendtime" name="regendtime" class="datepicker form-control"
+										type="text" placeholder="选择开始时间">
 								</div>
 							</div>
 							<div class="form-group">
@@ -428,16 +434,36 @@
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">区位图</label>
-								<div class="col-sm-2">
-									<input id="regstatemap" name="regstatemap" class="datepicker form-control"
-										type="text" placeholder="">
+								<div class="col-sm-3">
+									<input id="regfile1" name="regfile1" type="file" multiple class="file-loading">
+									<input type="hidden" name="regcitypic" id="regcitypic"/>
 								</div>
-								<label class="col-sm-2 control-label">规划方案/规划图</label>
-								<div class="col-sm-2">
-									<input id="regplanmap" name="regplanmap" class="datepicker form-control"
-										type="text" placeholder="">
+								<div class="col-sm-3">
+									<input id="regfile2" name="regfile2" type="file" multiple	 class="file-loading">
+									<input type="hidden" name="regtownpic" id="regtownpic"/>
 								</div>
-								<label class="col-sm-2 control-label">录入员</label>
+								<div class="col-sm-3">
+									<input id="regfile3" name="regfile3" type="file" multiple	 class="file-loading">
+									<input type="hidden" name="regscopeopic" id="regscopeopic"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">规划图</label>
+								<div class="col-sm-3">
+									<input id="regfile4" name="regfile4" type="file" multiple class="file-loading">
+									<input type="hidden" name="regplanpic" id="regplanpic"/>
+								</div>
+								<div class="col-sm-3">
+									<input id="regfile5" name="regfile5" type="file" multiple class="file-loading">
+									<input type="hidden" name="regallplanpic" id="regallplanpic"/>
+								</div>
+								<div class="col-sm-3">
+									<input id="regfile6" name="regfile6" type="file" multiple class="file-loading">
+									<input type="hidden" name="regdetailplanpic" id="regdetailplanpic"/>
+								</div>
+							</div>
+							<div class="form-group">
+							<label class="col-sm-2 control-label">录入员</label>
 								<div class="col-sm-2">
 									<input id="regentry" name="regentry" class="datepicker form-control"
 										type="text" placeholder="">
@@ -608,135 +634,135 @@
 					</div>
 				</div>
 			</div>
-			<div class="tab-pane fade" id="ReserveProject">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<form class="form-horizontal" role="form" id="resitem">
-							<!-- 表单 -->
-							<div class="form-group">
-								<!-- 一行行开始写 -->
-								<label class="col-sm-2 control-label">政府储备项目名称</label>
-								<div class="col-sm-6">
-									<input id="resitemname" name="resitemname" class="form-control" type="text" placeholder="请填写项目名称" />
-								</div>
-								<label class="col-sm-2 control-label">项目编号</label>
-								<div class="col-sm-2">
-									<input id="resnumber" name="resnumber" class="form-control" placeholder="自动生成" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">所属地区</label>
-								<div class="col-sm-2">
-									<input id="resarea" name="resarea" class="form-control" type="text" />
-								</div>
-								<label class="col-sm-2 control-label">所在镇/街道/开发区</label>
-								<div class="col-sm-2">
-									<input id="reslocal" name="reslocal" class="form-control" />
-								</div>
-								<label class="col-sm-2 control-label">合作方式</label>
-								<div class="col-sm-2">
-									<select name="resjoinway" id="resjoinway"
-										class="selectpicker show-tick form-control">
-										<option></option>
-										<option value="租凭">租凭</option>
-										<option value="购置">购置</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">主管单位</label>
-								<div class="col-sm-10">
-									<input id="rescompetentunit" name="rescompetentunit" class="form-control" type="text" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">所属行业</label>
-								<div class="col-sm-10">
-									<input id="restrade" name="restrade" class="form-control" type="text" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">用地规模</label>
-								<div class="col-sm-2">
-									<input id="reslandscale" name="reslandscale" class="form-control" type="text" />
-								</div>
-								<label class="col-sm-2 control-label">容积率</label>
-								<div class="col-sm-2">
-									<input id="resvolumerate" name="resvolumerate" class="form-control" />
-								</div>
-								<label class="col-sm-2 control-label">规划用途</label>
-								<div class="col-sm-2">
-									<input id="resplanuses" name="resplanuses" class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">投资强度</label>
-								<div class="col-sm-2">
-									<input id="resinvest" name="resinvest" class="form-control" type="text" />
-								</div>
-								<label class="col-sm-2 control-label">投资总额</label>
-								<div class="col-sm-2">
-									<input id="resgrossassets" name="resgrossassets" class="form-control" />
-								</div>
-								<label class="col-sm-2 control-label">预计建设期</label>
-								<div  class="col-sm-2">
-									<input id="resplantime" name="resplantime" class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">规划地址</label>
-								<div class="col-sm-10">
-									<input id="resplanaddress" name="resplanaddress" class="form-control" type="text" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">规划设想</label>
-								<div class="col-sm-10">
-									<input id="resplanideas" name="resplanideas" class="form-control" type="text" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">建设条件</label>
-								<div class="col-sm-10">
-									<input id="resbuildterm" name="resbuildterm" class="form-control" type="text" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">优惠政策</label>
-								<div class="col-sm-10">
-									<input id="respolicy" name="respolicy" class="form-control" type="text" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">要素分析</label>
-								<div class="col-sm-10">
-									<input id="reselement" name="reselement" class="form-control" type="text" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">联系单位</label>
-								<div class="col-sm-2">
-									<input id="rescontactunit" name="rescontactunit" class="form-control" type="text" />
-								</div>
-								<label class="col-sm-2 control-label">联系人</label>
-								<div class="col-sm-2">
-									<input id="rescontacts" name="rescontacts" class="form-control" type="text" />
-								</div>
-								<label class="col-sm-2 control-label">联系方式</label>
-								<div class="col-sm-2">
-									<input id="rescontactway" name="rescontactway" class="form-control" type="text" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-5 control-label"></label>
-								<button type="button" id="resitem_submit" class="col-sm-2 btn btn-primary"
-									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
-								<label class="col-sm-5 control-label"></label>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+<!-- 			<div class="tab-pane fade" id="ReserveProject"> -->
+<!-- 				<div class="panel panel-default"> -->
+<!-- 					<div class="panel-body"> -->
+<!-- 						<form class="form-horizontal" role="form" id="resitem"> -->
+<!-- 							表单 -->
+<!-- 							<div class="form-group"> -->
+<!-- 								一行行开始写 -->
+<!-- 								<label class="col-sm-2 control-label">政府储备项目名称</label> -->
+<!-- 								<div class="col-sm-6"> -->
+<!-- 									<input id="resitemname" name="resitemname" class="form-control" type="text" placeholder="请填写项目名称" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">项目编号</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="resnumber" name="resnumber" class="form-control" placeholder="自动生成" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">所属地区</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="resarea" name="resarea" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">所在镇/街道/开发区</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="reslocal" name="reslocal" class="form-control" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">合作方式</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<select name="resjoinway" id="resjoinway" -->
+<!-- 										class="selectpicker show-tick form-control"> -->
+<!-- 										<option></option> -->
+<!-- 										<option value="租凭">租凭</option> -->
+<!-- 										<option value="购置">购置</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">主管单位</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="rescompetentunit" name="rescompetentunit" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">所属行业</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="restrade" name="restrade" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">用地规模</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="reslandscale" name="reslandscale" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">容积率</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="resvolumerate" name="resvolumerate" class="form-control" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">规划用途</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="resplanuses" name="resplanuses" class="form-control" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">投资强度</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="resinvest" name="resinvest" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">投资总额</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="resgrossassets" name="resgrossassets" class="form-control" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">预计建设期</label> -->
+<!-- 								<div  class="col-sm-2"> -->
+<!-- 									<input id="resplantime" name="resplantime" class="form-control" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">规划地址</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="resplanaddress" name="resplanaddress" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">规划设想</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="resplanideas" name="resplanideas" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">建设条件</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="resbuildterm" name="resbuildterm" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">优惠政策</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="respolicy" name="respolicy" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">要素分析</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input id="reselement" name="reselement" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-2 control-label">联系单位</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="rescontactunit" name="rescontactunit" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">联系人</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="rescontacts" name="rescontacts" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 								<label class="col-sm-2 control-label">联系方式</label> -->
+<!-- 								<div class="col-sm-2"> -->
+<!-- 									<input id="rescontactway" name="rescontactway" class="form-control" type="text" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="col-sm-5 control-label"></label> -->
+<!-- 								<button type="button" id="resitem_submit" class="col-sm-2 btn btn-primary" -->
+<!-- 									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button> -->
+<!-- 								<label class="col-sm-5 control-label"></label> -->
+<!-- 							</div> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</div>
 	</div>
 	<!-- Select JavaScript -->
@@ -747,6 +773,9 @@
 	<!-- 时间插件 -->
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+	<!-- 文件上传插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script>
 	<script type="text/javascript" src="/TownManagement/js/project/projectEntry.js"></script>
 </body>
 </html>
