@@ -63,6 +63,14 @@ public class TypeStatusConstant {
 	 */
 	public static final String fea_planmap="FeaPlanMap/";
 	/**
+	 * 区域性项目规划图
+	 */
+	public static final String reg_planmap="RegPlanMap/";
+	/**
+	 * 区域性项目区位图
+	 */
+	public static final String reg_statusmap="RegStatusMap/";
+	/**
 	 * 证书
 	 */
 	public static final String proof="proof/";
