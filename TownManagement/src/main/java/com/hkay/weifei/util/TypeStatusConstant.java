@@ -63,6 +63,17 @@ public class TypeStatusConstant {
 	 */
 	public static final String fea_planmap="FeaPlanMap/";
 	/**
+	 * 招商项目规划图
+	 */
+	public static final String inv_planmap="InvPlanMap/";
+	/**
+	 * /**
+	 * 招商项目区位图
+	 */
+	public static final String inv_statusmap="InvStatusMap/";
+	/**
+	 */
+	/**
 	 * 证书
 	 */
 	public static final String proof="proof/";

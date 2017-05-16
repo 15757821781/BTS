@@ -83,8 +83,51 @@ $(document).ready(function() {
 	//------------结束--------------------//
 	//-----------招商项目---------------//
 	// 加载区县信息下拉框
-	createAreaSelect("invprovince","invcity","invtown");
-//		
+    createAreaSelect("invprovince","invcity","invtown");
+//	
+	// 动态增减行初始化
+	 $('.addel').addel({
+			animation: {
+				duration: 100
+			},
+		    events: {
+		        added: function (event) {
+		        	$('#invitem').bootstrapValidator('addField', 'invcontact', {
+		        		validators : {
+		        			notEmpty : {
+		        				message : '联系人不能为空'
+		        			},
+							regexp : {
+								regexp : /[\u4e00-\u9fa5]/,
+								message : '请输入中文'
+							}
+		        		}
+		        	});
+		        	$('#invitem').bootstrapValidator('addField', 'invpost', {
+		        		validators : {
+		        			notEmpty : {
+		        				message : '职务不能为空'
+		        			},
+							regexp : {
+								regexp : /[\u4e00-\u9fa5]/,
+								message : '请输入中文'
+							}
+		        		}
+		        	});  
+		        	$('#invitem').bootstrapValidator('addField', 'invcontacttel', {
+		        		validators : {
+		        			notEmpty : {
+		        				message : '联系电话不能为空'
+		        			},
+							regexp : {
+								regexp : /^[0-9]*$/,
+								message : '请输入整数'
+							}
+		        		}
+		        	});
+		        }
+		    }
+	    });
 	//初始化文件上传控件
 	initFileInput("invfile1","城市背景图",1);
 	initFileInput("invfile2","区县背景图",1);
@@ -548,6 +591,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '联系人不能为空'
+					},
+					regexp : {
+						regexp : /[\u4e00-\u9fa5]/,
+						message : '请输入中文'
 					}
 				}
 			},
@@ -555,6 +602,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '职务不能为空'
+					},
+					regexp : {
+						regexp : /[\u4e00-\u9fa5]/,
+						message : '请输入中文'
 					}
 				}
 			},
@@ -562,6 +613,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '联系电话不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]*$/,
+						message : '请输入整数'
 					}
 				}
 			}

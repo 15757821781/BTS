@@ -3,7 +3,7 @@ package com.hkay.weifei.pojo;
 public class Tb_zhaoshangxiangmu {
 	private int invid;
 	private String invname;//项目名称
-	private int invnumber;//项目编号
+	private String invnumber;//项目编号
 	private String invprovince;// 省份
 	private String invcity;// 城市
 	private String invtown;// 乡县
@@ -47,12 +47,6 @@ public class Tb_zhaoshangxiangmu {
 	}
 	public void setInvname(String invname) {
 		this.invname = invname;
-	}
-	public int getInvnumber() {
-		return invnumber;
-	}
-	public void setInvnumber(int invnumber) {
-		this.invnumber = invnumber;
 	}
 	public void setInvjoinway(String invjoinway) {
 		this.invjoinway = invjoinway;
@@ -147,12 +141,6 @@ public class Tb_zhaoshangxiangmu {
 	public void setInvcontact(String invcontact) {
 		this.invcontact = invcontact;
 	}
-	public String getInvcallnumber() {
-		return invcontacttel;
-	}
-	public void setInvcallnumber(String invcallnumber) {
-		this.invcontacttel = invcontacttel;
-	}
 	public String getSearch() {
 		return search;
 	}
@@ -230,6 +218,21 @@ public class Tb_zhaoshangxiangmu {
 	}
 	public void setInvtownship(String invtownship) {
 		this.invtownship = invtownship;
+	}
+	public String getInvcontacttel() {
+		return invcontacttel;
+	}
+	public void setInvcontacttel(String invcontacttel) {
+		this.invcontacttel = invcontacttel;
+	}
+	public String getInvjoinway() {
+		return invjoinway;
+	}
+	public void setInvnumber(String invnumber) {
+		this.invnumber = invnumber;
+	}
+	public String getInvnumber() {
+		return invnumber;
 	}
 	
 	
