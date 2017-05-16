@@ -1,5 +1,6 @@
 package com.hkay.weifei.service.impl;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,7 +18,15 @@ public class InvitemServiceImpl implements InvitemService{
 	
 	@Override
 	public int insertinvitem(Tb_zhaoshangxiangmu tb_zhaoshangxiangmu) {
-		// TODO Auto-generated method stub
+		// 获得企业注册区县
+		String number = tb_zhaoshangxiangmu.getInvtown();
+		// 获得企业单位信息总数
+		int seq = this.invitemdao.queryinvinfocnt(tb_zhaoshangxiangmu);
+		// 加上2位序号
+		number +=new DecimalFormat("00").format(seq+1);
+		// 加上QY
+		number +="ZS";
+		tb_zhaoshangxiangmu.setInvnumber(number);
 		return this.invitemdao.insertinvitem(tb_zhaoshangxiangmu);
 	}
 
