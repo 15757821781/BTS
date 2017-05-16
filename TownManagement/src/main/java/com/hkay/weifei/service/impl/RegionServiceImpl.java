@@ -1,5 +1,6 @@
 package com.hkay.weifei.service.impl;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,7 +18,11 @@ public class RegionServiceImpl implements RegionService{
 
 	@Override
 	public int insertregion(Tb_quyuxingxiangmu tb_quyuxingxiangmu) {
-		// TODO Auto-generated method stub
+		String number = tb_quyuxingxiangmu.getRegtown();
+		int seq = this.regiondao.queryregioninfocnt(tb_quyuxingxiangmu);
+		number += new DecimalFormat("00").format(seq + 1);
+		number += "QY";
+		tb_quyuxingxiangmu.setRegnumber(number);
 		return this.regiondao.insertregion(tb_quyuxingxiangmu);
 	}
 

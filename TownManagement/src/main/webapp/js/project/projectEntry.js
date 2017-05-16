@@ -36,50 +36,10 @@ $(document).ready(function() {
 	initFileInput("regfile4","规划方案图",1);
 	initFileInput("regfile5","总体规划图",1);
 	initFileInput("regfile6","详细规划图",1);
-    $('.addel-reg').addel({
-		animation: {
-			duration: 100
-		},
-	    events: {
-	        added: function (event) {
-//	        	$('#comform').bootstrapValidator('addField', 'comcontact', {
-//	        		validators : {
-//	        			notEmpty : {
-//	        				message : '联系人不能为空'
-//	        			},
-//						regexp : {
-//							regexp : /[\u4e00-\u9fa5]/,
-//							message : '请输入中文'
-//						}
-//	        		}
-//	        	});
-//	        	$('#comform').bootstrapValidator('addField', 'compost', {
-//	        		validators : {
-//	        			notEmpty : {
-//	        				message : '职务不能为空'
-//	        			},
-//						regexp : {
-//							regexp : /[\u4e00-\u9fa5]/,
-//							message : '请输入中文'
-//						}
-//	        		}
-//	        	});  
-//	        	$('#comform').bootstrapValidator('addField', 'comcontacttel', {
-//	        		validators : {
-//	        			notEmpty : {
-//	        				message : '联系电话不能为空'
-//	        			},
-//						regexp : {
-//							regexp : /^[0-9]*$/,
-//							message : '请输入整数'
-//						}
-//	        		}
-//	        	});
-	        }
-	    }
-    }).on('addel:add', function (event) {
-       (event.target)[0]="111";
-    });
+	//优势产业
+	selectCreate("regnowindustry","conditionmanage/queryAdvIndustry");
+	// 产业方向
+	selectCreate("regprimeindustry","conditionmanage/queryDirIndustry");
 	//------------结束--------------------//
 	//-----------招商项目---------------//
 	// 加载区县信息下拉框
@@ -170,35 +130,17 @@ $(document).ready(function() {
 					}
 				}
 			},
-			regnumber : {
+			regprovince : {
 				validators : {
 					notEmpty : {
-						message : '编号不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
+						message : '省份不能为空'
 					}
 				}
 			},
-			regarea : {
+			regtownship : {
 				validators : {
 					notEmpty : {
-						message : '所属地区不能为空'
-					}
-				}
-			},
-			regproperty : {
-				validators : {
-					notEmpty : {
-						message : '项目属性不能为空'
-					}
-				}
-			},
-			regschedule : {
-				validators : {
-					notEmpty : {
-						message : '当前进度不能为空'
+						message : '乡镇街道不能为空'
 					}
 				}
 			},
@@ -209,101 +151,17 @@ $(document).ready(function() {
 					}
 				}
 			},
-			regdeveloper : {
+			regschedule : {
 				validators : {
 					notEmpty : {
-						message : '开发主体不能为空'
+						message : '项目阶段不能为空'
 					}
 				}
 			},
-			regcharge : {
+			regrelation : {
 				validators : {
 					notEmpty : {
-						message : '开发负责人不能为空'
-					}
-				}
-			},
-			regchargetel : {
-				validators : {
-					notEmpty : {
-						message : '负责人电话不能为空'
-					}
-				}
-			},
-			regpartner : {
-				validators : {
-					notEmpty : {
-						message : '合作单位不能为空'
-					}
-				}
-			},
-			regpartcharge : {
-				validators : {
-					notEmpty : {
-						message : '负责人不能为空'
-					}
-				}
-			},
-			regparttel : {
-				validators : {
-					notEmpty : {
-						message : '负责人电话不能为空'
-					}
-				}
-			},
-			regterms : {
-				validators : {
-					notEmpty : {
-						message : '合作条件不能为空'
-					}
-				}
-			},
-			regtimebegin : {
-				validators : {
-					notEmpty : {
-						message : '合作时间不能为空'
-					},  
-					callback: {
-						message: '开始日期不能大于结束日期',
-						callback:function(value, validator,$field,options){
-							var end = $('#regionitem').find("input[name='regtimeend']").val();
-							return value<=end;
-						}
-					}
-				}
-			},
-			regtimeend : {
-				validators : {
-					notEmpty : {
-						message : '合作时间不能为空'
-					},  
-					callback: {
-						message: '结束日期不能小于开始日期',
-						callback:function(value, validator,$field){
-							var begin = $('#regionitem').find("input[name='regtimebegin']").val();
-							return value>=begin;
-						}
-					}
-				}
-			},
-			regprotocol : {
-				validators : {
-					notEmpty : {
-						message : '协议情况不能为空'
-					}
-				}
-			},
-			regadvisory : {
-				validators : {
-					notEmpty : {
-						message : '咨询顾问单位不能为空'
-					}
-				}
-			},
-			regadvisorypro : {
-				validators : {
-					notEmpty : {
-						message : '协议情况不能为空'
+						message : '关系情况不能为空'
 					}
 				}
 			},
@@ -321,7 +179,7 @@ $(document).ready(function() {
 			regplaninvest : {
 				validators : {
 					notEmpty : {
-						message : '计划投资不能为空'
+						message : '规划面积不能为空'
 					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
@@ -332,7 +190,7 @@ $(document).ready(function() {
 			reglandarea : {
 				validators : {
 					notEmpty : {
-						message : '征地面积不能为空'
+						message : '规划面积不能为空'
 					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
@@ -340,36 +198,24 @@ $(document).ready(function() {
 					}
 				}
 			},
-			regfirstplanarea : {
+			regbasic : {
 				validators : {
 					notEmpty : {
-						message : '一期征地面积不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
-						message : '请输入最多3位小数的数字'
+						message : '基本情况不能为空'
 					}
 				}
 			},
-			regfirstplaninvest : {
+			regspeed : {
 				validators : {
 					notEmpty : {
-						message : '一期计划投资不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
-						message : '请输入最多3位小数的数字'
+						message : '进度情况不能为空'
 					}
 				}
 			},
-			regfirstlandarea : {
+			regnowindustry : {
 				validators : {
 					notEmpty : {
-						message : '征地面积不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
-						message : '请输入最多3位小数的数字'
+						message : '现状产业不能为空'
 					}
 				}
 			},
@@ -380,38 +226,146 @@ $(document).ready(function() {
 					}
 				}
 			},
-			regplancontent : {
+			regdeveloper : {
 				validators : {
 					notEmpty : {
-						message : '规划内容不能为空'
+						message : '牵头单位不能为空'
 					}
 				}
 			},
-			regstatemap : {
+			regcharge : {
 				validators : {
 					notEmpty : {
-						message : '现状地图不能为空'
+						message : '负责人不能为空'
+					},
+					regexp : {
+						regexp : /[\u4e00-\u9fa5]/,
+						message : '请输入中文'
 					}
 				}
 			},
-			regplanscheme : {
+			regchargetel : {
 				validators : {
 					notEmpty : {
-						message : '规划方案不能为空'
+						message : '电话不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]*$/,
+						message : '请输入整数'
 					}
 				}
 			},
-			regcontacts : {
+			regdevelopment : {
 				validators : {
 					notEmpty : {
-						message : '对接人不能为空'
+						message : '合作开发情况不能为空'
 					}
 				}
 			},
-			regplanmap : {
+			regpartner : {
 				validators : {
 					notEmpty : {
-						message : '规划图不能为空'
+						message : '合作开发单位不能为空'
+					}
+				}
+			},
+			regpartcharge : {
+				validators : {
+					notEmpty : {
+						message : '负责人不能为空'
+					}
+				}
+			},
+			regparttel : {
+				validators : {
+					notEmpty : {
+						message : '电话不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]*$/,
+						message : '请输入整数'
+					}
+				}
+			},
+			reinvest : {
+				validators : {
+					notEmpty : {
+						message : '合作投资额不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						message : '请输入最多3位小数的数字'
+					}
+				}
+			},
+			regterms : {
+				validators : {
+					notEmpty : {
+						message : '合作方式不能为空'
+					}
+				}
+			},
+			regbegtime : {
+				validators : {
+					notEmpty : {
+						message : '合作时间不能为空'
+					},  
+					callback: {
+						message: '开始日期不能大于结束日期',
+						callback:function(value, validator,$field,options){
+							var end = $('#regionitem').find("input[name='regendtime']").val();
+							return value<=end;
+						}
+					}
+				}
+			},
+			regendtime : {
+				validators : {
+					notEmpty : {
+						message : '合作时间不能为空'
+					},  
+					callback: {
+						message: '结束日期不能小于开始日期',
+						callback:function(value, validator,$field){
+							var begin = $('#regionitem').find("input[name='regbegtime']").val();
+							return value>=begin;
+						}
+					}
+				}
+			},
+			regcontent : {
+				validators : {
+					notEmpty : {
+						message : '合作内容不能为空'
+					}
+				}
+			},
+			regcontact : {
+				validators : {
+					notEmpty : {
+						message : '联系人不能为空'
+					},
+					regexp : {
+						regexp : /[\u4e00-\u9fa5]/,
+						message : '请输入中文'
+					}
+				}
+			},
+			regpost : {
+				validators : {
+					notEmpty : {
+						message : '职务不能为空'
+					}
+				}
+			},
+			regcontenttel : {
+				validators : {
+					notEmpty : {
+						message : '联系电话不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]*$/,
+						message : '请输入整数'
 					}
 				}
 			}
@@ -806,3 +760,61 @@ $(document).ready(function() {
 		}
 	});
 });
+//
+function addText(v){
+	$('.addel-delete').hide();
+	var num = $('.add_reg').length;
+	$('<div class="form-group add_reg">'
+		+'<div class="col-sm-2" style="text-align: right;">'
+		+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+		+'<i class="fa fa-remove"> </i></button>'
+		+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
+		+'</div><div class="col-sm-2">'
+		+'<input id="regplanareas" name="regplanareas" class="form-control"'
+		+'type="text"></div>'
+		+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
+		+'<div class="col-sm-2">'
+		+'<input id="regplaninvests" name="regplaninvests"'
+		+'class="form-control" type="text"></div>'
+		+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
+		+'<div class="col-sm-2">'
+		+'<input id="reglandareas" name="reglandareas" class="form-control" '
+		+'type="text"></div>').insertAfter(".add_reg:last");
+	$('#regionitem').bootstrapValidator('addField', 'regplanareas', {
+		validators : {
+			regexp : {
+				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
+				message : '请输入最多3位小数的数字'
+			}
+		}
+	});
+	$('#regionitem').bootstrapValidator('addField', 'regplaninvests', {
+		validators : {
+			regexp : {
+				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
+				message : '请输入最多3位小数的数字'
+			}
+		}
+	});
+	$('#regionitem').bootstrapValidator('addField', 'reglandareas', {
+		validators : {
+			regexp : {
+				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
+				message : '请输入最多3位小数的数字'
+			}
+		}
+	});
+}
+//
+function deleteText(v){
+	$(v).parent().parent(".add_reg").remove();
+	$('.addel-delete:last').show();
+}
+//
+function readyOnly(v) {
+	if(v.value=="0"){
+		$(".regpart").attr("disabled","disabled");
+	}else{
+		$(".regpart").removeAttr("disabled");
+	}
+}

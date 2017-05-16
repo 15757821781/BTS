@@ -3,63 +3,184 @@
 <mapper namespace="com.hkay.weifei.Dao.RegionDao">
 	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_quyuxingxiangmu" />
 	<insert id="insertregion" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu">
-		insert into
-		Tb_quyuxingxiangmu(regname,regnumber,regarea,regproperty,regschedule,regposition,regdeveloper,regcharge,regchargetel,regpartner,regpartcharge,regparttel,regterms,regtimebegin,regtimeend,regprotocol,regadvisory,regadvisorypro,regplanarea,regplaninvest,reglandarea,regfirstplanarea,regfirstplaninvest,regfirstlandarea,regprimeindustry,regplancontent,regstatemap,regplanscheme,regcontacts,regplanmap)
-		values
-		(#{regname},#{regnumber},#{regarea},#{regproperty},#{regschedule},#{regposition},#{regdeveloper},#{regcharge},#{regchargetel},#{regpartner},#{regpartcharge},#{regparttel},#{regterms},#{regtimebegin},#{regtimeend},#{regprotocol},#{regadvisory},#{regadvisorypro},#{regplanarea},#{regplaninvest},#{reglandarea},#{regfirstplanarea},#{regfirstplaninvest},#{regfirstlandarea},#{regprimeindustry},#{regplancontent},#{regstatemap},#{regplanscheme},#{regcontacts},#{regplanmap})
+	insert into tb_quyuxingxiangmu (          
+		regname,         
+		regnumber,       
+		regprovince,     
+		regcity,         
+		regtown,         
+		regtownship ,    
+		regposition,     
+		regschedule,     
+		regrelation,     
+		regplanarea,     
+		regplaninvest,   
+		reglandarea,     
+		regplanareas,    
+		regplaninvests,  
+		reglandareas,    
+		regbasic,        
+		regspeed,        
+		regnowindustry,  
+		regprimeindustry,
+		regdeveloper,    
+		regcharge,       
+		regchargetel,    
+		regbegtime,      
+		regendtime,      
+		regdevelopment,  
+		regpartner,      
+		regpartcharge,   
+		regparttel,      
+		regterms,        
+		reinvest,        
+		regcontent,      
+		regcontact,      
+		regpost,         
+		regcontenttel,   
+		regcitypic,      
+		regtownpic,      
+		regscopeopic,    
+		regplanpic,      
+		regallplanpic,   
+		regdetailplanpic,
+		regentry,
+		updatetime
+	)values(
+		#{regname},         
+		#{regnumber},       
+		#{regprovince},     
+		#{regcity},         
+		#{regtown},         
+		#{regtownship },    
+		#{regposition},     
+		#{regschedule},     
+		#{regrelation},     
+		#{regplanarea},     
+		#{regplaninvest},   
+		#{reglandarea},     
+		#{regplanareas},    
+		#{regplaninvests},  
+		#{reglandareas},    
+		#{regbasic},        
+		#{regspeed},        
+		#{regnowindustry},  
+		#{regprimeindustry},
+		#{regdeveloper},    
+		#{regcharge},       
+		#{regchargetel},    
+		#{regbegtime},      
+		#{regendtime},      
+		#{regdevelopment},  
+		#{regpartner},      
+		#{regpartcharge},   
+		#{regparttel},      
+		#{regterms},        
+		#{reinvest},        
+		#{regcontent},      
+		#{regcontact},      
+		#{regpost},         
+		#{regcontenttel},   
+		#{regcitypic},      
+		#{regtownpic},      
+		#{regscopeopic},    
+		#{regplanpic},      
+		#{regallplanpic},   
+		#{regdetailplanpic},
+		#{regentry},
+		now()
+	)      
 	</insert>
 	<select id="queryregioninfo" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
 		resultMap="BaseResultMap">
-		select regid,regname,regnumber,regarea,regproperty,regschedule,regposition,regdeveloper,regcharge,regchargetel,regpartner,regpartcharge,regparttel,regterms,date_format(regtimebegin,'%Y-%c-%d') as regtimebegin,date_format(regtimeend,'%Y-%c-%d') as regtimeend,regprotocol,regadvisory,regadvisorypro,regplanarea,regplaninvest,reglandarea,regfirstplanarea,regfirstplaninvest,regfirstlandarea,regprimeindustry,regplancontent,regstatemap,regplanscheme,regcontacts,regplanmap from Tb_quyuxingxiangmu t where 1=1
+		SELECT
+			a.regid,
+			a.regname,
+			a.regnumber,
+			a.regschedule,
+			b.name as regprovince,
+			c.name as regcity,
+			d.name as regtown
+		FROM
+			tb_quyuxingxiangmu a
+			left join tb_area_province b on a.regprovince=b.code
+			left join tb_area_city c on a.regcity=c.code
+			left join tb_area_town d on a.regtown=d.code
+			where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.regname like '%${search}%' or t.regnumber like '%${search}%' or t.regarea like '%${search}%' or t.regproperty like '%${search}%')
+		    and (a.regname like '%${search}%' or a.regnumber like '%${search}%' or a.regschedule like '%${search}%')
 		</if>
 	</select>
 	<select id="queryregioninfocnt" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
 		resultType="Integer">
-		select count(*) from Tb_quyuxingxiangmu t
+		select count(*) from (
+			SELECT
+				a.regid,
+				a.regname,
+				a.regnumber,
+				a.regschedule,
+				b.name as regprovince,
+				c.name as regcity,
+				d.name as regtown
+			FROM
+				tb_quyuxingxiangmu a
+				left join tb_area_province b on a.regprovince=b.code
+				left join tb_area_city c on a.regcity=c.code
+				left join tb_area_town d on a.regtown=d.code
+				where 1=1
+			<if test="search!=null and search!=''">
+			    and (a.regname like '%${search}%' or a.regnumber like '%${search}%' or a.regschedule like '%${search}%')
+			</if>
+		) t
 		where 1=1
-		<if test="search!=null and search!=''">
-		    and (t.regname like '%${search}%' or t.regnumber like '%${search}%' or t.regarea like '%${search}%' or t.regproperty like '%${search}%')
-		</if>
 	</select>
 	<select id="queryregionitemdetail" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
 		resultMap="BaseResultMap">
-		select regid,regname,regnumber,regarea,regproperty,regschedule,regposition,regdeveloper,regcharge,regchargetel,regpartner,regpartcharge,regparttel,regterms,date_format(regtimebegin,'%Y-%c-%d') as regtimebegin,date_format(regtimeend,'%Y-%c-%d') as regtimeend,regprotocol,regadvisory,regadvisorypro,regplanarea,regplaninvest,reglandarea,regfirstplanarea,regfirstplaninvest,regfirstlandarea,regprimeindustry,regplancontent,regstatemap,regplanscheme,regcontacts,regplanmap from Tb_quyuxingxiangmu t where t.regid=#{regid}
+		select a.* from Tb_quyuxingxiangmu a where a.regid=#{regid}
 	</select>
 	<update id="updateregion" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu">
 		update Tb_quyuxingxiangmu
 		set
 		regname=#{regname},
-		regnumber=#{regnumber},
-		regarea=#{regarea},
-		regproperty=#{regproperty},
-		regschedule=#{regschedule},
+		regprovince=#{regprovince},
+		regcity=#{regcity},
+		regtown=#{regtown},
+		regtownship=#{regtownship},
 		regposition=#{regposition},
+		regschedule=#{regschedule},
+		regrelation=#{regrelation},
+		regplanarea=#{regplanarea},
+		regplaninvest=#{regplaninvest},
+		reglandarea=#{reglandarea},
+		regplanareas=#{regplanareas},
+		regplaninvests=#{regplaninvests},
+		reglandareas=#{reglandareas},
+		regbasic=#{regbasic},
+		regspeed=#{regspeed},
+		regnowindustry=#{regnowindustry},
+		regprimeindustry=#{regprimeindustry},
 		regdeveloper=#{regdeveloper},
 		regcharge=#{regcharge},
 		regchargetel=#{regchargetel},
+		regbegtime=#{regbegtime},
+		regendtime=#{regendtime},
+		regdevelopment=#{regdevelopment},
 		regpartner=#{regpartner},
 		regpartcharge=#{regpartcharge},
 		regparttel=#{regparttel},
 		regterms=#{regterms},
-		regtimebegin=#{regtimebegin},
-		regtimeend=#{regtimeend},
-		regprotocol=#{regprotocol},
-		regadvisory=#{regadvisory},
-		regadvisorypro=#{regadvisorypro},
-		regplanarea=#{regplanarea},
-		regplaninvest=#{regplaninvest},
-		reglandarea=#{reglandarea},
-		regfirstplanarea=#{regfirstplanarea},
-		regfirstplaninvest=#{regfirstplaninvest},
-		regfirstlandarea=#{regfirstlandarea},
-		regprimeindustry=#{regprimeindustry},
-		regplancontent=#{regplancontent},
-		regstatemap=#{regstatemap},
-		regplanscheme=#{regplanscheme},
-		regcontacts=#{regcontacts},
-		regplanmap=#{regplanmap}
+		reinvest=#{reinvest},
+		regcontent=#{regcontent},
+		regcontact=#{regcontact},
+		regpost=#{regpost},
+		regcontenttel=#{regcontenttel},
+		regcitypic=#{regcitypic},
+		regtownpic=#{regtownpic},
+		regscopeopic=#{regscopeopic},
+		regplanpic=#{regplanpic},
+		regallplanpic=#{regallplanpic},
+		regdetailplanpic=#{regdetailplanpic},
+		updatetime=now()
 		where regid=#{regid}
 	</update>
 </mapper>

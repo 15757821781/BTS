@@ -3,7 +3,7 @@ package com.hkay.weifei.pojo;
 public class Tb_quyuxingxiangmu {
 	private int regid;//区域性项目id
 	private String regname;//项目名称
-	private int regnumber;//编号
+	private String regnumber;//编号
 	private String regprovince;// 省份
 	private String regcity;// 城市
 	private String regtown;// 乡县
@@ -14,10 +14,13 @@ public class Tb_quyuxingxiangmu {
 	private double regplanarea;//规划面积
 	private double regplaninvest;//计划投资
 	private double reglandarea;//征地面积
+	private String regplanareas;//多期规划面积
+	private String regplaninvests;//多期投资
+	private String reglandareas;//多期征地面积
 	private String regbasic;//基本情况
 	private String regspeed;//进度情况
-	private String regnowindustry;//现状产业
-	private String regprimeindustry;//主导产业
+	private String regnowindustry;//优势产业
+	private String regprimeindustry;//产业方向
 	private String regdeveloper;//牵头单位
 	private String regcharge;//牵头负责人
 	private String regchargetel;//牵头负责人电话
@@ -29,12 +32,10 @@ public class Tb_quyuxingxiangmu {
 	private String regparttel;//合作单位负责人电话
 	private String regterms;//合作方式
 	private double reinvest;//合作投资额
-	private String regtimebegin;//合作开始时间
-	private String regtimeend;//合作结束时间
 	private String regcontent;//合作内容
-	private String regcontacts;//联系人
+	private String regcontact;//联系人
 	private String regpost;//职务
-	private String regcallnumber;//联系电话
+	private String regcontenttel;//联系电话
 	private String regcitypic;// 城市区位图
 	private String regtownpic;// 区县区位图
 	private String regscopeopic;// 规划范围图
@@ -42,8 +43,46 @@ public class Tb_quyuxingxiangmu {
 	private String regallplanpic;// 城市总体规划
 	private String regdetailplanpic;// 控制性详细规划
 	private String regentry;//录入员
+	
 	private String search;//搜索内容
 	
+	
+	public String getRegplanareas() {
+		return regplanareas;
+	}
+	public void setRegplanareas(String regplanareas) {
+		this.regplanareas = regplanareas;
+	}
+	public String getRegplaninvests() {
+		return regplaninvests;
+	}
+	public void setRegplaninvests(String regplaninvests) {
+		this.regplaninvests = regplaninvests;
+	}
+	public String getReglandareas() {
+		return reglandareas;
+	}
+	public void setReglandareas(String reglandareas) {
+		this.reglandareas = reglandareas;
+	}
+	public String getRegnumber() {
+		return regnumber;
+	}
+	public void setRegnumber(String regnumber) {
+		this.regnumber = regnumber;
+	}
+	public String getRegcontact() {
+		return regcontact;
+	}
+	public void setRegcontact(String regcontact) {
+		this.regcontact = regcontact;
+	}
+	public String getRegcontenttel() {
+		return regcontenttel;
+	}
+	public void setRegcontenttel(String regcontenttel) {
+		this.regcontenttel = regcontenttel;
+	}
 	public int getRegid() {
 		return regid;
 	}
@@ -55,12 +94,6 @@ public class Tb_quyuxingxiangmu {
 	}
 	public void setRegname(String regname) {
 		this.regname = regname;
-	}
-	public int getRegnumber() {
-		return regnumber;
-	}
-	public void setRegnumber(int regnumber) {
-		this.regnumber = regnumber;
 	}
 	public String getRegprovince() {
 		return regprovince;
@@ -212,41 +245,17 @@ public class Tb_quyuxingxiangmu {
 	public void setReinvest(double reinvest) {
 		this.reinvest = reinvest;
 	}
-	public String getRegtimebegin() {
-		return regtimebegin;
-	}
-	public void setRegtimebegin(String regtimebegin) {
-		this.regtimebegin = regtimebegin;
-	}
-	public String getRegtimeend() {
-		return regtimeend;
-	}
-	public void setRegtimeend(String regtimeend) {
-		this.regtimeend = regtimeend;
-	}
 	public String getRegcontent() {
 		return regcontent;
 	}
 	public void setRegcontent(String regcontent) {
 		this.regcontent = regcontent;
 	}
-	public String getRegcontacts() {
-		return regcontacts;
-	}
-	public void setRegcontacts(String regcontacts) {
-		this.regcontacts = regcontacts;
-	}
 	public String getRegpost() {
 		return regpost;
 	}
 	public void setRegpost(String regpost) {
 		this.regpost = regpost;
-	}
-	public String getRegcallnumber() {
-		return regcallnumber;
-	}
-	public void setRegcallnumber(String regcallnumber) {
-		this.regcallnumber = regcallnumber;
 	}
 	public String getRegcitypic() {
 		return regcitypic;
