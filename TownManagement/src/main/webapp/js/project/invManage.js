@@ -188,42 +188,42 @@ function updateinfo(invid){
 							field : 'invcitypic',
 							id : 'invid' ,
 							value : data.data[0].invcitypic,
-							showdelete : false
+							showdelete : true
 					}
 					var param2={
 							tbname : 'tb_zhaoshangxiangmu',
 							field : 'invtownpic',
 							id : 'invid' ,
 							value : data.data[0].invtownpic,
-							showdelete : false
+							showdelete : true
 					}
 					var param3={
 							tbname : 'tb_zhaoshangxiangmu',
 							field : 'invscopeopic',
 							id : 'invid' ,
 							value : data.data[0].invscopeopic,
-							showdelete : false
+							showdelete : true
 					}
 					var param4={
 							tbname : 'tb_zhaoshangxiangmu',
 							field : 'invplanpic',
 							id : 'invid' ,
 							value : data.data[0].invplanpic,
-							showdelete : false
+							showdelete : true
 					}
 					var param5={
 							tbname : 'tb_zhaoshangxiangmu',
 							field : 'invallplanpic',
 							id : 'invid' ,
 							value : data.data[0].invallplanpic,
-							showdelete : false
+							showdelete : true
 					}
 					var param6={
 							tbname : 'tb_zhaoshangxiangmu',
 							field : 'invdetailplanpic',
 							id : 'invid' ,
 							value : data.data[0].invdetailplanpic,
-							showdelete : false
+							showdelete : true
 					}
 					initDeatilFileInput('invfile1',param1);
 					initDeatilFileInput('invfile2',param2);
