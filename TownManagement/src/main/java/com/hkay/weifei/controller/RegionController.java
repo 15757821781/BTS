@@ -67,6 +67,7 @@ public class RegionController {
 		}catch(Exception e){
 			Log.error("insertregion:"+e.getMessage());
 			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 1);
 		}
 		return result;
 	}
@@ -147,6 +148,7 @@ public class RegionController {
 		}catch(Exception e){
 			Log.error("updateregion:"+e.getMessage());
 			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
 		}
 		return result;
 	}
