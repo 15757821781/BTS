@@ -273,7 +273,6 @@ var orgtype = [ {
 } ]
 function typeChanage(v){
 	var id = v.value;
-	console.log(id);
 	$("#orgtype option").remove();
 	$("#orgtype").append("<option></option>");
 	$.each(orgtype, function(i, item) {
