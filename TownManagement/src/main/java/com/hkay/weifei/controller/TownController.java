@@ -69,6 +69,7 @@ public class TownController {
 		} catch (Exception e) {
 			Log.error("error----------inserttowninfo:" + e.getMessage());
 			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 1);
 		}
 		return result;
 	}
@@ -132,6 +133,7 @@ public class TownController {
 		} catch (Exception e) {
 			Log.error("error----------updatetowninfo:" + e.getMessage());
 			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
 		}
 		return result;
 	}

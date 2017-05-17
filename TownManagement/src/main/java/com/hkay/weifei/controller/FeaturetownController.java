@@ -71,6 +71,7 @@ public class FeaturetownController {
 		} catch (Exception e) {
 			Log.error("insertfeaturetown:" + e.getMessage());
 			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 1);
 		}
 		return result;
 	}
@@ -148,6 +149,7 @@ public class FeaturetownController {
 		}catch(Exception e){
 			Log.error("updatefeaturetown:"+e.getMessage());
 			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
 		}
 		return result;
 	}
