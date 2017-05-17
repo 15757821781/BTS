@@ -439,7 +439,6 @@ var comtype = [ {
 } ]
 function typeChanage(v){
 	var id = v.value;
-	console.log(id);
 	$("#comtype option").remove();
 	$("#comtype").append("<option></option>");
 	$.each(comtype, function(i, item) {
