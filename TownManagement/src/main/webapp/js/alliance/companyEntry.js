@@ -88,6 +88,7 @@ $(document).ready(function() {
 	$('#comentry_update').click(function() {
 		formSubmit('#comform','commanage/updateComInfo','Alliance/companyManage.html');
 	});
+	$('#comform').bootstrapValidator('resetForm', true);
 	$('#comform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],

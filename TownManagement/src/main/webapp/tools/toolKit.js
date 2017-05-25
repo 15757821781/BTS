@@ -75,54 +75,6 @@ var showInfoModal = function(id,message){
 	$("#"+ID).modal('show');
 }
 
-// 根据状态处理
-var dealWidthState=function(result){
-	// 登出,session过期
-	if(result.state=="loginout"){
-		showInfoModal("sys_alert",result.message);
-		// 隐藏后跳转到登录页
-		$('#sys_alert').on('hidden.bs.modal',function() {
-			window.location.href='/TownManagement';
-		});
-     	return false;
-     	// 登录成功
-	} else if (result.state=="loginsuccess"){
-		showSucModal("sys_alert",result.message);
-		// 登录失败
-	} else if (result.state=="loginfail"){
-		showFailModal("sys_alert",result.message);
-		return false;
-		// 新增成功
-	} else if (result.state=="insertsuccess"){
-		showSucModal("sys_alert",result.message);
-		// 删除成功
-	} else if (result.state=="deletesuccess"){
-		showSucModal("sys_alert",result.message);
-		// 更新成功
-	} else if (result.state=="updatesuccess"){
-		showSucModal("sys_alert",result.message);
-		// 新增失败
-	} else if (result.state=="insertfail"){
-		showFailModal("sys_alert",result.message);
-		return false;
-		// 删除失败
-	} else if (result.state=="deletefail"){
-		showFailModal("sys_alert",result.message);
-		return false;
-		// 更新失败
-	} else if (result.state=="updatefail"){
-		showFailModal("sys_alert",result.message);
-		return false;
-		// 操作失败
-	} else if (result.state=="fail"){
-		showFailModal("sys_alert",result.message);
-		return false;
-	}
-	setTimeout(function() {
-		$("#sys_alert").modal('hide');
-	}, 1000);
-}
-
 //对ajax进行封装
 tk.ajax = function(options) {
 	options = $.extend(true, {
@@ -139,7 +91,50 @@ tk.ajax = function(options) {
 //		},
 		data : {},
 		success : function(result,status) {
-			dealWidthState(result);
+			// 登出,session过期
+			if(result.state=="loginout"){
+				showInfoModal("sys_alert",result.message);
+				// 隐藏后跳转到登录页
+				$('#sys_alert').on('hidden.bs.modal',function() {
+					window.location.href='/TownManagement';
+				});
+		     	return false;
+		     	// 登录成功
+			} else if (result.state=="loginsuccess"){
+				showSucModal("sys_alert",result.message);
+				// 登录失败
+			} else if (result.state=="loginfail"){
+				showFailModal("sys_alert",result.message);
+				return false;
+				// 新增成功
+			} else if (result.state=="insertsuccess"){
+				showSucModal("sys_alert",result.message);
+				// 删除成功
+			} else if (result.state=="deletesuccess"){
+				showSucModal("sys_alert",result.message);
+				// 更新成功
+			} else if (result.state=="updatesuccess"){
+				showSucModal("sys_alert",result.message);
+				// 新增失败
+			} else if (result.state=="insertfail"){
+				showFailModal("sys_alert",result.message);
+				return false;
+				// 删除失败
+			} else if (result.state=="deletefail"){
+				showFailModal("sys_alert",result.message);
+				return false;
+				// 更新失败
+			} else if (result.state=="updatefail"){
+				showFailModal("sys_alert",result.message);
+				return false;
+				// 操作失败
+			} else if (result.state=="fail"){
+				showFailModal("sys_alert",result.message);
+				return false;
+			}
+			setTimeout(function() {
+				$("#sys_alert").modal('hide');
+			}, 1000);
 			var realParam = result;
 			tk.execFn(options.succ, options.scope, realParam);
 		},
@@ -425,4 +420,16 @@ function initDeatilFileInput(ctrlName,param) {
 		var value = JSON.parse(result.responseText);
 		$("#"+param.field).val(value.data);
 	});
+}
+// 禁用backspace
+function doKey(e){
+    var ev = e || window.event;//获取event对象
+    var obj = ev.target || ev.srcElement;//获取事件源
+//    var t = obj.type || obj.getAttribute('type');//获取事件源类型
+//    if(ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea"){
+//        return false;
+//    }
+    if(ev.keyCode == 8 && obj.readOnly==true){
+    	return false;
+    }
 }

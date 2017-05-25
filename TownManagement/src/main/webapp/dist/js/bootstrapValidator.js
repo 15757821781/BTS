@@ -2131,6 +2131,7 @@ if (typeof jQuery === 'undefined') {
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
+        	alert(1111);
             return true;
         }
     };
