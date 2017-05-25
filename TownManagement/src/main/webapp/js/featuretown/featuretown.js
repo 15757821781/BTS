@@ -78,7 +78,7 @@ $(document).ready(function() {
 	//特色小镇表单验证
 	setTimeout(function() {
 		validatorFeaForm();
-	}, 50);
+	}, 500);
 });
 //
 function readyOnly(v) {
@@ -93,7 +93,7 @@ function validatorFeaForm(){
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
