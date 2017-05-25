@@ -42,7 +42,44 @@ $(document).ready(function() {
     $('.addel').addel({
 		animation: {
 			duration: 100
-		}
+		},
+	    events: {
+	        added: function (event) {
+	        	$('#comform').bootstrapValidator('addField', 'comcontact', {
+	        		validators : {
+	        			notEmpty : {
+	        				message : '联系人不能为空'
+	        			},
+						regexp : {
+							regexp : /[\u4e00-\u9fa5]/,
+							message : '请输入中文'
+						}
+	        		}
+	        	});
+	        	$('#comform').bootstrapValidator('addField', 'compost', {
+	        		validators : {
+	        			notEmpty : {
+	        				message : '职务不能为空'
+	        			},
+						regexp : {
+							regexp : /[\u4e00-\u9fa5]/,
+							message : '请输入中文'
+						}
+	        		}
+	        	});  
+	        	$('#comform').bootstrapValidator('addField', 'comcontacttel', {
+	        		validators : {
+	        			notEmpty : {
+	        				message : '联系电话不能为空'
+	        			},
+						regexp : {
+							regexp : /^[0-9]*$/,
+							message : '请输入整数'
+						}
+	        		}
+	        	});
+	        }
+	    }
     });
 	//表单提交
 	$('#comentry_submit').click(function() {
@@ -51,6 +88,7 @@ $(document).ready(function() {
 	$('#comentry_update').click(function() {
 		formSubmit('#comform','commanage/updateComInfo','Alliance/companyManage.html');
 	});
+	$('#comform').bootstrapValidator('resetForm', true);
 	$('#comform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -98,7 +136,7 @@ $(document).ready(function() {
 			comlisted : {
 				validators : {
 					notEmpty : {
-						message : '上市情况能为空'
+						message : '上市情况不能为空'
 					}
 				}
 			},
@@ -319,6 +357,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '联系人不能为空'
+					},
+					regexp : {
+						regexp : /[\u4e00-\u9fa5]/,
+						message : '请输入中文'
 					}
 				}
 			},
@@ -326,6 +368,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '职务不能为空'
+					},
+					regexp : {
+						regexp : /[\u4e00-\u9fa5]/,
+						message : '请输入中文'
 					}
 				}
 			},
@@ -333,6 +379,10 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '联系电话不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]*$/,
+						message : '请输入整数'
 					}
 				}
 			}
@@ -390,7 +440,6 @@ var comtype = [ {
 } ]
 function typeChanage(v){
 	var id = v.value;
-	console.log(id);
 	$("#comtype option").remove();
 	$("#comtype").append("<option></option>");
 	$.each(comtype, function(i, item) {

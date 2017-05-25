@@ -28,4 +28,6 @@ public interface ConditionService {
 
 	List<Condition> queryBusinessDir();
 
+	List<Condition> queryAdvantage();
+
 }

@@ -3,9 +3,11 @@ package com.hkay.weifei.pojo;
 public class Tb_zhaoshangxiangmu {
 	private int invid;
 	private String invname;//项目名称
-	private int invnumber;//项目编号
-	private String invarea;//所属地区
-	private String invlocal;//乡镇街道/开发区
+	private String invnumber;//项目编号
+	private String invprovince;// 省份
+	private String invcity;// 城市
+	private String invtown;// 乡县
+	private String invtownship ;//乡镇街道
 	private String invjoinway;//合作方式
 	private String invcharge;//主管单位
 	private String invindustry;//所属行业
@@ -14,7 +16,7 @@ public class Tb_zhaoshangxiangmu {
 	private String invplanuse;//土地用途
 	private double investment;//投资强度
 	private double investmentall;//投资总额
-	private double invexpectbuild;//预计建设期
+	private String invexpectbuild;//预计建设期
 	private String invplanaddress;//规划地址
 	private String invbuildcontent;//建设内容
 	private String invbuildcondition;//建设条件
@@ -22,11 +24,15 @@ public class Tb_zhaoshangxiangmu {
 	private String invessential;//要素分析
 	private String invbenefit;//效益分析
 //	private String invremark;//备注
-	private String invstatemap;//区位图
-	private String invplanmap;//规划图
+	private String invcitypic;// 城市区位图
+	private String invtownpic;// 区县区位图
+	private String invscopeopic;// 规划范围图
+	private String invplanpic;// 规划方案图
+	private String invallplanpic;// 城市总体规划
+	private String invdetailplanpic;// 控制性详细规划
 //	private String invunit;//联系单位
 	private String invcontact;//联系人
-	private String invcallnumber;//联系电话
+	private String invcontacttel;//联系电话
 	private String search;//搜索内容
 	private String invpost;//职务
 	private String inventry;//录入员
@@ -41,27 +47,6 @@ public class Tb_zhaoshangxiangmu {
 	}
 	public void setInvname(String invname) {
 		this.invname = invname;
-	}
-	public int getInvnumber() {
-		return invnumber;
-	}
-	public void setInvnumber(int invnumber) {
-		this.invnumber = invnumber;
-	}
-	public String getInvarea() {
-		return invarea;
-	}
-	public void setInvarea(String invarea) {
-		this.invarea = invarea;
-	}
-	public String getInvlocal() {
-		return invlocal;
-	}
-	public void setInvlocal(String invlocal) {
-		this.invlocal = invlocal;
-	}
-	public String getInvjoinway() {
-		return invjoinway;
 	}
 	public void setInvjoinway(String invjoinway) {
 		this.invjoinway = invjoinway;
@@ -108,10 +93,10 @@ public class Tb_zhaoshangxiangmu {
 	public void setInvestmentall(double investmentall) {
 		this.investmentall = investmentall;
 	}
-	public double getInvexpectbuild() {
+	public String getInvexpectbuild() {
 		return invexpectbuild;
 	}
-	public void setInvexpectbuild(double invexpectbuild) {
+	public void setInvexpectbuild(String invexpectbuild) {
 		this.invexpectbuild = invexpectbuild;
 	}
 	public String getInvplanaddress() {
@@ -150,29 +135,11 @@ public class Tb_zhaoshangxiangmu {
 	public void setInvbenefit(String invbenefit) {
 		this.invbenefit = invbenefit;
 	}
-	public String getInvstatemap() {
-		return invstatemap;
-	}
-	public void setInvstatemap(String invstatemap) {
-		this.invstatemap = invstatemap;
-	}
-	public String getInvplanmap() {
-		return invplanmap;
-	}
-	public void setInvplanmap(String invplanmap) {
-		this.invplanmap = invplanmap;
-	}
 	public String getInvcontact() {
 		return invcontact;
 	}
 	public void setInvcontact(String invcontact) {
 		this.invcontact = invcontact;
-	}
-	public String getInvcallnumber() {
-		return invcallnumber;
-	}
-	public void setInvcallnumber(String invcallnumber) {
-		this.invcallnumber = invcallnumber;
 	}
 	public String getSearch() {
 		return search;
@@ -191,6 +158,81 @@ public class Tb_zhaoshangxiangmu {
 	}
 	public void setInventry(String inventry) {
 		this.inventry = inventry;
+	}
+	public String getInvcitypic() {
+		return invcitypic;
+	}
+	public void setInvcitypic(String invcitypic) {
+		this.invcitypic = invcitypic;
+	}
+	public String getInvtownpic() {
+		return invtownpic;
+	}
+	public void setInvtownpic(String invtownpic) {
+		this.invtownpic = invtownpic;
+	}
+	public String getInvscopeopic() {
+		return invscopeopic;
+	}
+	public void setInvscopeopic(String invscopeopic) {
+		this.invscopeopic = invscopeopic;
+	}
+	public String getInvplanpic() {
+		return invplanpic;
+	}
+	public void setInvplanpic(String invplanpic) {
+		this.invplanpic = invplanpic;
+	}
+	public String getInvallplanpic() {
+		return invallplanpic;
+	}
+	public void setInvallplanpic(String invallplanpic) {
+		this.invallplanpic = invallplanpic;
+	}
+	public String getInvdetailplanpic() {
+		return invdetailplanpic;
+	}
+	public void setInvdetailplanpic(String invdetailplanpic) {
+		this.invdetailplanpic = invdetailplanpic;
+	}
+	public String getInvprovince() {
+		return invprovince;
+	}
+	public void setInvprovince(String invprovince) {
+		this.invprovince = invprovince;
+	}
+	public String getInvcity() {
+		return invcity;
+	}
+	public void setInvcity(String invcity) {
+		this.invcity = invcity;
+	}
+	public String getInvtown() {
+		return invtown;
+	}
+	public void setInvtown(String invtown) {
+		this.invtown = invtown;
+	}
+	public String getInvtownship() {
+		return invtownship;
+	}
+	public void setInvtownship(String invtownship) {
+		this.invtownship = invtownship;
+	}
+	public String getInvcontacttel() {
+		return invcontacttel;
+	}
+	public void setInvcontacttel(String invcontacttel) {
+		this.invcontacttel = invcontacttel;
+	}
+	public String getInvjoinway() {
+		return invjoinway;
+	}
+	public void setInvnumber(String invnumber) {
+		this.invnumber = invnumber;
+	}
+	public String getInvnumber() {
+		return invnumber;
 	}
 	
 	

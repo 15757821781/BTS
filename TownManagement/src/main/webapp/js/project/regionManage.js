@@ -18,7 +18,7 @@ $(document).ready(function() {
 		showRefresh : true,//显示刷新按钮
 		strictSearch : true,//设置为 true启用 全匹配搜索，否则为模糊搜索
 		clickToSelect : true, //是否启用点击选中行
-		height : 520, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
+		height : 650, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {
@@ -33,15 +33,24 @@ $(document).ready(function() {
 			align : 'center',
 			width : '20%'
 		}, {
-			field : 'regarea',
 			title : '所属地区',
 			align : 'center',
-			width : '20%'
+			width : '20%',
+            formatter:function(value,row,index){
+            	return row.regprovince+"/"+row.regcity+"/"+row.regtown;
+            }
 		}, {
-			field : 'regproperty',
-			title : '项目属性',
+			field : 'regschedule',
+			title : '项目阶段',
 			align : 'center',
-			width : '20%'
+			width : '20%',
+            formatter:function(value,row,index){
+            	if(value=="1"){
+            		return "谋划阶段";
+            	}else if (value=="2"){
+            		return "实施阶段";
+            	}
+            }
 		}, {
             title : '操作',
             field : 'regid',
@@ -54,7 +63,15 @@ $(document).ready(function() {
             }
 		} ]
 	});
-})
+	$.ajax({
+		url : "/TownManagement/pages/ProjectLibrary/regionitem.html",
+		cache : false,
+		async: false,
+		success : function(html) {
+			$("#regionbody").html(html);
+		}
+	});
+});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {
@@ -71,44 +88,189 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(regid) {
-	$.ajax({
-		url : "/TownManagement/pages/ProjectLibrary/regionitem.html",
-		cache : false,
+	tk.ajax({
+		url : "/TownManagement/regionmanage/queryregionitemdetail",
 		async: false,
-		success : function(html) {
-			$("#regionbody").html(html);
-			tk.ajax({
-				url : "/TownManagement/regionmanage/queryregionitemdetail",
-				async: false,
-				data : {"regid":regid},
-				dataType : 'JSON',
-				succ : function(data, status) {
-					fillForm('#regionitem',data);
-				}
+		data : {"regid":regid},
+		dataType : 'JSON',
+		succ : function(data, status) {
+			fillForm('#regionitem',data);
+			var param1={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regcitypic',
+					id : 'regid' ,
+					value : data.data[0].regcitypic,
+					showdelete : false
+			}
+			var param2={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regtownpic',
+					id : 'regid' ,
+					value : data.data[0].regtownpic,
+					showdelete : false
+			}
+			var param3={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regscopeopic',
+					id : 'regid' ,
+					value : data.data[0].regscopeopic,
+					showdelete : false
+			}
+			var param4={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regplanpic',
+					id : 'regid' ,
+					value : data.data[0].regplanpic,
+					showdelete : false
+			}
+			var param5={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regallplanpic',
+					id : 'regid' ,
+					value : data.data[0].regallplanpic,
+					showdelete : false
+			}
+			var param6={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regdetailplanpic',
+					id : 'regid' ,
+					value : data.data[0].regdetailplanpic,
+					showdelete : false
+			}
+			initDeatilFileInput('regfile1',param1);
+			initDeatilFileInput('regfile2',param2);
+			initDeatilFileInput('regfile3',param3);
+			initDeatilFileInput('regfile4',param4);
+			initDeatilFileInput('regfile5',param5);
+			initDeatilFileInput('regfile6',param6);
+			// 处理多行展示
+			var regplanareas=data.data[0].regplanareas.split(",");
+			var regplaninvests=data.data[0].regplaninvests.split(",");
+			var reglandareas=data.data[0].reglandareas.split(",");
+			$(".add_reg:gt(0)").remove();
+			$.each(regplanareas,function(i,item){
+				$('.addel-delete').hide();
+				var num = $('.add_reg').length;
+				$('<div class="form-group add_reg">'
+					+'<div class="col-sm-2" style="text-align: right;">'
+					+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+					+'<i class="fa fa-remove"> </i></button>'
+					+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
+					+'</div><div class="col-sm-2">'
+					+'<input id="regplanareas" name="regplanareas" class="form-control"'
+					+'type="text" value='+regplanareas[i]+'></div>'
+					+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
+					+'<div class="col-sm-2">'
+					+'<input id="regplaninvests" name="regplaninvests"'
+					+'class="form-control" type="text" value='+regplaninvests[i]+'></div>'
+					+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
+					+'<div class="col-sm-2">'
+					+'<input id="reglandareas" name="reglandareas" class="form-control" '
+					+'type="text" value='+reglandareas[i]+'></div>').insertAfter(".add_reg:last");
 			});
+//			addRegValidator();
+			// 合作禁用选项
+			if (data.data[0].regdevelopment == "0") {
+				$(".regpart").attr("disabled", "disabled");
+			} else {
+				$(".regpart").removeAttr("disabled");
+			}
 			$("#regionmodal").modal('show');
+			$("#regitem_update").hide();
 		}
 	});
 }
 //展示修改界面
 function updateinfo(regid){
-	$.ajax({
-		url : "/TownManagement/pages/ProjectLibrary/regionitem.html",
-		cache : false,
+	tk.ajax({
+		url : "/TownManagement/regionmanage/queryregionitemdetail",
 		async: false,
-		success : function(html) {
-			$("#regionbody").html(html);
-			tk.ajax({
-				url : "/TownManagement/regionmanage/queryregionitemdetail",
-				async: false,
-				data : {"regid":regid},
-				dataType : 'JSON',
-				succ : function(data, status) {
-					fillForm('#regionitem',data);
-				}
+		data : {"regid":regid},
+		dataType : 'JSON',
+		succ : function(data, status) {
+			fillForm('#regionitem',data);
+			var param1={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regcitypic',
+					id : 'regid' ,
+					value : data.data[0].regcitypic,
+					showdelete : true
+			}
+			var param2={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regtownpic',
+					id : 'regid' ,
+					value : data.data[0].regtownpic,
+					showdelete : true
+			}
+			var param3={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regscopeopic',
+					id : 'regid' ,
+					value : data.data[0].regscopeopic,
+					showdelete : true
+			}
+			var param4={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regplanpic',
+					id : 'regid' ,
+					value : data.data[0].regplanpic,
+					showdelete : true
+			}
+			var param5={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regallplanpic',
+					id : 'regid' ,
+					value : data.data[0].regallplanpic,
+					showdelete : true
+			}
+			var param6={
+					tbname : 'tb_quyuxingxiangmu',
+					field : 'regdetailplanpic',
+					id : 'regid' ,
+					value : data.data[0].regdetailplanpic,
+					showdelete : true
+			}
+			initDeatilFileInput('regfile1',param1);
+			initDeatilFileInput('regfile2',param2);
+			initDeatilFileInput('regfile3',param3);
+			initDeatilFileInput('regfile4',param4);
+			initDeatilFileInput('regfile5',param5);
+			initDeatilFileInput('regfile6',param6);
+			// 处理多行展示
+			var regplanareas=data.data[0].regplanareas.split(",");
+			var regplaninvests=data.data[0].regplaninvests.split(",");
+			var reglandareas=data.data[0].reglandareas.split(",");
+			$(".add_reg:gt(0)").remove();
+			$.each(regplanareas,function(i,item){
+				$('.addel-delete').hide();
+				var num = $('.add_reg').length;
+				$('<div class="form-group add_reg">'
+					+'<div class="col-sm-2" style="text-align: right;">'
+					+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+					+'<i class="fa fa-remove"> </i></button>'
+					+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
+					+'</div><div class="col-sm-2">'
+					+'<input id="regplanareas" name="regplanareas" class="form-control"'
+					+'type="text" data-bv-field="regplanareas" value='+regplanareas[i]+'></div>'
+					+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
+					+'<div class="col-sm-2">'
+					+'<input id="regplaninvests" name="regplaninvests"'
+					+'class="form-control" type="text" data-bv-field="regplaninvests" value='+regplaninvests[i]+'></div>'
+					+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
+					+'<div class="col-sm-2">'
+					+'<input id="reglandareas" name="reglandareas" class="form-control" '
+					+'type="text" data-bv-field="reglandareas" value='+reglandareas[i]+'></div>').insertAfter(".add_reg:last");
 			});
+			addRegValidator();
+			// 合作禁用选项
+			if (data.data[0].regdevelopment == "0") {
+				$(".regpart").attr("disabled", "disabled");
+			} else {
+				$(".regpart").removeAttr("disabled");
+			}
 			$("#regionmodal").modal('show');
-			$("#regionitem_update").show();
+			$("#regitem_update").show();
 		}
 	});
 }

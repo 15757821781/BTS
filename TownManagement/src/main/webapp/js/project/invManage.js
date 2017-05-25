@@ -18,7 +18,7 @@ $(document).ready(function() {
 		showRefresh : true,//显示刷新按钮
 		strictSearch : true,//设置为 true启用 全匹配搜索，否则为模糊搜索
 		clickToSelect : true, //是否启用点击选中行
-		height : 520, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
+		height : 650, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {
@@ -32,12 +32,15 @@ $(document).ready(function() {
 			editable : true,
 			align : 'center',
 			width : '20%'
-		}, {
-			field : 'invarea',
-			title : '所属地区',
+		},
+		{
+			title : '归属地',
 			align : 'center',
-			width : '20%'
-		}, {
+			width : '20%',
+			  formatter:function(value,row,index){
+	            	return row.invprovince+"/"+row.invcity+"/"+row.invtown;
+	            }
+		},{
 			field : 'invcharge',
 			title : '主管单位',
 			align : 'center',
@@ -53,6 +56,13 @@ $(document).ready(function() {
             	return query+"&nbsp"+update;
             }
 		} ]
+	});
+	$.ajax({
+		url : "/TownManagement/pages/ProjectLibrary/invitem.html",
+		cache : false,
+		success : function(html) {
+			$("#invbody").html(html);
+		}
 	});
 })
 //查询方法
@@ -71,12 +81,6 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(invid) {
-	$.ajax({
-		url : "/TownManagement/pages/ProjectLibrary/invitem.html",
-		cache : false,
-		async: false,
-		success : function(html) {
-			$("#invbody").html(html);
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
 				async: false,
@@ -84,20 +88,94 @@ function querydetail(invid) {
 				dataType : 'JSON',
 				succ : function(data, status) {
 					fillForm('#invitem',data);
+					var param1={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invcitypic',
+							id : 'invid' ,
+							value : data.data[0].invcitypic,
+							showdelete : false
+					}
+					var param2={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invtownpic',
+							id : 'invid' ,
+							value : data.data[0].invtownpic,
+							showdelete : false
+					}
+					var param3={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invscopeopic',
+							id : 'invid' ,
+							value : data.data[0].invscopeopic,
+							showdelete : false
+					}
+					var param4={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invplanpic',
+							id : 'invid' ,
+							value : data.data[0].invplanpic,
+							showdelete : false
+					}
+					var param5={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invallplanpic',
+							id : 'invid' ,
+							value : data.data[0].invallplanpic,
+							showdelete : false
+					}
+					var param6={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invdetailplanpic',
+							id : 'invid' ,
+							value : data.data[0].invdetailplanpic,
+							showdelete : false
+					}
+					initDeatilFileInput('invfile1',param1);
+					initDeatilFileInput('invfile2',param2);
+					initDeatilFileInput('invfile3',param3);
+					initDeatilFileInput('invfile4',param4);
+					initDeatilFileInput('invfile5',param5);
+					initDeatilFileInput('invfile6',param6);
+					var invcontact=data.data[0].invcontact.split(",");
+					var invpost=data.data[0].invpost.split(",");
+					var invcontacttel=data.data[0].invcontacttel.split(",");
+					$(".addel-target:gt(0)").remove();
+					$.each(invcontact,function(i,item){
+						if(i==0){
+							$("#invcontact").val(invcontact[i]);
+							$("#invpost").val(invpost[i]);
+							$("#invcontacttel").val(invcontacttel[i]);
+						}else{
+							$('<div class="form-group addel-target has-feedback">'
+								+'<div class="col-sm-2" style="text-align: right;">'
+								+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+								+'<i class="fa fa-plus"></i></button>'
+								+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+								+'<i class="fa fa-remove"></i></button>'
+								+'<label class="control-label">联系人</label></div>'
+								+'<div class="col-sm-2">'
+								+'<input name="invcontact" id="invcontact"  class="form-control" type="text" value='+invcontact[i]+'></div>'
+								+'<label class="col-sm-2 control-label">职务</label>'
+								+'<div class="col-sm-2"><input name="invpost" id="invpost" class="form-control" type="text" value='+invpost[i]+'>'
+								+'</div><label class="col-sm-2 control-label">联系电话</label>'
+								+'<div class="col-sm-2"><input name="invcontacttel" id="invcontacttel" class="form-control" type="text" value='+invcontacttel[i]+'>'
+								+'</div></div>').insertAfter(".addel-target:last");
+					
 				}
 			});
 			$("#invmodal").modal('show');
+			$("#invitem_submit").hide();
+			$("#invitem_update").hide();
 		}
 	});
-}
+	}
+	
+
+
+			
+
 //展示修改界面
 function updateinfo(invid){
-	$.ajax({
-		url : "/TownManagement/pages/ProjectLibrary/invitem.html",
-		cache : false,
-		async: false,
-		success : function(html) {
-			$("#invbody").html(html);
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
 				async: false,
@@ -105,9 +183,82 @@ function updateinfo(invid){
 				dataType : 'JSON',
 				succ : function(data, status) {
 					fillForm('#invitem',data);
+					var param1={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invcitypic',
+							id : 'invid' ,
+							value : data.data[0].invcitypic,
+							showdelete : true
+					}
+					var param2={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invtownpic',
+							id : 'invid' ,
+							value : data.data[0].invtownpic,
+							showdelete : true
+					}
+					var param3={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invscopeopic',
+							id : 'invid' ,
+							value : data.data[0].invscopeopic,
+							showdelete : true
+					}
+					var param4={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invplanpic',
+							id : 'invid' ,
+							value : data.data[0].invplanpic,
+							showdelete : true
+					}
+					var param5={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invallplanpic',
+							id : 'invid' ,
+							value : data.data[0].invallplanpic,
+							showdelete : true
+					}
+					var param6={
+							tbname : 'tb_zhaoshangxiangmu',
+							field : 'invdetailplanpic',
+							id : 'invid' ,
+							value : data.data[0].invdetailplanpic,
+							showdelete : true
+					}
+					initDeatilFileInput('invfile1',param1);
+					initDeatilFileInput('invfile2',param2);
+					initDeatilFileInput('invfile3',param3);
+					initDeatilFileInput('invfile4',param4);
+					initDeatilFileInput('invfile5',param5);
+					initDeatilFileInput('invfile6',param6);
+					var invcontact=data.data[0].invcontact.split(",");
+					var invpost=data.data[0].invpost.split(",");
+					var invcontacttel=data.data[0].invcontacttel.split(",");
+					$(".addel-target:gt(0)").remove();
+					$.each(invcontact,function(i,item){
+						if(i==0){
+							$("#invcontact").val(invcontact[i]);
+							$("#invpost").val(invpost[i]);
+							$("#invcontacttel").val(invcontacttel[i]);
+						}else{
+							$('<div class="form-group addel-target has-feedback">'
+								+'<div class="col-sm-2" style="text-align: right;">'
+								+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+								+'<i class="fa fa-plus"></i></button>'
+								+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+								+'<i class="fa fa-remove"></i></button>'
+								+'<label class="control-label">联系人</label></div>'
+								+'<div class="col-sm-2">'
+								+'<input name="invcontact" id="invcontact"  class="form-control" type="text" value='+invcontact[i]+'></div>'
+								+'<label class="col-sm-2 control-label">职务</label>'
+								+'<div class="col-sm-2"><input name="invpost" id="invpost" class="form-control" type="text" value='+invpost[i]+'>'
+								+'</div><label class="col-sm-2 control-label">联系电话</label>'
+								+'<div class="col-sm-2"><input name="invcontacttel" id="invcontacttel" class="form-control" type="text" value='+invcontacttel[i]+'>'
+								+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
 			$("#invmodal").modal('show');
+			$("#invitem_submit").hide();
 			$("#invitem_update").show();
 		}
 	});

@@ -3,60 +3,163 @@
 <mapper namespace="com.hkay.weifei.Dao.FeaturetownDao">
 	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_tesexiaozhen" />
 	<insert id="insertfeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen">
-		insert into
-		Tb_tesexiaozhen(featuretownname,featuretownnumber,attributionarea,townlevel,foundbatch,towngenre,position,developer,developername,developertel,partner,partnername,partnertel,cooperatecondition,functions,industrygenre,planarea,planinvest,schedule,plancontent,weather,statemap,programme,contacts,traffic,currentindustry,planmap)
-		values
-		(#{featuretownname},#{featuretownnumber},#{attributionarea},#{townlevel},#{foundbatch},#{towngenre},#{position},#{developer},#{developername},#{developertel},#{partner},#{partnername},#{partnertel},#{cooperatecondition},#{functions},#{industrygenre},#{planarea},#{planinvest},#{schedule},#{plancontent},#{weather},#{statemap},#{programme},#{contacts},#{traffic},#{currentindustry},#{planmap})
+		insert into tb_tesexiaozhen(
+		feaname,
+		feanumber,
+		fealevel,
+		feabatch,
+		fearelation,
+		feaprovince,
+		feacity,
+		featown,
+		feagenre,
+		feaindustry,
+		feaplaninvest,
+		feaschedule,
+		featarget,
+		feaplanarea,
+		feaplancontent,
+		feacoreindustry,
+		fealeadcom,
+		fealeadname,
+		fealeadtel,
+		feacooperate,
+		feapartner,
+		feapartname,
+		feaparttel,
+		feapartway,
+		feapartmoney,
+		fearegtime,
+		feaendtime,
+		feapartconten,
+		feacontact,
+		feapost,
+		feacontacttel,
+		feacitypic,
+		featownpic,
+		feascopeopic,
+		feaplanpic,
+		featotalplanpic,
+		feadetailplanpic,
+		feacreator,
+		updatetime)
+		values(
+		#{feaname},
+		#{feanumber},
+		#{fealevel},
+		#{feabatch},
+		#{fearelation},
+		#{feaprovince},
+		#{feacity},
+		#{featown},
+		#{feagenre},
+		#{feaindustry},
+		#{feaplaninvest},
+		#{feaschedule},
+		#{featarget},
+		#{feaplanarea},
+		#{feaplancontent},
+		#{feacoreindustry},
+		#{fealeadcom},
+		#{fealeadname},
+		#{fealeadtel},
+		#{feacooperate},
+		#{feapartner},
+		#{feapartname},
+		#{feaparttel},
+		#{feapartway},
+		#{feapartmoney},
+		#{fearegtime},
+		#{feaendtime},
+		#{feapartconten},
+		#{feacontact},
+		#{feapost},
+		#{feacontacttel},
+		#{feacitypic},
+		#{featownpic},
+		#{feascopeopic},
+		#{feaplanpic},
+		#{featotalplanpic},
+		#{feadetailplanpic},
+		#{feacreator},
+		now()
+		)
 	</insert>
 	<select id="queryfeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
 		resultMap="BaseResultMap">
-		select t.* from Tb_tesexiaozhen t where 1=1
+		    select a.feanumber,a.feaname,a.fealevel,a.feaid,
+			b.name as feaprovince,c.name as feacity,d.name as featown 
+			from Tb_tesexiaozhen a 
+			LEFT JOIN tb_area_province b on a.feaprovince=b.code
+			LEFT JOIN tb_area_city c on a.feacity=c.code
+			LEFT JOIN tb_area_town d on a.featown=d.code
+			where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.featuretownname like '%${search}%' or t.featuretownnumber like '%${search}%' or t.attributionarea like '%${search}%' or t.townlevel like '%${search}%')
+		    and (a.feaname like '%${search}%' or a.feanumber like '%${search}%' or a.fealevel like '%${search}%')
 		</if>
+		order by a.createtime desc
 	</select>
 	<select id="queryfeaturetowncnt" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
 		resultType="Integer">
-		select count(*) from Tb_tesexiaozhen t
-		where 1=1
-		<if test="search!=null and search!=''">
-		    and (t.featuretownname like '%${search}%' or t.featuretownnumber like '%${search}%' or t.attributionarea like '%${search}%' or t.townlevel like '%${search}%')
-		</if>
+			select count(*) from (
+			select a.feanumber,a.feaname,a.fealevel,a.feaid,
+			b.name as feaprovince,c.name as feacity,d.name as featown
+			from Tb_tesexiaozhen a
+			LEFT JOIN tb_area_province b on a.feaprovince=b.code
+			LEFT JOIN tb_area_city c on a.feacity=c.code
+			LEFT JOIN tb_area_town d on a.featown=d.code
+			where 1=1
+			<if test="search!=null and search!=''">
+				and (a.feaname like '%${search}%' or a.feanumber like '%${search}%' or
+				a.fealevel like '%${search}%')
+			</if>
+			)t
+			where 1=1
 	</select>
 	<select id="queryfeaturetowndetail" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
 		resultMap="BaseResultMap">
-		select t.* from Tb_tesexiaozhen t where t.featuretownid=#{featuretownid}
+		select t.* from Tb_tesexiaozhen t where t.feaid=#{feaid}
 	</select>
 	<update id="updatefeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen">
 		update Tb_tesexiaozhen
 		set
-		featuretownname=#{featuretownname},
-		featuretownnumber=#{featuretownnumber},
-		attributionarea=#{attributionarea},
-		townlevel=#{townlevel},
-		foundbatch=#{foundbatch},
-		towngenre=#{towngenre},
-		position=#{position},
-		developer=#{developer},
-		developername=#{developername},
-		developertel=#{developertel},
-		partner=#{partner},
-		partnername=#{partnername},
-		partnertel=#{partnertel},
-		cooperatecondition=#{cooperatecondition},
-		functions=#{functions},
-		industrygenre=#{industrygenre},
-		planarea=#{planarea},
-		planinvest=#{planinvest},
-		schedule=#{schedule},
-		plancontent=#{plancontent},
-		weather=#{weather},
-		statemap=#{statemap},
-		programme=#{programme},
-		contacts=#{contacts},
-		traffic=#{traffic},
-		currentindustry=#{currentindustry},
-		planmap=#{planmap}
-		where featuretownid=#{featuretownid}
+		feaname=#{feaname},
+		fealevel=#{fealevel},
+		feabatch=#{feabatch},
+		fearelation=#{fearelation},
+		feaprovince=#{feaprovince},
+		feacity=#{feacity},
+		featown=#{featown},
+		feagenre=#{feagenre},
+		feaindustry=#{feaindustry},
+		feaplaninvest=#{feaplaninvest},
+		feaschedule=#{feaschedule},
+		featarget=#{featarget},
+		feaplanarea=#{feaplanarea},
+		feaplancontent=#{feaplancontent},
+		feacoreindustry=#{feacoreindustry},
+		fealeadcom=#{fealeadcom},
+		fealeadname=#{fealeadname},
+		fealeadtel=#{fealeadtel},
+		feacooperate=#{feacooperate},
+		feapartner=#{feapartner},
+		feapartname=#{feapartname},
+		feaparttel=#{feaparttel},
+		feapartway=#{feapartway},
+		feapartmoney=#{feapartmoney},
+		fearegtime=#{fearegtime},
+		feaendtime=#{feaendtime},
+		feapartconten=#{feapartconten},
+		feacontact=#{feacontact},
+		feapost=#{feapost},
+		feacontacttel=#{feacontacttel},
+		feacitypic=#{feacitypic},
+		featownpic=#{featownpic},
+		feascopeopic=#{feascopeopic},
+		feaplanpic=#{feaplanpic},
+		featotalplanpic=#{featotalplanpic},
+		feadetailplanpic=#{feadetailplanpic},
+		updatetime=now()
+		where feaid=#{feaid}
 	</update>
 </mapper>

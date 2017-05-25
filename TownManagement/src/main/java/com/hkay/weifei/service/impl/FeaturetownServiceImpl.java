@@ -1,5 +1,6 @@
 package com.hkay.weifei.service.impl;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -18,6 +19,16 @@ public class FeaturetownServiceImpl implements FeaturetownService{
 	@Override
 	public int insertfeaturetown(Tb_tesexiaozhen tb_tesexiaozhen) {
 		// TODO Auto-generated method stub
+		String towncode = tb_tesexiaozhen.getFeatown();
+		int seq = this.featuretowndao.queryfeaturetowncnt(tb_tesexiaozhen);
+		towncode += new DecimalFormat("00").format(seq + 1);
+		//如果不是省市特色小镇
+		if (tb_tesexiaozhen.getFealevel().equals("0")) {
+			towncode +="FT";
+		}else{
+			towncode +="ST";
+		}
+		tb_tesexiaozhen.setFeanumber(towncode);
 		return this.featuretowndao.insertfeaturetown(tb_tesexiaozhen);
 	}
 

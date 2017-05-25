@@ -28,4 +28,6 @@ public interface ConditionDao {
 
 	List<Condition> queryBusinessDir();
 
+	List<Condition> queryAdvantage();
+
 }

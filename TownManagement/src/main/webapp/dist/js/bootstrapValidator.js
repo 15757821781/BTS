@@ -787,7 +787,10 @@ if (typeof jQuery === 'undefined') {
                                          ? $(this.options.fields[field].selector)
                                          : this.$form.find('[name="' + field + '"]');
             }
-
+            // 适应动态增减行
+            if(this._cacheFields[field].length!=this.$form.find('[name="' + field + '"]').length){
+            	return this.$form.find('[name="' + field + '"]');
+            }
             return this._cacheFields[field];
         },
 
@@ -2128,6 +2131,7 @@ if (typeof jQuery === 'undefined') {
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
+        	alert(1111);
             return true;
         }
     };

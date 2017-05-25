@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	$('#commanagetable').bootstrapTable({
-		url : '/TownManagement/commanage/queryComList',
+	$('#orgmanagetable').bootstrapTable({
+		url : '/TownManagement/orgmanage/queryOrgList',
 		method : 'get', //请求方式（*）
 		toolbar : '#toolbar', //工具按钮用哪个容器
 		striped : true, //是否显示行间隔色
@@ -22,13 +22,13 @@ $(document).ready(function() {
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {
-			field : 'comnumber',
+			field : 'orgnumber',
 			title : '编号',
 			align : 'center',
 			width : '20%'
 		}, {
-			field : 'comname',
-			title : '中心镇名称',
+			field : 'orgname',
+			title : '社会组织单位名称',
 			editable : true,
 			align : 'center',
 			width : '20%'
@@ -36,41 +36,44 @@ $(document).ready(function() {
 			title : '归属地',
 			align : 'center',
 			width : '20%',
-            formatter:function(value,row,index){
-            	return row.comprovince+"/"+row.comcity+"/"+row.comtown;
-            }
+			  formatter:function(value,row,index){
+	            	return row.orgprovince+"/"+row.orgcity+"/"+row.orgtown;
+	            }
 		}, {
-			field : 'comcategory',
+			field : 'orgcategory',
 			title : '单位类别',
 			align : 'center',
 			width : '20%',
             formatter:function(value,row,index){
             	if(value=="1"){
-            		return "国有企业";
+            		return "研究机构";
             	}else if(value=="2"){
-            		return "集体企业";
+            		return "高校";
             	}else if(value=="3"){
-            		return "民营企业";
+            		return "社会团体";
             	}else if(value=="4"){
-            		return "三资外企";
+            		return "民办非企业单位";
+            	}else if(value=="3"){
+            		return "基金会";
             	}
             }
 		}, {
             title : '操作',
+            field : 'orgid',
             width :	'20%',
             align : 'center',
             formatter:function(value,row,index){
-            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.comid+')">查看</a>';
-            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.comid+')">修改</a>'
+            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.orgid+')">查看</a>';
+            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.orgid+')">修改</a>'
             	return query+"&nbsp"+update;
             }
 		} ]
 	});
 	$.ajax({
-		url : "/TownManagement/pages/Alliance/companyEntry.html",
+		url : "/TownManagement/pages/Alliance/organizeEntry.html",
 		cache : false,
 		success : function(html) {
-			$("#cominfobody").html(html);
+			$("#orginfobody").html(html);
 		}
 	});
 })
@@ -91,39 +94,38 @@ function queryParams(params){
 //展示详情modal
 function querydetail(id) {
 	tk.ajax({
-		url : "/TownManagement/commanage/queryComDetail",
-		data : {"comid":id},
+		url : "/TownManagement/orgmanage/queryOrgDetail",
+		data : {"orgid":id},
 		dataType : 'JSON',
 		cache : false,
 		succ : function(data, status) {
-			fillForm('#comform',data);
+			fillForm('#orgform',data);
 			// 二级联动
 			var select = {
-					value : data.data[0].comcategory
+					value : data.data[0].orgcategory
 			}
 			typeChanage(select);
-			var arr=(data.data[0].comtype).split(",");
-			$('#comtype').selectpicker();
-			$('#comtype').selectpicker('val', arr);
-			// 处理图片
-			var param={
-					tbname : 'tb_qiyedanwei',
-					field : 'comcertificate',
-					id : 'comid' ,
-					value : data.data[0].comcertificate,
-					showdelete : false
-			}
-			initDeatilFileInput('comcertificatepic',param);
-			// 多行展示
-			var comcontact=data.data[0].comcontact.split(",");
-			var compost=data.data[0].compost.split(",");
-			var comcontacttel=data.data[0].comcontacttel.split(",");
+			var arr=(data.data[0].orgtype).split(",");
+			$('#orgtype').selectpicker();
+			$('#orgtype').selectpicker('val', arr);
+			
+//			var param={
+//					tbname : 'tb_shehuizuzhidanwei',
+//					field : 'comcertificate',
+//					id : 'comid' ,
+//					value : data.data[0].comcertificate,
+//					showdelete : false
+//			}
+//			initDeatilFileInput('comcertificatepic',param);
+			var orgcontact=data.data[0].orgcontact.split(",");
+			var orgpost=data.data[0].orgpost.split(",");
+			var orgcontacttel=data.data[0].orgcontacttel.split(",");
 			$(".addel-target:gt(0)").remove();
-			$.each(comcontact,function(i,item){
+			$.each(orgcontact,function(i,item){
 				if(i==0){
-					$("#comcontact").val(comcontact[i]);
-					$("#compost").val(compost[i]);
-					$("#comcontacttel").val(comcontacttel[i]);
+					$("#orgcontact").val(orgcontact[i]);
+					$("#orgpost").val(orgpost[i]);
+					$("#orgcontacttel").val(orgcontacttel[i]);
 				}else{
 					$('<div class="form-group addel-target has-feedback">'
 						+'<div class="col-sm-2" style="text-align: right;">'
@@ -133,56 +135,56 @@ function querydetail(id) {
 						+'<i class="fa fa-remove"></i></button>'
 						+'<label class="control-label">联系人</label></div>'
 						+'<div class="col-sm-2">'
-						+'<input name="comcontact" id="comcontact"  class="form-control" type="text" value='+comcontact[i]+'></div>'
+						+'<input name="orgcontact" id="orgcontact"  class="form-control" type="text" value='+orgcontact[i]+'></div>'
 						+'<label class="col-sm-2 control-label">职务</label>'
-						+'<div class="col-sm-2"><input name="compost" id="compost" class="form-control" type="text" value='+compost[i]+'>'
+						+'<div class="col-sm-2"><input name="orgpost" id="orgpost" class="form-control" type="text" value='+orgpost[i]+'>'
 						+'</div><label class="col-sm-2 control-label">联系电话</label>'
-						+'<div class="col-sm-2"><input name="comcontacttel" id="comcontacttel" class="form-control" type="text" value='+comcontacttel[i]+'>'
+						+'<div class="col-sm-2"><input name="orgcontacttel" id="orgcontacttel" class="form-control" type="text" value='+orgcontacttel[i]+'>'
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
-			$("#cominfomodal").modal('show');
-			$("#comentry_submit").hide();
-			$("#comentry_update").hide();
+			$("#orginfomodal").modal('show');
+			$("#orgentry_submit").hide();
+			$("#orgentry_update").hide();
 		}
 	});
 }
 //展示修改界面
 function updateinfo(id){
 	tk.ajax({
-		url : "/TownManagement/commanage/queryComDetail",
-		data : {"comid":id},
+		url : "/TownManagement/orgmanage/queryOrgDetail",
+		data : {"orgid":id},
 		dataType : 'JSON',
 		cache : false,
 		succ : function(data, status) {
-			fillForm('#comform',data);
+			fillForm('#orgform',data);
 			// 二级联动
 			var select = {
-					value : data.data[0].comcategory
+					value : data.data[0].orgcategory
 			}
 			typeChanage(select);
-			var arr=(data.data[0].comtype).split(",");
-			$('#comtype').selectpicker();
-			$('#comtype').selectpicker('val', arr);
+			var arr=(data.data[0].orgtype).split(",");
+			$('#orgtype').selectpicker();
+			$('#orgtype').selectpicker('val', arr);
 			// 图片初始化
-			var param={
-					tbname : 'tb_qiyedanwei',
-					field : 'comcertificate',
-					id : 'comid' ,
-					value : data.data[0].comcertificate,
-					showdelete : true
-			}
-			initDeatilFileInput('comcertificatepic',param);
+//			var param={
+//					tbname : 'tb_qiyedanwei',
+//					field : 'comcertificate',
+//					id : 'comid' ,
+//					value : data.data[0].comcertificate,
+//					showdelete : true
+//			}
+//			initDeatilFileInput('comcertificatepic',param);
 			// 动态行初始化
-			var comcontact=data.data[0].comcontact.split(",");
-			var compost=data.data[0].compost.split(",");
-			var comcontacttel=data.data[0].comcontacttel.split(",");
+			var orgcontact=data.data[0].orgcontact.split(",");
+			var orgpost=data.data[0].orgpost.split(",");
+			var orgcontacttel=data.data[0].orgcontacttel.split(",");
 			$(".addel-target:gt(0)").remove();
-			$.each(comcontact,function(i,item){
+			$.each(orgcontact,function(i,item){
 				if(i==0){
-					$("#comcontact").val(comcontact[i]);
-					$("#compost").val(compost[i]);
-					$("#comcontacttel").val(comcontacttel[i]);
+					$("#orgcontact").val(orgcontact[i]);
+					$("#orgpost").val(orgpost[i]);
+					$("#orgcontacttel").val(orgcontacttel[i]);
 				}else{
 					$('<div class="form-group addel-target has-feedback">'
 						+'<div class="col-sm-2" style="text-align: right;">'
@@ -192,18 +194,18 @@ function updateinfo(id){
 						+'<i class="fa fa-remove"></i></button>'
 						+'<label class="control-label">联系人</label></div>'
 						+'<div class="col-sm-2">'
-						+'<input name="comcontact" id="comcontact"  class="form-control" type="text" value='+comcontact[i]+'></div>'
+						+'<input name="orgcontact" id="orgcontact"  class="form-control" type="text" value='+orgcontact[i]+'></div>'
 						+'<label class="col-sm-2 control-label">职务</label>'
-						+'<div class="col-sm-2"><input name="compost" id="compost" class="form-control" type="text" value='+compost[i]+'>'
+						+'<div class="col-sm-2"><input name="orgpost" id="orgpost" class="form-control" type="text" value='+orgpost[i]+'>'
 						+'</div><label class="col-sm-2 control-label">联系电话</label>'
-						+'<div class="col-sm-2"><input name="comcontacttel" id="comcontacttel" class="form-control" type="text" value='+comcontacttel[i]+'>'
+						+'<div class="col-sm-2"><input name="orgcontacttel" id="orgcontacttel" class="form-control" type="text" value='+orgcontacttel[i]+'>'
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
 			// 展示
-			$("#cominfomodal").modal('show');
-			$("#comentry_submit").hide();
-			$("#comentry_update").show();
+			$("#orginfomodal").modal('show');
+			$("#orgentry_submit").hide();
+			$("#orgentry_update").show();
 		}
 	});
 }

@@ -34,7 +34,7 @@ $(document).ready(function() {
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
@@ -43,17 +43,6 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '小镇名不能为空'
-					}
-				}
-			},
-			number : {
-				validators : {
-					notEmpty : {
-						message : '编号不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
 					}
 				}
 			},
@@ -239,9 +228,9 @@ $(document).ready(function() {
 			},
 			farmingoutvalue : {
 				validators : {
-					notEmpty : {
-						message : '农业总产值不能为空'
-					},
+//					notEmpty : {
+//						message : '农业总产值不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -250,9 +239,9 @@ $(document).ready(function() {
 			},
 			industryoutvalue : {
 				validators : {
-					notEmpty : {
-						message : '工业总产值不能为空'
-					},
+//					notEmpty : {
+//						message : '工业总产值不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -261,9 +250,9 @@ $(document).ready(function() {
 			},
 			serviceoutvalue : {
 				validators : {
-					notEmpty : {
-						message : '服务业总产值不能为空'
-					},
+//					notEmpty : {
+//						message : '服务业总产值不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -321,106 +310,108 @@ $(document).ready(function() {
 			},
 			partycommittee : {
 				validators : {
-					notEmpty : {
-						message : '党委书记不能为空'
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			committelnumber : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }
 				}
 			},
 			committel : {
 				validators : {
-					notEmpty : {
-						message : '手机号码不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }
 				}
 			},
 			mayor : {
 				validators : {
-					notEmpty : {
-						message : '镇长不能为空'
+//					notEmpty : {
+//						message : '镇长不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			mayortelnumber : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }
 				}
 			},
 			mayortel : {
 				validators : {
-					notEmpty : {
-						message : '手机号码不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }
 				}
 			},
 			contacts : {
 				validators : {
-					notEmpty : {
-						message : '联系人不能为空'
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			post : {
 				validators : {
-					notEmpty : {
-						message : '职务不能为空'
+//					notEmpty : {
+//						message : '职务不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			contactstel : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
-				}
-			},
-//			statusfile : {
-//				validators : {
-//					notEmpty : {
-//						message : '区位图不能为空'
-//					}
-//				}
-//			},
-			planfile : {
-				validators : {
-					notEmpty : {
-						message : '规划图不能为空'
-					}
-				}
-			},
-			creator : {
-				validators : {
-					notEmpty : {
-						message : '规划图不能为空'
-					}
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }
 				}
 			}
 		}

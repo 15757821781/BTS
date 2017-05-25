@@ -7,16 +7,21 @@
 <link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
 <!-- 表单验证 -->
 <link href="/TownManagement/dist/css/bootstrapValidator.css"  rel="stylesheet" />
+<!-- 时间插件 -->
+<link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
+<!-- 文件上传插件 -->
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
+</head>
 </head>
 <body>
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header">社会组织和事业单位基本信息录入</h3>
+			<h3 class="page-header">社会组织和事业单位信息</h3>
 		</div>
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<form class="form-horizontal" role="form" enctype="multipart/form-data" id="comform" method="post">
+			<form class="form-horizontal addel" role="form" enctype="multipart/form-data" id="orgform" method="post">
 				<!-- 表单 -->
 				<div class="form-group">
 					<label class="col-sm-2 control-label">单位名称</label>
@@ -25,7 +30,7 @@
 					</div>
 					<label class="col-sm-2 control-label">编号</label>
 					<div class="col-sm-2">
-						<input name="orgnumber" id="orgnumber" class="form-control" />
+						<input name="orgnumber" id="orgnumber" class="form-control" disabled="disabled" placeholder="系统自动生成" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -41,7 +46,8 @@
 					<label class="col-sm-2 control-label">单位类别</label>
 					<div class="col-sm-2">
 						<select name="orgcategory" id="orgcategory"
-							class="selectpicker show-tick form-control">
+							class="selectpicker show-tick form-control" 
+							onchange="typeChanage(this)">
 							<option></option>
 							<option value="1">研究机构</option>
 							<option value="2">高校</option>
@@ -86,10 +92,15 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">主管部门</label>
-						<div class="col-sm-6">
+						<div class="col-sm-2">
 						<input name="orgcompetent" id="orgcompetent" class="form-control"
 							type="text" />
 						</div>
+						<label class="col-sm-2 control-label">成立时间</label>
+						<div class="col-sm-2">
+						<input id="orgestablish" name="orgestablish"
+							class="datepicker form-control" type="text" placeholder="选择时间">
+					</div>
 					<label class="col-sm-2 control-label">法人代表</label>
 					<div class="col-sm-2">
 						<input name="orgrepresent" id="orgrepresent" class="form-control"
@@ -98,24 +109,33 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">注册地址</label>
-					<div class="col-sm-3">
-						<select name="orgregist" id="orgregist"
-							class="selectpicker show-tick form-control">
-							<option></option>
-							<option value="1">西湖区</option>
-							<option value="2">滨江区</option>
-							<option value="3">下城区</option>
-							<option value="4">余杭区</option>
+					<div class="col-sm-2">
+						<select name="orgprovince" id="orgprovince"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" 
+							arealevel="1" areagroup="1"
+							title="选择省份">
 						</select>
 					</div>
-					<div class="col-sm-3">
-						<input name=orgregist id="orgregist" class="form-control"
-							type="text">
-					</div>
-					<label class="col-sm-2 control-label">成立时间</label>
 					<div class="col-sm-2">
-						<input id="orgestablish" name="orgestablish"
-							class="datepicker form-control" type="text" placeholder="">
+						<select name="orgcity" id="orgcity"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5"
+							arealevel="2" areagroup="1"
+							title="选择地市">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="orgtown" id="orgtown"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5" 
+							arealevel="3" areagroup="1"
+							title="选择区县(市)">
+						</select>
+					</div>
+					<div class="col-sm-4">
+						<input name="orgaddress" id="orgaddress" class="form-control"
+							type="text" placeholder="填写具体地址">
 					</div>
 				</div>
 				<div class="form-group">
@@ -140,18 +160,23 @@
 					<label class="col-sm-2 control-label">机构优势</label>
 					<div class="col-sm-10">
 						<select name="orgadvantaget" id="orgadvantaget"
-							class="selectpicker show-tick form-control">
-							<option></option>
-							<option value="1">农业</option>
-							<option value="2">服务业</option>
-							<option value="3">工业</option>
+							class="selectpicker show-tick form-control" multiple
+							data-live-search="true" data-size="5" >
 							</select>
 						</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">联系人</label>
+				<div class="form-group addel-target">
+					<div class="col-sm-2" style="text-align: right;">
+						<button type="button" class="btn btn-success addel-add">
+							<i class="fa fa-plus"></i>
+						</button>
+						<button type="button" class="btn btn-danger addel-delete">
+							<i class="fa fa-remove"> </i>
+						</button>
+					<label class=" control-label">联系人</label>
+					</div>
 					<div class="col-sm-2">
-						<input name="orgcontact" id="orgcontact"  class="form-control" type="text" placeholder="可填写多个">
+						<input name="orgcontact" id="orgcontact"  class="form-control" type="text" >
 					</div>
 					<label class="col-sm-2 control-label">职务</label>
 					<div class="col-sm-2">
@@ -169,18 +194,19 @@
 					</div>
 					<label class="col-sm-2 control-label">录入员</label>
 					<div class="col-sm-2">
-						<input name="orgentry" id="orgentry"  class="form-control" type="text">
+						<input name="orgentry" id="orgentry"  class="form-control" type="text"
+						disabled="disabled" placeholder="系统自动生成">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-5 control-label"></label>
-					<button type="button" id="allentry_submit" class="col-sm-2 btn btn-primary"
+					<button type="button" id="orgentry_submit" class="col-sm-2 btn btn-primary"
 						style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
-					<button type="button" id="allentry_update" class="col-sm-2 btn btn-primary"
+					<button type="button" id="orgentry_update" class="col-sm-2 btn btn-primary"
 						style="width: auto; min-width: 90px; margin-top: 20px;display:none;">更新</button>
 					<label class="col-sm-5 control-label"></label>
 					<!-- id -->
-					<input type="hidden" value="" name="allid" id="allid">
+					<input type="hidden" value="" name="orgid" id="orgid">
 				</div>
 			</form>
 		</div>
@@ -210,82 +236,14 @@
 	<!-- 表单验证 -->
 	<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
 	<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			//初始化下拉框
-			$('.selectpicker').selectpicker({
-				noneSelectedText : "请选择"
-			});
-			//表单提交
-			$('#allentry_submit').click(function() {
-				$('#allform').data('bootstrapValidator').validate();
-				if(!$('#allform').data('bootstrapValidator').isValid()){  
-		         	return ;
-		         }
-				/*ie11一下不支持，formdata的方法  */
-				var formData = new FormData($("#allform")[0]);
-				$.ajax({
-					type : "post",
-					url : "/TownManagement/townmanage/inserttowninfo",
-					data : formData,
-					dataType : 'JSON',
-					cache : false,
-					processData : false,
-					contentType : false,
-					success : function(data, status) {
-							if(data.returnInfo=="success"){
-							$("#myModal-success").modal('show');
-							$('#myModal-success').on('hidden.bs.modal', function() {
-								$.ajax({
-						   	         url: '/TownManagement/pages/town/townEntry.html',
-						   	         cache: false,
-						   	         success: function(html){
-						   	             $("#page-wrapper").html(html);
-						   	         }
-						   	     });
-							})
-						}else{
-							$("#myModal-fail").modal('show');
-						}
-					},
-					error : function() {
-						$("#myModal-fail").modal('show');
-					}
-				});
-			});
-			$('#allentry_update').click(function() {
-				$('#allform').data('bootstrapValidator').validate();
-				if(!$('#allform').data('bootstrapValidator').isValid()){  
-		         	return ;
-		         }
-				/*ie11一下不支持，formdata的方法  */
-				var formData = new FormData($("#allform")[0]);
-				$.ajax({
-					type : "post",
-					url : "/TownManagement/townmanage/updatetowninfo",
-					data : formData,
-					dataType : 'JSON',
-					cache : false,
-					processData : false,
-					contentType : false,
-					success : function(data, status) {
-						if(data.returnInfo=="success"){
-							$("#allinfomodal").modal('hide');
-							setTimeout(function(){
-								$("#allmanage-success").modal('show');
-							},200);
-						}
-					},
-					error : function() {
-						$("#allmanage-fail").modal('show');
-					}
-				});
-			});
-		})
-	</script>
 	<!-- 时间插件 -->
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
-	<script type="text/javascript" src="/TownManagement/js/project/regionitem.js"></script>
+	<!-- 文件上传插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script>
+	<!-- 增减行插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
+	<script type="text/javascript" src="/TownManagement/js/alliance/organizeEntry.js"></script>
 </body>
 </html>

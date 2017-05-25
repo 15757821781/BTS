@@ -15,5 +15,5 @@ public interface wflxDao {
 
 	int insertWflx(Tb_wflx_new tb_wflx_new);
 
-	List<Pages> loadPages(Pages pages);
+	List<Pages> queryPages(Pages page);
 }

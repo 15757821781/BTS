@@ -33,7 +33,7 @@
 		insert into
 		tb_wflx_new(id,fwdm,ms,img) values (tb_wflx_new_seq.nextval,#{fwdm},#{ms},#{testImgPath})
 	</insert>
-	<select id="loadPages" parameterType="com.hkay.weifei.pojo.Pages" resultType="com.hkay.weifei.pojo.Pages">
+	<select id="queryPages" parameterType="com.hkay.weifei.pojo.Pages" resultType="com.hkay.weifei.pojo.Pages">
 	    select t.* from tb_pages t
 	    where 1=1
 	    <if test="parentid!=null and parentid!=''">
@@ -42,6 +42,7 @@
 	    <if test="pagelevel!=null and pagelevel!=''">
 	        and t.pagelevel=#{pagelevel}
 	    </if>
+	    and t.active =1
 	    order by t.pagegroup,t.pagelevel,t.pageid
 	</select>
 </mapper>

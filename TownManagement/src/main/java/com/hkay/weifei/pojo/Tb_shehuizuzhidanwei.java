@@ -11,8 +11,11 @@ public class Tb_shehuizuzhidanwei {
 	private String orgrelation ;// 关系情况
 	private String orgcompetent;// 主管部门
 	private String orgoffice;// 办公地点
-	private String orgregist;// 注册地址
 	private String orgrepresent;// 法人代表
+	private String orgprovince;// 注册省份
+	private String orgcity;// 注册城市
+	private String orgtown;// 注册区县
+	private String orgaddress;// 具体地址
 	private String orgestablish;// 成立时间
 	private String orgcreditcode;// 信用代码
 	private String orgscope;//业务范围
@@ -22,6 +25,7 @@ public class Tb_shehuizuzhidanwei {
 	private String orgcontacttel;//联系电话
 	private String orgpost;//职务
 	private String orgentry;//录入员
+	private String search;// 查询条件
 	public String getOrgid() {
 		return orgid;
 	}
@@ -81,12 +85,6 @@ public class Tb_shehuizuzhidanwei {
 	}
 	public void setOrgoffice(String orgoffice) {
 		this.orgoffice = orgoffice;
-	}
-	public String getOrgregist() {
-		return orgregist;
-	}
-	public void setOrgregist(String orgregist) {
-		this.orgregist = orgregist;
 	}
 	public String getOrgrepresent() {
 		return orgrepresent;
@@ -153,5 +151,35 @@ public class Tb_shehuizuzhidanwei {
 	}
 	public void setOrgentry(String orgentry) {
 		this.orgentry = orgentry;
+	}
+	public String getOrgprovince() {
+		return orgprovince;
+	}
+	public void setOrgprovince(String orgprovince) {
+		this.orgprovince = orgprovince;
+	}
+	public String getOrgcity() {
+		return orgcity;
+	}
+	public void setOrgcity(String orgcity) {
+		this.orgcity = orgcity;
+	}
+	public String getOrgtown() {
+		return orgtown;
+	}
+	public void setOrgtown(String orgtown) {
+		this.orgtown = orgtown;
+	}
+	public String getOrgaddress() {
+		return orgaddress;
+	}
+	public void setOrgaddress(String orgaddress) {
+		this.orgaddress = orgaddress;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
 	}
 }

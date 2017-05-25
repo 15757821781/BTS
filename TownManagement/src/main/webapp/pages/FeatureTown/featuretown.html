@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>特色小镇</title>
+</head>
+<!-- select CSS -->
+<link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
+<!-- 表单验证 -->
+<link rel="stylesheet" href="/TownManagement/dist/css/bootstrapValidator.css" />
+<!-- 时间插件 -->
+<link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
+<!-- 文件上传插件 -->
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
+<body>
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header">特色小镇基本信息</h3>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<form class="form-horizontal addel" role="form" id="featuretown">
+				<!-- 表单 -->
+				<div class="form-group">
+					<!-- 一行行开始写 -->
+					<label class="col-sm-2 control-label">特色小镇名称</label>
+					<div class="col-sm-6">
+						<input id="feaname" name="feaname"
+							class="form-control" type="text" placeholder="请填写特色小镇名称" />
+					</div>
+					<label class="col-sm-2 control-label">编号</label>
+					<div class="col-sm-2">
+						<input id="feanumber" name="feanumber"
+							class="form-control" disabled="disabled" placeholder="系统自动生成" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">小镇等级</label>
+					<div class="col-sm-2">
+						<select name="fealevel" id="fealevel"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="2">省级</option>
+							<option value="1">市级</option>
+							<option value="0">非省市级</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">创建批次</label>
+					<div class="col-sm-2">
+						<select name="feabatch" id="feabatch"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">第一批</option>
+							<option value="2">第二批</option>
+							<option value="3">第三批</option>
+							<option value="4">培育类</option>
+						</select>					
+					</div>
+					<label class="col-sm-2 control-label">关系情况</label>
+					<div class="col-sm-2">
+						<select name="fearelation" id="fearelation"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">待建联系</option>
+							<option value="2">已建联系</option>
+							<option value="3">咨询顾问</option>
+							<option value="4">投资合作</option>
+						</select>					
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">所属地区</label>
+					<div class="col-sm-2">
+						<select name="feaprovince" id="feaprovince"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" 
+							arealevel="1" areagroup="1"
+							title="选择省份">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="feacity" id="feacity"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5"
+							arealevel="2" areagroup="1"
+							title="选择地市">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="featown" id="featown"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5" 
+							arealevel="3" areagroup="1"
+							title="选择区县(市)">
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">乡镇街道/开发区</label>
+					<div class="col-sm-2">
+						<input id="feagenre" name="feagenre" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">产业类别</label>
+					<div class="col-sm-2">
+						<select name="feaindustry" id="feaindustry"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">信息经济</option>
+							<option value="2">环保</option>
+							<option value="3">健康</option>
+							<option value="4">旅游</option>
+							<option value="5">时尚</option>
+							<option value="6">金融</option>
+							<option value="7">高端装备制造</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">计划总投资(亿元)</label>
+					<div class="col-sm-2">
+						<input id="feaplaninvest" name="feaplaninvest" class="form-control"
+							type="text">
+					</div>
+					<label class="col-sm-2 control-label">投资进度</label>
+					<div class="col-sm-2">
+						<select name="feaschedule" id="feaschedule"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">前期</option>
+							<option value="2">中期</option>
+							<option value="3">后期</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">规划目标</label>
+					<div class="col-sm-6">
+						<input id="featarget" name="featarget" class="form-control"
+							type="text">
+					</div>
+					<label class="col-sm-2 control-label">规划面积(平方公里)</label>
+					<div class="col-sm-2">
+						<input id="feaplanarea" name="feaplanarea" class="form-control"
+							type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">规划内容</label>
+					<div class="col-sm-10">
+						<input id="feaplancontent" name="feaplancontent" class="form-control"
+							type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">核心产业和企业</label>
+					<div class="col-sm-10">
+						<input id="feacoreindustry" name="feacoreindustry" class="form-control"
+							type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">牵头开发单位</label>
+					<div class="col-sm-4">
+						<input id="fealeadcom" name="fealeadcom" class="form-control"
+							type="text">
+					</div>
+					<label class="col-sm-2 control-label">负责人</label>
+					<div class="col-sm-2">
+						<input id="fealeadname" name="fealeadname"
+							class="form-control" type="text" placeholder="姓名">
+					</div>
+					<div class="col-sm-2">
+						<input id="fealeadtel" name="fealeadtel" class="form-control"
+							type="text" placeholder="电话">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">合作开发情况</label>
+					<div class="col-sm-2">
+						<select name="feacooperate" id="feacooperate"
+							class="selectpicker show-tick form-control"
+							onChange="readyOnly(this)">
+							<option></option>
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">(若选择否,合作相关信息无需填写)</label>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">合作开发单位</label>
+					<div class="col-sm-4">
+						<input id="feapartner" name="feapartner" class="form-control feapart"
+							type="text">
+					</div>
+					<label class="col-sm-2 control-label">负责人</label>
+					<div class="col-sm-2">
+						<input id="feapartname" name="feapartname" class="form-control feapart"
+							type="text" placeholder="姓名">
+					</div>
+					<div class="col-sm-2">
+						<input id="feaparttel" name="feaparttel" class="form-control feapart"
+							type="text" placeholder="电话">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">合作投资(亿元)</label>
+					<div class="col-sm-2">
+						<input id="feapartmoney" name="feapartmoney" class="form-control feapart"
+							type="text">
+					</div>
+					<label class="col-sm-1 control-label">合作方式</label>
+					<div class="col-sm-2">
+						<input id="feapartway" name="feapartway"
+							class="form-control feapart" type="text">
+					</div>
+					<label class="col-sm-1 control-label">合作期限</label>
+					<div class="col-sm-2">
+						<input id="fearegtime" name="fearegtime" class="datepicker form-control feapart"
+							type="text" placeholder="选择起始时间">
+					</div>
+					<div class="col-sm-2">
+						<input id="feaendtime" name="feaendtime"
+							class="datepicker form-control feapart" type="text" placeholder="选择结束时间">
+					</div>
+				</div>
+				<div class="form-group feapart">
+					<label class="col-sm-2 control-label">合作内容</label>
+					<div class="col-sm-10">
+						<input id="feapartconten" name="feapartconten" class="form-control feapart"
+							type="text">
+					</div>
+				</div>
+				<div class="form-group addel-target">
+					<div class="col-sm-2" style="text-align: right;">
+						<button type="button" class="btn btn-success addel-add">
+							<i class="fa fa-plus"></i>
+						</button>
+						<button type="button" class="btn btn-danger addel-delete">
+							<i class="fa fa-remove"> </i>
+						</button>
+						<label class="control-label">联系人</label>
+					</div>
+					<div class="col-sm-2">
+						<input id="feacontact" name="feacontact" class="form-control"
+							type="text" data-bv-field="feacontact">
+					</div>
+					<label class="col-sm-2 control-label">职务</label>
+					<div class="col-sm-2">
+						<input id="feapost" name="feapost" class="form-control"
+							type="text" data-bv-field="feapost">
+					</div>
+					<label class="col-sm-2 control-label">联系电话</label>
+					<div class="col-sm-2">
+						<input id="feacontacttel" name="feacontacttel" class="form-control"
+							type="text" data-bv-field="feacontacttel">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">区位图</label>
+					<div class="col-sm-3">
+						<input name="feafile1" id="feafile1" type="file" multiple class="file-loading">
+						<input type="hidden" name="feacitypic" id="feacitypic"/>
+					</div>
+					<div class="col-sm-3">
+						<input name="feafile2" id="feafile2" type="file" multiple	class="file-loading"> 
+						<input type="hidden" name="featownpic" id="featownpic" />
+					</div>
+					<div class="col-sm-3">
+						<input name="feafile3" id="feafile3" type="file" multiple	class="file-loading"> 
+						<input type="hidden" name="feascopeopic" id="feascopeopic" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">规划图</label>
+					<div class="col-sm-3">
+						<input name="feafile4" id="feafile4" type="file" multiple class="file-loading"> 
+						<input type="hidden" name="feaplanpic" id="feaplanpic" />
+					</div>
+					<div class="col-sm-3">
+						<input name="feafile5" id="feafile5" type="file" multiple	class="file-loading"> 
+						<input type="hidden" name="featotalplanpic" id="featotalplanpic" />
+					</div>
+					<div class="col-sm-3">
+						<input name="feafile6" id="feafile6" type="file" multiple	class="file-loading">
+						<input type="hidden" name="feadetailplanpic" id="feadetailplanpic" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">录入员</label>
+					<div class="col-sm-2">
+						<input name="feacreator" id="feacreator" class="form-control"
+							type="text" disabled="disabled" placeholder="系统自动生成">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-5 control-label"></label>
+					<button type="button" id="featuretown_submit"
+						class="col-sm-2 btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
+					<button type="button" id="featuretown_update"
+						class="col-sm-2 btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px; display: none;">更新</button>
+					<label class="col-sm-5 control-label"></label>
+					<input type="hidden" value="" name="feaid" id="feaid">
+				</div>
+			</form>
+		</div>
+	</div>
+		<!-- Select JavaScript -->
+	<script src="/TownManagement/dist/js/bootstrap-select.js"></script>
+	<!-- 表单验证 -->
+	<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
+	<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
+	<!-- 时间插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+	<!-- 文件上传插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script>
+	<!-- 增减行插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
+	<script type="text/javascript" src="/TownManagement/js/featuretown/featuretown.js"></script>
+</body>
+</html>
