@@ -76,6 +76,19 @@ $(document).ready(function() {
 		formSubmit('#featuretown','featuretownmanage/updatefeaturetown','FeatureTown/featuretownManage.html');
 	});
 	//特色小镇表单验证
+	setTimeout(function() {
+		validatorFeaForm();
+	}, 50);
+});
+//
+function readyOnly(v) {
+	if(v.value=="0"){
+		$(".feapart").attr("disabled","disabled");
+	}else{
+		$(".feapart").removeAttr("disabled");
+	}
+}
+function validatorFeaForm(){
 	$('#featuretown').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -193,16 +206,29 @@ $(document).ready(function() {
 			},
 			fealeadname : {
 				validators : {
-					notEmpty : {
-						message : '负责人名字不能为空'
+//					notEmpty : {
+//						message : '负责人名字不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			fealeadtel : {
 				validators : {
-					notEmpty : {
-						message : '负责人电话不能为空'
-					}
+//					notEmpty : {
+//						message : '负责人电话不能为空'
+//					},
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }
 				}
 			},
 			feacooperate : {
@@ -221,20 +247,29 @@ $(document).ready(function() {
 			},
 			feapartname : {
 				validators : {
-					notEmpty : {
-						message : '负责人名字不能为空'
+//					notEmpty : {
+//						message : '负责人名字不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			feaparttel : {
 				validators : {
-					notEmpty : {
-						message : '负责人电话不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
+//					notEmpty : {
+//						message : '负责人电话不能为空'
+//					},
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }
 				}
 			},
 			feapartway : {
@@ -292,45 +327,43 @@ $(document).ready(function() {
 			},
 			feacontact : {
 				validators : {
-					notEmpty : {
-						message : '联系人不能为空'
-					},
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			feapost : {
 				validators : {
-					notEmpty : {
-						message : '职务不能为空'
-					},
+//					notEmpty : {
+//						message : '职务不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			feacontacttel : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
+//					notEmpty : {
+//						message : '联系电话不能为空'
+//					},
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }
 				}
 			}
 		}
 	});
-});
-//
-function readyOnly(v) {
-	if(v.value=="0"){
-		$(".feapart").attr("disabled","disabled");
-	}else{
-		$(".feapart").removeAttr("disabled");
-	}
+	$('#featuretown').bootstrapValidator('resetForm', false);
 }

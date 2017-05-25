@@ -31,6 +31,15 @@ public class TownServiceImpl implements TownService{
 //			towncode+="G";
 //		}
 		tb_zhongxinzhen.setNumber(towncode);
+		if(tb_zhongxinzhen.getFarmingoutvalue().equals("")){
+			tb_zhongxinzhen.setFarmingoutvalue("0");
+		}
+		if(tb_zhongxinzhen.getIndustryoutvalue().equals("")){
+			tb_zhongxinzhen.setIndustryoutvalue("0");
+		}
+		if(tb_zhongxinzhen.getServiceoutvalue().equals("")){
+			tb_zhongxinzhen.setServiceoutvalue("0");
+		}
 		return this.towndao.inserttowninfo(tb_zhongxinzhen);
 	}
 	@Override
@@ -51,6 +60,15 @@ public class TownServiceImpl implements TownService{
 	@Override
 	public int updatetowninfo(Tb_zhongxinzhen tb_zhongxinzhen) {
 		// TODO Auto-generated method stub
+		if(tb_zhongxinzhen.getFarmingoutvalue().equals("")){
+			tb_zhongxinzhen.setFarmingoutvalue("0");
+		}
+		if(tb_zhongxinzhen.getIndustryoutvalue().equals("")){
+			tb_zhongxinzhen.setIndustryoutvalue("0");
+		}
+		if(tb_zhongxinzhen.getServiceoutvalue().equals("")){
+			tb_zhongxinzhen.setServiceoutvalue("0");
+		}
 		return this.towndao.updatetowninfo(tb_zhongxinzhen);
 	}
 
