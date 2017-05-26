@@ -454,9 +454,9 @@ function validatorComForm(){
 			},
 			cominvestment : {
 				validators : {
-					notEmpty : {
-						message : '投资规模不能为空'
-					}
+//					notEmpty : {
+//						message : '投资规模不能为空'
+//					}
 				}
 			},
 			comcontact : {
