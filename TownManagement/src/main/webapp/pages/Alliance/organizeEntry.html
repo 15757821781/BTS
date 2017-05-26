@@ -37,7 +37,8 @@
 					<label class="col-sm-2 control-label">单位性质</label>
 					<div class="col-sm-2">
 						<select name="orgnature" id="orgnature"
-							class="selectpicker show-tick form-control">
+							class="selectpicker show-tick form-control"
+							onchange="natureChanage(this)">
 							<option></option>
 							<option value="1">事业单位</option>
 							<option value="2">社会组织</option>
@@ -46,29 +47,13 @@
 					<label class="col-sm-2 control-label">单位类别</label>
 					<div class="col-sm-2">
 						<select name="orgcategory" id="orgcategory"
-							class="selectpicker show-tick form-control" 
-							onchange="typeChanage(this)">
-							<option></option>
-							<option value="1">研究机构</option>
-							<option value="2">高校</option>
-							<option value="3">社会团体</option>
-							<option value="4">民办非企业单位</option>
-							<option value="4">基金会</option>
+							class="selectpicker show-tick form-control">
 						</select>
 					</div>
 					<label class="col-sm-2 control-label">单位类型</label>
 					<div class="col-sm-2">
 						<select name="orgtype" id="orgtype"
 							class="selectpicker show-tick form-control">
-							<option></option>
-							<option value="1">部署</option>
-							<option value="2">省属</option>
-							<option value="3">市属</option>
-							<option value="4">区县属</option>
-							<option value="5">行业协会</option>
-							<option value="6">民非单位</option>
-							<option value="7">综合协会</option>
-							<option value="8">基金会</option>
 						</select>
 					</div>
 				</div>
