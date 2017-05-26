@@ -13,7 +13,7 @@ $(document).ready(function() {
         format: "yyyy-mm-dd"
 	}).on('hide', function(e) {  
         // 当用户改变值的时候进行验证
-//		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
+		$('#comform').bootstrapValidator('revalidateField', 'comestablish');
 	});
 	$('#comdatayear').datetimepicker({
 		language : "zh-CN",
@@ -24,7 +24,7 @@ $(document).ready(function() {
         format: "yyyy"
 	}).on('hide', function(e) {  
         // 当用户改变值的时候进行验证
-//		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
+		$('#comform').bootstrapValidator('revalidateField', 'comdatayear');
 	});
 	//初始化文件上传控件
 	initFileInput("comcertificatepic","选择",5);
@@ -47,35 +47,40 @@ $(document).ready(function() {
 	        added: function (event) {
 	        	$('#comform').bootstrapValidator('addField', 'comcontact', {
 	        		validators : {
-	        			notEmpty : {
-	        				message : '联系人不能为空'
-	        			},
+//	        			notEmpty : {
+//	        				message : '联系人不能为空'
+//	        			},
 						regexp : {
-							regexp : /[\u4e00-\u9fa5]/,
-							message : '请输入中文'
+							regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+							message : '请输入中文或字母'
 						}
 	        		}
 	        	});
 	        	$('#comform').bootstrapValidator('addField', 'compost', {
 	        		validators : {
-	        			notEmpty : {
-	        				message : '职务不能为空'
-	        			},
+//	        			notEmpty : {
+//	        				message : '职务不能为空'
+//	        			},
 						regexp : {
-							regexp : /[\u4e00-\u9fa5]/,
-							message : '请输入中文'
+							regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+							message : '请输入中文或字母'
 						}
 	        		}
 	        	});  
 	        	$('#comform').bootstrapValidator('addField', 'comcontacttel', {
 	        		validators : {
-	        			notEmpty : {
-	        				message : '联系电话不能为空'
-	        			},
-						regexp : {
+//	        			notEmpty : {
+//	        				message : '联系电话不能为空'
+//	        			},
+						stringLength: {
+	                        min: 11,
+	                        max: 11,
+	                        message: '请输入11位手机号码'
+	                    },
+						regexp: {
 							regexp : /^[0-9]*$/,
-							message : '请输入整数'
-						}
+							message: '请输入正确的手机号码'
+	                    }
 	        		}
 	        	});
 	        }
@@ -359,6 +364,13 @@ function validatorComForm(){
 					}
 				}
 			},
+			comlassetsunit : {
+				validators : {
+					notEmpty : {
+						message : '请选择货币单位'
+					}
+				}
+			},
 			comliabilities : {
 				validators : {
 					notEmpty : {
@@ -367,6 +379,13 @@ function validatorComForm(){
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
+					}
+				}
+			},
+			comliabunit : {
+				validators : {
+					notEmpty : {
+						message : '请选择货币单位'
 					}
 				}
 			},
@@ -381,6 +400,13 @@ function validatorComForm(){
 					}
 				}
 			},
+			cominyearunit : {
+				validators : {
+					notEmpty : {
+						message : '请选择货币单位'
+					}
+				}
+			},
 			comnetprofiyear : {
 				validators : {
 					notEmpty : {
@@ -392,6 +418,13 @@ function validatorComForm(){
 					}
 				}
 			},
+			comnetyearunit : {
+				validators : {
+					notEmpty : {
+						message : '请选择货币单位'
+					}
+				}
+			},
 			comtaxesyear : {
 				validators : {
 					notEmpty : {
@@ -400,6 +433,13 @@ function validatorComForm(){
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
+					}
+				}
+			},
+			comtaxyearunit : {
+				validators : {
+					notEmpty : {
+						message : '请选择货币单位'
 					}
 				}
 			},
@@ -417,37 +457,49 @@ function validatorComForm(){
 					}
 				}
 			},
-			comcontact : {
+			cominvestment : {
 				validators : {
 					notEmpty : {
-						message : '联系人不能为空'
-					},
+						message : '投资规模不能为空'
+					}
+				}
+			},
+			comcontact : {
+				validators : {
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			compost : {
 				validators : {
-					notEmpty : {
-						message : '职务不能为空'
-					},
+//					notEmpty : {
+//						message : '职务不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			comcontacttel : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
-					},
-					regexp : {
+//					notEmpty : {
+//						message : '联系电话不能为空'
+//					},
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
 						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-					}
+						message: '请输入正确的手机号码'
+                    }
 				}
 			}
 		}

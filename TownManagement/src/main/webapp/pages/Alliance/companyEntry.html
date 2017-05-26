@@ -15,7 +15,7 @@
 <body>
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header">企业单位信息</h3>
+			<h3 class="page-header" id="comHeader">企业单位信息</h3>
 		</div>
 	</div>
 	<div class="panel panel-default">
@@ -77,6 +77,7 @@
 							<option value="10">德交所</option>
 							<option value="11">多交所</option>
 							<option value="12">澳交所</option>
+							<option value="13">创业板</option>
 						</select>
 					</div>
 					<label class="col-sm-2 control-label">股票代码</label>
@@ -198,6 +199,7 @@
 							<option></option>
 							<option value="1">万元</option>
 							<option value="2">万美元</option>
+							<option value="3">万港币</option>
 						</select>
 					</div>
 					<label class="col-sm-2 control-label">成立时间</label>
@@ -266,31 +268,76 @@
 							class="datepicker form-control" type="text" placeholder="选择数据年度">
 					</div>
 					<label class="col-sm-2 control-label">资产总额</label>
-					<div class="col-sm-2">
+					<div class="col-sm-1">
 						<input name="comlassets" id="comlassets" class="form-control"
-							type="text" placeholder="(亿元)">
+							type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comlassetsunit" id="comlassetsunit"
+							class="selectpicker show-tick form-control" title="货币单位">
+							<option></option>
+							<option value="1">万元</option>
+							<option value="2">万美元</option>
+							<option value="3">万港币</option>
+						</select>
 					</div>
 					<label class="col-sm-2 control-label">负债总额</label>
-					<div class="col-sm-2">
+					<div class="col-sm-1">
 						<input name="comliabilities" id="comliabilities"
-							class="form-control" type="text" placeholder="(亿元)">
+							class="form-control" type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comliabunit" id="comliabunit"
+							class="selectpicker show-tick form-control" title="货币单位">
+							<option></option>
+							<option value="1">万元</option>
+							<option value="2">万美元</option>
+							<option value="3">万港币</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">年度营业收入</label>
-					<div class="col-sm-2">
+					<div class="col-sm-1">
 						<input name="comincomeyear" id="comincomeyear"
-							class="form-control" type="text" placeholder="(亿元)">
+							class="form-control" type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="cominyearunit" id="cominyearunit"
+							class="selectpicker show-tick form-control" title="货币单位">
+							<option></option>
+							<option value="1">万元</option>
+							<option value="2">万美元</option>
+							<option value="3">万港币</option>
+						</select>
 					</div>
 					<label class="col-sm-2 control-label">年度净利润</label>
-					<div class="col-sm-2">
+					<div class="col-sm-1">
 						<input name="comnetprofiyear" id="comnetprofiyear"
-							class="form-control" type="text" placeholder="(亿元)">
+							class="form-control" type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comnetyearunit" id="comnetyearunit"
+							class="selectpicker show-tick form-control" title="货币单位">
+							<option></option>
+							<option value="1">万元</option>
+							<option value="2">万美元</option>
+							<option value="3">万港币</option>
+						</select>
 					</div>
 					<label class="col-sm-2 control-label">年度纳税额</label>
-					<div class="col-sm-2">
+					<div class="col-sm-1">
 						<input name="comtaxesyear" id="comtaxesyear" class="form-control"
-							type="text" placeholder="(亿元)">
+							type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comtaxyearunit" id="comtaxyearunit"
+							class="selectpicker show-tick form-control" title="货币单位">
+							<option></option>
+							<option value="1">万元</option>
+							<option value="2">万美元</option>
+							<option value="3">万港币</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -340,7 +387,7 @@
 						<select name="cominvestment" id="cominvestment"
 							class="selectpicker show-tick form-control" 
 							data-live-search="true" data-size="5"
-							title="选择投资规模" >
+							title="选择投资规模" multiple>
 							<optgroup label="单位:万元">
 								<option value="1000">1000</option>
 								<option value="10000">10000</option>

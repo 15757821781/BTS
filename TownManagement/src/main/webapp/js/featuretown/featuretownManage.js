@@ -71,6 +71,7 @@ $(document).ready(function() {
 		cache : false,
 		success : function(html) {
 			$("#featuretownbody").html(html);
+			$("#feaHeader").remove();
 		}
 	});
 })
