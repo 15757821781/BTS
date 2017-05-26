@@ -88,11 +88,76 @@ $(document).ready(function() {
 	$('#comentry_update').click(function() {
 		formSubmit('#comform','commanage/updateComInfo','Alliance/companyManage.html');
 	});
+	setTimeout(function() {
+		validatorComForm();
+	}, 500);
+});
+var comtype = [ {
+	value : "1",
+	name : "央企",
+	parid : "1"
+}, {
+	value : "2",
+	name : "省属",
+	parid : "1"
+}, {
+	value : "3",
+	name : "市属",
+	parid : "1"
+}, {
+	value : "4",
+	name : "区县属",
+	parid : "1"
+}, {
+	value : "5",
+	name : "经济合作社",
+	parid : "2"
+}, {
+	value : "6",
+	name : "股份经济合作社",
+	parid : "2"
+}, {
+	value : "7",
+	name : "股份制企业",
+	parid : "3"
+}, {
+	value : "8",
+	name : "私营企业",
+	parid : "3"
+}, {
+	value : "9",
+	name : "联营企业",
+	parid : "3"
+}, {
+	value : "10",
+	name : "外资独资",
+	parid : "4"
+}, {
+	value : "11",
+	name : "中外合资",
+	parid : "4"
+}, {
+	value : "12",
+	name : "中外合作",
+	parid : "4"
+} ]
+function typeChanage(v){
+	var id = v.value;
+	$("#comtype option").remove();
+	$("#comtype").append("<option></option>");
+	$.each(comtype, function(i, item) {
+		if(item.parid==id){
+			$("#comtype").append("<option value="+item.value+">"+item.name+"</option>")
+		}
+	});
+	$("#comtype").selectpicker('refresh');
+}
+function validatorComForm(){
 	$('#comform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+	//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
@@ -387,64 +452,5 @@ $(document).ready(function() {
 			}
 		}
 	});
-});
-var comtype = [ {
-	value : "1",
-	name : "央企",
-	parid : "1"
-}, {
-	value : "2",
-	name : "省属",
-	parid : "1"
-}, {
-	value : "3",
-	name : "市属",
-	parid : "1"
-}, {
-	value : "4",
-	name : "区县属",
-	parid : "1"
-}, {
-	value : "5",
-	name : "经济合作社",
-	parid : "2"
-}, {
-	value : "6",
-	name : "股份经济合作社",
-	parid : "2"
-}, {
-	value : "7",
-	name : "股份制企业",
-	parid : "3"
-}, {
-	value : "8",
-	name : "私营企业",
-	parid : "3"
-}, {
-	value : "9",
-	name : "联营企业",
-	parid : "3"
-}, {
-	value : "10",
-	name : "外资独资",
-	parid : "4"
-}, {
-	value : "11",
-	name : "中外合资",
-	parid : "4"
-}, {
-	value : "12",
-	name : "中外合作",
-	parid : "4"
-} ]
-function typeChanage(v){
-	var id = v.value;
-	$("#comtype option").remove();
-	$("#comtype").append("<option></option>");
-	$.each(comtype, function(i, item) {
-		if(item.parid==id){
-			$("#comtype").append("<option value="+item.value+">"+item.name+"</option>")
-		}
-	});
-	$("#comtype").selectpicker('refresh');
+	$('#comform').bootstrapValidator('resetForm', false);
 }

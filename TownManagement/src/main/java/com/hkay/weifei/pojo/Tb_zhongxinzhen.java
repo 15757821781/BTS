@@ -23,9 +23,9 @@ public class Tb_zhongxinzhen {
 	private double townlocalgdp;// 地方gdp
 	private double townrevenue;// 财政总收入
 	private double totalpopulation;// 总人口
-	private double farmingoutvalue;// 农业生产总值
-	private double industryoutvalue;// 工业生产总值
-	private double serviceoutvalue;// 服务业总产值
+	private String farmingoutvalue;// 农业生产总值
+	private String industryoutvalue;// 工业生产总值
+	private String serviceoutvalue;// 服务业总产值
 	private String weather;// 基本气候
 	private String terrain;// 基本地形
 	private String traffic;// 交通条件
@@ -34,14 +34,14 @@ public class Tb_zhongxinzhen {
 	private String historyculture;// 历史文化和旅游资源
 	private String honorarytitle;// 荣誉称号
 	private String partycommittee;// 党委书记
-	private int committelnumber;// 党委书记电话
-	private int committel;// 党委书记手机
+	private String committelnumber;// 党委书记电话
+	private String committel;// 党委书记手机
 	private String mayor;// 镇长/主任
-	private int mayortelnumber;// 镇长电话
-	private int mayortel;// 党委书记手机
+	private String mayortelnumber;// 镇长电话
+	private String mayortel;// 党委书记手机
 	private String contacts;// 联系人
 	private String post;// 职务
-	private int contactstel;// 联系方式
+	private String contactstel;// 联系方式
 	private String citypic;//地市背景
 	private String townpic;//区县背景
 	private String scopeopic;//行政范围图
@@ -105,14 +105,6 @@ public class Tb_zhongxinzhen {
 
 	public void setSearch(String search) {
 		this.search = search;
-	}
-
-	public double getServiceoutvalue() {
-		return serviceoutvalue;
-	}
-
-	public void setServiceoutvalue(double serviceoutvalue) {
-		this.serviceoutvalue = serviceoutvalue;
 	}
 
 	public String getCentertownname() {
@@ -211,14 +203,6 @@ public class Tb_zhongxinzhen {
 		this.adminvillage = adminvillage;
 	}
 
-	public double getFarmingoutvalue() {
-		return farmingoutvalue;
-	}
-
-	public void setFarmingoutvalue(double farmingoutvalue) {
-		this.farmingoutvalue = farmingoutvalue;
-	}
-
 	public String getPartycommittee() {
 		return partycommittee;
 	}
@@ -227,36 +211,36 @@ public class Tb_zhongxinzhen {
 		this.partycommittee = partycommittee;
 	}
 
-	public int getCommittelnumber() {
-		return committelnumber;
-	}
-
-	public void setCommittelnumber(int committelnumber) {
-		this.committelnumber = committelnumber;
-	}
-
-	public double getIndustryoutvalue() {
-		return industryoutvalue;
-	}
-
-	public void setIndustryoutvalue(double industryoutvalue) {
-		this.industryoutvalue = industryoutvalue;
-	}
-
 	public String getMayor() {
 		return mayor;
 	}
 
+	public String getFarmingoutvalue() {
+		return farmingoutvalue;
+	}
+
+	public void setFarmingoutvalue(String farmingoutvalue) {
+		this.farmingoutvalue = farmingoutvalue;
+	}
+
+	public String getIndustryoutvalue() {
+		return industryoutvalue;
+	}
+
+	public void setIndustryoutvalue(String industryoutvalue) {
+		this.industryoutvalue = industryoutvalue;
+	}
+
+	public String getServiceoutvalue() {
+		return serviceoutvalue;
+	}
+
+	public void setServiceoutvalue(String serviceoutvalue) {
+		this.serviceoutvalue = serviceoutvalue;
+	}
+
 	public void setMayor(String mayor) {
 		this.mayor = mayor;
-	}
-
-	public int getMayortelnumber() {
-		return mayortelnumber;
-	}
-
-	public void setMayortelnumber(int mayortelnumber) {
-		this.mayortelnumber = mayortelnumber;
 	}
 
 	public String getWeather() {
@@ -347,22 +331,6 @@ public class Tb_zhongxinzhen {
 		this.totalpopulation = totalpopulation;
 	}
 
-	public int getCommittel() {
-		return committel;
-	}
-
-	public void setCommittel(int committel) {
-		this.committel = committel;
-	}
-
-	public int getMayortel() {
-		return mayortel;
-	}
-
-	public void setMayortel(int mayortel) {
-		this.mayortel = mayortel;
-	}
-
 	public String getContacts() {
 		return contacts;
 	}
@@ -379,11 +347,12 @@ public class Tb_zhongxinzhen {
 		this.post = post;
 	}
 
-	public int getContactstel() {
+
+	public String getContactstel() {
 		return contactstel;
 	}
 
-	public void setContactstel(int contactstel) {
+	public void setContactstel(String contactstel) {
 		this.contactstel = contactstel;
 	}
 
@@ -425,6 +394,38 @@ public class Tb_zhongxinzhen {
 
 	public void setSys_town(String sys_town) {
 		this.sys_town = sys_town;
+	}
+
+	public String getCommittelnumber() {
+		return committelnumber;
+	}
+
+	public void setCommittelnumber(String committelnumber) {
+		this.committelnumber = committelnumber;
+	}
+
+	public String getCommittel() {
+		return committel;
+	}
+
+	public void setCommittel(String committel) {
+		this.committel = committel;
+	}
+
+	public String getMayortelnumber() {
+		return mayortelnumber;
+	}
+
+	public void setMayortelnumber(String mayortelnumber) {
+		this.mayortelnumber = mayortelnumber;
+	}
+
+	public String getMayortel() {
+		return mayortel;
+	}
+
+	public void setMayortel(String mayortel) {
+		this.mayortel = mayortel;
 	}
 
 }
