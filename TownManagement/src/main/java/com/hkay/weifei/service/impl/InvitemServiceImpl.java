@@ -24,7 +24,7 @@ public class InvitemServiceImpl implements InvitemService{
 		int seq = this.invitemdao.queryinvinfocnt(tb_zhaoshangxiangmu);
 		// 加上2位序号
 		number +=new DecimalFormat("00").format(seq+1);
-		// 加上QY
+		// 加上ZS
 		number +="ZS";
 		tb_zhaoshangxiangmu.setInvnumber(number);
 		return this.invitemdao.insertinvitem(tb_zhaoshangxiangmu);
