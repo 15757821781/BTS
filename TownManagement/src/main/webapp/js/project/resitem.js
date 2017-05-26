@@ -22,34 +22,34 @@ $(document).ready(function() {
 		        added: function (event) {
 		        	$('#resitem').bootstrapValidator('addField', 'rescontactunit', {
 		        		validators : {
-		        			notEmpty : {
-		        				message : '联系单位不能为空'
-		        			},
+//		        			notEmpty : {
+//		        				message : '联系单位不能为空'
+//		        			},
 							regexp : {
-								regexp : /[\u4e00-\u9fa5]/,
-								message : '请输入中文'
+								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+								message : '请输入中文或字母'
 							}
 		        		}
 		        	});
 		        	$('#resitem').bootstrapValidator('addField', 'rescontacts', {
 		        		validators : {
-		        			notEmpty : {
-		        				message : '联系人不能为空'
-		        			},
+//		        			notEmpty : {
+//		        				message : '联系人不能为空'
+//		        			},
 							regexp : {
-								regexp : /[\u4e00-\u9fa5]/,
-								message : '请输入中文'
+								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+								message : '请输入中文或字母'
 							}
 		        		}
 		        	});  
 		        	$('#resitem').bootstrapValidator('addField', 'rescontactway', {
 		        		validators : {
-		        			notEmpty : {
-		        				message : '联系方式不能为空'
-		        			},
+//		        			notEmpty : {
+//		        				message : '联系方式不能为空'
+//		        			},
 							regexp : {
-								regexp : /^[0-9]*$/,
-								message : '请输入整数'
+								regexp : /^[^,]*$/,
+								message : '请输入正确的号码'
 							}
 		        		}
 		        	});
@@ -63,12 +63,17 @@ $(document).ready(function() {
 	initFileInput("resfile4","规划方案图",1);
 	initFileInput("resfile5","总体规划图",1);
 	initFileInput("resfile6","详细规划图",1);
+	setTimeout(function() {
+		validatorResForm();
+	}, 500);
+});
+function validatorResForm(){
 	//储备项目验证
 	$('#resitem').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
@@ -187,26 +192,25 @@ $(document).ready(function() {
 					}
 				}
 			},
-			
 			rescharge : {
 				validators : {
-					notEmpty : {
-						message : '负责人不能为空'
-					},
+//					notEmpty : {
+//						message : '负责人不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			reschargetel : {
 				validators : {
-					notEmpty : {
-						message : '负责人电话不能为空'
-					},
+//					notEmpty : {
+//						message : '负责人电话不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
 					}
 				}
 			},
@@ -226,26 +230,27 @@ $(document).ready(function() {
 			},
 			rescontacts : {
 				validators : {
-					notEmpty : {
-						message : '联系人不能为空'
-					},
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			rescontactway : {
 				validators : {
-					notEmpty : {
-						message : '联系方式不能为空'
-					},
+//					notEmpty : {
+//						message : '联系方式不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
-			}
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
+					}
 				}
 			}
 		}
 	});
-});
+	$('#resitem').bootstrapValidator('resetForm', false);
+}
