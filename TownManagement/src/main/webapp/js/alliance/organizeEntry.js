@@ -13,7 +13,7 @@ $(document).ready(function() {
         format: "yyyy-mm-dd"
 	}).on('hide', function(e) {  
         // 当用户改变值的时候进行验证
-//		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
+		$('#orgform').bootstrapValidator('revalidateField', 'orgestablish');
 	});
 	// 加载区县信息下拉框
 	createAreaSelect("orgprovince","orgcity","orgtown");
@@ -28,35 +28,40 @@ $(document).ready(function() {
 		        added: function (event) {
 		        	$('#orgform').bootstrapValidator('addField', 'orgcontact', {
 		        		validators : {
-		        			notEmpty : {
-		        				message : '联系人不能为空'
-		        			},
+//		        			notEmpty : {
+//		        				message : '联系人不能为空'
+//		        			},
 							regexp : {
-								regexp : /[\u4e00-\u9fa5]/,
-								message : '请输入中文'
+								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+								message : '请输入中文或字母'
 							}
 		        		}
 		        	});
 		        	$('#orgform').bootstrapValidator('addField', 'orgpost', {
 		        		validators : {
-		        			notEmpty : {
-		        				message : '职务不能为空'
-		        			},
+//		        			notEmpty : {
+//		        				message : '职务不能为空'
+//		        			},
 							regexp : {
-								regexp : /[\u4e00-\u9fa5]/,
-								message : '请输入中文'
+								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+								message : '请输入中文或字母'
 							}
 		        		}
 		        	});  
 		        	$('#orgform').bootstrapValidator('addField', 'orgcontacttel', {
 		        		validators : {
-		        			notEmpty : {
-		        				message : '联系电话不能为空'
-		        			},
-							regexp : {
+//		        			notEmpty : {
+//		        				message : '联系电话不能为空'
+//		        			},
+							stringLength: {
+		                        min: 11,
+		                        max: 11,
+		                        message: '请输入11位手机号码'
+		                    },
+							regexp: {
 								regexp : /^[0-9]*$/,
-								message : '请输入整数'
-							}
+								message: '请输入正确的手机号码'
+		                    }
 		        		}
 		        	});
 		        }
@@ -74,7 +79,7 @@ $(document).ready(function() {
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
@@ -200,23 +205,40 @@ $(document).ready(function() {
 			},
 			orgcontact: {
 				validators : {
-					notEmpty : {
-						message : '联系人不能为空'
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			orgpost : {
 				validators : {
-					notEmpty : {
-						message : '职务不能为空'
+//					notEmpty : {
+//						message : '职务不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			orgcontacttel : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
-					}
+//					notEmpty : {
+//						message : '联系电话不能为空'
+//					},
+					stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+					regexp: {
+						regexp : /^[0-9]*$/,
+						message: '请输入正确的手机号码'
+                    }
 				}
 			}
 		}

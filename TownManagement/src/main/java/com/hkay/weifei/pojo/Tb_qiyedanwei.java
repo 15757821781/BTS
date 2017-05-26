@@ -33,10 +33,15 @@ public class Tb_qiyedanwei {
 	private String comcertificate;//有关证书
 	private String comdatayear;//数据年度
 	private double comlassets;//资产总额
+	private String comlassetsunit;// 资产总额货币单位
 	private double comliabilities;//负债总额
+	private String comliabunit;// 负债总额货币单位
 	private double comincomeyear;//年度营业收入
+	private String cominyearunit;// 年度营业收入货币单位
 	private double comnetprofiyear;//年度净利润
+	private String comnetyearunit;// 年度净利润货币单位
 	private double comtaxesyear;//年度纳税额
+	private String comtaxyearunit;// 年度纳税额货币单位
 	private String comdevelop;//发展方向
 	private String comindustry;//投资偏好
 	private String comregpro;//投资省份
@@ -52,6 +57,46 @@ public class Tb_qiyedanwei {
 	private String search;// 查询条件
 
 	
+	public String getComlassetsunit() {
+		return comlassetsunit;
+	}
+
+	public void setComlassetsunit(String comlassetsunit) {
+		this.comlassetsunit = comlassetsunit;
+	}
+
+	public String getComliabunit() {
+		return comliabunit;
+	}
+
+	public void setComliabunit(String comliabunit) {
+		this.comliabunit = comliabunit;
+	}
+
+	public String getCominyearunit() {
+		return cominyearunit;
+	}
+
+	public void setCominyearunit(String cominyearunit) {
+		this.cominyearunit = cominyearunit;
+	}
+
+	public String getComnetyearunit() {
+		return comnetyearunit;
+	}
+
+	public void setComnetyearunit(String comnetyearunit) {
+		this.comnetyearunit = comnetyearunit;
+	}
+
+	public String getComtaxyearunit() {
+		return comtaxyearunit;
+	}
+
+	public void setComtaxyearunit(String comtaxyearunit) {
+		this.comtaxyearunit = comtaxyearunit;
+	}
+
 	public String getCombustype() {
 		return combustype;
 	}

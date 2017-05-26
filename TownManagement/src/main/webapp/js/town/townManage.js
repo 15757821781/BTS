@@ -70,6 +70,7 @@ $(document).ready(function() {
 		cache : false,
 		success : function(html) {
 			$("#towninfobody").html(html);
+			$("#townHeader").remove();
 		}
 	});
 })
