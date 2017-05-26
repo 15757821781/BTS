@@ -69,6 +69,7 @@ $(document).ready(function() {
 		async: false,
 		success : function(html) {
 			$("#regionbody").html(html);
+			$("#regHeader").remove();
 		}
 	});
 });
