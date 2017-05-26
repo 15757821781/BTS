@@ -24,35 +24,40 @@ $(document).ready(function() {
 	        added: function (event) {
 	        	$('#featuretown').bootstrapValidator('addField', 'feacontact', {
 	        		validators : {
-	        			notEmpty : {
-	        				message : '联系人不能为空'
-	        			},
+//	        			notEmpty : {
+//	        				message : '联系人不能为空'
+//	        			},
 						regexp : {
-							regexp : /[\u4e00-\u9fa5]/,
-							message : '请输入中文'
+							regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+							message : '请输入中文或字母'
 						}
 	        		}
 	        	});
 	        	$('#featuretown').bootstrapValidator('addField', 'feapost', {
 	        		validators : {
-	        			notEmpty : {
-	        				message : '职务不能为空'
-	        			},
+//	        			notEmpty : {
+//	        				message : '职务不能为空'
+//	        			},
 						regexp : {
-							regexp : /[\u4e00-\u9fa5]/,
-							message : '请输入中文'
+							regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+							message : '请输入中文或字母'
 						}
 	        		}
 	        	});  
 	        	$('#featuretown').bootstrapValidator('addField', 'feacontacttel', {
 	        		validators : {
-	        			notEmpty : {
-	        				message : '联系电话不能为空'
-	        			},
-						regexp : {
+//	        			notEmpty : {
+//	        				message : '联系电话不能为空'
+//	        			},
+						stringLength: {
+	                        min: 11,
+	                        max: 11,
+	                        message: '请输入11位手机号码'
+	                    },
+						regexp: {
 							regexp : /^[0-9]*$/,
-							message : '请输入整数'
-						}
+							message: '请输入正确的手机号码'
+	                    }
 	        		}
 	        	});
 	        }
@@ -226,8 +231,8 @@ function validatorFeaForm(){
                         message: '请输入11位手机号码'
                     },
 					regexp: {
-                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
-                        message: '请输入正确的手机号码'
+						regexp : /^[0-9]*$/,
+						message: '请输入正确的手机号码'
                     }
 				}
 			},
@@ -267,8 +272,8 @@ function validatorFeaForm(){
                         message: '请输入11位手机号码'
                     },
 					regexp: {
-                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
-                        message: '请输入正确的手机号码'
+						regexp : /^[0-9]*$/,
+						message: '请输入正确的手机号码'
                     }
 				}
 			},
@@ -358,8 +363,8 @@ function validatorFeaForm(){
                         message: '请输入11位手机号码'
                     },
 					regexp: {
-                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
-                        message: '请输入正确的手机号码'
+						regexp : /^[0-9]*$/,
+						message: '请输入正确的手机号码'
                     }
 				}
 			}

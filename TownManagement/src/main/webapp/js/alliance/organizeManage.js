@@ -74,6 +74,7 @@ $(document).ready(function() {
 		cache : false,
 		success : function(html) {
 			$("#orginfobody").html(html);
+			$("#orgHeader").remove();
 		}
 	});
 })

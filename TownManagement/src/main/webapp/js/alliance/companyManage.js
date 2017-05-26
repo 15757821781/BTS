@@ -71,6 +71,7 @@ $(document).ready(function() {
 		cache : false,
 		success : function(html) {
 			$("#cominfobody").html(html);
+			$("#comHeader").remove();
 		}
 	});
 })
