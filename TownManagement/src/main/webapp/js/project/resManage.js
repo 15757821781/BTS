@@ -63,6 +63,7 @@ $(document).ready(function() {
 		async: false,
 		success : function(html) {
 			$("#resbody").html(html);
+			$("#resHeader").remove();
 		}
 	});
 });

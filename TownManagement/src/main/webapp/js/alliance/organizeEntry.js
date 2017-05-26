@@ -53,15 +53,10 @@ $(document).ready(function() {
 //		        			notEmpty : {
 //		        				message : '联系电话不能为空'
 //		        			},
-							stringLength: {
-		                        min: 11,
-		                        max: 11,
-		                        message: '请输入11位手机号码'
-		                    },
-							regexp: {
-								regexp : /^[0-9]*$/,
-								message: '请输入正确的手机号码'
-		                    }
+							regexp : {
+								regexp : /^[^,]*$/,
+								message : '请输入正确的号码'
+							}
 		        		}
 		        	});
 		        }
@@ -296,15 +291,10 @@ function validatorOrgForm(){
 //					notEmpty : {
 //						message : '联系电话不能为空'
 //					},
-					stringLength: {
-                        min: 11,
-                        max: 11,
-                        message: '请输入11位手机号码'
-                    },
-					regexp: {
-						regexp : /^[0-9]*$/,
-						message: '请输入正确的手机号码'
-                    }
+					regexp : {
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
+					}
 				}
 			}
 		}
