@@ -75,6 +75,72 @@ $(document).ready(function() {
 		formSubmit('#orgform','orgmanage/updateOrgInfo','Alliance/organizeManage.html');
 	});
 	//表单验证
+	setTimeout(function() {
+		validatorOrgForm();
+	}, 500);
+	
+});
+var orgtype = [ {
+	value : "1",
+	name : "央企",
+	parid : "1"
+}, {
+	value : "2",
+	name : "省属",
+	parid : "1"
+}, {
+	value : "3",
+	name : "市属",
+	parid : "1"
+}, {
+	value : "4",
+	name : "区县属",
+	parid : "1"
+}, {
+	value : "5",
+	name : "经济合作社",
+	parid : "2"
+}, {
+	value : "6",
+	name : "股份经济合作社",
+	parid : "2"
+}, {
+	value : "7",
+	name : "股份制企业",
+	parid : "3"
+}, {
+	value : "8",
+	name : "私营企业",
+	parid : "3"
+}, {
+	value : "9",
+	name : "联营企业",
+	parid : "3"
+}, {
+	value : "10",
+	name : "外资独资",
+	parid : "4"
+}, {
+	value : "11",
+	name : "中外合资",
+	parid : "4"
+}, {
+	value : "12",
+	name : "中外合作",
+	parid : "4"
+} ]
+function typeChanage(v){
+	var id = v.value;
+	$("#orgtype option").remove();
+	$("#orgtype").append("<option></option>");
+	$.each(orgtype, function(i, item) {
+		if(item.parid==id){
+			$("#orgtype").append("<option value="+item.value+">"+item.name+"</option>")
+		}
+	});
+	$("#orgtype").selectpicker('refresh');
+}
+function validatorOrgForm(){
 	$('#orgform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -243,64 +309,5 @@ $(document).ready(function() {
 			}
 		}
 	});
-});
-var orgtype = [ {
-	value : "1",
-	name : "央企",
-	parid : "1"
-}, {
-	value : "2",
-	name : "省属",
-	parid : "1"
-}, {
-	value : "3",
-	name : "市属",
-	parid : "1"
-}, {
-	value : "4",
-	name : "区县属",
-	parid : "1"
-}, {
-	value : "5",
-	name : "经济合作社",
-	parid : "2"
-}, {
-	value : "6",
-	name : "股份经济合作社",
-	parid : "2"
-}, {
-	value : "7",
-	name : "股份制企业",
-	parid : "3"
-}, {
-	value : "8",
-	name : "私营企业",
-	parid : "3"
-}, {
-	value : "9",
-	name : "联营企业",
-	parid : "3"
-}, {
-	value : "10",
-	name : "外资独资",
-	parid : "4"
-}, {
-	value : "11",
-	name : "中外合资",
-	parid : "4"
-}, {
-	value : "12",
-	name : "中外合作",
-	parid : "4"
-} ]
-function typeChanage(v){
-	var id = v.value;
-	$("#orgtype option").remove();
-	$("#orgtype").append("<option></option>");
-	$.each(orgtype, function(i, item) {
-		if(item.parid==id){
-			$("#orgtype").append("<option value="+item.value+">"+item.name+"</option>")
-		}
-	});
-	$("#orgtype").selectpicker('refresh');
+	$('#orgform').bootstrapValidator('resetForm', false);
 }
