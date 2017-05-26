@@ -80,9 +80,30 @@ $(document).ready(function() {
 	}, 500);
 	
 });
+var orgcategory = [ {
+	value : "1",
+	name : "研究机构",
+	parid : "1"
+}, {
+	value : "2",
+	name : "高校",
+	parid : "1"
+}, {
+	value : "3",
+	name : "社会团体",
+	parid : "2"
+}, {
+	value : "4",
+	name : "民办非企业单位",
+	parid : "2"
+}, {
+	value : "5",
+	name : "基金会",
+	parid : "2"
+} ];
 var orgtype = [ {
 	value : "1",
-	name : "央企",
+	name : "部属",
 	parid : "1"
 }, {
 	value : "2",
@@ -98,46 +119,42 @@ var orgtype = [ {
 	parid : "1"
 }, {
 	value : "5",
-	name : "经济合作社",
+	name : "行业协会",
 	parid : "2"
-}, {
-	value : "6",
-	name : "股份经济合作社",
+},{
+	value : "5",
+	name : "综合协会",
 	parid : "2"
-}, {
-	value : "7",
-	name : "股份制企业",
-	parid : "3"
-}, {
-	value : "8",
-	name : "私营企业",
-	parid : "3"
-}, {
-	value : "9",
-	name : "联营企业",
-	parid : "3"
-}, {
-	value : "10",
-	name : "外资独资",
-	parid : "4"
-}, {
-	value : "11",
-	name : "中外合资",
-	parid : "4"
-}, {
-	value : "12",
-	name : "中外合作",
-	parid : "4"
+},{
+	value : "5",
+	name : "民非单位",
+	parid : "2"
+},{
+	value : "5",
+	name : "公募基金会",
+	parid : "2"
+},{
+	value : "5",
+	name : "非公募基金会",
+	parid : "2"
 } ]
-function typeChanage(v){
+function natureChanage(v){
 	var id = v.value;
+	$("#orgcategory option").remove();
+	$("#orgcategory").append("<option></option>");
 	$("#orgtype option").remove();
 	$("#orgtype").append("<option></option>");
+	$.each(orgcategory, function(i, item) {
+		if(item.parid==id){
+			$("#orgcategory").append("<option value="+item.value+">"+item.name+"</option>")
+		}
+	});
 	$.each(orgtype, function(i, item) {
 		if(item.parid==id){
 			$("#orgtype").append("<option value="+item.value+">"+item.name+"</option>")
 		}
 	});
+	$("#orgcategory").selectpicker('refresh');
 	$("#orgtype").selectpicker('refresh');
 }
 function validatorOrgForm(){
