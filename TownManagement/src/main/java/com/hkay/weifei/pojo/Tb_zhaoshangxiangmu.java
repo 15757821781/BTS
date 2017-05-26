@@ -16,7 +16,7 @@ public class Tb_zhaoshangxiangmu {
 	private String invplanuse;//土地用途
 	private double investment;//投资强度
 	private double investmentall;//投资总额
-	private double invexpectbuild;//预计建设期
+	private String invexpectbuild;//预计建设期
 	private String invplanaddress;//规划地址
 	private String invbuildcontent;//建设内容
 	private String invbuildcondition;//建设条件
@@ -93,10 +93,10 @@ public class Tb_zhaoshangxiangmu {
 	public void setInvestmentall(double investmentall) {
 		this.investmentall = investmentall;
 	}
-	public double getInvexpectbuild() {
+	public String getInvexpectbuild() {
 		return invexpectbuild;
 	}
-	public void setInvexpectbuild(double invexpectbuild) {
+	public void setInvexpectbuild(String invexpectbuild) {
 		this.invexpectbuild = invexpectbuild;
 	}
 	public String getInvplanaddress() {
