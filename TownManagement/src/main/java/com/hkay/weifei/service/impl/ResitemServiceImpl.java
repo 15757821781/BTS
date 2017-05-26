@@ -1,5 +1,6 @@
 package com.hkay.weifei.service.impl;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,7 +18,13 @@ public class ResitemServiceImpl implements ResitemService{
 
 	@Override
 	public int insertresitem(Tb_chubeixiangmu tb_chubeixiangmu) {
-		// TODO Auto-generated method stub
+		// 获得企业注册区县
+				String number = "CB";
+				// 获得企业单位信息总数
+				int seq = this.resitemdao.queryresinfocnt(tb_chubeixiangmu);
+				// 加上3位序号
+				number +=new DecimalFormat("000").format(seq+1);
+				tb_chubeixiangmu.setResnumber(number);
 		return this.resitemdao.insertresitem(tb_chubeixiangmu);
 	}
 

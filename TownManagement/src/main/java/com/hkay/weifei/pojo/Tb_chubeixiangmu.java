@@ -3,26 +3,32 @@ package com.hkay.weifei.pojo;
 public class Tb_chubeixiangmu {
 	private int resid;
 	private String resitemname;//政府储备项目名称
-	private int resnumber;//项目编号
-	private String resarea;//所属地区		
-	private String reslocal;//所在镇/街道/开发区
-	private String resjoinway;//合作方式
-	private String rescompetentunit;//主管单位
-	private String restrade;//所属行业
-	private double reslandscale;//用地规模
-	private double resvolumerate;//容积率
-	private String resplanuses;//规划用途
-	private double resinvest;//投资强度
-	private double resgrossassets;//投资总额
-	private double resplantime;//预计建设期
-	private String resplanaddress;//规划地址
-	private String resplanideas;//规划设想
-	private String resbuildterm;//建设条件
-	private String respolicy;//优惠政策
-	private String reselement;//要素分析
+	private String resnumber;//项目编号
+	private String resprovince;// 省份
+	private String rescity;// 城市
+	private String restown;// 乡县	
+	private String restownship;//乡镇街道
+	private String resjoinway;//合作方向
+	private double resplanarea;//规划面积
+	private double resplaninvest;//计划投资
+	private double reslandarea;//征地面积
+	private String resposition;//地理位置
+	private String rebasic;//基本情况
+	private String resbuildcontent;//规划建设内容
+	private String resintentions;//开发意向情况
+	private String rescompetentunit;//业主单位
+	private String rescharge;//负责人
+	private String reschargetel;//负责人电话
 	private String rescontactunit;//联系单位
 	private String rescontacts;//联系人
 	private String rescontactway;//联系方式
+	private String rescitypic;// 城市区位图
+	private String restownpic;// 区县区位图
+	private String resscopeopic;// 规划范围图
+	private String resplanpic;// 规划方案图
+	private String resallplanpic;// 城市总体规划
+	private String resdetailplanpic;// 控制性详细规划
+	private String resentry;//录入员
 	private String search;//搜索
 	
 	public String getSearch() {
@@ -43,23 +49,11 @@ public class Tb_chubeixiangmu {
 	public void setResitemname(String resitemname) {
 		this.resitemname = resitemname;
 	}
-	public int getResnumber() {
+	public String getResnumber() {
 		return resnumber;
 	}
-	public void setResnumber(int resnumber) {
+	public void setResnumber(String resnumber) {
 		this.resnumber = resnumber;
-	}
-	public String getResarea() {
-		return resarea;
-	}
-	public void setResarea(String resarea) {
-		this.resarea = resarea;
-	}
-	public String getReslocal() {
-		return reslocal;
-	}
-	public void setReslocal(String reslocal) {
-		this.reslocal = reslocal;
 	}
 	public String getResjoinway() {
 		return resjoinway;
@@ -73,77 +67,125 @@ public class Tb_chubeixiangmu {
 	public void setRescompetentunit(String rescompetentunit) {
 		this.rescompetentunit = rescompetentunit;
 	}
-	public String getRestrade() {
-		return restrade;
+	public String getResprovince() {
+		return resprovince;
 	}
-	public void setRestrade(String restrade) {
-		this.restrade = restrade;
+	public void setResprovince(String resprovince) {
+		this.resprovince = resprovince;
 	}
-	public double getReslandscale() {
-		return reslandscale;
+	public String getRescity() {
+		return rescity;
 	}
-	public void setReslandscale(double reslandscale) {
-		this.reslandscale = reslandscale;
+	public void setRescity(String rescity) {
+		this.rescity = rescity;
 	}
-	public double getResvolumerate() {
-		return resvolumerate;
+	public String getRestown() {
+		return restown;
 	}
-	public void setResvolumerate(double resvolumerate) {
-		this.resvolumerate = resvolumerate;
+	public void setRestown(String restown) {
+		this.restown = restown;
 	}
-	public String getResplanuses() {
-		return resplanuses;
+	public String getRestownship() {
+		return restownship;
 	}
-	public void setResplanuses(String resplanuses) {
-		this.resplanuses = resplanuses;
+	public void setRestownship(String restownship) {
+		this.restownship = restownship;
 	}
-	public double getResinvest() {
-		return resinvest;
+	public double getResplanarea() {
+		return resplanarea;
 	}
-	public void setResinvest(double resinvest) {
-		this.resinvest = resinvest;
+	public void setResplanarea(double resplanarea) {
+		this.resplanarea = resplanarea;
 	}
-	public double getResgrossassets() {
-		return resgrossassets;
+	public double getResplaninvest() {
+		return resplaninvest;
 	}
-	public void setResgrossassets(double resgrossassets) {
-		this.resgrossassets = resgrossassets;
+	public void setResplaninvest(double resplaninvest) {
+		this.resplaninvest = resplaninvest;
 	}
-	public double getResplantime() {
-		return resplantime;
+	public double getReslandarea() {
+		return reslandarea;
 	}
-	public void setResplantime(double resplantime) {
-		this.resplantime = resplantime;
+	public void setReslandarea(double reslandarea) {
+		this.reslandarea = reslandarea;
 	}
-	public String getResplanaddress() {
-		return resplanaddress;
+	public String getResposition() {
+		return resposition;
 	}
-	public void setResplanaddress(String resplanaddress) {
-		this.resplanaddress = resplanaddress;
+	public void setResposition(String resposition) {
+		this.resposition = resposition;
 	}
-	public String getResplanideas() {
-		return resplanideas;
+	public String getRebasic() {
+		return rebasic;
 	}
-	public void setResplanideas(String resplanideas) {
-		this.resplanideas = resplanideas;
+	public void setRebasic(String rebasic) {
+		this.rebasic = rebasic;
 	}
-	public String getResbuildterm() {
-		return resbuildterm;
+	public String getResbuildcontent() {
+		return resbuildcontent;
 	}
-	public void setResbuildterm(String resbuildterm) {
-		this.resbuildterm = resbuildterm;
+	public void setResbuildcontent(String resbuildcontent) {
+		this.resbuildcontent = resbuildcontent;
 	}
-	public String getRespolicy() {
-		return respolicy;
+	public String getResintentions() {
+		return resintentions;
 	}
-	public void setRespolicy(String respolicy) {
-		this.respolicy = respolicy;
+	public void setResintentions(String resintentions) {
+		this.resintentions = resintentions;
 	}
-	public String getReselement() {
-		return reselement;
+	public String getRescharge() {
+		return rescharge;
 	}
-	public void setReselement(String reselement) {
-		this.reselement = reselement;
+	public void setRescharge(String rescharge) {
+		this.rescharge = rescharge;
+	}
+	public String getReschargetel() {
+		return reschargetel;
+	}
+	public void setReschargetel(String reschargetel) {
+		this.reschargetel = reschargetel;
+	}
+	public String getRescitypic() {
+		return rescitypic;
+	}
+	public void setRescitypic(String rescitypic) {
+		this.rescitypic = rescitypic;
+	}
+	public String getRestownpic() {
+		return restownpic;
+	}
+	public void setRestownpic(String restownpic) {
+		this.restownpic = restownpic;
+	}
+	public String getResscopeopic() {
+		return resscopeopic;
+	}
+	public void setResscopeopic(String resscopeopic) {
+		this.resscopeopic = resscopeopic;
+	}
+	public String getResplanpic() {
+		return resplanpic;
+	}
+	public void setResplanpic(String resplanpic) {
+		this.resplanpic = resplanpic;
+	}
+	public String getResallplanpic() {
+		return resallplanpic;
+	}
+	public void setResallplanpic(String resallplanpic) {
+		this.resallplanpic = resallplanpic;
+	}
+	public String getResdetailplanpic() {
+		return resdetailplanpic;
+	}
+	public void setResdetailplanpic(String resdetailplanpic) {
+		this.resdetailplanpic = resdetailplanpic;
+	}
+	public String getResentry() {
+		return resentry;
+	}
+	public void setResentry(String resentry) {
+		this.resentry = resentry;
 	}
 	public String getRescontactunit() {
 		return rescontactunit;
