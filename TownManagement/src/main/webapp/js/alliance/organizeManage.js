@@ -103,13 +103,15 @@ function querydetail(id) {
 			fillForm('#orgform',data);
 			// 二级联动
 			var select = {
-					value : data.data[0].orgcategory
+					value : data.data[0].orgnature
 			}
-			typeChanage(select);
+			natureChanage(select);
+			var arr=(data.data[0].orgcategory).split(",");
+			$('#orgcategory').selectpicker();
+			$('#orgcategory').selectpicker('val', arr);
 			var arr=(data.data[0].orgtype).split(",");
 			$('#orgtype').selectpicker();
 			$('#orgtype').selectpicker('val', arr);
-			
 //			var param={
 //					tbname : 'tb_shehuizuzhidanwei',
 //					field : 'comcertificate',
@@ -161,9 +163,12 @@ function updateinfo(id){
 			fillForm('#orgform',data);
 			// 二级联动
 			var select = {
-					value : data.data[0].orgcategory
+					value : data.data[0].orgnature
 			}
-			typeChanage(select);
+			natureChanage(select);
+			var arr=(data.data[0].orgcategory).split(",");
+			$('#orgcategory').selectpicker();
+			$('#orgcategory').selectpicker('val', arr);
 			var arr=(data.data[0].orgtype).split(",");
 			$('#orgtype').selectpicker();
 			$('#orgtype').selectpicker('val', arr);
