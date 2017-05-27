@@ -252,6 +252,7 @@ function updateinfo(invid){
 								+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			invAddFieldValidator();
 			$("#invmodal").modal('show');
 			$("#invitem_submit").hide();
 			$("#invitem_update").show();

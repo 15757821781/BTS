@@ -220,6 +220,7 @@ function updateinfo(id){
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			comAddFieldValidator();
 			// 展示
 			$("#cominfomodal").modal('show');
 			$("#comentry_submit").hide();
