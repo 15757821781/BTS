@@ -52,39 +52,7 @@ $(document).ready(function() {
 			},
 		    events: {
 		        added: function (event) {
-		        	$('#invitem').bootstrapValidator('addField', 'invcontact', {
-		        		validators : {
-//		        			notEmpty : {
-//		        				message : '联系人不能为空'
-//		        			},
-							regexp : {
-								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
-								message : '请输入中文或字母'
-							}
-		        		}
-		        	});
-		        	$('#invitem').bootstrapValidator('addField', 'invpost', {
-		        		validators : {
-//		        			notEmpty : {
-//		        				message : '职务不能为空'
-//		        			},
-							regexp : {
-								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
-								message : '请输入中文或字母'
-							}
-		        		}
-		        	});  
-		        	$('#invitem').bootstrapValidator('addField', 'invcontacttel', {
-		        		validators : {
-//		        			notEmpty : {
-//		        				message : '联系电话不能为空'
-//		        			},
-							regexp : {
-								regexp : /^[^,]*$/,
-								message : '请输入正确的号码'
-							}
-		        		}
-		        	});
+		        	invAddFieldValidator();
 		        }
 		    }
 	    });
@@ -107,39 +75,7 @@ $(document).ready(function() {
 			},
 		    events: {
 		        added: function (event) {
-		        	$('#resitem').bootstrapValidator('addField', 'rescontactunit', {
-		        		validators : {
-//		        			notEmpty : {
-//		        				message : '联系单位不能为空'
-//		        			},
-							regexp : {
-								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
-								message : '请输入中文或字母'
-							}
-		        		}
-		        	});
-		        	$('#resitem').bootstrapValidator('addField', 'rescontacts', {
-		        		validators : {
-//		        			notEmpty : {
-//		        				message : '联系人不能为空'
-//		        			},
-							regexp : {
-								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
-								message : '请输入中文或字母'
-							}
-		        		}
-		        	});  
-		        	$('#resitem').bootstrapValidator('addField', 'rescontactway', {
-		        		validators : {
-//		        			notEmpty : {
-//		        				message : '联系方式不能为空'
-//		        			},
-							regexp : {
-								regexp : /^[^,]*$/,
-								message : '请输入正确的号码'
-							}
-		        		}
-		        	});
+		        	resAddFieldValidator();
 		        }
 		    }
 	    });
@@ -673,7 +609,7 @@ function validatorProjectForm(){
 //						message : '联系人不能为空'
 //					},
 					regexp : {
-						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
 						message : '请输入中文或字母'
 					}
 				}
@@ -684,7 +620,7 @@ function validatorProjectForm(){
 //						message : '职务不能为空'
 //					},
 					regexp : {
-						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
 						message : '请输入中文或字母'
 					}
 				}
@@ -858,9 +794,9 @@ function validatorProjectForm(){
 			},
 			rescontactunit : {
 				validators : {
-					notEmpty : {
-						message : '联系单位不能为空'
-					}
+//					notEmpty : {
+//						message : '联系单位不能为空'
+//					}
 				}
 			},
 			rescontacts : {
@@ -869,7 +805,7 @@ function validatorProjectForm(){
 //						message : '联系人不能为空'
 //					},
 					regexp : {
-						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
 						message : '请输入中文或字母'
 					}
 				}
@@ -890,4 +826,74 @@ function validatorProjectForm(){
 	$('#regionitem').bootstrapValidator('resetForm', false);
 	$('#invitem').bootstrapValidator('resetForm', false);
 	$('#resitem').bootstrapValidator('resetForm', false);
+}
+function invAddFieldValidator(){
+	$('#invitem').bootstrapValidator('addField', 'invcontact', {
+		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
+			regexp : {
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});
+	$('#invitem').bootstrapValidator('addField', 'invpost', {
+		validators : {
+//			notEmpty : {
+//				message : '职务不能为空'
+//			},
+			regexp : {
+				regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});  
+	$('#invitem').bootstrapValidator('addField', 'invcontacttel', {
+		validators : {
+//			notEmpty : {
+//				message : '联系电话不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
+			}
+		}
+	});
+}
+function resAddFieldValidator(){
+	$('#resitem').bootstrapValidator('addField', 'rescontactunit', {
+		validators : {
+//			notEmpty : {
+//				message : '联系单位不能为空'
+//			},
+			regexp : {
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});
+	$('#resitem').bootstrapValidator('addField', 'rescontacts', {
+		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
+			regexp : {
+				regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});  
+	$('#resitem').bootstrapValidator('addField', 'rescontactway', {
+		validators : {
+//			notEmpty : {
+//				message : '联系方式不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
+			}
+		}
+	});
 }

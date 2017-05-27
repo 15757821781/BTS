@@ -208,6 +208,7 @@ function updateinfo(id){
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			orgAddFieldValidator();
 			// 展示
 			$("#orginfomodal").modal('show');
 			$("#orgentry_submit").hide();

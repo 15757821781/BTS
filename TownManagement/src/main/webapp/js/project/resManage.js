@@ -255,6 +255,7 @@ function updateinfo(resid){
 								+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			resAddFieldValidator();
 			$("#resmodal").modal('show');
 			$("#resitem_submit").hide();
 			$("#resitem_update").show();
