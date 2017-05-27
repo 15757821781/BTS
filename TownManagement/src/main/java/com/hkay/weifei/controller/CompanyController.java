@@ -144,4 +144,23 @@ public class CompanyController {
 		}
 		return result;
 	}
+	
+	@RequestMapping("/importComInfo")
+	@ResponseBody
+	public RetAjax importComInfo(HttpServletRequest request,@RequestParam("comFile") MultipartFile[] files) {
+		try {
+//			String imgpath=fileupload.fileUpload(files, request,TypeStatusConstant.proof,tb_qiyedanwei.getComcertificate());
+//			tb_qiyedanwei.setComcertificate(imgpath);
+//			int flag = this.companyService.updateComInfo(tb_qiyedanwei);
+//			result = RetAjax.onDataBase(flag, 3);
+//			ImportExcel.getImportStream(request, files, companyService)
+		} catch (Exception e) {
+			Log.error("error-------------importComInfo:"+e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result;
+	}
+	
+	
 }
