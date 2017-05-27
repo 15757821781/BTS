@@ -42,10 +42,10 @@ $(document).ready(function() {
 //		        			notEmpty : {
 //		        				message : '职务不能为空'
 //		        			},
-							regexp : {
-								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
-								message : '请输入中文或字母'
-							}
+//							regexp : {
+//								regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+//								message : '请输入中文或字母'
+//							}
 		        		}
 		        	});  
 		        	$('#orgform').bootstrapValidator('addField', 'orgcontacttel', {
@@ -117,19 +117,19 @@ var orgtype = [ {
 	name : "行业协会",
 	parid : "2"
 },{
-	value : "5",
+	value : "6",
 	name : "综合协会",
 	parid : "2"
 },{
-	value : "5",
+	value : "7",
 	name : "民非单位",
 	parid : "2"
 },{
-	value : "5",
+	value : "8",
 	name : "公募基金会",
 	parid : "2"
 },{
-	value : "5",
+	value : "9",
 	name : "非公募基金会",
 	parid : "2"
 } ]
@@ -213,9 +213,9 @@ function validatorOrgForm(){
 			},
 			orgrepresent : {
 				validators : {
-					notEmpty : {
-						message : '法人代表不能为空'
-					}
+//					notEmpty : {
+//						message : '法人代表不能为空'
+//					}
 				}
 			},
 			orgrovince : {
@@ -248,9 +248,9 @@ function validatorOrgForm(){
 			},
 			orgestablish : {
 				validators : {
-					notEmpty : {
-						message : '成立时间不能为空'
-					}
+//					notEmpty : {
+//						message : '成立时间不能为空'
+//					}
 				}
 			},
 			orgoffice : {
@@ -262,9 +262,9 @@ function validatorOrgForm(){
 			},
 			orgcreditcode: {
 				validators : {
-					notEmpty : {
-						message : '信用代码不能为空'
-					}
+//					notEmpty : {
+//						message : '信用代码不能为空'
+//					}
 				}
 			},
 			orgscope : {
@@ -297,10 +297,10 @@ function validatorOrgForm(){
 //					notEmpty : {
 //						message : '职务不能为空'
 //					},
-					regexp : {
-						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
-						message : '请输入中文或字母'
-					}
+//					regexp : {
+//						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+//						message : '请输入中文或字母'
+//					}
 				}
 			},
 			orgcontacttel : {
