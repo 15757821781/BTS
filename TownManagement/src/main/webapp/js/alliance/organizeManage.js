@@ -53,7 +53,7 @@ $(document).ready(function() {
             		return "社会团体";
             	}else if(value=="4"){
             		return "民办非企业单位";
-            	}else if(value=="3"){
+            	}else if(value=="5"){
             		return "基金会";
             	}
             }
@@ -74,6 +74,7 @@ $(document).ready(function() {
 		cache : false,
 		success : function(html) {
 			$("#orginfobody").html(html);
+			$("#orgHeader").remove();
 		}
 	});
 })
@@ -102,13 +103,15 @@ function querydetail(id) {
 			fillForm('#orgform',data);
 			// 二级联动
 			var select = {
-					value : data.data[0].orgcategory
+					value : data.data[0].orgnature
 			}
-			typeChanage(select);
+			natureChanage(select);
+			var arr=(data.data[0].orgcategory).split(",");
+			$('#orgcategory').selectpicker();
+			$('#orgcategory').selectpicker('val', arr);
 			var arr=(data.data[0].orgtype).split(",");
 			$('#orgtype').selectpicker();
 			$('#orgtype').selectpicker('val', arr);
-			
 //			var param={
 //					tbname : 'tb_shehuizuzhidanwei',
 //					field : 'comcertificate',
@@ -160,9 +163,12 @@ function updateinfo(id){
 			fillForm('#orgform',data);
 			// 二级联动
 			var select = {
-					value : data.data[0].orgcategory
+					value : data.data[0].orgnature
 			}
-			typeChanage(select);
+			natureChanage(select);
+			var arr=(data.data[0].orgcategory).split(",");
+			$('#orgcategory').selectpicker();
+			$('#orgcategory').selectpicker('val', arr);
 			var arr=(data.data[0].orgtype).split(",");
 			$('#orgtype').selectpicker();
 			$('#orgtype').selectpicker('val', arr);
@@ -202,6 +208,7 @@ function updateinfo(id){
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			orgAddFieldValidator();
 			// 展示
 			$("#orginfomodal").modal('show');
 			$("#orgentry_submit").hide();

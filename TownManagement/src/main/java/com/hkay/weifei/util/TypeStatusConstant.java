@@ -80,6 +80,15 @@ public class TypeStatusConstant {
 	 */
 	public static final String reg_statusmap="RegStatusMap/";
 	/**
+	 * 储备性项目规划图
+	 */
+	public static final String res_planmap="ResPlanMap/";
+	/**
+	 * 储备性项目区位图
+	 */
+	public static final String res_statusmap="ResStatusMap/";
+
+	/**
 	 * 证书
 	 */
 	public static final String proof="proof/";

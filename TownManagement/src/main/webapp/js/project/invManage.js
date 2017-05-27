@@ -62,6 +62,7 @@ $(document).ready(function() {
 		cache : false,
 		success : function(html) {
 			$("#invbody").html(html);
+			$("#invHeader").remove();
 		}
 	});
 })
@@ -160,7 +161,6 @@ function querydetail(invid) {
 								+'</div><label class="col-sm-2 control-label">联系电话</label>'
 								+'<div class="col-sm-2"><input name="invcontacttel" id="invcontacttel" class="form-control" type="text" value='+invcontacttel[i]+'>'
 								+'</div></div>').insertAfter(".addel-target:last");
-					
 				}
 			});
 			$("#invmodal").modal('show');
@@ -168,12 +168,7 @@ function querydetail(invid) {
 			$("#invitem_update").hide();
 		}
 	});
-	}
-	
-
-
-			
-
+}
 //展示修改界面
 function updateinfo(invid){
 			tk.ajax({
@@ -257,6 +252,7 @@ function updateinfo(invid){
 								+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			invAddFieldValidator();
 			$("#invmodal").modal('show');
 			$("#invitem_submit").hide();
 			$("#invitem_update").show();

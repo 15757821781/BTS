@@ -13,7 +13,7 @@ $(document).ready(function() {
         format: "yyyy-mm-dd"
 	}).on('hide', function(e) {  
         // 当用户改变值的时候进行验证
-//		$('#townform').bootstrapValidator('revalidateField', 'towndatayear');
+		$('#orgform').bootstrapValidator('revalidateField', 'orgestablish');
 	});
 	// 加载区县信息下拉框
 	createAreaSelect("orgprovince","orgcity","orgtown");
@@ -26,39 +26,7 @@ $(document).ready(function() {
 			},
 		    events: {
 		        added: function (event) {
-		        	$('#orgform').bootstrapValidator('addField', 'orgcontact', {
-		        		validators : {
-		        			notEmpty : {
-		        				message : '联系人不能为空'
-		        			},
-							regexp : {
-								regexp : /[\u4e00-\u9fa5]/,
-								message : '请输入中文'
-							}
-		        		}
-		        	});
-		        	$('#orgform').bootstrapValidator('addField', 'orgpost', {
-		        		validators : {
-		        			notEmpty : {
-		        				message : '职务不能为空'
-		        			},
-							regexp : {
-								regexp : /[\u4e00-\u9fa5]/,
-								message : '请输入中文'
-							}
-		        		}
-		        	});  
-		        	$('#orgform').bootstrapValidator('addField', 'orgcontacttel', {
-		        		validators : {
-		        			notEmpty : {
-		        				message : '联系电话不能为空'
-		        			},
-							regexp : {
-								regexp : /^[0-9]*$/,
-								message : '请输入整数'
-							}
-		        		}
-		        	});
+		        	orgAddFieldValidator();
 		        }
 		    }
 	    });
@@ -70,11 +38,94 @@ $(document).ready(function() {
 		formSubmit('#orgform','orgmanage/updateOrgInfo','Alliance/organizeManage.html');
 	});
 	//表单验证
+	setTimeout(function() {
+		validatorOrgForm();
+	}, 500);
+	
+});
+var orgcategory = [ {
+	value : "1",
+	name : "研究机构",
+	parid : "1"
+}, {
+	value : "2",
+	name : "高校",
+	parid : "1"
+}, {
+	value : "3",
+	name : "社会团体",
+	parid : "2"
+}, {
+	value : "4",
+	name : "民办非企业单位",
+	parid : "2"
+}, {
+	value : "5",
+	name : "基金会",
+	parid : "2"
+} ];
+var orgtype = [ {
+	value : "1",
+	name : "部属",
+	parid : "1"
+}, {
+	value : "2",
+	name : "省属",
+	parid : "1"
+}, {
+	value : "3",
+	name : "市属",
+	parid : "1"
+}, {
+	value : "4",
+	name : "区县属",
+	parid : "1"
+}, {
+	value : "5",
+	name : "行业协会",
+	parid : "2"
+},{
+	value : "6",
+	name : "综合协会",
+	parid : "2"
+},{
+	value : "7",
+	name : "民非单位",
+	parid : "2"
+},{
+	value : "8",
+	name : "公募基金会",
+	parid : "2"
+},{
+	value : "9",
+	name : "非公募基金会",
+	parid : "2"
+} ]
+function natureChanage(v){
+	var id = v.value;
+	$("#orgcategory option").remove();
+	$("#orgcategory").append("<option></option>");
+	$("#orgtype option").remove();
+	$("#orgtype").append("<option></option>");
+	$.each(orgcategory, function(i, item) {
+		if(item.parid==id){
+			$("#orgcategory").append("<option value="+item.value+">"+item.name+"</option>")
+		}
+	});
+	$.each(orgtype, function(i, item) {
+		if(item.parid==id){
+			$("#orgtype").append("<option value="+item.value+">"+item.name+"</option>")
+		}
+	});
+	$("#orgcategory").selectpicker('refresh');
+	$("#orgtype").selectpicker('refresh');
+}
+function validatorOrgForm(){
 	$('#orgform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
@@ -130,9 +181,9 @@ $(document).ready(function() {
 			},
 			orgrepresent : {
 				validators : {
-					notEmpty : {
-						message : '法人代表不能为空'
-					}
+//					notEmpty : {
+//						message : '法人代表不能为空'
+//					}
 				}
 			},
 			orgrovince : {
@@ -165,9 +216,9 @@ $(document).ready(function() {
 			},
 			orgestablish : {
 				validators : {
-					notEmpty : {
-						message : '成立时间不能为空'
-					}
+//					notEmpty : {
+//						message : '成立时间不能为空'
+//					}
 				}
 			},
 			orgoffice : {
@@ -179,9 +230,9 @@ $(document).ready(function() {
 			},
 			orgcreditcode: {
 				validators : {
-					notEmpty : {
-						message : '信用代码不能为空'
-					}
+//					notEmpty : {
+//						message : '信用代码不能为空'
+//					}
 				}
 			},
 			orgscope : {
@@ -200,85 +251,73 @@ $(document).ready(function() {
 			},
 			orgcontact: {
 				validators : {
-					notEmpty : {
-						message : '联系人不能为空'
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
+					regexp : {
+						regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			orgpost : {
 				validators : {
-					notEmpty : {
-						message : '职务不能为空'
+//					notEmpty : {
+//						message : '职务不能为空'
+//					},
+					regexp : {
+						regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			orgcontacttel : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
+//					notEmpty : {
+//						message : '联系电话不能为空'
+//					},
+					regexp : {
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
 					}
 				}
 			}
 		}
 	});
-});
-var orgtype = [ {
-	value : "1",
-	name : "央企",
-	parid : "1"
-}, {
-	value : "2",
-	name : "省属",
-	parid : "1"
-}, {
-	value : "3",
-	name : "市属",
-	parid : "1"
-}, {
-	value : "4",
-	name : "区县属",
-	parid : "1"
-}, {
-	value : "5",
-	name : "经济合作社",
-	parid : "2"
-}, {
-	value : "6",
-	name : "股份经济合作社",
-	parid : "2"
-}, {
-	value : "7",
-	name : "股份制企业",
-	parid : "3"
-}, {
-	value : "8",
-	name : "私营企业",
-	parid : "3"
-}, {
-	value : "9",
-	name : "联营企业",
-	parid : "3"
-}, {
-	value : "10",
-	name : "外资独资",
-	parid : "4"
-}, {
-	value : "11",
-	name : "中外合资",
-	parid : "4"
-}, {
-	value : "12",
-	name : "中外合作",
-	parid : "4"
-} ]
-function typeChanage(v){
-	var id = v.value;
-	$("#orgtype option").remove();
-	$("#orgtype").append("<option></option>");
-	$.each(orgtype, function(i, item) {
-		if(item.parid==id){
-			$("#orgtype").append("<option value="+item.value+">"+item.name+"</option>")
+	$('#orgform').bootstrapValidator('resetForm', false);
+}
+function orgAddFieldValidator(){
+	$('#orgform').bootstrapValidator('addField', 'orgcontact', {
+		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
+			regexp : {
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
+			}
 		}
 	});
-	$("#orgtype").selectpicker('refresh');
+	$('#orgform').bootstrapValidator('addField', 'orgpost', {
+		validators : {
+//			notEmpty : {
+//				message : '职务不能为空'
+//			},
+			regexp : {
+				regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
+				message : '请输入中文或字母'
+			}	
+		}
+	});  
+	$('#orgform').bootstrapValidator('addField', 'orgcontacttel', {
+		validators : {
+//			notEmpty : {
+//				message : '联系电话不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
+			}
+		}
+	});
 }

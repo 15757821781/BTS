@@ -71,6 +71,7 @@ $(document).ready(function() {
 		cache : false,
 		success : function(html) {
 			$("#featuretownbody").html(html);
+			$("#feaHeader").remove();
 		}
 	});
 })
@@ -276,6 +277,7 @@ function updateInfo(id){
 						+'type="text"  value='+feacontacttel[i]+'></div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			feaAddFieldValidator();
 			if (data.data[0].feacooperate == "0") {
 				$(".feapart").attr("disabled", "disabled");
 			} else {

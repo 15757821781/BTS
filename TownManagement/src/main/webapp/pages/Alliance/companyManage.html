@@ -13,6 +13,12 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
+			<div id="toolbar">
+				<button id="import_cominfo" class="btn btn-default" data-toggle="modal"
+					data-target="#importcom_modal">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>导入
+				</button>
+			</div>
 			<table id="commanagetable" ></table>
 		</div>
 	</div>
@@ -21,8 +27,41 @@
 		aria-labelledby="myModalLabel" style="padding-top: 5%;">
 		<div class="modal-dialog" style="width:80%;">
 			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="btn btn-default btn-close pull-right"
+						title="关闭" data-dismiss="modal" aria-hidden="true">
+						<i class="glyphicon glyphicon-remove"></i>
+					</button>
+					<h3 class="modal-title">企业单位</h3>
+				</div>
 				<div class="modal-body" id="cominfobody">
 					页面初始化失败
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+	<div class="modal fade" id="importcom_modal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" style="padding-top: 10%;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">新增危废信息</h4>
+				</div>
+				<div class="modal-body">
+					<form enctype="multipart/form-data" id="comUpload" method="post">
+						<label for="name">文件:</label>
+						<div class="form-goup">
+							<input id="comFile" type="file" name="comFile">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="btsubmit">提交更改</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->

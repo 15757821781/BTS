@@ -4,52 +4,84 @@
 	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_chubeixiangmu" />
 	<insert id="insertresitem" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu">
 		insert into
-		Tb_chubeixiangmu(resitemname,resnumber,resarea,reslocal,resjoinway,rescompetentunit,restrade,reslandscale,resvolumerate,resplanuses,resinvest,resgrossassets,resplantime,resplanaddress,resplanideas,resbuildterm,respolicy,reselement,rescontactunit,rescontacts,rescontactway)
+		Tb_chubeixiangmu(resitemname,resnumber,resprovince,rescity,restown,restownship,resjoinway,resplanarea,resplaninvest,reslandarea,resposition,rebasic,resbuildcontent,resintentions,rescompetentunit,rescharge,reschargetel,rescontactunit,rescontacts,rescontactway,rescitypic,restownpic,resscopeopic,resplanpic,resallplanpic,resdetailplanpic,resentry,updatetime)
 		values
-		(#{resitemname},#{resnumber},#{resarea},#{reslocal},#{resjoinway},#{rescompetentunit},#{restrade},#{reslandscale},#{resvolumerate},#{resplanuses},#{resinvest},#{resgrossassets},#{resplantime},#{resplanaddress},#{resplanideas},#{resbuildterm},#{respolicy},#{reselement},#{rescontactunit},#{rescontacts},#{rescontactway})
+		(#{resitemname},#{resnumber},#{resprovince},#{rescity},#{restown},#{restownship},#{resjoinway},#{resplanarea},#{resplaninvest},#{reslandarea},#{resposition},#{rebasic},#{resbuildcontent},#{resintentions},#{rescompetentunit},#{rescharge},#{reschargetel},#{rescontactunit},#{rescontacts},#{rescontactway},#{rescitypic},#{restownpic},#{resscopeopic},#{resplanpic},#{resallplanpic},#{resdetailplanpic},#{resentry},now())
 	</insert>
 	<select id="queryresinfo" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
 		resultMap="BaseResultMap">
-		select resid,resitemname,resnumber,resarea,reslocal,resjoinway,rescompetentunit,restrade,reslandscale,resvolumerate,resplanuses,resinvest,resgrossassets,resplantime,resplanaddress,resplanideas,resbuildterm,respolicy,reselement,rescontactunit,rescontacts,rescontactway from Tb_chubeixiangmu t where 1=1
+		SELECT
+			a.resid,
+			a.resnumber,
+			a.resitemname,
+			a.rescompetentunit,
+			b.name as resprovince,
+			c.name as rescity,
+			d.name as restown
+		FROM
+			tb_chubeixiangmu a
+		LEFT JOIN tb_area_province b on a.resprovince=b.code 
+		LEFT JOIN tb_area_city c on a.rescity=c.code 
+		LEFT JOIN tb_area_town d on a.restown=d.code where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.resitemname like '%${search}%' or t.resnumber like '%${search}%' or t.resarea like '%${search}%' or t.rescompetentunit like '%${search}%')
+		    and (a.resitemname like '%${search}%' or a.resnumber like '%${search}%'  or a.rescompetentunit like '%${search}%')
 		</if>
+		 order by createtime desc
 	</select>
 	<select id="queryresinfocnt" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
 		resultType="Integer">
-		select count(*) from Tb_chubeixiangmu t
-		where 1=1
+		select count(*) from (
+		SELECT
+			a.resid,
+			a.resnumber,
+			a.resitemname,
+			a.rescompetentunit,
+			b.name as resprovince,
+			c.name as rescity,
+			d.name as restown
+		FROM
+			tb_chubeixiangmu a
+		LEFT JOIN tb_area_province b on a.resprovince=b.code 
+		LEFT JOIN tb_area_city c on a.rescity=c.code 
+		LEFT JOIN tb_area_town d on a.restown=d.code where 1=1
 		<if test="search!=null and search!=''">
-		    and (t.resitemname like '%${search}%' or t.resnumber like '%${search}%' or t.resarea like '%${search}%' or t.rescompetentunit like '%${search}%')
+		    and (a.resitemname like '%${search}%' or a.resnumber like '%${search}%'  or a.rescompetentunit like '%${search}%')
 		</if>
+		)t
+		where 1=1
 	</select>
 	<select id="queryresitemdetail" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
 		resultMap="BaseResultMap">
-		select resid,resitemname,resnumber,resarea,reslocal,resjoinway,rescompetentunit,restrade,reslandscale,resvolumerate,resplanuses,resinvest,resgrossassets,resplantime,resplanaddress,resplanideas,resbuildterm,respolicy,reselement,rescontactunit,rescontacts,rescontactway from Tb_chubeixiangmu t where t.resid=#{resid}
+		select resid,resitemname,resnumber,resprovince,rescity,restown,restownship,resjoinway,resplanarea,resplaninvest,reslandarea,resposition,rebasic,resbuildcontent,resintentions,rescompetentunit,rescharge,reschargetel,rescontactunit,rescontacts,rescontactway,rescitypic,restownpic,resscopeopic,resplanpic,resallplanpic,resdetailplanpic,resentry from Tb_chubeixiangmu t where t.resid=#{resid}
 	</select>
 	<update id="updateres" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu">
 		update Tb_chubeixiangmu
 		set
 		resitemname=#{resitemname},
-		resnumber=#{resnumber},
-		resarea=#{resarea},
-		reslocal=#{reslocal},
+		resprovince=#{resprovince},
+		rescity=#{rescity},
+		restown=#{restown},
+		restownship=#{restownship},
+		resjoinway=#{resjoinway},
+		resplanarea=#{resplanarea},
+		resplaninvest=#{resplaninvest},
+		reslandarea=#{reslandarea},
+		resposition=#{resposition},
+		rebasic=#{rebasic},
+		resbuildcontent=#{resbuildcontent},
+		resintentions=#{resintentions},
 		rescompetentunit=#{rescompetentunit},
-		restrade=#{restrade},
-		reslandscale=#{reslandscale},
-		resvolumerate=#{resvolumerate},
-		resplanuses=#{resplanuses},
-		resinvest=#{resinvest},
-		resgrossassets=#{resgrossassets},
-		resplantime=#{resplantime},
-		resplanaddress=#{resplanaddress},
-		resplanideas=#{resplanideas},
-		resbuildterm=#{resbuildterm},
-		respolicy=#{respolicy},
-		reselement=#{reselement},
+		rescharge=#{rescharge},
+		reschargetel=#{reschargetel},
 		rescontactunit=#{rescontactunit},
 		rescontacts=#{rescontacts},
-		rescontactway=#{rescontactway}
+		rescontactway=#{rescontactway},
+		rescitypic=#{rescitypic},
+		restownpic=#{restownpic},
+		resscopeopic=#{resscopeopic},
+		resplanpic=#{resplanpic},
+		resallplanpic=#{resallplanpic},
+		resdetailplanpic=#{resdetailplanpic}
 		where resid=#{resid}
 	</update>
 </mapper>

@@ -20,8 +20,15 @@
 	<!-- 模态框（Modal） 储备项目详情-->
 	<div class="modal fade" id="resmodal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" style="padding-top: 5%;">
-		<div class="modal-dialog" style="width:60%;">
+		<div class="modal-dialog" style="width:80%;">
 			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="btn btn-default btn-close pull-right"
+						title="关闭" data-dismiss="modal" aria-hidden="true">
+						<i class="glyphicon glyphicon-remove"></i>
+					</button>
+					<h3 class="modal-title">储备项目</h3>
+				</div>
 				<div class="modal-body" id="resbody">
 					页面初始化失败
 				</div>
@@ -33,7 +40,5 @@
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 	<script type="text/javascript" src="/TownManagement/js/project/resManage.js"></script>
-		
-	</script>
 </body>
 </html>

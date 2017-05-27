@@ -71,7 +71,27 @@ $(document).ready(function() {
 		cache : false,
 		success : function(html) {
 			$("#cominfobody").html(html);
+			$("#comHeader").remove();
 		}
+	});
+	$('#btsubmit').click(function() {
+		/* $('#uploadForm').submit(); */
+		var formData = new FormData($("#uploadForm")[0]);
+		$.ajax({
+			type : "post",
+			url : "/TownManagement/commanage/importComInfo",
+			data : formData,
+			dataType : 'JSON',
+			cache : false,
+			processData : false,
+			contentType : false,
+			success : function(data, status) {
+				alert(yyy);
+			},
+			error : function() {
+
+			}
+		});
 	});
 })
 //查询方法
@@ -200,6 +220,7 @@ function updateinfo(id){
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			comAddFieldValidator();
 			// 展示
 			$("#cominfomodal").modal('show');
 			$("#comentry_submit").hide();

@@ -33,8 +33,9 @@ public class OrganizeServiceImpl implements OrganizeService{
 		// 加上SH或者SY
 		if(tb_shehuizuzhidanwei.getOrgnature().equals("1")){
 			number +="SH";
-		}else
-		number +="SY";
+		}else{
+			number +="SY";
+		}
 		tb_shehuizuzhidanwei.setOrgnumber(number);
 		return this.organizeDao.insertOrgInfo(tb_shehuizuzhidanwei);
 	}

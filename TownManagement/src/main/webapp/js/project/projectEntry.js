@@ -52,39 +52,7 @@ $(document).ready(function() {
 			},
 		    events: {
 		        added: function (event) {
-		        	$('#invitem').bootstrapValidator('addField', 'invcontact', {
-		        		validators : {
-		        			notEmpty : {
-		        				message : '联系人不能为空'
-		        			},
-							regexp : {
-								regexp : /[\u4e00-\u9fa5]/,
-								message : '请输入中文'
-							}
-		        		}
-		        	});
-		        	$('#invitem').bootstrapValidator('addField', 'invpost', {
-		        		validators : {
-		        			notEmpty : {
-		        				message : '职务不能为空'
-		        			},
-							regexp : {
-								regexp : /[\u4e00-\u9fa5]/,
-								message : '请输入中文'
-							}
-		        		}
-		        	});  
-		        	$('#invitem').bootstrapValidator('addField', 'invcontacttel', {
-		        		validators : {
-		        			notEmpty : {
-		        				message : '联系电话不能为空'
-		        			},
-							regexp : {
-								regexp : /^[0-9]*$/,
-								message : '请输入整数'
-							}
-		        		}
-		        	});
+		        	invAddFieldValidator();
 		        }
 		    }
 	    });
@@ -95,6 +63,29 @@ $(document).ready(function() {
 	initFileInput("invfile4","规划方案图",1);
 	initFileInput("invfile5","总体规划图",1);
 	initFileInput("invfile6","详细规划图",1);
+	//------------结束-------------------//
+	//-----------储备项目---------------//
+	// 加载区县信息下拉框
+    createAreaSelect("resprovince","rescity","restown");
+//	
+	// 动态增减行初始化
+	 $('.addel-res').addel({
+			animation: {
+				duration: 100
+			},
+		    events: {
+		        added: function (event) {
+		        	resAddFieldValidator();
+		        }
+		    }
+	    });
+	//初始化文件上传控件
+	initFileInput("resfile1","城市背景图",1);
+	initFileInput("resfile2","区县背景图",1);
+	initFileInput("resfile3","规划范围图",1);
+	initFileInput("resfile4","规划方案图",1);
+	initFileInput("resfile5","总体规划图",1);
+	initFileInput("resfile6","详细规划图",1);
 	//------------结束-------------------//
 	var loadpage="ProjectLibrary/projectEntry.html";
 	//特色小镇表单提交
@@ -110,15 +101,78 @@ $(document).ready(function() {
 		formSubmit('#invitem','invitemmanage/insertinvitem',loadpage);
 	});
 	//储备项目表单提交
-//	$('#resitem_submit').click(function() {
-//		formSubmit('#resitem','resitemmanage/insertresitem',loadpage);
-//	});
+	$('#resitem_submit').click(function() {
+		formSubmit('#resitem','resitemmanage/insertresitem',loadpage);
+	});
+	setTimeout(function() {
+		validatorProjectForm();
+	}, 500);
+});
+//
+function addText(v){
+	$('.addel_delete').hide();
+	var num = $('.add_reg').length;
+	$('<div class="form-group add_reg">'
+		+'<div class="col-sm-2" style="text-align: right;">'
+		+'<button type="button" class="btn btn-danger addel_delete" style="margin-right:4px;" onClick="deleteText(this)">'
+		+'<i class="fa fa-remove"> </i></button>'
+		+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
+		+'</div><div class="col-sm-2">'
+		+'<input id="regplanareas" name="regplanareas" class="form-control"'
+		+'type="text" data-bv-field="regplanareas"></div>'
+		+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
+		+'<div class="col-sm-2">'
+		+'<input id="regplaninvests" name="regplaninvests"'
+		+'class="form-control" type="text" data-bv-field="regplaninvests"></div>'
+		+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
+		+'<div class="col-sm-2">'
+		+'<input id="reglandareas" name="reglandareas" class="form-control" '
+		+'type="text" data-bv-field="reglandareas"></div>').insertAfter(".add_reg:last");
+	$('#regionitem').bootstrapValidator('addField', 'regplanareas', {
+		validators : {
+			regexp : {
+				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
+				message : '请输入最多3位小数的数字'
+			}
+		}
+	});
+	$('#regionitem').bootstrapValidator('addField', 'regplaninvests', {
+		validators : {
+			regexp : {
+				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
+				message : '请输入最多3位小数的数字'
+			}
+		}
+	});
+	$('#regionitem').bootstrapValidator('addField', 'reglandareas', {
+		validators : {
+			regexp : {
+				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
+				message : '请输入最多3位小数的数字'
+			}
+		}
+	});
+}
+//
+function deleteText(v){
+	$(v).parent().parent(".add_reg").remove();
+	$('.addel_delete:last').show();
+}
+//
+function readyOnly(v) {
+	if(v.value=="0"){
+		$(".regpart").attr("disabled","disabled");
+	}else{
+		$(".regpart").removeAttr("disabled");
+	}
+}
+function validatorProjectForm(){
 	//区域性项目验证
 	$('#regionitem').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
@@ -235,23 +289,23 @@ $(document).ready(function() {
 			},
 			regcharge : {
 				validators : {
-					notEmpty : {
-						message : '负责人不能为空'
-					},
+//					notEmpty : {
+//						message : '负责人不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			regchargetel : {
 				validators : {
-					notEmpty : {
-						message : '电话不能为空'
-					},
+//					notEmpty : {
+//						message : '电话不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
 					}
 				}
 			},
@@ -271,19 +325,23 @@ $(document).ready(function() {
 			},
 			regpartcharge : {
 				validators : {
-					notEmpty : {
-						message : '负责人不能为空'
+//					notEmpty : {
+//						message : '负责人不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			regparttel : {
 				validators : {
-					notEmpty : {
-						message : '电话不能为空'
-					},
+//					notEmpty : {
+//						message : '电话不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
 					}
 				}
 			},
@@ -342,30 +400,34 @@ $(document).ready(function() {
 			},
 			regcontact : {
 				validators : {
-					notEmpty : {
-						message : '联系人不能为空'
-					},
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			regpost : {
 				validators : {
-					notEmpty : {
-						message : '职务不能为空'
+//					notEmpty : {
+//						message : '职务不能为空'
+//					},
+					regexp : {
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			regcontenttel : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
-					},
+//					notEmpty : {
+//						message : '联系电话不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
 					}
 				}
 			}
@@ -376,7 +438,7 @@ $(document).ready(function() {
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
@@ -543,34 +605,34 @@ $(document).ready(function() {
 			},
 			invcontact : {
 				validators : {
-					notEmpty : {
-						message : '联系人不能为空'
-					},
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			invpost : {
 				validators : {
-					notEmpty : {
-						message : '职务不能为空'
-					},
+//					notEmpty : {
+//						message : '职务不能为空'
+//					},
 					regexp : {
-						regexp : /[\u4e00-\u9fa5]/,
-						message : '请输入中文'
+						regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			invcontacttel : {
 				validators : {
-					notEmpty : {
-						message : '联系电话不能为空'
-					},
+//					notEmpty : {
+//						message : '联系电话不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
 					}
 				}
 			}
@@ -581,7 +643,7 @@ $(document).ready(function() {
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
 		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
+//			valid : 'glyphicon glyphicon-ok',
 			invalid : 'glyphicon glyphicon-remove',
 			validating : 'glyphicon glyphicon-refresh'
 		},
@@ -593,228 +655,249 @@ $(document).ready(function() {
 					}
 				}
 			},
-			resnumber : {
+//			resnumber : {
+//				validators : {
+//					notEmpty : {
+//						message : '编号不能为空'
+//					},
+//					regexp : {
+//						regexp : /^[0-9]*$/,
+//						message : '请输入整数'
+//					}
+//				}
+//			},
+			resprovince : {
 				validators : {
 					notEmpty : {
-						message : '编号不能为空'
+						message : '省份不能为空'
+					}
+				}
+			},
+			rescity : {
+				validators : {
+					notEmpty : {
+						message : '城市不能为空'
+					}
+				}
+			},
+			restown : {
+				validators : {
+					notEmpty : {
+						message : '区县不能为空'
+					}
+				}
+			},
+			restownship : {
+				validators : {
+					notEmpty : {
+						message : '街道不能为空'
+					}
+				}
+			},
+			resplanarea : {
+				validators : {
+					notEmpty : {
+						message : '规划面积不能为空'
 					},
 					regexp : {
-						regexp : /^[0-9]*$/,
-						message : '请输入整数'
+						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			resarea : {
+			resplaninvest : {
 				validators : {
 					notEmpty : {
-						message : '所属地区不能为空'
+						message : '计划投资不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			reslocal : {
+			reslandarea : {
 				validators : {
 					notEmpty : {
-						message : '所在地不能为空'
+						message : '征地面积不能为空'
+					},
+					regexp : {
+						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			resjoinway : {
+			resposition : {
 				validators : {
 					notEmpty : {
-						message : '合作方式不能为空'
+						message : '地理位置不能为空'
+					}
+				}
+			},
+			rebasic : {
+				validators : {
+					notEmpty : {
+						message : '基本情况不能为空'
+					}
+				}
+			},
+			resbuildcontent : {
+				validators : {
+					notEmpty : {
+						message : '规划建设内容不能为空'
+					}
+				}
+			},
+			resintentions : {
+				validators : {
+					notEmpty : {
+						message : '开发意向情况不能为空'
 					}
 				}
 			},
 			rescompetentunit : {
 				validators : {
 					notEmpty : {
-						message : '主管单位不能为空'
+						message : '业主单位不能为空'
 					}
 				}
 			},
-			restrade : {
+			
+			rescharge : {
 				validators : {
-					notEmpty : {
-						message : '所属行业不能为空'
-					}
-				}
-			},
-			reslandscale : {
-				validators : {
-					notEmpty : {
-						message : '用地规模不能为空'
-					},
+//					notEmpty : {
+//						message : '负责人不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
-						message : '请输入最多3位小数的数字'
+						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
-			resvolumerate : {
+			reschargetel : {
 				validators : {
-					notEmpty : {
-						message : '容积率不能为空'
-					},
+//					notEmpty : {
+//						message : '负责人电话不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
-						message : '请输入最多3位小数的数字'
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
 					}
 				}
 			},
-			resplanuses : {
+			resjoinway : {
 				validators : {
 					notEmpty : {
-						message : '规划用途不能为空'
-					}
-				}
-			},
-			resinvest : {
-				validators : {
-					notEmpty : {
-						message : '投资强度不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
-						message : '请输入最多3位小数的数字'
-					}
-				}
-			},
-			resgrossassets : {
-				validators : {
-					notEmpty : {
-						message : '投资总额不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
-						message : '请输入最多3位小数的数字'
-					}
-				}
-			},
-			resplantime : {
-				validators : {
-					notEmpty : {
-						message : '预计建设期不能为空'
-					},
-					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
-						message : '请输入最多3位小数的数字'
-					}
-				}
-			},
-			resplanaddress : {
-				validators : {
-					notEmpty : {
-						message : '规划地址不能为空'
-					}
-				}
-			},
-			resplanideas : {
-				validators : {
-					notEmpty : {
-						message : '建设内容不能为空'
-					}
-				}
-			},
-			resbuildterm : {
-				validators : {
-					notEmpty : {
-						message : '建设条件不能为空'
-					}
-				}
-			},
-			respolicy : {
-				validators : {
-					notEmpty : {
-						message : '优惠政策不能为空'
-					}
-				}
-			},
-			reselement : {
-				validators : {
-					notEmpty : {
-						message : '要素分析不能为空'
+						message : '合作方向不能为空'
 					}
 				}
 			},
 			rescontactunit : {
 				validators : {
-					notEmpty : {
-						message : '联系单位不能为空'
+//					notEmpty : {
+//						message : '联系单位不能为空'
+//					}
+					regexp : {
+						regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			rescontacts : {
 				validators : {
-					notEmpty : {
-						message : '联系人不能为空'
+//					notEmpty : {
+//						message : '联系人不能为空'
+//					},
+					regexp : {
+						regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+						message : '请输入中文或字母'
 					}
 				}
 			},
 			rescontactway : {
 				validators : {
-					notEmpty : {
-						message : '联系方式不能为空'
+//					notEmpty : {
+//						message : '联系方式不能为空'
+//					},
+					regexp : {
+						regexp : /^[^,]*$/,
+						message : '请输入正确的号码'
 					}
 				}
 			}
 		}
 	});
-});
-//
-function addText(v){
-	$('.addel_delete').hide();
-	var num = $('.add_reg').length;
-	$('<div class="form-group add_reg">'
-		+'<div class="col-sm-2" style="text-align: right;">'
-		+'<button type="button" class="btn btn-danger addel_delete" style="margin-right:4px;" onClick="deleteText(this)">'
-		+'<i class="fa fa-remove"> </i></button>'
-		+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
-		+'</div><div class="col-sm-2">'
-		+'<input id="regplanareas" name="regplanareas" class="form-control"'
-		+'type="text" data-bv-field="regplanareas"></div>'
-		+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
-		+'<div class="col-sm-2">'
-		+'<input id="regplaninvests" name="regplaninvests"'
-		+'class="form-control" type="text" data-bv-field="regplaninvests"></div>'
-		+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
-		+'<div class="col-sm-2">'
-		+'<input id="reglandareas" name="reglandareas" class="form-control" '
-		+'type="text" data-bv-field="reglandareas"></div>').insertAfter(".add_reg:last");
-	$('#regionitem').bootstrapValidator('addField', 'regplanareas', {
+	$('#regionitem').bootstrapValidator('resetForm', false);
+	$('#invitem').bootstrapValidator('resetForm', false);
+	$('#resitem').bootstrapValidator('resetForm', false);
+}
+function invAddFieldValidator(){
+	$('#invitem').bootstrapValidator('addField', 'invcontact', {
 		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
 			regexp : {
-				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
-				message : '请输入最多3位小数的数字'
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
 			}
 		}
 	});
-	$('#regionitem').bootstrapValidator('addField', 'regplaninvests', {
+	$('#invitem').bootstrapValidator('addField', 'invpost', {
 		validators : {
+//			notEmpty : {
+//				message : '职务不能为空'
+//			},
 			regexp : {
-				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
-				message : '请输入最多3位小数的数字'
+				regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
+				message : '请输入中文或字母'
 			}
 		}
-	});
-	$('#regionitem').bootstrapValidator('addField', 'reglandareas', {
+	});  
+	$('#invitem').bootstrapValidator('addField', 'invcontacttel', {
 		validators : {
+//			notEmpty : {
+//				message : '联系电话不能为空'
+//			},
 			regexp : {
-				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
-				message : '请输入最多3位小数的数字'
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
 			}
 		}
 	});
 }
-//
-function deleteText(v){
-	$(v).parent().parent(".add_reg").remove();
-	$('.addel_delete:last').show();
-}
-//
-function readyOnly(v) {
-	if(v.value=="0"){
-		$(".regpart").attr("disabled","disabled");
-	}else{
-		$(".regpart").removeAttr("disabled");
-	}
+function resAddFieldValidator(){
+	$('#resitem').bootstrapValidator('addField', 'rescontactunit', {
+		validators : {
+//			notEmpty : {
+//				message : '联系单位不能为空'
+//			},
+			regexp : {
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});
+	$('#resitem').bootstrapValidator('addField', 'rescontacts', {
+		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
+			regexp : {
+				regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});  
+	$('#resitem').bootstrapValidator('addField', 'rescontactway', {
+		validators : {
+//			notEmpty : {
+//				message : '联系方式不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
+			}
+		}
+	});
 }
