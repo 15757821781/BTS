@@ -194,6 +194,10 @@ function validatorResForm(){
 //					notEmpty : {
 //						message : '联系单位不能为空'
 //					}
+					regexp : {
+						regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+						message : '请输入中文或字母'
+					}
 				}
 			},
 			rescontacts : {
@@ -228,6 +232,10 @@ function resAddFieldValidator(){
 //			notEmpty : {
 //				message : '联系单位不能为空'
 //			},
+			regexp : {
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
+			}
 		}
 	});
 	$('#resitem').bootstrapValidator('addField', 'rescontacts', {
