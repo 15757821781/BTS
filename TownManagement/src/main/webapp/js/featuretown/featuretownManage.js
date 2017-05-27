@@ -191,6 +191,7 @@ function queryDetail(id) {
 }
 //展示修改界面
 function updateInfo(id){
+	$('#featuretown').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
 		data : {"feaid":id},

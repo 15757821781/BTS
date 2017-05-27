@@ -169,6 +169,7 @@ function querydetail(id) {
 }
 //展示修改界面
 function updateinfo(id){
+	$('#comform').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/commanage/queryComDetail",
 		data : {"comid":id},

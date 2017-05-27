@@ -95,13 +95,13 @@ $(document).ready(function() {
 //					}
 //				}
 //			},
-			cooperation : {
-				validators : {
-					notEmpty : {
-						message : '关系情况不能为空'
-					}
-				}
-			},
+//			cooperation : {
+//				validators : {
+//					notEmpty : {
+//						message : '关系情况不能为空'
+//					}
+//				}
+//			},
 			towndatayear : {
 				validators : {
 					notEmpty : {
@@ -118,9 +118,9 @@ $(document).ready(function() {
 			},
 			countygdp : {
 				validators : {
-					notEmpty : {
-						message : '区县级GDP不能为空'
-					},
+//					notEmpty : {
+//						message : '区县级GDP不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -129,9 +129,9 @@ $(document).ready(function() {
 			},
 			countyrevenue : {
 				validators : {
-					notEmpty : {
-						message : '区县财政收入不能为空'
-					},
+//					notEmpty : {
+//						message : '区县财政收入不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -140,9 +140,9 @@ $(document).ready(function() {
 			},
 			townpopulation : {
 				validators : {
-					notEmpty : {
-						message : '区县人口不能为空'
-					},
+//					notEmpty : {
+//						message : '区县人口不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -151,9 +151,9 @@ $(document).ready(function() {
 			},
 			townpgdi : {
 				validators : {
-					notEmpty : {
-						message : '人均可支配收入不能为空'
-					},
+//					notEmpty : {
+//						message : '人均可支配收入不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -162,9 +162,9 @@ $(document).ready(function() {
 			},
 			townarea : {
 				validators : {
-					notEmpty : {
-						message : '行政面积不能为空'
-					},
+//					notEmpty : {
+//						message : '行政面积不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -173,9 +173,9 @@ $(document).ready(function() {
 			},
 			community : {
 				validators : {
-					notEmpty : {
-						message : '社区数量不能为空'
-					},
+//					notEmpty : {
+//						message : '社区数量不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]*$/,
 						message : '请输入整数'
@@ -184,9 +184,9 @@ $(document).ready(function() {
 			},
 			adminvillage : {
 				validators : {
-					notEmpty : {
-						message : '行政村数量不能为空'
-					},
+//					notEmpty : {
+//						message : '行政村数量不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]*$/,
 						message : '请输入整数'
@@ -195,9 +195,9 @@ $(document).ready(function() {
 			},
 			townlocalgdp : {
 				validators : {
-					notEmpty : {
-						message : '地方GDP不能为空'
-					},
+//					notEmpty : {
+//						message : '地方GDP不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -206,9 +206,9 @@ $(document).ready(function() {
 			},
 			townrevenue : {
 				validators : {
-					notEmpty : {
-						message : '财政总收入不能为空'
-					},
+//					notEmpty : {
+//						message : '财政总收入不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -217,9 +217,9 @@ $(document).ready(function() {
 			},
 			totalpopulation : {
 				validators : {
-					notEmpty : {
-						message : '总人口不能为空'
-					},
+//					notEmpty : {
+//						message : '总人口不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'

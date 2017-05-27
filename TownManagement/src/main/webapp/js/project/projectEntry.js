@@ -762,7 +762,6 @@ function validatorProjectForm(){
 					}
 				}
 			},
-			
 			rescharge : {
 				validators : {
 //					notEmpty : {
