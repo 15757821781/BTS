@@ -172,13 +172,13 @@ function validatorComForm(){
 					}
 				}
 			},
-			comstockcode : {
-				validators : {
-					notEmpty : {
-						message : '股票代码不能为空'
-					}
-				}
-			},
+//			comstockcode : {
+//				validators : {
+//					notEmpty : {
+//						message : '股票代码不能为空'
+//					}
+//				}
+//			},
 			comrelation : {
 				validators : {
 					notEmpty : {
@@ -260,13 +260,13 @@ function validatorComForm(){
 					}
 				}
 			},
-			comshareholder : {
-				validators : {
-					notEmpty : {
-						message : '股东情况不能为空'
-					}
-				}
-			},
+//			comshareholder : {
+//				validators : {
+//					notEmpty : {
+//						message : '股东情况不能为空'
+//					}
+//				}
+//			},
 			comindustrytype : {
 				validators : {
 					notEmpty : {
@@ -281,13 +281,13 @@ function validatorComForm(){
 					}
 				}
 			},
-			comcreditcode : {
-				validators : {
-					notEmpty : {
-						message : '信用代码不能为空'
-					}
-				}
-			},
+//			comcreditcode : {
+//				validators : {
+//					notEmpty : {
+//						message : '信用代码不能为空'
+//					}
+//				}
+//			},
 			comscope : {
 				validators : {
 					notEmpty : {
@@ -302,13 +302,13 @@ function validatorComForm(){
 					}
 				}
 			},
-			comhonor : {
-				validators : {
-					notEmpty : {
-						message : '单位荣誉不能为空'
-					}
-				}
-			},
+//			comhonor : {
+//				validators : {
+//					notEmpty : {
+//						message : '单位荣誉不能为空'
+//					}
+//				}
+//			},
 			comdatayear : {
 				validators : {
 					notEmpty : {
@@ -318,94 +318,94 @@ function validatorComForm(){
 			},
 			comlassets : {
 				validators : {
-					notEmpty : {
-						message : '资产总额不能为空'
-					},
+//					notEmpty : {
+//						message : '资产总额不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			comlassetsunit : {
-				validators : {
-					notEmpty : {
-						message : '请选择货币单位'
-					}
-				}
-			},
+//			comlassetsunit : {
+//				validators : {
+//					notEmpty : {
+//						message : '请选择货币单位'
+//					}
+//				}
+//			},
 			comliabilities : {
 				validators : {
-					notEmpty : {
-						message : '负债总额不能为空'
-					},
+//					notEmpty : {
+//						message : '负债总额不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			comliabunit : {
-				validators : {
-					notEmpty : {
-						message : '请选择货币单位'
-					}
-				}
-			},
+//			comliabunit : {
+//				validators : {
+//					notEmpty : {
+//						message : '请选择货币单位'
+//					}
+//				}
+//			},
 			comincomeyear : {
 				validators : {
-					notEmpty : {
-						message : '营业收入不能为空'
-					},
+//					notEmpty : {
+//						message : '营业收入不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			cominyearunit : {
-				validators : {
-					notEmpty : {
-						message : '请选择货币单位'
-					}
-				}
-			},
+//			cominyearunit : {
+//				validators : {
+//					notEmpty : {
+//						message : '请选择货币单位'
+//					}
+//				}
+//			},
 			comnetprofiyear : {
 				validators : {
-					notEmpty : {
-						message : '净利润不能为空'
-					},
+//					notEmpty : {
+//						message : '净利润不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			comnetyearunit : {
-				validators : {
-					notEmpty : {
-						message : '请选择货币单位'
-					}
-				}
-			},
+//			comnetyearunit : {
+//				validators : {
+//					notEmpty : {
+//						message : '请选择货币单位'
+//					}
+//				}
+//			},
 			comtaxesyear : {
 				validators : {
-					notEmpty : {
-						message : '纳税额不能为空'
-					},
+//					notEmpty : {
+//						message : '纳税额不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			comtaxyearunit : {
-				validators : {
-					notEmpty : {
-						message : '请选择货币单位'
-					}
-				}
-			},
+//			comtaxyearunit : {
+//				validators : {
+//					notEmpty : {
+//						message : '请选择货币单位'
+//					}
+//				}
+//			},
 			comdevelop : {
 				validators : {
 					notEmpty : {
@@ -413,20 +413,20 @@ function validatorComForm(){
 					}
 				}
 			},
-			comindustry : {
-				validators : {
-					notEmpty : {
-						message : '投资偏好不能为空'
-					}
-				}
-			},
-			cominvestment : {
-				validators : {
+//			comindustry : {
+//				validators : {
+//					notEmpty : {
+//						message : '投资偏好不能为空'
+//					}
+//				}
+//			},
+//			cominvestment : {
+//				validators : {
 //					notEmpty : {
 //						message : '投资规模不能为空'
 //					}
-				}
-			},
+//				}
+//			},
 			comcontact : {
 				validators : {
 //					notEmpty : {
