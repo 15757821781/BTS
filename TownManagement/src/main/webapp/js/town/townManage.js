@@ -145,6 +145,7 @@ function querytowndetail(centertownid) {
 }
 //展示修改界面
 function updatetowninfo(centertownid){
+	$('#townform').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/townmanage/querytowndetail",
 		data : {"centertownid":centertownid},
