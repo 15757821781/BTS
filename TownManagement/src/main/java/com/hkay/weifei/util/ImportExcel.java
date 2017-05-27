@@ -68,35 +68,110 @@
 //				if (getRightTypeCell(cell).toString().equals("编号")) {
 //					headMap.put("rn", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("单位名称")) {
-//					headMap.put("prodescription", flag);
+//					headMap.put("comname", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("单位类别")) {
-//					headMap.put("mileagepile", flag);
+//					headMap.put("comcategory", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("单位类型")) {
-//					headMap.put("problemtype", flag);
+//					headMap.put("comtype", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("上市情况")) {
-//					headMap.put("picbefore", flag);
+//					headMap.put("comlisted", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("股票代码")) {
-//					headMap.put("picafter", flag);
+//					headMap.put("comstockcode", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("世界五百强")) {
-//					headMap.put("operation", flag);
+//					headMap.put("comworldfive", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("中国五百强")) {
-//					headMap.put("areacode", flag);
+//					headMap.put("comcountryfive", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("民企五百强")) {
-//					headMap.put("manager", flag);
+//					headMap.put("comprivatefive", flag);
 //				}else if (getRightTypeCell(cell).toString().equals("法人代表")) {
-//					headMap.put("timelimit", flag);
+//					headMap.put("comrepresent", flag);
+//				}else if (getRightTypeCell(cell).toString().equals("注册资本")){
+//					 headMap.put("comcapital",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("资本单位")){
+//					headMap.put("comcapitalunit",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("成立时间")){
+//					headMap.put("comestablish",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("股东情况")){
+//					headMap.put("comshareholder",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("办公地点")){
+//					headMap.put("comoffice",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("省份")){
+//					headMap.put("comprovince",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("地市")){
+//					headMap.put("comcity",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("区县")){
+//					headMap.put("comtown",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("具体地址")){
+//					headMap.put("comaddress",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("产业类别")){
+//					headMap.put("comindustrytype",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("主要产业")){
+//					headMap.put("commajorindustry",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("信用代码")){
+//					headMap.put("comcreditcode",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("经营范围")){
+//					headMap.put("comscope",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("单位简介")){
+//					headMap.put("comabstract",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("单位荣誉")){
+//					headMap.put("comhonor",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("数据年度")){
+//					headMap.put("comdatayear",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("资产总额")){
+//					headMap.put("comlassets",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("资产单位")){
+//					headMap.put("comlassetsunit",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("负债总额")){
+//					headMap.put("comliabilities",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("负债单位")){
+//					headMap.put("comliabunit",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("年度营业收入")){
+//					headMap.put("comincomeyear",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("营业单位")){
+//					headMap.put("cominyearunit",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("年度净利润")){
+//					headMap.put("comnetprofiyear",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("利润单位")){
+//					headMap.put("comnetyearunit",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("年度纳税额")){
+//					headMap.put("comtaxesyear",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("纳税单位")){
+//					headMap.put("comtaxyearunit",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("发展方向")){
+//					headMap.put("comdevelop",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("行业方向")){
+//					headMap.put("comindustry",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("联系人1")){
+//					headMap.put("comcontact1",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("职务1")){
+//					headMap.put("compost1",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("联系电话1")){
+//					headMap.put("comcontacttel1",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("联系人2")){
+//					headMap.put("comcontact2",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("职务2")){
+//					headMap.put("compost2",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("联系电话2")){
+//					headMap.put("comcontacttel2",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("单位官网")){
+//					headMap.put("comofficeweb",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("业务类型")){
+//					headMap.put("combustype",flag);
+//				}else if (getRightTypeCell(cell).toString().equals("关系情况")){
+//					headMap.put("comrelation",flag);
 //				}else {
-//					tb_operation.setErrorMsg("第"+(flag+1)+"列的表头错误！");
-//					tb_operations.add(tb_operation);
-//					return tb_operations;
+////					tb_operation.setErrorMsg("第"+(flag+1)+"列的表头错误！");
+////					tb_operations.add(tb_operation);
+////					return tb_operations;
+//					System.out.println("表头错误");
 //				}
 //				flag++;
 //			}
 //		} catch (Exception e) {
 //			System.out.println("表头不合规范，请修改后重新导入");
-//			tb_operation.setErrorMsg("表头不合规范，请修改后重新导入");
-//			tb_operations.add(tb_operation);
-//			return tb_operations;
+////			tb_operation.setErrorMsg("表头不合规范，请修改后重新导入");
+////			tb_operations.add(tb_operation);
+////			return tb_operations;
 //		}
 //		// 获得数据的总行数
 //		int totalRowNum = sheet.getLastRowNum();
@@ -107,10 +182,10 @@
 ////			return tb_operations;
 //		}
 //		// 查询归属地及下一个问题编号
-//		String value = querySeqOfNextValue(user, tb_operation, businessservice);
-//		String area = (String) value.subSequence(0, 1);
-//		int number = Integer.valueOf(value.substring(1)) + 1;
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		String number = querySeqOfNextValue(user, tb_operation, businessservice);
+////		String area = (String) value.subSequence(0, 1);
+////		int number = Integer.valueOf(value.substring(1)) + 1;
+////		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //		//获得所有图片
 //		XSSFSheet xSheet = (XSSFSheet) sheet;
 //		XSSFDrawing drawing = xSheet.getDrawingPatriarch();
@@ -209,5 +284,45 @@
 //			file.delete();
 //		}
 //		return tb_operations;
+//	}
+//	/**
+//	 * 
+//	 * @param cell
+//	 *            一个单元格的对象
+//	 * @return 返回该单元格相应的类型的值
+//	 */
+//	public static Object getRightTypeCell(Cell cell) {
+//		Object object = null;
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		switch (cell.getCellType()) {
+//		case Cell.CELL_TYPE_STRING: {
+//			object = cell.getStringCellValue();
+//			break;
+//		}
+//		case Cell.CELL_TYPE_NUMERIC: {
+//			short format = cell.getCellStyle().getDataFormat();
+//			if (format == 14 || format == 31 || format == 57 || format == 58 || format==176) {
+//				// 日期
+//				double value = cell.getNumericCellValue();
+//				Date date = org.apache.poi.ss.usermodel.DateUtil.getJavaDate(value);
+//				object = sdf.format(date);
+//			} else {
+//				cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+//				object = cell.getNumericCellValue();
+//			}
+//			break;
+//		}
+//		case Cell.CELL_TYPE_FORMULA: {
+//			cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+//			object = cell.getNumericCellValue();
+//			break;
+//		}
+//		case Cell.CELL_TYPE_BLANK: {
+//			cell.setCellType(Cell.CELL_TYPE_BLANK);
+//			object = cell.getStringCellValue();
+//			break;
+//		}
+//		}
+//		return object;
 //	}
 //}
