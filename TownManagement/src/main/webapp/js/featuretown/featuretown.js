@@ -22,39 +22,7 @@ $(document).ready(function() {
 		},
 	    events: {
 	        added: function (event) {
-	        	$('#featuretown').bootstrapValidator('addField', 'feacontact', {
-	        		validators : {
-//	        			notEmpty : {
-//	        				message : '联系人不能为空'
-//	        			},
-						regexp : {
-							regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
-							message : '请输入中文或字母'
-						}
-	        		}
-	        	});
-	        	$('#featuretown').bootstrapValidator('addField', 'feapost', {
-	        		validators : {
-//	        			notEmpty : {
-//	        				message : '职务不能为空'
-//	        			},
-						regexp : {
-							regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
-							message : '请输入中文或字母'
-						}
-	        		}
-	        	});  
-	        	$('#featuretown').bootstrapValidator('addField', 'feacontacttel', {
-	        		validators : {
-//	        			notEmpty : {
-//	        				message : '联系电话不能为空'
-//	        			},
-						regexp : {
-							regexp : /^[^,]*$/,
-							message : '请输入正确的号码'
-						}
-	        		}
-	        	});
+	        	feaAddFieldValidator();
 	        }
 	    }
     });
@@ -321,7 +289,7 @@ function validatorFeaForm(){
 //						message : '联系人不能为空'
 //					},
 					regexp : {
-						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
 						message : '请输入中文或字母'
 					}
 				}
@@ -332,7 +300,7 @@ function validatorFeaForm(){
 //						message : '职务不能为空'
 //					},
 					regexp : {
-						regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+						regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
 						message : '请输入中文或字母'
 					}
 				}
@@ -351,4 +319,39 @@ function validatorFeaForm(){
 		}
 	});
 	$('#featuretown').bootstrapValidator('resetForm', false);
+}
+function feaAddFieldValidator(){
+	$('#featuretown').bootstrapValidator('addField', 'feacontact', {
+		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
+			regexp : {
+				regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});
+	$('#featuretown').bootstrapValidator('addField', 'feapost', {
+		validators : {
+//			notEmpty : {
+//				message : '职务不能为空'
+//			},
+			regexp : {
+				regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});  
+	$('#featuretown').bootstrapValidator('addField', 'feacontacttel', {
+		validators : {
+//			notEmpty : {
+//				message : '联系电话不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
+			}
+		}
+	});
 }
