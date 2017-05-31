@@ -97,7 +97,7 @@
 		<if test="search!=null and search!=''">
 		    and (a.feaname like '%${search}%' or a.feanumber like '%${search}%' or a.fealevel like '%${search}%')
 		</if>
-		order by a.createtime desc
+		order by a.createtime desc,a.feaid desc
 	</select>
 	<select id="queryfeaturetowncnt" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
 		resultType="Integer">

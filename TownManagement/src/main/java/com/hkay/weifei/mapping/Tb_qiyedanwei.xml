@@ -152,7 +152,7 @@
 		<if test="search!=null and search!=''">
 		    and (a.comnumber like '%${search}%' or a.comname like '%${search}%' or a.comcategory like '%${search}%')
 		</if>
-		order by a.createtime desc
+		order by a.createtime desc,a.comid desc
 	</select>
 	<select id="queryComDetail" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei"
 	resultMap="BaseResultMap">
