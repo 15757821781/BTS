@@ -169,6 +169,7 @@ function querydetail(id) {
 }
 //展示修改界面
 function updateinfo(id){
+	$('#comform').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/commanage/queryComDetail",
 		data : {"comid":id},
@@ -220,6 +221,7 @@ function updateinfo(id){
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			comAddFieldValidator();
 			// 展示
 			$("#cominfomodal").modal('show');
 			$("#comentry_submit").hide();

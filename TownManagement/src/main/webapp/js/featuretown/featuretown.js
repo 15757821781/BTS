@@ -101,13 +101,13 @@ function validatorFeaForm(){
 					}
 				}
 			},
-			feagenre : {
-				validators : {
-					notEmpty : {
-						message : '乡镇街道不能为空'
-					}
-				}
-			},
+//			feagenre : {
+//				validators : {
+//					notEmpty : {
+//						message : '乡镇街道不能为空'
+//					}
+//				}
+//			},
 			feaindustry : {
 				validators : {
 					notEmpty : {
@@ -117,9 +117,9 @@ function validatorFeaForm(){
 			},
 			feaplaninvest : {
 				validators : {
-					notEmpty : {
-						message : '投资金额不能为空'
-					},
+//					notEmpty : {
+//						message : '投资金额不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -133,13 +133,13 @@ function validatorFeaForm(){
 					}
 				}
 			},
-			featarget : {
-				validators : {
-					notEmpty : {
-						message : '规划目标不能为空'
-					}
-				}
-			},
+//			featarget : {
+//				validators : {
+//					notEmpty : {
+//						message : '规划目标不能为空'
+//					}
+//				}
+//			},
 			feaplanarea : {
 				validators : {
 					notEmpty : {
@@ -151,13 +151,13 @@ function validatorFeaForm(){
 					}
 				}
 			},
-			feaplancontent : {
-				validators : {
-					notEmpty : {
-						message : '规划内容不能为空'
-					}
-				}
-			},
+//			feaplancontent : {
+//				validators : {
+//					notEmpty : {
+//						message : '规划内容不能为空'
+//					}
+//				}
+//			},
 			feacoreindustry : {
 				validators : {
 					notEmpty : {
@@ -165,13 +165,13 @@ function validatorFeaForm(){
 					}
 				}
 			},
-			fealeadcom : {
-				validators : {
-					notEmpty : {
-						message : '牵头开发单位不能为空'
-					}
-				}
-			},
+//			fealeadcom : {
+//				validators : {
+//					notEmpty : {
+//						message : '牵头开发单位不能为空'
+//					}
+//				}
+//			},
 			fealeadname : {
 				validators : {
 //					notEmpty : {
@@ -194,20 +194,20 @@ function validatorFeaForm(){
 					}
 				}
 			},
-			feacooperate : {
-				validators : {
-					notEmpty : {
-						message : '合作开发情况不能为空'
-					}
-				}
-			},
-			feapartner : {
-				validators : {
-					notEmpty : {
-						message : '合作开发单位不能为空'
-					}
-				}
-			},
+//			feacooperate : {
+//				validators : {
+//					notEmpty : {
+//						message : '合作开发情况不能为空'
+//					}
+//				}
+//			},
+//			feapartner : {
+//				validators : {
+//					notEmpty : {
+//						message : '合作开发单位不能为空'
+//					}
+//				}
+//			},
 			feapartname : {
 				validators : {
 //					notEmpty : {
@@ -230,18 +230,18 @@ function validatorFeaForm(){
 					}
 				}
 			},
-			feapartway : {
-				validators : {
-					notEmpty : {
-						message : '合作方式不能为空'
-					}
-				}
-			},
+//			feapartway : {
+//				validators : {
+//					notEmpty : {
+//						message : '合作方式不能为空'
+//					}
+//				}
+//			},
 			feapartmoney : {
 				validators : {
-					notEmpty : {
-						message : '合作投金额不能为空'
-					},
+//					notEmpty : {
+//						message : '合作投金额不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -250,9 +250,9 @@ function validatorFeaForm(){
 			},
 			fearegtime : {
 				validators : {
-					notEmpty : {
-						message : '合作开始时间不能为空'
-					},  
+//					notEmpty : {
+//						message : '合作开始时间不能为空'
+//					},  
 					callback: {
 						message: '开始日期不能大于结束日期',
 						callback:function(value, validator,$field,options){
@@ -264,9 +264,9 @@ function validatorFeaForm(){
 			},
 			feaendtime : {
 				validators : {
-					notEmpty : {
-						message : '合作结束时间不能为空'
-					},  
+//					notEmpty : {
+//						message : '合作结束时间不能为空'
+//					},  
 					callback: {
 						message: '结束日期不能小于开始日期',
 						callback:function(value, validator,$field){
@@ -276,13 +276,13 @@ function validatorFeaForm(){
 					}
 				}
 			},
-			feapartconten : {
-				validators : {
-					notEmpty : {
-						message : '合作内容不能为空'
-					}
-				}
-			},
+//			feapartconten : {
+//				validators : {
+//					notEmpty : {
+//						message : '合作内容不能为空'
+//					}
+//				}
+//			},
 			feacontact : {
 				validators : {
 //					notEmpty : {
@@ -327,7 +327,7 @@ function feaAddFieldValidator(){
 //				message : '联系人不能为空'
 //			},
 			regexp : {
-				regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
 				message : '请输入中文或字母'
 			}
 		}
@@ -338,7 +338,7 @@ function feaAddFieldValidator(){
 //				message : '职务不能为空'
 //			},
 			regexp : {
-				regexp : /^[a-zA-Z\u4e00-\u9fa5]+$/,
+				regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
 				message : '请输入中文或字母'
 			}
 		}

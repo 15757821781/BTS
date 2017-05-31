@@ -53,7 +53,7 @@ $(document).ready(function() {
             		return "社会团体";
             	}else if(value=="4"){
             		return "民办非企业单位";
-            	}else if(value=="3"){
+            	}else if(value=="5"){
             		return "基金会";
             	}
             }
@@ -208,6 +208,7 @@ function updateinfo(id){
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			orgAddFieldValidator();
 			// 展示
 			$("#orginfomodal").modal('show');
 			$("#orgentry_submit").hide();
