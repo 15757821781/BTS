@@ -311,9 +311,9 @@ function validatorComForm(){
 //			},
 			comdatayear : {
 				validators : {
-					notEmpty : {
-						message : '数据年度不能为空'
-					}
+//					notEmpty : {
+//						message : '数据年度不能为空'
+//					}
 				}
 			},
 			comlassets : {
@@ -408,9 +408,9 @@ function validatorComForm(){
 //			},
 			comdevelop : {
 				validators : {
-					notEmpty : {
-						message : '发展方向不能为空'
-					}
+//					notEmpty : {
+//						message : '发展方向不能为空'
+//					}
 				}
 			},
 //			comindustry : {

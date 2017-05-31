@@ -126,13 +126,13 @@ function validatorFeaForm(){
 					}
 				}
 			},
-			feaschedule : {
-				validators : {
-					notEmpty : {
-						message : '投资进度不能为空'
-					}
-				}
-			},
+//			feaschedule : {
+//				validators : {
+//					notEmpty : {
+//						message : '投资进度不能为空'
+//					}
+//				}
+//			},
 //			featarget : {
 //				validators : {
 //					notEmpty : {
@@ -142,9 +142,9 @@ function validatorFeaForm(){
 //			},
 			feaplanarea : {
 				validators : {
-					notEmpty : {
-						message : '规划面积不能为空'
-					},
+//					notEmpty : {
+//						message : '规划面积不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
