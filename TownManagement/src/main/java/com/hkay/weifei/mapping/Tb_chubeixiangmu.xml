@@ -26,7 +26,7 @@
 		<if test="search!=null and search!=''">
 		    and (a.resitemname like '%${search}%' or a.resnumber like '%${search}%'  or a.rescompetentunit like '%${search}%')
 		</if>
-		 order by createtime desc
+		 order by a.createtime desc,a.resid desc
 	</select>
 	<select id="queryresinfocnt" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
 		resultType="Integer">
