@@ -130,6 +130,7 @@
 	<update id="updateOrgInfo" parameterType="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei">
 		update tb_shehuizuzhidanwei set
 			orgname=#{orgname},
+			orgnumber=#{orgnumber},
 			orgnature=#{orgnature},
 			orgcategory=#{orgcategory},
 			orgtype=#{orgtype},

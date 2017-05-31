@@ -143,6 +143,7 @@
 		update Tb_quyuxingxiangmu
 		set
 		regname=#{regname},
+		regnumber=#{regnumber},
 		regprovince=#{regprovince},
 		regcity=#{regcity},
 		regtown=#{regtown},

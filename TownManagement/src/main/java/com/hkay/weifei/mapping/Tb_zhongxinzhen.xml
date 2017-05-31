@@ -209,6 +209,7 @@
 	centertownname=#{centertownname},
 	citypilot=#{citypilot},
 	townlevel=#{townlevel},
+	number=#{number},
 <!-- 	townfeature=#{townfeature}, -->
 	province=#{sys_province},
 	city=#{sys_city},

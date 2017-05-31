@@ -52,7 +52,16 @@ public class FeaturetownServiceImpl implements FeaturetownService{
 
 	@Override
 	public int updatefeaturetown(Tb_tesexiaozhen tb_tesexiaozhen) {
-		// TODO Auto-generated method stub
+		String towncode = tb_tesexiaozhen.getFeatown();
+		int seq = Integer.valueOf(tb_tesexiaozhen.getFeaid());
+		towncode += new DecimalFormat("00").format(seq);
+		//如果不是省市特色小镇
+		if (tb_tesexiaozhen.getFealevel().equals("0")) {
+			towncode +="FT";
+		}else{
+			towncode +="ST";
+		}
+		tb_tesexiaozhen.setFeanumber(towncode);
 		return this.featuretowndao.updatefeaturetown(tb_tesexiaozhen);
 	}
 
