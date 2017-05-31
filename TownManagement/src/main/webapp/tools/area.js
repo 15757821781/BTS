@@ -17551,4 +17551,8 @@ areadata = [
 			"code" : "820000",
 			"names" : "\u6fb3\u95e8\u7279\u522b\u884c\u653f\u533a",
 			"level" : "0"
-		} ];
+		}, {
+			"code" : "110104",
+			"names" : "\u5ba3\u6b66\u533a",
+			"level" : "2"
+		}  ];
