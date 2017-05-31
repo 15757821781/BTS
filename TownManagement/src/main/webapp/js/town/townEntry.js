@@ -275,9 +275,9 @@ $(document).ready(function() {
 			},
 			traffic : {
 				validators : {
-					notEmpty : {
-						message : '交通条件不能为空'
-					}
+//					notEmpty : {
+//						message : '交通条件不能为空'
+//					}
 				}
 			},
 			currentindustry : {
