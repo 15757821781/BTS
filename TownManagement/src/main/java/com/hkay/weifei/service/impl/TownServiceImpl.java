@@ -69,6 +69,16 @@ public class TownServiceImpl implements TownService{
 		if(tb_zhongxinzhen.getServiceoutvalue().equals("")){
 			tb_zhongxinzhen.setServiceoutvalue("0");
 		}
+		String towncode = tb_zhongxinzhen.getSys_town();
+		int seq = Integer.valueOf(tb_zhongxinzhen.getCentertownid());
+		towncode += new DecimalFormat("00").format(seq);
+		// 如果不是中心镇
+		if (tb_zhongxinzhen.getTownlevel().equals("0")) {
+			towncode += "F";
+		} else {
+			towncode += "Z";
+		}
+		tb_zhongxinzhen.setNumber(towncode);
 		return this.towndao.updatetowninfo(tb_zhongxinzhen);
 	}
 

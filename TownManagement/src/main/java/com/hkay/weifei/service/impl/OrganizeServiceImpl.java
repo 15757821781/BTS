@@ -64,7 +64,25 @@ public List<Tb_shehuizuzhidanwei> queryOrgDetail(Tb_shehuizuzhidanwei tb_shehuiz
 
 @Override
 public int updateOrgInfo(Tb_shehuizuzhidanwei tb_shehuizuzhidanwei) {
-	// TODO Auto-generated method stub
+	// 获得企业注册区县
+	String number = tb_shehuizuzhidanwei.getOrgtown();
+	// 获得企业单位信息总数
+	int seq = Integer.valueOf(tb_shehuizuzhidanwei.getOrgid());
+	// 加上企业性质
+	number += tb_shehuizuzhidanwei.getOrgnature();
+	// 加上企业类别
+	number += tb_shehuizuzhidanwei.getOrgcategory();
+	// 加上企业类型
+	number += tb_shehuizuzhidanwei.getOrgtype();
+	// 加上3位序号
+	number +=new DecimalFormat("000").format(seq);
+	// 加上SH或者SY
+	if(tb_shehuizuzhidanwei.getOrgnature().equals("1")){
+		number +="SH";
+	}else{
+		number +="SY";
+	}
+	tb_shehuizuzhidanwei.setOrgnumber(number);
 	return this.organizeDao.updateOrgInfo(tb_shehuizuzhidanwei);
 }
 }

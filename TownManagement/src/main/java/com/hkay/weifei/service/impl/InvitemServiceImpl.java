@@ -50,7 +50,15 @@ public class InvitemServiceImpl implements InvitemService{
 
 	@Override
 	public int updateinv(Tb_zhaoshangxiangmu tb_zhaoshangxiangmu) {
-		// TODO Auto-generated method stub
+		// 获得企业注册区县
+		String number = tb_zhaoshangxiangmu.getInvtown();
+		// 获得企业单位信息总数
+		int seq = Integer.valueOf(tb_zhaoshangxiangmu.getInvid());
+		// 加上2位序号
+		number +=new DecimalFormat("00").format(seq);
+		// 加上ZS
+		number +="ZS";
+		tb_zhaoshangxiangmu.setInvnumber(number);
 		return this.invitemdao.updateinv(tb_zhaoshangxiangmu);
 	}
 

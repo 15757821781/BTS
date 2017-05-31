@@ -110,7 +110,7 @@
 		<if test="search!=null and search!=''">
 		    and (a.regname like '%${search}%' or a.regnumber like '%${search}%' or a.regschedule like '%${search}%')
 		</if>
-		order by a.createtime desc
+		order by a.createtime desc,a.regid desc
 	</select>
 	<select id="queryregioninfocnt" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu"
 		resultType="Integer">
@@ -143,6 +143,7 @@
 		update Tb_quyuxingxiangmu
 		set
 		regname=#{regname},
+		regnumber=#{regnumber},
 		regprovince=#{regprovince},
 		regcity=#{regcity},
 		regtown=#{regtown},
