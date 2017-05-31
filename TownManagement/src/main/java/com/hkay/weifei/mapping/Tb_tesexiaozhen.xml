@@ -125,6 +125,7 @@
 		set
 		feaname=#{feaname},
 		fealevel=#{fealevel},
+		feanumber=#{feanumber},
 		feabatch=#{feabatch},
 		fearelation=#{fearelation},
 		feaprovince=#{feaprovince},

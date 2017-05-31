@@ -54,7 +54,19 @@ public class CompanyServiceImpl implements CompanyService{
 
 	@Override
 	public int updateComInfo(Tb_qiyedanwei tb_qiyedanwei) {
-		// TODO Auto-generated method stub
+		// 获得企业注册区县
+		String number = tb_qiyedanwei.getComtown();
+		// 获得企业单位信息总数
+		int seq = Integer.valueOf(tb_qiyedanwei.getComid());
+		// 加上企业类别
+		number += tb_qiyedanwei.getComcategory();
+		// 加上企业类型
+		number += tb_qiyedanwei.getComtype();
+		// 加上4位序号
+		number +=new DecimalFormat("0000").format(seq);
+		// 加上QY
+		number +="QY";
+		tb_qiyedanwei.setComnumber(number);
 		return this.companyDao.updateComInfo(tb_qiyedanwei);
 	}
 }

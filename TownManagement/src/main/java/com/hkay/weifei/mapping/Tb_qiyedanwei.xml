@@ -213,6 +213,7 @@
 	<update id="updateComInfo" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei">
 		update tb_qiyedanwei set
 		comname=#{comname},
+		comnumber=#{comnumber},
 		comnature=#{comnature},
 		comcategory=#{comcategory},
 		comtype=#{comtype},

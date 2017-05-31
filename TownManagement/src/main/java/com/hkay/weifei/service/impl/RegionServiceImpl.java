@@ -46,7 +46,11 @@ public class RegionServiceImpl implements RegionService{
 
 	@Override
 	public int updateregion(Tb_quyuxingxiangmu tb_quyuxingxiangmu) {
-		// TODO Auto-generated method stub
+		String number = tb_quyuxingxiangmu.getRegtown();
+		int seq = Integer.valueOf(tb_quyuxingxiangmu.getRegid());
+		number += new DecimalFormat("00").format(seq);
+		number += "QY";
+		tb_quyuxingxiangmu.setRegnumber(number);
 		return this.regiondao.updateregion(tb_quyuxingxiangmu);
 	}
 	

@@ -20,13 +20,13 @@ public class ResitemServiceImpl implements ResitemService{
 	@Override
 	public int insertresitem(Tb_chubeixiangmu tb_chubeixiangmu) {
 		// 获得企业注册区县
-				String number = "CB";
-				number +=DateUtil.nowDate().substring(0, 4);
-				// 获得企业单位信息总数
-				int seq = this.resitemdao.queryresinfocnt(tb_chubeixiangmu);
-				// 加上3位序号
-				number +=new DecimalFormat("000").format(seq+1);
-				tb_chubeixiangmu.setResnumber(number);
+		String number = "CB";
+		number +=DateUtil.nowDate().substring(0, 4);
+		// 获得企业单位信息总数
+		int seq = this.resitemdao.queryresinfocnt(tb_chubeixiangmu);
+		// 加上3位序号
+		number +=new DecimalFormat("000").format(seq+1);
+		tb_chubeixiangmu.setResnumber(number);
 		return this.resitemdao.insertresitem(tb_chubeixiangmu);
 	}
 
@@ -50,7 +50,14 @@ public class ResitemServiceImpl implements ResitemService{
 
 	@Override
 	public int updateres(Tb_chubeixiangmu tb_chubeixiangmu) {
-		// TODO Auto-generated method stub
+		// 获得企业注册区县
+		String number = "CB";
+		number +=DateUtil.nowDate().substring(0, 4);
+		// 获得企业单位信息总数
+		int seq = Integer.valueOf(tb_chubeixiangmu.getResid());
+		// 加上3位序号
+		number +=new DecimalFormat("000").format(seq);
+		tb_chubeixiangmu.setResnumber(number);
 		return this.resitemdao.updateres(tb_chubeixiangmu);
 	}
 }

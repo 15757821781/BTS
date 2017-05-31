@@ -59,6 +59,7 @@
 		update Tb_zhaoshangxiangmu
 		set
 		invname=#{invname},
+		invnumber=#{invnumber},
 		invprovince=#{invprovince},
 		invcity=#{invcity},
 		invtown=#{invtown},

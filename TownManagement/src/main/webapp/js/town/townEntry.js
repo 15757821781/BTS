@@ -294,20 +294,20 @@ $(document).ready(function() {
 					}
 				}
 			},
-			historyculture : {
-				validators : {
-					notEmpty : {
-						message : '历史文化和旅游资源不能为空'
-					}
-				}
-			},
-			honorarytitle : {
-				validators : {
-					notEmpty : {
-						message : '荣誉称号不能为空'
-					}
-				}
-			},
+//			historyculture : {
+//				validators : {
+//					notEmpty : {
+//						message : '历史文化和旅游资源不能为空'
+//					}
+//				}
+//			},
+//			honorarytitle : {
+//				validators : {
+//					notEmpty : {
+//						message : '荣誉称号不能为空'
+//					}
+//				}
+//			},
 			partycommittee : {
 				validators : {
 					regexp : {
