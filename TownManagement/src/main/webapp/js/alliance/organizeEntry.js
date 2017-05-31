@@ -179,13 +179,13 @@ function validatorOrgForm(){
 					}
 				}
 			},
-//			orgrepresent : {
-//				validators : {
+			orgrepresent : {
+				validators : {
 //					notEmpty : {
 //						message : '法人代表不能为空'
 //					}
-//				}
-//			},
+				}
+			},
 			orgrovince : {
 				validators : {
 					notEmpty : {
@@ -214,13 +214,13 @@ function validatorOrgForm(){
 					}
 				}
 			},
-//			orgestablish : {
-//				validators : {
+			orgestablish : {
+				validators : {
 //					notEmpty : {
 //						message : '成立时间不能为空'
 //					}
-//				}
-//			},
+				}
+			},
 			orgoffice : {
 				validators : {
 					notEmpty : {
