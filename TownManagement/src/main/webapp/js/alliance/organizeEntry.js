@@ -266,8 +266,8 @@ function validatorOrgForm(){
 //						message : '职务不能为空'
 //					},
 					regexp : {
-						regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
-						message : '请输入中文或字母'
+						regexp : /^[^,]*$/,
+						message : '请输入正确的职务'
 					}
 				}
 			},
@@ -304,9 +304,9 @@ function orgAddFieldValidator(){
 //				message : '职务不能为空'
 //			},
 			regexp : {
-				regexp : /^([、]|[a-zA-Z]|[\u4e00-\u9fa5])+$/,
-				message : '请输入中文或字母'
-			}	
+				regexp : /^[^,]*$/,
+				message : '请输入正确的职务'
+			}
 		}
 	});  
 	$('#orgform').bootstrapValidator('addField', 'orgcontacttel', {

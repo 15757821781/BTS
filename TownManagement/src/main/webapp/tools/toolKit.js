@@ -210,6 +210,7 @@ var formSubmit = function(form,url,target){
 	tk.ajax({
 		type : "post",
 		url : '/TownManagement/' + url,
+		cache : false,
 		data : formData,
 		dataType : 'JSON',
 		processData : false,
