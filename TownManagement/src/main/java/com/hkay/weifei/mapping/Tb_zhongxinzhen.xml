@@ -122,6 +122,7 @@
 		LEFT JOIN tb_area_province b ON a.province = b. code
 		LEFT JOIN tb_area_city c ON a.city = c. code
 		LEFT JOIN tb_area_town d ON a.town = d. code where 1=1
+		and a.visual=1
 		<if test="search!=null and search!=''">
 			and (a.number like '%${search}%' or a.centertownname like '%${search}%'
 			or a.townlevel like '%${search}%')
@@ -144,6 +145,7 @@
 		LEFT JOIN tb_area_province b ON a.province = b. code
 		LEFT JOIN tb_area_city c ON a.city = c. code
 		LEFT JOIN tb_area_town d ON a.town = d. code where 1=1
+		and a.visual=1
 		<if test="search!=null and search!=''">
 			and (a.number like '%${search}%' or a.centertownname like '%${search}%'
 			or a.townlevel like '%${search}%')
