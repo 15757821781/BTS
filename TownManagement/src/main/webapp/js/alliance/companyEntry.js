@@ -77,35 +77,35 @@ var comtype = [ {
 	name : "区县属",
 	parid : "1"
 }, {
-	value : "5",
+	value : "1",
 	name : "经济合作社",
 	parid : "2"
 }, {
-	value : "6",
+	value : "2",
 	name : "股份经济合作社",
 	parid : "2"
 }, {
-	value : "7",
+	value : "1",
 	name : "股份制企业",
 	parid : "3"
 }, {
-	value : "8",
+	value : "2",
 	name : "私营企业",
 	parid : "3"
 }, {
-	value : "9",
+	value : "3",
 	name : "联营企业",
 	parid : "3"
 }, {
-	value : "10",
+	value : "1",
 	name : "外资独资",
 	parid : "4"
 }, {
-	value : "11",
+	value : "2",
 	name : "中外合资",
 	parid : "4"
 }, {
-	value : "12",
+	value : "3",
 	name : "中外合作",
 	parid : "4"
 } ]
@@ -114,6 +114,7 @@ function typeChanage(v){
 	$("#comtype option").remove();
 	$("#comtype").append("<option></option>");
 	$.each(comtype, function(i, item) {
+		console.log(item.value);
 		if(item.parid==id){
 			$("#comtype").append("<option value="+item.value+">"+item.name+"</option>")
 		}

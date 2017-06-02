@@ -142,6 +142,7 @@ function querydetail(id) {
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			$('#comfieldset').attr("disabled","disabled");
 			$("#cominfomodal").modal('show');
 			$("#comentry_submit").hide();
 			$("#comentry_update").hide();
@@ -151,6 +152,7 @@ function querydetail(id) {
 //展示修改界面
 function updateinfo(id){
 	$('#comform').bootstrapValidator('resetForm', false);
+	$("#comfieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/commanage/queryComDetail",
 		data : {"comid":id},
