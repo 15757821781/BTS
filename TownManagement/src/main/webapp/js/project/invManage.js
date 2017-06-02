@@ -163,6 +163,7 @@ function querydetail(invid) {
 								+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			$('#invfieldset').attr("disabled","disabled");
 			$("#invmodal").modal('show');
 			$("#invitem_submit").hide();
 			$("#invitem_update").hide();
@@ -171,6 +172,8 @@ function querydetail(invid) {
 }
 //展示修改界面
 function updateinfo(invid){
+			$('#invform').bootstrapValidator('resetForm', false);
+			$("#invfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
 				async: false,

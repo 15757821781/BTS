@@ -146,6 +146,7 @@ function querydetail(id) {
 						+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			$('#orgfieldset').attr("disabled","disabled");
 			$("#orginfomodal").modal('show');
 			$("#orgentry_submit").hide();
 			$("#orgentry_update").hide();
@@ -154,6 +155,8 @@ function querydetail(id) {
 }
 //展示修改界面
 function updateinfo(id){
+	$('#orgform').bootstrapValidator('resetForm', false);
+	$("#orgfieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/orgmanage/queryOrgDetail",
 		data : {"orgid":id},
