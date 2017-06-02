@@ -41,7 +41,7 @@ $(document).ready(function() {
         }
     });
     $.ajax({
-         url: "/TownManagement/pages/town/townEntry.html",
+         url: "/TownManagement/pages/town/townManage.html",
          cache: false,
          success: function(html){
              $("#page-wrapper").html(html);
