@@ -183,6 +183,7 @@ function queryDetail(id) {
 			} else {
 				$(".feapart").removeAttr("disabled");
 			}
+			$('#feafieldset').attr("disabled","disabled");
 			$("#featuretownmodal").modal('show');
 			$("#featuretown_submit").hide();
 			$("#featuretown_update").hide();
@@ -191,7 +192,8 @@ function queryDetail(id) {
 }
 //展示修改界面
 function updateInfo(id){
-	$('#featuretown').bootstrapValidator('resetForm', false);
+	$('#feaform').bootstrapValidator('resetForm', false);
+	$("#feafieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
 		data : {"feaid":id},

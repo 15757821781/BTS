@@ -176,6 +176,7 @@ function querydetail(regid) {
 			} else {
 				$(".regpart").removeAttr("disabled");
 			}
+			$('#regfieldset').attr("disabled","disabled");
 			$("#regionmodal").modal('show');
 			$("#regitem_update").hide();
 		}
@@ -183,6 +184,8 @@ function querydetail(regid) {
 }
 //展示修改界面
 function updateinfo(regid){
+	$('#regform').bootstrapValidator('resetForm', false);
+	$("#regfieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/regionmanage/queryregionitemdetail",
 		async: false,

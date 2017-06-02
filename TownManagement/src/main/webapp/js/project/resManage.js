@@ -165,6 +165,7 @@ function querydetail(resid) {
 								+'</div></div>').insertAfter(".addel-target:last");
 				}
 			});
+			$('#resfieldset').attr("disabled","disabled");
 			$("#resmodal").modal('show');
 			$("#resitem_submit").hide();
 			$("#resitem_update").hide();
@@ -173,6 +174,8 @@ function querydetail(resid) {
 }
 //展示修改界面
 function updateinfo(resid){
+			$('#resform').bootstrapValidator('resetForm', false);
+			$("#resfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/resitemmanage/queryresitemdetail",
 				async: false,

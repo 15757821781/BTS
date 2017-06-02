@@ -137,6 +137,7 @@ function querytowndetail(centertownid) {
 					showdelete : false
 			}
 			initDeatilFileInput('planfile2',param5);
+			$('#townfieldset').attr("disabled","disabled");
 			$("#towninfomodal").modal('show');
 			$("#townentry_submit").hide();
 			$("#townentry_update").hide();
@@ -146,6 +147,7 @@ function querytowndetail(centertownid) {
 //展示修改界面
 function updatetowninfo(centertownid){
 	$('#townform').bootstrapValidator('resetForm', false);
+	$("#townfieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/townmanage/querytowndetail",
 		data : {"centertownid":centertownid},
