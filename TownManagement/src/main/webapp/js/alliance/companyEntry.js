@@ -114,7 +114,6 @@ function typeChanage(v){
 	$("#comtype option").remove();
 	$("#comtype").append("<option></option>");
 	$.each(comtype, function(i, item) {
-		console.log(item.value);
 		if(item.parid==id){
 			$("#comtype").append("<option value="+item.value+">"+item.name+"</option>")
 		}
