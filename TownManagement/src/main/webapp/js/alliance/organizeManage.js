@@ -94,6 +94,7 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(id) {
+	$("#orgfieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/orgmanage/queryOrgDetail",
 		data : {"orgid":id},
@@ -155,8 +156,8 @@ function querydetail(id) {
 }
 //展示修改界面
 function updateinfo(id){
-	$('#orgform').bootstrapValidator('resetForm', false);
 	$("#orgfieldset").removeAttr("disabled");
+	$('#orgform').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/orgmanage/queryOrgDetail",
 		data : {"orgid":id},

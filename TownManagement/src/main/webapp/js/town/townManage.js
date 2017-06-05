@@ -90,6 +90,7 @@ function queryParams(params){
 }
 //展示详情modal
 function querytowndetail(centertownid) {
+	$("#townfieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/townmanage/querytowndetail",
 		data : {"centertownid":centertownid},
@@ -146,8 +147,8 @@ function querytowndetail(centertownid) {
 }
 //展示修改界面
 function updatetowninfo(centertownid){
-	$('#townform').bootstrapValidator('resetForm', false);
 	$("#townfieldset").removeAttr("disabled");
+	$('#townform').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/townmanage/querytowndetail",
 		data : {"centertownid":centertownid},

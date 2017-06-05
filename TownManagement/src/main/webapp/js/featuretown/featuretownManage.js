@@ -91,6 +91,7 @@ function queryParams(params){
 }
 //展示详情modal
 function queryDetail(id) {
+	$("#feafieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
 		data : {"feaid":id},
@@ -192,8 +193,8 @@ function queryDetail(id) {
 }
 //展示修改界面
 function updateInfo(id){
-	$('#feaform').bootstrapValidator('resetForm', false);
 	$("#feafieldset").removeAttr("disabled");
+	$('#feaform').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
 		data : {"feaid":id},

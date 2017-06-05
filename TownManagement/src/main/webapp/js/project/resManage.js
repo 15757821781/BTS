@@ -83,6 +83,7 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(resid) {
+	$("#resfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/resitemmanage/queryresitemdetail",
 				async: false,
@@ -174,8 +175,8 @@ function querydetail(resid) {
 }
 //展示修改界面
 function updateinfo(resid){
+	$("#resfieldset").removeAttr("disabled");
 			$('#resform').bootstrapValidator('resetForm', false);
-			$("#resfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/resitemmanage/queryresitemdetail",
 				async: false,
