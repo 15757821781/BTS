@@ -91,6 +91,7 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(id) {
+	$("#comfieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/commanage/queryComDetail",
 		data : {"comid":id},
@@ -151,8 +152,8 @@ function querydetail(id) {
 }
 //展示修改界面
 function updateinfo(id){
-	$('#comform').bootstrapValidator('resetForm', false);
 	$("#comfieldset").removeAttr("disabled");
+	$('#comform').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/commanage/queryComDetail",
 		data : {"comid":id},
