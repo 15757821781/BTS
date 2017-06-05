@@ -82,6 +82,7 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(invid) {
+	$("#invfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
 				async: false,
@@ -172,8 +173,8 @@ function querydetail(invid) {
 }
 //展示修改界面
 function updateinfo(invid){
-			$('#invform').bootstrapValidator('resetForm', false);
 			$("#invfieldset").removeAttr("disabled");
+			$('#invform').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
 				async: false,

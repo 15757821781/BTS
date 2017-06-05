@@ -89,6 +89,7 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(regid) {
+	$("#regfieldset").removeAttr("disabled");
 	tk.ajax({
 		url : "/TownManagement/regionmanage/queryregionitemdetail",
 		async: false,
@@ -184,8 +185,8 @@ function querydetail(regid) {
 }
 //展示修改界面
 function updateinfo(regid){
-	$('#regform').bootstrapValidator('resetForm', false);
 	$("#regfieldset").removeAttr("disabled");
+	$('#regform').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/regionmanage/queryregionitemdetail",
 		async: false,
