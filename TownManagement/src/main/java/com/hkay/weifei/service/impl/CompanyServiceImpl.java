@@ -31,6 +31,21 @@ public class CompanyServiceImpl implements CompanyService{
 		// 加上QY
 		number +="QY";
 		qiyedanwei.setComnumber(number);
+		if(qiyedanwei.getComdevelop()==null){
+			qiyedanwei.setComdevelop("");
+		}
+		if(qiyedanwei.getComindustry()==null){
+			qiyedanwei.setComindustry("");
+		}
+		if(qiyedanwei.getComregpro()==null){
+			qiyedanwei.setComregpro("");
+		}
+		if(qiyedanwei.getComregcity()==null){
+			qiyedanwei.setComregcity("");
+		}
+		if(qiyedanwei.getCominvestment()==null){
+			qiyedanwei.setCominvestment("");
+		}
 		return this.companyDao.insertcominfo(qiyedanwei);
 	}
 
@@ -67,6 +82,21 @@ public class CompanyServiceImpl implements CompanyService{
 		// 加上QY
 		number +="QY";
 		tb_qiyedanwei.setComnumber(number);
+		if(tb_qiyedanwei.getComdevelop()==null){
+			tb_qiyedanwei.setComdevelop("");
+		}
+		if(tb_qiyedanwei.getComindustry()==null){
+			tb_qiyedanwei.setComindustry("");
+		}
+		if(tb_qiyedanwei.getComregpro()==null){
+			tb_qiyedanwei.setComregpro("");
+		}
+		if(tb_qiyedanwei.getComregcity()==null){
+			tb_qiyedanwei.setComregcity("");
+		}
+		if(tb_qiyedanwei.getCominvestment()==null){
+			tb_qiyedanwei.setCominvestment("");
+		}
 		return this.companyDao.updateComInfo(tb_qiyedanwei);
 	}
 }

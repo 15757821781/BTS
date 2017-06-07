@@ -32,15 +32,15 @@ public class Tb_qiyedanwei {
 	private String comhonor;//单位荣誉
 	private String comcertificate;//有关证书
 	private String comdatayear;//数据年度
-	private double comlassets;//资产总额
+	private String comlassets;//资产总额
 	private String comlassetsunit;// 资产总额货币单位
-	private double comliabilities;//负债总额
+	private String comliabilities;//负债总额
 	private String comliabunit;// 负债总额货币单位
-	private double comincomeyear;//年度营业收入
+	private String comincomeyear;//年度营业收入
 	private String cominyearunit;// 年度营业收入货币单位
-	private double comnetprofiyear;//年度净利润
+	private String comnetprofiyear;//年度净利润
 	private String comnetyearunit;// 年度净利润货币单位
-	private double comtaxesyear;//年度纳税额
+	private String comtaxesyear;//年度纳税额
 	private String comtaxyearunit;// 年度纳税额货币单位
 	private String comdevelop;//发展方向
 	private String comindustry;//投资偏好
@@ -354,46 +354,6 @@ public class Tb_qiyedanwei {
 		this.comdatayear = comdatayear;
 	}
 
-	public double getComlassets() {
-		return comlassets;
-	}
-
-	public void setComlassets(double comlassets) {
-		this.comlassets = comlassets;
-	}
-
-	public double getComliabilities() {
-		return comliabilities;
-	}
-
-	public void setComliabilities(double comliabilities) {
-		this.comliabilities = comliabilities;
-	}
-
-	public double getComincomeyear() {
-		return comincomeyear;
-	}
-
-	public void setComincomeyear(double comincomeyear) {
-		this.comincomeyear = comincomeyear;
-	}
-
-	public double getComnetprofiyear() {
-		return comnetprofiyear;
-	}
-
-	public void setComnetprofiyear(double comnetprofiyear) {
-		this.comnetprofiyear = comnetprofiyear;
-	}
-
-	public double getComtaxesyear() {
-		return comtaxesyear;
-	}
-
-	public void setComtaxesyear(double comtaxesyear) {
-		this.comtaxesyear = comtaxesyear;
-	}
-
 	public String getComdevelop() {
 		return comdevelop;
 	}
@@ -480,6 +440,46 @@ public class Tb_qiyedanwei {
 
 	public void setComcreator(String comcreator) {
 		this.comcreator = comcreator;
+	}
+
+	public String getComlassets() {
+		return comlassets;
+	}
+
+	public void setComlassets(String comlassets) {
+		this.comlassets = comlassets;
+	}
+
+	public String getComliabilities() {
+		return comliabilities;
+	}
+
+	public void setComliabilities(String comliabilities) {
+		this.comliabilities = comliabilities;
+	}
+
+	public String getComincomeyear() {
+		return comincomeyear;
+	}
+
+	public void setComincomeyear(String comincomeyear) {
+		this.comincomeyear = comincomeyear;
+	}
+
+	public String getComnetprofiyear() {
+		return comnetprofiyear;
+	}
+
+	public void setComnetprofiyear(String comnetprofiyear) {
+		this.comnetprofiyear = comnetprofiyear;
+	}
+
+	public String getComtaxesyear() {
+		return comtaxesyear;
+	}
+
+	public void setComtaxesyear(String comtaxesyear) {
+		this.comtaxesyear = comtaxesyear;
 	}
 
 }

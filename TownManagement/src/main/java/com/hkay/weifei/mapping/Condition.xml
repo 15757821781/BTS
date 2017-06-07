@@ -78,4 +78,9 @@
 	<update id="updatePic" parameterType="com.hkay.weifei.pojo.Condition">
 		update ${tbname} set ${field}=#{value} where ${primary}=#{id}
 	</update>
+	<!-- 查询图片信息 -->
+	<select id="queryPicValue" parameterType="com.hkay.weifei.pojo.Condition"
+		resultMap="BaseResultMap">
+		select ${field} as value from ${tbname} where ${primary}=#{id}
+	</select>
 </mapper>

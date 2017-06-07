@@ -385,6 +385,7 @@ function initDeatilFileInput(ctrlName,param) {
     var preList = new Array();
     var preConfigList = new Array();
     var reData = param.value.split(",");
+//    var value = $("#"+param.field).val();
     for ( var i = 0; i < reData.length; i++) {
 		if (reData[i] != "") {
 			var name = reData[i].substring(reData[i].lastIndexOf("/"));
@@ -410,7 +411,7 @@ function initDeatilFileInput(ctrlName,param) {
         initialPreviewConfig: preConfigList,
         deleteExtraData : function() {
             return {
-            value: $("#"+param.field).val(),
+//            value: $("#"+param.field).val(),
             tbname : param.tbname,
         	field : param.field,
         	id : $("#"+param.id).val(),
@@ -418,8 +419,7 @@ function initDeatilFileInput(ctrlName,param) {
         }
 	});
 	control.on('filedeleted', function(event, data, result) {
-		var value = JSON.parse(result.responseText);
-		$("#"+param.field).val(value.data);
+		$("#"+param.field).val(data);
 	});
 }
 // 禁用backspace

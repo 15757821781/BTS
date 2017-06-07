@@ -30,4 +30,6 @@ public interface ConditionService {
 
 	List<Condition> queryAdvantage();
 
+	Condition queryPicValue(Condition condition);
+
 }

@@ -107,6 +107,7 @@
 			left join tb_area_city c on a.regcity=c.code
 			left join tb_area_town d on a.regtown=d.code
 			where 1=1
+			and a.visual=1
 		<if test="search!=null and search!=''">
 		    and (a.regname like '%${search}%' or a.regnumber like '%${search}%' or a.regschedule like '%${search}%')
 		</if>
@@ -129,6 +130,7 @@
 				left join tb_area_city c on a.regcity=c.code
 				left join tb_area_town d on a.regtown=d.code
 				where 1=1
+				and a.visual=1
 			<if test="search!=null and search!=''">
 			    and (a.regname like '%${search}%' or a.regnumber like '%${search}%' or a.regschedule like '%${search}%')
 			</if>

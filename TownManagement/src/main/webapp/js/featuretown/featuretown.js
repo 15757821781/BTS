@@ -194,13 +194,13 @@ function validatorFeaForm(){
 					}
 				}
 			},
-//			feacooperate : {
-//				validators : {
-//					notEmpty : {
-//						message : '合作开发情况不能为空'
-//					}
-//				}
-//			},
+			feacooperate : {
+				validators : {
+					notEmpty : {
+						message : '合作开发情况不能为空'
+					}
+				}
+			},
 //			feapartner : {
 //				validators : {
 //					notEmpty : {

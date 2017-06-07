@@ -23,7 +23,7 @@
 		LEFT JOIN tb_area_province b on a.invprovince=b.code 
 		LEFT JOIN tb_area_city c on a.invcity=c.code 
 		LEFT JOIN tb_area_town d on a.invtown=d.code where 1=1
-<!-- 		select invid,invname,invnumber,invprovince,invcity,invtown,invtownship,invjoinway,invcharge,invindustry,invlandscale,invplotratio,invplanuse,investment,investmentall,invexpectbuild,invplanaddress,invbuildcontent,invbuildcondition,invincentives,invessential,invbenefit,invcitypic,invtownpic,invscopeopic,invplanpic,invallplanpic,invdetailplanpic,invcontact,invpost,invcontacttel,inventry from Tb_zhaoshangxiangmu t where 1=1 -->
+		and a.visual=1
 		<if test="search!=null and search!=''">
 		    and (a.invname like '%${search}%' or a.invnumber like '%${search}%'  or a.invcharge like '%${search}%')
 		</if>
@@ -45,6 +45,7 @@
 		LEFT JOIN tb_area_province b on a.invprovince=b.code 
 		LEFT JOIN tb_area_city c on a.invcity=c.code 
 		LEFT JOIN tb_area_town d on a.invtown=d.code where 1=1  
+		and a.visual=1
 		<if test="search!=null and search!=''">
 		    and (a.invname like '%${search}%' or a.invnumber like '%${search}%'  or a.invcharge like '%${search}%')
 		</if>
