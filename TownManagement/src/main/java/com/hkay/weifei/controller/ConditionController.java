@@ -231,8 +231,9 @@ public class ConditionController {
 	public RetAjax deletePic(HttpServletRequest request,Condition condition) {
 		try {
 			if(!condition.getTbname().equals("")&&condition.getId()!=0){
+				Condition cond = this.conditionservice.queryPicValue(condition);
 				String key = condition.getKey()+",";
-				String value = condition.getValue();
+				String value = cond.getValue();
 				value = value.replace(key, "");
 				condition.setValue(value);
 				int flag = this.conditionservice.updatePic(condition);

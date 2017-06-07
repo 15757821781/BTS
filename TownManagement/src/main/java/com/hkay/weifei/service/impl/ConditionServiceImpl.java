@@ -75,5 +75,10 @@ public class ConditionServiceImpl implements ConditionService{
 		// TODO Auto-generated method stub
 		return this.conditiondao.queryAdvantage();
 	}
+	@Override
+	public Condition queryPicValue(Condition condition) {
+		// TODO Auto-generated method stub
+		return this.conditiondao.queryPicValue(condition);
+	}
 	
 }
