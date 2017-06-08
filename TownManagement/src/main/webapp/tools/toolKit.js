@@ -170,6 +170,9 @@ var fillForm = function(form,data) {
 			var id=values[i].name;
 		    if(id==key){
 		    	if($("#"+key).hasClass("selectpicker")){
+		    		if(value==null){
+		    			console.log(value)
+		    		}
 		    		var arr=value.split(",");
 					$('#'+key).selectpicker();
 					$('#'+key).selectpicker('val', arr);
@@ -181,6 +184,9 @@ var fillForm = function(form,data) {
 		    	}
 		    	return false;
 		    }else if($("#"+key).attr("multiple")=="multiple"&&$("#"+key).hasClass("selectpicker")){
+	    		if(value==null){
+	    			console.log(value)
+	    		}
 	    		var arr=value.split(",");
 				$('#'+key).selectpicker();
 				$('#'+key).selectpicker('val', arr);

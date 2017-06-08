@@ -13,16 +13,16 @@ public class Tb_zhongxinzhen {
 	private String cooperation;// 关系情况
 	private String towndatayear;// 数据年度
 	private String hundredcounties;// 是否为百强区县
-	private double countygdp;// 区县级GDP
-	private double countyrevenue;// 区县级财政收入
-	private double townpopulation;// 所在区县总人口
-	private double townpgdi;// 区县人均可支配收入
-	private double townarea;//行政面积
-	private int community;// 社区数量
-	private int adminvillage;// 行政村数量
-	private double townlocalgdp;// 地方gdp
-	private double townrevenue;// 财政总收入
-	private double totalpopulation;// 总人口
+	private Double countygdp;// 区县级GDP
+	private Double countyrevenue;// 区县级财政收入
+	private Double townpopulation;// 所在区县总人口
+	private Double townpgdi;// 区县人均可支配收入
+	private Double townarea;//行政面积
+	private Integer community;// 社区数量
+	private Integer adminvillage;// 行政村数量
+	private Double townlocalgdp;// 地方gdp
+	private Double townrevenue;// 财政总收入
+	private Double totalpopulation;// 总人口
 	private String farmingoutvalue;// 农业生产总值
 	private String industryoutvalue;// 工业生产总值
 	private String serviceoutvalue;// 服务业总产值
@@ -133,43 +133,43 @@ public class Tb_zhongxinzhen {
 		this.cooperation = cooperation;
 	}
 
-	public double getTownarea() {
+	public Double getTownarea() {
 		return townarea;
 	}
 
-	public void setTownarea(double townarea) {
+	public void setTownarea(Double townarea) {
 		this.townarea = townarea;
 	}
 
-	public double getTownpopulation() {
+	public Double getTownpopulation() {
 		return townpopulation;
 	}
 
-	public void setTownpopulation(double townpopulation) {
+	public void setTownpopulation(Double townpopulation) {
 		this.townpopulation = townpopulation;
 	}
 
-	public double getCountygdp() {
+	public Double getCountygdp() {
 		return countygdp;
 	}
 
-	public void setCountygdp(double countygdp) {
+	public void setCountygdp(Double countygdp) {
 		this.countygdp = countygdp;
 	}
 
-	public double getCountyrevenue() {
+	public Double getCountyrevenue() {
 		return countyrevenue;
 	}
 
-	public void setCountyrevenue(double countyrevenue) {
+	public void setCountyrevenue(Double countyrevenue) {
 		this.countyrevenue = countyrevenue;
 	}
 
-	public double getTownrevenue() {
+	public Double getTownrevenue() {
 		return townrevenue;
 	}
 
-	public void setTownrevenue(double townrevenue) {
+	public void setTownrevenue(Double townrevenue) {
 		this.townrevenue = townrevenue;
 	}
 
@@ -189,19 +189,19 @@ public class Tb_zhongxinzhen {
 		this.citypilot = citypilot;
 	}
 
-	public int getCommunity() {
+	public Integer getCommunity() {
 		return community;
 	}
 
-	public void setCommunity(int community) {
+	public void setCommunity(Integer community) {
 		this.community = community;
 	}
 
-	public int getAdminvillage() {
+	public Integer getAdminvillage() {
 		return adminvillage;
 	}
 
-	public void setAdminvillage(int adminvillage) {
+	public void setAdminvillage(Integer adminvillage) {
 		this.adminvillage = adminvillage;
 	}
 
@@ -309,27 +309,27 @@ public class Tb_zhongxinzhen {
 		this.towndatayear = towndatayear;
 	}
 
-	public double getTownpgdi() {
+	public Double getTownpgdi() {
 		return townpgdi;
 	}
 
-	public void setTownpgdi(double townpgdi) {
+	public void setTownpgdi(Double townpgdi) {
 		this.townpgdi = townpgdi;
 	}
 
-	public double getTownlocalgdp() {
+	public Double getTownlocalgdp() {
 		return townlocalgdp;
 	}
 
-	public void setTownlocalgdp(double townlocalgdp) {
+	public void setTownlocalgdp(Double townlocalgdp) {
 		this.townlocalgdp = townlocalgdp;
 	}
 
-	public double getTotalpopulation() {
+	public Double getTotalpopulation() {
 		return totalpopulation;
 	}
 
-	public void setTotalpopulation(double totalpopulation) {
+	public void setTotalpopulation(Double totalpopulation) {
 		this.totalpopulation = totalpopulation;
 	}
 
