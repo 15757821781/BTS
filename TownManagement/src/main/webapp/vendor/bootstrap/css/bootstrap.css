@@ -2588,12 +2588,12 @@ output {
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-  background-color: #eee;
+/*   background-color: #eee; */
   opacity: 1;
 }
 .form-control[disabled],
 fieldset[disabled] .form-control {
-  cursor: not-allowed;
+/*   cursor: not-allowed; */
 }
 textarea.form-control {
   height: auto;
@@ -3013,7 +3013,7 @@ select[multiple].input-lg {
   vertical-align: middle;
   -ms-touch-action: manipulation;
       touch-action: manipulation;
-  cursor: pointer;
+  cursor: auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -3047,7 +3047,7 @@ select[multiple].input-lg {
 .btn.disabled,
 .btn[disabled],
 fieldset[disabled] .btn {
-  cursor: not-allowed;
+/*   cursor: not-allowed; */
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -3055,7 +3055,7 @@ fieldset[disabled] .btn {
 }
 a.btn.disabled,
 fieldset[disabled] a.btn {
-  pointer-events: none;
+/*   pointer-events: none; */
 }
 .btn-default {
   color: #333;

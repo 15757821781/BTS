@@ -35,7 +35,7 @@ $(document).ready(function() {
 			},
 		    events: {
 		        added: function (event) {
-		        	invAddFieldValidator();
+		        	regAddFieldValidator();
 		        }
 		    }
 	    });
@@ -57,7 +57,7 @@ $(document).ready(function() {
     createAreaSelect("invprovince","invcity","invtown");
 //	
 	// 动态增减行初始化
-	 $('.addel').addel({
+	 $('.addel-inv').addel({
 			animation: {
 				duration: 100
 			},
@@ -841,7 +841,7 @@ function validatorProjectForm(){
 	$('#invitem').bootstrapValidator('resetForm', false);
 	$('#resitem').bootstrapValidator('resetForm', false);
 }
-function invAddFieldValidator(){
+function regAddFieldValidator(){
 	$('#regionitem').bootstrapValidator('addField', 'regcontact', {
 		validators : {
 //			notEmpty : {

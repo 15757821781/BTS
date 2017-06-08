@@ -423,8 +423,8 @@
                 'title="{removeTitle}" {dataUrl}{dataKey}>{removeIcon}</button>\n';
             tActionUpload = '<button type="button" class="kv-file-upload {uploadClass}" title="{uploadTitle}">' +
                 '{uploadIcon}</button>';
-            tActionZoom = '<button type="button" class="kv-file-zoom {zoomClass}" ' +
-                'title="{zoomTitle}">{zoomIcon}</button>';
+            tActionZoom = '<a type="button" class="kv-file-zoom {zoomClass}"' +
+                'title="{zoomTitle}">{zoomIcon}</a>';
             tActionDrag = '<span class="file-drag-handle {dragClass}" title="{dragTitle}">{dragIcon}</span>';
             tTagBef = '<div style="max-width:350px;width:94%;" class="file-preview-frame {frameClass}" id="{previewId}" data-fileindex="{fileindex}"' +
                 ' data-template="{template}"';
@@ -1459,7 +1459,9 @@
             var self = this;
             self.$preview.find('.kv-file-zoom').each(function () {
                 var $el = $(this);
+                console.log(111);
                 self._handler($el, 'click', function () {
+                	console.log(222);
                     self._zoomPreview($el);
                 });
             });
