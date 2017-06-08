@@ -146,30 +146,32 @@ function querydetail(regid) {
 			initDeatilFileInput('regfile5',param5);
 			initDeatilFileInput('regfile6',param6);
 			// 处理多行展示
-			var regplanareas=data.data[0].regplanareas.split(",");
-			var regplaninvests=data.data[0].regplaninvests.split(",");
-			var reglandareas=data.data[0].reglandareas.split(",");
-			$(".add_reg:gt(0)").remove();
-			$.each(regplanareas,function(i,item){
-				$('.addel-delete').hide();
-				var num = $('.add_reg').length;
-				$('<div class="form-group add_reg">'
-					+'<div class="col-sm-2" style="text-align: right;">'
-					+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
-					+'<i class="fa fa-remove"> </i></button>'
-					+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
-					+'</div><div class="col-sm-2">'
-					+'<input id="regplanareas" name="regplanareas" class="form-control"'
-					+'type="text" value='+regplanareas[i]+'></div>'
-					+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
-					+'<div class="col-sm-2">'
-					+'<input id="regplaninvests" name="regplaninvests"'
-					+'class="form-control" type="text" value='+regplaninvests[i]+'></div>'
-					+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
-					+'<div class="col-sm-2">'
-					+'<input id="reglandareas" name="reglandareas" class="form-control" '
-					+'type="text" value='+reglandareas[i]+'></div>').insertAfter(".add_reg:last");
-			});
+			if(data.data[0].regplanareas!=null){
+				var regplanareas=data.data[0].regplanareas.split(",");
+				var regplaninvests=data.data[0].regplaninvests.split(",");
+				var reglandareas=data.data[0].reglandareas.split(",");
+				$(".add_reg:gt(0)").remove();
+				$.each(regplanareas,function(i,item){
+					$('.addel-delete').hide();
+					var num = $('.add_reg').length;
+					$('<div class="form-group add_reg">'
+						+'<div class="col-sm-2" style="text-align: right;">'
+						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+						+'<i class="fa fa-remove"> </i></button>'
+						+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
+						+'</div><div class="col-sm-2">'
+						+'<input id="regplanareas" name="regplanareas" class="form-control"'
+						+'type="text" value='+regplanareas[i]+'></div>'
+						+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
+						+'<div class="col-sm-2">'
+						+'<input id="regplaninvests" name="regplaninvests"'
+						+'class="form-control" type="text" value='+regplaninvests[i]+'></div>'
+						+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
+						+'<div class="col-sm-2">'
+						+'<input id="reglandareas" name="reglandareas" class="form-control" '
+						+'type="text" value='+reglandareas[i]+'></div>').insertAfter(".add_reg:last");
+				});
+			}
 //			addRegValidator();
 			// 合作禁用选项
 			if (data.data[0].regdevelopment == "0") {
@@ -243,30 +245,32 @@ function updateinfo(regid){
 			initDeatilFileInput('regfile5',param5);
 			initDeatilFileInput('regfile6',param6);
 			// 处理多行展示
-			var regplanareas=data.data[0].regplanareas.split(",");
-			var regplaninvests=data.data[0].regplaninvests.split(",");
-			var reglandareas=data.data[0].reglandareas.split(",");
-			$(".add_reg:gt(0)").remove();
-			$.each(regplanareas,function(i,item){
-				$('.addel-delete').hide();
-				var num = $('.add_reg').length;
-				$('<div class="form-group add_reg">'
-					+'<div class="col-sm-2" style="text-align: right;">'
-					+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
-					+'<i class="fa fa-remove"> </i></button>'
-					+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
-					+'</div><div class="col-sm-2">'
-					+'<input id="regplanareas" name="regplanareas" class="form-control"'
-					+'type="text" data-bv-field="regplanareas" value='+regplanareas[i]+'></div>'
-					+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
-					+'<div class="col-sm-2">'
-					+'<input id="regplaninvests" name="regplaninvests"'
-					+'class="form-control" type="text" data-bv-field="regplaninvests" value='+regplaninvests[i]+'></div>'
-					+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
-					+'<div class="col-sm-2">'
-					+'<input id="reglandareas" name="reglandareas" class="form-control" '
-					+'type="text" data-bv-field="reglandareas" value='+reglandareas[i]+'></div>').insertAfter(".add_reg:last");
-			});
+			if(data.data[0].regplanareas!=null){
+				var regplanareas=data.data[0].regplanareas.split(",");
+				var regplaninvests=data.data[0].regplaninvests.split(",");
+				var reglandareas=data.data[0].reglandareas.split(",");
+				$(".add_reg:gt(0)").remove();
+				$.each(regplanareas,function(i,item){
+					$('.addel-delete').hide();
+					var num = $('.add_reg').length;
+					$('<div class="form-group add_reg">'
+						+'<div class="col-sm-2" style="text-align: right;">'
+						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+						+'<i class="fa fa-remove"> </i></button>'
+						+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
+						+'</div><div class="col-sm-2">'
+						+'<input id="regplanareas" name="regplanareas" class="form-control"'
+						+'type="text" value='+regplanareas[i]+'></div>'
+						+'<label class="col-sm-2 control-label">'+num+'期计划投资(亿元)</label>'
+						+'<div class="col-sm-2">'
+						+'<input id="regplaninvests" name="regplaninvests"'
+						+'class="form-control" type="text" value='+regplaninvests[i]+'></div>'
+						+'<label class="col-sm-2 control-label">'+num+'期征地面积(平方公里)</label>'
+						+'<div class="col-sm-2">'
+						+'<input id="reglandareas" name="reglandareas" class="form-control" '
+						+'type="text" value='+reglandareas[i]+'></div>').insertAfter(".add_reg:last");
+				});
+			}
 			addRegValidator();
 			// 合作禁用选项
 			if (data.data[0].regdevelopment == "0") {

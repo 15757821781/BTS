@@ -12,10 +12,10 @@ public class Tb_tesexiaozhen {
 	private String featown;// 县
 	private String feagenre;// 乡镇街道/开发区
 	private String feaindustry;// 产业类别
-	private String feaplaninvest;// 计划总投资
+	private Double feaplaninvest;// 计划总投资
 	private String feaschedule;// 投资进度
 	private String featarget;// 规划目标
-	private String feaplanarea;// 规划面积
+	private Double feaplanarea;// 规划面积
 	private String feaplancontent;// 规划内容
 	private String feacoreindustry;// 核心产业和企业
 	private String fealeadcom;// 牵头开发单位
@@ -26,7 +26,7 @@ public class Tb_tesexiaozhen {
 	private String feapartname;// 合作单位负责人名字
 	private String feaparttel;// 合作单位负责人电话
 	private String feapartway;// 合作方式
-	private String feapartmoney;// 合作投资额
+	private Double feapartmoney;// 合作投资额
 	private String fearegtime;// 合作开始时间
 	private String feaendtime;// 合作结束时间
 	private String feapartconten;// 合作内容
@@ -339,27 +339,27 @@ public class Tb_tesexiaozhen {
 		this.search = search;
 	}
 
-	public String getFeaplaninvest() {
+	public Double getFeaplaninvest() {
 		return feaplaninvest;
 	}
 
-	public void setFeaplaninvest(String feaplaninvest) {
+	public void setFeaplaninvest(Double feaplaninvest) {
 		this.feaplaninvest = feaplaninvest;
 	}
 
-	public String getFeaplanarea() {
+	public Double getFeaplanarea() {
 		return feaplanarea;
 	}
 
-	public void setFeaplanarea(String feaplanarea) {
+	public void setFeaplanarea(Double feaplanarea) {
 		this.feaplanarea = feaplanarea;
 	}
 
-	public String getFeapartmoney() {
+	public Double getFeapartmoney() {
 		return feapartmoney;
 	}
 
-	public void setFeapartmoney(String feapartmoney) {
+	public void setFeapartmoney(Double feapartmoney) {
 		this.feapartmoney = feapartmoney;
 	}
 	

@@ -62,20 +62,20 @@ function validatorInvForm(){
 					}
 				}
 			},
-			invcity : {
-				validators : {
-					notEmpty : {
-						message : '城市不能为空'
-					}
-				}
-			},
-			invtown : {
-				validators : {
-					notEmpty : {
-						message : '区县不能为空'
-					}
-				}
-			},
+//			invcity : {
+//				validators : {
+//					notEmpty : {
+//						message : '城市不能为空'
+//					}
+//				}
+//			},
+//			invtown : {
+//				validators : {
+//					notEmpty : {
+//						message : '区县不能为空'
+//					}
+//				}
+//			},
 			invtownship : {
 				validators : {
 					notEmpty : {
@@ -97,18 +97,18 @@ function validatorInvForm(){
 					}
 				}
 			},
-			invindustry : {
-				validators : {
-					notEmpty : {
-						message : '所属行业不能为空'
-					}
-				}
-			},
+//			invindustry : {
+//				validators : {
+//					notEmpty : {
+//						message : '所属行业不能为空'
+//					}
+//				}
+//			},
 			invlandscale : {
 				validators : {
-					notEmpty : {
-						message : '用地规模不能为空'
-					},
+//					notEmpty : {
+//						message : '用地规模不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -117,27 +117,27 @@ function validatorInvForm(){
 			},
 			invplotratio : {
 				validators : {
-					notEmpty : {
-						message : '容积率不能为空'
-					},
+//					notEmpty : {
+//						message : '容积率不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			invplanuse : {
-				validators : {
-					notEmpty : {
-						message : '土地用途不能为空'
-					}
-				}
-			},
+//			invplanuse : {
+//				validators : {
+//					notEmpty : {
+//						message : '土地用途不能为空'
+//					}
+//				}
+//			},
 			investment : {
 				validators : {
-					notEmpty : {
-						message : '投资强度不能为空'
-					},
+//					notEmpty : {
+//						message : '投资强度不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -146,9 +146,9 @@ function validatorInvForm(){
 			},
 			investmentall : {
 				validators : {
-					notEmpty : {
-						message : '投资总额不能为空'
-					},
+//					notEmpty : {
+//						message : '投资总额不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -157,57 +157,57 @@ function validatorInvForm(){
 			},
 			invexpectbuild : {
 				validators : {
-					notEmpty : {
-						message : '预计建设期不能为空'
-					},
+//					notEmpty : {
+//						message : '预计建设期不能为空'
+//					},
 					regexp : {
 						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			invplanaddress : {
-				validators : {
-					notEmpty : {
-						message : '规划地址不能为空'
-					}
-				}
-			},
-			invbuildcontent : {
-				validators : {
-					notEmpty : {
-						message : '建设内容不能为空'
-					}
-				}
-			},
-			invbuildcondition : {
-				validators : {
-					notEmpty : {
-						message : '建设条件不能为空'
-					}
-				}
-			},
-			invincentives : {
-				validators : {
-					notEmpty : {
-						message : '优惠政策不能为空'
-					}
-				}
-			},
-			invessential : {
-				validators : {
-					notEmpty : {
-						message : '要素分析不能为空'
-					}
-				}
-			},
-			invbenefit : {
-				validators : {
-					notEmpty : {
-						message : '效益分析不能为空'
-					}
-				}
-			},
+//			invplanaddress : {
+//				validators : {
+//					notEmpty : {
+//						message : '规划地址不能为空'
+//					}
+//				}
+//			},
+//			invbuildcontent : {
+//				validators : {
+//					notEmpty : {
+//						message : '建设内容不能为空'
+//					}
+//				}
+//			},
+//			invbuildcondition : {
+//				validators : {
+//					notEmpty : {
+//						message : '建设条件不能为空'
+//					}
+//				}
+//			},
+//			invincentives : {
+//				validators : {
+//					notEmpty : {
+//						message : '优惠政策不能为空'
+//					}
+//				}
+//			},
+//			invessential : {
+//				validators : {
+//					notEmpty : {
+//						message : '要素分析不能为空'
+//					}
+//				}
+//			},
+//			invbenefit : {
+//				validators : {
+//					notEmpty : {
+//						message : '效益分析不能为空'
+//					}
+//				}
+//			},
 			invcontact : {
 				validators : {
 //					notEmpty : {
