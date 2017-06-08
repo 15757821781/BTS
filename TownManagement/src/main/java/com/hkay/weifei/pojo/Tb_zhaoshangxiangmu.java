@@ -11,11 +11,11 @@ public class Tb_zhaoshangxiangmu {
 	private String invjoinway;//合作方式
 	private String invcharge;//主管单位
 	private String invindustry;//所属行业
-	private double invlandscale;//用地规模
-	private double invplotratio;//容积率
+	private Double invlandscale;//用地规模
+	private Double invplotratio;//容积率
 	private String invplanuse;//土地用途
-	private double investment;//投资强度
-	private double investmentall;//投资总额
+	private Double investment;//投资强度
+	private Double investmentall;//投资总额
 	private String invexpectbuild;//预计建设期
 	private String invplanaddress;//规划地址
 	private String invbuildcontent;//建设内容
@@ -63,16 +63,16 @@ public class Tb_zhaoshangxiangmu {
 	public void setInvindustry(String invindustry) {
 		this.invindustry = invindustry;
 	}
-	public double getInvlandscale() {
+	public Double getInvlandscale() {
 		return invlandscale;
 	}
-	public void setInvlandscale(double invlandscale) {
+	public void setInvlandscale(Double invlandscale) {
 		this.invlandscale = invlandscale;
 	}
-	public double getInvplotratio() {
+	public Double getInvplotratio() {
 		return invplotratio;
 	}
-	public void setInvplotratio(double invplotratio) {
+	public void setInvplotratio(Double invplotratio) {
 		this.invplotratio = invplotratio;
 	}
 	public String getInvplanuse() {
@@ -81,16 +81,16 @@ public class Tb_zhaoshangxiangmu {
 	public void setInvplanuse(String invplanuse) {
 		this.invplanuse = invplanuse;
 	}
-	public double getInvestment() {
+	public Double getInvestment() {
 		return investment;
 	}
-	public void setInvestment(double investment) {
+	public void setInvestment(Double investment) {
 		this.investment = investment;
 	}
-	public double getInvestmentall() {
+	public Double getInvestmentall() {
 		return investmentall;
 	}
-	public void setInvestmentall(double investmentall) {
+	public void setInvestmentall(Double investmentall) {
 		this.investmentall = investmentall;
 	}
 	public String getInvexpectbuild() {
