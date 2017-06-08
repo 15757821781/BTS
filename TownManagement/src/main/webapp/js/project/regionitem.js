@@ -27,6 +27,17 @@ $(document).ready(function() {
         $('#regionitem').bootstrapValidator('revalidateField', 'regbegtime');
         $('#regionitem').bootstrapValidator('revalidateField', 'regendtime');
 	});
+	// 动态增减行初始化
+	$('.addel-reg').addel({
+		animation: {
+			duration: 100
+		},
+	    events: {
+	        added: function (event) {
+	        	regAddFieldValidator();
+	        }
+	    }
+    });
 	createAreaSelect("regprovince","regcity","regtown");
 	//初始化文件上传控件
 	initFileInput("regfile1","城市背景图",1);
@@ -141,9 +152,9 @@ function validatorRegForm(){
 			},
 			regposition : {
 				validators : {
-					notEmpty : {
-						message : '地理位置不能为空'
-					}
+//					notEmpty : {
+//						message : '地理位置不能为空'
+//					}
 				}
 			},
 			regschedule : {
@@ -195,29 +206,29 @@ function validatorRegForm(){
 			},
 			regbasic : {
 				validators : {
-					notEmpty : {
-						message : '基本情况不能为空'
-					}
+//					notEmpty : {
+//						message : '基本情况不能为空'
+//					}
 				}
 			},
 			regspeed : {
 				validators : {
-					notEmpty : {
-						message : '进度情况不能为空'
-					}
+//					notEmpty : {
+//						message : '进度情况不能为空'
+//					}
 				}
 			},
 			regnowindustry : {
 				validators : {
-					notEmpty : {
-						message : '现状产业不能为空'
-					}
+//					notEmpty : {
+//						message : '优势产业不能为空'
+//					}
 				}
 			},
 			regprimeindustry : {
 				validators : {
 					notEmpty : {
-						message : '主导产业不能为空'
+						message : '产业方向不能为空'
 					}
 				}
 			},
