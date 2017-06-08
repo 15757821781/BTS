@@ -99,7 +99,7 @@
 		<if test="search!=null and search!=''">
 		    and (a.orgnumber like '%${search}%' or a.orgname like '%${search}%' or a.orgcategory like '%${search}%')
 		</if>
-		order by createtime desc,a.orgid desc
+		order by b.code,c.code,d.code,createtime desc,a.orgid desc
 	</select>
 	<select id="queryOrgDetail" parameterType="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei"
 	resultMap="BaseResultMap">

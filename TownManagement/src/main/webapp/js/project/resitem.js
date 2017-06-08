@@ -14,7 +14,7 @@ $(document).ready(function() {
 		formSubmit('#resitem','resitemmanage/updateres','ProjectLibrary/resManage.html');
 	});
 	// 动态增减行初始化
-	 $('.addel').addel({
+	 $('.addel-res').addel({
 			animation: {
 				duration: 100
 			},
