@@ -162,33 +162,33 @@ function validatorRegForm(){
 			},
 			regplanarea : {
 				validators : {
-					notEmpty : {
-						message : '规划面积不能为空'
-					},
+//					notEmpty : {
+//						message : '规划面积不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						regexp : /^\d+(\.\d{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
 			regplaninvest : {
 				validators : {
-					notEmpty : {
-						message : '规划面积不能为空'
-					},
+//					notEmpty : {
+//						message : '计划投资不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						regexp : /^\d+(\.\d{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
 			reglandarea : {
 				validators : {
-					notEmpty : {
-						message : '规划面积不能为空'
-					},
+//					notEmpty : {
+//						message : '规划面积不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						regexp : /^\d+(\.\d{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
@@ -221,13 +221,13 @@ function validatorRegForm(){
 					}
 				}
 			},
-			regdeveloper : {
-				validators : {
-					notEmpty : {
-						message : '牵头单位不能为空'
-					}
-				}
-			},
+//			regdeveloper : {
+//				validators : {
+//					notEmpty : {
+//						message : '牵头单位不能为空'
+//					}
+//				}
+//			},
 			regcharge : {
 				validators : {
 //					notEmpty : {
@@ -257,13 +257,13 @@ function validatorRegForm(){
 					}
 				}
 			},
-			regpartner : {
-				validators : {
-					notEmpty : {
-						message : '合作开发单位不能为空'
-					}
-				}
-			},
+//			regpartner : {
+//				validators : {
+//					notEmpty : {
+//						message : '合作开发单位不能为空'
+//					}
+//				}
+//			},
 			regpartcharge : {
 				validators : {
 //					notEmpty : {
@@ -288,27 +288,27 @@ function validatorRegForm(){
 			},
 			reinvest : {
 				validators : {
-					notEmpty : {
-						message : '合作投资额不能为空'
-					},
+//					notEmpty : {
+//						message : '合作投资额不能为空'
+//					},
 					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						regexp : /^\d+(\.\d{1,3})?$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
 			},
-			regterms : {
-				validators : {
-					notEmpty : {
-						message : '合作方式不能为空'
-					}
-				}
-			},
+//			regterms : {
+//				validators : {
+//					notEmpty : {
+//						message : '合作方式不能为空'
+//					}
+//				}
+//			},
 			regbegtime : {
 				validators : {
-					notEmpty : {
-						message : '合作时间不能为空'
-					},  
+//					notEmpty : {
+//						message : '合作时间不能为空'
+//					},  
 					callback: {
 						message: '开始日期不能大于结束日期',
 						callback:function(value, validator,$field,options){
@@ -320,9 +320,9 @@ function validatorRegForm(){
 			},
 			regendtime : {
 				validators : {
-					notEmpty : {
-						message : '合作时间不能为空'
-					},  
+//					notEmpty : {
+//						message : '合作时间不能为空'
+//					},  
 					callback: {
 						message: '结束日期不能小于开始日期',
 						callback:function(value, validator,$field){
@@ -332,13 +332,13 @@ function validatorRegForm(){
 					}
 				}
 			},
-			regcontent : {
-				validators : {
-					notEmpty : {
-						message : '合作内容不能为空'
-					}
-				}
-			},
+//			regcontent : {
+//				validators : {
+//					notEmpty : {
+//						message : '合作内容不能为空'
+//					}
+//				}
+//			},
 			regcontact : {
 				validators : {
 //					notEmpty : {
