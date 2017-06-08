@@ -11,9 +11,9 @@ public class Tb_quyuxingxiangmu {
 	private String regposition;//地理位置
 	private String regschedule;//项目阶段
 	private String regrelation;//关系情况
-	private double regplanarea;//规划面积
-	private double regplaninvest;//计划投资
-	private double reglandarea;//征地面积
+	private Double regplanarea;//规划面积
+	private Double regplaninvest;//计划投资
+	private Double reglandarea;//征地面积
 	private String regplanareas;//多期规划面积
 	private String regplaninvests;//多期投资
 	private String reglandareas;//多期征地面积
@@ -31,7 +31,7 @@ public class Tb_quyuxingxiangmu {
 	private String regpartcharge;//合作单位负责人
 	private String regparttel;//合作单位负责人电话
 	private String regterms;//合作方式
-	private double reinvest;//合作投资额
+	private Double reinvest;//合作投资额
 	private String regcontent;//合作内容
 	private String regcontact;//联系人
 	private String regpost;//职务
@@ -47,6 +47,20 @@ public class Tb_quyuxingxiangmu {
 	private String search;//搜索内容
 	
 	
+
+
+	public String getRegbegtime() {
+		return regbegtime;
+	}
+	public void setRegbegtime(String regbegtime) {
+		this.regbegtime = regbegtime;
+	}
+	public String getRegendtime() {
+		return regendtime;
+	}
+	public void setRegendtime(String regendtime) {
+		this.regendtime = regendtime;
+	}
 	public String getRegplanareas() {
 		return regplanareas;
 	}
@@ -137,24 +151,6 @@ public class Tb_quyuxingxiangmu {
 	public void setRegrelation(String regrelation) {
 		this.regrelation = regrelation;
 	}
-	public double getRegplanarea() {
-		return regplanarea;
-	}
-	public void setRegplanarea(double regplanarea) {
-		this.regplanarea = regplanarea;
-	}
-	public double getRegplaninvest() {
-		return regplaninvest;
-	}
-	public void setRegplaninvest(double regplaninvest) {
-		this.regplaninvest = regplaninvest;
-	}
-	public double getReglandarea() {
-		return reglandarea;
-	}
-	public void setReglandarea(double reglandarea) {
-		this.reglandarea = reglandarea;
-	}
 	public String getRegbasic() {
 		return regbasic;
 	}
@@ -197,18 +193,6 @@ public class Tb_quyuxingxiangmu {
 	public void setRegchargetel(String regchargetel) {
 		this.regchargetel = regchargetel;
 	}
-	public String getRegbegtime() {
-		return regbegtime;
-	}
-	public void setRegbegtime(String regbegtime) {
-		this.regbegtime = regbegtime;
-	}
-	public String getRegendtime() {
-		return regendtime;
-	}
-	public void setRegendtime(String regendtime) {
-		this.regendtime = regendtime;
-	}
 	public String getRegdevelopment() {
 		return regdevelopment;
 	}
@@ -238,12 +222,6 @@ public class Tb_quyuxingxiangmu {
 	}
 	public void setRegterms(String regterms) {
 		this.regterms = regterms;
-	}
-	public double getReinvest() {
-		return reinvest;
-	}
-	public void setReinvest(double reinvest) {
-		this.reinvest = reinvest;
 	}
 	public String getRegcontent() {
 		return regcontent;
@@ -305,5 +283,30 @@ public class Tb_quyuxingxiangmu {
 	public void setSearch(String search) {
 		this.search = search;
 	}
+	public Double getRegplanarea() {
+		return regplanarea;
+	}
+	public void setRegplanarea(Double regplanarea) {
+		this.regplanarea = regplanarea;
+	}
+	public Double getRegplaninvest() {
+		return regplaninvest;
+	}
+	public void setRegplaninvest(Double regplaninvest) {
+		this.regplaninvest = regplaninvest;
+	}
+	public Double getReglandarea() {
+		return reglandarea;
+	}
+	public void setReglandarea(Double reglandarea) {
+		this.reglandarea = reglandarea;
+	}
+	public Double getReinvest() {
+		return reinvest;
+	}
+	public void setReinvest(Double reinvest) {
+		this.reinvest = reinvest;
+	}
+
 	
 }

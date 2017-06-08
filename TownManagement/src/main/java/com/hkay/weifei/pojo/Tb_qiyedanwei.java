@@ -32,15 +32,15 @@ public class Tb_qiyedanwei {
 	private String comhonor;//单位荣誉
 	private String comcertificate;//有关证书
 	private String comdatayear;//数据年度
-	private String comlassets;//资产总额
+	private Double comlassets;//资产总额
 	private String comlassetsunit;// 资产总额货币单位
-	private String comliabilities;//负债总额
+	private Double comliabilities;//负债总额
 	private String comliabunit;// 负债总额货币单位
-	private String comincomeyear;//年度营业收入
+	private Double comincomeyear;//年度营业收入
 	private String cominyearunit;// 年度营业收入货币单位
-	private String comnetprofiyear;//年度净利润
+	private Double comnetprofiyear;//年度净利润
 	private String comnetyearunit;// 年度净利润货币单位
-	private String comtaxesyear;//年度纳税额
+	private Double comtaxesyear;//年度纳税额
 	private String comtaxyearunit;// 年度纳税额货币单位
 	private String comdevelop;//发展方向
 	private String comindustry;//投资偏好
@@ -442,44 +442,45 @@ public class Tb_qiyedanwei {
 		this.comcreator = comcreator;
 	}
 
-	public String getComlassets() {
+	public Double getComlassets() {
 		return comlassets;
 	}
 
-	public void setComlassets(String comlassets) {
+	public void setComlassets(Double comlassets) {
 		this.comlassets = comlassets;
 	}
 
-	public String getComliabilities() {
+	public Double getComliabilities() {
 		return comliabilities;
 	}
 
-	public void setComliabilities(String comliabilities) {
+	public void setComliabilities(Double comliabilities) {
 		this.comliabilities = comliabilities;
 	}
 
-	public String getComincomeyear() {
+	public Double getComincomeyear() {
 		return comincomeyear;
 	}
 
-	public void setComincomeyear(String comincomeyear) {
+	public void setComincomeyear(Double comincomeyear) {
 		this.comincomeyear = comincomeyear;
 	}
 
-	public String getComnetprofiyear() {
+	public Double getComnetprofiyear() {
 		return comnetprofiyear;
 	}
 
-	public void setComnetprofiyear(String comnetprofiyear) {
+	public void setComnetprofiyear(Double comnetprofiyear) {
 		this.comnetprofiyear = comnetprofiyear;
 	}
 
-	public String getComtaxesyear() {
+	public Double getComtaxesyear() {
 		return comtaxesyear;
 	}
 
-	public void setComtaxesyear(String comtaxesyear) {
+	public void setComtaxesyear(Double comtaxesyear) {
 		this.comtaxesyear = comtaxesyear;
 	}
+
 
 }

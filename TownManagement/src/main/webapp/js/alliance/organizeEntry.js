@@ -165,13 +165,13 @@ function validatorOrgForm(){
 					}
 				}
 			},
-			orgrelation : {
-				validators : {
-					notEmpty : {
-						message : '关系情况不能为空'
-					}
-				}
-			},
+//			orgrelation : {
+//				validators : {
+//					notEmpty : {
+//						message : '关系情况不能为空'
+//					}
+//				}
+//			},
 			orgcompetent : {
 				validators : {
 					notEmpty : {
@@ -186,7 +186,7 @@ function validatorOrgForm(){
 //					}
 				}
 			},
-			orgrovince : {
+			orgprovince : {
 				validators : {
 					notEmpty : {
 						message : '省份不能为空'
@@ -207,13 +207,13 @@ function validatorOrgForm(){
 //					}
 //				}
 //			},
-			orgaddress : {
-				validators : {
-					notEmpty : {
-						message : '具体地址不能为空'
-					}
-				}
-			},
+//			orgaddress : {
+//				validators : {
+//					notEmpty : {
+//						message : '具体地址不能为空'
+//					}
+//				}
+//			},
 			orgestablish : {
 				validators : {
 //					notEmpty : {
@@ -221,13 +221,13 @@ function validatorOrgForm(){
 //					}
 				}
 			},
-			orgoffice : {
-				validators : {
-					notEmpty : {
-						message : '办公地点不能为空'
-					}
-				}
-			},
+//			orgoffice : {
+//				validators : {
+//					notEmpty : {
+//						message : '办公地点不能为空'
+//					}
+//				}
+//			},
 			orgcreditcode: {
 				validators : {
 //					notEmpty : {
