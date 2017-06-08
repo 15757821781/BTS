@@ -243,15 +243,9 @@ function validatorProjectForm(){
 			},
 			regplaninvest : {
 				validators : {
-<<<<<<< HEAD
-					notEmpty : {
-						message : '计划投资不能为空'
-					},
-=======
 //					notEmpty : {
 //						message : '规划面积不能为空'
 //					},
->>>>>>> refs/remotes/origin/master
 					regexp : {
 						regexp : /^\d+(\.\d{1,3})?$/,
 						message : '请输入最多3位小数的数字'
@@ -261,11 +255,7 @@ function validatorProjectForm(){
 			reglandarea : {
 				validators : {
 //					notEmpty : {
-<<<<<<< HEAD
 //						message : '征地面积不能为空'
-=======
-//						message : '规划面积不能为空'
->>>>>>> refs/remotes/origin/master
 //					},
 					regexp : {
 						regexp : /^\d+(\.\d{1,3})?$/,
