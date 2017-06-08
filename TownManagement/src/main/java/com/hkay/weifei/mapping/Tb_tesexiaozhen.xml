@@ -94,6 +94,7 @@
 			LEFT JOIN tb_area_city c on a.feacity=c.code
 			LEFT JOIN tb_area_town d on a.featown=d.code
 			where 1=1
+			and a.visual=1
 		<if test="search!=null and search!=''">
 		    and (a.feaname like '%${search}%' or a.feanumber like '%${search}%' or a.fealevel like '%${search}%')
 		</if>
@@ -109,6 +110,7 @@
 			LEFT JOIN tb_area_city c on a.feacity=c.code
 			LEFT JOIN tb_area_town d on a.featown=d.code
 			where 1=1
+			and a.visual=1
 			<if test="search!=null and search!=''">
 				and (a.feaname like '%${search}%' or a.feanumber like '%${search}%' or
 				a.fealevel like '%${search}%')
