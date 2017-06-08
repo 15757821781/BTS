@@ -170,9 +170,6 @@ var fillForm = function(form,data) {
 			var id=values[i].name;
 		    if(id==key){
 		    	if($("#"+key).hasClass("selectpicker")){
-		    		if(value==null){
-		    			console.log(value)
-		    		}
 		    		var arr=value.split(",");
 					$('#'+key).selectpicker();
 					$('#'+key).selectpicker('val', arr);
@@ -247,7 +244,7 @@ var selectCreate = function(id,url,data){
 			 $("#" + id).find('option').remove();
 			 var data=result.data;
 			 if (data != null) {
-				 $("#" + id).append("<option></option>");
+				 $("#" + id).append("<option selected = 'selected'></option>");
 				 $.each(data,function(i){
 					 $("#"+id).append("<option value="+data[i].value+">"+data[i].name+"</option>");
 				 })
