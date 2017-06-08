@@ -9,9 +9,9 @@ public class Tb_chubeixiangmu {
 	private String restown;// 乡县	
 	private String restownship;//乡镇街道
 	private String resjoinway;//合作方向
-	private double resplanarea;//规划面积
-	private double resplaninvest;//计划投资
-	private double reslandarea;//征地面积
+	private Double resplanarea;//规划面积
+	private Double resplaninvest;//计划投资
+	private Double reslandarea;//征地面积
 	private String resposition;//地理位置
 	private String rebasic;//基本情况
 	private String resbuildcontent;//规划建设内容
@@ -91,22 +91,22 @@ public class Tb_chubeixiangmu {
 	public void setRestownship(String restownship) {
 		this.restownship = restownship;
 	}
-	public double getResplanarea() {
+	public Double getResplanarea() {
 		return resplanarea;
 	}
-	public void setResplanarea(double resplanarea) {
+	public void setResplanarea(Double resplanarea) {
 		this.resplanarea = resplanarea;
 	}
-	public double getResplaninvest() {
+	public Double getResplaninvest() {
 		return resplaninvest;
 	}
-	public void setResplaninvest(double resplaninvest) {
+	public void setResplaninvest(Double resplaninvest) {
 		this.resplaninvest = resplaninvest;
 	}
-	public double getReslandarea() {
+	public Double getReslandarea() {
 		return reslandarea;
 	}
-	public void setReslandarea(double reslandarea) {
+	public void setReslandarea(Double reslandarea) {
 		this.reslandarea = reslandarea;
 	}
 	public String getResposition() {
