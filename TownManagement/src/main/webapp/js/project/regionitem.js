@@ -49,11 +49,11 @@ $(document).ready(function() {
 });
 //
 function addText(v){
-	$('.addel-delete').hide();
+	$('.addel_delete').hide();
 	var num = $('.add_reg').length;
 	$('<div class="form-group add_reg">'
 		+'<div class="col-sm-2" style="text-align: right;">'
-		+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+		+'<button type="button" class="btn btn-danger addel_delete" style="margin-right:4px;" onClick="deleteText(this)">'
 		+'<i class="fa fa-remove"> </i></button>'
 		+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
 		+'</div><div class="col-sm-2">'
@@ -72,7 +72,7 @@ function addText(v){
 //
 function deleteText(v){
 	$(v).parent().parent(".add_reg").remove();
-	$('.addel-delete:last').show();
+	$('.addel_delete:last').show();
 }
 //
 function readyOnly(v) {
