@@ -28,6 +28,17 @@ $(document).ready(function() {
         $('#regionitem').bootstrapValidator('revalidateField', 'regbegtime');
         $('#regionitem').bootstrapValidator('revalidateField', 'regendtime');
 	});
+	// 动态增减行初始化
+	 $('.addel-reg').addel({
+			animation: {
+				duration: 100
+			},
+		    events: {
+		        added: function (event) {
+		        	invAddFieldValidator();
+		        }
+		    }
+	    });
 	createAreaSelect("regprovince","regcity","regtown");
 	//初始化文件上传控件
 	initFileInput("regfile1","城市背景图",1);
@@ -829,6 +840,41 @@ function validatorProjectForm(){
 	$('#regionitem').bootstrapValidator('resetForm', false);
 	$('#invitem').bootstrapValidator('resetForm', false);
 	$('#resitem').bootstrapValidator('resetForm', false);
+}
+function invAddFieldValidator(){
+	$('#regionitem').bootstrapValidator('addField', 'regcontact', {
+		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
+			regexp : {
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});
+	$('#regionitem').bootstrapValidator('addField', 'regpost', {
+		validators : {
+//			notEmpty : {
+//				message : '职务不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的职务'
+			}
+		}
+	});  
+	$('#regionitem').bootstrapValidator('addField', 'regcontacttel', {
+		validators : {
+//			notEmpty : {
+//				message : '联系电话不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
+			}
+		}
+	});
 }
 function invAddFieldValidator(){
 	$('#invitem').bootstrapValidator('addField', 'invcontact', {
