@@ -211,9 +211,9 @@ function validatorProjectForm(){
 			},
 			regposition : {
 				validators : {
-					notEmpty : {
-						message : '地理位置不能为空'
-					}
+//					notEmpty : {
+//						message : '地理位置不能为空'
+//					}
 				}
 			},
 			regschedule : {
@@ -255,7 +255,7 @@ function validatorProjectForm(){
 			reglandarea : {
 				validators : {
 //					notEmpty : {
-//						message : '规划面积不能为空'
+//						message : '征地面积不能为空'
 //					},
 					regexp : {
 						regexp : /^\d+(\.\d{1,3})?$/,
@@ -265,30 +265,30 @@ function validatorProjectForm(){
 			},
 			regbasic : {
 				validators : {
-					notEmpty : {
-						message : '基本情况不能为空'
-					}
+//					notEmpty : {
+//						message : '基本情况不能为空'
+//					}
 				}
 			},
 			regspeed : {
 				validators : {
-					notEmpty : {
-						message : '进度情况不能为空'
-					}
+//					notEmpty : {
+//						message : '进度情况不能为空'
+//					}
 				}
 			},
 			regnowindustry : {
 				validators : {
-					notEmpty : {
-						message : '现状产业不能为空'
-					}
+//					notEmpty : {
+//						message : '现状产业不能为空'
+//					}
 				}
 			},
 			regprimeindustry : {
 				validators : {
-					notEmpty : {
-						message : '主导产业不能为空'
-					}
+//					notEmpty : {
+//						message : '产业方向不能为空'
+//					}
 				}
 			},
 //			regdeveloper : {
