@@ -152,11 +152,11 @@ function querydetail(regid) {
 				var reglandareas=data.data[0].reglandareas.split(",");
 				$(".add_reg:gt(0)").remove();
 				$.each(regplanareas,function(i,item){
-					$('.addel-delete').hide();
+					$('.addel_delete').hide();
 					var num = $('.add_reg').length;
 					$('<div class="form-group add_reg">'
 						+'<div class="col-sm-2" style="text-align: right;">'
-						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+						+'<button type="button" class="btn btn-danger addel_delete" style="margin-right:4px;" onClick="deleteText(this)">'
 						+'<i class="fa fa-remove"> </i></button>'
 						+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
 						+'</div><div class="col-sm-2">'
@@ -188,7 +188,7 @@ function querydetail(regid) {
 //展示修改界面
 function updateinfo(regid){
 	$("#regfieldset").removeAttr("disabled");
-	$('#regform').bootstrapValidator('resetForm', false);
+	$('#regionitem').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/regionmanage/queryregionitemdetail",
 		async: false,
@@ -251,11 +251,11 @@ function updateinfo(regid){
 				var reglandareas=data.data[0].reglandareas.split(",");
 				$(".add_reg:gt(0)").remove();
 				$.each(regplanareas,function(i,item){
-					$('.addel-delete').hide();
+					$('.addel_delete').hide();
 					var num = $('.add_reg').length;
 					$('<div class="form-group add_reg">'
 						+'<div class="col-sm-2" style="text-align: right;">'
-						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+						+'<button type="button" class="btn btn-danger addel_delete" style="margin-right:4px;" onClick="deleteText(this)">'
 						+'<i class="fa fa-remove"> </i></button>'
 						+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
 						+'</div><div class="col-sm-2">'

@@ -60,11 +60,11 @@ $(document).ready(function() {
 });
 //
 function addText(v){
-	$('.addel-delete').hide();
+	$('.addel_delete').hide();
 	var num = $('.add_reg').length;
 	$('<div class="form-group add_reg">'
 		+'<div class="col-sm-2" style="text-align: right;">'
-		+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;" onClick="deleteText(this)">'
+		+'<button type="button" class="btn btn-danger addel_delete" style="margin-right:4px;" onClick="deleteText(this)">'
 		+'<i class="fa fa-remove"> </i></button>'
 		+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
 		+'</div><div class="col-sm-2">'
@@ -83,7 +83,7 @@ function addText(v){
 //
 function deleteText(v){
 	$(v).parent().parent(".add_reg").remove();
-	$('.addel-delete:last').show();
+	$('.addel_delete:last').show();
 }
 //
 function readyOnly(v) {
@@ -115,6 +115,41 @@ function addRegValidator(){
 			regexp : {
 				regexp : /^(?:0|[1-9]\d*)(\.\d{1,3})?$/,
 				message : '请输入最多3位小数的数字'
+			}
+		}
+	});
+}
+function regAddFieldValidator(){
+	$('#regionitem').bootstrapValidator('addField', 'regcontact', {
+		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
+			regexp : {
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});
+	$('#regionitem').bootstrapValidator('addField', 'regpost', {
+		validators : {
+//			notEmpty : {
+//				message : '职务不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的职务'
+			}
+		}
+	});  
+	$('#regionitem').bootstrapValidator('addField', 'regcontacttel', {
+		validators : {
+//			notEmpty : {
+//				message : '联系电话不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
 			}
 		}
 	});

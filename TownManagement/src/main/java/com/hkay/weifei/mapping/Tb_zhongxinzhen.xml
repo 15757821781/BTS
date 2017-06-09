@@ -127,7 +127,7 @@
 			and (a.number like '%${search}%' or a.centertownname like '%${search}%'
 			or a.townlevel like '%${search}%')
 		</if>
-		order by a.createtime desc,a.centertownid desc
+		order by b.code,c.code,d.code,a.createtime desc,a.centertownid desc
 	</select>
 	<select id="querytowninfocnt" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen"
 		resultType="Integer">
