@@ -174,7 +174,7 @@ function querydetail(invid) {
 //展示修改界面
 function updateinfo(invid){
 			$("#invfieldset").removeAttr("disabled");
-			$('#invform').bootstrapValidator('resetForm', false);
+			$('#invitem').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
 				async: false,

@@ -176,7 +176,7 @@ function querydetail(resid) {
 //展示修改界面
 function updateinfo(resid){
 	$("#resfieldset").removeAttr("disabled");
-			$('#resform').bootstrapValidator('resetForm', false);
+			$('#resitem').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/resitemmanage/queryresitemdetail",
 				async: false,

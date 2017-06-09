@@ -119,6 +119,41 @@ function addRegValidator(){
 		}
 	});
 }
+function regAddFieldValidator(){
+	$('#regionitem').bootstrapValidator('addField', 'regcontact', {
+		validators : {
+//			notEmpty : {
+//				message : '联系人不能为空'
+//			},
+			regexp : {
+				regexp :/^([\u4E00-\u9FA5]|[A-Za-z])+$/,
+				message : '请输入中文或字母'
+			}
+		}
+	});
+	$('#regionitem').bootstrapValidator('addField', 'regpost', {
+		validators : {
+//			notEmpty : {
+//				message : '职务不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的职务'
+			}
+		}
+	});  
+	$('#regionitem').bootstrapValidator('addField', 'regcontacttel', {
+		validators : {
+//			notEmpty : {
+//				message : '联系电话不能为空'
+//			},
+			regexp : {
+				regexp : /^[^,]*$/,
+				message : '请输入正确的号码'
+			}
+		}
+	});
+}
 function validatorRegForm(){
 	$('#regionitem').bootstrapValidator({
 		message : 'This value is not valid',
