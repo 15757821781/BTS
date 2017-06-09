@@ -145,18 +145,18 @@ function querydetail(regid) {
 			initDeatilFileInput('regfile4',param4);
 			initDeatilFileInput('regfile5',param5);
 			initDeatilFileInput('regfile6',param6);
+			$(".add_reg:gt(0)").remove();
 			// 处理多行展示
 			if(data.data[0].regplanareas!=null){
 				var regplanareas=data.data[0].regplanareas.split(",");
 				var regplaninvests=data.data[0].regplaninvests.split(",");
 				var reglandareas=data.data[0].reglandareas.split(",");
-				$(".add_reg:gt(0)").remove();
 				$.each(regplanareas,function(i,item){
-					$('.addel_delete').hide();
+					$('.plan_delete').hide();
 					var num = $('.add_reg').length;
 					$('<div class="form-group add_reg">'
 						+'<div class="col-sm-2" style="text-align: right;">'
-						+'<button type="button" class="btn btn-danger addel_delete" style="margin-right:4px;" onClick="deleteText(this)">'
+						+'<button type="button" class="btn btn-danger plan_delete" style="margin-right:4px;" onClick="deleteText(this)">'
 						+'<i class="fa fa-remove"> </i></button>'
 						+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
 						+'</div><div class="col-sm-2">'
@@ -171,8 +171,34 @@ function querydetail(regid) {
 						+'<input id="reglandareas" name="reglandareas" class="form-control" '
 						+'type="text" value='+reglandareas[i]+'></div>').insertAfter(".add_reg:last");
 				});
+				addRegValidator();
 			}
-//			addRegValidator();
+			var regcontact=data.data[0].regcontact.split(",");
+			var regpost=data.data[0].regpost.split(",");
+			var regcontenttel=data.data[0].regcontenttel.split(",");
+			$(".addel-target:gt(0)").remove();
+			$.each(regcontact,function(i,item){
+				if(i==0){
+					$("#regcontact").val(regcontact[i]);
+					$("#regpost").val(regpost[i]);
+					$("#regcontenttel").val(regcontenttel[i]);
+				}else{
+					$('<div class="form-group addel-target has-feedback">'
+						+'<div class="col-sm-2" style="text-align: right;">'
+						+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+						+'<i class="fa fa-plus"></i></button>'
+						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+						+'<i class="fa fa-remove"></i></button>'
+						+'<label class="control-label">联系人</label></div>'
+						+'<div class="col-sm-2">'
+						+'<input name="regcontact" id="regcontact"  class="form-control" type="text" value='+comcontact[i]+'></div>'
+						+'<label class="col-sm-2 control-label">职务</label>'
+						+'<div class="col-sm-2"><input name="regpost" id="regpost" class="form-control" type="text" value='+compost[i]+'>'
+						+'</div><label class="col-sm-2 control-label">联系电话</label>'
+						+'<div class="col-sm-2"><input name="regcontenttel" id="regcontenttel" class="form-control" type="text" value='+comcontacttel[i]+'>'
+						+'</div></div>').insertAfter(".addel-target:last");
+				}
+			});
 			// 合作禁用选项
 			if (data.data[0].regdevelopment == "0") {
 				$(".regpart").attr("disabled", "disabled");
@@ -245,17 +271,17 @@ function updateinfo(regid){
 			initDeatilFileInput('regfile5',param5);
 			initDeatilFileInput('regfile6',param6);
 			// 处理多行展示
+			$(".add_reg:gt(0)").remove();
 			if(data.data[0].regplanareas!=null){
 				var regplanareas=data.data[0].regplanareas.split(",");
 				var regplaninvests=data.data[0].regplaninvests.split(",");
 				var reglandareas=data.data[0].reglandareas.split(",");
-				$(".add_reg:gt(0)").remove();
 				$.each(regplanareas,function(i,item){
-					$('.addel_delete').hide();
+					$('.plan_delete').hide();
 					var num = $('.add_reg').length;
 					$('<div class="form-group add_reg">'
 						+'<div class="col-sm-2" style="text-align: right;">'
-						+'<button type="button" class="btn btn-danger addel_delete" style="margin-right:4px;" onClick="deleteText(this)">'
+						+'<button type="button" class="btn btn-danger plan_delete" style="margin-right:4px;" onClick="deleteText(this)">'
 						+'<i class="fa fa-remove"> </i></button>'
 						+'<label class="control-label">'+num+'期规划面积(平方公里)</label>'
 						+'</div><div class="col-sm-2">'
@@ -270,8 +296,35 @@ function updateinfo(regid){
 						+'<input id="reglandareas" name="reglandareas" class="form-control" '
 						+'type="text" value='+reglandareas[i]+'></div>').insertAfter(".add_reg:last");
 				});
+				addRegValidator();
 			}
-			addRegValidator();
+			var regcontact=data.data[0].regcontact.split(",");
+			var regpost=data.data[0].regpost.split(",");
+			var regcontenttel=data.data[0].regcontenttel.split(",");
+			$(".addel-target:gt(0)").remove();
+			$.each(regcontact,function(i,item){
+				if(i==0){
+					$("#regcontact").val(regcontact[i]);
+					$("#regpost").val(regpost[i]);
+					$("#regcontenttel").val(regcontenttel[i]);
+				}else{
+					$('<div class="form-group addel-target has-feedback">'
+						+'<div class="col-sm-2" style="text-align: right;">'
+						+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+						+'<i class="fa fa-plus"></i></button>'
+						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+						+'<i class="fa fa-remove"></i></button>'
+						+'<label class="control-label">联系人</label></div>'
+						+'<div class="col-sm-2">'
+						+'<input name="regcontact" id="regcontact"  class="form-control" type="text" value='+comcontact[i]+'></div>'
+						+'<label class="col-sm-2 control-label">职务</label>'
+						+'<div class="col-sm-2"><input name="regpost" id="regpost" class="form-control" type="text" value='+compost[i]+'>'
+						+'</div><label class="col-sm-2 control-label">联系电话</label>'
+						+'<div class="col-sm-2"><input name="regcontenttel" id="regcontenttel" class="form-control" type="text" value='+comcontacttel[i]+'>'
+						+'</div></div>').insertAfter(".addel-target:last");
+				}
+			});
+			regAddFieldValidator();
 			// 合作禁用选项
 			if (data.data[0].regdevelopment == "0") {
 				$(".regpart").attr("disabled", "disabled");
