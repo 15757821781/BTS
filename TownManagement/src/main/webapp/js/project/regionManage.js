@@ -188,7 +188,7 @@ function querydetail(regid) {
 //展示修改界面
 function updateinfo(regid){
 	$("#regfieldset").removeAttr("disabled");
-	$('#regform').bootstrapValidator('resetForm', false);
+	$('#regionitem').bootstrapValidator('resetForm', false);
 	tk.ajax({
 		url : "/TownManagement/regionmanage/queryregionitemdetail",
 		async: false,
