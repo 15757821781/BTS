@@ -203,7 +203,7 @@ var fillForm = function(form,data) {
  * url,提交路径
  * target,完成后刷新的页面
  */
-var formSubmit = function(form,url,target){
+var formSubmit = function(form,url,target,func){
 	$(form).data('bootstrapValidator').validate();
 	if (!$(form).data('bootstrapValidator').isValid()) {
 		return;
@@ -229,6 +229,9 @@ var formSubmit = function(form,url,target){
 							$("#page-wrapper").html(html);
 						}
 					});
+				}
+				if(func!=null&&typeof(func)=="function"){
+					func();
 				}
 			});
 		}
