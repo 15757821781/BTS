@@ -27,6 +27,28 @@ $(document).ready(function() {
         $('#regionitem').bootstrapValidator('revalidateField', 'regbegtime');
         $('#regionitem').bootstrapValidator('revalidateField', 'regendtime');
 	});
+	$('#regdockingtime').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 2,
+        format: "yyyy-mm-dd"
+	}).on('hide', function(e) {  
+        // 当用户改变值的时候进行验证
+		$('#regitem').bootstrapValidator('revalidateField', 'regdockingtime');
+	});
+	$('#regcontractdate').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 2,
+        format: "yyyy-mm-dd"
+	}).on('hide', function(e) {  
+        // 当用户改变值的时候进行验证
+		$('#regitem').bootstrapValidator('revalidateField', 'regcontractdate');
+	});
 	// 动态增减行初始化
 	$('.addel-reg').addel({
 		animation: {

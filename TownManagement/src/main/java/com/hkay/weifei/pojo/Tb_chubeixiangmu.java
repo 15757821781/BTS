@@ -16,6 +16,9 @@ public class Tb_chubeixiangmu {
 	private String rebasic;//基本情况
 	private String resbuildcontent;//规划建设内容
 	private String resintentions;//开发意向情况
+	private String resdockingtime;//对接时间
+	private String resdockingstage;//对接阶段
+	private String resfeedbacknode;//反馈节点
 	private String rescompetentunit;//业主单位
 	private String rescharge;//负责人
 	private String reschargetel;//负责人电话
@@ -204,5 +207,23 @@ public class Tb_chubeixiangmu {
 	}
 	public void setRescontactway(String rescontactway) {
 		this.rescontactway = rescontactway;
+	}
+	public String getResdockingtime() {
+		return resdockingtime;
+	}
+	public void setResdockingtime(String resdockingtime) {
+		this.resdockingtime = resdockingtime;
+	}
+	public String getResdockingstage() {
+		return resdockingstage;
+	}
+	public void setResdockingstage(String resdockingstage) {
+		this.resdockingstage = resdockingstage;
+	}
+	public String getResfeedbacknode() {
+		return resfeedbacknode;
+	}
+	public void setResfeedbacknode(String resfeedbacknode) {
+		this.resfeedbacknode = resfeedbacknode;
 	}
 }
