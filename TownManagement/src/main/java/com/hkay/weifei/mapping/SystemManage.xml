@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.SystemManageDao">
+	<resultMap id="Tb_user" type="com.hkay.weifei.pojo.Tb_user" />
+	<!-- 查询用户列表 -->
+	<select id="queryUserList" parameterType="com.hkay.weifei.pojo.Tb_user"
+		resultMap="Tb_user">
+		select a.id as userid,a.name,a.account,a.password,
+		a.password as repassword,a.userdata,a.roleid,a.number
+		from tb_user a
+		where 1=1
+		and a.state!=0
+		and a.id !=1
+	</select>
+	<!-- 查询用户 -->
+	<select id="queryUsercnt" parameterType="com.hkay.weifei.pojo.Tb_user"
+		resultType="Integer">
+		select count(*) from tb_user
+		where 1=1
+		and state!=0
+		and id !=1
+	</select>
+	<!-- 查询角色组成下拉框 -->
+	<select id="queryRoleForCombo" parameterType="com.hkay.weifei.pojo.Tb_user"
+		resultType="com.hkay.weifei.pojo.Tb_role">
+		select a.id as value,a.name from tb_role a
+		where 1=1
+	</select>
+	<!-- 查询账号是否存在 -->
+	<select id="queryAccountExist" parameterType="com.hkay.weifei.pojo.Tb_user"
+		resultType="com.hkay.weifei.pojo.Tb_user">
+		select * from tb_user a
+		where 1=1
+		and a.account = #{account}
+	</select>
+	<!-- 插入用户 -->
+	<insert id="insertUserInfo" parameterType="com.hkay.weifei.pojo.Tb_user">
+	    insert into tb_user(
+	    	name,
+	    	account,
+	    	password,
+	    	number,
+	    	userdata,
+	    	roleid
+	    )values(
+	    	#{name},
+	    	#{account},
+	    	#{password},
+	    	#{number},
+	    	#{userdata},
+	    	#{roleid}
+	    )
+	</insert>
+	<!-- 查看用户详情 -->
+		<select id="queryUserDetail" parameterType="com.hkay.weifei.pojo.Tb_user"
+		resultType="com.hkay.weifei.pojo.Tb_user">
+		select a.id as userid,a.name,a.account,a.password,
+		a.password as repassword,a.userdata,a.roleid,a.number
+		from tb_user a
+		where 1=1
+		and a.id = #{userid}
+	</select>
+	<!-- 更新用户信息 -->
+	<update id="updateUserInfo" parameterType="com.hkay.weifei.pojo.Tb_user">
+		update tb_user
+		set
+		name=#{name},
+		<if test="password!=null and password!=''">
+		    password=#{password},
+		</if>
+		roleid=#{roleid},
+		userdata=#{userdata}
+		where id=#{userid}
+	</update>
+</mapper>

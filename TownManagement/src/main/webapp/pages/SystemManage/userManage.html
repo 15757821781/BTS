@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户管理</title>
+<link rel="stylesheet"	href="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.min.css" />
+<!-- select CSS -->
+<link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
+<!-- 表单验证 -->
+<link href="/TownManagement/dist/css/bootstrapValidator.css"  rel="stylesheet" />
+</head>
+<body>
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header">用户管理</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div id="toolbar">
+				<button id="import_userinfo" class="btn btn-default">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>新增
+				</button>
+			</div>
+			<table id="usermanagetable"></table>
+		</div>
+	</div>
+	<!-- 模态框（Modal） 小镇详情-->
+	<div class="modal fade" id="importuser_modal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" style="padding-top: 5%;"
+		data-backdrop="static">
+		<div class="modal-dialog" style="width: 35%;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="btn btn-default btn-close pull-right"
+						title="关闭" data-dismiss="modal" aria-hidden="true">
+						<i class="glyphicon glyphicon-remove"></i>
+					</button>
+					<h3 class="modal-title">用户信息</h3>
+				</div>
+				<div class="modal-body" id="userinfobody">
+					<fieldset id="userfieldset">
+						<form class="form-horizontal" role="form"
+							enctype="multipart/form-data" id="userform" method="post">
+							<div class="form-group">
+								<label class="col-sm-4 control-label">用户名称</label>
+								<div class="col-sm-6">
+									<input name="name" id="name" class="form-control" type="text"
+										placeholder="请填写用户名称" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">用户编号</label>
+								<div class="col-sm-6">
+									<input name="number" id="number" class="form-control"
+										type="text" placeholder="系统自动生成" disabled="disabled" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">账号</label>
+								<div class="col-sm-6">
+									<input name="account" id="account" class="form-control"
+										type="text" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">密码</label>
+								<div class="col-sm-6">
+									<input name="password" id="password" class="form-control"
+										type="password" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">确认密码</label>
+								<div class="col-sm-6">
+									<input name="repassword" id="repassword" class="form-control"
+										type="password" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">用户角色</label>
+								<div class="col-sm-6">
+									<select name="roleid" id="roleid"
+										class="selectpicker show-tick form-control" data-size="5">
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">数据权限</label>
+								<div class="col-sm-6">
+									<select name="userdata" id="userdata"
+										class="selectpicker show-tick form-control" data-size="5">
+										<option value="1">部分阅读</option>
+										<option value="2">完全阅读</option>
+										<option value="3">编辑</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-5 control-label"></label>
+								<button type="button" id="user_submit"
+									class="col-sm-2 btn btn-primary"
+									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
+								<button type="button" id="user_update"
+									class="col-sm-2 btn btn-primary"
+									style="width: auto; min-width: 90px; margin-top: 20px; display: none;">更新</button>
+								<label class="col-sm-5 control-label"></label>
+								<!-- id -->
+								<input type="hidden" value="" name="userid" id="userid">
+							</div>
+						</form>
+					</fieldset>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+	<!-- 表格插件 -->
+	<script type="text/javascript"	src="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.js"></script>
+	<script type="text/javascript"	src="/TownManagement/tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+	<!-- 表单验证 -->
+	<script type="text/javascript" 	src="/TownManagement/dist/js/bootstrapValidator.js"></script>
+	<script type="text/javascript" 	src="/TownManagement/dist/js/language/zh_CN.js"></script>
+	<!-- Select JavaScript -->
+	<script src="/TownManagement/dist/js/bootstrap-select.js"></script>
+	<script type="text/javascript" 	src="/TownManagement/js/SystemManage/userManage.js"></script>
+</body>
+</html>
