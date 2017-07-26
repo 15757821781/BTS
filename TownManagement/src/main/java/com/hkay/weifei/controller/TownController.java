@@ -99,7 +99,17 @@ public class TownController {
 	@RequestMapping("/querytowndetail")
 	@ResponseBody
 	public RetAjax querytowndetail(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen) throws UnsupportedEncodingException{
+		HttpSession session = request.getSession();
+		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		List<Tb_zhongxinzhen> tb_zhongxinzhens = this.townservice.querytowndetail(tb_zhongxinzhen);
+		if(user.getUserdata().equals("1")&&tb_zhongxinzhens!=null){
+			tb_zhongxinzhens.get(0).setPartycommittee("******");
+			tb_zhongxinzhens.get(0).setCommittelnumber("******");
+			tb_zhongxinzhens.get(0).setCommittel("******");
+			tb_zhongxinzhens.get(0).setMayortelnumber("******");
+			tb_zhongxinzhens.get(0).setMayortel("******");
+			tb_zhongxinzhens.get(0).setContactstel("******");
+		}
 		result=RetAjax.onQueryDetail(tb_zhongxinzhens);
 		return result;
 	}

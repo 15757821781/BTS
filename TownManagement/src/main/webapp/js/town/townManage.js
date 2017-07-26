@@ -59,9 +59,14 @@ $(document).ready(function() {
             width :	'20%',
             align : 'center',
             formatter:function(value,row,index){
-            	var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.centertownid+')">查看</a>';
-            	var update = '<a href="javascript:void(0)" onclick="updatetowninfo('+row.centertownid+')">修改</a>'
-            	return query+"&nbsp"+update;
+            	if(sysOfUserPermission==3){
+            		var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.centertownid+')">查看</a>';
+                	var update = '<a href="javascript:void(0)" onclick="updatetowninfo('+row.centertownid+')">修改</a>'
+                	return query+"&nbsp"+update;
+            	}else{
+            		var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.centertownid+')">查看</a>';
+                	return query;
+            	}
             }
 		} ]
 	});

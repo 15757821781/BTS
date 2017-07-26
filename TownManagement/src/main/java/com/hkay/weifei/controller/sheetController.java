@@ -99,17 +99,20 @@ public class sheetController {
 	public RetAjax loadPages(HttpServletRequest request,Pages page) {
 		HttpSession session = request.getSession();
 		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
-		if(user==null){
-//			result = RetAjax.lostLoginInfo();
-		}else{
+//		if(user==null){
+//		}else{
 			try{
+				page.setRoleid(user.getRoleid());
 				List<Pages> pages = this.wflxservice.queryPages(page);
+				if(pages!=null){
+					pages.get(0).setUserdata(user.getUserdata());
+				}
 				result = RetAjax.onSuccess(pages,"");
 			}catch(Exception e){
 				Log.error("error----------loadPages:"+e.getMessage());
 				e.printStackTrace();
 			}
-		}
+//		}
 		return result;
 	}
 }

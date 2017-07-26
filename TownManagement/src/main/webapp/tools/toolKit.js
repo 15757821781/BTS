@@ -1,3 +1,4 @@
+var sysOfUserPermission;
 var tk = tk || {};
 tk.getFn = function(fnName, target, arg0, arg1, arg2, arg3) {
 	var fn = null;
