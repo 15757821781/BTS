@@ -38,13 +38,22 @@ $(document).ready(function() {
 			title : '用户账号',
 			align : 'center',
 		}, {
-			field : 'role',
+			field : 'rolename',
 			title : '用户角色',
 			align : 'center',
 		}, {
 			field : 'userdata',
 			title : '数据权限',
 			align : 'center',
+			formatter:function(value,row,index){
+            	if(value==1){
+            		return "部分阅读权限";
+            	}else if(value==2){
+            		return "完全阅读权限";
+            	}else if(value==3){
+            		return "编辑权限";
+            	}
+            }
 		}, {
             title : '操作',
             field : 'userid',

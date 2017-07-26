@@ -122,7 +122,7 @@ public class RetAjax {
 		if(users.size()==1&&!users.get(0).getAccount().equals("")&&!users.get(0).getPassword().equals("")){
 			retAjax.state=TypeStatusConstant.loginsuccess;
 			retAjax.message=TypeStatusConstant.login_success;
-			retAjax.data=null;
+			retAjax.data=users.get(0);
 			session.setAttribute("town_LoginData", users.get(0));
 		}else{
 			retAjax.state=TypeStatusConstant.loginfail;
