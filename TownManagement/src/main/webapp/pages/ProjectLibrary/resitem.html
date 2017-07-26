@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/TownManagement/dist/css/bootstrapValidator.css" />
 <!-- 文件上传插件 -->
 <link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
+<!-- 时间插件 -->
+<link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
 <body>
 	<div class="row">
 		<div class="col-lg-12">
@@ -98,6 +100,24 @@
 								<label class="col-sm-2 control-label">开发意向情况</label>
 								<div class="col-sm-10">
 									<textarea id="resintentions" name="resintentions" class="form-control" rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">对接时间</label>
+								<div class="col-sm-2">
+									<input id="resdockingtime" name="resdockingtime"
+										class="datepicker form-control"  type="text"
+										placeholder="选择时间">
+								</div>
+								<label class="col-sm-2 control-label">对接阶段</label>
+								<div class="col-sm-2">
+									<input id="resdockingstage" name="resdockingstage"
+										class="form-control" type="text">
+								</div>
+								<label class="col-sm-2 control-label">反馈节点</label>
+								<div class="col-sm-2">
+									<input id="resfeedbacknode" name="resfeedbacknode" class="form-control"
+										type="text">
 								</div>
 							</div>
 							<div class="form-group">
@@ -209,6 +229,9 @@
 	<!-- 文件上传插件 -->
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script>
+	<!-- 时间插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
 	<!-- 增减行插件 -->
 	<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
 	<script type="text/javascript" src="/TownManagement/js/project/projectEntry.js"></script>

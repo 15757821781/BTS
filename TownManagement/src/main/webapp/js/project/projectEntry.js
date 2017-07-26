@@ -4,6 +4,28 @@ $(document).ready(function() {
 		noneSelectedText : "请选择"
 		});
 	//-----------区域性项目---------------//
+	$('#regdockingtime').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 2,
+        format: "yyyy-mm-dd"
+	}).on('hide', function(e) {  
+        // 当用户改变值的时候进行验证
+		$('#regitem').bootstrapValidator('revalidateField', 'regdockingtime');
+	});
+	$('#regcontractdate').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 2,
+        format: "yyyy-mm-dd"
+	}).on('hide', function(e) {  
+        // 当用户改变值的时候进行验证
+		$('#regitem').bootstrapValidator('revalidateField', 'regcontractdate');
+	});
 	$('#regbegtime').datetimepicker({
 		language: "zh-CN",
         autoclose: true,//选中之后自动隐藏日期选择框
@@ -76,6 +98,18 @@ $(document).ready(function() {
 	initFileInput("invfile6","详细规划图",1);
 	//------------结束-------------------//
 	//-----------储备项目---------------//
+	// 时间选择器初始化
+	$('#resdockingtime').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 2,
+        format: "yyyy-mm-dd"
+	}).on('hide', function(e) {  
+        // 当用户改变值的时候进行验证
+		$('#resitem').bootstrapValidator('revalidateField', 'comestablish');
+	});
 	// 加载区县信息下拉框
     createAreaSelect("resprovince","rescity","restown");
 //	

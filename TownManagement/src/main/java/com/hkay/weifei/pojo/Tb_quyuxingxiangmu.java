@@ -19,6 +19,8 @@ public class Tb_quyuxingxiangmu {
 	private String reglandareas;//多期征地面积
 	private String regbasic;//基本情况
 	private String regspeed;//进度情况
+	private String regdockingtime;//对接时间
+	private String regcontractdate;//合同日期
 	private String regnowindustry;//优势产业
 	private String regprimeindustry;//产业方向
 	private String regdeveloper;//牵头单位
@@ -306,6 +308,18 @@ public class Tb_quyuxingxiangmu {
 	}
 	public void setReinvest(Double reinvest) {
 		this.reinvest = reinvest;
+	}
+	public String getRegdockingtime() {
+		return regdockingtime;
+	}
+	public void setRegdockingtime(String regdockingtime) {
+		this.regdockingtime = regdockingtime;
+	}
+	public String getRegcontractdate() {
+		return regcontractdate;
+	}
+	public void setRegcontractdate(String regcontractdate) {
+		this.regcontractdate = regcontractdate;
 	}
 
 	
