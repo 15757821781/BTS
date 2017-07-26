@@ -2,12 +2,14 @@ package com.hkay.weifei.service.impl;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.hkay.weifei.Dao.SystemManageDao;
+import com.hkay.weifei.pojo.Pages;
 import com.hkay.weifei.pojo.Tb_role;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.SystemManageService;
@@ -71,6 +73,60 @@ public class SystemManageServiceImpl<UserRoleDao> implements SystemManageService
 			tb_user.setPassword(null);
 		}
 		return this.systemManageDao.updateUserInfo(tb_user);
+	}
+
+	@Override
+	public List<Pages> queryMenusPage(Pages pages) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.queryMenusPage(pages);
+	}
+
+	@Override
+	public List<Pages> queryMenusChild(Pages pages) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.queryMenusChild(pages);
+	}
+
+	@Override
+	public int insertRole(Tb_role tb_role) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.insertRole(tb_role);
+	}
+
+	@Override
+	public int insertRoleMenuMapping(List<Map<String, String>> pages) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.insertRoleMenuMapping(pages);
+	}
+
+	@Override
+	public List<Tb_user> queryRoleList(Tb_role role) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.queryRoleList(role);
+	}
+
+	@Override
+	public int queryRoleCnt(Tb_role role) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.queryRoleCnt(role);
+	}
+
+	@Override
+	public List<Tb_role> queryRoleDetail(Tb_role role) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.queryRoleDetail(role);
+	}
+
+	@Override
+	public int updateRoleInfo(Tb_role tb_role) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteRolePageMapping(Tb_role tb_role) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.deleteRolePageMapping(tb_role);
 	}
 
 }

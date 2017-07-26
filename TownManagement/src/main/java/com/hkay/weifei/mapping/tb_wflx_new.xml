@@ -35,6 +35,7 @@
 	</insert>
 	<select id="queryPages" parameterType="com.hkay.weifei.pojo.Pages" resultType="com.hkay.weifei.pojo.Pages">
 	    select t.* from tb_pages t
+	    LEFT JOIN tb_role_page_mapping a ON a.pageid = t.PAGEID
 	    where 1=1
 	    <if test="parentid!=null and parentid!=''">
 	        and t.parentid=#{parentid}
@@ -43,6 +44,7 @@
 	        and t.pagelevel=#{pagelevel}
 	    </if>
 	    and t.active =1
+	    AND a.roleid = #{roleid}
 	    order by t.pagegroup,t.pagelevel,t.pageid
 	</select>
 </mapper>

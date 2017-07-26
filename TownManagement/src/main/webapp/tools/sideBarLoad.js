@@ -9,6 +9,7 @@ $(document).ready(function() {
        	dataType: "json",
         succ: function(list){
         	if(list.data.length!=0){
+        		sysOfUserPermission = list.data[0].userdata;
         		$.each(list.data, function(i) {
         		    if(list.data[i].pagelevel=="1"){
         		    	$('#side-menu').append('<li><a><i class="fa fa-dashboard fa-fw"></i> '+list.data[i].pagename+'<span class="fa arrow"></span></a><ul class="nav nav-second-level" id=pageName_'+list.data[i].pageid+'></ul></li>');

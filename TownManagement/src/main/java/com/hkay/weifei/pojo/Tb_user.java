@@ -23,6 +23,17 @@ public class Tb_user {
 	
 	private String repassword;// 重复密码
 	
+	private String rolename;// 角色名称
+	
+	
+	public String getRolename() {
+		return rolename;
+	}
+
+	public void setRolename(String rolename) {
+		this.rolename = rolename;
+	}
+
 	public String getRepassword() {
 		return repassword;
 	}

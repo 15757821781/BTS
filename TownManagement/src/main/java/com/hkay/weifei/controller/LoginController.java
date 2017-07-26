@@ -1,9 +1,7 @@
 package com.hkay.weifei.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +15,6 @@ import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.LoginService;
 import com.hkay.weifei.util.MD5;
 import com.hkay.weifei.util.RetAjax;
-import com.hkay.weifei.util.SysContent;
 
 @Controller
 @RequestMapping("/Login")
