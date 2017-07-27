@@ -94,8 +94,15 @@ public class OrganizeController {
 	 */
 	@RequestMapping("/queryOrgDetail")
 	@ResponseBody
-	public RetAjax queryOrgDetail(Tb_shehuizuzhidanwei tb_shehuizuzhidanwei) {
+	public RetAjax queryOrgDetail(HttpServletRequest request,Tb_shehuizuzhidanwei tb_shehuizuzhidanwei)throws UnsupportedEncodingException {
+		HttpSession session = request.getSession();
+		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		List<Tb_shehuizuzhidanwei> tb_shehuizuzhidanweis = this.organizeService.queryOrgDetail(tb_shehuizuzhidanwei);
+		if(user.getUserdata().equals("1")&&tb_shehuizuzhidanweis!=null){
+			tb_shehuizuzhidanweis.get(0).setOrgcontact("******");
+			tb_shehuizuzhidanweis.get(0).setOrgpost("******");
+			tb_shehuizuzhidanweis.get(0).setOrgcontacttel("******");
+		}
 		result = RetAjax.onQueryDetail(tb_shehuizuzhidanweis);
 		return result;
 	}

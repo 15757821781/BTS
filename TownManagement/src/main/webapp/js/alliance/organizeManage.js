@@ -63,9 +63,13 @@ $(document).ready(function() {
             width :	'20%',
             align : 'center',
             formatter:function(value,row,index){
-            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.orgid+')">查看</a>';
-            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.orgid+')">修改</a>'
-            	return query+"&nbsp"+update;
+            	if(sysOfUserPermission==3){
+	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.orgid+')">查看</a>';
+	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.orgid+')">修改</a>'
+	            	return query+"&nbsp"+update;
+            }else{
+            	return '<a href="javascript:void(0)" onclick="querydetail('+row.orgid+')">查看</a>';
+            	}
             }
 		} ]
 	});

@@ -114,7 +114,14 @@ public class InvitemController {
 	public RetAjax queryinvitemdetail(HttpServletRequest request,Tb_zhaoshangxiangmu tb_zhaoshangxiangmu) throws UnsupportedEncodingException{
 //		Tb_zhaoshangxiangmu invitem=new Tb_zhaoshangxiangmu();
 //		invitem.setInvid(tb_zhaoshangxiangmu.getInvid());
+		HttpSession session = request.getSession();
+		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		List<Tb_zhaoshangxiangmu> tb_zhaoshangxiangmus = this.invitemservice.queryinvitemdetail(tb_zhaoshangxiangmu);
+		if(user.getUserdata().equals("1")&&tb_zhaoshangxiangmus!=null){
+			tb_zhaoshangxiangmus.get(0).setInvcontact("******");
+			tb_zhaoshangxiangmus.get(0).setInvpost("******");
+			tb_zhaoshangxiangmus.get(0).setInvcontacttel("******");
+		}
 		result=RetAjax.onQueryDetail(tb_zhaoshangxiangmus);
 		return result;
 	}
