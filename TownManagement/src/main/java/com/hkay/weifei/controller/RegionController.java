@@ -114,7 +114,16 @@ public class RegionController {
 	public RetAjax queryregionitemdetail(HttpServletRequest request,Tb_quyuxingxiangmu tb_quyuxingxiangmu) throws UnsupportedEncodingException{
 		Tb_quyuxingxiangmu regionitme=new Tb_quyuxingxiangmu();
 		regionitme.setRegid(tb_quyuxingxiangmu.getRegid());
+		HttpSession session = request.getSession();
+		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		List<Tb_quyuxingxiangmu> tb_quyuxingxiangmus = this.regionservice.queryregionitemdetail(regionitme);
+		if(user.getUserdata().equals("1")&&tb_quyuxingxiangmus!=null){
+			tb_quyuxingxiangmus.get(0).setRegcontact("******");
+			tb_quyuxingxiangmus.get(0).setRegpost("******");
+			tb_quyuxingxiangmus.get(0).setRegcontenttel("******");
+			tb_quyuxingxiangmus.get(0).setRegchargetel("******");
+			tb_quyuxingxiangmus.get(0).setRegparttel("******");
+		}
 		result=RetAjax.onQueryDetail(tb_quyuxingxiangmus);
 		return result;
 	}

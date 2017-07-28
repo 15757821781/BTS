@@ -125,7 +125,15 @@ public class ResitemController {
 	public RetAjax queryresitemdetail(HttpServletRequest request,Tb_chubeixiangmu tb_chubeixiangmu) throws UnsupportedEncodingException{
 		Tb_chubeixiangmu resitem=new Tb_chubeixiangmu();
 		resitem.setResid(tb_chubeixiangmu.getResid());
+		HttpSession session = request.getSession();
+		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		List<Tb_chubeixiangmu> tb_chubeixiangmus = this.resitemservice.queryresitemdetail(tb_chubeixiangmu);
+		if(user.getUserdata().equals("1")&&tb_chubeixiangmus!=null){
+			tb_chubeixiangmus.get(0).setRescontactunit("******");
+			tb_chubeixiangmus.get(0).setRescontacts("******");
+			tb_chubeixiangmus.get(0).setRescontactway("******");
+			tb_chubeixiangmus.get(0).setReschargetel("******");
+		}
 		result=RetAjax.onQueryDetail(tb_chubeixiangmus);
 		return result;
 	}
