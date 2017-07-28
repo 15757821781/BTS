@@ -110,7 +110,18 @@ public class FeaturetownController {
 	@RequestMapping("/queryfeaturetowndetail")
 	@ResponseBody
 	public RetAjax queryfeaturetowndetail(HttpServletRequest request,Tb_tesexiaozhen tb_tesexiaozhen) throws UnsupportedEncodingException{
+		HttpSession session = request.getSession();
+		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		List<Tb_tesexiaozhen> tb_tesexiaozhens = this.featuretownservice.queryfeaturetowndetail(tb_tesexiaozhen);
+		if(user.getUserdata().equals("1")&&tb_tesexiaozhens!=null){
+			tb_tesexiaozhens.get(0).setFealeadtel("******");
+			tb_tesexiaozhens.get(0).setFeaparttel("******");
+			tb_tesexiaozhens.get(0).setFeacontacttel("******");
+			tb_tesexiaozhens.get(0).setFeapartway("******");
+			tb_tesexiaozhens.get(0).setFeapartconten("******");
+			tb_tesexiaozhens.get(0).setFeacontact("******");
+			tb_tesexiaozhens.get(0).setFeapost("******");
+		}
 		result=RetAjax.onQueryDetail(tb_tesexiaozhens);
 		return result;
 	}

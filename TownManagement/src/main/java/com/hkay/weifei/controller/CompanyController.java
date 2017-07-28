@@ -112,8 +112,15 @@ public class CompanyController {
 	 */
 	@RequestMapping("/queryComDetail")
 	@ResponseBody
-	public RetAjax queryComDetail(Tb_qiyedanwei tb_qiyedanwei) {
+	public RetAjax queryComDetail(HttpServletRequest request,Tb_qiyedanwei tb_qiyedanwei) throws UnsupportedEncodingException{
+		HttpSession session = request.getSession();
+		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		List<Tb_qiyedanwei> tb_qiyedanweis = this.companyService.queryComDetail(tb_qiyedanwei);
+		if(user.getUserdata().equals("1")&&tb_qiyedanweis!=null){
+			tb_qiyedanweis.get(0).setComcontact("******");
+			tb_qiyedanweis.get(0).setCompost("******");
+			tb_qiyedanweis.get(0).setComcontacttel("******");
+		}
 		result = RetAjax.onQueryDetail(tb_qiyedanweis);
 		return result;
 	}
