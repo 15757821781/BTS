@@ -60,4 +60,10 @@ public class ResitemServiceImpl implements ResitemService{
 		tb_chubeixiangmu.setResnumber(number);
 		return this.resitemdao.updateres(tb_chubeixiangmu);
 	}
+
+	@Override
+	public List<Tb_chubeixiangmu> queryResForNotice() {
+		// TODO Auto-generated method stub
+		return this.resitemdao.queryResForNotice();
+	}
 }
