@@ -25,6 +25,11 @@ public class NoticeTask {
 	@Scheduled(cron = "0 0/1 * * * ?" )
 	public void  NoticeJob() {
 		log.debug("NoticeJob定时任务启动！");
+		// 查询储备项目符合提醒的数据
 		List<Tb_chubeixiangmu> res = this.resitemservice.queryResForNotice();
+		// 如果记录存在
+		if(res!=null && res.size()>0){
+			
+		}
 	}
 }
