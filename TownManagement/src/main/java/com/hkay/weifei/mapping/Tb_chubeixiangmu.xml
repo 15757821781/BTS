@@ -90,8 +90,10 @@
 		resdetailplanpic=#{resdetailplanpic}
 		where resid=#{resid}
 	</update>
-	<select id="queryresitemdetail" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
+	<!-- 查询等待提醒的 -->
+	<select id="queryResForNotice" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
 		resultMap="BaseResultMap">
-		select resid,resitemname,resnumber,resprovince,rescity,restown,restownship,resjoinway,resplanarea,resplaninvest,reslandarea,resposition,rebasic,resbuildcontent,resintentions,resdockingtime,resdockingstage,resfeedbacknode,rescompetentunit,rescharge,reschargetel,rescontactunit,rescontacts,rescontactway,rescitypic,restownpic,resscopeopic,resplanpic,resallplanpic,resdetailplanpic,resentry from Tb_chubeixiangmu t where t.resid=#{resid}
+	    select * from Tb_chubeixiangmu a 
+	    where date_format(a.resfeedbacknode,'%Y-%m-%d')=date_format(sysdate(),'%Y-%m-%d')
 	</select>
 </mapper>
