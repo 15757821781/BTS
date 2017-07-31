@@ -16,4 +16,6 @@ public interface ResitemService {
 
 	int updateres(Tb_chubeixiangmu tb_chubeixiangmu);
 
+	List<Tb_chubeixiangmu> queryResForNotice();
+
 }

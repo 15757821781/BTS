@@ -11,31 +11,37 @@ $(document).ready(function() {
 		startView : 4,
         minView: 2,
         format: "yyyy-mm-dd"
-	}).on('hide', function(e) {  
-        // 当用户改变值的时候进行验证
-		$('#resitem').bootstrapValidator('revalidateField', 'comestablish');
+	});
+	// 时间选择器初始化
+	$('#resfeedbacknode').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 2,
+        format: "yyyy-mm-dd"
 	});
 	// 加载区县信息下拉框
     createAreaSelect("resprovince","rescity","restown");
-  //储备项目表单提交
+    //储备项目表单提交
 	$('#resitem_submit').click(function() {
 		formSubmit('#resitem','resitemmanage/insertresitem','ProjectLibrary/resitem.html');
 	});
-  //储备性项目表单更新
+	//储备性项目表单更新
 	$('#resitem_update').click(function() {
 		formSubmit('#resitem','resitemmanage/updateres','ProjectLibrary/resManage.html');
 	});
 	// 动态增减行初始化
 	 $('.addel-res').addel({
-			animation: {
-				duration: 100
-			},
-		    events: {
-		        added: function (event) {
-		        	resAddFieldValidator();
-		        }
-		    }
-	    });
+		animation: {
+			duration: 100
+		},
+	    events: {
+	        added: function (event) {
+	        	resAddFieldValidator();
+	        }
+	    }
+    });
 	//初始化文件上传控件
 	initFileInput("resfile1","城市背景图",1);
 	initFileInput("resfile2","区县背景图",1);
