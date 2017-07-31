@@ -106,13 +106,18 @@ $(document).ready(function() {
 		startView : 4,
         minView: 2,
         format: "yyyy-mm-dd"
-	}).on('hide', function(e) {  
-        // 当用户改变值的时候进行验证
-		$('#resitem').bootstrapValidator('revalidateField', 'comestablish');
+	});
+	// 时间选择器初始化
+	$('#resfeedbacknode').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 2,
+        format: "yyyy-mm-dd"
 	});
 	// 加载区县信息下拉框
     createAreaSelect("resprovince","rescity","restown");
-//	
 	// 动态增减行初始化
 	 $('.addel-res').addel({
 			animation: {
