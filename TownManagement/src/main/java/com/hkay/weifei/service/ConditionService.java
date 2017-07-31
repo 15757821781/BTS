@@ -3,6 +3,7 @@ package com.hkay.weifei.service;
 import java.util.List;
 
 import com.hkay.weifei.pojo.Condition;
+import com.hkay.weifei.pojo.Tb_notice;
 
 public interface ConditionService {
 
@@ -31,5 +32,7 @@ public interface ConditionService {
 	List<Condition> queryAdvantage();
 
 	Condition queryPicValue(Condition condition);
+
+	int insertNotice(List<Tb_notice> notices);
 
 }
