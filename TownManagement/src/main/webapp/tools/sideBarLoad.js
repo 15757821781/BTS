@@ -48,4 +48,14 @@ $(document).ready(function() {
              $("#page-wrapper").html(html);
          }
      });
+    // 点击提醒加载提醒菜单
+    $('#top_alert').click(function(){
+    	tk.ajax({
+    		url: "/TownManagement/conditionmanage/queryNotice",
+	       	dataType: "json",
+	        succ: function(data){
+	        	
+	        }
+    	});
+    }); 
 });

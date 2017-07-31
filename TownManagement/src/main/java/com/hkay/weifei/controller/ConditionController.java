@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hkay.weifei.pojo.Condition;
+import com.hkay.weifei.pojo.Tb_notice;
+import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.ConditionService;
 import com.hkay.weifei.util.RetAjax;
 
@@ -246,6 +249,22 @@ public class ConditionController {
 			Log.error("图片删除失败---deletePic:"+e.getMessage());
 			e.printStackTrace();
 		}
+		return result;
+	}
+	
+	/**
+	 * 
+	 *方法名称:queryNotice
+	 *内容：查询通知
+	 *创建人:zhuwenjie
+	 *创建日期:2017年7月31日下午5:40:17
+	 */
+	@RequestMapping("/deletePic")
+	@ResponseBody
+	public RetAjax queryNotice(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+		List<Tb_notice> notices = this.conditionservice.queryNotice(user.getUserid());
 		return result;
 	}
 }
