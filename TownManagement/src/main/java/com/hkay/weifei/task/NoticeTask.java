@@ -41,7 +41,7 @@ public class NoticeTask {
 			for(int i=0;i<res.size();i++){
 				Tb_notice notice = new Tb_notice();
 				// 创建者
-				notice.setUserid(res.get(i).getResentry());
+				notice.setUser(res.get(i).getResentry());
 				// 项目名称
 				notice.setName(res.get(i).getResitemname());
 				// 项目编号

@@ -8,7 +8,14 @@ public class Tb_notice {
 	private String message;//描述
 	private String userid;
 	private String type;// 项目类型
+	private String user;
 	
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
 	public String getUserid() {
 		return userid;
 	}
