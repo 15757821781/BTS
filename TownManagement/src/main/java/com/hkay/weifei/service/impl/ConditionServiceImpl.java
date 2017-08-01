@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.hkay.weifei.Dao.ConditionDao;
 import com.hkay.weifei.pojo.Condition;
 import com.hkay.weifei.pojo.Tb_notice;
+import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.ConditionService;
 
 @Service("ConditionService")
@@ -85,6 +86,16 @@ public class ConditionServiceImpl implements ConditionService{
 	public int insertNotice(List<Tb_notice> notices) {
 		// TODO Auto-generated method stub
 		return this.conditiondao.insertNotice(notices);
+	}
+	@Override
+	public List<Tb_notice> queryNotice(Tb_user user) {
+		// TODO Auto-generated method stub
+		return this.conditiondao.queryNotice(user);
+	}
+	@Override
+	public int updateNoticeState(Tb_notice notice) {
+		// TODO Auto-generated method stub
+		return this.conditiondao.updateNoticeState(notice);
 	}
 	
 }

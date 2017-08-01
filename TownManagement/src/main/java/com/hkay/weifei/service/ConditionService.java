@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hkay.weifei.pojo.Condition;
 import com.hkay.weifei.pojo.Tb_notice;
+import com.hkay.weifei.pojo.Tb_user;
 
 public interface ConditionService {
 
@@ -34,5 +35,9 @@ public interface ConditionService {
 	Condition queryPicValue(Condition condition);
 
 	int insertNotice(List<Tb_notice> notices);
+
+	List<Tb_notice> queryNotice(Tb_user user);
+
+	int updateNoticeState(Tb_notice notice);
 
 }

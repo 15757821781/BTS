@@ -85,13 +85,25 @@
 	</select>
 	<!-- 插入通知信息 -->
 	<insert id="insertNotice" parameterType="java.util.List">
-	   insert into tb_notice(name,number,message) values
+	   insert into tb_notice(user,name,number,message,type) values
 		<foreach collection="list" item="item" index="index" separator=",">
 	   (
+	    #{item.user},
 	   	#{item.name},
 	   	#{item.number},
-	   	#{item.message}
+	   	#{item.message},
+	   	#{item.type}
 	   )
 	  </foreach>
 	</insert>
+		<!-- 查询图片信息 -->
+	<select id="queryNotice" parameterType="com.hkay.weifei.pojo.Tb_user"
+		resultType="com.hkay.weifei.pojo.Tb_notice">
+		select * from tb_notice where user = #{number}
+		and state=0
+	</select>
+	<!-- 更新通知状态 -->
+	<update id="updateNoticeState" parameterType="com.hkay.weifei.pojo.Tb_notice">
+		update tb_notice set state = 1 where id = #{id}
+	</update>
 </mapper>
