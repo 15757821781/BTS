@@ -54,8 +54,33 @@ $(document).ready(function() {
     		url: "/TownManagement/conditionmanage/queryNotice",
 	       	dataType: "json",
 	        succ: function(data){
-	        	
+	        	$('.dropdown-alerts').html(data.data);
 	        }
     	});
-    }); 
+    });
 });
+function showAlertDetail(s){
+	var id = s.id;
+	var html = '<div class="form-group"><label class="col-sm-2 control-label">项目类型:</label>';
+	html += '<label class="col-sm-4 control-label">'+$('#'+id).attr('message')+'</label>';
+	html += '<label class="col-sm-2 control-label">通知状态:</label>';
+	html += '<label class="col-sm-4 control-label">'+$('#'+id).attr('state')+'</label>';
+	html += '</div><div class="form-group"><label class="col-sm-2 control-label">名称:</label>';
+	html += '<label class="col-sm-4 control-label">'+$('#'+id).attr('name')+'</label>';
+	html += '<label class="col-sm-2 control-label">编号:</label>';
+	html += '<label class="col-sm-4 control-label">'+$('#'+id).attr('number')+'</label></div>';
+	html += '<div class="form-group"><label class="col-sm-5 control-label"></label>';
+	html += '<button type="button" class="col-sm-2 btn btn-primary" style="width: auto; min-width: 90px; margin-top: 20px;" onclick="sysAlertRead('+id+')">已阅</button></div>';
+	$('#sys_alertForm').html(html);
+	$("#sys_alertModal").modal('show');
+}
+function sysAlertRead(s){
+	tk.ajax({
+		url: "/TownManagement/conditionmanage/updateNoticeState",
+       	dataType: "json",
+       	data:{'id':s.id.substring(11)},
+        succ: function(data){
+        	$("#sys_alertModal").modal('hide');
+        }
+	});
+}

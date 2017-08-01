@@ -259,12 +259,54 @@ public class ConditionController {
 	 *创建人:zhuwenjie
 	 *创建日期:2017年7月31日下午5:40:17
 	 */
-	@RequestMapping("/deletePic")
+	@RequestMapping("/queryNotice")
 	@ResponseBody
 	public RetAjax queryNotice(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
-		List<Tb_notice> notices = this.conditionservice.queryNotice(user.getUserid());
+		List<Tb_notice> notices = this.conditionservice.queryNotice(user);
+		StringBuilder html = new StringBuilder();
+		if(notices!=null&&notices.size()>0){
+			for(int i =0;i<notices.size();i++){
+				html.append(" <li><a id=sysalertli_"+notices.get(i).getId()+" name="+notices.get(i).getName());
+				html.append(" message="+notices.get(i).getMessage());
+				html.append(" number="+notices.get(i).getNumber());
+				if(notices.get(i).getState().equals("1")){
+					html.append(" state=已读");
+				}else{
+					html.append(" state=未读");
+				}
+				html.append(" onclick='showAlertDetail(this)'>");
+				html.append(" <i class='fa fa-tasks fa-fw'></i>");
+				html.append(notices.get(i).getMessage());
+				html.append(" <span class='pull-right text-muted small'>"+notices.get(i).getName()+"</span>");
+				html.append(" </a></li><li class='divider'></li>");
+			}
+		}else{
+			html.append("<li><a><i class='fa fa-comment fa-fw'></i>暂无通知</a></li><li class='divider'></li>");
+		}
+//		html.append("<li><a class='text-center'><strong>See All Alerts</strong><i class='fa fa-angle-right'></i></a></li>");
+		result = RetAjax.onSuccess(html, null);
+		return result;
+	}
+	
+	/**
+	 * 
+	 *方法名称:updateNoticeState
+	 *内容：更新通知状态
+	 *创建人:zhuwenjie
+	 *创建日期:2017年8月1日下午4:31:34
+	 */
+	@RequestMapping("/updateNoticeState")
+	@ResponseBody
+	public RetAjax updateNoticeState(Tb_notice notice){
+		try {
+			int flag = this.conditionservice.updateNoticeState(notice);
+			result = RetAjax.onSuccess(flag, null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.error("updateNoticeState失败!"+e.getMessage());
+		}
 		return result;
 	}
 }
