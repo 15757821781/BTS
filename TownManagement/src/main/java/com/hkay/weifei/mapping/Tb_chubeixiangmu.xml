@@ -90,7 +90,7 @@
 		resdetailplanpic=#{resdetailplanpic}
 		where resid=#{resid}
 	</update>
-	<!-- 查询等待提醒的 -->
+	<!-- 查询等待提醒的数据 -->
 	<select id="queryResForNotice" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
 		resultMap="BaseResultMap">
 	    select * from Tb_chubeixiangmu a 

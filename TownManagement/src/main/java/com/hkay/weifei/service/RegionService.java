@@ -16,4 +16,6 @@ public interface RegionService {
 
 	int updateregion(Tb_quyuxingxiangmu tb_quyuxingxiangmu);
 
+	List<Tb_quyuxingxiangmu> queryRegForNotice();
+
 }

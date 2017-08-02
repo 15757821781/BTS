@@ -20,7 +20,7 @@ public class Tb_quyuxingxiangmu {
 	private String regbasic;//基本情况
 	private String regspeed;//进度情况
 	private String regdockingtime;//对接时间
-	private String regcontractdate;//合同日期
+	private String regcontractdate;//反馈节点
 	private String regnowindustry;//优势产业
 	private String regprimeindustry;//产业方向
 	private String regdeveloper;//牵头单位

@@ -238,24 +238,17 @@ var formSubmit = function(form,url,target,func){
 		}
 	});
 }
-// 动态加载下拉框
-var selectCreate = function(id,url,data){
-	tk.ajax({
-		url : "/TownManagement/"+url,
-		data : data?data:"",
-		cache : true,
-		succ : function(result,state){
-			 $("#" + id).find('option').remove();
-			 var data=result.data;
-			 if (data != null) {
-				 $("#" + id).append("<option selected = 'selected'></option>");
-				 $.each(data,function(i){
-					 $("#"+id).append("<option value="+data[i].value+">"+data[i].name+"</option>");
-				 })
-			 }
-			 $("#" + id).selectpicker('refresh');
-		}
-	});
+var selectCreate = function(id,data){
+	$("#" + id).find('option').remove();
+	 if (data != null) {
+		 $("#" + id).append("<option selected = 'selected'></option>");
+		 var html;
+		 $.each(data,function(i){
+			 html +="<option value="+data[i].value+">"+data[i].name+"</option>"
+		 });
+		 $("#"+id).append(html);
+	 }
+	 $("#" + id).selectpicker('refresh');
 }
 // 重置区域
 var resetAreagroup = function(key){
@@ -483,3 +476,71 @@ var JPlaceHolder = {
 jQuery(function(){
     JPlaceHolder.init();    
 });
+// 预加载
+var sysClimate;
+var sysTerrain;
+var sysAdvIndustry;
+var sysDirIndustry;
+var sysMajorIndustry;
+var sysDevelopDir;
+var sysAdvantage;
+var sysBusinessDir;
+var GetSelectData = function(){
+	tk.ajax({
+		url : "/TownManagement/"+"conditionmanage/queryClimate",
+		cache : true,
+		success : function(result,state){
+			sysClimate = result.data;
+		}
+	});
+	tk.ajax({
+		url : "/TownManagement/"+"conditionmanage/queryTerrain",
+		cache : true,
+		success : function(result,state){
+			sysTerrain = result.data;
+		}
+	});
+	tk.ajax({
+		url : "/TownManagement/"+"conditionmanage/queryAdvIndustry",
+		cache : true,
+		success : function(result,state){
+			sysAdvIndustry = result.data;
+		}
+	});
+	tk.ajax({
+		url : "/TownManagement/"+"conditionmanage/queryDirIndustry",
+		cache : true,
+		success : function(result,state){
+			sysDirIndustry = result.data;
+		}
+	});
+	tk.ajax({
+		url : "/TownManagement/"+"conditionmanage/queryMajorIndustry",
+		cache : true,
+		success : function(result,state){
+			sysMajorIndustry = result.data;
+		}
+	});
+	tk.ajax({
+		url : "/TownManagement/"+"conditionmanage/queryDevelopDir",
+		cache : true,
+		success : function(result,state){
+			sysDevelopDir = result.data;
+		}
+	});
+	tk.ajax({
+		url : "/TownManagement/"+"conditionmanage/queryAdvantage",
+		cache : true,
+		success : function(result,state){
+			sysAdvantage = result.data;
+		}
+	});
+	tk.ajax({
+		url : "/TownManagement/"+"conditionmanage/queryBusinessDir",
+		cache : true,
+		success : function(result,state){
+			sysBusinessDir = result.data;
+		}
+	});
+}
+GetSelectData();
