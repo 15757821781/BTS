@@ -69,9 +69,9 @@ $(document).ready(function() {
 	initFileInput("regfile5","总体规划图",1);
 	initFileInput("regfile6","详细规划图",1);
 	//优势产业
-	selectCreate("regnowindustry","conditionmanage/queryAdvIndustry");
+	selectCreate("regnowindustry",sysAdvIndustry);
 	// 产业方向
-	selectCreate("regprimeindustry","conditionmanage/queryDirIndustry");
+	selectCreate("regprimeindustry",sysDirIndustry);
 	//区域性项目表单更新
 	$('#regitem_update').click(function() {
 		formSubmit('#regionitem','regionmanage/updateregion','ProjectLibrary/regionManage.html');

@@ -73,14 +73,6 @@ $(document).ready(function() {
             }
 		} ]
 	});
-	$.ajax({
-		url : "/TownManagement/pages/Alliance/organizeEntry.html",
-		cache : false,
-		success : function(html) {
-			$("#orginfobody").html(html);
-			$("#orgHeader").remove();
-		}
-	});
 })
 //查询方法
 function queryParams(params){
@@ -98,129 +90,147 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(id) {
-	$("#orgfieldset").removeAttr("disabled");
-	tk.ajax({
-		url : "/TownManagement/orgmanage/queryOrgDetail",
-		data : {"orgid":id},
-		dataType : 'JSON',
+	$.ajax({
+		url : "/TownManagement/pages/Alliance/organizeEntry.html",
 		cache : false,
-		succ : function(data, status) {
-			fillForm('#orgform',data);
-			// 二级联动
-			var select = {
-					value : data.data[0].orgnature
-			}
-			natureChanage(select);
-			var arr=(data.data[0].orgcategory).split(",");
-			$('#orgcategory').selectpicker();
-			$('#orgcategory').selectpicker('val', arr);
-			var arr=(data.data[0].orgtype).split(",");
-			$('#orgtype').selectpicker();
-			$('#orgtype').selectpicker('val', arr);
-//			var param={
-//					tbname : 'tb_shehuizuzhidanwei',
-//					field : 'comcertificate',
-//					id : 'comid' ,
-//					value : data.data[0].comcertificate,
-//					showdelete : false
-//			}
-//			initDeatilFileInput('comcertificatepic',param);
-			var orgcontact=data.data[0].orgcontact.split(",");
-			var orgpost=data.data[0].orgpost.split(",");
-			var orgcontacttel=data.data[0].orgcontacttel.split(",");
-			$(".addel-target:gt(0)").remove();
-			$.each(orgcontact,function(i,item){
-				if(i==0){
-					$("#orgcontact").val(orgcontact[i]);
-					$("#orgpost").val(orgpost[i]);
-					$("#orgcontacttel").val(orgcontacttel[i]);
-				}else{
-					$('<div class="form-group addel-target has-feedback">'
-						+'<div class="col-sm-2" style="text-align: right;">'
-						+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
-						+'<i class="fa fa-plus"></i></button>'
-						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
-						+'<i class="fa fa-remove"></i></button>'
-						+'<label class="control-label">联系人</label></div>'
-						+'<div class="col-sm-2">'
-						+'<input name="orgcontact" id="orgcontact"  class="form-control" type="text" value='+orgcontact[i]+'></div>'
-						+'<label class="col-sm-2 control-label">职务</label>'
-						+'<div class="col-sm-2"><input name="orgpost" id="orgpost" class="form-control" type="text" value='+orgpost[i]+'>'
-						+'</div><label class="col-sm-2 control-label">联系电话</label>'
-						+'<div class="col-sm-2"><input name="orgcontacttel" id="orgcontacttel" class="form-control" type="text" value='+orgcontacttel[i]+'>'
-						+'</div></div>').insertAfter(".addel-target:last");
+		success : function(html) {
+			$("#orginfobody").html(html);
+			$("#orgHeader").remove();
+			
+			$("#orgfieldset").removeAttr("disabled");
+			tk.ajax({
+				url : "/TownManagement/orgmanage/queryOrgDetail",
+				data : {"orgid":id},
+				dataType : 'JSON',
+				cache : false,
+				succ : function(data, status) {
+					fillForm('#orgform',data);
+					// 二级联动
+					var select = {
+							value : data.data[0].orgnature
+					}
+					natureChanage(select);
+					var arr=(data.data[0].orgcategory).split(",");
+					$('#orgcategory').selectpicker();
+					$('#orgcategory').selectpicker('val', arr);
+					var arr=(data.data[0].orgtype).split(",");
+					$('#orgtype').selectpicker();
+					$('#orgtype').selectpicker('val', arr);
+//					var param={
+//							tbname : 'tb_shehuizuzhidanwei',
+//							field : 'comcertificate',
+//							id : 'comid' ,
+//							value : data.data[0].comcertificate,
+//							showdelete : false
+//					}
+//					initDeatilFileInput('comcertificatepic',param);
+					var orgcontact=data.data[0].orgcontact.split(",");
+					var orgpost=data.data[0].orgpost.split(",");
+					var orgcontacttel=data.data[0].orgcontacttel.split(",");
+					$(".addel-target:gt(0)").remove();
+					$.each(orgcontact,function(i,item){
+						if(i==0){
+							$("#orgcontact").val(orgcontact[i]);
+							$("#orgpost").val(orgpost[i]);
+							$("#orgcontacttel").val(orgcontacttel[i]);
+						}else{
+							$('<div class="form-group addel-target has-feedback">'
+								+'<div class="col-sm-2" style="text-align: right;">'
+								+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+								+'<i class="fa fa-plus"></i></button>'
+								+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+								+'<i class="fa fa-remove"></i></button>'
+								+'<label class="control-label">联系人</label></div>'
+								+'<div class="col-sm-2">'
+								+'<input name="orgcontact" id="orgcontact"  class="form-control" type="text" value='+orgcontact[i]+'></div>'
+								+'<label class="col-sm-2 control-label">职务</label>'
+								+'<div class="col-sm-2"><input name="orgpost" id="orgpost" class="form-control" type="text" value='+orgpost[i]+'>'
+								+'</div><label class="col-sm-2 control-label">联系电话</label>'
+								+'<div class="col-sm-2"><input name="orgcontacttel" id="orgcontacttel" class="form-control" type="text" value='+orgcontacttel[i]+'>'
+								+'</div></div>').insertAfter(".addel-target:last");
+						}
+					});
+					$('#orgfieldset').attr("disabled","disabled");
+					$("#orginfomodal").modal('show');
+					$("#orgentry_submit").hide();
+					$("#orgentry_update").hide();
 				}
 			});
-			$('#orgfieldset').attr("disabled","disabled");
-			$("#orginfomodal").modal('show');
-			$("#orgentry_submit").hide();
-			$("#orgentry_update").hide();
 		}
 	});
 }
 //展示修改界面
 function updateinfo(id){
-	$("#orgfieldset").removeAttr("disabled");
-	$('#orgform').bootstrapValidator('resetForm', false);
-	tk.ajax({
-		url : "/TownManagement/orgmanage/queryOrgDetail",
-		data : {"orgid":id},
-		dataType : 'JSON',
+	$.ajax({
+		url : "/TownManagement/pages/Alliance/organizeEntry.html",
 		cache : false,
-		succ : function(data, status) {
-			fillForm('#orgform',data);
-			// 二级联动
-			var select = {
-					value : data.data[0].orgnature
-			}
-			natureChanage(select);
-			var arr=(data.data[0].orgcategory).split(",");
-			$('#orgcategory').selectpicker();
-			$('#orgcategory').selectpicker('val', arr);
-			var arr=(data.data[0].orgtype).split(",");
-			$('#orgtype').selectpicker();
-			$('#orgtype').selectpicker('val', arr);
-			// 图片初始化
-//			var param={
-//					tbname : 'tb_qiyedanwei',
-//					field : 'comcertificate',
-//					id : 'comid' ,
-//					value : data.data[0].comcertificate,
-//					showdelete : true
-//			}
-//			initDeatilFileInput('comcertificatepic',param);
-			// 动态行初始化
-			var orgcontact=data.data[0].orgcontact.split(",");
-			var orgpost=data.data[0].orgpost.split(",");
-			var orgcontacttel=data.data[0].orgcontacttel.split(",");
-			$(".addel-target:gt(0)").remove();
-			$.each(orgcontact,function(i,item){
-				if(i==0){
-					$("#orgcontact").val(orgcontact[i]);
-					$("#orgpost").val(orgpost[i]);
-					$("#orgcontacttel").val(orgcontacttel[i]);
-				}else{
-					$('<div class="form-group addel-target has-feedback">'
-						+'<div class="col-sm-2" style="text-align: right;">'
-						+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
-						+'<i class="fa fa-plus"></i></button>'
-						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
-						+'<i class="fa fa-remove"></i></button>'
-						+'<label class="control-label">联系人</label></div>'
-						+'<div class="col-sm-2">'
-						+'<input name="orgcontact" id="orgcontact"  class="form-control" type="text" value='+orgcontact[i]+'></div>'
-						+'<label class="col-sm-2 control-label">职务</label>'
-						+'<div class="col-sm-2"><input name="orgpost" id="orgpost" class="form-control" type="text" value='+orgpost[i]+'>'
-						+'</div><label class="col-sm-2 control-label">联系电话</label>'
-						+'<div class="col-sm-2"><input name="orgcontacttel" id="orgcontacttel" class="form-control" type="text" value='+orgcontacttel[i]+'>'
-						+'</div></div>').insertAfter(".addel-target:last");
+		success : function(html) {
+			$("#orginfobody").html(html);
+			$("#orgHeader").remove();
+			
+			$("#orgfieldset").removeAttr("disabled");
+			$('#orgform').bootstrapValidator('resetForm', false);
+			tk.ajax({
+				url : "/TownManagement/orgmanage/queryOrgDetail",
+				data : {"orgid":id},
+				dataType : 'JSON',
+				cache : false,
+				succ : function(data, status) {
+					fillForm('#orgform',data);
+					// 二级联动
+					var select = {
+							value : data.data[0].orgnature
+					}
+					natureChanage(select);
+					var arr=(data.data[0].orgcategory).split(",");
+					$('#orgcategory').selectpicker();
+					$('#orgcategory').selectpicker('val', arr);
+					var arr=(data.data[0].orgtype).split(",");
+					$('#orgtype').selectpicker();
+					$('#orgtype').selectpicker('val', arr);
+					// 图片初始化
+//					var param={
+//							tbname : 'tb_qiyedanwei',
+//							field : 'comcertificate',
+//							id : 'comid' ,
+//							value : data.data[0].comcertificate,
+//							showdelete : true
+//					}
+//					initDeatilFileInput('comcertificatepic',param);
+					// 动态行初始化
+					var orgcontact=data.data[0].orgcontact.split(",");
+					var orgpost=data.data[0].orgpost.split(",");
+					var orgcontacttel=data.data[0].orgcontacttel.split(",");
+					$(".addel-target:gt(0)").remove();
+					$.each(orgcontact,function(i,item){
+						if(i==0){
+							$("#orgcontact").val(orgcontact[i]);
+							$("#orgpost").val(orgpost[i]);
+							$("#orgcontacttel").val(orgcontacttel[i]);
+						}else{
+							$('<div class="form-group addel-target has-feedback">'
+								+'<div class="col-sm-2" style="text-align: right;">'
+								+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+								+'<i class="fa fa-plus"></i></button>'
+								+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+								+'<i class="fa fa-remove"></i></button>'
+								+'<label class="control-label">联系人</label></div>'
+								+'<div class="col-sm-2">'
+								+'<input name="orgcontact" id="orgcontact"  class="form-control" type="text" value='+orgcontact[i]+'></div>'
+								+'<label class="col-sm-2 control-label">职务</label>'
+								+'<div class="col-sm-2"><input name="orgpost" id="orgpost" class="form-control" type="text" value='+orgpost[i]+'>'
+								+'</div><label class="col-sm-2 control-label">联系电话</label>'
+								+'<div class="col-sm-2"><input name="orgcontacttel" id="orgcontacttel" class="form-control" type="text" value='+orgcontacttel[i]+'>'
+								+'</div></div>').insertAfter(".addel-target:last");
+						}
+					});
+					orgAddFieldValidator();
+					// 展示
+					$("#orginfomodal").modal('show');
+					$("#orgentry_submit").hide();
+					$("#orgentry_update").show();
 				}
 			});
-			orgAddFieldValidator();
-			// 展示
-			$("#orginfomodal").modal('show');
-			$("#orgentry_submit").hide();
-			$("#orgentry_update").show();
 		}
 	});
 }

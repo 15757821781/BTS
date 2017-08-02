@@ -70,9 +70,9 @@ $(document).ready(function() {
 	initFileInput("regfile5","总体规划图",1);
 	initFileInput("regfile6","详细规划图",1);
 	//优势产业
-	selectCreate("regnowindustry","conditionmanage/queryAdvIndustry");
+	selectCreate("regnowindustry",sysAdvIndustry);
 	// 产业方向
-	selectCreate("regprimeindustry","conditionmanage/queryDirIndustry");
+	selectCreate("regprimeindustry",sysDirIndustry);
 	//------------结束--------------------//
 	//-----------招商项目---------------//
 	// 加载区县信息下拉框

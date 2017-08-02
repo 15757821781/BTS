@@ -18,7 +18,7 @@ $(document).ready(function() {
 	// 加载区县信息下拉框
 	createAreaSelect("orgprovince","orgcity","orgtown");
 	// 加载机构优势下拉框
-	selectCreate("orgadvantaget","conditionmanage/queryAdvantage");
+	selectCreate("orgadvantaget",sysAdvantage);
 	// 动态增减行初始化
 	 $('.addel').addel({
 			animation: {
