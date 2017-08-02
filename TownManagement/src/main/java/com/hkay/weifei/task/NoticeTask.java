@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 
 import com.hkay.weifei.pojo.Tb_chubeixiangmu;
 import com.hkay.weifei.pojo.Tb_notice;
+import com.hkay.weifei.pojo.Tb_quyuxingxiangmu;
 import com.hkay.weifei.service.ConditionService;
+import com.hkay.weifei.service.RegionService;
 import com.hkay.weifei.service.ResitemService;
 
 @Component
@@ -22,6 +24,8 @@ public class NoticeTask {
 	private ResitemService resitemservice;
 	@Resource
 	private ConditionService conditionService;
+	@Resource
+	private RegionService regionService;
 	/**
 	 * 
 	 *方法名称:NoticeJob
@@ -50,6 +54,25 @@ public class NoticeTask {
 				notice.setMessage("政府储备项目");
 				// 项目类型
 				notice.setType("7");
+				notices.add(notice);
+			}
+		}
+		// 查询区域性项目符合提醒的数据
+		List<Tb_quyuxingxiangmu> reg = this.regionService.queryRegForNotice();
+		// 如果区域性项目记录存在
+		if(reg!=null && reg.size()>0){
+			for(int i=0;i<reg.size();i++){
+				Tb_notice notice = new Tb_notice();
+				// 创建者
+				notice.setUser(reg.get(i).getRegentry());
+				// 项目名称
+				notice.setName(reg.get(i).getRegnumber());
+				// 项目编号
+				notice.setNumber(reg.get(i).getRegname());
+				// 项目描述
+				notice.setMessage("区域性项目");
+				// 项目类型
+				notice.setType("5");
 				notices.add(notice);
 			}
 		}

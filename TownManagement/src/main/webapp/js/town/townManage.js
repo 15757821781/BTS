@@ -70,14 +70,14 @@ $(document).ready(function() {
             }
 		} ]
 	});
-	$.ajax({
-		url : "/TownManagement/pages/town/townEntry.html",
-		cache : false,
-		success : function(html) {
-			$("#towninfobody").html(html);
-			$("#townHeader").remove();
-		}
-	});
+//	$.ajax({
+//		url : "/TownManagement/pages/town/townEntry.html",
+//		cache : false,
+//		success : function(html) {
+//			$("#towninfobody").html(html);
+//			$("#townHeader").remove();
+//		}
+//	});
 })
 //查询方法
 function queryParams(params){
@@ -95,115 +95,133 @@ function queryParams(params){
 }
 //展示详情modal
 function querytowndetail(centertownid) {
-	$("#townfieldset").removeAttr("disabled");
-	tk.ajax({
-		url : "/TownManagement/townmanage/querytowndetail",
-		data : {"centertownid":centertownid},
-		dataType : 'JSON',
+	$.ajax({
+		url : "/TownManagement/pages/town/townEntry.html",
 		cache : false,
-		succ : function(data, status) {
-			fillForm('#townform',data);
-			var param1={
-					tbname : 'tb_zhongxinzhen',
-					field : 'citypic',
-					id : 'centertownid' ,
-					value : data.data[0].citypic,
-					showdelete : false
-			}
-			initDeatilFileInput('statusfile1',param1);
-			var param2={
-					tbname : 'tb_zhongxinzhen',
-					field : 'townpic',
-					id : 'centertownid' ,
-					value : data.data[0].townpic,
-					showdelete : false
-			}
-			initDeatilFileInput('statusfile2',param2);
-			var param3={
-					tbname : 'tb_zhongxinzhen',
-					field : 'scopeopic',
-					id : 'centertownid' ,
-					value : data.data[0].scopeopic,
-					showdelete : false
-			}
-			initDeatilFileInput('statusfile3',param3);
-			var param4={
-					tbname : 'tb_zhongxinzhen',
-					field : 'totalplanpic',
-					id : 'centertownid' ,
-					value : data.data[0].totalplanpic,
-					showdelete : false
-			}
-			initDeatilFileInput('planfile1',param4);
-			var param5={
-					tbname : 'tb_zhongxinzhen',
-					field : 'detailplanpic',
-					id : 'centertownid' ,
-					value : data.data[0].detailplanpic,
-					showdelete : false
-			}
-			initDeatilFileInput('planfile2',param5);
-			$('#townfieldset').attr("disabled","disabled");
-			$("#towninfomodal").modal('show');
-			$("#townentry_submit").hide();
-			$("#townentry_update").hide();
+		success : function(html) {
+			$("#towninfobody").html(html);
+			$("#townHeader").remove();
+			
+			$("#townfieldset").removeAttr("disabled");
+			tk.ajax({
+				url : "/TownManagement/townmanage/querytowndetail",
+				data : {"centertownid":centertownid},
+				dataType : 'JSON',
+				cache : false,
+				succ : function(data, status) {
+					fillForm('#townform',data);
+					var param1={
+							tbname : 'tb_zhongxinzhen',
+							field : 'citypic',
+							id : 'centertownid' ,
+							value : data.data[0].citypic,
+							showdelete : false
+					}
+					initDeatilFileInput('statusfile1',param1);
+					var param2={
+							tbname : 'tb_zhongxinzhen',
+							field : 'townpic',
+							id : 'centertownid' ,
+							value : data.data[0].townpic,
+							showdelete : false
+					}
+					initDeatilFileInput('statusfile2',param2);
+					var param3={
+							tbname : 'tb_zhongxinzhen',
+							field : 'scopeopic',
+							id : 'centertownid' ,
+							value : data.data[0].scopeopic,
+							showdelete : false
+					}
+					initDeatilFileInput('statusfile3',param3);
+					var param4={
+							tbname : 'tb_zhongxinzhen',
+							field : 'totalplanpic',
+							id : 'centertownid' ,
+							value : data.data[0].totalplanpic,
+							showdelete : false
+					}
+					initDeatilFileInput('planfile1',param4);
+					var param5={
+							tbname : 'tb_zhongxinzhen',
+							field : 'detailplanpic',
+							id : 'centertownid' ,
+							value : data.data[0].detailplanpic,
+							showdelete : false
+					}
+					initDeatilFileInput('planfile2',param5);
+					$('#townfieldset').attr("disabled","disabled");
+					$("#towninfomodal").modal('show');
+					$("#townentry_submit").hide();
+					$("#townentry_update").hide();
+				}
+			});
 		}
 	});
 }
 //展示修改界面
 function updatetowninfo(centertownid){
-	$("#townfieldset").removeAttr("disabled");
-	$('#townform').bootstrapValidator('resetForm', false);
-	tk.ajax({
-		url : "/TownManagement/townmanage/querytowndetail",
-		data : {"centertownid":centertownid},
-		dataType : 'JSON',
+	$.ajax({
+		url : "/TownManagement/pages/town/townEntry.html",
 		cache : false,
-		succ : function(data, status) {
-			fillForm('#townform',data);
-			var param1={
-					tbname : 'tb_zhongxinzhen',
-					field : 'citypic',
-					id : 'centertownid' ,
-					value : data.data[0].citypic,
-					showdelete : true
-			}
-			initDeatilFileInput('statusfile1',param1);
-			var param2={
-					tbname : 'tb_zhongxinzhen',
-					field : 'townpic',
-					id : 'centertownid' ,
-					value : data.data[0].townpic,
-					showdelete : true
-			}
-			initDeatilFileInput('statusfile2',param2);
-			var param3={
-					tbname : 'tb_zhongxinzhen',
-					field : 'scopeopic',
-					id : 'centertownid' ,
-					value : data.data[0].scopeopic,
-					showdelete : true
-			}
-			initDeatilFileInput('statusfile3',param3);
-			var param4={
-					tbname : 'tb_zhongxinzhen',
-					field : 'totalplanpic',
-					id : 'centertownid' ,
-					value : data.data[0].totalplanpic,
-					showdelete : true
-			}
-			initDeatilFileInput('planfile1',param4);
-			var param5={
-					tbname : 'tb_zhongxinzhen',
-					field : 'detailplanpic',
-					id : 'centertownid' ,
-					value : data.data[0].detailplanpic,
-					showdelete : true
-			}
-			initDeatilFileInput('planfile2',param5);
-			$("#towninfomodal").modal('show');
-			$("#townentry_submit").hide();
-			$("#townentry_update").show();
+		success : function(html) {
+			$("#towninfobody").html(html);
+			$("#townHeader").remove();
+			
+			$("#townfieldset").removeAttr("disabled");
+			$('#townform').bootstrapValidator('resetForm', false);
+			tk.ajax({
+				url : "/TownManagement/townmanage/querytowndetail",
+				data : {"centertownid":centertownid},
+				dataType : 'JSON',
+				cache : false,
+				succ : function(data, status) {
+					fillForm('#townform',data);
+					var param1={
+							tbname : 'tb_zhongxinzhen',
+							field : 'citypic',
+							id : 'centertownid' ,
+							value : data.data[0].citypic,
+							showdelete : true
+					}
+					initDeatilFileInput('statusfile1',param1);
+					var param2={
+							tbname : 'tb_zhongxinzhen',
+							field : 'townpic',
+							id : 'centertownid' ,
+							value : data.data[0].townpic,
+							showdelete : true
+					}
+					initDeatilFileInput('statusfile2',param2);
+					var param3={
+							tbname : 'tb_zhongxinzhen',
+							field : 'scopeopic',
+							id : 'centertownid' ,
+							value : data.data[0].scopeopic,
+							showdelete : true
+					}
+					initDeatilFileInput('statusfile3',param3);
+					var param4={
+							tbname : 'tb_zhongxinzhen',
+							field : 'totalplanpic',
+							id : 'centertownid' ,
+							value : data.data[0].totalplanpic,
+							showdelete : true
+					}
+					initDeatilFileInput('planfile1',param4);
+					var param5={
+							tbname : 'tb_zhongxinzhen',
+							field : 'detailplanpic',
+							id : 'centertownid' ,
+							value : data.data[0].detailplanpic,
+							showdelete : true
+					}
+					initDeatilFileInput('planfile2',param5);
+					$("#towninfomodal").modal('show');
+					$("#townentry_submit").hide();
+					$("#townentry_update").show();
+				}
+			});
 		}
 	});
 }
