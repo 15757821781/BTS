@@ -70,14 +70,6 @@ $(document).ready(function() {
             }
 		} ]
 	});
-	$.ajax({
-		url : "/TownManagement/pages/FeatureTown/featuretown.html",
-		cache : false,
-		success : function(html) {
-			$("#featuretownbody").html(html);
-			$("#feaHeader").remove();
-		}
-	});
 })
 //查询方法
 function queryParams(params){
@@ -95,206 +87,224 @@ function queryParams(params){
 }
 //展示详情modal
 function queryDetail(id) {
-	$("#feafieldset").removeAttr("disabled");
-	tk.ajax({
-		url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
-		data : {"feaid":id},
-		dataType : 'JSON',
+	$.ajax({
+		url : "/TownManagement/pages/FeatureTown/featuretown.html",
 		cache : false,
-		succ : function(data, status) {
-			fillForm('#featuretown',data);
-			var param1={
-					tbname : 'tb_tesexiaozhen',
-					field : 'feacitypic',
-					id : 'feaid' ,
-					value : data.data[0].feacitypic,
-					showdelete : false
-			}
-			var param2={
-					tbname : 'tb_tesexiaozhen',
-					field : 'featownpic',
-					id : 'feaid' ,
-					value : data.data[0].featownpic,
-					showdelete : false
-			}
-			var param3={
-					tbname : 'tb_tesexiaozhen',
-					field : 'feascopeopic',
-					id : 'feaid' ,
-					value : data.data[0].feascopeopic,
-					showdelete : false
-			}
-			var param4={
-					tbname : 'tb_tesexiaozhen',
-					field : 'feaplanpic',
-					id : 'feaid' ,
-					value : data.data[0].feaplanpic,
-					showdelete : false
-			}
-			var param5={
-					tbname : 'tb_tesexiaozhen',
-					field : 'featotalplanpic',
-					id : 'feaid' ,
-					value : data.data[0].featotalplanpic,
-					showdelete : false
-			}
-			var param6={
-					tbname : 'tb_tesexiaozhen',
-					field : 'feadetailplanpic',
-					id : 'feaid' ,
-					value : data.data[0].feadetailplanpic,
-					showdelete : false
-			}
-			initDeatilFileInput('feafile1',param1);
-			initDeatilFileInput('feafile2',param2);
-			initDeatilFileInput('feafile3',param3);
-			initDeatilFileInput('feafile4',param4);
-			initDeatilFileInput('feafile5',param5);
-			initDeatilFileInput('feafile6',param6);
-			// 处理多行展示
-			var feacontact=data.data[0].feacontact.split(",");
-			var feapost=data.data[0].feapost.split(",");
-			var feacontacttel=data.data[0].feacontacttel.split(",");
-			$(".addel-target:gt(0)").remove();
-			$.each(feacontact,function(i,item){
-				if (i == 0) {
-					$("#feacontact").val(feacontact[i]);
-					$("#feapost").val(feapost[i]);
-					$("#feacontacttel").val(feacontacttel[i]);
-				} else {
-					$('<div class="form-group addel-target">'
-						+'<div class="col-sm-2" style="text-align: right;">'
-						+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
-						+'<i class="fa fa-plus"></i></button>'
-						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
-						+'<i class="fa fa-remove"> </i></button>'
-						+'<label class="control-label">联系人</label>'
-						+'</div><div class="col-sm-2">'
-						+'<input id="feacontact" name="feacontact" class="form-control"'
-						+'type="text"  value='+feacontact[i]+'></div>'
-						+'<label class="col-sm-2 control-label">职务</label>'
-						+'<div class="col-sm-2">'
-						+'<input id="feapost" name="feapost" class="form-control"'
-						+'type="text"  value='+feapost[i]+'></div>'
-						+'<label class="col-sm-2 control-label">联系电话</label>'
-						+'<div class="col-sm-2"><'
-						+'input id="feacontacttel" name="feacontacttel" class="form-control"'
-						+'type="text"  value='+feacontacttel[i]+'></div></div>').insertAfter(".addel-target:last");
+		success : function(html) {
+			$("#featuretownbody").html(html);
+			$("#feaHeader").remove();
+			
+			$("#feafieldset").removeAttr("disabled");
+			tk.ajax({
+				url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
+				data : {"feaid":id},
+				dataType : 'JSON',
+				cache : false,
+				succ : function(data, status) {
+					fillForm('#featuretown',data);
+					var param1={
+							tbname : 'tb_tesexiaozhen',
+							field : 'feacitypic',
+							id : 'feaid' ,
+							value : data.data[0].feacitypic,
+							showdelete : false
+					}
+					var param2={
+							tbname : 'tb_tesexiaozhen',
+							field : 'featownpic',
+							id : 'feaid' ,
+							value : data.data[0].featownpic,
+							showdelete : false
+					}
+					var param3={
+							tbname : 'tb_tesexiaozhen',
+							field : 'feascopeopic',
+							id : 'feaid' ,
+							value : data.data[0].feascopeopic,
+							showdelete : false
+					}
+					var param4={
+							tbname : 'tb_tesexiaozhen',
+							field : 'feaplanpic',
+							id : 'feaid' ,
+							value : data.data[0].feaplanpic,
+							showdelete : false
+					}
+					var param5={
+							tbname : 'tb_tesexiaozhen',
+							field : 'featotalplanpic',
+							id : 'feaid' ,
+							value : data.data[0].featotalplanpic,
+							showdelete : false
+					}
+					var param6={
+							tbname : 'tb_tesexiaozhen',
+							field : 'feadetailplanpic',
+							id : 'feaid' ,
+							value : data.data[0].feadetailplanpic,
+							showdelete : false
+					}
+					initDeatilFileInput('feafile1',param1);
+					initDeatilFileInput('feafile2',param2);
+					initDeatilFileInput('feafile3',param3);
+					initDeatilFileInput('feafile4',param4);
+					initDeatilFileInput('feafile5',param5);
+					initDeatilFileInput('feafile6',param6);
+					// 处理多行展示
+					var feacontact=data.data[0].feacontact.split(",");
+					var feapost=data.data[0].feapost.split(",");
+					var feacontacttel=data.data[0].feacontacttel.split(",");
+					$(".addel-target:gt(0)").remove();
+					$.each(feacontact,function(i,item){
+						if (i == 0) {
+							$("#feacontact").val(feacontact[i]);
+							$("#feapost").val(feapost[i]);
+							$("#feacontacttel").val(feacontacttel[i]);
+						} else {
+							$('<div class="form-group addel-target">'
+								+'<div class="col-sm-2" style="text-align: right;">'
+								+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+								+'<i class="fa fa-plus"></i></button>'
+								+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+								+'<i class="fa fa-remove"> </i></button>'
+								+'<label class="control-label">联系人</label>'
+								+'</div><div class="col-sm-2">'
+								+'<input id="feacontact" name="feacontact" class="form-control"'
+								+'type="text"  value='+feacontact[i]+'></div>'
+								+'<label class="col-sm-2 control-label">职务</label>'
+								+'<div class="col-sm-2">'
+								+'<input id="feapost" name="feapost" class="form-control"'
+								+'type="text"  value='+feapost[i]+'></div>'
+								+'<label class="col-sm-2 control-label">联系电话</label>'
+								+'<div class="col-sm-2"><'
+								+'input id="feacontacttel" name="feacontacttel" class="form-control"'
+								+'type="text"  value='+feacontacttel[i]+'></div></div>').insertAfter(".addel-target:last");
+						}
+					});
+					// 合作禁用选项
+					if (data.data[0].feacooperate == "0") {
+						$(".feapart").attr("disabled", "disabled");
+					} else {
+						$(".feapart").removeAttr("disabled");
+					}
+					$('#feafieldset').attr("disabled","disabled");
+					$("#featuretownmodal").modal('show');
+					$("#featuretown_submit").hide();
+					$("#featuretown_update").hide();
 				}
 			});
-			// 合作禁用选项
-			if (data.data[0].feacooperate == "0") {
-				$(".feapart").attr("disabled", "disabled");
-			} else {
-				$(".feapart").removeAttr("disabled");
-			}
-			$('#feafieldset').attr("disabled","disabled");
-			$("#featuretownmodal").modal('show');
-			$("#featuretown_submit").hide();
-			$("#featuretown_update").hide();
 		}
 	});
 }
 //展示修改界面
 function updateInfo(id){
-	$("#feafieldset").removeAttr("disabled");
-	$('#feaform').bootstrapValidator('resetForm', false);
-	tk.ajax({
-		url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
-		data : {"feaid":id},
-		dataType : 'JSON',
+	$.ajax({
+		url : "/TownManagement/pages/FeatureTown/featuretown.html",
 		cache : false,
-		succ : function(data, status) {
-			fillForm('#featuretown',data);
-			var param1={
-					tbname : 'tb_tesexiaozhen',
-					field : 'feacitypic',
-					id : 'feaid' ,
-					value : data.data[0].feacitypic,
-					showdelete : true
-			}
-			var param2={
-					tbname : 'tb_tesexiaozhen',
-					field : 'featownpic',
-					id : 'feaid' ,
-					value : data.data[0].featownpic,
-					showdelete : true
-			}
-			var param3={
-					tbname : 'tb_tesexiaozhen',
-					field : 'feascopeopic',
-					id : 'feaid' ,
-					value : data.data[0].feascopeopic,
-					showdelete : true
-			}
-			var param4={
-					tbname : 'tb_tesexiaozhen',
-					field : 'feaplanpic',
-					id : 'feaid' ,
-					value : data.data[0].feaplanpic,
-					showdelete : true
-			}
-			var param5={
-					tbname : 'tb_tesexiaozhen',
-					field : 'featotalplanpic',
-					id : 'feaid' ,
-					value : data.data[0].featotalplanpic,
-					showdelete : true
-			}
-			var param6={
-					tbname : 'tb_tesexiaozhen',
-					field : 'feadetailplanpic',
-					id : 'feaid' ,
-					value : data.data[0].feadetailplanpic,
-					showdelete : true
-			}
-			initDeatilFileInput('feafile1',param1);
-			initDeatilFileInput('feafile2',param2);
-			initDeatilFileInput('feafile3',param3);
-			initDeatilFileInput('feafile4',param4);
-			initDeatilFileInput('feafile5',param5);
-			initDeatilFileInput('feafile6',param6);
-			// 处理多行展示
-			var feacontact=data.data[0].feacontact.split(",");
-			var feapost=data.data[0].feapost.split(",");
-			var feacontacttel=data.data[0].feacontacttel.split(",");
-			$(".addel-target:gt(0)").remove();
-			$.each(feacontact,function(i,item){
-				if (i == 0) {
-					$("#feacontact").val(feacontact[i]);
-					$("#feapost").val(feapost[i]);
-					$("#feacontacttel").val(feacontacttel[i]);
-				} else {
-					$('<div class="form-group addel-target">'
-						+'<div class="col-sm-2" style="text-align: right;">'
-						+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
-						+'<i class="fa fa-plus"></i></button>'
-						+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
-						+'<i class="fa fa-remove"> </i></button>'
-						+'<label class="control-label">联系人</label>'
-						+'</div><div class="col-sm-2">'
-						+'<input id="feacontact" name="feacontact" class="form-control"'
-						+'type="text"  value='+feacontact[i]+'></div>'
-						+'<label class="col-sm-2 control-label">职务</label>'
-						+'<div class="col-sm-2">'
-						+'<input id="feapost" name="feapost" class="form-control"'
-						+'type="text"  value='+feapost[i]+'></div>'
-						+'<label class="col-sm-2 control-label">联系电话</label>'
-						+'<div class="col-sm-2"><'
-						+'input id="feacontacttel" name="feacontacttel" class="form-control"'
-						+'type="text"  value='+feacontacttel[i]+'></div></div>').insertAfter(".addel-target:last");
+		success : function(html) {
+			$("#featuretownbody").html(html);
+			$("#feaHeader").remove();
+			
+			$("#feafieldset").removeAttr("disabled");
+			$('#feaform').bootstrapValidator('resetForm', false);
+			tk.ajax({
+				url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
+				data : {"feaid":id},
+				dataType : 'JSON',
+				cache : false,
+				succ : function(data, status) {
+					fillForm('#featuretown',data);
+					var param1={
+							tbname : 'tb_tesexiaozhen',
+							field : 'feacitypic',
+							id : 'feaid' ,
+							value : data.data[0].feacitypic,
+							showdelete : true
+					}
+					var param2={
+							tbname : 'tb_tesexiaozhen',
+							field : 'featownpic',
+							id : 'feaid' ,
+							value : data.data[0].featownpic,
+							showdelete : true
+					}
+					var param3={
+							tbname : 'tb_tesexiaozhen',
+							field : 'feascopeopic',
+							id : 'feaid' ,
+							value : data.data[0].feascopeopic,
+							showdelete : true
+					}
+					var param4={
+							tbname : 'tb_tesexiaozhen',
+							field : 'feaplanpic',
+							id : 'feaid' ,
+							value : data.data[0].feaplanpic,
+							showdelete : true
+					}
+					var param5={
+							tbname : 'tb_tesexiaozhen',
+							field : 'featotalplanpic',
+							id : 'feaid' ,
+							value : data.data[0].featotalplanpic,
+							showdelete : true
+					}
+					var param6={
+							tbname : 'tb_tesexiaozhen',
+							field : 'feadetailplanpic',
+							id : 'feaid' ,
+							value : data.data[0].feadetailplanpic,
+							showdelete : true
+					}
+					initDeatilFileInput('feafile1',param1);
+					initDeatilFileInput('feafile2',param2);
+					initDeatilFileInput('feafile3',param3);
+					initDeatilFileInput('feafile4',param4);
+					initDeatilFileInput('feafile5',param5);
+					initDeatilFileInput('feafile6',param6);
+					// 处理多行展示
+					var feacontact=data.data[0].feacontact.split(",");
+					var feapost=data.data[0].feapost.split(",");
+					var feacontacttel=data.data[0].feacontacttel.split(",");
+					$(".addel-target:gt(0)").remove();
+					$.each(feacontact,function(i,item){
+						if (i == 0) {
+							$("#feacontact").val(feacontact[i]);
+							$("#feapost").val(feapost[i]);
+							$("#feacontacttel").val(feacontacttel[i]);
+						} else {
+							$('<div class="form-group addel-target">'
+								+'<div class="col-sm-2" style="text-align: right;">'
+								+'<button type="button" class="btn btn-success addel-add" style="margin-right:4px;">'
+								+'<i class="fa fa-plus"></i></button>'
+								+'<button type="button" class="btn btn-danger addel-delete" style="margin-right:4px;">'
+								+'<i class="fa fa-remove"> </i></button>'
+								+'<label class="control-label">联系人</label>'
+								+'</div><div class="col-sm-2">'
+								+'<input id="feacontact" name="feacontact" class="form-control"'
+								+'type="text"  value='+feacontact[i]+'></div>'
+								+'<label class="col-sm-2 control-label">职务</label>'
+								+'<div class="col-sm-2">'
+								+'<input id="feapost" name="feapost" class="form-control"'
+								+'type="text"  value='+feapost[i]+'></div>'
+								+'<label class="col-sm-2 control-label">联系电话</label>'
+								+'<div class="col-sm-2"><'
+								+'input id="feacontacttel" name="feacontacttel" class="form-control"'
+								+'type="text"  value='+feacontacttel[i]+'></div></div>').insertAfter(".addel-target:last");
+						}
+					});
+					feaAddFieldValidator();
+					if (data.data[0].feacooperate == "0") {
+						$(".feapart").attr("disabled", "disabled");
+					} else {
+						$(".feapart").removeAttr("disabled");
+					}
+					// 展示
+					$("#featuretownmodal").modal('show');
+					$("#featuretown_submit").hide();
+					$("#featuretown_update").show();
 				}
 			});
-			feaAddFieldValidator();
-			if (data.data[0].feacooperate == "0") {
-				$(".feapart").attr("disabled", "disabled");
-			} else {
-				$(".feapart").removeAttr("disabled");
-			}
-			// 展示
-			$("#featuretownmodal").modal('show');
-			$("#featuretown_submit").hide();
-			$("#featuretown_update").show();
 		}
 	});
 }

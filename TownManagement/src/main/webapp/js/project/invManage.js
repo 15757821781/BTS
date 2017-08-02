@@ -61,14 +61,6 @@ $(document).ready(function() {
             }
 		} ]
 	});
-	$.ajax({
-		url : "/TownManagement/pages/ProjectLibrary/invitem.html",
-		cache : false,
-		success : function(html) {
-			$("#invbody").html(html);
-			$("#invHeader").remove();
-		}
-	});
 })
 //查询方法
 function queryParams(params){
@@ -86,7 +78,14 @@ function queryParams(params){
 }
 //展示详情modal
 function querydetail(invid) {
-	$("#invfieldset").removeAttr("disabled");
+	$.ajax({
+		url : "/TownManagement/pages/ProjectLibrary/invitem.html",
+		cache : false,
+		success : function(html) {
+			$("#invbody").html(html);
+			$("#invHeader").remove();
+			
+			$("#invfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
 				async: false,
@@ -174,9 +173,18 @@ function querydetail(invid) {
 			$("#invitem_update").hide();
 		}
 	});
+		}
+	});
 }
 //展示修改界面
 function updateinfo(invid){
+	$.ajax({
+		url : "/TownManagement/pages/ProjectLibrary/invitem.html",
+		cache : false,
+		success : function(html) {
+			$("#invbody").html(html);
+			$("#invHeader").remove();
+			
 			$("#invfieldset").removeAttr("disabled");
 			$('#invitem').bootstrapValidator('resetForm', false);
 			tk.ajax({
@@ -264,6 +272,8 @@ function updateinfo(invid){
 			$("#invmodal").modal('show');
 			$("#invitem_submit").hide();
 			$("#invitem_update").show();
+		}
+	});
 		}
 	});
 }
