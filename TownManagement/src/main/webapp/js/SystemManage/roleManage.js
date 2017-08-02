@@ -1,9 +1,9 @@
 var PageForRole;
 $(document).ready(function() {
-	//初始化下拉框
-	$('.selectpicker').selectpicker({
-		noneSelectedText : "请选择"
-	});
+//	//初始化下拉框
+//	$('.selectpicker').selectpicker({
+//		noneSelectedText : "请选择"
+//	});
 	$('#rolemanagetable').bootstrapTable({
 		url : '/TownManagement/systemmanage/queryRoleList',
 		method : 'get', //请求方式（*）
@@ -45,10 +45,12 @@ $(document).ready(function() {
 	validatorRoleForm();
 	//新增弹出框
 	$('#import_roleinfo').click(function() {
-		PageForRole=createTree();
+		PageForRole=createRoleTree();
 		$('#roleform')[0].reset();
 		$('#roleform').bootstrapValidator('resetForm', false);
 		$("#importrole_modal").modal('show');
+		$("#role_submit").show();
+		$("#role_update").hide();
 	});
 	//表单提交
 	$('#role_submit').click(function() {
@@ -142,24 +144,7 @@ function queryParams(params){
 	};
 	return temp;
 }
-//展示详情modal
-//function queryDetail(id) {
-//	$("#userfieldset").removeAttr("disabled");
-//	$('#userform').bootstrapValidator('resetForm', false);
-//	tk.ajax({
-//		url : "/TownManagement/systemmanage/queryUserDetail",
-//		data : {"userid":id},
-//		dataType : 'JSON',
-//		cache : false,
-//		succ : function(data, status) {
-//			fillForm('#userform',data);
-//			$("#importuser_modal").modal('show');
-//			$('#userfieldset').attr("disabled","disabled");
-//			$("#user_submit").hide();
-//			$("#user_update").hide();
-//		}
-//	});
-//}
+
 //展示修改界面
 function updateInfo(id){
 	$('#roleform').bootstrapValidator('resetForm', false);
@@ -170,7 +155,7 @@ function updateInfo(id){
 		cache : false,
 		succ : function(data, status) {
 			fillForm('#roleform',data);
-			PageForRole=createTree(id);
+			PageForRole=createRoleTree(id);
 			$("#importrole_modal").modal('show');
 			$("#role_submit").hide();
 			$("#role_update").show();
@@ -198,7 +183,7 @@ function validatorRoleForm(){
 	});
 	$('#roleform').bootstrapValidator('resetForm', false);
 }
-function createTree(otherdata){
+function createRoleTree(otherdata){
 	var setting = {
 			async:{
 				enable: true,

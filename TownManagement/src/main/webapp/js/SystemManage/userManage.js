@@ -65,7 +65,7 @@ $(document).ready(function() {
             }
 		} ]
 	});
-	selectCreate("roleid","systemmanage/queryRoleForCombo");
+	CreateCombo("roleid","systemmanage/queryRoleForCombo");
 	// 添加用户表单验证
 	validatorUserForm();
 	//新增弹出框
@@ -75,6 +75,8 @@ $(document).ready(function() {
 		$('#userform')[0].reset();
 		$('#userform').bootstrapValidator('resetForm', false);
 		$("#importuser_modal").modal('show');
+		$("#user_submit").show();
+		$("#user_update").hide();
 	});
 	//表单提交
 	$('#user_submit').click(function() {
