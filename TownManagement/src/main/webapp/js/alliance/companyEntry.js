@@ -33,11 +33,11 @@ $(document).ready(function() {
 	// 加载省市县信息下拉框
 	createAreaSelect("comregpro","comregcity","comregtown");
 	// 加载主要产业下拉框
-	selectCreate("commajorindustry","conditionmanage/queryMajorIndustry");
+	selectCreate("commajorindustry",sysMajorIndustry);
 	// 加载发展方向下拉框
-	selectCreate("comdevelop","conditionmanage/queryDevelopDir");
+	selectCreate("comdevelop",sysDevelopDir);
 	// 加载行业方向下拉框
-	selectCreate("comindustry","conditionmanage/queryBusinessDir");
+	selectCreate("comindustry",sysBusinessDir);
 	// 动态增减行初始化
     $('.addel').addel({
 		animation: {
