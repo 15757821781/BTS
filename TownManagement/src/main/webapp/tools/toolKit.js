@@ -238,6 +238,25 @@ var formSubmit = function(form,url,target,func){
 		}
 	});
 }
+//动态加载下拉框
+var CreateCombo = function(id,url,data){
+	tk.ajax({
+		url : "/TownManagement/"+url,
+		data : data?data:"",
+		cache : true,
+		succ : function(result,state){
+			 $("#" + id).find('option').remove();
+			 var data=result.data;
+			 if (data != null) {
+				 $("#" + id).append("<option selected = 'selected'></option>");
+				 $.each(data,function(i){
+					 $("#"+id).append("<option value="+data[i].value+">"+data[i].name+"</option>");
+				 })
+			 }
+			 $("#" + id).selectpicker('refresh');
+		}
+	});
+}
 var selectCreate = function(id,data){
 	$("#" + id).find('option').remove();
 	 if (data != null) {
