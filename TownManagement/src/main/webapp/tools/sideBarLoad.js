@@ -1,4 +1,4 @@
-//@laozhu 	
+//@laozhu 
 $(document).ready(function() {
 	//禁止后退键 作用于Firefox、Opera
 	document.onkeypress=doKey;

@@ -23,13 +23,13 @@ $(document).ready(function() {
 	// 加载省市县信息下拉框
 	createAreaSelect("sys_province","sys_city","sys_town");
 	// 加载气候下拉框
-	selectCreate("weather","conditionmanage/queryClimate");
+	selectCreate("weather",sysClimate);
 	// 加载地形下拉框
-	selectCreate("terrain","conditionmanage/queryTerrain");
+	selectCreate("terrain",sysTerrain);
 	// 加载优势产业下拉框
-	selectCreate("currentindustry","conditionmanage/queryAdvIndustry");
+	selectCreate("currentindustry",sysAdvIndustry);
 	// 加载产业方向下拉框
-	selectCreate("industrialorientation","conditionmanage/queryDirIndustry");
+	selectCreate("industrialorientation",sysDirIndustry);
 	$('#townform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],

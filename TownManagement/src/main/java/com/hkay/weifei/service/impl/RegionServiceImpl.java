@@ -53,5 +53,11 @@ public class RegionServiceImpl implements RegionService{
 		tb_quyuxingxiangmu.setRegnumber(number);
 		return this.regiondao.updateregion(tb_quyuxingxiangmu);
 	}
+
+	@Override
+	public List<Tb_quyuxingxiangmu> queryRegForNotice() {
+		// TODO Auto-generated method stub
+		return this.regiondao.queryRegForNotice();
+	}
 	
 }
