@@ -1,7 +1,6 @@
 package com.hkay.weifei.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,15 +77,9 @@ public class TownController {
 	@ResponseBody
 	public Map<String,Object> querytowninfo(@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
-			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
+			Tb_zhongxinzhen tb_zhongxinzhen) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
-		Tb_zhongxinzhen tb_zhongxinzhen = new Tb_zhongxinzhen();
-		 if (search != null) {
-			 search = URLDecoder.decode(search, "utf-8");
-			 tb_zhongxinzhen.setSearch(search);
-		 } else {
-			 tb_zhongxinzhen.setSearch("");
-		 }
+		
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_zhongxinzhen> tb_zhongxinzhens = this.townservice.querytowninfo(tb_zhongxinzhen);

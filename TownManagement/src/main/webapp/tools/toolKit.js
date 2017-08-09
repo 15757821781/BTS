@@ -495,6 +495,24 @@ var JPlaceHolder = {
 jQuery(function(){
     JPlaceHolder.init();    
 });
+// 序列化搜索表单
+function GetFormSearchData(form,temp){
+	var supersearch = $('#'+form).serializeArray();
+	if(supersearch.length>0){
+		for(var item in supersearch) {
+			if(supersearch[item].name in temp){
+				if(supersearch[item].value!=''){
+					temp[supersearch[item].name] += ','+supersearch[item].value;
+				}
+			}else{
+				if(supersearch[item].value!=''){
+					temp[supersearch[item].name] = supersearch[item].value;
+				}
+			}
+		}
+	}
+	return temp;
+}
 // 预加载
 var sysClimate;
 var sysTerrain;

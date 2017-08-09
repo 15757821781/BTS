@@ -21,8 +21,8 @@ $(document).ready(function() {
 	selectCreate("currentindustry",sysAdvIndustry);
 	// 加载产业方向下拉框
 	selectCreate("industrialorientation",sysDirIndustry);
-	//表单提交
-	$('#townentry_submit').click(function() {
-		formSubmit('#townform','townmanage/inserttowninfo','town/townEntry.html');
+	// 查询
+	$('#townentry_search').click(function() {
+		
 	});
 });
