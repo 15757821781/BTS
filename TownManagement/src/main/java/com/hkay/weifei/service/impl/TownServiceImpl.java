@@ -82,6 +82,9 @@ public class TownServiceImpl implements TownService{
 			sql.append(" and a.hundredcounties = #{"+zxz.getHundredcounties()+"}");
 		}
 		if(common.JudgeEmpty(zxz.getCountygdp())){
+			if(){
+				
+			}
 			sql.append(" and a.countygdp = #{"+zxz.getCountygdp()+"}");
 		}
 		if(common.JudgeEmpty(zxz.getCountyrevenue())){
