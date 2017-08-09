@@ -70,6 +70,18 @@ $(document).ready(function() {
             }
 		} ]
 	});
+	//新增弹出框
+	$('#townSearch_bar').click(function() {
+		$.ajax({
+			url : "/TownManagement/pages/town/townSearch.html",
+			cache : false,
+			success : function(html) {
+				$('#towninfobody').html(html);
+				$('#townform_search')[0].reset();
+				$("#towninfomodal").modal('show');
+			}
+		});
+	});
 })
 //查询方法
 function queryParams(params){
@@ -83,6 +95,8 @@ function queryParams(params){
 		pageindex : params.pageNumber,
 		search : encodeURI(params.searchText)
 	};
+	temp = GetFormSearchData('townform_search',temp);
+	console.log(temp);
 	return temp;
 }
 //展示详情modal
