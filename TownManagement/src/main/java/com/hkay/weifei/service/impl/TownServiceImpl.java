@@ -18,7 +18,6 @@ import com.hkay.weifei.util.CommonUtil;
 public class TownServiceImpl implements TownService{
 	@Resource
 	private TownDao towndao;
-	private CommonUtil common;
 	@Override
 	public int inserttowninfo(Tb_zhongxinzhen tb_zhongxinzhen) {
 		String towncode = tb_zhongxinzhen.getSys_town();
@@ -48,46 +47,43 @@ public class TownServiceImpl implements TownService{
 	}
 	@Override
 	public List<Tb_zhongxinzhen> querytowninfo(Tb_zhongxinzhen zxz) {
-		zxz.setSearch(common.decodeUtf8(zxz.getSearch()));
+		zxz.setSearch(CommonUtil.decodeUtf8(zxz.getSearch()));
 		
 		StringBuilder sql = new StringBuilder();
-		if(common.JudgeEmpty(zxz.getCentertownname())){
-			sql.append(" and a.centertownname like '%${"+common.decodeUtf8(zxz.getCentertownname())+"}%'");
+		if(CommonUtil.JudgeEmpty(zxz.getCentertownname())){
+			sql.append(" and a.centertownname like '%${"+CommonUtil.decodeUtf8(zxz.getCentertownname())+"}%'");
 		}
-		if(common.JudgeEmpty(zxz.getNumber())){
+		if(CommonUtil.JudgeEmpty(zxz.getNumber())){
 			sql.append(" and a.number like '%${"+zxz.getNumber()+"}%'");
 		}
-		if(common.JudgeEmpty(zxz.getCitypic())){
+		if(CommonUtil.JudgeEmpty(zxz.getCitypic())){
 			sql.append(" and a.citypilot = #{"+zxz.getCitypic()+"}");
 		}
-		if(common.JudgeEmpty(zxz.getTownlevel())){
+		if(CommonUtil.JudgeEmpty(zxz.getTownlevel())){
 			sql.append(" and a.townlevel = #{"+zxz.getTownlevel()+"}");
 		}
-		if(common.JudgeEmpty(zxz.getSys_province())){
+		if(CommonUtil.JudgeEmpty(zxz.getSys_province())){
 			sql.append(" and a.sys_province = #{"+zxz.getSys_province()+"}");
 		}
-		if(common.JudgeEmpty(zxz.getSys_city())){
+		if(CommonUtil.JudgeEmpty(zxz.getSys_city())){
 			sql.append(" and a.sys_city = #{"+zxz.getSys_city()+"}");
 		}
-		if(common.JudgeEmpty(zxz.getSys_town())){
+		if(CommonUtil.JudgeEmpty(zxz.getSys_town())){
 			sql.append(" and a.sys_town = #{"+zxz.getSys_town()+"}");
 		}
-		if(common.JudgeEmpty(zxz.getCooperation())){
+		if(CommonUtil.JudgeEmpty(zxz.getCooperation())){
 			sql.append(" and a.cooperation = #{"+zxz.getCooperation()+"}");
 		}
-		if(common.JudgeEmpty(zxz.getTowndatayear())){
+		if(CommonUtil.JudgeEmpty(zxz.getTowndatayear())){
 			sql.append(" and a.towndatayear = #{"+zxz.getTowndatayear()+"}");
 		}
-		if(common.JudgeEmpty(zxz.getHundredcounties())){
+		if(CommonUtil.JudgeEmpty(zxz.getHundredcounties())){
 			sql.append(" and a.hundredcounties = #{"+zxz.getHundredcounties()+"}");
 		}
-		if(common.JudgeEmpty(zxz.getCountygdp())){
-			if(){
-				
-			}
-			sql.append(" and a.countygdp = #{"+zxz.getCountygdp()+"}");
+		if(CommonUtil.JudgeEmpty(zxz.getCountygdp())){
+			sql.append(CommonUtil.HandleNum("countygdp", zxz.getCountygdp()));
 		}
-		if(common.JudgeEmpty(zxz.getCountyrevenue())){
+		if(CommonUtil.JudgeEmpty(zxz.getCountyrevenue())){
 			sql.append(" and a.countyrevenue = #{"+zxz.getCountyrevenue()+"}");
 		}
 		return this.towndao.querytowninfo(zxz);
