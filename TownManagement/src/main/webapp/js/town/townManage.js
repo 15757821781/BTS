@@ -70,14 +70,6 @@ $(document).ready(function() {
             }
 		} ]
 	});
-//	$.ajax({
-//		url : "/TownManagement/pages/town/townEntry.html",
-//		cache : false,
-//		success : function(html) {
-//			$("#towninfobody").html(html);
-//			$("#townHeader").remove();
-//		}
-//	});
 })
 //查询方法
 function queryParams(params){
