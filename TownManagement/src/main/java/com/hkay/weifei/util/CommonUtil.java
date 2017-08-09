@@ -49,21 +49,23 @@ public class CommonUtil {
 	public static String HandleNum(String field,Object object) {
 		String sql = "";
 		try {
-			String str = object.toString();
-			int i = str.indexOf("-");
-			// 开头位置
-			if(i+1==1){
-				sql = " and a."+field+" < "+str.replace("-", "");
-			// 结束位置
-			}else if(i+1==str.length()){
-				sql = " and a."+field+" > "+str.replace("-", "");
-			// 不存在
-			}else if(i==-1){
-				
-			// 处于中间位置
-			}else{
-				sql = " and a." + field + " > " + str.split("-")[0] 
-					+ " and a." + field + " < " + str.split("-")[1];
+			if(object!=null&&!object.toString().equals("")){
+				String str = object.toString();
+				int i = str.indexOf("-");
+				// 开头位置
+				if(i+1==1){
+					sql = " and a."+field+" < "+str.replace("-", "");
+				// 结束位置
+				}else if(i+1==str.length()){
+					sql = " and a."+field+" > "+str.replace("-", "");
+				// 不存在
+				}else if(i==-1){
+					sql = " and a."+field+" like '%${"+str+"}%'";
+				// 处于中间位置
+				}else{
+					sql = " and a." + field + " > " + str.split("-")[0] 
+						+ " and a." + field + " < " + str.split("-")[1];
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

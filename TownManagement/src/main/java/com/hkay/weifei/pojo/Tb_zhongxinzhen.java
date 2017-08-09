@@ -30,7 +30,7 @@ public class Tb_zhongxinzhen {
 	private String terrain;// 基本地形
 	private String traffic;// 交通条件
 	private String currentindustry;// 优势产业
-	private String specialindustry;//特色产业
+	private String specialindustry;//主要特色产业
 	private String specialindustryway;//特色产业方向
 	private String industrialorientation;// 产业方向
 	private String historyculture;// 历史文化和旅游资源
