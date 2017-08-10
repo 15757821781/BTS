@@ -70,6 +70,18 @@ $(document).ready(function() {
             }
 		} ]
 	});
+	//新增弹出框
+	$('#featuretownSearch_bar').click(function() {
+		$.ajax({
+			url : "/TownManagement/pages/FeatureTown/featuretownSearch.html",
+			cache : false,
+			success : function(html) {
+				$('#featuretownbody').html(html);
+				$('#featuretownform_search')[0].reset();
+				$("#featuretownmodal").modal('show');
+			}
+		});
+	});
 })
 //查询方法
 function queryParams(params){
@@ -83,6 +95,8 @@ function queryParams(params){
 		pageindex : params.pageNumber,
 		search : encodeURI(params.searchText)
 	};
+	temp = GetFormSearchData('featuretownform_search',temp);
+	console.log(temp);
 	return temp;
 }
 //展示详情modal
