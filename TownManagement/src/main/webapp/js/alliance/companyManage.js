@@ -25,25 +25,31 @@ $(document).ready(function() {
 			field : 'comnumber',
 			title : '编号',
 			align : 'center',
-			width : '20%'
+			width : '16%'
 		}, {
 			field : 'comname',
 			title : '中心镇名称',
 			editable : true,
 			align : 'center',
-			width : '20%'
+			width : '16%'
 		}, {
 			title : '归属地',
 			align : 'center',
-			width : '20%',
+			width : '16%',
             formatter:function(value,row,index){
             	return row.comprovince+"/"+row.comcity+"/"+row.comtown;
             }
+		},{
+			field : 'commajorindustry',
+			title : '行业类别',
+			editable : true,
+			align : 'center',
+			width : '16%'
 		}, {
 			field : 'comcategory',
 			title : '单位类别',
 			align : 'center',
-			width : '20%',
+			width : '16%',
             formatter:function(value,row,index){
             	if(value=="1"){
             		return "国有企业";
@@ -57,7 +63,7 @@ $(document).ready(function() {
             }
 		}, {
             title : '操作',
-            width :	'20%',
+            width :	'16%',
             align : 'center',
             formatter:function(value,row,index){
             	if(sysOfUserPermission==3){

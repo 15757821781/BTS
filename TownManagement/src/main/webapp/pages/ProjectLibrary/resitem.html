@@ -145,13 +145,23 @@
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">合作方向</label>
-						<div class="col-sm-10">
+						<div class="col-sm-4">
 							<select name="resjoinway" id="resjoinway"
 								class="selectpicker show-tick form-control" multiple>
 								<option></option>
 								<option value="1">规划咨询</option>
 								<option value="2">产业导入和运营</option>
 								<option value="3">PPT项目投资合作</option>
+							</select>
+						</div>
+						<label class="col-sm-2 control-label">合同</label>
+						<div class="col-sm-4">
+							<select name="rescontract" id="rescontract"
+								class="selectpicker show-tick form-control"
+								onChange="readyOnly(this)">
+								<option></option>
+								<option value="1">是</option>
+								<option value="0">否</option>
 							</select>
 						</div>
 					</div>

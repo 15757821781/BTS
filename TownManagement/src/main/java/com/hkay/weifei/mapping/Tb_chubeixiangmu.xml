@@ -4,9 +4,9 @@
 	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_chubeixiangmu" />
 	<insert id="insertresitem" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu">
 		insert into
-		Tb_chubeixiangmu(resitemname,resnumber,resprovince,rescity,restown,restownship,resjoinway,resplanarea,resplaninvest,reslandarea,resposition,rebasic,resbuildcontent,resintentions,resdockingtime,resdockingstage,resfeedbacknode,rescompetentunit,rescharge,reschargetel,rescontactunit,rescontacts,rescontactway,rescitypic,restownpic,resscopeopic,resplanpic,resallplanpic,resdetailplanpic,resentry,updatetime)
+		Tb_chubeixiangmu(resitemname,resnumber,resprovince,rescity,restown,restownship,resjoinway,rescontract,resplanarea,resplaninvest,reslandarea,resposition,rebasic,resbuildcontent,resintentions,resdockingtime,resdockingstage,resfeedbacknode,rescompetentunit,rescharge,reschargetel,rescontactunit,rescontacts,rescontactway,rescitypic,restownpic,resscopeopic,resplanpic,resallplanpic,resdetailplanpic,resentry,updatetime)
 		values
-		(#{resitemname},#{resnumber},#{resprovince},#{rescity},#{restown},#{restownship},#{resjoinway},#{resplanarea},#{resplaninvest},#{reslandarea},#{resposition},#{rebasic},#{resbuildcontent},#{resintentions},#{resdockingtime},#{resdockingstage},#{resfeedbacknode},#{rescompetentunit},#{rescharge},#{reschargetel},#{rescontactunit},#{rescontacts},#{rescontactway},#{rescitypic},#{restownpic},#{resscopeopic},#{resplanpic},#{resallplanpic},#{resdetailplanpic},#{resentry},now())
+		(#{resitemname},#{resnumber},#{resprovince},#{rescity},#{restown},#{restownship},#{resjoinway},#{rescontract},#{resplanarea},#{resplaninvest},#{reslandarea},#{resposition},#{rebasic},#{resbuildcontent},#{resintentions},#{resdockingtime},#{resdockingstage},#{resfeedbacknode},#{rescompetentunit},#{rescharge},#{reschargetel},#{rescontactunit},#{rescontacts},#{rescontactway},#{rescitypic},#{restownpic},#{resscopeopic},#{resplanpic},#{resallplanpic},#{resdetailplanpic},#{resentry},now())
 	</insert>
 	<select id="queryresinfo" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
 		resultMap="BaseResultMap">
@@ -54,7 +54,7 @@
 	</select>
 	<select id="queryresitemdetail" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu"
 		resultMap="BaseResultMap">
-		select resid,resitemname,resnumber,resprovince,rescity,restown,restownship,resjoinway,resplanarea,resplaninvest,reslandarea,resposition,rebasic,resbuildcontent,resintentions,resdockingtime,resdockingstage,resfeedbacknode,rescompetentunit,rescharge,reschargetel,rescontactunit,rescontacts,rescontactway,rescitypic,restownpic,resscopeopic,resplanpic,resallplanpic,resdetailplanpic,resentry from Tb_chubeixiangmu t where t.resid=#{resid}
+		select resid,resitemname,resnumber,resprovince,rescity,restown,restownship,resjoinway,rescontract,resplanarea,resplaninvest,reslandarea,resposition,rebasic,resbuildcontent,resintentions,resdockingtime,resdockingstage,resfeedbacknode,rescompetentunit,rescharge,reschargetel,rescontactunit,rescontacts,rescontactway,rescitypic,restownpic,resscopeopic,resplanpic,resallplanpic,resdetailplanpic,resentry from Tb_chubeixiangmu t where t.resid=#{resid}
 	</select>
 	<update id="updateres" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu">
 		update Tb_chubeixiangmu
@@ -66,6 +66,7 @@
 		restown=#{restown},
 		restownship=#{restownship},
 		resjoinway=#{resjoinway},
+		rescontract=#{rescontract},
 		resplanarea=#{resplanarea},
 		resplaninvest=#{resplaninvest},
 		reslandarea=#{reslandarea},
