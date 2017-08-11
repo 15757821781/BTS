@@ -106,7 +106,8 @@
 			a.regschedule,
 			b.name as regprovince,
 			c.name as regcity,
-			d.name as regtown
+			d.name as regtown,
+			a.regentry
 		FROM
 			tb_quyuxingxiangmu a
 			left join tb_area_province b on a.regprovince=b.code

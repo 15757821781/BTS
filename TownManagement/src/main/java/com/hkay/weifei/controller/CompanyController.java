@@ -80,10 +80,14 @@ public class CompanyController {
 	 */
 	@RequestMapping("/queryComList")
 	@ResponseBody
-	public Map<String,Object> queryComList(@RequestParam(value = "limit", required = false) Integer limit,
+	public Map<String,Object> queryComList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
+		HttpSession session = request.getSession();
+		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+		String number = user.getNumber();
+		String userdata = user.getUserdata();
 		Tb_qiyedanwei tb_qiyedanwei = new Tb_qiyedanwei();
 		 if (search != null) {
 			 search = URLDecoder.decode(search, "utf-8");
@@ -94,6 +98,16 @@ public class CompanyController {
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_qiyedanwei> tb_qiyedanweis = this.companyService.queryComList(tb_qiyedanwei);
+		if(tb_qiyedanweis!=null){
+			for(int i=0;i<tb_qiyedanweis.size();i++){
+				if(userdata.equals("3")||number.equals(tb_qiyedanweis.get(i).getComcreator())){
+					tb_qiyedanweis.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_qiyedanweis.get(i).getComid()+")'>查看</a>"+
+							"&nbsp"+"<a href='javascript:void(0)' onclick='updateinfo("+tb_qiyedanweis.get(i).getComid()+")'>修改</a>");
+				}else{
+					tb_qiyedanweis.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_qiyedanweis.get(i).getComid()+")'>查看</a>");
+				}
+			}
+		}
 		int count = this.companyService.querycomcnt(tb_qiyedanwei);
 		map.put("rows", tb_qiyedanweis);
 		map.put("total", count);

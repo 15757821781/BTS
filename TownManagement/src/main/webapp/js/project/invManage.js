@@ -47,18 +47,18 @@ $(document).ready(function() {
 			width : '20%'
 		}, {
             title : '操作',
-            field : 'invid',
+            field : 'operation',
             width :	'20%',
             align : 'center',
-            formatter:function(value,row,index){
-            	if(sysOfUserPermission==3){
-            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.invid+')">查看</a>';
-            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.invid+')">修改</a>'
-            	return query+"&nbsp"+update;
-            }else{
-            	return '<a href="javascript:void(0)" onclick="querydetail('+row.invid+')">查看</a>';
-            	}
-            }
+//            formatter:function(value,row,index){
+//            	if(sysOfUserPermission==3){
+//            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.invid+')">查看</a>';
+//            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.invid+')">修改</a>'
+//            	return query+"&nbsp"+update;
+//            }else{
+//            	return '<a href="javascript:void(0)" onclick="querydetail('+row.invid+')">查看</a>';
+//            	}
+//            }
 		} ]
 	});
 })

@@ -42,6 +42,15 @@ public class Tb_tesexiaozhen {
 	private String feacreator;// 录入员
 	
 	private String search;// 搜索
+	private String operation;// 操作
+
+	public String getOperation() {
+		return operation;
+	}
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
 
 	public String getFeaid() {
 		return feaid;

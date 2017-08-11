@@ -90,10 +90,14 @@ public class ResitemController {
 	
 	@RequestMapping("/queryresinfo")
 	@ResponseBody
-	public Map<String,Object> queryresinfo(@RequestParam(value = "limit", required = false) Integer limit,
+	public Map<String,Object> queryresinfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
+		HttpSession session = request.getSession();
+		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+		String number = user.getNumber();
+		String userdata = user.getUserdata();
 		Tb_chubeixiangmu tb_chubeixiangmu = new Tb_chubeixiangmu();
 		 if (search != null) {
 			 search = URLDecoder.decode(search, "utf-8");
@@ -104,6 +108,16 @@ public class ResitemController {
 		 Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_chubeixiangmu> tb_chubeixiangmus = this.resitemservice.queryresinfo(tb_chubeixiangmu);
+		if(tb_chubeixiangmus!=null){
+			for(int i=0;i<tb_chubeixiangmus.size();i++){
+				if(userdata.equals("3")||number.equals(tb_chubeixiangmus.get(i).getResentry())){
+					tb_chubeixiangmus.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_chubeixiangmus.get(i).getResid()+")'>查看</a>"+
+							"&nbsp"+"<a href='javascript:void(0)' onclick='updateinfo("+tb_chubeixiangmus.get(i).getResid()+")'>修改</a>");
+				}else{
+					tb_chubeixiangmus.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_chubeixiangmus.get(i).getResid()+")'>查看</a>");
+				}
+			}
+		}
 		int count = this.resitemservice.queryresinfocnt(tb_chubeixiangmu);
 		map.put("rows", tb_chubeixiangmus);
 		map.put("total", count);
