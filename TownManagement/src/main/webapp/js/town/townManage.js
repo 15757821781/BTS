@@ -174,7 +174,6 @@ function updatetowninfo(centertownid){
 			$("#townHeader").remove();
 			
 			$("#townfieldset").removeAttr("disabled");
-			$('#townform').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/townmanage/querytowndetail",
 				data : {"centertownid":centertownid},
