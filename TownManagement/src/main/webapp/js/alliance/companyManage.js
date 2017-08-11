@@ -172,7 +172,6 @@ function updateinfo(id){
 			$("#comHeader").remove();
 			
 			$("#comfieldset").removeAttr("disabled");
-			$('#comform').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/commanage/queryComDetail",
 				data : {"comid":id},
@@ -232,6 +231,5 @@ function updateinfo(id){
 				}
 			});
 		}
-	
 	});
 }
