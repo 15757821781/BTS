@@ -138,6 +138,9 @@ public class TownController {
 			@RequestParam("statusfile3") MultipartFile[] files3,@RequestParam("planfile1") MultipartFile[] files4,
 			@RequestParam("planfile2") MultipartFile[] files5){
 		try {
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			tb_zhongxinzhen.setUpdator(user.getNumber());
 			String imgpath1=fileupload.fileUpload(files1, request,TypeStatusConstant.town_statusmap,tb_zhongxinzhen.getCitypic());
 			String imgpath2=fileupload.fileUpload(files2, request,TypeStatusConstant.town_statusmap,tb_zhongxinzhen.getTownpic());
 			String imgpath3=fileupload.fileUpload(files3, request,TypeStatusConstant.town_statusmap,tb_zhongxinzhen.getScopeopic());

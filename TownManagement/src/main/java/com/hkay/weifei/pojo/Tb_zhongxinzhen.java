@@ -50,6 +50,7 @@ public class Tb_zhongxinzhen {
 	private String totalplanpic;// 城镇总体规划
 	private String detailplanpic;// 控制性详细规划
 	private String creator;// 录入员
+	private String updator;// 更新者
 	
 	private String search;// 搜索
 	private String supersearch;// 高级搜索
@@ -76,6 +77,14 @@ public class Tb_zhongxinzhen {
 	private String serviceoutvalues;// 服务业总产值
 	
 	
+	public String getUpdator() {
+		return updator;
+	}
+
+	public void setUpdator(String updator) {
+		this.updator = updator;
+	}
+
 	public Double getCountygdp() {
 		return countygdp;
 	}
