@@ -159,6 +159,13 @@ function validatorUserForm(){
 					}
 				}
 			},
+			number : {
+				validators : {
+					notEmpty : {
+						message : '用户编号不能为空'
+					}
+				}
+			},
 			account : {
 				validators : {
 					notEmpty : {

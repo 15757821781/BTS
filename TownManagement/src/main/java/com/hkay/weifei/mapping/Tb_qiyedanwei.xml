@@ -144,12 +144,14 @@
 			a.comname,
 			b.name as comprovince,
 			c.name as comcity,
-			d.name as comtown
+			d.name as comtown,
+			e.name as commajorindustry
 		FROM
 			tb_qiyedanwei a
 		LEFT JOIN tb_area_province b on a.comprovince=b.code 
 		LEFT JOIN tb_area_city c on a.comcity=c.code 
-		LEFT JOIN tb_area_town d on a.comtown=d.code where 1=1
+		LEFT JOIN tb_area_town d on a.comtown=d.code 
+		LEFT JOIN tb_major_industry e on a.commajorindustry=e.id where 1=1
 		and a.visual=1
 		<if test="search!=null and search!=''">
 		    and (a.comnumber like '%${search}%' or a.comname like '%${search}%' or a.comcategory like '%${search}%')

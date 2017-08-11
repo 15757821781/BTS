@@ -9,6 +9,7 @@ public class Tb_chubeixiangmu {
 	private String restown;// 乡县	
 	private String restownship;//乡镇街道
 	private String resjoinway;//合作方向
+	private String rescontract;//合同
 	private Double resplanarea;//规划面积
 	private Double resplaninvest;//计划投资
 	private Double reslandarea;//征地面积
@@ -34,6 +35,12 @@ public class Tb_chubeixiangmu {
 	private String resentry;//录入员
 	private String search;//搜索
 	
+	public String getRescontract() {
+		return rescontract;
+	}
+	public void setRescontract(String rescontract) {
+		this.rescontract = rescontract;
+	}
 	public String getSearch() {
 		return search;
 	}
