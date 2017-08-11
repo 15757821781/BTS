@@ -29,6 +29,7 @@ public class Tb_quyuxingxiangmu {
 	private String regbegtime;//合作期限开始
 	private String regendtime;//合作期限结束
 	private String regdevelopment;//合作开发情况
+	private String regcontract;//合作开发情况
 	private String regpartner;//合作开发单位
 	private String regpartcharge;//合作单位负责人
 	private String regparttel;//合作单位负责人电话
@@ -51,6 +52,12 @@ public class Tb_quyuxingxiangmu {
 	
 
 
+	public String getRegcontract() {
+		return regcontract;
+	}
+	public void setRegcontract(String regcontract) {
+		this.regcontract = regcontract;
+	}
 	public String getRegbegtime() {
 		return regbegtime;
 	}
