@@ -89,7 +89,8 @@
 			a.orgname,
 			b.name as orgprovince,
 			c.name as orgcity,
-			d.name as orgtown
+			d.name as orgtown,
+			a.orgentry
 		FROM
 			tb_shehuizuzhidanwei a
 		LEFT JOIN tb_area_province b on a.orgprovince=b.code 

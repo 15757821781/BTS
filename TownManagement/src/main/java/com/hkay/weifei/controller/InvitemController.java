@@ -79,10 +79,14 @@ public class InvitemController {
 	 */
 	@RequestMapping("/queryinvinfo")
 	@ResponseBody
-	public Map<String,Object> queryinvinfo(@RequestParam(value = "limit", required = false) Integer limit,
+	public Map<String,Object> queryinvinfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
+		HttpSession session = request.getSession();
+		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+		String number = user.getNumber();
+		String userdata = user.getUserdata();
 		Tb_zhaoshangxiangmu tb_zhaoshangxiangmu = new Tb_zhaoshangxiangmu();
 		 if (search != null) {
 			 search = URLDecoder.decode(search, "utf-8");
@@ -93,6 +97,16 @@ public class InvitemController {
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_zhaoshangxiangmu> tb_zhaoshangxiangmus = this.invitemservice.queryinvinfo(tb_zhaoshangxiangmu);
+		if(tb_zhaoshangxiangmus!=null){
+			for(int i=0;i<tb_zhaoshangxiangmus.size();i++){
+				if(userdata.equals("3")||number.equals(tb_zhaoshangxiangmus.get(i).getInventry())){
+					tb_zhaoshangxiangmus.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_zhaoshangxiangmus.get(i).getInvid()+")'>查看</a>"+
+							"&nbsp"+"<a href='javascript:void(0)' onclick='updateinfo("+tb_zhaoshangxiangmus.get(i).getInvid()+")'>修改</a>");
+				}else{
+					tb_zhaoshangxiangmus.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_zhaoshangxiangmus.get(i).getInvid()+")'>查看</a>");
+				}
+			}
+		}
 		int count = this.invitemservice.queryinvinfocnt(tb_zhaoshangxiangmu);
 		map.put("rows", tb_zhaoshangxiangmus);
 		map.put("total", count);

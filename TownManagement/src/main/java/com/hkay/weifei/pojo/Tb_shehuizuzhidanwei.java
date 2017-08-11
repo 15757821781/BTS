@@ -26,6 +26,14 @@ public class Tb_shehuizuzhidanwei {
 	private String orgpost;//职务
 	private String orgentry;//录入员
 	private String search;// 查询条件
+	private String operation;// 操作
+	
+	public String getOperation() {
+		return operation;
+	}
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
 	public String getOrgid() {
 		return orgid;
 	}

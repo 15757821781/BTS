@@ -78,10 +78,16 @@ public class FeaturetownController {
 	
 	@RequestMapping("/queryfeaturetown")
 	@ResponseBody
-	public Map<String,Object> queryfeaturetown(@RequestParam(value = "limit", required = false) Integer limit,
+	public Map<String,Object> queryfeaturetown(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
+		HttpSession session = request.getSession();
+		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+		String number = user.getNumber();
+		String userdata = user.getUserdata();
+		Page<?> page = PageUtil.getPage(pageindex, limit, true);
+		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		Tb_tesexiaozhen tb_tesexiaozhen = new Tb_tesexiaozhen();
 		 if (search != null) {
 			 search = URLDecoder.decode(search, "utf-8");
@@ -89,9 +95,17 @@ public class FeaturetownController {
 		 } else {
 			 tb_tesexiaozhen.setSearch("");
 		 }
-		Page<?> page = PageUtil.getPage(pageindex, limit, true);
-		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_tesexiaozhen> tb_zhongxinzhens = this.featuretownservice.queryfeaturetown(tb_tesexiaozhen);
+		if(tb_zhongxinzhens!=null){
+			for(int i=0;i<tb_zhongxinzhens.size();i++){
+				if(userdata.equals("3")||number.equals(tb_zhongxinzhens.get(i).getFeacreator())){
+					tb_zhongxinzhens.get(i).setOperation("<a href='javascript:void(0)' onclick='queryDetail("+tb_zhongxinzhens.get(i).getFeaid()+")'>查看</a>"+
+							"&nbsp"+"<a href='javascript:void(0)' onclick='updateInfo("+tb_zhongxinzhens.get(i).getFeaid()+")'>修改</a>");
+				}else{
+					tb_zhongxinzhens.get(i).setOperation("<a href='javascript:void(0)' onclick='queryDetail("+tb_zhongxinzhens.get(i).getFeaid()+")'>查看</a>");
+				}
+			}
+		}
 		int count = this.featuretownservice.queryfeaturetowncnt(tb_tesexiaozhen);
 		map.put("rows", tb_zhongxinzhens);
 		map.put("total", count);

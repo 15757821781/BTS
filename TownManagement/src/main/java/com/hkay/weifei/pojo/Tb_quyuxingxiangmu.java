@@ -48,10 +48,18 @@ public class Tb_quyuxingxiangmu {
 	private String regentry;//录入员
 	
 	private String search;//搜索内容
+	private String operation;// 操作
+	
 	
 	
 
 
+	public String getOperation() {
+		return operation;
+	}
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
 	public String getRegcontract() {
 		return regcontract;
 	}

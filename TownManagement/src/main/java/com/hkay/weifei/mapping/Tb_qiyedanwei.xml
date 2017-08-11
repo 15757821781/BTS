@@ -145,7 +145,8 @@
 			b.name as comprovince,
 			c.name as comcity,
 			d.name as comtown,
-			e.name as commajorindustry
+			e.name as commajorindustry,
+			a.comcreator
 		FROM
 			tb_qiyedanwei a
 		LEFT JOIN tb_area_province b on a.comprovince=b.code 

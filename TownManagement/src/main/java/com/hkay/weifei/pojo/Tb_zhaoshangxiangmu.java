@@ -36,6 +36,14 @@ public class Tb_zhaoshangxiangmu {
 	private String search;//搜索内容
 	private String invpost;//职务
 	private String inventry;//录入员
+	private String operation;// 操作
+	
+	public String getOperation() {
+		return operation;
+	}
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
 	public int getInvid() {
 		return invid;
 	}

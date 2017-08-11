@@ -55,8 +55,18 @@ public class Tb_qiyedanwei {
 	private String comcreator;//录入员
 	
 	private String search;// 查询条件
+	private String operation;// 操作
+	
 
 	
+	public String getOperation() {
+		return operation;
+	}
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
 	public String getComlassetsunit() {
 		return comlassetsunit;
 	}

@@ -58,16 +58,17 @@ $(document).ready(function() {
 		}, {
             title : '操作',
             width :	'20%',
+            field : 'operation',
             align : 'center',
-            formatter:function(value,row,index){
-            	if(sysOfUserPermission==3){
-	            	var query = '<a href="javascript:void(0)" onclick="queryDetail('+row.feaid+')">查看</a>';
-	            	var update = '<a href="javascript:void(0)" onclick="updateInfo('+row.feaid+')">修改</a>'
-	            	return query+"&nbsp"+update;
-            	}else{
-            		return '<a href="javascript:void(0)" onclick="queryDetail('+row.feaid+')">查看</a>';
-            	}
-            }
+//            formatter:function(value,row,index){
+//            	if(sysOfUserPermission==3){
+//	            	var query = '<a href="javascript:void(0)" onclick="queryDetail('+row.feaid+')">查看</a>';
+//	            	var update = '<a href="javascript:void(0)" onclick="updateInfo('+row.feaid+')">修改</a>'
+//	            	return query+"&nbsp"+update;
+//            	}else{
+//            		return '<a href="javascript:void(0)" onclick="queryDetail('+row.feaid+')">查看</a>';
+//            	}
+//            }
 		} ]
 	});
 	//新增弹出框
@@ -220,7 +221,7 @@ function updateInfo(id){
 			$("#feaHeader").remove();
 			
 			$("#feafieldset").removeAttr("disabled");
-			$('#feaform').bootstrapValidator('resetForm', false);
+//			$('#feaform').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
 				data : {"feaid":id},

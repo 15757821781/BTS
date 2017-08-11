@@ -82,10 +82,14 @@ public class RegionController {
 	 */
 	@RequestMapping("/queryregioninfo")
 	@ResponseBody
-	public Map<String,Object> queryregioninfo(@RequestParam(value = "limit", required = false) Integer limit,
+	public Map<String,Object> queryregioninfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+		String number = user.getNumber();
+		String userdata = user.getUserdata();
 		Tb_quyuxingxiangmu tb_quyuxingxiangmu = new Tb_quyuxingxiangmu();
 		 if (search != null) {
 			 search = URLDecoder.decode(search, "utf-8");
@@ -96,6 +100,16 @@ public class RegionController {
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_quyuxingxiangmu> tb_quyuxingxiangmus = this.regionservice.queryregioninfo(tb_quyuxingxiangmu);
+		if(tb_quyuxingxiangmus!=null){
+			for(int i=0;i<tb_quyuxingxiangmus.size();i++){
+				if(userdata.equals("3")||number.equals(tb_quyuxingxiangmus.get(i).getRegentry())){
+					tb_quyuxingxiangmus.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_quyuxingxiangmus.get(i).getRegid()+")'>查看</a>"+
+							"&nbsp"+"<a href='javascript:void(0)' onclick='updateinfo("+tb_quyuxingxiangmus.get(i).getRegid()+")'>修改</a>");
+				}else{
+					tb_quyuxingxiangmus.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_quyuxingxiangmus.get(i).getRegid()+")'>查看</a>");
+				}
+			}
+		}
 		int count = this.regionservice.queryregioninfocnt(tb_quyuxingxiangmu);
 		map.put("rows", tb_quyuxingxiangmus);
 		map.put("total", count);
