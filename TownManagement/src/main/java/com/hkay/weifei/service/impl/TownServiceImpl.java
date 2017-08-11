@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.hkay.weifei.Dao.TownDao;
 import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.TownService;
-import com.hkay.weifei.util.CommonUtil;
 
 @Service("TownService")
 public class TownServiceImpl implements TownService{

@@ -255,7 +255,8 @@
 	scopeopic=#{scopeopic},
 	totalplanpic=#{totalplanpic},
 	detailplanpic=#{detailplanpic},
-	updatetime=now()
+	updatetime=now(),
+	updator=#{updator}
 	where centertownid=#{centertownid}
 	</update>
 </mapper>
