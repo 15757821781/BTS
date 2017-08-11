@@ -23,9 +23,9 @@ public class Tb_zhongxinzhen {
 	private Double townlocalgdp;// 地方gdp
 	private Double townrevenue;// 财政总收入
 	private Double totalpopulation;// 总人口
-	private String farmingoutvalue;// 农业生产总值
-	private String industryoutvalue;// 工业生产总值
-	private String serviceoutvalue;// 服务业总产值
+	private Double farmingoutvalue;// 农业生产总值
+	private Double industryoutvalue;// 工业生产总值
+	private Double serviceoutvalue;// 服务业总产值
 	private String weather;// 基本气候
 	private String terrain;// 基本地形
 	private String traffic;// 交通条件
@@ -52,7 +52,254 @@ public class Tb_zhongxinzhen {
 	private String creator;// 录入员
 	
 	private String search;// 搜索
+	private String supersearch;// 高级搜索
+	private String operation;// 操作
+	/**
+	 * 
+	 *方法名称:
+	 *内容：高级搜索参数
+	 *创建人:zhuwenjie
+	 *创建日期:2017年8月11日上午11:34:33
+	 */
+	private String countygdps;// 区县级GDP
+	private String countyrevenues;// 区县级财政收入
+	private String townpopulations;// 所在区县总人口
+	private String townpgdis;// 区县人均可支配收入
+	private String townareas;//行政面积
+	private String communitys;// 社区数量
+	private String adminvillages;// 行政村数量
+	private String townlocalgdps;// 地方gdp
+	private String townrevenues;// 财政总收入
+	private String totalpopulations;// 总人口
+	private String farmingoutvalues;// 农业生产总值
+	private String industryoutvalues;// 工业生产总值
+	private String serviceoutvalues;// 服务业总产值
 	
+	
+	public Double getCountygdp() {
+		return countygdp;
+	}
+
+	public void setCountygdp(Double countygdp) {
+		this.countygdp = countygdp;
+	}
+
+	public Double getCountyrevenue() {
+		return countyrevenue;
+	}
+
+	public void setCountyrevenue(Double countyrevenue) {
+		this.countyrevenue = countyrevenue;
+	}
+
+	public Double getTownpopulation() {
+		return townpopulation;
+	}
+
+	public void setTownpopulation(Double townpopulation) {
+		this.townpopulation = townpopulation;
+	}
+
+	public Double getTownpgdi() {
+		return townpgdi;
+	}
+
+	public void setTownpgdi(Double townpgdi) {
+		this.townpgdi = townpgdi;
+	}
+
+	public Double getTownarea() {
+		return townarea;
+	}
+
+	public void setTownarea(Double townarea) {
+		this.townarea = townarea;
+	}
+
+	public Integer getCommunity() {
+		return community;
+	}
+
+	public void setCommunity(Integer community) {
+		this.community = community;
+	}
+
+	public Integer getAdminvillage() {
+		return adminvillage;
+	}
+
+	public void setAdminvillage(Integer adminvillage) {
+		this.adminvillage = adminvillage;
+	}
+
+	public Double getTownlocalgdp() {
+		return townlocalgdp;
+	}
+
+	public void setTownlocalgdp(Double townlocalgdp) {
+		this.townlocalgdp = townlocalgdp;
+	}
+
+	public Double getTownrevenue() {
+		return townrevenue;
+	}
+
+	public void setTownrevenue(Double townrevenue) {
+		this.townrevenue = townrevenue;
+	}
+
+	public Double getTotalpopulation() {
+		return totalpopulation;
+	}
+
+	public void setTotalpopulation(Double totalpopulation) {
+		this.totalpopulation = totalpopulation;
+	}
+
+	public Double getFarmingoutvalue() {
+		return farmingoutvalue;
+	}
+
+	public void setFarmingoutvalue(Double farmingoutvalue) {
+		this.farmingoutvalue = farmingoutvalue;
+	}
+
+	public Double getIndustryoutvalue() {
+		return industryoutvalue;
+	}
+
+	public void setIndustryoutvalue(Double industryoutvalue) {
+		this.industryoutvalue = industryoutvalue;
+	}
+
+	public Double getServiceoutvalue() {
+		return serviceoutvalue;
+	}
+
+	public void setServiceoutvalue(Double serviceoutvalue) {
+		this.serviceoutvalue = serviceoutvalue;
+	}
+
+	public String getCountygdps() {
+		return countygdps;
+	}
+
+	public void setCountygdps(String countygdps) {
+		this.countygdps = countygdps;
+	}
+
+	public String getCountyrevenues() {
+		return countyrevenues;
+	}
+
+	public void setCountyrevenues(String countyrevenues) {
+		this.countyrevenues = countyrevenues;
+	}
+
+	public String getTownpopulations() {
+		return townpopulations;
+	}
+
+	public void setTownpopulations(String townpopulations) {
+		this.townpopulations = townpopulations;
+	}
+
+	public String getTownpgdis() {
+		return townpgdis;
+	}
+
+	public void setTownpgdis(String townpgdis) {
+		this.townpgdis = townpgdis;
+	}
+
+	public String getTownareas() {
+		return townareas;
+	}
+
+	public void setTownareas(String townareas) {
+		this.townareas = townareas;
+	}
+
+	public String getCommunitys() {
+		return communitys;
+	}
+
+	public void setCommunitys(String communitys) {
+		this.communitys = communitys;
+	}
+
+	public String getAdminvillages() {
+		return adminvillages;
+	}
+
+	public void setAdminvillages(String adminvillages) {
+		this.adminvillages = adminvillages;
+	}
+
+	public String getTownlocalgdps() {
+		return townlocalgdps;
+	}
+
+	public void setTownlocalgdps(String townlocalgdps) {
+		this.townlocalgdps = townlocalgdps;
+	}
+
+	public String getTownrevenues() {
+		return townrevenues;
+	}
+
+	public void setTownrevenues(String townrevenues) {
+		this.townrevenues = townrevenues;
+	}
+
+	public String getTotalpopulations() {
+		return totalpopulations;
+	}
+
+	public void setTotalpopulations(String totalpopulations) {
+		this.totalpopulations = totalpopulations;
+	}
+
+	public String getFarmingoutvalues() {
+		return farmingoutvalues;
+	}
+
+	public void setFarmingoutvalues(String farmingoutvalues) {
+		this.farmingoutvalues = farmingoutvalues;
+	}
+
+	public String getIndustryoutvalues() {
+		return industryoutvalues;
+	}
+
+	public void setIndustryoutvalues(String industryoutvalues) {
+		this.industryoutvalues = industryoutvalues;
+	}
+
+	public String getServiceoutvalues() {
+		return serviceoutvalues;
+	}
+
+	public void setServiceoutvalues(String serviceoutvalues) {
+		this.serviceoutvalues = serviceoutvalues;
+	}
+
+	public String getOperation() {
+		return operation;
+	}
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
+	public String getSupersearch() {
+		return supersearch;
+	}
+
+	public void setSupersearch(String supersearch) {
+		this.supersearch = supersearch;
+	}
+
 	public String getTotalplanpic() {
 		return totalplanpic;
 	}
@@ -133,46 +380,6 @@ public class Tb_zhongxinzhen {
 		this.cooperation = cooperation;
 	}
 
-	public Double getTownarea() {
-		return townarea;
-	}
-
-	public void setTownarea(Double townarea) {
-		this.townarea = townarea;
-	}
-
-	public Double getTownpopulation() {
-		return townpopulation;
-	}
-
-	public void setTownpopulation(Double townpopulation) {
-		this.townpopulation = townpopulation;
-	}
-
-	public Double getCountygdp() {
-		return countygdp;
-	}
-
-	public void setCountygdp(Double countygdp) {
-		this.countygdp = countygdp;
-	}
-
-	public Double getCountyrevenue() {
-		return countyrevenue;
-	}
-
-	public void setCountyrevenue(Double countyrevenue) {
-		this.countyrevenue = countyrevenue;
-	}
-
-	public Double getTownrevenue() {
-		return townrevenue;
-	}
-
-	public void setTownrevenue(Double townrevenue) {
-		this.townrevenue = townrevenue;
-	}
-
 	public String getHundredcounties() {
 		return hundredcounties;
 	}
@@ -189,22 +396,6 @@ public class Tb_zhongxinzhen {
 		this.citypilot = citypilot;
 	}
 
-	public Integer getCommunity() {
-		return community;
-	}
-
-	public void setCommunity(Integer community) {
-		this.community = community;
-	}
-
-	public Integer getAdminvillage() {
-		return adminvillage;
-	}
-
-	public void setAdminvillage(Integer adminvillage) {
-		this.adminvillage = adminvillage;
-	}
-
 	public String getPartycommittee() {
 		return partycommittee;
 	}
@@ -215,30 +406,6 @@ public class Tb_zhongxinzhen {
 
 	public String getMayor() {
 		return mayor;
-	}
-
-	public String getFarmingoutvalue() {
-		return farmingoutvalue;
-	}
-
-	public void setFarmingoutvalue(String farmingoutvalue) {
-		this.farmingoutvalue = farmingoutvalue;
-	}
-
-	public String getIndustryoutvalue() {
-		return industryoutvalue;
-	}
-
-	public void setIndustryoutvalue(String industryoutvalue) {
-		this.industryoutvalue = industryoutvalue;
-	}
-
-	public String getServiceoutvalue() {
-		return serviceoutvalue;
-	}
-
-	public void setServiceoutvalue(String serviceoutvalue) {
-		this.serviceoutvalue = serviceoutvalue;
 	}
 
 	public void setMayor(String mayor) {
@@ -307,30 +474,6 @@ public class Tb_zhongxinzhen {
 
 	public void setTowndatayear(String towndatayear) {
 		this.towndatayear = towndatayear;
-	}
-
-	public Double getTownpgdi() {
-		return townpgdi;
-	}
-
-	public void setTownpgdi(Double townpgdi) {
-		this.townpgdi = townpgdi;
-	}
-
-	public Double getTownlocalgdp() {
-		return townlocalgdp;
-	}
-
-	public void setTownlocalgdp(Double townlocalgdp) {
-		this.townlocalgdp = townlocalgdp;
-	}
-
-	public Double getTotalpopulation() {
-		return totalpopulation;
-	}
-
-	public void setTotalpopulation(Double totalpopulation) {
-		this.totalpopulation = totalpopulation;
 	}
 
 	public String getContacts() {

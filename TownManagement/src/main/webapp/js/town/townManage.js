@@ -55,19 +55,19 @@ $(document).ready(function() {
             }
 		}, {
             title : '操作',
-            field : 'centertownid',
+            field : 'operation',
             width :	'20%',
             align : 'center',
-            formatter:function(value,row,index){
-            	if(sysOfUserPermission==3){
-            		var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.centertownid+')">查看</a>';
-                	var update = '<a href="javascript:void(0)" onclick="updatetowninfo('+row.centertownid+')">修改</a>'
-                	return query+"&nbsp"+update;
-            	}else{
-            		var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.centertownid+')">查看</a>';
-                	return query;
-            	}
-            }
+//            formatter:function(value,row,index){
+//            	if(sysOfUserPermission==3){
+//            		var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.centertownid+')">查看</a>';
+//                	var update = '<a href="javascript:void(0)" onclick="updatetowninfo('+row.centertownid+')">修改</a>'
+//                	return query+"&nbsp"+update;
+//            	}else{
+//            		var query = '<a href="javascript:void(0)" onclick="querytowndetail('+row.centertownid+')">查看</a>';
+//                	return query;
+//            	}
+//            }
 		} ]
 	});
 	//新增弹出框
@@ -96,7 +96,6 @@ function queryParams(params){
 		search : encodeURI(params.searchText)
 	};
 	temp = GetFormSearchData('townform_search',temp);
-	console.log(temp);
 	return temp;
 }
 //展示详情modal

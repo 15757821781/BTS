@@ -23,6 +23,7 @@ $(document).ready(function() {
 	selectCreate("industrialorientation",sysDirIndustry);
 	// 查询
 	$('#townentry_search').click(function() {
-		
+		$("#towninfomodal").modal('hide');
+		$('#townmanagetable').bootstrapTable('refresh');
 	});
 });

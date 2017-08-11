@@ -155,7 +155,7 @@ function updateInfo(id){
 		cache : false,
 		succ : function(data, status) {
 			fillForm('#roleform',data);
-			PageForRole=createRoleTree(id);
+			createRoleTree(id);
 			$("#importrole_modal").modal('show');
 			$("#role_submit").hide();
 			$("#role_update").show();
@@ -185,17 +185,27 @@ function validatorRoleForm(){
 }
 function createRoleTree(otherdata){
 	var setting = {
-			async:{
-				enable: true,
-				url: "/TownManagement/systemmanage/queryMenusPage",
-				autoParam:["id=id", "name=name", "level=level"],
-				otherParam: { "roleid":otherdata}
+			data:{
+				simpleData:{
+					enable:true,
+					idKey:'id',
+					pIdKey:'parentid',
+					rootPId:null
+				}
 			},
 			check:{
 				enable: true,
 			}	
-		};
-	// 页面树
-	var PageForRole = $.fn.zTree.init($("#treeDemo"),setting);
-	return PageForRole;
+	};
+	$.ajax({
+		url : "/TownManagement/systemmanage/queryMenusPage",
+		data : {"roleid":otherdata},
+		dataType : 'JSON',
+		type : 'get',
+		success : function(data, status) {
+			// 页面树
+			PageForRole = $.fn.zTree.init($("#treeDemo"),setting,data);
+		}
+	})
+	
 }

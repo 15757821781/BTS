@@ -4,7 +4,7 @@
 	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_user" />
 	<select id="queryuserinfo" parameterType="com.hkay.weifei.pojo.Tb_user"
 		resultMap="BaseResultMap">
-		select * from tb_user t where t.account=#{account} and
+		select t.*,t.id as userid from tb_user t where t.account=#{account} and
 		t.password=#{password}
 	</select>
 </mapper>
