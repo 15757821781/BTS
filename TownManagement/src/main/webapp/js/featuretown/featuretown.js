@@ -44,19 +44,6 @@ $(document).ready(function() {
 		formSubmit('#featuretown','featuretownmanage/updatefeaturetown','FeatureTown/featuretownManage.html');
 	});
 	//特色小镇表单验证
-	setTimeout(function() {
-		validatorFeaForm();
-	}, 500);
-});
-//
-function readyOnly(v) {
-	if(v.value=="0"){
-		$(".feapart").attr("disabled","disabled");
-	}else{
-		$(".feapart").removeAttr("disabled");
-	}
-}
-function validatorFeaForm(){
 	$('#featuretown').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -318,7 +305,14 @@ function validatorFeaForm(){
 			}
 		}
 	});
-	$('#featuretown').bootstrapValidator('resetForm', false);
+});
+//
+function readyOnly(v) {
+	if(v.value=="0"){
+		$(".feapart").attr("disabled","disabled");
+	}else{
+		$(".feapart").removeAttr("disabled");
+	}
 }
 function feaAddFieldValidator(){
 	$('#featuretown').bootstrapValidator('addField', 'feacontact', {
