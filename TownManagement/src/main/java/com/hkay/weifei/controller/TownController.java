@@ -21,6 +21,7 @@ import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.TownService;
+import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
@@ -75,14 +76,30 @@ public class TownController {
 
 	@RequestMapping("/querytowninfo")
 	@ResponseBody
-	public Map<String,Object> querytowninfo(@RequestParam(value = "limit", required = false) Integer limit,
+	public Map<String,Object> querytowninfo(HttpServletRequest request,
+			@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_zhongxinzhen tb_zhongxinzhen) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
-		
+		HttpSession session = request.getSession();
+		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+		String number = user.getNumber();
+		String userdata = user.getUserdata();
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
+		//处理高级搜索
+		tb_zhongxinzhen.setSupersearch(GetSuperSearchSql(tb_zhongxinzhen));
 		List<Tb_zhongxinzhen> tb_zhongxinzhens = this.townservice.querytowninfo(tb_zhongxinzhen);
+		if(tb_zhongxinzhens!=null){
+			for(int i=0;i<tb_zhongxinzhens.size();i++){
+				if(userdata.equals("3")||number.equals(tb_zhongxinzhens.get(i).getCreator())){
+					tb_zhongxinzhens.get(i).setOperation("<a href='javascript:void(0)' onclick='querytowndetail("+tb_zhongxinzhens.get(i).getCentertownid()+")'>查看</a>"+
+							"&nbsp"+"<a href='javascript:void(0)' onclick='updatetowninfo("+tb_zhongxinzhens.get(i).getCentertownid()+")'>修改</a>");
+				}else{
+					tb_zhongxinzhens.get(i).setOperation("<a href='javascript:void(0)' onclick='querytowndetail("+tb_zhongxinzhens.get(i).getCentertownid()+")'>查看</a>");
+				}
+			}
+		}
 		int count = this.townservice.querytowninfocnt(tb_zhongxinzhen);
 		map.put("rows", tb_zhongxinzhens);
 		map.put("total", count);
@@ -139,5 +156,147 @@ public class TownController {
 			result = RetAjax.onDataBase(0, 3);
 		}
 		return result;
+	}
+	
+	/**
+	 * 
+	 *方法名称:
+	 *内容：处理高级搜索内容
+	 *创建人:zhuwenjie
+	 *创建日期:2017年8月9日下午3:54:34
+	 */
+	public String GetSuperSearchSql(Tb_zhongxinzhen zxz) {
+		StringBuilder sql = new StringBuilder();
+		if(CommonUtil.JudgeEmpty(zxz.getSearch())){
+			String search = zxz.getSearch();
+			sql.append(" and (a.number like '"+search+"' or a.centertownname like '"+search+"' or a.townlevel like '"+search+"')");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCentertownname())){
+			sql.append(" and a.centertownname like '"+zxz.getCentertownname()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getNumber())){
+			sql.append(" and a.number like '"+zxz.getNumber()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCitypic())){
+			sql.append(" and a.citypilot = "+zxz.getCitypic()+"");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTownlevel())){
+			sql.append(" and a.townlevel = "+zxz.getTownlevel()+"");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getSys_province())){
+			sql.append(" and a.province = "+zxz.getSys_province()+"");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getSys_city())){
+			sql.append(" and a.city = "+zxz.getSys_city()+"");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getSys_town())){
+			sql.append(" and a.town = "+zxz.getSys_town()+"");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCooperation())){
+			sql.append(" and a.cooperation = "+zxz.getCooperation()+"");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTowndatayear())){
+			sql.append(" and a.towndatayear = "+zxz.getTowndatayear()+"");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getHundredcounties())){
+			sql.append(" and a.hundredcounties = "+zxz.getHundredcounties()+"");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCountygdps())){
+			sql.append(CommonUtil.HandleNum("countygdp", zxz.getCountygdps()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCountyrevenues())){
+			sql.append(CommonUtil.HandleNum("countyrevenue", zxz.getCountyrevenues()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTownpopulations())){
+			sql.append(CommonUtil.HandleNum("townpopulation", zxz.getTownpopulations()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTownpgdis())){
+			sql.append(CommonUtil.HandleNum("townpgdi", zxz.getTownpgdis()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTownareas())){
+			sql.append(CommonUtil.HandleNum("townarea", zxz.getTownareas()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCommunitys())){
+			sql.append(CommonUtil.HandleNum("community", zxz.getCommunitys()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getAdminvillages())){
+			sql.append(CommonUtil.HandleNum("adminvillage", zxz.getAdminvillages()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTownlocalgdps())){
+			sql.append(CommonUtil.HandleNum("townlocalgdp", zxz.getTownlocalgdps()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTownrevenues())){
+			sql.append(CommonUtil.HandleNum("townrevenue", zxz.getTownrevenues()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTotalpopulations())){
+			sql.append(CommonUtil.HandleNum("totalpopulation", zxz.getTotalpopulations()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getFarmingoutvalues())){
+			sql.append(CommonUtil.HandleNum("farmingoutvalue", zxz.getFarmingoutvalues()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getIndustryoutvalues())){
+			sql.append(CommonUtil.HandleNum("industryoutvalue", zxz.getIndustryoutvalues()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getServiceoutvalues())){
+			sql.append(CommonUtil.HandleNum("serviceoutvalue", zxz.getServiceoutvalues()));
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getWeather())){
+			sql.append(" and a.weather in ("+zxz.getWeather()+")");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTerrain())){
+			sql.append(" and a.terrain in ("+zxz.getTerrain()+")");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getTraffic())){
+			sql.append(" and a.traffic like '"+zxz.getTraffic()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCurrentindustry())){
+			sql.append(" and a.currentindustry in ("+zxz.getCurrentindustry()+")");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getSpecialindustry())){
+			sql.append(" and a.specialindustry like '"+zxz.getSpecialindustry()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getSpecialindustryway())){
+			sql.append(" and a.specialindustryway like '"+zxz.getSpecialindustryway()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getIndustrialorientation())){
+			sql.append(" and a.industrialorientation in ("+zxz.getIndustrialorientation()+")");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getHistoryculture())){
+			sql.append(" and a.historyculture like '"+zxz.getHistoryculture()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getHonorarytitle())){
+			sql.append(" and a.honorarytitle like '"+zxz.getHonorarytitle()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getPartycommittee())){
+			sql.append(" and a.partycommittee like '"+zxz.getPartycommittee()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCommittelnumber())){
+			sql.append(" and a.committelnumber like '"+zxz.getCommittelnumber()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCommittel())){
+			sql.append(" and a.committel like '"+zxz.getCommittel()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getMayor())){
+			sql.append(" and a.mayor like '"+zxz.getMayor()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getMayortelnumber())){
+			sql.append(" and a.mayortelnumber like '"+zxz.getMayortelnumber()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getMayortel())){
+			sql.append(" and a.mayortel like '"+zxz.getMayortel()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getContacts())){
+			sql.append(" and a.contacts like '"+zxz.getContacts()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getPost())){
+			sql.append(" and a.post like '"+zxz.getPost()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getContactstel())){
+			sql.append(" and a.contactstel like '"+zxz.getContactstel()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(zxz.getCreator())){
+			sql.append(" and a.creator like '"+zxz.getCreator()+"'");
+		}
+		return sql.toString();
 	}
 }

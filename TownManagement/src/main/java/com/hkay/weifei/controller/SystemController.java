@@ -168,11 +168,11 @@ public class SystemController {
 	@ResponseBody
 	public List<Pages> queryMenusPage(Pages pages){
 		List<Pages> list = new ArrayList<Pages>();
-		if(pages.getId()==null||pages.getId().equals("")){
+//		if(pages.getId()==null||pages.getId().equals("")){
 			list = this.systemManageService.queryMenusPage(pages);
-		}else{
-			list = this.systemManageService.queryMenusChild(pages);
-		}
+//		}else{
+//			list = this.systemManageService.queryMenusChild(pages);
+//		}
 		if(list.size()>0){
 			for(int i=0;i<list.size();i++){
 				if(list.get(i).getUrl()==null||list.get(i).getUrl().equals("")){

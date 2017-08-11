@@ -44,7 +44,9 @@
 	        and t.pagelevel=#{pagelevel}
 	    </if>
 	    and t.active =1
-	    AND a.roleid = #{roleid}
+	    <if test="roleid !=null and roleid !=''">
+	        AND a.roleid = #{roleid}
+	    </if>
 	    order by t.pagegroup,t.pagelevel,t.pageid
 	</select>
 </mapper>

@@ -103,7 +103,8 @@
 			a.pageid AS id,
 			a.pagename AS NAME,
 			a.pagelevel AS LEVEL,
-			a.url
+			a.url,
+			a.parentid
 			<if test="roleid!=null and roleid!=''">
 			   ,if(b.id is null,'false','true') as checked
 			</if>
@@ -113,8 +114,8 @@
 			and b.roleid=#{roleid}
 		</if>
 		WHERE 1 = 1
-		AND a.PAGELEVEL = 1
 		AND a.active = 1
+		order by a.pagegroup,a.pagelevel,a.pageid
 	</select>
 	<!-- 查询子页面 -->
 	<select id="queryMenusChild" parameterType="com.hkay.weifei.pojo.Pages"

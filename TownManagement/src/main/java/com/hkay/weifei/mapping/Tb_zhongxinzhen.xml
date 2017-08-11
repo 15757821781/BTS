@@ -69,7 +69,7 @@
 	#{towndatayear},
 	#{hundredcounties},
 	#{countygdp},
-	#{countyrevenue},
+	#{countyrevenue,jdbcType=DOUBLE},
 	#{townpopulation},
 	#{townpgdi},
 	#{townarea},
@@ -114,6 +114,7 @@
 			a.centertownname,
 			a.number,
 			a.townlevel,
+			a.creator,
 			b. NAME AS sys_province,
 			c. NAME AS sys_city,
 			d. NAME AS sys_town
@@ -123,9 +124,8 @@
 		LEFT JOIN tb_area_city c ON a.city = c. code
 		LEFT JOIN tb_area_town d ON a.town = d. code where 1=1
 		and a.visual=1
-		<if test="search!=null and search!=''">
-			and (a.number like '%${search}%' or a.centertownname like '%${search}%'
-			or a.townlevel like '%${search}%')
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
 		</if>
 		order by b.code,c.code,d.code,a.createtime desc,a.centertownid desc
 	</select>
@@ -137,6 +137,7 @@
 			a.centertownname,
 			a.number,
 			a.townlevel,
+			a.creator,
 			b. NAME AS sys_province,
 			c. NAME AS sys_city,
 			d. NAME AS sys_town
@@ -146,9 +147,8 @@
 		LEFT JOIN tb_area_city c ON a.city = c. code
 		LEFT JOIN tb_area_town d ON a.town = d. code where 1=1
 		and a.visual=1
-		<if test="search!=null and search!=''">
-			and (a.number like '%${search}%' or a.centertownname like '%${search}%'
-			or a.townlevel like '%${search}%')
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
 		</if>
 		) t
 	</select>
