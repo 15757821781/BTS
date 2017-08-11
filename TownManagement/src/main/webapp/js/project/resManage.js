@@ -81,7 +81,6 @@ function querydetail(resid) {
 	$.ajax({
 		url : "/TownManagement/pages/ProjectLibrary/resitem.html",
 		cache : false,
-		async: false,
 		success : function(html) {
 			$("#resbody").html(html);
 			$("#resHeader").remove();
@@ -89,7 +88,7 @@ function querydetail(resid) {
 			$("#resfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/resitemmanage/queryresitemdetail",
-				async: false,
+				cache : false,
 				data : {"resid":resid},
 				dataType : 'JSON',
 				succ : function(data, status) {
@@ -183,16 +182,14 @@ function updateinfo(resid){
 	$.ajax({
 		url : "/TownManagement/pages/ProjectLibrary/resitem.html",
 		cache : false,
-		async: false,
 		success : function(html) {
 			$("#resbody").html(html);
 			$("#resHeader").remove();
 			
 			$("#resfieldset").removeAttr("disabled");
-			$('#resitem').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/resitemmanage/queryresitemdetail",
-				async: false,
+				cache : false,
 				data : {"resid":resid},
 				dataType : 'JSON',
 				succ : function(data, status) {

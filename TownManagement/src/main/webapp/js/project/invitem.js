@@ -6,7 +6,6 @@ $(document).ready(function() {
 	// 加载区县信息下拉框
     createAreaSelect("invprovince","invcity","invtown");
     
-//		
 	//初始化文件上传控件
 	initFileInput("invfile1","城市背景图",1);
 	initFileInput("invfile2","区县背景图",1);
@@ -14,6 +13,17 @@ $(document).ready(function() {
 	initFileInput("invfile4","规划方案图",1);
 	initFileInput("invfile5","总体规划图",1);
 	initFileInput("invfile6","详细规划图",1);
+	// 动态增减行初始化
+	$('.addel').addel({
+		 animation: {
+			 duration: 100
+		},
+		events: {
+			added: function (event) {
+				invAddFieldValidator();
+			}
+		}
+	});
 	//表单提交
 	$('#invitem_submit').click(function() {
 		formSubmit('#invitem','invitemmanage/queryinvinfo','ProjectLibrary/invitem.html');
@@ -22,23 +32,6 @@ $(document).ready(function() {
 	$('#invitem_update').click(function() {
 		formSubmit('#invitem','invitemmanage/updateinv','ProjectLibrary/invManage.html');
 	});
-	// 动态增减行初始化
-	 $('.addel').addel({
-			animation: {
-				duration: 100
-			},
-		    events: {
-		        added: function (event) {
-		        	invAddFieldValidator();
-		        }
-		    }
-	    });
-		setTimeout(function() {
-			validatorInvForm();
-		}, 500);
-});
-function validatorInvForm(){
-	//政府招商项目
 	$('#invitem').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -243,8 +236,7 @@ function validatorInvForm(){
 			}
 		}
 	});
-	$('#invitem').bootstrapValidator('resetForm', false);
-}
+});
 function invAddFieldValidator(){
 	$('#invitem').bootstrapValidator('addField', 'invcontact', {
 		validators : {

@@ -169,7 +169,7 @@ function updateinfo(id){
 			$("#orgHeader").remove();
 			
 			$("#orgfieldset").removeAttr("disabled");
-			$('#orgform').bootstrapValidator('resetForm', false);
+//			$('#orgform').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/orgmanage/queryOrgDetail",
 				data : {"orgid":id},

@@ -87,7 +87,6 @@ function querydetail(regid) {
 	$.ajax({
 		url : "/TownManagement/pages/ProjectLibrary/regionitem.html",
 		cache : false,
-		async: false,
 		success : function(html) {
 			$("#regionbody").html(html);
 			$("#regHeader").remove();
@@ -95,7 +94,7 @@ function querydetail(regid) {
 			$("#regfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/regionmanage/queryregionitemdetail",
-				async: false,
+				cache : false,
 				data : {"regid":regid},
 				dataType : 'JSON',
 				succ : function(data, status) {
@@ -221,16 +220,14 @@ function updateinfo(regid){
 	$.ajax({
 		url : "/TownManagement/pages/ProjectLibrary/regionitem.html",
 		cache : false,
-		async: false,
 		success : function(html) {
 			$("#regionbody").html(html);
 			$("#regHeader").remove();
 			
 			$("#regfieldset").removeAttr("disabled");
-			$('#regionitem').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/regionmanage/queryregionitemdetail",
-				async: false,
+				cache : false,
 				data : {"regid":regid},
 				dataType : 'JSON',
 				succ : function(data, status) {
