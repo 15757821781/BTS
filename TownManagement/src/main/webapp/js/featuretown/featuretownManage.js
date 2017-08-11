@@ -220,7 +220,7 @@ function updateInfo(id){
 			$("#feaHeader").remove();
 			
 			$("#feafieldset").removeAttr("disabled");
-			$('#feaform').bootstrapValidator('resetForm', false);
+//			$('#feaform').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/featuretownmanage/queryfeaturetowndetail",
 				data : {"feaid":id},
