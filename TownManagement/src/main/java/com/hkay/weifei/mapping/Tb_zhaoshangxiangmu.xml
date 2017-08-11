@@ -17,7 +17,8 @@
 			a.invname,
 			b.name as invprovince,
 			c.name as invcity,
-			d.name as invtown
+			d.name as invtown,
+			a.inventry
 		FROM
 			tb_zhaoshangxiangmu a
 		LEFT JOIN tb_area_province b on a.invprovince=b.code 

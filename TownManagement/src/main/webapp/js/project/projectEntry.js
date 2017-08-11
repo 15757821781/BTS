@@ -876,9 +876,9 @@ function validatorProjectForm(){
 			}
 		}
 	});
-	$('#regionitem').bootstrapValidator('resetForm', false);
-	$('#invitem').bootstrapValidator('resetForm', false);
-	$('#resitem').bootstrapValidator('resetForm', false);
+//	$('#regionitem').bootstrapValidator('resetForm', false);
+//	$('#invitem').bootstrapValidator('resetForm', false);
+//	$('#resitem').bootstrapValidator('resetForm', false);
 }
 function regAddFieldValidator(){
 	$('#regionitem').bootstrapValidator('addField', 'regcontact', {

@@ -38,89 +38,6 @@ $(document).ready(function() {
 		formSubmit('#orgform','orgmanage/updateOrgInfo','Alliance/organizeManage.html');
 	});
 	//表单验证
-	setTimeout(function() {
-		validatorOrgForm();
-	}, 500);
-	
-});
-var orgcategory = [ {
-	value : "1",
-	name : "研究机构",
-	parid : "1"
-}, {
-	value : "2",
-	name : "高校",
-	parid : "1"
-}, {
-	value : "3",
-	name : "社会团体",
-	parid : "2"
-}, {
-	value : "4",
-	name : "民办非企业单位",
-	parid : "2"
-}, {
-	value : "5",
-	name : "基金会",
-	parid : "2"
-} ];
-var orgtype = [ {
-	value : "1",
-	name : "部属",
-	parid : "1"
-}, {
-	value : "2",
-	name : "省属",
-	parid : "1"
-}, {
-	value : "3",
-	name : "市属",
-	parid : "1"
-}, {
-	value : "4",
-	name : "区县属",
-	parid : "1"
-}, {
-	value : "5",
-	name : "行业协会",
-	parid : "2"
-},{
-	value : "6",
-	name : "综合协会",
-	parid : "2"
-},{
-	value : "7",
-	name : "民非单位",
-	parid : "2"
-},{
-	value : "8",
-	name : "公募基金会",
-	parid : "2"
-},{
-	value : "9",
-	name : "非公募基金会",
-	parid : "2"
-} ]
-function natureChanage(v){
-	var id = v.value;
-	$("#orgcategory option").remove();
-	$("#orgcategory").append("<option></option>");
-	$("#orgtype option").remove();
-	$("#orgtype").append("<option></option>");
-	$.each(orgcategory, function(i, item) {
-		if(item.parid==id){
-			$("#orgcategory").append("<option value="+item.value+">"+item.name+"</option>")
-		}
-	});
-	$.each(orgtype, function(i, item) {
-		if(item.parid==id){
-			$("#orgtype").append("<option value="+item.value+">"+item.name+"</option>")
-		}
-	});
-	$("#orgcategory").selectpicker('refresh');
-	$("#orgtype").selectpicker('refresh');
-}
-function validatorOrgForm(){
 	$('#orgform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -284,7 +201,83 @@ function validatorOrgForm(){
 			}
 		}
 	});
-	$('#orgform').bootstrapValidator('resetForm', false);
+});
+var orgcategory = [ {
+	value : "1",
+	name : "研究机构",
+	parid : "1"
+}, {
+	value : "2",
+	name : "高校",
+	parid : "1"
+}, {
+	value : "3",
+	name : "社会团体",
+	parid : "2"
+}, {
+	value : "4",
+	name : "民办非企业单位",
+	parid : "2"
+}, {
+	value : "5",
+	name : "基金会",
+	parid : "2"
+} ];
+var orgtype = [ {
+	value : "1",
+	name : "部属",
+	parid : "1"
+}, {
+	value : "2",
+	name : "省属",
+	parid : "1"
+}, {
+	value : "3",
+	name : "市属",
+	parid : "1"
+}, {
+	value : "4",
+	name : "区县属",
+	parid : "1"
+}, {
+	value : "5",
+	name : "行业协会",
+	parid : "2"
+},{
+	value : "6",
+	name : "综合协会",
+	parid : "2"
+},{
+	value : "7",
+	name : "民非单位",
+	parid : "2"
+},{
+	value : "8",
+	name : "公募基金会",
+	parid : "2"
+},{
+	value : "9",
+	name : "非公募基金会",
+	parid : "2"
+} ]
+function natureChanage(v){
+	var id = v.value;
+	$("#orgcategory option").remove();
+	$("#orgcategory").append("<option></option>");
+	$("#orgtype option").remove();
+	$("#orgtype").append("<option></option>");
+	$.each(orgcategory, function(i, item) {
+		if(item.parid==id){
+			$("#orgcategory").append("<option value="+item.value+">"+item.name+"</option>")
+		}
+	});
+	$.each(orgtype, function(i, item) {
+		if(item.parid==id){
+			$("#orgtype").append("<option value="+item.value+">"+item.name+"</option>")
+		}
+	});
+	$("#orgcategory").selectpicker('refresh');
+	$("#orgtype").selectpicker('refresh');
 }
 function orgAddFieldValidator(){
 	$('#orgform').bootstrapValidator('addField', 'orgcontact', {

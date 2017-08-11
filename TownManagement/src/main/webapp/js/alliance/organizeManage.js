@@ -59,18 +59,18 @@ $(document).ready(function() {
             }
 		}, {
             title : '操作',
-            field : 'orgid',
+            field : 'operation',
             width :	'20%',
             align : 'center',
-            formatter:function(value,row,index){
-            	if(sysOfUserPermission==3){
-	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.orgid+')">查看</a>';
-	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.orgid+')">修改</a>'
-	            	return query+"&nbsp"+update;
-            }else{
-            	return '<a href="javascript:void(0)" onclick="querydetail('+row.orgid+')">查看</a>';
-            	}
-            }
+//            formatter:function(value,row,index){
+//            	if(sysOfUserPermission==3){
+//	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.orgid+')">查看</a>';
+//	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.orgid+')">修改</a>'
+//	            	return query+"&nbsp"+update;
+//            }else{
+//            	return '<a href="javascript:void(0)" onclick="querydetail('+row.orgid+')">查看</a>';
+//            	}
+//            }
 		} ]
 	});
 })
@@ -169,7 +169,7 @@ function updateinfo(id){
 			$("#orgHeader").remove();
 			
 			$("#orgfieldset").removeAttr("disabled");
-			$('#orgform').bootstrapValidator('resetForm', false);
+//			$('#orgform').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/orgmanage/queryOrgDetail",
 				data : {"orgid":id},

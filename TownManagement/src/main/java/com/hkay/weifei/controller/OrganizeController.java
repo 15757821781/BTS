@@ -63,10 +63,14 @@ public class OrganizeController {
 	 */
 	@RequestMapping("/queryOrgList")
 	@ResponseBody
-	public Map<String,Object> queryOrgList(@RequestParam(value = "limit", required = false) Integer limit,
+	public Map<String,Object> queryOrgList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
+		HttpSession session = request.getSession();
+		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+		String number = user.getNumber();
+		String userdata = user.getUserdata();
 		Tb_shehuizuzhidanwei tb_shehuizuzhidanwei = new Tb_shehuizuzhidanwei();
 		 if (search != null) {
 			 search = URLDecoder.decode(search, "utf-8");
@@ -77,6 +81,16 @@ public class OrganizeController {
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_shehuizuzhidanwei> tb_shehuizuzhidanweis = this.organizeService.queryOrgList(tb_shehuizuzhidanwei);
+		if(tb_shehuizuzhidanweis!=null){
+			for(int i=0;i<tb_shehuizuzhidanweis.size();i++){
+				if(userdata.equals("3")||number.equals(tb_shehuizuzhidanweis.get(i).getOrgentry())){
+					tb_shehuizuzhidanweis.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_shehuizuzhidanweis.get(i).getOrgid()+")'>查看</a>"+
+							"&nbsp"+"<a href='javascript:void(0)' onclick='updateinfo("+tb_shehuizuzhidanweis.get(i).getOrgid()+")'>修改</a>");
+				}else{
+					tb_shehuizuzhidanweis.get(i).setOperation("<a href='javascript:void(0)' onclick='querydetail("+tb_shehuizuzhidanweis.get(i).getOrgid()+")'>查看</a>");
+				}
+			}
+		}
 		int count = this.organizeService.queryOrgcnt(tb_shehuizuzhidanwei);
 		map.put("rows", tb_shehuizuzhidanweis);
 		map.put("total", count);

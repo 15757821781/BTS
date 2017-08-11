@@ -53,18 +53,18 @@ $(document).ready(function() {
             }
 		}, {
             title : '操作',
-            field : 'regid',
+            field : 'operation',
             width :	'20%',
             align : 'center',
-            formatter:function(value,row,index){
-            	if(sysOfUserPermission==3){
-	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.regid+')">查看</a>';
-	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.regid+')">修改</a>'
-	            	return query+"&nbsp"+update;
-            }else{
-            	return '<a href="javascript:void(0)" onclick="querydetail('+row.regid+')">查看</a>';
-            	}
-            }
+//            formatter:function(value,row,index){
+//            	if(sysOfUserPermission==3){
+//	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.regid+')">查看</a>';
+//	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.regid+')">修改</a>'
+//	            	return query+"&nbsp"+update;
+//            }else{
+//            	return '<a href="javascript:void(0)" onclick="querydetail('+row.regid+')">查看</a>';
+//            	}
+//            }
 		} ]
 	});
 });
@@ -87,7 +87,6 @@ function querydetail(regid) {
 	$.ajax({
 		url : "/TownManagement/pages/ProjectLibrary/regionitem.html",
 		cache : false,
-		async: false,
 		success : function(html) {
 			$("#regionbody").html(html);
 			$("#regHeader").remove();
@@ -95,7 +94,7 @@ function querydetail(regid) {
 			$("#regfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/regionmanage/queryregionitemdetail",
-				async: false,
+				cache : false,
 				data : {"regid":regid},
 				dataType : 'JSON',
 				succ : function(data, status) {
@@ -221,16 +220,14 @@ function updateinfo(regid){
 	$.ajax({
 		url : "/TownManagement/pages/ProjectLibrary/regionitem.html",
 		cache : false,
-		async: false,
 		success : function(html) {
 			$("#regionbody").html(html);
 			$("#regHeader").remove();
 			
 			$("#regfieldset").removeAttr("disabled");
-			$('#regionitem').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/regionmanage/queryregionitemdetail",
-				async: false,
+				cache : false,
 				data : {"regid":regid},
 				dataType : 'JSON',
 				succ : function(data, status) {

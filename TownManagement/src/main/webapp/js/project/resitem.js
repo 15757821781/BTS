@@ -49,12 +49,6 @@ $(document).ready(function() {
 	initFileInput("resfile4","规划方案图",1);
 	initFileInput("resfile5","总体规划图",1);
 	initFileInput("resfile6","详细规划图",1);
-	setTimeout(function() {
-		validatorResForm();
-	}, 500);
-});
-function validatorResForm(){
-	//储备项目验证
 	$('#resitem').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -242,8 +236,7 @@ function validatorResForm(){
 			}
 		}
 	});
-	$('#resitem').bootstrapValidator('resetForm', false);
-}
+});
 function resAddFieldValidator(){
 	$('#resitem').bootstrapValidator('addField', 'rescontactunit', {
 		validators : {

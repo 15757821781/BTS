@@ -47,18 +47,18 @@ $(document).ready(function() {
 			width : '20%'
 		}, {
             title : '操作',
-            field : 'resid',
+            field : 'operation',
             width :	'20%',
             align : 'center',
-            formatter:function(value,row,index){
-            	if(sysOfUserPermission==3){
-            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.resid+')">查看</a>';
-            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.resid+')">修改</a>'
-            	return query+"&nbsp"+update;
-            }else{
-            	return '<a href="javascript:void(0)" onclick="querydetail('+row.resid+')">查看</a>';
-            	}
-            }
+//            formatter:function(value,row,index){
+//            	if(sysOfUserPermission==3){
+//            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.resid+')">查看</a>';
+//            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.resid+')">修改</a>'
+//            	return query+"&nbsp"+update;
+//            }else{
+//            	return '<a href="javascript:void(0)" onclick="querydetail('+row.resid+')">查看</a>';
+//            	}
+//            }
 		} ]
 	});
 });
@@ -81,7 +81,6 @@ function querydetail(resid) {
 	$.ajax({
 		url : "/TownManagement/pages/ProjectLibrary/resitem.html",
 		cache : false,
-		async: false,
 		success : function(html) {
 			$("#resbody").html(html);
 			$("#resHeader").remove();
@@ -89,7 +88,7 @@ function querydetail(resid) {
 			$("#resfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/resitemmanage/queryresitemdetail",
-				async: false,
+				cache : false,
 				data : {"resid":resid},
 				dataType : 'JSON',
 				succ : function(data, status) {
@@ -183,16 +182,14 @@ function updateinfo(resid){
 	$.ajax({
 		url : "/TownManagement/pages/ProjectLibrary/resitem.html",
 		cache : false,
-		async: false,
 		success : function(html) {
 			$("#resbody").html(html);
 			$("#resHeader").remove();
 			
 			$("#resfieldset").removeAttr("disabled");
-			$('#resitem').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/resitemmanage/queryresitemdetail",
-				async: false,
+				cache : false,
 				data : {"resid":resid},
 				dataType : 'JSON',
 				succ : function(data, status) {

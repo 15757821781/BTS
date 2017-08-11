@@ -88,7 +88,8 @@
 	<select id="queryfeaturetown" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen"
 		resultMap="BaseResultMap">
 		    select a.feanumber,a.feaname,a.fealevel,a.feaid,
-			b.name as feaprovince,c.name as feacity,d.name as featown 
+			b.name as feaprovince,c.name as feacity,d.name as featown,
+			a.feacreator
 			from Tb_tesexiaozhen a 
 			LEFT JOIN tb_area_province b on a.feaprovince=b.code
 			LEFT JOIN tb_area_city c on a.feacity=c.code

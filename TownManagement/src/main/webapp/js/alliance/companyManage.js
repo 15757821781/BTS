@@ -64,16 +64,17 @@ $(document).ready(function() {
 		}, {
             title : '操作',
             width :	'16%',
+            field : 'operation',
             align : 'center',
-            formatter:function(value,row,index){
-            	if(sysOfUserPermission==3){
-	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.comid+')">查看</a>';
-	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.comid+')">修改</a>'
-	            	return query+"&nbsp"+update;
-            }else{
-            	return  '<a href="javascript:void(0)" onclick="querydetail('+row.comid+')">查看</a>';
-            	}
-            }
+//            formatter:function(value,row,index){
+//            	if(sysOfUserPermission==3){
+//	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.comid+')">查看</a>';
+//	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.comid+')">修改</a>'
+//	            	return query+"&nbsp"+update;
+//            }else{
+//            	return  '<a href="javascript:void(0)" onclick="querydetail('+row.comid+')">查看</a>';
+//            	}
+//            }
 		} ]
 	});
 })
@@ -171,7 +172,6 @@ function updateinfo(id){
 			$("#comHeader").remove();
 			
 			$("#comfieldset").removeAttr("disabled");
-			$('#comform').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/commanage/queryComDetail",
 				data : {"comid":id},
@@ -231,6 +231,5 @@ function updateinfo(id){
 				}
 			});
 		}
-	
 	});
 }

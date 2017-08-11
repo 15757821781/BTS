@@ -34,7 +34,15 @@ public class Tb_chubeixiangmu {
 	private String resdetailplanpic;// 控制性详细规划
 	private String resentry;//录入员
 	private String search;//搜索
+	private String operation;// 操作
 	
+	
+	public String getOperation() {
+		return operation;
+	}
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
 	public String getRescontract() {
 		return rescontract;
 	}

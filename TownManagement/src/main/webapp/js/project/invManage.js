@@ -47,18 +47,18 @@ $(document).ready(function() {
 			width : '20%'
 		}, {
             title : '操作',
-            field : 'invid',
+            field : 'operation',
             width :	'20%',
             align : 'center',
-            formatter:function(value,row,index){
-            	if(sysOfUserPermission==3){
-            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.invid+')">查看</a>';
-            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.invid+')">修改</a>'
-            	return query+"&nbsp"+update;
-            }else{
-            	return '<a href="javascript:void(0)" onclick="querydetail('+row.invid+')">查看</a>';
-            	}
-            }
+//            formatter:function(value,row,index){
+//            	if(sysOfUserPermission==3){
+//            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.invid+')">查看</a>';
+//            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.invid+')">修改</a>'
+//            	return query+"&nbsp"+update;
+//            }else{
+//            	return '<a href="javascript:void(0)" onclick="querydetail('+row.invid+')">查看</a>';
+//            	}
+//            }
 		} ]
 	});
 })
@@ -88,7 +88,7 @@ function querydetail(invid) {
 			$("#invfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
-				async: false,
+				cache : false,
 				data : {"invid":invid},
 				dataType : 'JSON',
 				succ : function(data, status) {
@@ -186,12 +186,11 @@ function updateinfo(invid){
 			$("#invHeader").remove();
 			
 			$("#invfieldset").removeAttr("disabled");
-			$('#invitem').bootstrapValidator('resetForm', false);
 			tk.ajax({
 				url : "/TownManagement/invitemmanage/queryinvitemdetail",
-				async: false,
 				data : {"invid":invid},
 				dataType : 'JSON',
+				cache : false,
 				succ : function(data, status) {
 					fillForm('#invitem',data);
 					var param1={
@@ -266,14 +265,14 @@ function updateinfo(invid){
 								+'</div><label class="col-sm-2 control-label">联系电话</label>'
 								+'<div class="col-sm-2"><input name="invcontacttel" id="invcontacttel" class="form-control" type="text" value='+invcontacttel[i]+'>'
 								+'</div></div>').insertAfter(".addel-target:last");
-				}
-			});
-			invAddFieldValidator();
-			$("#invmodal").modal('show');
-			$("#invitem_submit").hide();
-			$("#invitem_update").show();
-		}
-	});
-		}
+							}
+						});
+					invAddFieldValidator();
+					$("#invmodal").modal('show');
+					$("#invitem_submit").hide();
+					$("#invitem_update").show();
+					}
+				});
+			}
 	});
 }

@@ -17,7 +17,8 @@
 			a.rescompetentunit,
 			b.name as resprovince,
 			c.name as rescity,
-			d.name as restown
+			d.name as restown,
+			a.resentry
 		FROM
 			tb_chubeixiangmu a
 		LEFT JOIN tb_area_province b on a.resprovince=b.code 
