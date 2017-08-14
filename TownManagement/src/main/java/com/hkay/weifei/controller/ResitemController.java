@@ -147,6 +147,7 @@ public class ResitemController {
 			tb_chubeixiangmus.get(0).setRescontacts("******");
 			tb_chubeixiangmus.get(0).setRescontactway("******");
 			tb_chubeixiangmus.get(0).setReschargetel("******");
+			tb_chubeixiangmus.get(0).setRescharge("******");
 		}
 		result=RetAjax.onQueryDetail(tb_chubeixiangmus);
 		return result;

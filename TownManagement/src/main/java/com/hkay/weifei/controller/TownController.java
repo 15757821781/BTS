@@ -118,7 +118,10 @@ public class TownController {
 			tb_zhongxinzhens.get(0).setCommittel("******");
 			tb_zhongxinzhens.get(0).setMayortelnumber("******");
 			tb_zhongxinzhens.get(0).setMayortel("******");
+			tb_zhongxinzhens.get(0).setMayor("******");
 			tb_zhongxinzhens.get(0).setContactstel("******");
+			tb_zhongxinzhens.get(0).setContacts("******");
+			tb_zhongxinzhens.get(0).setPost("******");
 		}
 		result=RetAjax.onQueryDetail(tb_zhongxinzhens);
 		return result;
