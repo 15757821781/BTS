@@ -67,7 +67,19 @@ $(document).ready(function() {
 //            }
 		} ]
 	});
-});
+	//新增弹出框
+	$('#regionSearch_bar').click(function() {
+		$.ajax({
+			url : "/TownManagement/pages/ProjectLibrary/regionSearch.html",
+			cache : false,
+			success : function(html) {
+				$('#regionbody').html(html);
+				$('#regionitem_search')[0].reset();
+				$("#regionmodal").modal('show');
+			}
+		});
+	});
+})
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {
@@ -80,6 +92,7 @@ function queryParams(params){
 		pageindex : params.pageNumber,
 		search : encodeURI(params.searchText)
 	};
+	temp = GetFormSearchData('regionitem_search',temp);
 	return temp;
 }
 //展示详情modal

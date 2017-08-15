@@ -23,6 +23,7 @@ import com.hkay.weifei.pojo.Tb_qiyedanwei;
 import com.hkay.weifei.pojo.Tb_shehuizuzhidanwei;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.OrganizeService;
+import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
 import com.hkay.weifei.util.TypeStatusConstant;
@@ -65,21 +66,15 @@ public class OrganizeController {
 	@ResponseBody
 	public Map<String,Object> queryOrgList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
-			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
+			Tb_shehuizuzhidanwei tb_shehuizuzhidanwei) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
 		String userdata = user.getUserdata();
-		Tb_shehuizuzhidanwei tb_shehuizuzhidanwei = new Tb_shehuizuzhidanwei();
-		 if (search != null) {
-			 search = URLDecoder.decode(search, "utf-8");
-			 tb_shehuizuzhidanwei.setSearch(search);
-		 } else {
-			 tb_shehuizuzhidanwei.setSearch("");
-		 }
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
+		tb_shehuizuzhidanwei.setSupersearch(GetSuperSearchSql(tb_shehuizuzhidanwei));
 		List<Tb_shehuizuzhidanwei> tb_shehuizuzhidanweis = this.organizeService.queryOrgList(tb_shehuizuzhidanwei);
 		if(tb_shehuizuzhidanweis!=null){
 			for(int i=0;i<tb_shehuizuzhidanweis.size();i++){
@@ -146,6 +141,89 @@ public class OrganizeController {
 		}
 		return result;
 	}
-}
-	
+	/**
+	 * 
+	 *方法名称:
+	 *内容：处理高级搜索内容
+	 *创建人:caixuyang
+	 *创建日期:2017年8月15日下午1:14:34
+	 */
+	public String GetSuperSearchSql(Tb_shehuizuzhidanwei shzz) {
+		StringBuilder sql = new StringBuilder();
+		if(CommonUtil.JudgeEmpty(shzz.getSearch())){
+			String search = shzz.getSearch();
+			sql.append(" and (a.orgnumber like '%"+search+"%' or a.orgname like '%"+search+"%' or a.orgcategory like '%"+search+"%')");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgname())){
+			sql.append(" and a.orgname like '%"+shzz.getOrgname()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgnumber())){
+			sql.append(" and a.orgnumber like '%"+shzz.getOrgnumber()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgnature())){
+			sql.append(" and a.orgnature = '"+shzz.getOrgnature()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgcategory())){
+			sql.append(" and a.orgcategory = '"+shzz.getOrgcategory()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgtype())){
+			sql.append(" and a.orgtype = '"+shzz.getOrgtype()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgsponsor())){
+			sql.append(" and a.orgsponsor like '%"+shzz.getOrgsponsor()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgrelation())){
+			sql.append(" and a.orgrelation = '"+shzz.getOrgrelation()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgcompetent())){
+			sql.append(" and a.orgcompetent like '%"+shzz.getOrgcompetent()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgoffice())){
+			sql.append(" and a.orgoffice like '%"+shzz.getOrgoffice()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgestablish())){
+			sql.append(" and DATE_FORMAT(a.orgestablish,'%Y-%m-%d') = '"+shzz.getOrgestablish()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgrepresent())){
+			sql.append(" and a.orgrepresent like '%"+shzz.getOrgrepresent()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgprovince())){
+			sql.append(" and a.orgprovince = '"+shzz.getOrgprovince()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgcity())){
+			sql.append(" and a.orgcity = '"+shzz.getOrgcity()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgtown())){
+			sql.append(" and a.orgtown = '"+shzz.getOrgtown()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgaddress())){
+			sql.append(" and a.orgaddress like '%"+shzz.getOrgaddress()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgcreditcode())){
+			sql.append(" and a.orgcreditcode like '%"+shzz.getOrgcreditcode()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgscope())){
+			sql.append(" and a.orgscope like '%"+shzz.getOrgscope()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgadvantaget())){
+			sql.append(" and a.orgadvantaget in ('"+shzz.getOrgadvantaget()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgofficeweb())){
+			sql.append(" and a.orgofficeweb = '"+shzz.getOrgofficeweb()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgcontact())){
+			sql.append(" and a.orgcontact = '"+shzz.getOrgcontact()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgcontacttel())){
+			sql.append(" and a.orgcontacttel = '"+shzz.getOrgcontacttel()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgpost())){
+			sql.append(" and a.orgpost = '"+shzz.getOrgpost()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(shzz.getOrgentry())){
+			sql.append(" and a.orgentry = '"+shzz.getOrgentry()+"'");
+		}
+		return sql.toString();
+	}
 
+}
