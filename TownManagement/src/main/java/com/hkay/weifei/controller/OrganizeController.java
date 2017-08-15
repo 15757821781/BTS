@@ -130,6 +130,9 @@ public class OrganizeController {
 	@ResponseBody
 	public RetAjax updateOrgInfo(HttpServletRequest request,Tb_shehuizuzhidanwei tb_shehuizuzhidanwei ){
 		try {
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			tb_shehuizuzhidanwei.setOrgupdator(user.getNumber());
 			int flag = this.organizeService.updateOrgInfo(tb_shehuizuzhidanwei);
 			result = RetAjax.onDataBase(flag, 3);
 		} catch (Exception e) {

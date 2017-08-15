@@ -147,6 +147,9 @@ public class InvitemController {
 			@RequestParam("invfile4") MultipartFile[] files4, @RequestParam("invfile5") MultipartFile[] files5,
 			@RequestParam("invfile6") MultipartFile[] files6){
 		try {
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			tb_zhaoshangxiangmu.setInvupdator(user.getNumber());
 			String imgpath1 = fileupload.fileUpload(files1, request, TypeStatusConstant.inv_statusmap, tb_zhaoshangxiangmu.getInvcitypic());
 			String imgpath2 = fileupload.fileUpload(files2, request, TypeStatusConstant.inv_statusmap,tb_zhaoshangxiangmu.getInvtownpic());
 			String imgpath3 = fileupload.fileUpload(files3, request, TypeStatusConstant.inv_statusmap, tb_zhaoshangxiangmu.getInvscopeopic());

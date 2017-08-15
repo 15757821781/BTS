@@ -160,6 +160,9 @@ public class ResitemController {
 			@RequestParam("resfile4") MultipartFile[] files4, @RequestParam("resfile5") MultipartFile[] files5,
 			@RequestParam("resfile6") MultipartFile[] files6){
 		try {
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			tb_chubeixiangmu.setResupdator(user.getNumber());
 			String imgpath1 = fileupload.fileUpload(files1, request, TypeStatusConstant.res_statusmap, tb_chubeixiangmu.getRescitypic());
 			String imgpath2 = fileupload.fileUpload(files2, request, TypeStatusConstant.res_statusmap,tb_chubeixiangmu.getRestownpic());
 			String imgpath3 = fileupload.fileUpload(files3, request, TypeStatusConstant.res_statusmap, tb_chubeixiangmu.getResscopeopic());
