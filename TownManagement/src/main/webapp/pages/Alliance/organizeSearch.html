@@ -38,7 +38,8 @@
 					<label class="col-sm-2 control-label">单位性质</label>
 					<div class="col-sm-2">
 						<select name="orgnature" id="orgnature"
-							class="selectpicker show-tick form-control">
+							class="selectpicker show-tick form-control"
+							onchange="natureChanage(this)">
 							<option></option>
 							<option value="1">事业单位</option>
 							<option value="2">社会组织</option>
@@ -215,16 +216,16 @@
 		<!-- Select JavaScript -->
 	<script src="/TownManagement/dist/js/bootstrap-select.js"></script>
 	<!-- 表单验证 -->
-	<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
-	<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
+<!-- 	<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script> -->
+<!-- 	<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script> -->
 	<!-- 时间插件 -->
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
 	<!-- 文件上传插件 -->
-	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
-	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script>
+<!-- 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script> -->
+<!-- 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script> -->
 	<!-- 增减行插件 -->
 	<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
-	<script type="text/javascript" src="/TownManagement/js/alliance/organizeEntry.js"></script>
+	<script type="text/javascript" src="/TownManagement/js/alliance/organizeSearch.js"></script>
 </body>
 </html>

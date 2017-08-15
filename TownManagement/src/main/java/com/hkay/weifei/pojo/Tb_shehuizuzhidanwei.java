@@ -27,7 +27,15 @@ public class Tb_shehuizuzhidanwei {
 	private String orgentry;//录入员
 	private String search;// 查询条件
 	private String operation;// 操作
+	private String supersearch;// 高级搜索
 	
+	
+	public String getSupersearch() {
+		return supersearch;
+	}
+	public void setSupersearch(String supersearch) {
+		this.supersearch = supersearch;
+	}
 	public String getOperation() {
 		return operation;
 	}

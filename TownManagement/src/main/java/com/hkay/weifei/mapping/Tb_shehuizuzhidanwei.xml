@@ -74,8 +74,8 @@
 		LEFT JOIN tb_area_city c on a.orgcity=c.code 
 		LEFT JOIN tb_area_town d on a.orgtown=d.code where 1=1 
 		and a.visual=1
-		<if test="search!=null and search!=''">
-		    and (a.orgnumber like '%${search}%' or a.orgname like '%${search}%' or a.orgcategory like '%${search}%')
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
 		</if>
 		)t
 		
@@ -97,8 +97,8 @@
 		LEFT JOIN tb_area_city c on a.orgcity=c.code 
 		LEFT JOIN tb_area_town d on a.orgtown=d.code where 1=1 
 		and a.visual=1
-		<if test="search!=null and search!=''">
-		    and (a.orgnumber like '%${search}%' or a.orgname like '%${search}%' or a.orgcategory like '%${search}%')
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
 		</if>
 		order by b.code,c.code,d.code,createtime desc,a.orgid desc
 	</select>

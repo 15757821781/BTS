@@ -73,6 +73,18 @@ $(document).ready(function() {
 //            }
 		} ]
 	});
+	//新增弹出框
+	$('#orgSearch_bar').click(function() {
+		$.ajax({
+			url : "/TownManagement/pages/Alliance/organizeSearch.html",
+			cache : false,
+			success : function(html) {
+				$('#orginfobody').html(html);
+				$('#orgform_search')[0].reset();
+				$("#orginfomodal").modal('show');
+			}
+		});
+	});
 })
 //查询方法
 function queryParams(params){
@@ -86,6 +98,7 @@ function queryParams(params){
 		pageindex : params.pageNumber,
 		search : encodeURI(params.searchText)
 	};
+	temp = GetFormSearchData('orgform_search',temp);
 	return temp;
 }
 //展示详情modal
