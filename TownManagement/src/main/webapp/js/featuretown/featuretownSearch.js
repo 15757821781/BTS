@@ -12,20 +12,22 @@ $(document).ready(function() {
 		format : 'yyyy'
 	})
 	// 动态增减行初始化
-//    $('.addel').addel({
-//		animation: {
-//			duration: 100
-//		},
-//	    events: {
-//	        added: function (event) {
-//	        	feaAddFieldValidator();
-//	        }
-//	    }
-//    });
+    $('.addel').addel({
+		animation: {
+			duration: 100
+		},
+	    events: {
+	        added: function (event) {
+	        	feaAddFieldValidator();
+	        }
+	    }
+    });
 	//初始化省市县联动
 	createAreaSelect("feaprovince","feacity","featown");
 	//查询
-	$('#featuretownform_search').click(function() {
+	$('#featuretownentry_search').click(function() {
+		$("#featuretownmodal").modal('hide');
+		$('#featuretownManage').bootstrapTable('refresh');
 		
 	});
 });

@@ -97,7 +97,6 @@ function queryParams(params){
 		search : encodeURI(params.searchText)
 	};
 	temp = GetFormSearchData('featuretownform_search',temp);
-	console.log(temp);
 	return temp;
 }
 //展示详情modal
