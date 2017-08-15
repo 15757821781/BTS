@@ -92,6 +92,7 @@
 		<if test="password!=null and password!=''">
 		    password=#{password},
 		</if>
+		number = #{number},
 		roleid=#{roleid},
 		userdata=#{userdata}
 		where id=#{userid}
@@ -181,4 +182,8 @@
 	    delete from tb_role_page_mapping
 	    where roleid = #{id}
 	</delete>
+	<!-- 更新角色信息 -->
+	<update id="updateRoleInfo" parameterType="com.hkay.weifei.pojo.Tb_role">
+	    update tb_role set name = #{name} where id = #{id}
+	</update>
 </mapper>

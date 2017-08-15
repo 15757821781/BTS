@@ -49,9 +49,9 @@ public class SystemManageServiceImpl<UserRoleDao> implements SystemManageService
 	public int insertUserInfo(Tb_user tb_user) {
 		if(tb_user!=null){
 			tb_user.setPassword(new MD5().encryption(tb_user.getPassword()));
-			int cnt = this.systemManageDao.queryUsercnt(new Tb_user());
-			String number = new DecimalFormat("0000").format(cnt+1);
-			tb_user.setNumber(number);
+//			int cnt = this.systemManageDao.queryUsercnt(new Tb_user());
+//			String number = new DecimalFormat("0000").format(cnt+1);
+//			tb_user.setNumber(number);
 			int flag = this.systemManageDao.insertUserInfo(tb_user);
 			return flag;
 		}else{
@@ -120,7 +120,7 @@ public class SystemManageServiceImpl<UserRoleDao> implements SystemManageService
 	@Override
 	public int updateRoleInfo(Tb_role tb_role) {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.systemManageDao.updateRoleInfo(tb_role);
 	}
 
 	@Override
