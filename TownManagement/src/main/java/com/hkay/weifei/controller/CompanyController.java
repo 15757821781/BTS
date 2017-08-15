@@ -308,6 +308,9 @@ public class CompanyController {
 	public RetAjax updateComInfo(HttpServletRequest request,Tb_qiyedanwei tb_qiyedanwei,
 			@RequestParam("comcertificatepic") MultipartFile[] files) {
 		try {
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			tb_qiyedanwei.setComupdator(user.getNumber());
 			String imgpath=fileupload.fileUpload(files, request,TypeStatusConstant.proof,tb_qiyedanwei.getComcertificate());
 			tb_qiyedanwei.setComcertificate(imgpath);
 			int flag = this.companyService.updateComInfo(tb_qiyedanwei);

@@ -89,7 +89,9 @@
 		invdetailplanpic=#{invdetailplanpic},
 		invpost=#{invpost},
 		invcontact=#{invcontact},
-		invcontacttel=#{invcontacttel}
+		invcontacttel=#{invcontacttel},
+		invupdator=#{invupdator},
+		updatetime=now()
 		where invid=#{invid}
 	</update>
 </mapper>

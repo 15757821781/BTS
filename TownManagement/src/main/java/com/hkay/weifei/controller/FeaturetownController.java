@@ -154,6 +154,9 @@ public class FeaturetownController {
 			@RequestParam("feafile4") MultipartFile[] files4, @RequestParam("feafile5") MultipartFile[] files5,
 			@RequestParam("feafile6") MultipartFile[] files6){
 		try{
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			tb_tesexiaozhen.setFeaupdator(user.getNumber());
 			String imgpath1 = fileupload.fileUpload(files1, request, TypeStatusConstant.fea_statusmap, tb_tesexiaozhen.getFeacitypic());
 			String imgpath2 = fileupload.fileUpload(files2, request, TypeStatusConstant.fea_statusmap, tb_tesexiaozhen.getFeatownpic());
 			String imgpath3 = fileupload.fileUpload(files3, request, TypeStatusConstant.fea_statusmap, tb_tesexiaozhen.getFeascopeopic());

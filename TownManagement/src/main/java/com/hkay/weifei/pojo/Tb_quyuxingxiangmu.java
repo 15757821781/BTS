@@ -46,14 +46,18 @@ public class Tb_quyuxingxiangmu {
 	private String regallplanpic;// 城市总体规划
 	private String regdetailplanpic;// 控制性详细规划
 	private String regentry;//录入员
+	private String regupdator;//修改者
 	
 	private String search;//搜索内容
 	private String operation;// 操作
 	
 	
-	
-
-
+	public String getRegupdator() {
+		return regupdator;
+	}
+	public void setRegupdator(String regupdator) {
+		this.regupdator = regupdator;
+	}
 	public String getOperation() {
 		return operation;
 	}

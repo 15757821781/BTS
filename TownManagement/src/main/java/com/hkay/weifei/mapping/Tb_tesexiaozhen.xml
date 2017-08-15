@@ -162,6 +162,7 @@
 		feaplanpic=#{feaplanpic},
 		featotalplanpic=#{featotalplanpic},
 		feadetailplanpic=#{feadetailplanpic},
+		feaupdator=#{feaupdator},
 		updatetime=now()
 		where feaid=#{feaid}
 	</update>

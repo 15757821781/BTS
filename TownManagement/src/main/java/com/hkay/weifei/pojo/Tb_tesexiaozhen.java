@@ -40,6 +40,7 @@ public class Tb_tesexiaozhen {
 	private String featotalplanpic;// 城市总体规划
 	private String feadetailplanpic;// 控制性详细规划
 	private String feacreator;// 录入员
+	private String feaupdator;// 修改者
 	
 	private String supersearch;// 高级搜索
 	private String search;// 搜索
@@ -57,6 +58,15 @@ public class Tb_tesexiaozhen {
 	private String feaplanareas;// 规划面积
 	private String feapartmoneys;// 合作投资额
 	
+	
+	public String getFeaupdator() {
+		return feaupdator;
+	}
+
+	public void setFeaupdator(String feaupdator) {
+		this.feaupdator = feaupdator;
+	}
+
 	public String getSupersearch() {
 		return supersearch;
 	}

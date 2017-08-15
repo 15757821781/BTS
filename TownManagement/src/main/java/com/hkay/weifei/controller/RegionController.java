@@ -156,6 +156,9 @@ public class RegionController {
 			@RequestParam("regfile4") MultipartFile[] files4, @RequestParam("regfile5") MultipartFile[] files5,
 			@RequestParam("regfile6") MultipartFile[] files6){
 		try{
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			tb_quyuxingxiangmu.setRegupdator(user.getNumber());
 			String imgpath1 = fileupload.fileUpload(files1, request, TypeStatusConstant.reg_statusmap,tb_quyuxingxiangmu.getRegcitypic());
 			String imgpath2 = fileupload.fileUpload(files2, request, TypeStatusConstant.reg_statusmap, tb_quyuxingxiangmu.getRegtownpic());
 			String imgpath3 = fileupload.fileUpload(files3, request, TypeStatusConstant.reg_statusmap, tb_quyuxingxiangmu.getRegscopeopic());
