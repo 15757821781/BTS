@@ -131,10 +131,10 @@ public class FeaturetownController {
 			tb_tesexiaozhens.get(0).setFealeadtel("******");
 			tb_tesexiaozhens.get(0).setFeaparttel("******");
 			tb_tesexiaozhens.get(0).setFeacontacttel("******");
-			tb_tesexiaozhens.get(0).setFeapartway("******");
-			tb_tesexiaozhens.get(0).setFeapartconten("******");
 			tb_tesexiaozhens.get(0).setFeacontact("******");
 			tb_tesexiaozhens.get(0).setFeapost("******");
+			tb_tesexiaozhens.get(0).setFealeadname("******");
+			tb_tesexiaozhens.get(0).setFeapartname("******");
 		}
 		result=RetAjax.onQueryDetail(tb_tesexiaozhens);
 		return result;
