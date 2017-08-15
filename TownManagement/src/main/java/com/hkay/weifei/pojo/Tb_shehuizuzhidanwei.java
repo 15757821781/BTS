@@ -29,13 +29,21 @@ public class Tb_shehuizuzhidanwei {
 	
 	private String search;// 查询条件
 	private String operation;// 操作
+	private String supersearch;// 高级搜索
 	
 	
+
 	public String getOrgupdator() {
 		return orgupdator;
 	}
 	public void setOrgupdator(String orgupdator) {
 		this.orgupdator = orgupdator;
+  }
+	public String getSupersearch() {
+		return supersearch;
+	}
+	public void setSupersearch(String supersearch) {
+		this.supersearch = supersearch;
 	}
 	public String getOperation() {
 		return operation;

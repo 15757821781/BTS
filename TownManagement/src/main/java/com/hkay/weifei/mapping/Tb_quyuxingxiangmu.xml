@@ -115,8 +115,8 @@
 			left join tb_area_town d on a.regtown=d.code
 			where 1=1
 			and a.visual=1
-		<if test="search!=null and search!=''">
-		    and (a.regname like '%${search}%' or a.regnumber like '%${search}%' or a.regschedule like '%${search}%')
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
 		</if>
 		order by b.code,c.code,d.code,a.createtime desc,a.regid desc
 	</select>
@@ -138,9 +138,9 @@
 				left join tb_area_town d on a.regtown=d.code
 				where 1=1
 				and a.visual=1
-			<if test="search!=null and search!=''">
-			    and (a.regname like '%${search}%' or a.regnumber like '%${search}%' or a.regschedule like '%${search}%')
-			</if>
+			<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
 		) t
 		where 1=1
 	</select>
