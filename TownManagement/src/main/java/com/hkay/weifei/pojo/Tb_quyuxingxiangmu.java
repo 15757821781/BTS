@@ -29,7 +29,7 @@ public class Tb_quyuxingxiangmu {
 	private String regbegtime;//合作期限开始
 	private String regendtime;//合作期限结束
 	private String regdevelopment;//合作开发情况
-	private String regcontract;//合作开发情况
+	private String regcontract;//合同
 	private String regpartner;//合作开发单位
 	private String regpartcharge;//合作单位负责人
 	private String regparttel;//合作单位负责人电话
@@ -49,11 +49,48 @@ public class Tb_quyuxingxiangmu {
 	
 	private String search;//搜索内容
 	private String operation;// 操作
+	private String supersearch;// 高级搜索
 	
 	
-	
+	/*
+	 * 高级搜索用到的参数
+	 */
+	private String regplanareass;//规划面积
+	private String regplaninvestss;//计划投资
+	private String reglandareass;//征地面积
+	private String reinvests;//合作投资额
 
-
+	
+	public String getRegplanareass() {
+		return regplanareass;
+	}
+	public void setRegplanareass(String regplanareass) {
+		this.regplanareass = regplanareass;
+	}
+	public String getRegplaninvestss() {
+		return regplaninvestss;
+	}
+	public void setRegplaninvestss(String regplaninvestss) {
+		this.regplaninvestss = regplaninvestss;
+	}
+	public String getReglandareass() {
+		return reglandareass;
+	}
+	public void setReglandareass(String reglandareass) {
+		this.reglandareass = reglandareass;
+	}
+	public String getReinvests() {
+		return reinvests;
+	}
+	public void setReinvests(String reinvests) {
+		this.reinvests = reinvests;
+	}
+	public String getSupersearch() {
+		return supersearch;
+	}
+	public void setSupersearch(String supersearch) {
+		this.supersearch = supersearch;
+	}
 	public String getOperation() {
 		return operation;
 	}

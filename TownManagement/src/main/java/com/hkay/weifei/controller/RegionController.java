@@ -19,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.hkay.weifei.pojo.Tb_qiyedanwei;
 import com.hkay.weifei.pojo.Tb_quyuxingxiangmu;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.RegionService;
+import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
@@ -84,21 +86,16 @@ public class RegionController {
 	@ResponseBody
 	public Map<String,Object> queryregioninfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
-			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
+			Tb_quyuxingxiangmu tb_quyuxingxiangmu) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
 		String userdata = user.getUserdata();
-		Tb_quyuxingxiangmu tb_quyuxingxiangmu = new Tb_quyuxingxiangmu();
-		 if (search != null) {
-			 search = URLDecoder.decode(search, "utf-8");
-			 tb_quyuxingxiangmu.setSearch(search);
-		 } else {
-			 tb_quyuxingxiangmu.setSearch("");
-		 }
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
+		//处理高级搜索
+		tb_quyuxingxiangmu.setSupersearch(GetSuperSearchSql(tb_quyuxingxiangmu));
 		List<Tb_quyuxingxiangmu> tb_quyuxingxiangmus = this.regionservice.queryregioninfo(tb_quyuxingxiangmu);
 		if(tb_quyuxingxiangmus!=null){
 			for(int i=0;i<tb_quyuxingxiangmus.size();i++){
@@ -176,5 +173,135 @@ public class RegionController {
 			result = RetAjax.onDataBase(0, 3);
 		}
 		return result;
+	}
+	/**
+	 * 
+	 *方法名称:
+	 *内容：处理高级搜索内容
+	 *创建人:caixuyang
+	 *创建日期:2017年8月14日下午4:14:34
+	 */
+	
+	public String GetSuperSearchSql(Tb_quyuxingxiangmu qyx) {
+		StringBuilder sql = new StringBuilder();
+		if(CommonUtil.JudgeEmpty(qyx.getSearch())){
+			String search = qyx.getSearch();
+			sql.append(" and (a.regnumber like '%"+search+"%' or a.regname like '%"+search+"%' or a.regschedule like '%"+search+"%')");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegname())){
+			sql.append(" and a.regname like '%"+qyx.getRegname()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegnumber())){
+			sql.append(" and a.regnumber like '%"+qyx.getRegnumber()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegprovince())){
+			sql.append(" and a.regprovince = '"+qyx.getRegprovince()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegcity())){
+			sql.append(" and a.regcity = '"+qyx.getRegcity()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegtown())){
+			sql.append(" and a.regtown = '"+qyx.getRegtown()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegtownship())){
+			sql.append(" and a.regtownship like '%"+qyx.getRegtownship()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegposition())){
+			sql.append(" and a.regposition like '%"+qyx.getRegposition()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegschedule())){
+			sql.append(" and a.regschedule = '"+qyx.getRegschedule()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegrelation())){
+			sql.append(" and a.regrelation like '%"+qyx.getRegrelation()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegplanareass())){
+			sql.append(CommonUtil.HandleNum("regplanarea", qyx.getRegplanareass()));
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegplaninvestss())){
+			sql.append(CommonUtil.HandleNum("regplaninvest", qyx.getRegplaninvestss()));
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getReglandareass())){
+			sql.append(CommonUtil.HandleNum("reglandarea", qyx.getReglandareass()));
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegplanareas())){
+			sql.append(CommonUtil.HandleNum("regplanareas", qyx.getRegplanareas()));
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegplaninvests())){
+			sql.append(CommonUtil.HandleNum("regplaninvests", qyx.getRegplaninvests()));
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getReglandareas())){
+			sql.append(CommonUtil.HandleNum("reglandareas", qyx.getReglandareas()));
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegbasic())){
+			sql.append(" and a.regbasic like '%"+qyx.getRegbasic()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegspeed())){
+			sql.append(" and a.regspeed like '%"+qyx.getRegspeed()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegdockingtime())){
+			sql.append(" and DATE_FORMAT(a.regdockingtime,'%Y-%m') = '"+qyx.getRegdockingtime()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegcontractdate())){
+			sql.append(" and DATE_FORMAT(a.regcontractdate,'%Y-%m') = '"+qyx.getRegcontractdate()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegnowindustry())){
+			sql.append(" and a.regnowindustry in ('"+qyx.getRegnowindustry()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegprimeindustry())){
+			sql.append(" and a.regprimeindustry in ('"+qyx.getRegprimeindustry()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegdeveloper())){
+			sql.append(" and a.regdeveloper like '%"+qyx.getRegdeveloper()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegcharge())){
+			sql.append(" and a.regcharge like '%"+qyx.getRegcharge()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegchargetel())){
+			sql.append(" and a.regchargetel like '%"+qyx.getRegchargetel()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegbegtime())){
+			sql.append(" and a.regbegtime = '"+qyx.getRegbegtime()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegendtime())){
+			sql.append(" and a.regendtime = '"+qyx.getRegendtime()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegdevelopment())){
+			sql.append(" and a.regdevelopment = '"+qyx.getRegdevelopment()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegcontract())){
+			sql.append(" and a.regcontract = '"+qyx.getRegcontract()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegpartner())){
+			sql.append(" and a.regpartner like '%"+qyx.getRegpartner()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegpartcharge())){
+			sql.append(" and a.regpartcharge like '%"+qyx.getRegpartcharge()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegparttel())){
+			sql.append(" and a.regparttel like '%"+qyx.getRegparttel()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegterms())){
+			sql.append(" and a.regterms like '%"+qyx.getRegterms()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getReinvests())){
+			sql.append(CommonUtil.HandleNum("reinvest", qyx.getReinvests()));
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegcontent())){
+			sql.append(" and a.regcontent like '%"+qyx.getRegcontent()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegcontact())){
+			sql.append(" and a.regcontact like '%"+qyx.getRegcontact()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegpost())){
+			sql.append(" and a.regpost like '%"+qyx.getRegpost()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegcontenttel())){
+			sql.append(" and a.regcontenttel like '%"+qyx.getRegcontenttel()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegentry())){
+			sql.append(" and a.regentry like '%"+qyx.getRegentry()+"%'");
+		}
+		return sql.toString();
 	}
 }
