@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>企业单位录入</title>
+<!-- select CSS -->
+<link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
+<!-- 表单验证 -->
+<link href="/TownManagement/dist/css/bootstrapValidator.css"  rel="stylesheet" />
+<!-- 时间插件 -->
+<link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
+<!-- 文件上传插件 -->
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
+</head>
+<body>
+<!-- 	<div class="row"> -->
+<!-- 		<div class="col-lg-12"> -->
+<!-- 			<h3 class="page-header" id="comHeader">企业单位信息</h3> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<form class="form-horizontal addel" role="form" enctype="multipart/form-data" id="comform_search" method="post">
+				<!-- 表单 -->
+				<div class="form-group">
+					<label class="col-sm-2 control-label">单位名称</label>
+					<div class="col-sm-6">
+						<input name="comname"  id="comname" class="form-control" type="text" />
+					</div>
+					<label class="col-sm-2 control-label">编号</label>
+					<div class="col-sm-2">
+						<input name="comnumber" id="comnumber" class="form-control"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">单位性质</label>
+					<div class="col-sm-2">
+						<input name="comnature" id="comnature" class="form-control"
+							type="text"/>
+					</div>
+					<label class="col-sm-2 control-label">单位类别</label>
+					<div class="col-sm-2">
+						<select name="comcategory" id="comcategory"
+							class="selectpicker show-tick form-control"
+							onchange="typeChanage(this)">
+							<option></option>
+							<option value="1">国有企业</option>
+							<option value="2">集体企业</option>
+							<option value="3">民营企业</option>
+							<option value="4">三资外企</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">单位类型</label>
+					<div class="col-sm-2">
+						<select name="comtype" id="comtype"
+							class="selectpicker show-tick form-control">
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">上市情况</label>
+					<div class="col-sm-2">
+						<select name="comlisted" id="comlisted"
+							class="selectpicker show-tick form-control" multiple>
+							<option></option>
+							<option value="0">否</option>
+							<option value="1">上交所</option>
+							<option value="2">深交所</option>
+							<option value="3">港交所</option>
+							<option value="4">纽交所</option>
+							<option value="5">美交所</option>
+							<option value="6">纳斯达克</option>
+							<option value="7">东交所</option>
+							<option value="8">伦交所</option>
+							<option value="9">欧交所</option>
+							<option value="10">德交所</option>
+							<option value="11">多交所</option>
+							<option value="12">澳交所</option>
+							<option value="13">创业板</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">股票代码</label>
+					<div class="col-sm-2">
+						<input name="comstockcode" id="comstockcode" class="form-control"
+							type="text" />
+					</div>
+					<label class="col-sm-2 control-label">业务类型</label>
+					<div class="col-sm-2">
+						<select name="combustype" id="combustype"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">建设类</option>
+							<option value="2">产业类</option>
+							<option value="3">服务类</option>
+							<option value="4">金融类</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">股东情况</label>
+					<div class="col-sm-6">
+						<input name="comshareholder" id="comshareholder"
+							class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">关系情况</label>
+					<div class="col-sm-2">
+						<select name="comrelation" id="comrelation"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="1">待建联系</option>
+							<option value="2">已建联系</option>
+							<option value="3">意向联盟</option>
+							<option value="4">合作联盟</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">注册地址</label>
+					<div class="col-sm-2">
+						<select name="comprovince" id="comprovince"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" 
+							arealevel="1" areagroup="1"
+							title="选择省份">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="comcity" id="comcity"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5"
+							arealevel="2" areagroup="1"
+							title="选择地市">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="comtown" id="comtown"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5" 
+							arealevel="3" areagroup="1"
+							title="选择区县(市)">
+						</select>
+					</div>
+					<div class="col-sm-4">
+						<input name="comaddress" id="comaddress" class="form-control"
+							type="text" >
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">办公地点</label>
+					<div class="col-sm-10">
+						<textarea name="comoffice" id="comoffice" class="form-control" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">世界五百强</label>
+					<div class="col-sm-2">
+						<select name="comworldfive" id="comworldfive"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="是">是</option>
+							<option value="否">否</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">中国五百强</label>
+					<div class="col-sm-2">
+						<select name="comcountryfive" id="comcountryfive"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="是">是</option>
+							<option value="否">否</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">民企五百强</label>
+					<div class="col-sm-2">
+						<select name="comprivatefive" id="comprivatefive"
+							class="selectpicker show-tick form-control">
+							<option></option>
+							<option value="是">是</option>
+							<option value="否">否</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">法人代表</label>
+					<div class="col-sm-2">
+						<input name="comrepresent" id="comrepresent" class="form-control"
+							type="text">
+					</div>
+					<label class="col-sm-2 control-label">注册资本</label>
+					<div class="col-sm-1">
+						<input name="comcapitals" id="comcapitals" class="form-control" type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comcapitalunit" id="comcapitalunit"
+							class="selectpicker show-tick form-control"
+							title="单位">
+							<option></option>
+							<option value="万元">万元</option>
+							<option value="万美元">万美元</option>
+							<option value="万港币">万港币</option>
+							<option value="亿元">亿元</option>
+							<option value="亿美元">亿美元</option>
+							<option value="亿港币">亿港币</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">成立时间</label>
+					<div class="col-sm-2">
+						<input id="comestablish" name="comestablish"
+							class="datepicker form-control"  type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">产业类别</label>
+					<div class="col-sm-2">
+						<select name="comindustrytype" id="comindustrytype"
+							class="selectpicker show-tick form-control" multiple>
+							<option></option>
+							<option value="第一产业">第一产业</option>
+							<option value="第二产业">第二产业</option>
+							<option value="第三产业">第三产业</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">主要产业</label>
+					<div class="col-sm-2">
+						<select name="commajorindustry" id="commajorindustry"
+							class="selectpicker show-tick form-control" multiple
+							data-live-search="true" data-size="5" >
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">信用代码</label>
+					<div class="col-sm-2">
+						<input name="comcreditcode" id="comcreditcode"
+							class="form-control" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">经营范围</label>
+					<div class="col-sm-10">
+						<textarea name="comscope"  id="comscope"  class="form-control"  rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">单位简介</label>
+					<div class="col-sm-10">
+						<textarea name="comabstract" id="comabstract" class="form-control" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">单位荣誉</label>
+					<div class="col-sm-10">
+						<textarea name="comhonor" id="comhonor" class="form-control" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">数据年度</label>
+					<div class="col-sm-2">
+						<input name="comdatayear" id="comdatayear"
+							class="datepicker form-control" type="text" placeholder="选择数据年度">
+					</div>
+					<label class="col-sm-2 control-label">资产总额</label>
+					<div class="col-sm-1">
+						<input name="comlassetss" id="comlassetss" class="form-control"
+							type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comlassetsunit" id="comlassetsunit"
+							class="selectpicker show-tick form-control" title="单位">
+							<option></option>
+							<option value="万元">万元</option>
+							<option value="万美元">万美元</option>
+							<option value="万港币">万港币</option>
+							<option value="亿元">亿元</option>
+							<option value="亿美元">亿美元</option>
+							<option value="亿港币">亿港币</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">负债总额</label>
+					<div class="col-sm-1">
+						<input name="comliabilitiess" id="comliabilitiess"
+							class="form-control" type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comliabunit" id="comliabunit"
+							class="selectpicker show-tick form-control" title="单位">
+							<option></option>
+							<option value="万元">万元</option>
+							<option value="万美元">万美元</option>
+							<option value="万港币">万港币</option>
+							<option value="亿元">亿元</option>
+							<option value="亿美元">亿美元</option>
+							<option value="亿港币">亿港币</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">年度营业收入</label>
+					<div class="col-sm-1">
+						<input name="comincomeyears" id="comincomeyears"
+							class="form-control" type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="cominyearunit" id="cominyearunit"
+							class="selectpicker show-tick form-control" title="单位">
+							<option></option>
+							<option value="万元">万元</option>
+							<option value="万美元">万美元</option>
+							<option value="万港币">万港币</option>
+							<option value="亿元">亿元</option>
+							<option value="亿美元">亿美元</option>
+							<option value="亿港币">亿港币</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">年度净利润</label>
+					<div class="col-sm-1">
+						<input name="comnetprofiyears" id="comnetprofiyears"
+							class="form-control" type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comnetyearunit" id="comnetyearunit"
+							class="selectpicker show-tick form-control" title="单位">
+							<option></option>
+							<option value="万元">万元</option>
+							<option value="万美元">万美元</option>
+							<option value="万港币">万港币</option>
+							<option value="亿元">亿元</option>
+							<option value="亿美元">亿美元</option>
+							<option value="亿港币">亿港币</option>
+						</select>
+					</div>
+					<label class="col-sm-2 control-label">年度纳税额</label>
+					<div class="col-sm-1">
+						<input name="comtaxesyears" id="comtaxesyears" class="form-control"
+							type="text">
+					</div>
+					<div class="col-sm-1">
+						<select name="comtaxyearunit" id="comtaxyearunit"
+							class="selectpicker show-tick form-control" title="单位">
+							<option></option>
+							<option value="万元">万元</option>
+							<option value="万美元">万美元</option>
+							<option value="万港币">万港币</option>
+							<option value="亿元">亿元</option>
+							<option value="亿美元">亿美元</option>
+							<option value="亿港币">亿港币</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">发展方向</label>
+					<div class="col-sm-10">
+						<select name="comdevelop" id="comdevelop"
+							class="selectpicker show-tick form-control" multiple
+							data-live-search="true" data-size="5" >
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">投资偏好</label>
+					<div class="col-sm-2">
+					<select name="comindustry" id="comindustry"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" multiple
+							title="选择行业">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="comregpro" id="comregpro"
+							class="selectpicker show-tick form-control" 
+							data-live-search="true" data-size="5" 
+							arealevel="1" areagroup="2" multiple
+							title="选择投资省份">
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select name="comregcity" id="comregcity"
+							class="selectpicker show-tick form-control"
+							data-live-search="true" data-size="5"
+							arealevel="2" areagroup="2" multiple
+							title="选择投资地市">
+						</select>
+					</div>
+<!-- 					<div class="col-sm-2"> -->
+<!-- 						<select name="comregtown" id="comregtown" -->
+<!-- 							class="selectpicker show-tick form-control" -->
+<!-- 							data-live-search="true" data-size="5"  -->
+<!-- 							arealevel="3" areagroup="2" multiple -->
+<!-- 							title="投资乡县"> -->
+<!-- 						</select> -->
+<!-- 					</div> -->
+					<label class="col-sm-2 control-label">投资规模(万元)</label>
+					<div class="col-sm-2">
+						<select name="cominvestment" id="cominvestment"
+							class="selectpicker show-tick form-control" 
+							title="选择投资规模" multiple>
+							<option></option>
+							<option value="1000以上">1000以上</option>
+							<option value="10000以上">10000以上</option>
+							<option value="100000以上">100000以上</option>
+							<option value="1000000以上">1000000以上</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group addel-target">
+					<div class="col-sm-2" style="text-align: right;">
+						<button type="button" class="btn btn-success addel-add">
+							<i class="fa fa-plus"></i>
+						</button>
+						<button type="button" class="btn btn-danger addel-delete">
+							<i class="fa fa-remove"> </i>
+						</button>
+						<label class="control-label">联系人</label>
+					</div>
+					<div class="col-sm-2">
+						<input name="comcontact" id="comcontact"  class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">职务</label>
+					<div class="col-sm-2">
+						<input name="compost" id="compost" class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">联系电话</label>
+					<div class="col-sm-2">
+						<input name="comcontacttel" id="comcontacttel" class="form-control" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">单位官网</label>
+					<div class="col-sm-6">
+						<input name="comofficeweb" id="comofficeweb"  class="form-control" type="text">
+					</div>
+					<label class="col-sm-2 control-label">录入员</label>
+					<div class="col-sm-2">
+						<input name="comcreator" id="comcreator"  class="form-control" type="text">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-5 control-label"></label>
+					<button type="button" id="comentry_search" class="col-sm-2 btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px;">查询</button>
+					<label class="col-sm-5 control-label"></label>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Select JavaScript -->
+	<script src="/TownManagement/dist/js/bootstrap-select.js"></script>
+	<!-- 表单验证 -->
+<!-- 	<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script> -->
+<!-- 	<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script> -->
+	<!-- 时间插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+	<!-- 文件上传插件 -->
+<!-- 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script> -->
+<!-- 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script> -->
+	<!-- 增减行插件 -->
+	<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
+	<script type="text/javascript" src="/TownManagement/js/alliance/companySearch.js"></script>
+</body>
+</html>

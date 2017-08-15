@@ -15,7 +15,7 @@ public class Tb_qiyedanwei {
 	private String comcountryfive;// 中国五百强
 	private String comprivatefive;// 民企五百强
 	private String comrepresent;// 法人代表
-	private double comcapital;// 注册资本
+	private Double comcapital;// 注册资本
 	private String comcapitalunit;// 货币单位
 	private String comestablish;// 成立时间
 	private String comprovince;// 注册省份
@@ -56,9 +56,69 @@ public class Tb_qiyedanwei {
 	
 	private String search;// 查询条件
 	private String operation;// 操作
+	private String supersearch;// 高级搜索
+	/**
+	 * 
+	 *方法名称:
+	 *内容：高级搜索参数
+	 *创建人:zhuwenjie
+	 *创建日期:2017年8月11日上午11:34:33
+	 */
+	private String comcapitals;// 注册资本
+	private String comlassetss;//资产总额
+	private String comliabilitiess;//负债总额
+	private String comnetprofiyears;//年度净利润
+	private String comincomeyears;//年度营业收入
+	private String comtaxesyears;//年度纳税额
 	
+	public String getComcapitals() {
+		return comcapitals;
+	}
 
-	
+	public void setComcapitals(String comcapitals) {
+		this.comcapitals = comcapitals;
+	}
+
+	public String getComlassetss() {
+		return comlassetss;
+	}
+
+	public void setComlassetss(String comlassetss) {
+		this.comlassetss = comlassetss;
+	}
+
+	public String getComliabilitiess() {
+		return comliabilitiess;
+	}
+
+	public void setComliabilitiess(String comliabilitiess) {
+		this.comliabilitiess = comliabilitiess;
+	}
+
+	public String getComnetprofiyears() {
+		return comnetprofiyears;
+	}
+
+	public void setComnetprofiyears(String comnetprofiyears) {
+		this.comnetprofiyears = comnetprofiyears;
+	}
+
+	public String getComincomeyears() {
+		return comincomeyears;
+	}
+
+	public void setComincomeyears(String comincomeyears) {
+		this.comincomeyears = comincomeyears;
+	}
+
+	public String getComtaxesyears() {
+		return comtaxesyears;
+	}
+
+	public void setComtaxesyears(String comtaxesyears) {
+		this.comtaxesyears = comtaxesyears;
+	}
+
 	public String getOperation() {
 		return operation;
 	}
@@ -228,11 +288,11 @@ public class Tb_qiyedanwei {
 		this.comrepresent = comrepresent;
 	}
 
-	public double getComcapital() {
+	public Double getComcapital() {
 		return comcapital;
 	}
 
-	public void setComcapital(double comcapital) {
+	public void setComcapital(Double comcapital) {
 		this.comcapital = comcapital;
 	}
 
@@ -490,6 +550,14 @@ public class Tb_qiyedanwei {
 
 	public void setComtaxesyear(Double comtaxesyear) {
 		this.comtaxesyear = comtaxesyear;
+	}
+
+	public String getSupersearch() {
+		return supersearch;
+	}
+
+	public void setSupersearch(String supersearch) {
+		this.supersearch = supersearch;
 	}
 
 

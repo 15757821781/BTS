@@ -20,7 +20,6 @@
 <!-- 	</div> -->
 	<div class="panel panel-default">
 		<div class="panel-body">
-		<fieldset id="feafieldset">
 			<form class="form-horizontal addel" role="form" id="featuretownform_search">
 				<!-- 表单 -->
 				<div class="form-group">
@@ -120,7 +119,7 @@
 					</div>
 					<label class="col-sm-2 control-label">计划总投资(亿元)</label>
 					<div class="col-sm-2">
-						<input id="feaplaninvest" name="feaplaninvest" class="form-control"
+						<input id="feaplaninvests" name="feaplaninvests" class="form-control"
 							type="text">
 					</div>
 					<label class="col-sm-2 control-label">投资进度</label>
@@ -142,7 +141,7 @@
 					</div>
 					<label class="col-sm-2 control-label">规划面积(平方公里)</label>
 					<div class="col-sm-2">
-						<input id="feaplanarea" name="feaplanarea" class="form-control"
+						<input id="feaplanareas" name="feaplanareas" class="form-control"
 							type="text">
 					</div>
 				</div>
@@ -180,8 +179,7 @@
 					<label class="col-sm-2 control-label">合作开发情况</label>
 					<div class="col-sm-2">
 						<select name="feacooperate" id="feacooperate"
-							class="selectpicker show-tick form-control"
-							onChange="readyOnly(this)">
+							class="selectpicker show-tick form-control">
 							<option></option>
 							<option value="1">是</option>
 							<option value="0">否</option>
@@ -208,7 +206,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">合作投资(亿元)</label>
 					<div class="col-sm-2">
-						<input id="feapartmoney" name="feapartmoney" class="form-control feapart"
+						<input id="feapartmoneys" name="feapartmoneys" class="form-control feapart"
 							type="text">
 					</div>
 					<label class="col-sm-1 control-label">合作方式</label>
@@ -261,17 +259,12 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-5 control-label"></label>
-					<button type="button" id="featuretown_submit"
+					<button type="button" id="featuretownentry_search"
 						class="col-sm-2 btn btn-primary"
 						style="width: auto; min-width: 90px; margin-top: 20px;">查询</button>
-					<button type="button" id="featuretown_update"
-						class="col-sm-2 btn btn-primary"
-						style="width: auto; min-width: 90px; margin-top: 20px; display: none;">更新</button>
 					<label class="col-sm-5 control-label"></label>
-					<input type="hidden" value="" name="feaid" id="feaid">
 				</div>
 			</form>
-			</fieldset>
 		</div>
 	</div>
 		<!-- Select JavaScript -->
@@ -286,7 +279,7 @@
 <!-- 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script> -->
 <!-- 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/locales/zh.js"></script> -->
 	<!-- 增减行插件 -->
-<!-- 	<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script> -->
+	<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
 	<script type="text/javascript" src="/TownManagement/js/featuretown/featuretownSearch.js"></script>
 </body>
 </html>

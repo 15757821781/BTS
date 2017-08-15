@@ -21,7 +21,9 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_qiyedanwei;
 import com.hkay.weifei.pojo.Tb_user;
+import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.CompanyService;
+import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.FileUpload;
 //import com.hkay.weifei.util.ImportExcel;
 import com.hkay.weifei.util.PageUtil;
@@ -82,21 +84,16 @@ public class CompanyController {
 	@ResponseBody
 	public Map<String,Object> queryComList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
-			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
+			Tb_qiyedanwei tb_qiyedanwei) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
 		String userdata = user.getUserdata();
-		Tb_qiyedanwei tb_qiyedanwei = new Tb_qiyedanwei();
-		 if (search != null) {
-			 search = URLDecoder.decode(search, "utf-8");
-			 tb_qiyedanwei.setSearch(search);
-		 } else {
-			 tb_qiyedanwei.setSearch("");
-		 }
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
+		//处理高级搜索
+		tb_qiyedanwei.setSupersearch(GetSuperSearchSql(tb_qiyedanwei));
 		List<Tb_qiyedanwei> tb_qiyedanweis = this.companyService.queryComList(tb_qiyedanwei);
 		if(tb_qiyedanweis!=null){
 			for(int i=0;i<tb_qiyedanweis.size();i++){
@@ -113,7 +110,164 @@ public class CompanyController {
 		map.put("total", count);
 		return map;
 	}
+	/**
+	 * 
+	 *方法名称:
+	 *内容：处理高级搜索内容
+	 *创建人:caixuyang
+	 *创建日期:2017年8月14日下午4:14:34
+	 */
 	
+	public String GetSuperSearchSql(Tb_qiyedanwei qydw) {
+		StringBuilder sql = new StringBuilder();
+		if(CommonUtil.JudgeEmpty(qydw.getSearch())){
+			String search = qydw.getSearch();
+			sql.append(" and (a.comnumber like '%"+search+"%' or a.comname like '%"+search+"%' or a.comcategory like '%"+search+"%')");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComname())){
+			sql.append(" and a.comname like '%"+qydw.getComname()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComnumber())){
+			sql.append(" and a.comnumber like '%"+qydw.getComnumber()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComcategory())){
+			sql.append(" and a.comcategory = '"+qydw.getComcategory()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComtype())){
+			sql.append(" and a.comtype = '"+qydw.getComtype()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getCombustype())){
+			sql.append(" and a.combustype = '"+qydw.getCombustype()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComlisted())){
+			sql.append(" and a.comlisted = '"+qydw.getComlisted()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComstockcode())){
+			sql.append(" and a.comstockcode like '%"+qydw.getComstockcode()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComrelation())){
+			sql.append(" and a.comrelation = '"+qydw.getComrelation()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComworldfive())){
+			sql.append(" and a.comworldfive = '"+qydw.getComworldfive()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComcountryfive())){
+			sql.append(" and a.comcountryfive = '"+qydw.getComcountryfive()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComprivatefive())){
+			sql.append(" and a.comprivatefive = '"+qydw.getComprivatefive()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComrepresent())){
+			sql.append(" and a.comrepresent like '%"+qydw.getComrepresent()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComcapitals())){
+			sql.append(CommonUtil.HandleNum("comcapital", qydw.getComcapitals()));
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComcapitalunit())){
+			sql.append(" and a.comcapitalunit = '"+qydw.getComcapitalunit()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComestablish())){
+			sql.append(" and DATE_FORMAT(a.comestablish,'%Y-%m-%d') = '"+qydw.getComestablish()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComprovince())){
+			sql.append(" and a.comprovince = '"+qydw.getComprovince()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComcity())){
+			sql.append(" and a.comcity = '"+qydw.getComcity()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComtown())){
+			sql.append(" and a.comtown = '"+qydw.getComtown()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComaddress())){
+			sql.append(" and a.comaddress like '%"+qydw.getComaddress()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComoffice())){
+			sql.append(" and a.comoffice like '%"+qydw.getComoffice()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComshareholder())){
+			sql.append(" and a.comshareholder like '%"+qydw.getComshareholder()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComindustrytype())){
+			sql.append(" and a.comindustrytype in ('"+qydw.getComindustrytype()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getCommajorindustry())){
+			sql.append(" and a.commajorindustry in ('"+qydw.getCommajorindustry()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComscope())){
+			sql.append(" and a.comscope = '"+qydw.getComscope()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComabstract())){
+			sql.append(" and a.comabstract = '"+qydw.getComabstract()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComhonor())){
+			sql.append(" and a.comhonor = '"+qydw.getComhonor()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComdatayear())){
+			sql.append(" and a.comdatayear = '"+qydw.getComdatayear()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComlassetss())){
+			sql.append(CommonUtil.HandleNum("comlassets", qydw.getComlassetss()));
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComlassetsunit())){
+			sql.append(" and a.comlassetsunit = '"+qydw.getComlassetsunit()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComliabilitiess())){
+			sql.append(CommonUtil.HandleNum("comliabilities", qydw.getComliabilitiess()));
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComliabunit())){
+			sql.append(" and a.comliabunit = '"+qydw.getComliabunit()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComincomeyears())){
+			sql.append(CommonUtil.HandleNum("comincomeyear", qydw.getComincomeyears()));
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getCominyearunit())){
+			sql.append(" and a.cominyearunit = '"+qydw.getCominyearunit()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComnetprofiyears())){
+			sql.append(CommonUtil.HandleNum("comnetprofiyear", qydw.getComnetprofiyears()));
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComnetyearunit())){
+			sql.append(" and a.comnetyearunit = '"+qydw.getComnetyearunit()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComtaxesyears())){
+			sql.append(CommonUtil.HandleNum("comtaxesyear", qydw.getComtaxesyears()));
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComtaxyearunit())){
+			sql.append(" and a.comtaxyearunit = '"+qydw.getComtaxyearunit()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComdevelop())){
+			sql.append(" and a.comdevelop in ('"+qydw.getComdevelop()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComindustry())){
+			sql.append(" and a.comindustry in ('"+qydw.getComindustry()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComregpro())){
+			sql.append(" and a.comregpro = '"+qydw.getComregpro()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComregcity())){
+			sql.append(" and a.comregcity = '"+qydw.getComregcity()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getCominvestment())){
+			sql.append(" and a.cominvestment in ('"+qydw.getCominvestment()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComcontact())){
+			sql.append(" and a.comcontact like '%"+qydw.getComcontact()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getCompost())){
+			sql.append(" and a.compost like '%"+qydw.getCompost()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComcontacttel())){
+			sql.append(" and a.comcontacttel in ('"+qydw.getComcontacttel()+"')");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComofficeweb())){
+			sql.append(" and a.comofficeweb like '%"+qydw.getComofficeweb()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComcreator())){
+			sql.append(" and a.comcreator like '%"+qydw.getComcreator()+"%'");
+		}
+		return sql.toString();
+	}
+
 	/**
 	 * 
 		 * 方法名称: queryComDetail
