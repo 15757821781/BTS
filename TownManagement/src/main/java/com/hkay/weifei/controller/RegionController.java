@@ -137,6 +137,8 @@ public class RegionController {
 			tb_quyuxingxiangmus.get(0).setRegcontenttel("******");
 			tb_quyuxingxiangmus.get(0).setRegchargetel("******");
 			tb_quyuxingxiangmus.get(0).setRegparttel("******");
+			tb_quyuxingxiangmus.get(0).setRegpartcharge("******");
+			tb_quyuxingxiangmus.get(0).setRegcharge("******");
 		}
 		result=RetAjax.onQueryDetail(tb_quyuxingxiangmus);
 		return result;
