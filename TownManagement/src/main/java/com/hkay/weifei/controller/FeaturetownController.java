@@ -23,6 +23,7 @@ import com.hkay.weifei.pojo.Tb_tesexiaozhen;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.FeaturetownService;
+import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
@@ -80,7 +81,7 @@ public class FeaturetownController {
 	@ResponseBody
 	public Map<String,Object> queryfeaturetown(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
-			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
+			Tb_tesexiaozhen tb_tesexiaozhen) throws UnsupportedEncodingException {
 		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
@@ -88,13 +89,8 @@ public class FeaturetownController {
 		String userdata = user.getUserdata();
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
-		Tb_tesexiaozhen tb_tesexiaozhen = new Tb_tesexiaozhen();
-		 if (search != null) {
-			 search = URLDecoder.decode(search, "utf-8");
-			 tb_tesexiaozhen.setSearch(search);
-		 } else {
-			 tb_tesexiaozhen.setSearch("");
-		 }
+		//处理高级搜索
+		tb_tesexiaozhen.setSupersearch(GetSuperSearchSql(tb_tesexiaozhen));
 		List<Tb_tesexiaozhen> tb_zhongxinzhens = this.featuretownservice.queryfeaturetown(tb_tesexiaozhen);
 		if(tb_zhongxinzhens!=null){
 			for(int i=0;i<tb_zhongxinzhens.size();i++){
@@ -111,6 +107,7 @@ public class FeaturetownController {
 		map.put("total", count);
 		return map;
 	}
+
 	/**
 	 * 
 		 * 方法名称: queryfeaturetowndetail
@@ -177,5 +174,117 @@ public class FeaturetownController {
 			result = RetAjax.onDataBase(0, 3);
 		}
 		return result;
+	}
+	
+	/**
+	 * 
+	 *方法名称:
+	 *内容：处理高级搜索内容
+	 *创建人:caixuyang
+	 *创建日期:2017年8月14日下午1:51:34
+	 */
+	public String GetSuperSearchSql(Tb_tesexiaozhen tsxz) {
+		StringBuilder sql = new StringBuilder();
+		if(CommonUtil.JudgeEmpty(tsxz.getSearch())){
+			String search = tsxz.getSearch();
+			sql.append(" and (a.feanumber like '%"+search+"%' or a.feaname like '%"+search+"%' or a.fealevel like '%"+search+"%')");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaname())){
+			sql.append(" and a.feaname like '%"+tsxz.getFeaname()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeanumber())){
+			sql.append(" and a.feanumber like '%"+tsxz.getFeanumber()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFealevel())){
+			sql.append(" and a.fealevel = '"+tsxz.getFealevel()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeabatch())){
+			sql.append(" and a.feabatch = '"+tsxz.getFeabatch()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFearelation())){
+			sql.append(" and a.fearelation = '"+tsxz.getFearelation()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaprovince())){
+			sql.append(" and a.feaprovince = '"+tsxz.getFeaprovince()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeacity())){
+			sql.append(" and a.feacity = '"+tsxz.getFeacity()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeatown())){
+			sql.append(" and a.featown = '"+tsxz.getFeatown()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeagenre())){
+			sql.append(" and a.feagenre like '%"+tsxz.getFeagenre()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaindustry())){
+			sql.append(" and a.feaindustry = '"+tsxz.getFeaindustry()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaplaninvests())){
+			sql.append(CommonUtil.HandleNum("feaplaninvest", tsxz.getFeaplaninvests()));
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaplanareas())){
+			sql.append(CommonUtil.HandleNum("feaplanarea", tsxz.getFeaplanareas()));
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeapartmoneys())){
+			sql.append(CommonUtil.HandleNum("feapartmoney", tsxz.getFeapartmoneys()));
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaschedule())){
+			sql.append(" and a.feaschedule = '"+tsxz.getFeaschedule()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeatarget())){
+			sql.append(" and a.featarget like '%"+tsxz.getFeatarget()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaplancontent())){
+			sql.append(" and a.feaplancontent like '%"+tsxz.getFeaplancontent()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeacoreindustry())){
+			sql.append(" and a.feacoreindustry like '%"+tsxz.getFeacoreindustry()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFealeadcom())){
+			sql.append(" and a.fealeadcom like '%"+tsxz.getFealeadcom()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFealeadname())){
+			sql.append(" and a.fealeadname like '%"+tsxz.getFealeadname()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFealeadtel())){
+			sql.append(" and a.fealeadtel like '%"+tsxz.getFealeadtel()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeacooperate())){
+			sql.append(" and a.feacooperate = "+tsxz.getFeacooperate()+"");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeapartner())){
+			sql.append(" and a.feapartner like '%"+tsxz.getFeapartner()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeapartname())){
+			sql.append(" and a.feapartname like '%"+tsxz.getFeapartname()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaparttel())){
+			sql.append(" and a.feaparttel like '%"+tsxz.getFeaparttel()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeapartway())){
+			sql.append(" and a.feapartway like '%"+tsxz.getFeapartway()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFearegtime())){
+			sql.append(" and a.fearegtime like '%"+tsxz.getFearegtime()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeaendtime())){
+			sql.append(" and a.feaendtime like '%"+tsxz.getFeaendtime()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeapartconten())){
+			sql.append(" and a.feapartconten like '%"+tsxz.getFeapartconten()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeacontact())){
+			sql.append(" and a.feacontact like '%"+tsxz.getFeacontact()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeapost())){
+			sql.append(" and a.feapost like '%"+tsxz.getFeapost()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeacontacttel())){
+			sql.append(" and a.feacontacttel like '%"+tsxz.getFeacontacttel()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(tsxz.getFeacreator())){
+			sql.append(" and a.feacreator like '%"+tsxz.getFeacreator()+"%'");
+		}
+		return sql.toString();
 	}
 }

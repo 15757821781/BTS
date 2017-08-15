@@ -70,7 +70,7 @@ $(document).ready(function() {
 //            }
 		} ]
 	});
-	//新增弹出框
+//新增弹出框
 	$('#townSearch_bar').click(function() {
 		$.ajax({
 			url : "/TownManagement/pages/town/townSearch.html",

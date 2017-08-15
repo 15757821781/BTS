@@ -41,8 +41,29 @@ public class Tb_tesexiaozhen {
 	private String feadetailplanpic;// 控制性详细规划
 	private String feacreator;// 录入员
 	
+	private String supersearch;// 高级搜索
 	private String search;// 搜索
 	private String operation;// 操作
+	
+	/**
+	 * 
+	 *方法名称:
+	 *内容：高级搜索参数
+	 *创建人:caixuyang
+	 *创建日期:2017年8月14日下午2:01:33
+	 *解决搜索“0-4”中“-”的范围问题
+	 */
+	private String feaplaninvests;// 计划总投资
+	private String feaplanareas;// 规划面积
+	private String feapartmoneys;// 合作投资额
+	
+	public String getSupersearch() {
+		return supersearch;
+	}
+
+	public void setSupersearch(String supersearch) {
+		this.supersearch = supersearch;
+	}
 
 	public String getOperation() {
 		return operation;
@@ -371,5 +392,28 @@ public class Tb_tesexiaozhen {
 	public void setFeapartmoney(Double feapartmoney) {
 		this.feapartmoney = feapartmoney;
 	}
-	
+
+	public String getFeaplaninvests() {
+		return feaplaninvests;
+	}
+
+	public void setFeaplaninvests(String feaplaninvests) {
+		this.feaplaninvests = feaplaninvests;
+	}
+
+	public String getFeaplanareas() {
+		return feaplanareas;
+	}
+
+	public void setFeaplanareas(String feaplanareas) {
+		this.feaplanareas = feaplanareas;
+	}
+
+	public String getFeapartmoneys() {
+		return feapartmoneys;
+	}
+
+	public void setFeapartmoneys(String feapartmoneys) {
+		this.feapartmoneys = feapartmoneys;
+	}
 }

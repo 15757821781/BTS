@@ -175,37 +175,37 @@ public class TownController {
 		StringBuilder sql = new StringBuilder();
 		if(CommonUtil.JudgeEmpty(zxz.getSearch())){
 			String search = zxz.getSearch();
-			sql.append(" and (a.number like '"+search+"' or a.centertownname like '"+search+"' or a.townlevel like '"+search+"')");
+			sql.append(" and (a.number like '%"+search+"%' or a.centertownname like '%"+search+"%' or a.townlevel like '%"+search+"%')");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getCentertownname())){
-			sql.append(" and a.centertownname like '"+zxz.getCentertownname()+"'");
+			sql.append(" and a.centertownname like '%"+zxz.getCentertownname()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getNumber())){
-			sql.append(" and a.number like '"+zxz.getNumber()+"'");
+			sql.append(" and a.number like '%"+zxz.getNumber()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getCitypic())){
-			sql.append(" and a.citypilot = "+zxz.getCitypic()+"");
+			sql.append(" and a.citypilot = '"+zxz.getCitypic()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getTownlevel())){
-			sql.append(" and a.townlevel = "+zxz.getTownlevel()+"");
+			sql.append(" and a.townlevel = '"+zxz.getTownlevel()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getSys_province())){
-			sql.append(" and a.province = "+zxz.getSys_province()+"");
+			sql.append(" and a.province = '"+zxz.getSys_province()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getSys_city())){
-			sql.append(" and a.city = "+zxz.getSys_city()+"");
+			sql.append(" and a.city = '"+zxz.getSys_city()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getSys_town())){
-			sql.append(" and a.town = "+zxz.getSys_town()+"");
+			sql.append(" and a.town = '"+zxz.getSys_town()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getCooperation())){
-			sql.append(" and a.cooperation = "+zxz.getCooperation()+"");
+			sql.append(" and a.cooperation = '"+zxz.getCooperation()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getTowndatayear())){
-			sql.append(" and a.towndatayear = "+zxz.getTowndatayear()+"");
+			sql.append(" and a.towndatayear = '"+zxz.getTowndatayear()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getHundredcounties())){
-			sql.append(" and a.hundredcounties = "+zxz.getHundredcounties()+"");
+			sql.append(" and a.hundredcounties = '"+zxz.getHundredcounties()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getCountygdps())){
 			sql.append(CommonUtil.HandleNum("countygdp", zxz.getCountygdps()));
@@ -247,61 +247,61 @@ public class TownController {
 			sql.append(CommonUtil.HandleNum("serviceoutvalue", zxz.getServiceoutvalues()));
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getWeather())){
-			sql.append(" and a.weather in ("+zxz.getWeather()+")");
+			sql.append(" and a.weather in ('"+zxz.getWeather()+"')");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getTerrain())){
-			sql.append(" and a.terrain in ("+zxz.getTerrain()+")");
+			sql.append(" and a.terrain in ('"+zxz.getTerrain()+"')");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getTraffic())){
-			sql.append(" and a.traffic like '"+zxz.getTraffic()+"'");
+			sql.append(" and a.traffic like '%"+zxz.getTraffic()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getCurrentindustry())){
-			sql.append(" and a.currentindustry in ("+zxz.getCurrentindustry()+")");
+			sql.append(" and a.currentindustry in ('"+zxz.getCurrentindustry()+"')");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getSpecialindustry())){
-			sql.append(" and a.specialindustry like '"+zxz.getSpecialindustry()+"'");
+			sql.append(" and a.specialindustry like '%"+zxz.getSpecialindustry()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getSpecialindustryway())){
-			sql.append(" and a.specialindustryway like '"+zxz.getSpecialindustryway()+"'");
+			sql.append(" and a.specialindustryway like '%"+zxz.getSpecialindustryway()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getIndustrialorientation())){
-			sql.append(" and a.industrialorientation in ("+zxz.getIndustrialorientation()+")");
+			sql.append(" and a.industrialorientation in ('"+zxz.getIndustrialorientation()+"')");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getHistoryculture())){
-			sql.append(" and a.historyculture like '"+zxz.getHistoryculture()+"'");
+			sql.append(" and a.historyculture like '%"+zxz.getHistoryculture()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getHonorarytitle())){
-			sql.append(" and a.honorarytitle like '"+zxz.getHonorarytitle()+"'");
+			sql.append(" and a.honorarytitle like '%"+zxz.getHonorarytitle()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getPartycommittee())){
-			sql.append(" and a.partycommittee like '"+zxz.getPartycommittee()+"'");
+			sql.append(" and a.partycommittee like '%"+zxz.getPartycommittee()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getCommittelnumber())){
-			sql.append(" and a.committelnumber like '"+zxz.getCommittelnumber()+"'");
+			sql.append(" and a.committelnumber like '%"+zxz.getCommittelnumber()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getCommittel())){
-			sql.append(" and a.committel like '"+zxz.getCommittel()+"'");
+			sql.append(" and a.committel like '%"+zxz.getCommittel()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getMayor())){
-			sql.append(" and a.mayor like '"+zxz.getMayor()+"'");
+			sql.append(" and a.mayor like '%"+zxz.getMayor()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getMayortelnumber())){
-			sql.append(" and a.mayortelnumber like '"+zxz.getMayortelnumber()+"'");
+			sql.append(" and a.mayortelnumber like '%"+zxz.getMayortelnumber()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getMayortel())){
-			sql.append(" and a.mayortel like '"+zxz.getMayortel()+"'");
+			sql.append(" and a.mayortel like '%"+zxz.getMayortel()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getContacts())){
-			sql.append(" and a.contacts like '"+zxz.getContacts()+"'");
+			sql.append(" and a.contacts like '%"+zxz.getContacts()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getPost())){
-			sql.append(" and a.post like '"+zxz.getPost()+"'");
+			sql.append(" and a.post like '%"+zxz.getPost()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getContactstel())){
-			sql.append(" and a.contactstel like '"+zxz.getContactstel()+"'");
+			sql.append(" and a.contactstel like '%"+zxz.getContactstel()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(zxz.getCreator())){
-			sql.append(" and a.creator like '"+zxz.getCreator()+"'");
+			sql.append(" and a.creator like '%"+zxz.getCreator()+"%'");
 		}
 		return sql.toString();
 	}

@@ -60,7 +60,7 @@ public class CommonUtil {
 					sql = " and a."+field+" > "+str.replace("-", "");
 				// 不存在
 				}else if(i==-1){
-					sql = " and a."+field+" like '"+str+"'";
+					sql = " and a."+field+" like '%"+str+"%'";
 				// 处于中间位置
 				}else{
 					sql = " and a." + field + " > " + str.split("-")[0] 

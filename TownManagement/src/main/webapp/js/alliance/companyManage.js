@@ -28,7 +28,7 @@ $(document).ready(function() {
 			width : '16%'
 		}, {
 			field : 'comname',
-			title : '中心镇名称',
+			title : '单位名称',
 			editable : true,
 			align : 'center',
 			width : '16%'
@@ -77,6 +77,18 @@ $(document).ready(function() {
 //            }
 		} ]
 	});
+//新增弹出框
+	$('#companySearch_bar').click(function() {
+		$.ajax({
+			url : "/TownManagement/pages/Alliance/companySearch.html",
+			cache : false,
+			success : function(html) {
+				$('#cominfobody').html(html);
+				$('#comform_search')[0].reset();
+				$("#cominfomodal").modal('show');
+			}
+		});
+	});
 })
 //查询方法
 function queryParams(params){
@@ -90,6 +102,7 @@ function queryParams(params){
 		pageindex : params.pageNumber,
 		search : encodeURI(params.searchText)
 	};
+	temp = GetFormSearchData('comform_search',temp);
 	return temp;
 }
 //展示详情modal
