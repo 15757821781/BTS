@@ -279,7 +279,7 @@ public class SystemController {
 		try {
 			List<Map<String, String>> pages = tb_role.getNodes();
 			// 暂时不允许修改角色名称
-//			int flag = this.systemManageService.updateRoleInfo(tb_role);
+			int flag = this.systemManageService.updateRoleInfo(tb_role);
 			// 删除角色关联的页面
 			int delete = this.systemManageService.deleteRolePageMapping(tb_role);
 			if(pages!=null&&tb_role.getId()!=null){
@@ -290,7 +290,7 @@ public class SystemController {
 				}
 				//批量插入
 				int ff = this.systemManageService.insertRoleMenuMapping(pages);
-				if(ff!=0){
+				if(ff!=0&&flag!=0){
 					result = RetAjax.onDataBase(1, 3);
 				}else{
 					result = RetAjax.onDataBase(0, 3);

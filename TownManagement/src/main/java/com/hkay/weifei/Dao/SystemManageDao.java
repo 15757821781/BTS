@@ -39,4 +39,6 @@ public interface SystemManageDao {
 
 	int deleteRolePageMapping(Tb_role tb_role);
 
+	int updateRoleInfo(Tb_role tb_role);
+
 }
