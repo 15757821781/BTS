@@ -47,6 +47,6 @@
 	    <if test="roleid !=null and roleid !=''">
 	        AND a.roleid = #{roleid}
 	    </if>
-	    order by t.pagegroup,t.pagelevel,t.pageid
+	    order by t.pagegroup,t.pagelevel,t.pageorder
 	</select>
 </mapper>
