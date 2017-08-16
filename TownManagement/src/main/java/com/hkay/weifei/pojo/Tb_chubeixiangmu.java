@@ -33,6 +33,8 @@ public class Tb_chubeixiangmu {
 	private String resallplanpic;// 城市总体规划
 	private String resdetailplanpic;// 控制性详细规划
 	private String resentry;//录入员
+	private String resupdator;//修改者
+	
 	private String search;//搜索
 	private String operation;// 操作
 	private String supersearch;// 高级搜索
@@ -45,6 +47,7 @@ public class Tb_chubeixiangmu {
 	private String reslandareas;//征地面积
 	
 	
+
 	public String getResplanareas() {
 		return resplanareas;
 	}
@@ -68,6 +71,12 @@ public class Tb_chubeixiangmu {
 	}
 	public void setSupersearch(String supersearch) {
 		this.supersearch = supersearch;
+  }
+	public String getResupdator() {
+		return resupdator;
+	}
+	public void setResupdator(String resupdator) {
+		this.resupdator = resupdator;
 	}
 	public String getOperation() {
 		return operation;

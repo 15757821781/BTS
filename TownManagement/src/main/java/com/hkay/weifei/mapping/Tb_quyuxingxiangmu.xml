@@ -194,6 +194,7 @@
 		regplanpic=#{regplanpic},
 		regallplanpic=#{regallplanpic},
 		regdetailplanpic=#{regdetailplanpic},
+		regupdator=#{regupdator},
 		updatetime=now()
 		where regid=#{regid}
 	</update>

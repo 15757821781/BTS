@@ -116,7 +116,7 @@
 		</if>
 		WHERE 1 = 1
 		AND a.active = 1
-		order by a.pagegroup,a.pagelevel,a.pageid
+		order by a.pagegroup,a.pagelevel,a.pageorder
 	</select>
 	<!-- 查询子页面 -->
 	<select id="queryMenusChild" parameterType="com.hkay.weifei.pojo.Pages"

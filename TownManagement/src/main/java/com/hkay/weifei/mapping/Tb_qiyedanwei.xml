@@ -267,6 +267,7 @@
 		compost=#{compost},
 		comcontacttel=#{comcontacttel},
 		comofficeweb=#{comofficeweb},
+		comupdator=#{comupdator},
 		updatetime=now()
 		where comid=#{comid}
 	</update>
