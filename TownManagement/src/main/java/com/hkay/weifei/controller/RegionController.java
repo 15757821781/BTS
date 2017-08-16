@@ -246,7 +246,7 @@ public class RegionController {
 			sql.append(" and DATE_FORMAT(a.regdockingtime,'%Y-%m') = '"+qyx.getRegdockingtime()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(qyx.getRegcontractdate())){
-			sql.append(" and DATE_FORMAT(a.regcontractdate,'%Y-%m') = '"+qyx.getRegcontractdate()+"'");
+			sql.append(" and DATE_FORMAT(a.regcontractdate,'%Y-%m-%d') = '"+qyx.getRegcontractdate()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(qyx.getRegnowindustry())){
 			sql.append(" and a.regnowindustry in ('"+qyx.getRegnowindustry()+"')");

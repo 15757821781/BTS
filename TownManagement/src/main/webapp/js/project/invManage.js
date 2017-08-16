@@ -61,6 +61,18 @@ $(document).ready(function() {
 //            }
 		} ]
 	});
+	//新增弹出框
+	$('#invSearch_bar').click(function() {
+		$.ajax({
+			url : "/TownManagement/pages/ProjectLibrary/invSearch.html",
+			cache : false,
+			success : function(html) {
+				$('#invbody').html(html);
+				$('#invitem_search')[0].reset();
+				$("#invmodal").modal('show');
+			}
+		});
+	});
 })
 //查询方法
 function queryParams(params){
@@ -74,6 +86,7 @@ function queryParams(params){
 		pageindex : params.pageNumber,
 		search : encodeURI(params.searchText)
 	};
+	temp = GetFormSearchData('invitem_search',temp);
 	return temp;
 }
 //展示详情modal
