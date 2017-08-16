@@ -89,7 +89,9 @@
 		resscopeopic=#{resscopeopic},
 		resplanpic=#{resplanpic},
 		resallplanpic=#{resallplanpic},
-		resdetailplanpic=#{resdetailplanpic}
+		resdetailplanpic=#{resdetailplanpic},
+		resupdator=#{resupdator},
+		updatetime=now()
 		where resid=#{resid}
 	</update>
 	<!-- 查询等待提醒的数据 -->

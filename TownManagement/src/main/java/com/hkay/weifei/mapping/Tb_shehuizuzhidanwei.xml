@@ -154,6 +154,7 @@
 			orgcontact=#{orgcontact},
 			orgcontacttel=#{orgcontacttel},
 			orgpost=#{orgpost},
+			orgupdator=#{orgupdator},
 			updatetime=now()
 			where orgid=#{orgid}
 	</update>

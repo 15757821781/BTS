@@ -53,6 +53,7 @@ public class Tb_qiyedanwei {
 	private String comcontacttel;//联系电话
 	private String comofficeweb;//单位官网
 	private String comcreator;//录入员
+	private String comupdator;//修改者
 	
 	private String search;// 查询条件
 	private String operation;// 操作
@@ -71,6 +72,15 @@ public class Tb_qiyedanwei {
 	private String comincomeyears;//年度营业收入
 	private String comtaxesyears;//年度纳税额
 	
+	
+	public String getComupdator() {
+		return comupdator;
+	}
+
+	public void setComupdator(String comupdator) {
+		this.comupdator = comupdator;
+	}
+
 	public String getComcapitals() {
 		return comcapitals;
 	}

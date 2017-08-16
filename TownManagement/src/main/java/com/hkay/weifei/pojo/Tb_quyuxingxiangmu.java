@@ -46,11 +46,11 @@ public class Tb_quyuxingxiangmu {
 	private String regallplanpic;// 城市总体规划
 	private String regdetailplanpic;// 控制性详细规划
 	private String regentry;//录入员
+	private String regupdator;//修改者
 	
 	private String search;//搜索内容
 	private String operation;// 操作
 	private String supersearch;// 高级搜索
-	
 	
 	/*
 	 * 高级搜索用到的参数
@@ -60,7 +60,12 @@ public class Tb_quyuxingxiangmu {
 	private String reglandareass;//征地面积
 	private String reinvests;//合作投资额
 
-	
+	public String getRegupdator() {
+		return regupdator;
+	}
+	public void setRegupdator(String regupdator) {
+		this.regupdator = regupdator;
+  }
 	public String getRegplanareass() {
 		return regplanareass;
 	}

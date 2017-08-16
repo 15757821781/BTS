@@ -36,9 +36,10 @@ public class Tb_zhaoshangxiangmu {
 	private String search;//搜索内容
 	private String invpost;//职务
 	private String inventry;//录入员
+	private String invupdator;//修改者
+	
 	private String operation;// 操作
 	private String supersearch;// 高级搜索
-	
 	
 	/*
 	 * 高级搜索用到的参数
@@ -79,6 +80,12 @@ public class Tb_zhaoshangxiangmu {
 	}
 	public void setSupersearch(String supersearch) {
 		this.supersearch = supersearch;
+  }
+	public String getInvupdator() {
+		return invupdator;
+	}
+	public void setInvupdator(String invupdator) {
+		this.invupdator = invupdator;
 	}
 	public String getOperation() {
 		return operation;
