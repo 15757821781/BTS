@@ -42,7 +42,7 @@ $(document).ready(function() {
 	            }
 		}, {
 			field : 'rescompetentunit',
-			title : '主管单位',
+			title : '业主单位',
 			align : 'center',
 			width : '20%'
 		}, {
@@ -61,7 +61,19 @@ $(document).ready(function() {
 //            }
 		} ]
 	});
-});
+	//新增弹出框
+	$('#resSearch_bar').click(function() {
+		$.ajax({
+			url : "/TownManagement/pages/ProjectLibrary/resSearch.html",
+			cache : false,
+			success : function(html) {
+				$('#resbody').html(html);
+				$('#resitem_search')[0].reset();
+				$("#resmodal").modal('show');
+			}
+		});
+	});
+})
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {
@@ -74,6 +86,7 @@ function queryParams(params){
 		pageindex : params.pageNumber,
 		search : encodeURI(params.searchText)
 	};
+	temp = GetFormSearchData('resitem_search',temp);
 	return temp;
 }
 //展示详情modal

@@ -35,8 +35,40 @@ public class Tb_chubeixiangmu {
 	private String resentry;//录入员
 	private String search;//搜索
 	private String operation;// 操作
+	private String supersearch;// 高级搜索
+
+	/*
+	 * 高级搜索用到的参数
+	 */
+	private String resplanareas;//规划面积
+	private String resplaninvests;//计划投资
+	private String reslandareas;//征地面积
 	
 	
+	public String getResplanareas() {
+		return resplanareas;
+	}
+	public void setResplanareas(String resplanareas) {
+		this.resplanareas = resplanareas;
+	}
+	public String getResplaninvests() {
+		return resplaninvests;
+	}
+	public void setResplaninvests(String resplaninvests) {
+		this.resplaninvests = resplaninvests;
+	}
+	public String getReslandareas() {
+		return reslandareas;
+	}
+	public void setReslandareas(String reslandareas) {
+		this.reslandareas = reslandareas;
+	}
+	public String getSupersearch() {
+		return supersearch;
+	}
+	public void setSupersearch(String supersearch) {
+		this.supersearch = supersearch;
+	}
 	public String getOperation() {
 		return operation;
 	}
