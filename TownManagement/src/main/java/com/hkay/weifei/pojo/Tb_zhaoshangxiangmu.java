@@ -39,7 +39,48 @@ public class Tb_zhaoshangxiangmu {
 	private String invupdator;//修改者
 	
 	private String operation;// 操作
+	private String supersearch;// 高级搜索
 	
+	/*
+	 * 高级搜索用到的参数
+	 */
+	private String invlandscales;//用地规模
+	private String invplotratios;//容积率
+	private String investments;//投资强度
+	private String investmentalls;//投资总额
+	
+	
+	
+	public String getInvlandscales() {
+		return invlandscales;
+	}
+	public void setInvlandscales(String invlandscales) {
+		this.invlandscales = invlandscales;
+	}
+	public String getInvplotratios() {
+		return invplotratios;
+	}
+	public void setInvplotratios(String invplotratios) {
+		this.invplotratios = invplotratios;
+	}
+	public String getInvestments() {
+		return investments;
+	}
+	public void setInvestments(String investments) {
+		this.investments = investments;
+	}
+	public String getInvestmentalls() {
+		return investmentalls;
+	}
+	public void setInvestmentalls(String investmentalls) {
+		this.investmentalls = investmentalls;
+	}
+	public String getSupersearch() {
+		return supersearch;
+	}
+	public void setSupersearch(String supersearch) {
+		this.supersearch = supersearch;
+  }
 	public String getInvupdator() {
 		return invupdator;
 	}
