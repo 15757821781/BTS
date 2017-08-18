@@ -254,6 +254,9 @@ public class RegionController {
 		if(CommonUtil.JudgeEmpty(qyx.getRegprimeindustry())){
 			sql.append(" and a.regprimeindustry in ('"+qyx.getRegprimeindustry()+"')");
 		}
+		if(CommonUtil.JudgeEmpty(qyx.getRegprojectcost())){
+			sql.append(CommonUtil.HandleNum("regprojectcost", qyx.getRegprojectcost()));
+		}
 		if(CommonUtil.JudgeEmpty(qyx.getRegdeveloper())){
 			sql.append(" and a.regdeveloper like '%"+qyx.getRegdeveloper()+"%'");
 		}
