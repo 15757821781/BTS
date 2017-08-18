@@ -23,6 +23,7 @@ public class Tb_quyuxingxiangmu {
 	private String regcontractdate;//反馈节点
 	private String regnowindustry;//优势产业
 	private String regprimeindustry;//产业方向
+	private String regprojectcost;//项目费用
 	private String regdeveloper;//牵头单位
 	private String regcharge;//牵头负责人
 	private String regchargetel;//牵头负责人电话
@@ -233,6 +234,12 @@ public class Tb_quyuxingxiangmu {
 	}
 	public void setRegprimeindustry(String regprimeindustry) {
 		this.regprimeindustry = regprimeindustry;
+	}
+	public String getRegprojectcost() {
+		return regprojectcost;
+	}
+	public void setRegprojectcost(String regprojectcost) {
+		this.regprojectcost = regprojectcost;
 	}
 	public String getRegdeveloper() {
 		return regdeveloper;
