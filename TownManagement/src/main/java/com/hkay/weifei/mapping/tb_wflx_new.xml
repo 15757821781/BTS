@@ -35,7 +35,9 @@
 	</insert>
 	<select id="queryPages" parameterType="com.hkay.weifei.pojo.Pages" resultType="com.hkay.weifei.pojo.Pages">
 	    select t.* from tb_pages t
-	    LEFT JOIN tb_role_page_mapping a ON a.pageid = t.PAGEID
+	    <if test="roleid !=null and roleid !=''">
+	    	LEFT JOIN tb_role_page_mapping a ON a.pageid = t.PAGEID
+	    </if>
 	    where 1=1
 	    <if test="parentid!=null and parentid!=''">
 	        and t.parentid=#{parentid}
