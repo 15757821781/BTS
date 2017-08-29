@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>录入</title>
+<!-- select CSS -->
+<link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
+<!-- 表单验证 -->
+<link rel="stylesheet" href="/TownManagement/dist/css/bootstrapValidator.css" />
+<!-- 时间插件 -->
+<link rel="stylesheet" href="/TownManagement/css/bootstrap-datetimepicker.css" />
+</head>
+<body>
+	<div class="panel-body">
+		<form class="form-horizontal" role="form" id="basicform" enctype="multipart/form-data" method="post">
+			<!-- Nav tabs -->
+			<div>
+				<div class="col-sm-2">
+					<input id="countryname" name="countryname"  class="form-control" 
+						type="text"/>
+				</div>
+				<label style="font-size:25px;">基本情况表</label>
+			</div>
+				<label class="col-sm-10 control-label"">统计年度</label>
+				<div class="col-sm-2">
+					<input id="countryyear" name="countryyear"  class="form-control" 
+						type="text"/>
+			</div>
+			<ul class="nav nav-tabs">
+				<li class="active" id="BasicSituation_tab"><a href="#BasicSituation" data-toggle="tab">基本情况</a></li>
+				<li id="ExploreSituation_tab"><a href="#ExploreSituation" data-toggle="tab">发展情况</a></li>
+			</ul>
+			<br>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="BasicSituation">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">所属地区</label>
+								<div class="col-sm-2">
+									<select id="countryprovince" name="countryprovince"
+										class="selectpicker show-tick form-control"
+										data-live-search="true" data-size="5" arealevel="1"
+										areagroup="1" title="选择省份">
+									</select>
+								</div>
+								<div class="col-sm-2">
+									<select id="countrycity" name="countrycity"
+										class="selectpicker show-tick form-control"
+										data-live-search="true" data-size="5" arealevel="2"
+										areagroup="1" title="选择地市">
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">地理位置</label>
+								<div class="col-sm-10">
+									<textarea id="countryposition" name="countryposition" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">行政区划</label>
+								<label class="col-sm-2 control-label">1.行政面积（平方公里）</label>
+								<div class="col-sm-1">
+									<input id="countryarea" name="countryarea" class="form-control"
+										type="text"/>
+								</div>
+								<label class="col-sm-2 control-label">2.全县总人口（万人）</label>
+								<div class="col-sm-1">
+									<input id="countryallpeople" name="countryallpeople" class="form-control"
+										type="text"/>
+								</div>
+								<label class="col-sm-2 control-label">3.下辖地区</label>
+								<div class="col-sm-1">
+									<input id="countryregion" name="countryregion" class="form-control"
+										type="text"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">其他</label>
+								<div class="col-sm-10">
+									<textarea id="countryother" name="countryother" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">经济情况</label>
+								<label class="col-sm-2 control-label">全县地区GDP生产总值 （亿元）</label>
+								<div class="col-sm-2">
+									<input id="countrygdp" name="countrygdp" class="form-control"
+										type="text"/>
+								</div>
+								<label class="col-sm-2 control-label">同比增长率（%）</label>
+								<div class="col-sm-2">
+									<input id="countryrate" name="countryrate" class="form-control"
+										type="text"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">全县财政总收入（亿元）</label>
+								<div class="col-sm-2">
+									<input id="countryfinance" name="countryfinance" class="form-control"
+										type="text"/>
+								</div>
+								<label class="col-sm-2 control-label">同比增长率（%）</label>
+								<div class="col-sm-2">
+									<input id="countryrates" name="countryrates" class="form-control"
+										type="text"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">农村牧渔业总产值 （亿元）</label>
+								<div class="col-sm-2">
+								<input id="countryfisheries" name="countryfisheries" class="form-control"
+									type="text"/>
+								</div>
+								<label class="col-sm-2 control-label">工业总产值（亿元）</label>
+								<div class="col-sm-2">
+								<input id="countryindustry" name="countryindustry" class="form-control"
+									type="text"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">全年完成固定资产投资 （亿元）</label>
+								<div class="col-sm-2">
+								<input id="countryinvest" name="countryinvest" class="form-control"
+									type="text"/>
+								</div>
+								<label class="col-sm-2 control-label">同比增长率（%）</label>
+								<div class="col-sm-2">
+								<input id="countryratess" name="countryratess" class="form-control"
+									type="text"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">城镇人均可支配收入 （万元）</label>
+								<div class="col-sm-2">
+								<input id="countryincome" name="countryincome" class="form-control"
+									type="text"/>
+								</div>
+								<label class="col-sm-2 control-label">农村人均可支配收入（万元）</label>
+								<div class="col-sm-2">
+								<input id="countrytownincome" name="countrytownincome" class="form-control"
+									type="text"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">其他</label>
+								<div class="col-sm-10">
+									<textarea id="countryother" name="countryother" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">历史文化</label>
+								<div class="col-sm-10">
+									<textarea id="countryhistory" name="countryhistory" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">景观资源</label>
+								<div class="col-sm-10">
+									<textarea id="countrysight" name="countrysight" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">特产情况</label>
+								<div class="col-sm-10">
+									<textarea id="countrynative" name="countrynative" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-5 control-label"></label>
+								<button type="button"  class="col-sm-2 btn btn-primary" onclick='changeTab()'
+									style="width: auto; min-width: 90px; margin-top: 20px;">下一页</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="ExploreSituation">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">1.产业发展目标</label>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">一产富民，二产强县，三产增活力</label>
+								<div class="col-sm-10">
+									<textarea id="countryfumin" name="countryfumin" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">服务业提速发展</label>
+								<div class="col-sm-10">
+									<textarea id="countryservice" name="countryservice" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">现代农业稳步推进</label>
+								<div class="col-sm-10">
+									<textarea id="countryagriculture" name="countryagriculture" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">其他</label>
+								<div class="col-sm-10">
+									<textarea id="countryothers" name="countryothers" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">2.重点项目计划情况</label>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">主要目标</label>
+								<div class="col-sm-10">
+									<textarea id="countrytarget" name="countrytarget" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">主要任务</label>
+								<div class="col-sm-10">
+									<textarea id="countrytask" name="countrytask" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">资金投入</label>
+								<div class="col-sm-10">
+									<textarea id="countrycapital" name="countrycapital" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">其他</label>
+								<div class="col-sm-10">
+									<textarea id="countryotherss" name="countryotherss" class="form-control"
+										rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+							<label class="col-sm-2 control-label">录入员</label>
+								<div class="col-sm-2">
+									<input id="countryentry" name="countryentry" class="form-control" 
+										type="text" disabled="disabled" placeholder="系统自动生成">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-5 control-label"></label>
+								<button type="button" id="basicform_submit" class="col-sm-2 btn btn-primary"
+									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
+									<label class="col-sm-5 control-label"></label>
+					<!-- id -->
+					<input type="hidden" value="" name="countryid" id="countryid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+<!-- Select JavaScript -->
+<script src="/TownManagement/dist/js/bootstrap-select.js"></script>
+<!-- 表单验证 -->
+<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
+<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
+<!-- 时间插件 -->
+<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="/TownManagement/js/projectplan/citycaseEntry.js"></script>
+</body>
+</html>

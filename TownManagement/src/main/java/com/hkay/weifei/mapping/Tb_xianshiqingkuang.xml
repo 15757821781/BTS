@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.CitycaseDao">
+	<resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_xianshiqingkuang" />
+	<insert id="insertCityInfo" parameterType="com.hkay.weifei.pojo.Tb_xianshiqingkuang">
+	    insert into tb_xianshiqingkuang
+	    (
+	    	countryname,
+			countryyear,
+			countryprovince,
+			countrycity,
+			countryposition,
+			countryarea,
+			countryallpeople,
+			countryregion,
+			countrygdp,
+			countryrate,
+			countryfinance,
+			countryrates,
+			countryfisheries, 	
+			countryindustry,
+			countryinvest,
+			countryratess,
+			countryincome,
+			countrytownincome,
+			countryother,
+			countryhistory,
+			countrysight,
+			countrynative,
+			countryfumin,
+			countryservice,
+			countryagriculture,
+			countryothers,
+			countrytarget,
+			countrytask,
+			countrycapital,
+			countryotherss,
+			countryentry,
+			updatetime)
+			values
+			(
+			#{countryname},
+			#{countryyear},
+			#{countryprovince},
+			#{countrycity},
+			#{countryposition},
+			#{countryarea},
+			#{countryallpeople},
+			#{countryregion},
+			#{countrygdp},
+			#{countryrate},
+			#{countryfinance},
+			#{countryrates},
+			#{countryfisheries},
+			#{countryindustry},
+			#{countryinvest},
+			#{countryratess},
+			#{countryincome},
+			#{countrytownincome},
+			#{countryother},
+			#{countryhistory},
+			#{countrysight},
+			#{countrynative},
+			#{countryfumin},
+			#{countryservice},
+			#{countryagriculture},
+			#{countryothers},
+			#{countrytarget},
+			#{countrytask},
+			#{countrycapital},
+			#{countryotherss},
+			#{countryentry},
+			now())
+	</insert>
+	<!-- 查询信息总数 -->
+	<select id="queryCitycnt" parameterType="com.hkay.weifei.pojo.Tb_xianshiqingkuang"
+		resultType="Integer">
+		select count(*) from (
+		SELECT
+			a.countryid,
+<!-- 			a.orgnumber, -->
+<!-- 			a.orgcategory, -->
+<!-- 			a.orgname, -->
+			b.name as countryprovince,
+			c.name as countrycity
+		FROM
+			tb_xianshiqingkuang a
+		LEFT JOIN tb_area_province b on a.countryprovince=b.code 
+		LEFT JOIN tb_area_city c on a.countrycity=c.code where 1=1 
+		and a.visual=1
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
+		)t
+	</select>
+	<select id="queryCityList" parameterType="com.hkay.weifei.pojo.Tb_xianshiqingkuang"
+	resultMap="BaseResultMap">
+		SELECT
+			a.countryid,
+<!-- 			a.orgnumber, -->
+<!-- 			a.orgcategory, -->
+<!-- 			a.orgname, -->
+			b.name as countryprovince,
+			c.name as countrycity
+			a.countryentry
+		FROM
+			tb_xianshiqingkuang a
+		LEFT JOIN tb_area_province b on a.countryprovince=b.code 
+		LEFT JOIN tb_area_city c on a.countrycity=c.code where 1=1 
+		and a.visual=1
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
+		order by b.code,c.code,createtime desc,a.countryid desc
+	</select>
+	<select id="queryCityDetail" parameterType="com.hkay.weifei.pojo.Tb_xianshiqingkuang"
+	resultMap="BaseResultMap">
+		select countryid,
+			a.countryname,
+			a.countryyear,
+			a.countryprovince,
+			a.countrycity,
+			a.countryposition,
+			a.countryarea,
+			a.countryallpeople,
+			a.countryregion,
+			a.countrygdp,
+			a.countryrate,
+			a.countryfinance,
+			a.countryrates,
+			a.countryfisheries, 	
+			a.countryindustry,
+			a.countryinvest,
+			a.countryratess,
+			a.countryincome,
+			a.countrytownincome,
+			a.countryother,
+			a.countryhistory,
+			a.countrysight,
+			a.countrynative,
+			a.countryfumin,
+			a.countryservice,
+			a.countryagriculture,
+			a.countryothers,
+			a.countrytarget,
+			a.countrytask,
+			a.countrycapital,
+			a.countryotherss,
+			a.countryentry from tb_xianshiqingkuang a where a.countryid = #{countryid}
+		</select>
+		<!-- 更新县市基本情况信息 -->
+	<update id="updateCityInfo" parameterType="com.hkay.weifei.pojo.Tb_xianshiqingkuang">
+		update tb_shehuizuzhidanwei set
+			countryid=#{countryid}
+			countryname=#{countryname}
+			countryyear=#{countryyear}
+			countryprovince=#{countryprovince}
+			countrycity=#{countrycity}
+			countryposition=#{countryposition}
+			countryarea=#{countryarea}
+			countryallpeople=#{countryallpeople}
+			countryregion=#{countryregion}
+			countrygdp=#{countrygdp} 
+			countryrate=#{countryrate}
+			countryfinance=#{countryfinance}
+			countryrates=#{countryrates}
+			countryfisheries=#{countryfisheries} 	
+			countryindustry=#{countryindustry}
+			countryinvest=#{countryinvest}
+			countryratess=#{countryratess}
+			countryincome=#{countryincome}
+			countrytownincome=#{countrytownincome}
+			countryother=#{countryother}
+			countryhistory=#{countryhistory}
+			countrysight=#{countrysight}
+			countrynative=#{countrynative}
+			countryfumin=#{countryfumin}
+			countryservice=#{countryservice}
+			countryagriculture=#{countryagriculture}
+			countryothers=#{countryothers}
+			countrytarget=#{countrytarget}
+			countrytask=#{countrytask}
+			countrycapital=#{countrycapital}
+			countryotherss=#{countryotherss}
+			countryentry=#{countryentry}
+			countryupdator=#{countryupdator}
+			updatetime=now()
+			where countryid=#{countryid}
+	</update>
+</mapper>
