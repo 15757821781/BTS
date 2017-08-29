@@ -102,7 +102,7 @@ public class sheetController {
 //		if(user==null){
 //		}else{
 			try{
-				if(!user.getUserid().equals("1")){
+				if(user.getUserid() != 1){
 					page.setRoleid(user.getRoleid());
 				}
 				List<Pages> pages = this.wflxservice.queryPages(page);
