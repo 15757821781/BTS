@@ -13,6 +13,7 @@
 			countryarea,
 			countryallpeople,
 			countryregion,
+			countryother,
 			countrygdp,
 			countryrate,
 			countryfinance,
@@ -23,18 +24,18 @@
 			countryratess,
 			countryincome,
 			countrytownincome,
-			countryother,
+			countryothers,
 			countryhistory,
 			countrysight,
 			countrynative,
 			countryfumin,
 			countryservice,
 			countryagriculture,
-			countryothers,
+			countryotherss,
 			countrytarget,
 			countrytask,
 			countrycapital,
-			countryotherss,
+			countryothersss,
 			countryentry,
 			updatetime)
 			values
@@ -47,6 +48,7 @@
 			#{countryarea},
 			#{countryallpeople},
 			#{countryregion},
+			#{countryother},
 			#{countrygdp},
 			#{countryrate},
 			#{countryfinance},
@@ -57,18 +59,18 @@
 			#{countryratess},
 			#{countryincome},
 			#{countrytownincome},
-			#{countryother},
+			#{countryothers},
 			#{countryhistory},
 			#{countrysight},
 			#{countrynative},
 			#{countryfumin},
 			#{countryservice},
 			#{countryagriculture},
-			#{countryothers},
+			#{countryotherss},
 			#{countrytarget},
 			#{countrytask},
 			#{countrycapital},
-			#{countryotherss},
+			#{countryothersss},
 			#{countryentry},
 			now())
 	</insert>
@@ -78,6 +80,7 @@
 		select count(*) from (
 		SELECT
 			a.countryid,
+			a.countryyear,
 <!-- 			a.orgnumber, -->
 <!-- 			a.orgcategory, -->
 <!-- 			a.orgname, -->
@@ -97,11 +100,10 @@
 	resultMap="BaseResultMap">
 		SELECT
 			a.countryid,
-<!-- 			a.orgnumber, -->
-<!-- 			a.orgcategory, -->
-<!-- 			a.orgname, -->
+			a.countryyear,
+			a.countryname,
 			b.name as countryprovince,
-			c.name as countrycity
+			c.name as countrycity,
 			a.countryentry
 		FROM
 			tb_xianshiqingkuang a
@@ -124,6 +126,7 @@
 			a.countryarea,
 			a.countryallpeople,
 			a.countryregion,
+			a.countryother,
 			a.countrygdp,
 			a.countryrate,
 			a.countryfinance,
@@ -134,56 +137,56 @@
 			a.countryratess,
 			a.countryincome,
 			a.countrytownincome,
-			a.countryother,
+			a.countryothers,
 			a.countryhistory,
 			a.countrysight,
 			a.countrynative,
 			a.countryfumin,
 			a.countryservice,
 			a.countryagriculture,
-			a.countryothers,
+			a.countryotherss,
 			a.countrytarget,
 			a.countrytask,
 			a.countrycapital,
-			a.countryotherss,
+			a.countryothersss,
 			a.countryentry from tb_xianshiqingkuang a where a.countryid = #{countryid}
 		</select>
 		<!-- 更新县市基本情况信息 -->
 	<update id="updateCityInfo" parameterType="com.hkay.weifei.pojo.Tb_xianshiqingkuang">
-		update tb_shehuizuzhidanwei set
-			countryid=#{countryid}
-			countryname=#{countryname}
-			countryyear=#{countryyear}
-			countryprovince=#{countryprovince}
-			countrycity=#{countrycity}
-			countryposition=#{countryposition}
-			countryarea=#{countryarea}
-			countryallpeople=#{countryallpeople}
-			countryregion=#{countryregion}
-			countrygdp=#{countrygdp} 
-			countryrate=#{countryrate}
-			countryfinance=#{countryfinance}
-			countryrates=#{countryrates}
-			countryfisheries=#{countryfisheries} 	
-			countryindustry=#{countryindustry}
-			countryinvest=#{countryinvest}
-			countryratess=#{countryratess}
-			countryincome=#{countryincome}
-			countrytownincome=#{countrytownincome}
-			countryother=#{countryother}
-			countryhistory=#{countryhistory}
-			countrysight=#{countrysight}
-			countrynative=#{countrynative}
-			countryfumin=#{countryfumin}
-			countryservice=#{countryservice}
-			countryagriculture=#{countryagriculture}
-			countryothers=#{countryothers}
-			countrytarget=#{countrytarget}
-			countrytask=#{countrytask}
-			countrycapital=#{countrycapital}
-			countryotherss=#{countryotherss}
-			countryentry=#{countryentry}
-			countryupdator=#{countryupdator}
+		update tb_xianshiqingkuang set
+			countryname=#{countryname},
+			countryyear=#{countryyear},
+			countryprovince=#{countryprovince},
+			countrycity=#{countrycity},
+			countryposition=#{countryposition},
+			countryarea=#{countryarea},
+			countryallpeople=#{countryallpeople},
+			countryregion=#{countryregion},
+			countryother=#{countryother},
+			countrygdp=#{countrygdp},
+			countryrate=#{countryrate},
+			countryfinance=#{countryfinance},
+			countryrates=#{countryrates},
+			countryfisheries=#{countryfisheries}, 	
+			countryindustry=#{countryindustry},
+			countryinvest=#{countryinvest},
+			countryratess=#{countryratess},
+			countryincome=#{countryincome},
+			countrytownincome=#{countrytownincome},
+			countryothers=#{countryothers},
+			countryhistory=#{countryhistory},
+			countrysight=#{countrysight},
+			countrynative=#{countrynative},
+			countryfumin=#{countryfumin},
+			countryservice=#{countryservice},
+			countryagriculture=#{countryagriculture},
+			countryotherss=#{countryotherss},
+			countrytarget=#{countrytarget},
+			countrytask=#{countrytask},
+			countrycapital=#{countrycapital},
+			countryothersss=#{countryothersss},
+			countryentry=#{countryentry},
+			countryupdator=#{countryupdator},
 			updatetime=now()
 			where countryid=#{countryid}
 	</update>
