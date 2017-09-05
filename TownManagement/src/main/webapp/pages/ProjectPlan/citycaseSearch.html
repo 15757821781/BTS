@@ -3,9 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>录入</title>
-<style type="text/css">
-.center{ margin:0 auto; width:400px; height:100px} 
-</style>
 <!-- select CSS -->
 <link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
 <!-- 表单验证 -->
@@ -16,11 +13,11 @@
 <body>
 	<div class="panel-body">
 	<fieldset id="cityfieldset">
-		<form class="form-horizontal" role="form" id="basicform" enctype="multipart/form-data" method="post">
+		<form class="form-horizontal" role="form" id="form_search" enctype="multipart/form-data" method="post">
 			<!-- Nav tabs -->
-			<div class="center">
-				<div class="col-sm-8">
-					<input id="countryname" name="countryname"  style="text-align:center;background:none;border:none;border-bottom:1px solid #333;font-size:20px;"
+			<div>
+				<div class="col-sm-2">
+					<input id="countryname" name="countryname"  class="form-control" 
 						type="text"/>
 				</div>
 				<label style="font-size:25px;">基本情况表</label>
@@ -67,12 +64,12 @@
 								<label class="col-sm-2 control-label">行政区划</label>
 								<label class="col-sm-2 control-label">1.行政面积（平方公里）</label>
 								<div class="col-sm-1">
-									<input id="countryarea" name="countryarea" class="form-control"
+									<input id="countryareas" name="countryareas" class="form-control"
 										type="text"/>
 								</div>
 								<label class="col-sm-2 control-label">2.全县总人口（万人）</label>
 								<div class="col-sm-1">
-									<input id="countryallpeople" name="countryallpeople" class="form-control"
+									<input id="countryallpeoples" name="countryallpeoples" class="form-control"
 										type="text"/>
 								</div>
 								<label class="col-sm-2 control-label">3.下辖地区</label>
@@ -92,60 +89,60 @@
 								<label class="col-sm-2 control-label">经济情况</label>
 								<label class="col-sm-2 control-label">全县地区GDP生产总值 （亿元）</label>
 								<div class="col-sm-2">
-									<input id="countrygdp" name="countrygdp" class="form-control"
+									<input id="countrygdps" name="countrygdps" class="form-control"
 										type="text"/>
 								</div>
 								<label class="col-sm-2 control-label">同比增长率（%）</label>
 								<div class="col-sm-2">
-									<input id="countryrate" name="countryrate" class="form-control"
+									<input id="countryratea" name="countryratea" class="form-control"
 										type="text"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">全县财政总收入（亿元）</label>
 								<div class="col-sm-2">
-									<input id="countryfinance" name="countryfinance" class="form-control"
+									<input id="countryfinances" name="countryfinances" class="form-control"
 										type="text"/>
 								</div>
 								<label class="col-sm-2 control-label">同比增长率（%）</label>
 								<div class="col-sm-2">
-									<input id="countryrates" name="countryrates" class="form-control"
+									<input id="countryratesb" name="countryratesb" class="form-control"
 										type="text"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">农村牧渔业总产值 （亿元）</label>
 								<div class="col-sm-2">
-								<input id="countryfisheries" name="countryfisheries" class="form-control"
+								<input id="countryfisheriess" name="countryfisheriess" class="form-control"
 									type="text"/>
 								</div>
 								<label class="col-sm-2 control-label">工业总产值（亿元）</label>
 								<div class="col-sm-2">
-								<input id="countryindustry" name="countryindustry" class="form-control"
+								<input id="countryindustrys" name="countryindustrys" class="form-control"
 									type="text"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">全年完成固定资产投资 （亿元）</label>
 								<div class="col-sm-2">
-								<input id="countryinvest" name="countryinvest" class="form-control"
+								<input id="countryinvests" name="countryinvests" class="form-control"
 									type="text"/>
 								</div>
 								<label class="col-sm-2 control-label">同比增长率（%）</label>
 								<div class="col-sm-2">
-								<input id="countryratess" name="countryratess" class="form-control"
+								<input id="countryratessc" name="countryratessc" class="form-control"
 									type="text"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">城镇人均可支配收入 （万元）</label>
 								<div class="col-sm-2">
-								<input id="countryincome" name="countryincome" class="form-control"
+								<input id="countryincomes" name="countryincomes" class="form-control"
 									type="text"/>
 								</div>
 								<label class="col-sm-2 control-label">农村人均可支配收入（万元）</label>
 								<div class="col-sm-2">
-								<input id="countrytownincome" name="countrytownincome" class="form-control"
+								<input id="countrytownincomes" name="countrytownincomes" class="form-control"
 									type="text"/>
 								</div>
 							</div>
@@ -259,10 +256,8 @@
 							</div>
 							<div class="form-group">
 								<label class="col-sm-5 control-label"></label>
-								<button type="button" id="basicform_submit" class="col-sm-2 btn btn-primary"
-									style="width: auto; min-width: 90px; margin-top: 20px;">提交</button>
-								<button type="button" id="basicform_update" class="col-sm-2 btn btn-primary"
-									style="width: auto; min-width: 90px; margin-top: 20px;display:none;">更新</button>
+								<button type="button" id="basicform_search" class="col-sm-2 btn btn-primary"
+									style="width: auto; min-width: 90px; margin-top: 20px;">查询</button>
 								<label class="col-sm-5 control-label"></label>
 					<!-- id -->
 					<input type="hidden" value="" name="countryid" id="countryid">
@@ -277,11 +272,11 @@
 <!-- Select JavaScript -->
 <script src="/TownManagement/dist/js/bootstrap-select.js"></script>
 <!-- 表单验证 -->
-<script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
-<script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
+<!-- <script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script> -->
+<!-- <script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script> -->
 <!-- 时间插件 -->
 <script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="/TownManagement/tools/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
-<script type="text/javascript" src="/TownManagement/js/projectplan/citycaseEntry.js"></script>
+<script type="text/javascript" src="/TownManagement/js/projectplan/citycaseSearch.js"></script>
 </body>
 </html>

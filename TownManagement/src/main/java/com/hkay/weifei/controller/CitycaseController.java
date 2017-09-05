@@ -21,6 +21,7 @@ import com.hkay.weifei.pojo.Tb_shehuizuzhidanwei;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_xianshiqingkuang;
 import com.hkay.weifei.service.CitycaseService;
+import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
 
@@ -43,7 +44,7 @@ public class CitycaseController {
 			int flag = this.citycaseService.insertCityInfo(tb_xianshiqingkuang);
 			result = RetAjax.onDataBase(flag,1);
 		} catch (Exception e) {
-			Log.error("error----------insertorginfo:" + e.getMessage());
+			Log.error("error----------insertCityInfo:" + e.getMessage());
 			e.printStackTrace();
 		}
 		return result;
@@ -145,8 +146,108 @@ public class CitycaseController {
 	 *创建日期:2017年8月24日
 	 */
 	
-	private String GetSuperSearchSql(Tb_xianshiqingkuang tb_xianshiqingkuang) {
-		// TODO Auto-generated method stub
-		return null;
+	private String GetSuperSearchSql(Tb_xianshiqingkuang xsqk) {
+		StringBuilder sql = new StringBuilder();
+		if(CommonUtil.JudgeEmpty(xsqk.getSearch())){
+			String search = xsqk.getSearch();
+			sql.append(" and (a.countryname like '%"+search+"%' or a.countryyear like '%"+search+"%' )");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryname())){
+			sql.append(" and a.countryname like '%"+xsqk.getCountryname()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryyear())){
+			sql.append(" and a.countryyear like '%"+xsqk.getCountryyear()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryprovince())){
+			sql.append(" and a.countryprovince = '"+xsqk.getCountryprovince()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountrycity())){
+			sql.append(" and a.countrycity = '"+xsqk.getCountrycity()+"'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryposition())){
+			sql.append(" and a.countryposition like '%"+xsqk.getCountryposition()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryareas())){
+			sql.append(CommonUtil.HandleNum("countryarea", xsqk.getCountryareas()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryallpeoples())){
+			sql.append(CommonUtil.HandleNum("countryallpeople", xsqk.getCountryallpeoples()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryregion())){
+			sql.append(" and a.countryregion like '%"+xsqk.getCountryregion()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryother())){
+			sql.append(" and a.countryother like '%"+xsqk.getCountryother()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountrygdps())){
+			sql.append(CommonUtil.HandleNum("countrygdp", xsqk.getCountrygdps()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryratea())){
+			sql.append(CommonUtil.HandleNum("countryrate", xsqk.getCountryratea()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryfinances())){
+			sql.append(CommonUtil.HandleNum("countryfinance", xsqk.getCountryfinances()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryratesb())){
+			sql.append(CommonUtil.HandleNum("countryrates", xsqk.getCountryratesb()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryfisheriess())){
+			sql.append(CommonUtil.HandleNum("countryfisheries", xsqk.getCountryfisheriess()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryindustrys())){
+			sql.append(CommonUtil.HandleNum("countryindustry", xsqk.getCountryindustrys()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryinvests())){
+			sql.append(CommonUtil.HandleNum("countryinvest", xsqk.getCountryinvests()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryratessc())){
+			sql.append(CommonUtil.HandleNum("countryratess", xsqk.getCountryratessc()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryincomes())){
+			sql.append(CommonUtil.HandleNum("countryincome", xsqk.getCountryincomes()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountrytownincomes())){
+			sql.append(CommonUtil.HandleNum("countrytownincome", xsqk.getCountrytownincomes()));
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryothers())){
+			sql.append(" and a.countryothers like '%"+xsqk.getCountryothers()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryhistory())){
+			sql.append(" and a.countryhistory like '%"+xsqk.getCountryhistory()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountrysight())){
+			sql.append(" and a.countrysight like '%"+xsqk.getCountrysight()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountrynative())){
+			sql.append(" and a.countrynative like '%"+xsqk.getCountrynative()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryfumin())){
+			sql.append(" and a.countryfumin like '%"+xsqk.getCountryfumin()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryservice())){
+			sql.append(" and a.countryservice like '%"+xsqk.getCountryservice()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryagriculture())){
+			sql.append(" and a.countryagriculture like '%"+xsqk.getCountryagriculture()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryotherss())){
+			sql.append(" and a.countryotherss like '%"+xsqk.getCountryotherss()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountrytarget())){
+			sql.append(" and a.countrytarget like '%"+xsqk.getCountrytarget()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountrytask())){
+			sql.append(" and a.countrytask like '%"+xsqk.getCountrytask()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountrycapital())){
+			sql.append(" and a.countrycapital like '%"+xsqk.getCountrycapital()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryothersss())){
+			sql.append(" and a.countryothersss like '%"+xsqk.getCountryothersss()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(xsqk.getCountryentry())){
+			sql.append(" and a.countryentry like '%"+xsqk.getCountryentry()+"%'");
+		}
+		return sql.toString();
 	}
 }
