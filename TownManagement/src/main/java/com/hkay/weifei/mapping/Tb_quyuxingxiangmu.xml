@@ -207,4 +207,10 @@
 	    select * from Tb_quyuxingxiangmu a 
 	    where date_format(a.regcontractdate,'%Y-%m-%d')=date_format(sysdate(),'%Y-%m-%d')
 	</select>
+	<update id="updateregioniteState" parameterType="com.hkay.weifei.pojo.Tb_quyuxingxiangmu">
+		update Tb_quyuxingxiangmu
+		set
+		visual = 0
+		where regid in (${_parameter})
+	</update>
 </mapper>

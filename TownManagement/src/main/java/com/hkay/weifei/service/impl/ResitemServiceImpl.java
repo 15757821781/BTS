@@ -66,4 +66,10 @@ public class ResitemServiceImpl implements ResitemService{
 		// TODO Auto-generated method stub
 		return this.resitemdao.queryResForNotice();
 	}
+
+	@Override
+	public int updateresitemState(String resObj) {
+		// TODO Auto-generated method stub
+		return this.resitemdao.updateresitemState(resObj);
+	}
 }

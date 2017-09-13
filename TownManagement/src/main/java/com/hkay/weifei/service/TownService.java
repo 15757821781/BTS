@@ -16,4 +16,6 @@ public interface TownService {
 
 	public int updatetowninfo(Tb_zhongxinzhen tb_zhongxinzhen);
 
+	public int updateTownState(String townObj);
+
 }

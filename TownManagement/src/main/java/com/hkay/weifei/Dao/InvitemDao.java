@@ -16,4 +16,6 @@ public interface InvitemDao {
 
 	int updateinv(Tb_zhaoshangxiangmu tb_zhaoshangxiangmu);
 
+	int updateinvitemState(String invObj);
+
 }

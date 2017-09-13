@@ -18,4 +18,6 @@ public interface ResitemService {
 
 	List<Tb_chubeixiangmu> queryResForNotice();
 
+	int updateresitemState(String resObj);
+
 }

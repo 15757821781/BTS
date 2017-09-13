@@ -22,6 +22,7 @@ import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_qiyedanwei;
 import com.hkay.weifei.pojo.Tb_shehuizuzhidanwei;
 import com.hkay.weifei.pojo.Tb_user;
+import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.OrganizeService;
 import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.PageUtil;
@@ -225,5 +226,28 @@ public class OrganizeController {
 		}
 		return sql.toString();
 	}
+	/**
+	 * 删除信息时更新信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/updateOrgState")
+	@ResponseBody
+	public RetAjax updateOrgState(HttpServletRequest request,Tb_shehuizuzhidanwei tb_shehuizuzhidanwei,@RequestParam("orgObj[]") String orgObj) { 
+		try {
+			int flag = this.organizeService.updateOrgState(orgObj);
+			if(flag!=0){
+				flag=1;
+			}
+			result = RetAjax.onDataBase(flag,3);
+		} catch (Exception e) {
+			Log.error("error----------updateOrgState:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result; 
+	} 
 
 }

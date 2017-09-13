@@ -100,4 +100,10 @@
 	    select * from Tb_chubeixiangmu a 
 	    where date_format(a.resfeedbacknode,'%Y-%m-%d')=date_format(sysdate(),'%Y-%m-%d')
 	</select>
+	<update id="updateresitemState" parameterType="com.hkay.weifei.pojo.Tb_chubeixiangmu">
+		update Tb_chubeixiangmu
+		set
+		visual = 0
+		where resid in (${_parameter})
+	</update>
 </mapper>

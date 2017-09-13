@@ -259,4 +259,10 @@
 	updator=#{updator}
 	where centertownid=#{centertownid}
 	</update>
+	<update id="updateTownState" parameterType="com.hkay.weifei.pojo.Tb_zhongxinzhen">
+	update tb_zhongxinzhen
+	set
+	visual = 0
+	where centertownid in (${_parameter})
+	</update>
 </mapper>

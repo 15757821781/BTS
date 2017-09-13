@@ -59,5 +59,11 @@ public class RegionServiceImpl implements RegionService{
 		// TODO Auto-generated method stub
 		return this.regiondao.queryRegForNotice();
 	}
+
+	@Override
+	public int updateregioniteState(String regObj) {
+		// TODO Auto-generated method stub
+		return this.regiondao.updateregioniteState(regObj);
+	}
 	
 }

@@ -158,5 +158,11 @@
 			updatetime=now()
 			where orgid=#{orgid}
 	</update>
+	<update id="updateOrgState" parameterType="com.hkay.weifei.pojo.Tb_shehuizuzhidanwei">
+		update tb_shehuizuzhidanwei 
+		set
+		visual = 0	
+		where orgid in (${_parameter})
+	</update>
 </mapper>
 		 

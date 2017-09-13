@@ -16,5 +16,7 @@ public interface OrganizeDao {
 
 	int updateOrgInfo(Tb_shehuizuzhidanwei tb_shehuizuzhidanwei);
 
+	int updateOrgState(String orgObj);
+
 
 }

@@ -16,4 +16,6 @@ public interface FeaturetownService {
 
 	int updatefeaturetown(Tb_tesexiaozhen tb_tesexiaozhen);
 
+	int updatefeatownState(String featownObj);
+
 }

@@ -339,6 +339,29 @@ public class CompanyController {
 		}
 		return result;
 	}
+	/**
+	 * 删除信息时更新信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/updateComState")
+	@ResponseBody
+	public RetAjax updateComState(HttpServletRequest request,Tb_qiyedanwei tb_qiyedanwei,@RequestParam("comObj[]") String comObj) { 
+		try {
+			int flag = this.companyService.updateComState(comObj);
+			if(flag!=0){
+				flag=1;
+			}
+			result = RetAjax.onDataBase(flag,3);
+		} catch (Exception e) {
+			Log.error("error----------updateComState:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result; 
+	} 
 	
 	
 }

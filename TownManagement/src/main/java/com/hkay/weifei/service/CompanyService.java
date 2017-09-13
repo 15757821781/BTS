@@ -16,4 +16,6 @@ public interface CompanyService {
 
 	int updateComInfo(Tb_qiyedanwei tb_qiyedanwei);
 
+	int updateComState(String comObj);
+
 }

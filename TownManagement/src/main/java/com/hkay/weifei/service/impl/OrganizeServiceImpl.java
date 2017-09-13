@@ -85,4 +85,11 @@ public int updateOrgInfo(Tb_shehuizuzhidanwei tb_shehuizuzhidanwei) {
 	tb_shehuizuzhidanwei.setOrgnumber(number);
 	return this.organizeDao.updateOrgInfo(tb_shehuizuzhidanwei);
 }
+
+
+@Override
+public int updateOrgState(String orgObj) {
+	// TODO Auto-generated method stub
+	return this.organizeDao.updateOrgState(orgObj);
+}
 }

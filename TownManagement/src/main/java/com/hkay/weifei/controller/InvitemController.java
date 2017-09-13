@@ -22,6 +22,7 @@ import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_quyuxingxiangmu;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_zhaoshangxiangmu;
+import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.InvitemService;
 import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.FileUpload;
@@ -258,4 +259,27 @@ public class InvitemController {
 		}
 		return sql.toString();
 	}
+	/**
+	 * 删除信息时更新信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/updateinvitemState")
+	@ResponseBody
+	public RetAjax updateinvitemState(HttpServletRequest request,Tb_zhaoshangxiangmu tb_zhaoshangxiangmu,@RequestParam("invObj[]") String invObj) { 
+		try {
+			int flag = this.invitemservice.updateinvitemState(invObj);
+			if(flag!=0){
+				flag=1;
+			}
+			result = RetAjax.onDataBase(flag,3);
+		} catch (Exception e) {
+			Log.error("error----------updateinvitemState:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result; 
+	} 
 }

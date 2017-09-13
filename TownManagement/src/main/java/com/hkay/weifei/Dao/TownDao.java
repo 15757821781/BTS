@@ -16,4 +16,8 @@ public interface TownDao {
 
 	int updatetowninfo(Tb_zhongxinzhen tb_zhongxinzhen);
 
+	int querytownupadte(Tb_zhongxinzhen tb_zhongxinzhen);
+
+	int updateTownState(String townObj);
+
 }

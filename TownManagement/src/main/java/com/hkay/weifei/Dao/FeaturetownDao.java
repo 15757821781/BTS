@@ -16,4 +16,6 @@ public interface FeaturetownDao {
 
 	int updatefeaturetown(Tb_tesexiaozhen tb_tesexiaozhen);
 
+	int updatefeatownState(String featownObj);
+
 }
