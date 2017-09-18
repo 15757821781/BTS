@@ -18,4 +18,6 @@ public interface RegionService {
 
 	List<Tb_quyuxingxiangmu> queryRegForNotice();
 
+	int updateregioniteState(String regObj);
+
 }

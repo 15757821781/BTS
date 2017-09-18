@@ -290,4 +290,27 @@ public class FeaturetownController {
 		}
 		return sql.toString();
 	}
+	/**
+	 * 删除信息时更新信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/updatefeatownState")
+	@ResponseBody
+	public RetAjax updatefeatownState(HttpServletRequest request,Tb_tesexiaozhen tb_tesexiaozhen,@RequestParam("featownObj[]") String featownObj) { 
+		try {
+			int flag = this.featuretownservice.updatefeatownState(featownObj);
+			if(flag!=0){
+				flag=1;
+			}
+			result = RetAjax.onDataBase(flag,3);
+		} catch (Exception e) {
+			Log.error("error----------updatefeatownState:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result; 
+	} 
 }

@@ -20,6 +20,7 @@ import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_shehuizuzhidanwei;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_xianshiqingkuang;
+import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.CitycaseService;
 import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.PageUtil;
@@ -250,4 +251,27 @@ public class CitycaseController {
 		}
 		return sql.toString();
 	}
+	/**
+	 * 删除信息时更新信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/updateCityState")
+	@ResponseBody
+	public RetAjax updateCityState(HttpServletRequest request,Tb_xianshiqingkuang tb_xianshiqingkuang ,@RequestParam("cityObj[]") String cityObj) { 
+		try {
+			int flag = this.citycaseService.updateCityState(cityObj);
+			if(flag!=0){
+				flag=1;
+			}
+			result = RetAjax.onDataBase(flag,3);
+		} catch (Exception e) {
+			Log.error("error----------updateCityState:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result; 
+	} 
 }

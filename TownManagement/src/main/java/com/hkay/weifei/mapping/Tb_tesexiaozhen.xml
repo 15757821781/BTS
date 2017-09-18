@@ -166,4 +166,10 @@
 		updatetime=now()
 		where feaid=#{feaid}
 	</update>
+	<update id="updatefeatownState" parameterType="com.hkay.weifei.pojo.Tb_tesexiaozhen">
+		update Tb_tesexiaozhen
+		set
+		visual = 0
+		where feaid in (${_parameter})
+	</update>
 </mapper>

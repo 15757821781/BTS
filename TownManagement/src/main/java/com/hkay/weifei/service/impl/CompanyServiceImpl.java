@@ -99,4 +99,10 @@ public class CompanyServiceImpl implements CompanyService{
 		}
 		return this.companyDao.updateComInfo(tb_qiyedanwei);
 	}
+
+	@Override
+	public int updateComState(String comObj) {
+		// TODO Auto-generated method stub
+		return this.companyDao.updateComState(comObj);
+	}
 }

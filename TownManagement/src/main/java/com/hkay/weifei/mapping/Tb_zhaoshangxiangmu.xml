@@ -94,4 +94,10 @@
 		updatetime=now()
 		where invid=#{invid}
 	</update>
+	<update id="updateinvitemState" parameterType="com.hkay.weifei.pojo.Tb_zhaoshangxiangmu">
+		update Tb_zhaoshangxiangmu
+		set
+		visual = 0
+		where invid in (${_parameter})
+	</update>
 </mapper>

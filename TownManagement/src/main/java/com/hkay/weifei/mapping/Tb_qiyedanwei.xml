@@ -271,4 +271,10 @@
 		updatetime=now()
 		where comid=#{comid}
 	</update>
+	<update id="updateComState" parameterType="com.hkay.weifei.pojo.Tb_qiyedanwei">
+		update tb_qiyedanwei 
+		set
+		visual = 0
+		where comid in (${_parameter})
+	</update>
 </mapper>

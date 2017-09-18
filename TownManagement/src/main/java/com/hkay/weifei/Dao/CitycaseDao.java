@@ -16,5 +16,7 @@ public interface CitycaseDao {
 
 	int updateCityInfo(Tb_xianshiqingkuang tb_xianshiqingkuang);
 
+	int updateCityState(String cityObj);
+
 
 }

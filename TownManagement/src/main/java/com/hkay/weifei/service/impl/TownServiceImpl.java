@@ -61,5 +61,10 @@ public class TownServiceImpl implements TownService{
 		tb_zhongxinzhen.setNumber(towncode);
 		return this.towndao.updatetowninfo(tb_zhongxinzhen);
 	}
+	@Override
+	public int updateTownState(String townObj) {
+		// TODO Auto-generated method stub
+		return this.towndao.updateTownState(townObj);
+	}
 
 }

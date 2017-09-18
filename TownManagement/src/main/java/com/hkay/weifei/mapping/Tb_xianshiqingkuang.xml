@@ -190,4 +190,9 @@
 			updatetime=now()
 			where countryid=#{countryid}
 	</update>
+	<update id="updateCityState" parameterType="com.hkay.weifei.pojo.Tb_xianshiqingkuang">
+		update tb_xianshiqingkuang set
+			visual = 0
+			where countryid in (${_parameter})
+	</update>
 </mapper>

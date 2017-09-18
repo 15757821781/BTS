@@ -21,7 +21,9 @@ $(document).ready(function() {
 		height : 650, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
-		columns : [ {
+		columns : [{
+			checkbox : true
+		},{
 			field : 'feanumber',
 			title : '编号',
 			align : 'center',
@@ -84,6 +86,25 @@ $(document).ready(function() {
 		});
 	});
 })
+//表格事件
+$('#delfeaturetown').click(function(){
+		var obj = $('#featuretownManage').bootstrapTable('getSelections');
+		console.log(obj);
+		var ids = [];
+		$.each(obj,function(i){
+			if(obj[i].feaid!=null&&obj[i].feaid!=''){
+				ids.push(obj[i].feaid);
+			}
+		});
+		console.log(ids);
+		tk.ajax({
+			url : "/TownManagement/featuretownmanage/updatefeatownState",
+	        data : {"featownObj":ids},
+	        succ :function(){
+	        	$('#featuretownManage').bootstrapTable('refresh');
+	        }
+		})
+	});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {

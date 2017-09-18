@@ -62,4 +62,10 @@ public class InvitemServiceImpl implements InvitemService{
 		return this.invitemdao.updateinv(tb_zhaoshangxiangmu);
 	}
 
+	@Override
+	public int updateinvitemState(String invObj) {
+		// TODO Auto-generated method stub
+		return this.invitemdao.updateinvitemState(invObj);
+	}
+
 }
