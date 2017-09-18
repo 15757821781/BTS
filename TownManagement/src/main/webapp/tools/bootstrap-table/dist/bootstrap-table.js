@@ -1970,7 +1970,7 @@
             cache: this.options.cache,
             contentType: this.options.contentType,
             dataType: this.options.dataType,
-            success: function (res) {
+            succ: function (res) {
                 res = calculateObjectValue(that.options, that.options.responseHandler, [res], res);
 
                 that.load(res);
@@ -1989,7 +1989,7 @@
             if (this._xhr && this._xhr.readyState !== 4) {
                 this._xhr.abort();
             }
-            this._xhr = $.ajax(request);
+            this._xhr = tk.ajax(request);
         }
     };
 

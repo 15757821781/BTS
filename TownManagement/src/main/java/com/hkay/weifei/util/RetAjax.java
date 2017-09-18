@@ -13,7 +13,10 @@ public class RetAjax {
 	private String state;
 	// 返回数据
 	private Object data;
-
+	// 表格数据
+	private Object rows;
+	// 返回总数
+	private Integer total;
 	/**
 	 * 
 		 * 方法名称: onSuccess
@@ -132,6 +135,21 @@ public class RetAjax {
 		return retAjax;
 	}
 	
+	/**
+	 * 
+	 *方法名称:
+	 *内容：针对表格的返回
+	 *创建人:zhuwenjie
+	 *创建日期:2017年9月14日上午9:55:15
+	 */
+	public static RetAjax onGrid(Object object, Integer count) {
+		RetAjax ret = new RetAjax();
+		ret.total = count;
+		ret.rows = object;
+		ret.state = TypeStatusConstant.success;
+		return ret;
+	}
+	
 	public static RetAjax onQueryDetail(List<?> list) {
 		RetAjax retAjax=new RetAjax();
 		if(!list.isEmpty()&&list.size()==1){
@@ -168,6 +186,22 @@ public class RetAjax {
 
 	public void setData(Object data) {
 		this.data = data;
+	}
+
+	public Object getRows() {
+		return rows;
+	}
+
+	public void setRows(Object rows) {
+		this.rows = rows;
+	}
+
+	public Integer getTotal() {
+		return total;
+	}
+
+	public void setTotal(Integer total) {
+		this.total = total;
 	}
 
 }
