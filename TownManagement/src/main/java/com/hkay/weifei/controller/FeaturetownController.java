@@ -79,10 +79,9 @@ public class FeaturetownController {
 	
 	@RequestMapping("/queryfeaturetown")
 	@ResponseBody
-	public Map<String,Object> queryfeaturetown(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryfeaturetown(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_tesexiaozhen tb_tesexiaozhen) throws UnsupportedEncodingException {
-		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
@@ -103,9 +102,8 @@ public class FeaturetownController {
 			}
 		}
 		int count = this.featuretownservice.queryfeaturetowncnt(tb_tesexiaozhen);
-		map.put("rows", tb_zhongxinzhens);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_zhongxinzhens, count);
+		return result;
 	}
 
 	/**

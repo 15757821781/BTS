@@ -93,10 +93,9 @@ public class ResitemController {
 	
 	@RequestMapping("/queryresinfo")
 	@ResponseBody
-	public Map<String,Object> queryresinfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryresinfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_chubeixiangmu tb_chubeixiangmu) throws UnsupportedEncodingException {
-		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
@@ -117,9 +116,8 @@ public class ResitemController {
 			}
 		}
 		int count = this.resitemservice.queryresinfocnt(tb_chubeixiangmu);
-		map.put("rows", tb_chubeixiangmus);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_chubeixiangmus, count);
+		return result;
 	}
 	/**
 	 * 

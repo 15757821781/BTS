@@ -41,10 +41,9 @@ public class SystemController {
 	 */
 	@RequestMapping("/queryUserList")
 	@ResponseBody
-	public Map<String, Object> queryUserList(@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryUserList(@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
-		Map<String, Object> map = new HashMap<String, Object>();
 		Tb_user user = new Tb_user();
 		if (search != null) {
 			search = URLDecoder.decode(search, "utf-8");
@@ -56,9 +55,8 @@ public class SystemController {
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_user> tb_users = this.systemManageService.queryUserList(user);
 		int count = this.systemManageService.queryUsercnt(user);
-		map.put("rows", tb_users);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_users, count);
+		return result;
 	}
 	
 	/**
@@ -231,10 +229,9 @@ public class SystemController {
 	 */
 	@RequestMapping("/queryRoleList")
 	@ResponseBody
-	public Map<String, Object> queryRoleList(@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryRoleList(@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			@RequestParam(value = "search", required = false) String search) throws UnsupportedEncodingException {
-		Map<String, Object> map = new HashMap<String, Object>();
 		Tb_role role = new Tb_role();
 		if (search != null) {
 			search = URLDecoder.decode(search, "utf-8");
@@ -246,9 +243,8 @@ public class SystemController {
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<Tb_user> tb_users = this.systemManageService.queryRoleList(role);
 		int count = this.systemManageService.queryRoleCnt(role);
-		map.put("rows", tb_users);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_users, count);
+		return result;
 	} 
 	
 	/**
