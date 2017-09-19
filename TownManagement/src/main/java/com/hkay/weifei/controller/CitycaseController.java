@@ -62,10 +62,9 @@ public class CitycaseController {
 	 */
 	@RequestMapping("/queryCityList")
 	@ResponseBody
-	public Map<String,Object> queryCityList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryCityList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_xianshiqingkuang tb_xianshiqingkuang) throws UnsupportedEncodingException {
-		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
@@ -85,9 +84,8 @@ public class CitycaseController {
 			}
 		}
 		int count = this.citycaseService.queryCitycnt(tb_xianshiqingkuang);
-		map.put("rows", tb_xianshiqingkuangs);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_xianshiqingkuangs, count);
+		return result;
 	}
 	/**
 	 * 

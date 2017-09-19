@@ -42,11 +42,22 @@ $(document).ready(function() {
             	return row.comprovince+"/"+row.comcity+"/"+row.comtown;
             }
 		},{
-			field : 'commajorindustry',
-			title : '行业类别',
+			field : 'combustype',
+			title : '业务类型',
 			editable : true,
 			align : 'center',
-			width : '16%'
+			width : '16%',
+			formatter:function(value,row,index){
+	            if(value=="1"){
+	            	return "建设类";
+	            }else if(value=="2"){
+	            	return "产业类";
+	            }else if(value=="3"){
+	            	return "服务类";
+	            }else if(value=="4"){
+	            	return "金融类";
+	            }
+	            }
 		}, {
 			field : 'comcategory',
 			title : '单位类别',
@@ -63,7 +74,14 @@ $(document).ready(function() {
             		return "三资外企";
             	}
             }
-		}, {
+		}, 
+		/*{
+			field : 'comdockingtime',
+			title : '对接时间',
+			align : 'center',
+			width : '13%'
+		},*/
+		{
             title : '操作',
             width :	'16%',
             field : 'operation',

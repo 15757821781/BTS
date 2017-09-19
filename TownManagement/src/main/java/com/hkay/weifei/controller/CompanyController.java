@@ -82,10 +82,9 @@ public class CompanyController {
 	 */
 	@RequestMapping("/queryComList")
 	@ResponseBody
-	public Map<String,Object> queryComList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryComList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_qiyedanwei tb_qiyedanwei) throws UnsupportedEncodingException {
-		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
@@ -106,9 +105,8 @@ public class CompanyController {
 			}
 		}
 		int count = this.companyService.querycomcnt(tb_qiyedanwei);
-		map.put("rows", tb_qiyedanweis);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_qiyedanweis, count);
+		return result;
 	}
 	/**
 	 * 
@@ -183,6 +181,9 @@ public class CompanyController {
 		}
 		if(CommonUtil.JudgeEmpty(qydw.getComoffice())){
 			sql.append(" and a.comoffice like '%"+qydw.getComoffice()+"%'");
+		}
+		if(CommonUtil.JudgeEmpty(qydw.getComdockingtime())){
+			sql.append(" and a.comdockingtime = '"+qydw.getComdockingtime()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(qydw.getComshareholder())){
 			sql.append(" and a.comshareholder like '%"+qydw.getComshareholder()+"%'");

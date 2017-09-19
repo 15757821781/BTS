@@ -23,6 +23,7 @@ public class Tb_qiyedanwei {
 	private String comtown;// 注册乡县
 	private String comaddress;// 具体地址
 	private String comoffice;// 办公地点
+	private String comdockingtime;// 对接时间
 	private String comshareholder;// 股东情况
 	private String comindustrytype;// 产业类别
 	private String commajorindustry;// 主要产业
@@ -569,6 +570,15 @@ public class Tb_qiyedanwei {
 	public void setSupersearch(String supersearch) {
 		this.supersearch = supersearch;
 	}
+
+	public String getComdockingtime() {
+		return comdockingtime;
+	}
+
+	public void setComdockingtime(String comdockingtime) {
+		this.comdockingtime = comdockingtime;
+	}
+
 
 
 }
