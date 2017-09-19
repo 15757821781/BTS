@@ -4,6 +4,17 @@ $(document).ready(function() {
 		noneSelectedText : "请选择"
 	});
 	// 时间选择器初始化
+	$('#comdockingtime').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 3,
+        format: "yyyy-mm"
+	}).on('hide', function(e) {  
+        // 当用户改变值的时候进行验证
+		$('#comform').bootstrapValidator('revalidateField', 'comdockingtime');
+	});
 	$('#comestablish').datetimepicker({
 		language : "zh-CN",
 		autoclose : true,// 选中之后自动隐藏日期选择框
@@ -192,6 +203,13 @@ $(document).ready(function() {
 				validators : {
 					notEmpty : {
 						message : '办公地点不能为空'
+					}
+				}
+			},
+			comdockingtime : {
+				validators : {
+					notEmpty : {
+						message : '对接时间不能为空'
 					}
 				}
 			},

@@ -85,10 +85,9 @@ public class RegionController {
 	 */
 	@RequestMapping("/queryregioninfo")
 	@ResponseBody
-	public Map<String,Object> queryregioninfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryregioninfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_quyuxingxiangmu tb_quyuxingxiangmu) throws UnsupportedEncodingException {
-		Map<String,Object> map = new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
@@ -109,9 +108,8 @@ public class RegionController {
 			}
 		}
 		int count = this.regionservice.queryregioninfocnt(tb_quyuxingxiangmu);
-		map.put("rows", tb_quyuxingxiangmus);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_quyuxingxiangmus, count);
+		return result;
 	}
 	
 	/**
@@ -244,7 +242,7 @@ public class RegionController {
 			sql.append(" and a.regspeed like '%"+qyx.getRegspeed()+"%'");
 		}
 		if(CommonUtil.JudgeEmpty(qyx.getRegdockingtime())){
-			sql.append(" and DATE_FORMAT(a.regdockingtime,'%Y-%m') = '"+qyx.getRegdockingtime()+"'");
+			sql.append(" and a.regdockingtime ='"+qyx.getRegdockingtime()+"'");
 		}
 		if(CommonUtil.JudgeEmpty(qyx.getRegcontractdate())){
 			sql.append(" and DATE_FORMAT(a.regcontractdate,'%Y-%m-%d') = '"+qyx.getRegcontractdate()+"'");

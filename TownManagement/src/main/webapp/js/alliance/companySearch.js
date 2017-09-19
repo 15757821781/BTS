@@ -4,6 +4,14 @@ $(document).ready(function() {
 		noneSelectedText : "请选择"
 	});
 	// 时间选择器初始化
+	$('#comdockingtime').datetimepicker({
+		language : "zh-CN",
+		autoclose : true,// 选中之后自动隐藏日期选择框
+		todayBtn : true,// 今日按钮
+		startView : 4,
+        minView: 3,
+        format: "yyyy-mm"
+	})
 	$('#comestablish').datetimepicker({
 		language : "zh-CN",
 		autoclose : true,// 选中之后自动隐藏日期选择框

@@ -82,10 +82,9 @@ public class InvitemController {
 	 */
 	@RequestMapping("/queryinvinfo")
 	@ResponseBody
-	public Map<String,Object> queryinvinfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryinvinfo(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_zhaoshangxiangmu tb_zhaoshangxiangmu) throws UnsupportedEncodingException {
-		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
@@ -106,9 +105,8 @@ public class InvitemController {
 			}
 		}
 		int count = this.invitemservice.queryinvinfocnt(tb_zhaoshangxiangmu);
-		map.put("rows", tb_zhaoshangxiangmus);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_zhaoshangxiangmus, count);
+		return result;
 	}
 	
 	/**

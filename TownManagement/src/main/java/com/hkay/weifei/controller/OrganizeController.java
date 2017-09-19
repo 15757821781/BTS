@@ -65,10 +65,9 @@ public class OrganizeController {
 	 */
 	@RequestMapping("/queryOrgList")
 	@ResponseBody
-	public Map<String,Object> queryOrgList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryOrgList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_shehuizuzhidanwei tb_shehuizuzhidanwei) throws UnsupportedEncodingException {
-		Map<String,Object> map = new HashMap<String,Object>();
 		HttpSession session = request.getSession();
 		Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
 		String number = user.getNumber();
@@ -88,9 +87,8 @@ public class OrganizeController {
 			}
 		}
 		int count = this.organizeService.queryOrgcnt(tb_shehuizuzhidanwei);
-		map.put("rows", tb_shehuizuzhidanweis);
-		map.put("total", count);
-		return map;
+		result = RetAjax.onGrid(tb_shehuizuzhidanweis, count);
+		return result;
 	}
 	/**
 	 * 
