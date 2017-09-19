@@ -22,6 +22,8 @@ $(document).ready(function() {
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {
+			checkbox : true
+		},{
 			field : 'invnumber',
 			title : '编号',
 			align : 'center',
@@ -74,6 +76,25 @@ $(document).ready(function() {
 		});
 	});
 })
+//表格事件
+	$('#delinv').click(function(){
+		var obj = $('#invManage').bootstrapTable('getSelections');
+		console.log(obj);
+		var ids = [];
+		$.each(obj,function(i){
+			if(obj[i].invid!=null&&obj[i].invid!=''){
+				ids.push(obj[i].invid);
+			}
+		});
+		console.log(ids);
+		tk.ajax({
+			url : "/TownManagement/invitemmanage/updateinvitemState",
+	        data : {"invObj":ids},
+	        succ :function(){
+	        	$('#invManage').bootstrapTable('refresh');
+	        }
+		})
+	});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {

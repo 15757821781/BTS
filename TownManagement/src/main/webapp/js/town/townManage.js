@@ -22,6 +22,8 @@ $(document).ready(function() {
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {
+			checkbox : true
+		},{
 			field : 'number',
 			title : '编号',
 			align : 'center',
@@ -82,7 +84,26 @@ $(document).ready(function() {
 			}
 		});
 	});
-})
+}) 
+	//表格事件
+	$('#delTown').click(function(){
+		var obj = $('#townmanagetable').bootstrapTable('getSelections');
+		console.log(obj);
+		var ids = [];
+		$.each(obj,function(i){
+			if(obj[i].centertownid!=null&&obj[i].centertownid!=''){
+				ids.push(obj[i].centertownid);
+			}
+		});
+		console.log(ids);
+		tk.ajax({
+			url : "/TownManagement/townmanage/updateTownState",
+	        data : {"townObj":ids},
+	        succ :function(){
+	        	$('#townmanagetable').bootstrapTable('refresh');
+	        }
+		})
+	});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {

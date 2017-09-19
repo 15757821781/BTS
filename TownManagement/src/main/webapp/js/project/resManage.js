@@ -22,6 +22,8 @@ $(document).ready(function() {
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {
+			checkbox : true
+		},{
 			field : 'resnumber',
 			title : '编号',
 			align : 'center',
@@ -74,6 +76,25 @@ $(document).ready(function() {
 		});
 	});
 })
+//表格事件
+	$('#delres').click(function(){
+		var obj = $('#resManage').bootstrapTable('getSelections');
+		console.log(obj);
+		var ids = [];
+		$.each(obj,function(i){
+			if(obj[i].resid!=null&&obj[i].resid!=''){
+				ids.push(obj[i].resid);
+			}
+		});
+		console.log(ids);
+		tk.ajax({
+			url : "/TownManagement/resitemmanage/updateresitemState",
+	        data : {"resObj":ids},
+	        succ :function(){
+	        	$('#resManage').bootstrapTable('refresh');
+	        }
+		})
+	});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {

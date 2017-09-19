@@ -22,6 +22,8 @@ $(document).ready(function() {
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {
+			checkbox : true
+		},{
 			field : 'regnumber',
 			title : '编号',
 			align : 'center',
@@ -80,6 +82,25 @@ $(document).ready(function() {
 		});
 	});
 })
+//表格事件
+	$('#delregion').click(function(){
+		var obj = $('#regionManage').bootstrapTable('getSelections');
+		console.log(obj);
+		var ids = [];
+		$.each(obj,function(i){
+			if(obj[i].regid!=null&&obj[i].regid!=''){
+				ids.push(obj[i].regid);
+			}
+		});
+		console.log(ids);
+		tk.ajax({
+			url : "/TownManagement/regionmanage/updateregioniteState",
+	        data : {"regObj":ids},
+	        succ :function(){
+	        	$('#regionManage').bootstrapTable('refresh');
+	        }
+		})
+	});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {

@@ -21,7 +21,10 @@ $(document).ready(function() {
 		height : 650, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
-		columns : [ {
+		columns : [  {
+			checkbox : true,
+			width : '2%'
+		},{
 			field : 'countryyear',
 			title : '年度',
 			editable : true,
@@ -58,6 +61,25 @@ $(document).ready(function() {
 				$("#citycasemodal").modal('show');
 			}
 		});
+	});
+	//表格事件
+	$('#delcitycase').click(function(){
+		var obj = $('#citymanage').bootstrapTable('getSelections');
+		console.log(obj);
+		var ids = [];
+		$.each(obj,function(i){
+			if(obj[i].countryid!=null&&obj[i].countryid!=''){
+				ids.push(obj[i].countryid);
+			}
+		});
+		console.log(ids);
+		tk.ajax({
+			url : "/TownManagement/citymanage/updateCityState",
+	        data : {"cityObj":ids},
+	        succ :function(){
+	        	$('#citymanage').bootstrapTable('refresh');
+	        }
+		})
 	});
 //查询方法
 function queryParams(params){

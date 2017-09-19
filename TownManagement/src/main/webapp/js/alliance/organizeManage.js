@@ -22,6 +22,8 @@ $(document).ready(function() {
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
 		columns : [ {
+			checkbox : true
+		},{
 			field : 'orgnumber',
 			title : '编号',
 			align : 'center',
@@ -86,6 +88,25 @@ $(document).ready(function() {
 		});
 	});
 })
+//表格事件
+$('#delorg').click(function(){
+	var obj = $('#orgmanagetable').bootstrapTable('getSelections');
+	console.log(obj);
+	var ids = [];
+	$.each(obj,function(i){
+		if(obj[i].orgid!=null&&obj[i].orgid!=''){
+			ids.push(obj[i].orgid);
+		}
+	});
+	console.log(ids);
+	tk.ajax({
+		url : "/TownManagement/orgmanage/updateOrgState",
+        data : {"orgObj":ids},
+        succ :function(){
+        	$('#orgmanagetable').bootstrapTable('refresh');
+        }
+	})
+});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {

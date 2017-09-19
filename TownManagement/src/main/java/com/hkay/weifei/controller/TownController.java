@@ -303,4 +303,27 @@ public class TownController {
 		}
 		return sql.toString();
 	}
+	/**
+	 * 删除信息时更新信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/updateTownState")
+	@ResponseBody
+	public RetAjax updateTownState(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen,@RequestParam("townObj[]") String townObj) { 
+		try {
+			int flag = this.townservice.updateTownState(townObj);
+			if(flag!=0){
+				flag=1;
+			}
+			result = RetAjax.onDataBase(flag,3);
+		} catch (Exception e) {
+			Log.error("error----------updateTownState:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result; 
+	} 
 }

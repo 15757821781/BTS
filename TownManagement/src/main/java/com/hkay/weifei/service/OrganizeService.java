@@ -17,4 +17,6 @@ public interface OrganizeService {
 
 	int updateOrgInfo(Tb_shehuizuzhidanwei tb_shehuizuzhidanwei);
 
+	int updateOrgState(String orgObj);
+
 }

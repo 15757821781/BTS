@@ -16,4 +16,6 @@ public interface CitycaseService {
 
 	int updateCityInfo(Tb_xianshiqingkuang tb_xianshiqingkuang);
 
+	int updateCityState(String cityObj);
+
 }

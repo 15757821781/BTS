@@ -18,4 +18,6 @@ public interface RegionDao {
 
 	List<Tb_quyuxingxiangmu> queryRegForNotice();
 
+	int updateregioniteState(String regObj);
+
 }

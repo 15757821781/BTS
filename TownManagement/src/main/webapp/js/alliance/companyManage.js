@@ -21,7 +21,9 @@ $(document).ready(function() {
 		height : 650, //行高，如果没有设置height属性，表格自动根据记录条数调整表格高度
 		//cardView : false, //是否显示详细视图
 		//detailView : true, //是否显示父子表
-		columns : [ {
+		columns : [{
+			checkbox : true
+		},{
 			field : 'comnumber',
 			title : '编号',
 			align : 'center',
@@ -90,6 +92,25 @@ $(document).ready(function() {
 		});
 	});
 })
+//表格事件
+	$('#delcompany').click(function(){
+		var obj = $('#commanagetable').bootstrapTable('getSelections');
+		console.log(obj);
+		var ids = [];
+		$.each(obj,function(i){
+			if(obj[i].comid!=null&&obj[i].comid!=''){
+				ids.push(obj[i].comid);
+			}
+		});
+		console.log(ids);
+		tk.ajax({
+			url : "/TownManagement/commanage/updateComState",
+	        data : {"comObj":ids},
+	        succ :function(){
+	        	$('#commanagetable').bootstrapTable('refresh');
+	        }
+		})
+	});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {

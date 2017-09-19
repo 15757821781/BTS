@@ -65,4 +65,10 @@ public class FeaturetownServiceImpl implements FeaturetownService{
 		return this.featuretowndao.updatefeaturetown(tb_tesexiaozhen);
 	}
 
+	@Override
+	public int updatefeatownState(String featownObj) {
+		// TODO Auto-generated method stub
+		return this.featuretowndao.updatefeatownState(featownObj);
+	}
+
 }

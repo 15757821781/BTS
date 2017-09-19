@@ -22,6 +22,7 @@ import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_qiyedanwei;
 import com.hkay.weifei.pojo.Tb_quyuxingxiangmu;
 import com.hkay.weifei.pojo.Tb_user;
+import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.RegionService;
 import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.FileUpload;
@@ -310,4 +311,27 @@ public class RegionController {
 		}
 		return sql.toString();
 	}
+	/**
+	 * 删除信息时更新信息
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/updateregioniteState")
+	@ResponseBody
+	public RetAjax updateregioniteState(HttpServletRequest request,Tb_quyuxingxiangmu tb_quyuxingxiangmu,@RequestParam("regObj[]") String regObj) { 
+		try {
+			int flag = this.regionservice.updateregioniteState(regObj);
+			if(flag!=0){
+				flag=1;
+			}
+			result = RetAjax.onDataBase(flag,3);
+		} catch (Exception e) {
+			Log.error("error----------updateregioniteState:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result; 
+	} 
 }

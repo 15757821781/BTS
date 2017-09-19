@@ -44,4 +44,10 @@ public class CitycaseServiceImpl implements CitycaseService{
 		// TODO Auto-generated method stub
 		return this.citycaseDao.updateCityInfo(tb_xianshiqingkuang);
 	}
+
+	@Override
+	public int updateCityState(String cityObj) {
+		// TODO Auto-generated method stub
+		return this.citycaseDao.updateCityState(cityObj);
+	}
 }
