@@ -40,4 +40,6 @@ public interface ConditionDao {
 
 	int updateNoticeState(Tb_notice notice);
 
+	String querySysTime();
+
 }

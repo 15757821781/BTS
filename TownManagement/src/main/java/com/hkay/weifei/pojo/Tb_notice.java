@@ -10,6 +10,14 @@ public class Tb_notice {
 	private String type;// 项目类型
 	private String user;
 	
+	private String systime;
+	
+	public String getSystime() {
+		return systime;
+	}
+	public void setSystime(String systime) {
+		this.systime = systime;
+	}
 	public String getUser() {
 		return user;
 	}

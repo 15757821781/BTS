@@ -40,4 +40,6 @@ public interface ConditionService {
 
 	int updateNoticeState(Tb_notice notice);
 
+	String querySysTime();
+
 }

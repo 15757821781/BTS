@@ -97,5 +97,10 @@ public class ConditionServiceImpl implements ConditionService{
 		// TODO Auto-generated method stub
 		return this.conditiondao.updateNoticeState(notice);
 	}
+	@Override
+	public String querySysTime() {
+		// TODO Auto-generated method stub
+		return this.conditiondao.querySysTime();
+	}
 	
 }
