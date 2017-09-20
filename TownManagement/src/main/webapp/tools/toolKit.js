@@ -209,7 +209,7 @@ var formSubmit = function(form,url,target,func){
 	if (!$(form).data('bootstrapValidator').isValid()) {
 		return;
 	}
-	$.bootstrapLoading.start({ loadingTips: "正在处理数据，请稍候...",formid:form });
+//	$.bootstrapLoading.start({ loadingTips: "正在处理数据，请稍候...",formid:form });
 	/*ie11以下不支持，formdata的方法  */
 	var formData = new FormData($(form)[0]);
 	tk.ajax({
@@ -235,7 +235,7 @@ var formSubmit = function(form,url,target,func){
 				if(func!=null&&typeof(func)=="function"){
 					func();
 				}
-				 $.bootstrapLoading.end();
+//				 $.bootstrapLoading.end();
 			});
 		}
 	});
