@@ -106,4 +106,9 @@
 	<update id="updateNoticeState" parameterType="com.hkay.weifei.pojo.Tb_notice">
 		update tb_notice set state = 1 where id = #{id}
 	</update>
+	
+	<select id="querySysTime" parameterType="com.hkay.weifei.pojo.Tb_notice"
+	    resultType="java.lang.String">
+	    select now() as systime
+	</select>
 </mapper>

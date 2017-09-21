@@ -12,7 +12,11 @@ $(document).ready(function() {
         		sysOfUserPermission = list.data[0].userdata;
         		$.each(list.data, function(i) {
         		    if(list.data[i].pagelevel=="1"){
-        		    	$('#side-menu').append('<li><a><i class="fa fa-dashboard fa-fw"></i> '+list.data[i].pagename+'<span class="fa arrow"></span></a><ul class="nav nav-second-level" id=pageName_'+list.data[i].pageid+'></ul></li>');
+        		    	if(list.data[i].url!=""&&list.data[i].url!=null){
+        		    		$('#side-menu').append('<li><a target='+list.data[i].url+'><i class="fa fa-dashboard fa-fw"></i> '+list.data[i].pagename+'</a></li>');
+        		    	}else{
+        		    		$('#side-menu').append('<li><a><i class="fa fa-dashboard fa-fw"></i> '+list.data[i].pagename+'<span class="fa arrow"></span></a><ul class="nav nav-second-level" id=pageName_'+list.data[i].pageid+'></ul></li>');
+        		    	}
         		    }
         		    else if(list.data[i].pagelevel=="2"){
         		    	if(list.data[i].url!=""&&list.data[i].url!=null){
