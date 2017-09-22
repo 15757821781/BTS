@@ -41,4 +41,8 @@ public interface SystemManageDao {
 
 	int updateRoleInfo(Tb_role tb_role);
 
+	int deleteUserInfo(Tb_user tb_user);
+
+	int deleteRoleInfo(Tb_role tb_role);
+
 }

@@ -41,4 +41,9 @@ public interface SystemManageService {
 
 	int deleteRolePageMapping(Tb_role tb_role);
 
+	int deleteUserInfo(Tb_user tb_user);
+
+	int deleteRoleInfo(Tb_role tb_role);
+
+
 }

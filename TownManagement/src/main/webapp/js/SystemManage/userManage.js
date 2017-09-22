@@ -61,7 +61,8 @@ $(document).ready(function() {
             formatter:function(value,row,index){
             	var query = '<a href="javascript:void(0)" onclick="queryDetail('+row.userid+')">查看</a>';
             	var update = '<a href="javascript:void(0)" onclick="updateInfo('+row.userid+')">修改</a>';
-            	return query+"&nbsp"+update;
+            	var Delete = '<a href="javascript:void(0)" onclick="DeleteInfo('+row.userid+')">删除</a>';
+            	return query+"&nbsp"+update+"&nbsp"+Delete;
             }
 		} ]
 	});
@@ -141,6 +142,25 @@ function updateInfo(id){
 			$("#user_update").show();
 		}
 	});
+}
+//删除
+function DeleteInfo(id){
+	$("#userfieldset").removeAttr("disabled");
+	$('#userform').bootstrapValidator('resetForm', false);
+	result = confirm('确定删除？');
+	if(result==true){
+		tk.ajax({
+			url : "/TownManagement/systemmanage/deleteUserInfo",
+			data : {"userid":id},
+			dataType : 'JSON',
+			cache : false,
+			succ : function() {
+				$('#usermanagetable').bootstrapTable('refresh');
+			}
+		});
+	}else{
+		$('#usermanagetable').bootstrapTable('refresh');
+	}
 }
 function validatorUserForm(){
 	$('#userform').bootstrapValidator({
