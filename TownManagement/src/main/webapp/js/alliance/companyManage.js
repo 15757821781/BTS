@@ -110,7 +110,7 @@ $(document).ready(function() {
 		});
 	});
 })
-//表格事件
+//表格批量事件
 	$('#delcompany').click(function(){
 		var obj = $('#commanagetable').bootstrapTable('getSelections');
 		console.log(obj);

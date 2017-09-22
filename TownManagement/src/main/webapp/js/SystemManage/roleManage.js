@@ -37,7 +37,8 @@ $(document).ready(function() {
             formatter:function(value,row,index){
 //            	var query = '<a href="javascript:void(0)" onclick="queryDetail('+row.userid+')">查看</a>';
             	var update = '<a href="javascript:void(0)" onclick="updateInfo('+row.id+')">修改</a>';
-            	return update;
+            	var Delete = '<a href="javascript:void(0)" onclick="DeleteInfo('+row.id+')">删除</a>';
+            	return update+"&nbsp"+Delete;;
             }
 		} ]
 	});
@@ -161,6 +162,24 @@ function updateInfo(id){
 			$("#role_update").show();
 		}
 	});
+}
+//删除
+function DeleteInfo(id){
+	$('#roleform').bootstrapValidator('resetForm', false);
+	result = confirm('确定删除？');
+	if(result==true){
+		tk.ajax({
+			url : "/TownManagement/systemmanage/deleteRoleInfo",
+			data : {"id":id},
+			dataType : 'JSON',
+			cache : false,
+			succ : function() {
+				$('#rolemanagetable').bootstrapTable('refresh');
+			}
+		});
+	}else{
+		$('#rolemanagetable').bootstrapTable('refresh');
+	}
 }
 function validatorRoleForm(){
 	$('#roleform').bootstrapValidator({

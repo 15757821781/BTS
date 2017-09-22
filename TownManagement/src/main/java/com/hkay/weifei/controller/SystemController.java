@@ -157,6 +157,27 @@ public class SystemController {
 	
 	/**
 	 * 
+	 *方法名称:deleteUserInfo
+	 *内容：删除用户信息
+	 *创建人:caixuyang
+	 *创建日期:2017年9月22日上午11:25:07
+	 */
+	@RequestMapping("/deleteUserInfo")
+	@ResponseBody
+	public RetAjax deleteUserInfo(Tb_user tb_user) {
+		try {
+			int flag = this.systemManageService.deleteUserInfo(tb_user);
+			result = RetAjax.onDataBase(flag, 3);
+		} catch (Exception e) {
+			Log.error("error----------deleteUserInfo:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result;
+	}
+	
+	/**
+	 * 
 	 *方法名称:queryMenusPage
 	 *内容：
 	 *创建人:zhuwenjie
@@ -301,4 +322,25 @@ public class SystemController {
 		}
 		return result;
 	}
+	/**
+	 * 
+	 *方法名称:deleteRoleInfo
+	 *内容：删除角色信息
+	 *创建人:caixuyang
+	 *创建日期:2017年9月22日上午11:25:07
+	 */
+	@RequestMapping("/deleteRoleInfo")
+	@ResponseBody
+	public RetAjax deleteRoleInfo(Tb_role tb_role) {
+		try {
+			int flag = this.systemManageService.deleteRoleInfo(tb_role);
+			result = RetAjax.onDataBase(flag, 3);
+		} catch (Exception e) {
+			Log.error("error----------deleteRoleInfo:" + e.getMessage());
+			e.printStackTrace();
+			result = RetAjax.onDataBase(0, 3);
+		}
+		return result;
+	}
+	
 }

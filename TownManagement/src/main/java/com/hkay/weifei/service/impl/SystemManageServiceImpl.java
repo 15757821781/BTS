@@ -129,4 +129,16 @@ public class SystemManageServiceImpl<UserRoleDao> implements SystemManageService
 		return this.systemManageDao.deleteRolePageMapping(tb_role);
 	}
 
+	@Override
+	public int deleteUserInfo(Tb_user tb_user) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.deleteUserInfo(tb_user);
+	}
+
+	@Override
+	public int deleteRoleInfo(Tb_role tb_role) {
+		// TODO Auto-generated method stub
+		return this.systemManageDao.deleteRoleInfo(tb_role);
+	}
+
 }
