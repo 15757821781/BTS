@@ -97,6 +97,11 @@
 		userdata=#{userdata}
 		where id=#{userid}
 	</update>
+	<!-- 删除用户信息 -->
+	<delete id="deleteUserInfo" parameterType="com.hkay.weifei.pojo.Tb_user">
+		delete from tb_user
+		where id=#{userid}
+	</delete>
 	<!-- 查询页面 -->
 	<select id="queryMenusPage" parameterType="com.hkay.weifei.pojo.Pages"
 	resultType="com.hkay.weifei.pojo.Pages">
@@ -177,6 +182,11 @@
 		where 1=1
 		and a.id = #{id}
 	</select>
+	<!-- 删除角色信息 -->
+	<delete id="deleteRoleInfo" parameterType="com.hkay.weifei.pojo.Tb_user">
+		delete from tb_role
+		where id=#{id}
+	</delete>
 	<!-- 删除角色关联的页面 -->
 	<delete id="deleteRolePageMapping" parameterType="com.hkay.weifei.pojo.Tb_role">
 	    delete from tb_role_page_mapping

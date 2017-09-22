@@ -98,7 +98,6 @@ $('#delorg').click(function(){
 			ids.push(obj[i].orgid);
 		}
 	});
-	console.log(ids);
 	tk.ajax({
 		url : "/TownManagement/orgmanage/updateOrgState",
         data : {"orgObj":ids},
