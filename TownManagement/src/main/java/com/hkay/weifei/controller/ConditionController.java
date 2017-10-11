@@ -1,5 +1,6 @@
 package com.hkay.weifei.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -310,5 +311,36 @@ public class ConditionController {
 		return result;
 	}
 	
-	
+	/**
+	 * 
+	 *方法名称:querySysParam
+	 *内容：查询下拉框内的详细信息
+	 *创建人:蔡旭阳
+	 *创建日期:2017年9月25日下午4:31:34
+	 */
+	@RequestMapping("/querySysParam")
+	@ResponseBody
+	public RetAjax querySysParam(HttpServletRequest request, Condition condition) {
+		HashMap<String, List<Condition>> param=new HashMap<String, List<Condition>>();
+		List<Condition> sysClimate = this.conditionservice.queryClimate();
+		List<Condition> sysTerrain = this.conditionservice.queryTerrain();
+		List<Condition> sysAdvIndustry = this.conditionservice.queryAdvIndustry();
+		List<Condition> sysDirIndustry = this.conditionservice.queryDirIndustry();
+		List<Condition> sysMajorIndustry = this.conditionservice.queryMajorIndustry();
+		List<Condition> sysDevelopDir = this.conditionservice.queryDevelopDir();
+		List<Condition> sysAdvantage = this.conditionservice.queryAdvantage();
+		List<Condition> sysBusinessDir = this.conditionservice.queryBusinessDir();
+		param.put("sysClimate",sysClimate);
+		param.put("sysTerrain",sysTerrain);
+		param.put("sysAdvIndustry",sysAdvIndustry);
+		param.put("sysDirIndustry",sysDirIndustry);
+		param.put("sysMajorIndustry",sysMajorIndustry);
+		param.put("sysDevelopDir",sysDevelopDir);
+		param.put("sysAdvantage",sysAdvantage);
+		param.put("sysBusinessDir",sysBusinessDir);
+		
+		result = RetAjax.onSuccess(param, "");
+		
+		return result;
+	}
 }

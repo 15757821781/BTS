@@ -526,59 +526,21 @@ var sysAdvantage;
 var sysBusinessDir;
 var GetSelectData = function(){
 	tk.ajax({
-		url : "/TownManagement/"+"conditionmanage/queryClimate",
+		url : "/TownManagement/"+"conditionmanage/querySysParam",
 		cache : true,
 		success : function(result,state){
-			sysClimate = result.data;
-		}
-	});
-	tk.ajax({
-		url : "/TownManagement/"+"conditionmanage/queryTerrain",
-		cache : true,
-		success : function(result,state){
-			sysTerrain = result.data;
-		}
-	});
-	tk.ajax({
-		url : "/TownManagement/"+"conditionmanage/queryAdvIndustry",
-		cache : true,
-		success : function(result,state){
-			sysAdvIndustry = result.data;
-		}
-	});
-	tk.ajax({
-		url : "/TownManagement/"+"conditionmanage/queryDirIndustry",
-		cache : true,
-		success : function(result,state){
-			sysDirIndustry = result.data;
-		}
-	});
-	tk.ajax({
-		url : "/TownManagement/"+"conditionmanage/queryMajorIndustry",
-		cache : true,
-		success : function(result,state){
-			sysMajorIndustry = result.data;
-		}
-	});
-	tk.ajax({
-		url : "/TownManagement/"+"conditionmanage/queryDevelopDir",
-		cache : true,
-		success : function(result,state){
-			sysDevelopDir = result.data;
-		}
-	});
-	tk.ajax({
-		url : "/TownManagement/"+"conditionmanage/queryAdvantage",
-		cache : true,
-		success : function(result,state){
-			sysAdvantage = result.data;
-		}
-	});
-	tk.ajax({
-		url : "/TownManagement/"+"conditionmanage/queryBusinessDir",
-		cache : true,
-		success : function(result,state){
-			sysBusinessDir = result.data;
+			try{
+				sysClimate = result.data.sysClimate;
+				sysTerrain = result.data.sysTerrain;
+				sysAdvIndustry = result.data.sysAdvIndustry;
+				sysDirIndustry = result.data.sysDirIndustry;
+				sysMajorIndustry = result.data.sysMajorIndustry;
+				sysDevelopDir = result.data.sysDevelopDir;
+				sysAdvantage = result.data.sysAdvantage;
+				sysBusinessDir = result.data.sysBusinessDir;
+			}catch(e){
+				console.log(e.message);
+			}
 		}
 	});
 }
