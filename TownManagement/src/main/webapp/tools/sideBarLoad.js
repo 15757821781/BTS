@@ -38,6 +38,11 @@ $(document).ready(function() {
     	   	         cache: false,
     	   	         success: function(html){
     	   	             $("#page-wrapper").html(html);
+    	   	             if(target=="/TownManagement/pages/HomePage/homePage.html"){
+    	   	            	 $("#page-wrapper").attr("class","loginbackimg");
+    	   	             }else{
+    	   	            	$("#page-wrapper").attr("class","");
+    	   	             }
     	   	         }
     	   	     });
     	        }
@@ -50,6 +55,7 @@ $(document).ready(function() {
          cache: false,
          success: function(html){
              $("#page-wrapper").html(html);
+             $("#page-wrapper").attr("class","loginbackimg");
          }
      });
     // 点击提醒加载提醒菜单
