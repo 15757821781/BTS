@@ -127,6 +127,7 @@ public class RetAjax {
 			retAjax.message=TypeStatusConstant.login_success;
 			retAjax.data=users.get(0);
 			session.setAttribute("town_LoginData", users.get(0));
+			session.setMaxInactiveInterval(3600);
 		}else{
 			retAjax.state=TypeStatusConstant.loginfail;
 			retAjax.message=TypeStatusConstant.login_fail;

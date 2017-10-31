@@ -262,7 +262,7 @@ var CreateCombo = function(id,url,data){
 var selectCreate = function(id,data){
 	$("#" + id).find('option').remove();
 	 if (data != null) {
-		 $("#" + id).append("<option selected = 'selected'></option>");
+		 $("#" + id).append("<option></option>");
 		 var html;
 		 $.each(data,function(i){
 			 html +="<option value="+data[i].value+">"+data[i].name+"</option>"
