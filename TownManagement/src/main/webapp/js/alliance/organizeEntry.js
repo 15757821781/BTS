@@ -9,8 +9,8 @@ $(document).ready(function() {
 		autoclose : true,// 选中之后自动隐藏日期选择框
 		todayBtn : true,// 今日按钮
 		startView : 4,
-        minView: 3,
-        format: "yyyy-mm"
+        minView: 4,
+        format: "yyyy"
 	}).on('hide', function(e) {  
         // 当用户改变值的时候进行验证
 		$('#orgform').bootstrapValidator('revalidateField', 'orgestablish');
