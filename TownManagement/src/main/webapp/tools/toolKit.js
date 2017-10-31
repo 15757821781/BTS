@@ -182,15 +182,14 @@ var fillForm = function(form,data) {
 		    	}
 		    	return false;
 		    }else if($("#"+key).attr("multiple")=="multiple"&&$("#"+key).hasClass("selectpicker")){
-//	    		if(value==null){
-//	    			console.log(value)
-//	    		}
-	    		var arr=value.split(",");
-				$('#'+key).selectpicker();
-				$('#'+key).selectpicker('val', arr);
-				if($("#"+key).attr("areagroup")!=undefined){
-					resetAreagroup(key);
-				} 
+	    		if(value!=null){
+	    			var arr=value.split(",");
+					$('#'+key).selectpicker();
+					$('#'+key).selectpicker('val', arr);
+					if($("#"+key).attr("areagroup")!=undefined){
+						resetAreagroup(key);
+					} 
+	    		}
 				return false;
 		    }else if($("#"+key).attr("disabled")=="disabled"){
 		    	$('#'+key).val(value);
