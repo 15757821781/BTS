@@ -85,14 +85,12 @@ $(document).ready(function() {
 //表格事件
 	$('#delregion').click(function(){
 		var obj = $('#regionManage').bootstrapTable('getSelections');
-		console.log(obj);
 		var ids = [];
 		$.each(obj,function(i){
 			if(obj[i].regid!=null&&obj[i].regid!=''){
 				ids.push(obj[i].regid);
 			}
 		});
-		console.log(ids);
 		tk.ajax({
 			url : "/TownManagement/regionmanage/updateregioniteState",
 	        data : {"regObj":ids},
