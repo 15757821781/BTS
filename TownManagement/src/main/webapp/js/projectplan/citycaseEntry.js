@@ -103,7 +103,7 @@ $(document).ready(function() {
 			countryrate : {
 				validators : {
 					regexp : {
-						regexp : /^[0-9]+(.[0-9]{1,3})?$/,
+						regexp : /^\-?([0-9]+(.[0-9]{1,3})?)$/,
 						message : '请输入最多3位小数的数字'
 					}
 				}
