@@ -167,6 +167,7 @@ function querydetail(id) {
 				cache : false,
 				succ : function(data, status) {
 					data = data.data[0];
+					$("#statitle").text(data.statitle);
 					$("#createtime").text(data.createtime);
 					$("#statext").html(data.statext);
 					$("#stanumber").text(data.stanumber);

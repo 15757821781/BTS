@@ -11,7 +11,7 @@
 		statext,
 		stainscribe,
 		stacreator,
-		updatetime)
+		createtime)
 		values
 		(
 		#{statitle},
@@ -70,7 +70,7 @@
 				a.statheme,
 				a.statext,
 				a.stainscribe,
-				a.createtime
+				DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
 				from tb_zhengcefagui a where a.staid = #{staid}
 	</select>
 	<!-- 更新政策法规信息 -->
