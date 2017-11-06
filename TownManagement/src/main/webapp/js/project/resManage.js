@@ -79,14 +79,12 @@ $(document).ready(function() {
 //表格事件
 	$('#delres').click(function(){
 		var obj = $('#resManage').bootstrapTable('getSelections');
-		console.log(obj);
 		var ids = [];
 		$.each(obj,function(i){
 			if(obj[i].resid!=null&&obj[i].resid!=''){
 				ids.push(obj[i].resid);
 			}
 		});
-		console.log(ids);
 		tk.ajax({
 			url : "/TownManagement/resitemmanage/updateresitemState",
 	        data : {"resObj":ids},

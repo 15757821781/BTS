@@ -65,14 +65,12 @@ $(document).ready(function() {
 	//表格事件
 	$('#delcitycase').click(function(){
 		var obj = $('#citymanage').bootstrapTable('getSelections');
-		console.log(obj);
 		var ids = [];
 		$.each(obj,function(i){
 			if(obj[i].countryid!=null&&obj[i].countryid!=''){
 				ids.push(obj[i].countryid);
 			}
 		});
-		console.log(ids);
 		tk.ajax({
 			url : "/TownManagement/citymanage/updateCityState",
 	        data : {"cityObj":ids},

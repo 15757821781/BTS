@@ -89,14 +89,12 @@ $(document).ready(function() {
 //表格事件
 $('#delfeaturetown').click(function(){
 		var obj = $('#featuretownManage').bootstrapTable('getSelections');
-		console.log(obj);
 		var ids = [];
 		$.each(obj,function(i){
 			if(obj[i].feaid!=null&&obj[i].feaid!=''){
 				ids.push(obj[i].feaid);
 			}
 		});
-		console.log(ids);
 		tk.ajax({
 			url : "/TownManagement/featuretownmanage/updatefeatownState",
 	        data : {"featownObj":ids},

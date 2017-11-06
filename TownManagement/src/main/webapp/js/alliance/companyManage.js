@@ -113,14 +113,12 @@ $(document).ready(function() {
 //表格批量事件
 	$('#delcompany').click(function(){
 		var obj = $('#commanagetable').bootstrapTable('getSelections');
-		console.log(obj);
 		var ids = [];
 		$.each(obj,function(i){
 			if(obj[i].comid!=null&&obj[i].comid!=''){
 				ids.push(obj[i].comid);
 			}
 		});
-		console.log(ids);
 		tk.ajax({
 			url : "/TownManagement/commanage/updateComState",
 	        data : {"comObj":ids},
