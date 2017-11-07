@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.SystemNoticeDao">
+    <resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_xitonggonggao" />
+    <insert id="insertnocinfo" parameterType="com.hkay.weifei.pojo.Tb_xitonggonggao">
+		insert into tb_xitonggonggao
+		(
+		noctitle,
+		noctext,
+		noccreator,
+		createtime)
+		values
+		(
+		#{noctitle},
+		#{noctext},
+		#{noccreator},
+		now())
+	</insert>
+	<!-- 查询信息总数 -->
+	<select id="querynoccnt" parameterType="com.hkay.weifei.pojo.Tb_xitonggonggao"
+		resultType="Integer">
+		select count(*) from (		
+		SELECT
+			a.nocid,
+			a.noctitle,
+			a.noctext,
+			a.noccreator,
+			a.createtime
+		FROM
+			tb_xitonggonggao a
+		where 1=1
+		and a.state=1
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
+		) t
+	</select>
+	<select id="queryNocList" parameterType="com.hkay.weifei.pojo.Tb_xitonggonggao"
+	resultMap="BaseResultMap">
+		SELECT
+			a.nocid,
+			a.noctitle,
+			a.noctext,
+			a.noccreator,
+			DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
+		FROM
+			tb_xitonggonggao a
+		where 1=1
+		and a.state=1
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
+		order by a.createtime desc
+	</select>
+	<select id="queryNocDetail" parameterType="com.hkay.weifei.pojo.Tb_xitonggonggao"
+	resultMap="BaseResultMap">
+		select 	a.nocid,
+				a.noctitle,
+				a.noctext,
+				DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
+				from tb_xitonggonggao a where a.nocid = #{nocid}
+	</select>
+	<!-- 更新系统公告信息 -->
+	<update id="updateNocInfo" parameterType="com.hkay.weifei.pojo.Tb_xitonggonggao">
+		update tb_xitonggonggao set
+		noctitle=#{noctitle},
+		noctext=#{noctext},
+		updatetime=now()
+		where nocid=#{nocid}
+	</update>
+	<update id="updateNocState" parameterType="com.hkay.weifei.pojo.Tb_xitonggonggao">
+		update tb_xitonggonggao 
+		set
+		state = 0
+		where nocid in (${_parameter})
+	</update>
+</mapper>
