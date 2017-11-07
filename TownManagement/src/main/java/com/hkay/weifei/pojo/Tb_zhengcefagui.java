@@ -9,7 +9,7 @@ public class Tb_zhengcefagui {
 	private String stainscribe; // 落款
 	private String stacreator;//录入员
 	private String staupdator;//修改者
-	private String createtime;//发布时间
+	private String createtime;//创建时间
 	
 	
 	private String search;// 查询条件

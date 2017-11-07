@@ -75,7 +75,7 @@ public class StatuteController {
 	 */
 	@RequestMapping("/queryStaList")
 	@ResponseBody
-	public RetAjax queryComList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
+	public RetAjax queryStaList(HttpServletRequest request,@RequestParam(value = "limit", required = false) Integer limit,
 			@RequestParam(value = "pageindex", required = false) Integer pageindex,
 			Tb_zhengcefagui tb_zhengcefagui) throws UnsupportedEncodingException {
 		HttpSession session = request.getSession();
