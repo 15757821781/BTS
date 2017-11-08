@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.StatuteDao">
+    <resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_zhengcefagui" />
+    <insert id="insertstainfo" parameterType="com.hkay.weifei.pojo.Tb_zhengcefagui">
+		insert into tb_zhengcefagui
+		(
+		statitle,
+		stanumber,
+		statheme,
+		statext,
+		stainscribe,
+		stacreator,
+		createtime)
+		values
+		(
+		#{statitle},
+		#{stanumber},
+		#{statheme},
+		#{statext},
+		#{stainscribe},
+		#{stacreator},
+		now())
+	</insert>
+	<!-- 查询信息总数 -->
+	<select id="querystacnt" parameterType="com.hkay.weifei.pojo.Tb_zhengcefagui"
+		resultType="Integer">
+		select count(*) from (		
+		SELECT
+			a.staid,
+			a.statitle,
+			a.stanumber,
+			a.statheme,
+			a.statext,
+			a.stainscribe,
+			a.stacreator
+		FROM
+			tb_zhengcefagui a
+		where 1=1
+		and a.state=1
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
+		) t
+	</select>
+	<select id="queryStaList" parameterType="com.hkay.weifei.pojo.Tb_zhengcefagui"
+	resultMap="BaseResultMap">
+		SELECT
+			a.staid,
+			a.statitle,
+			a.stanumber,
+			a.statheme,
+			a.statext,
+			a.stainscribe,
+			a.stacreator
+		FROM
+			tb_zhengcefagui a
+		where 1=1
+		and a.state=1
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
+		order by a.createtime desc
+	</select>
+	<select id="queryStaDetail" parameterType="com.hkay.weifei.pojo.Tb_zhengcefagui"
+	resultMap="BaseResultMap">
+		select 	a.staid,
+				a.statitle,
+				a.stanumber,
+				a.statheme,
+				a.statext,
+				a.stainscribe,
+				DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
+				from tb_zhengcefagui a where a.staid = #{staid}
+	</select>
+	<!-- 更新政策法规信息 -->
+	<update id="updateStaInfo" parameterType="com.hkay.weifei.pojo.Tb_zhengcefagui">
+		update tb_zhengcefagui set
+		statitle=#{statitle},
+		stanumber=#{stanumber},
+		statheme=#{statheme},
+		statext=#{statext},
+		stainscribe=#{stainscribe},
+		staupdator=#{staupdator},
+		updatetime=now()
+		where staid=#{staid}
+	</update>
+	<update id="updateStaState" parameterType="com.hkay.weifei.pojo.Tb_zhengcefagui">
+		update tb_zhengcefagui 
+		set
+		state = 0
+		where staid in (${_parameter})
+	</update>
+</mapper>

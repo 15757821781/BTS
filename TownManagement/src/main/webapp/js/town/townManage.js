@@ -88,14 +88,12 @@ $(document).ready(function() {
 	//表格事件
 	$('#delTown').click(function(){
 		var obj = $('#townmanagetable').bootstrapTable('getSelections');
-		console.log(obj);
 		var ids = [];
 		$.each(obj,function(i){
 			if(obj[i].centertownid!=null&&obj[i].centertownid!=''){
 				ids.push(obj[i].centertownid);
 			}
 		});
-		console.log(ids);
 		tk.ajax({
 			url : "/TownManagement/townmanage/updateTownState",
 	        data : {"townObj":ids},

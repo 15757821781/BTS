@@ -79,14 +79,12 @@ $(document).ready(function() {
 //表格事件
 	$('#delinv').click(function(){
 		var obj = $('#invManage').bootstrapTable('getSelections');
-		console.log(obj);
 		var ids = [];
 		$.each(obj,function(i){
 			if(obj[i].invid!=null&&obj[i].invid!=''){
 				ids.push(obj[i].invid);
 			}
 		});
-		console.log(ids);
 		tk.ajax({
 			url : "/TownManagement/invitemmanage/updateinvitemState",
 	        data : {"invObj":ids},
