@@ -5,16 +5,16 @@ $(document).ready(function() {
 	});
 	
 	initToolbarBootstrapBindings();  
-	$('#editor').wysiwyg(); 
+	$('#sta_editor').wysiwyg(); 
 	
 	//表单提交
 	$('#statute_submit').click(function() {
-		var html = $('#editor').html();
+		var html = $('#sta_editor').html();
 		$('#statext').val(html);
 		formSubmit('#staform','statutemanage/insertStaInfo','Statute/statuteEntry.html');
 	});
 	$('#statute_update').click(function() {
-		var html = $('#editor').html();
+		var html = $('#sta_editor').html();
 		$('#statext').val(html);
 		formSubmit('#staform','statutemanage/updateStaInfo','Statute/statuteManage.html');
 	});
@@ -55,8 +55,8 @@ function initToolbarBootstrapBindings() {
     });
     $('#voiceBtn').hide();
 	if ("onwebkitspeechchange"  in document.createElement("input")) {
-	  var editorOffset = $('#editor').offset();
-	  $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+	  var editorOffset = $('#sta_editor').offset();
+	  $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#sta_editor').innerWidth()-35});
 	} else {
 	  $('#voiceBtn').hide();
 	}

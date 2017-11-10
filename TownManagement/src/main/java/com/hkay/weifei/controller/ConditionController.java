@@ -10,13 +10,17 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hkay.weifei.pojo.Condition;
 import com.hkay.weifei.pojo.Tb_notice;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.service.ConditionService;
+import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.RetAjax;
+import com.hkay.weifei.util.TypeStatusConstant;
 
 @Controller
 @RequestMapping("/conditionmanage")
@@ -25,7 +29,7 @@ public class ConditionController {
 	private ConditionService conditionservice;
 	private RetAjax result;
 	private static Logger Log = Logger.getLogger(ConditionController.class);
-
+	private FileUpload fileupload = new FileUpload();
 	/**
 	 * 
 		 * 方法名称: queryProvince
@@ -343,4 +347,26 @@ public class ConditionController {
 		
 		return result;
 	}
+	
+	
+	/**
+	 * 
+	 *方法名称:
+	 *内容：保存图片返回url
+	 *创建人:zhuwenjie
+	 *创建日期:2017年11月10日上午10:36:00
+	 */
+	@RequestMapping(value="/uploadStaImg")
+	@ResponseBody
+	public RetAjax uploadStaImg(HttpServletRequest request,@RequestParam("editorImage") MultipartFile[] files) { 
+		String imgpath="";
+		try {
+			imgpath = fileupload.fileUpload(files, request, TypeStatusConstant.sta_img, "");
+			result = RetAjax.onSuccess(imgpath.replace(",", ""),"");
+		} catch (Exception e) {
+			Log.error("error----------uploadStaImg:" + e);
+			e.printStackTrace();
+		}
+		return result; 
+	} 
 }

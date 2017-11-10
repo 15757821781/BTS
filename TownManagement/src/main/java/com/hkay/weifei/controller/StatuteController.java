@@ -1,9 +1,6 @@
 package com.hkay.weifei.controller;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,20 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.hkay.weifei.pojo.Tb_qiyedanwei;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_zhengcefagui;
 import com.hkay.weifei.service.StatuteService;
 import com.hkay.weifei.util.CommonUtil;
-import com.hkay.weifei.util.FileUpload;
-//import com.hkay.weifei.util.ImportExcel;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
-import com.hkay.weifei.util.TypeStatusConstant;
 
 @Controller
 @RequestMapping("/statutemanage")
@@ -36,8 +28,6 @@ public class StatuteController {
 	@Resource
 	private StatuteService statuteservice;
 	private RetAjax result;
-	private FileUpload fileupload = new FileUpload();
-	
 	/**
 	 * 
 		 * 方法名称: insertStaInfo
@@ -54,6 +44,7 @@ public class StatuteController {
 		try {
 			HttpSession session = request.getSession();
 			Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+			zhengcefagui.setStacreator(user.getNumber());
 			int flag = this.statuteservice.insertstainfo(zhengcefagui);
 			result = RetAjax.onDataBase(flag,1);
 		} catch (Exception e) {
@@ -145,8 +136,6 @@ public class StatuteController {
 	@RequestMapping("/queryStaDetail")
 	@ResponseBody
 	public RetAjax queryStaDetail(HttpServletRequest request,Tb_zhengcefagui tb_zhengcefagui) {
-		HttpSession session = request.getSession();
-		Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
 		List<Tb_zhengcefagui> tb_zhengcefaguis = this.statuteservice.queryStaDetail(tb_zhengcefagui);
 		result = RetAjax.onQueryDetail(tb_zhengcefaguis);
 		return result;
@@ -200,7 +189,5 @@ public class StatuteController {
 			result = RetAjax.onDataBase(0, 3);
 		}
 		return result; 
-	} 
-	
-	
+	}
 }
