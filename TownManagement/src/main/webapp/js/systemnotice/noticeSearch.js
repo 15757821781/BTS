@@ -5,8 +5,6 @@ $(document).ready(function() {
 	
 	//查询
     $('#nocentry_search').click(function() {
-    	var html = $('#editor').html();
-		$('#noctext').val(html);
 		$("#nocinfomodal").modal('hide');
 		$('#nocmanagetable').bootstrapTable('refresh');
 	});
