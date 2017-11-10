@@ -93,7 +93,11 @@ public class TypeStatusConstant {
 	 */
 	public static final String proof="proof/";
 	/**
-	 * 
+	 * 政策法规图片
 	 */
 	public static final String sta_img="staImg/";
+	/**
+	 * 
+	 */
+	public static final String file="file/";
 }
