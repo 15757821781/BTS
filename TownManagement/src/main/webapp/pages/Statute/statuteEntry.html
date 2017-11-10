@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>政策法规</title>
 	<link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
-	<link href="/TownManagement/css/bootstrap-responsive.min.css" rel="stylesheet">
+<!-- 	<link href="/TownManagement/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
    	<link href="/TownManagement/css/bootstrap-wysiwyg.css" rel="stylesheet">
 </head>
 <body>
@@ -19,13 +19,13 @@
 			<form class="form-horizontal" role="form" enctype="multipart/form-data" id="staform" method="post">
 		  		<div class="form-group">
 		  			<label class="col-sm-2 control-label">标题</label>
-			  		<div class="col-sm-6">
+			  		<div class="col-sm-4">
 				  		<input name="statitle"  id="statitle"  class="form-control" type="text" placeholder="请填写标题"/>
 			  		</div>
 		  		</div>
 		  		<div class="form-group">
 					<label class="col-sm-2 control-label">发文字号</label>
-					<div class="col-sm-2">
+					<div class="col-sm-4">
 						<input name="stanumber" id="stanumber"
 							class="form-control" type="text">
 					</div>
@@ -63,7 +63,7 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">正文</label>
-				   	<div class="col-sm-6" data-role="editor-toolbar" data-target="#editor">
+				   	<div class="col-sm-8" data-role="editor-toolbar" data-target="#editor">
 				      	<div class="btn-group">
 				       		<a class="btn dropdown-toggle bs-placeholder btn-default" data-toggle="dropdown" title="字体"><i class="fa fa-font"></i><b class="caret"></b></a>
 				          		<ul class="dropdown-menu"></ul>
@@ -96,15 +96,19 @@
 				      	</div>
 				      	<div class="btn-group">
 						  	<a class="btn dropdown-toggle bs-placeholder btn-default" data-toggle="dropdown" title="超链接"><i class="fa fa-link"></i></a>
-						    	<div class="dropdown-menu input-append">
-								    <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
-								    <button class="btn bs-placeholder btn-default" type="button">Add</button>
-					        	</div>
+					    		<ul class="dropdown-menu dropdown-alerts" style="width:270px;">
+					    			<li>
+					    				<a>
+						    				<input style="border: 1px solid #ccc;border-radius: 4px;height:30px;" placeholder="URL" type="text" data-edit="createLink"/>
+		                                	<button class="btn">添加</button>
+					    				</a>
+					    			</li>
+					    		</ul>
 					       	<a class="btn bs-placeholder btn-default" data-edit="unlink" title="剪切"><i class="fa fa-cut"></i></a>
 				      	</div>
 				      	<div class="btn-group">
 				        	<a class="btn bs-placeholder btn-default" title="插入图片 " id="pictureBtn"><i class="fa fa-photo"></i></a>
-				        	<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+				        	<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
 				      	</div>
 				      	<div class="btn-group">
 					        <a class="btn bs-placeholder btn-default" data-edit="undo" title="撤销 (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
@@ -115,12 +119,12 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>
-					<div class="col-sm-6" id="editor"></div>
+					<div class="col-sm-8 editor" id="sta_editor"></div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">落款</label>
-					<div class="col-sm-6">
-						<input name="stainscribe"  id="stainscribe" class="form-control" type="text" />
+					<div class="col-sm-4">
+						<input name="stainscribe" id="stainscribe" class="form-control" type="text" />
 					</div>
 				</div>
 		  		<div class="form-group">

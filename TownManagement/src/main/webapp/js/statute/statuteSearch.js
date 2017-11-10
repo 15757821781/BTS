@@ -4,10 +4,10 @@ $(document).ready(function() {
 		noneSelectedText : "请选择"
 	});
 	initToolbarBootstrapBindings();  
-	$('#editor').wysiwyg(); 
+	$('#sta_editor').wysiwyg(); 
 	//查询
     $('#staentry_search').click(function() {
-    	var html = $('#editor').html();
+    	var html = $('#sta_editor').html();
 		$('#statext').val(html);
 		$("#stainfomodal").modal('hide');
 		$('#stamanagetable').bootstrapTable('refresh');
@@ -49,8 +49,8 @@ function initToolbarBootstrapBindings() {
     });
     $('#voiceBtn').hide();
 	if ("onwebkitspeechchange"  in document.createElement("input")) {
-	  var editorOffset = $('#editor').offset();
-	  $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+	  var sta_editorOffset = $('#sta_editor').offset();
+	  $('#voiceBtn').css('position','absolute').offset({top: sta_editorOffset.top, left: sta_editorOffset.left+$('#sta_editor').innerWidth()-35});
 	} else {
 	  $('#voiceBtn').hide();
 	}

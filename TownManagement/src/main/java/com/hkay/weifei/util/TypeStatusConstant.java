@@ -92,4 +92,8 @@ public class TypeStatusConstant {
 	 * 证书
 	 */
 	public static final String proof="proof/";
+	/**
+	 * 
+	 */
+	public static final String sta_img="staImg/";
 }
