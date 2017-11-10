@@ -1,10 +1,7 @@
 package com.hkay.weifei.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +18,6 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hkay.weifei.pojo.Tb_qiyedanwei;
 import com.hkay.weifei.pojo.Tb_user;
-import com.hkay.weifei.pojo.Tb_zhongxinzhen;
 import com.hkay.weifei.service.CompanyService;
 import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.FileUpload;

@@ -1,6 +1,6 @@
-#editor {
-	max-height: 250px;
-	height: 250px;
+.editor {
+	max-height: 500px;
+	height: 500px;
 	background-color: white;
 	border-collapse: separate; 
 	border: 1px solid rgb(204, 204, 204); 
@@ -12,6 +12,7 @@
 	border-bottom-left-radius: 3px; border-top-left-radius: 3px;
 	overflow: scroll;
 	outline: none;
+	margin-left:10px;
 }
 #voiceBtn {
   width: 20px;
@@ -31,7 +32,7 @@ div[data-role="editor-toolbar"] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-left: 10px;
+/*   margin-left: 10px; */
 }
 
 .btn-toolbar {

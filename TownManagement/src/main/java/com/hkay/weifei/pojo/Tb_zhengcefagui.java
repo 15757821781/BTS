@@ -11,7 +11,6 @@ public class Tb_zhengcefagui {
 	private String staupdator;//修改者
 	private String createtime;//创建时间
 	
-	
 	private String search;// 查询条件
 	private String operation;// 操作
 	private String supersearch;// 高级搜索

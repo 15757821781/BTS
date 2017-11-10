@@ -118,22 +118,22 @@ $(document).ready(function() {
 	});
 })
 //表格批量事件
-	$('#delstatute').click(function(){
-		var obj = $('#stamanagetable').bootstrapTable('getSelections');
-		var ids = [];
-		$.each(obj,function(i){
-			if(obj[i].staid!=null&&obj[i].staid!=''){
-				ids.push(obj[i].staid);
-			}
-		});
-		tk.ajax({
-			url : "/TownManagement/statutemanage/updateStaState",
-	        data : {"staObj":ids},
-	        succ :function(){
-	        	$('#stamanagetable').bootstrapTable('refresh');
-	        }
-		})
+$('#delstatute').click(function(){
+	var obj = $('#stamanagetable').bootstrapTable('getSelections');
+	var ids = [];
+	$.each(obj,function(i){
+		if(obj[i].staid!=null&&obj[i].staid!=''){
+			ids.push(obj[i].staid);
+		}
 	});
+	tk.ajax({
+		url : "/TownManagement/statutemanage/updateStaState",
+        data : {"staObj":ids},
+        succ :function(){
+        	$('#stamanagetable').bootstrapTable('refresh');
+        }
+	})
+});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {
@@ -158,7 +158,6 @@ function querydetail(id) {
 			$("#stainfobody").html(html);
 			$("#staHeader").remove();
 			
-			
 			$("#stafieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/statutemanage/queryStaDetail",
@@ -173,7 +172,6 @@ function querydetail(id) {
 					$("#stanumber").text(data.stanumber);
 					$("#statheme").text(data.statheme);
 					$("#stainscribe").text(data.stainscribe);
-					$('#stafieldset').attr("disabled","disabled");
 					$("#stainfomodal").modal('show');
 					$("#statute_submit").hide();
 					$("#statute_update").hide();
@@ -197,7 +195,7 @@ function updateinfo(id){
 				dataType : 'JSON',
 				cache : false,
 				succ : function(data, status) {
-					$("#editor").html(data.data[0].statext);
+					$("#sta_editor").html(data.data[0].statext);
 					fillForm('#staform',data);
 					$("#stainfomodal").modal('show');
 					$("#statute_submit").hide();

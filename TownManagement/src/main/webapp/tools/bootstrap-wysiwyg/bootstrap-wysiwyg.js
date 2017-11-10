@@ -3,25 +3,25 @@
 /*jslint browser:true*/
 (function ($) {
 	'use strict';
+//	var readFileIntoDataUrl = function (fileInfo) {
+//		var loader = $.Deferred(),
+//			fReader = new FileReader();
+//		fReader.onload = function (e) {
+//			loader.resolve(e.target.result);
+//		};
+//		fReader.onerror = loader.reject;
+//		fReader.onprogress = loader.notify;
+//		fReader.readAsDataURL(fileInfo);
+//		return loader.promise();
+//	};
 	var readFileIntoDataUrl = function (fileInfo) {
-		var loader = $.Deferred(),
-			fReader = new FileReader();
-		fReader.onload = function (e) {
-			loader.resolve(e.target.result);
-		};
-		fReader.onerror = loader.reject;
-		fReader.onprogress = loader.notify;
-		fReader.readAsDataURL(fileInfo);
-		return loader.promise();
+		var form = new FormData();
+        form.append("editorImage", fileInfo);
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "/TownManagement/conditionmanage/uploadStaImg", false);//这里是你传到后台的入库的方法，这个方法返回图片路径就可以了
+        xhr.send(form);
+        return eval('(' + xhr.responseText + ')').data  ;
 	};
-//	 var readFileIntoDataUrl = function (fileInfo) {
-//	        var form = new FormData();
-//	        form.append("editorImage", fileInfo);
-//	        var xhr = new XMLHttpRequest();
-//	        xhr.open("post", "/TownManagement/commanage/insertStaInfo", false);//这里是你传到后台的入库的方法，这个方法返回图片路径就可以了
-//	        xhr.send(form);
-//	        return xhr.responseText;
-//	    };
 	$.fn.cleanHtml = function () {
 		var html = $(this).html();
 		return html && html.replace(/(<br>|\s|<div><br><\/div>|&nbsp;)*$/, '');
@@ -101,6 +101,7 @@
 						options.fileUploadError("unsupported-file-type", fileInfo.type);
 					}
 				});
+				$('img').attr('style','max-width:100%')
 			},
 			markSelection = function (input, color) {
 				restoreSelection();
