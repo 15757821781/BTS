@@ -7,8 +7,6 @@ $(document).ready(function() {
 	$('#sta_editor').wysiwyg(); 
 	//查询
     $('#staentry_search').click(function() {
-    	var html = $('#sta_editor').html();
-		$('#statext').val(html);
 		$("#stainfomodal").modal('hide');
 		$('#stamanagetable').bootstrapTable('refresh');
 	});
