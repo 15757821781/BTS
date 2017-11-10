@@ -39,16 +39,7 @@ $(document).ready(function() {
             title : '操作',
             width :	'30%',
             field : 'operation',
-            align : 'center',
-//            formatter:function(value,row,index){
-//            	if(sysOfUserPermission==3){
-//	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.nocid+')">查看</a>';
-//	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.nocid+')">修改</a>'
-//	            	return query+"&nbsp"+update;
-//            }else{
-//            	return  '<a href="javascript:void(0)" onclick="querydetail('+row.nocid+')">查看</a>';
-//            	}
-//            }
+            align : 'center'
 		} ]
 	});
 //新增弹出框
@@ -65,22 +56,22 @@ $(document).ready(function() {
 	});
 })
 //表格批量事件
-	$('#delnotice').click(function(){
-		var obj = $('#nocmanagetable').bootstrapTable('getSelections');
-		var ids = [];
-		$.each(obj,function(i){
-			if(obj[i].nocid!=null&&obj[i].nocid!=''){
-				ids.push(obj[i].nocid);
-			}
-		});
-		tk.ajax({
-			url : "/TownManagement/noticemanage/updateNocState",
-	        data : {"nocObj":ids},
-	        succ :function(){
-	        	$('#nocmanagetable').bootstrapTable('refresh');
-	        }
-		})
+$('#delnotice').click(function(){
+	var obj = $('#nocmanagetable').bootstrapTable('getSelections');
+	var ids = [];
+	$.each(obj,function(i){
+		if(obj[i].nocid!=null&&obj[i].nocid!=''){
+			ids.push(obj[i].nocid);
+		}
 	});
+	tk.ajax({
+		url : "/TownManagement/noticemanage/updateNocState",
+        data : {"nocObj":ids},
+        succ :function(){
+        	$('#nocmanagetable').bootstrapTable('refresh');
+        }
+	})
+});
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {
@@ -105,8 +96,6 @@ function querydetail(id) {
 			$("#nocinfobody").html(html);
 			$("#nocHeader").remove();
 			
-			
-			$("#nocfieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/noticemanage/queryNocDetail",
 				data : {"nocid":id},
@@ -117,7 +106,6 @@ function querydetail(id) {
 					$("#noctitle").text(data.noctitle);
 					$("#createtime").text(data.createtime);
 					$("#noctext").html(data.noctext);
-					$('#nocfieldset').attr("disabled","disabled");
 					$("#nocinfomodal").modal('show');
 					$("#noctute_submit").hide();
 					$("#noctute_update").hide();
@@ -141,7 +129,7 @@ function updateinfo(id){
 				dataType : 'JSON',
 				cache : false,
 				succ : function(data, status) {
-					$("#editor").html(data.data[0].noctext);
+					$("#noc_editor").html(data.data[0].noctext);
 					fillForm('#nocform',data);
 					$("#nocinfomodal").modal('show');
 					$("#notice_submit").hide();
