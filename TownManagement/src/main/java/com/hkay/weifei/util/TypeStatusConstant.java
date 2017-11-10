@@ -92,9 +92,4 @@ public class TypeStatusConstant {
 	 * 证书
 	 */
 	public static final String proof="proof/";
-	/**
-	 * 文件
-	 */
-	public static final String file="file/";
-	
 }
