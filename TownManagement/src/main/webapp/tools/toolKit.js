@@ -376,14 +376,14 @@ var cityOnChange = function(province, city, town){
 }
 
 //初始化fileinput控件
-function initFileInput(ctrlName,msg,count) {
+function initFileInput(ctrlName,msg,count,allowFile) {
 	var control = $('#' + ctrlName);
 	control.fileinput({
 		uploadAsync:false,
 		browseLabel : msg,
 		dropZoneEnabled: false,//是否显示拖拽区域
 		language : 'zh', //设置语言
-		allowedFileExtensions : [ 'jpg', 'png', 'jpeg' ],//接收的文件后缀
+		allowedFileExtensions : allowFile=''?[ 'jpg', 'png', 'jpeg' ]:allowFile,//接收的文件后缀
 		showUpload : false, //是否显示上传按钮
 		showRemove: false,//是否显示删除按钮  
 		showCaption: true,//是否显示输入框
