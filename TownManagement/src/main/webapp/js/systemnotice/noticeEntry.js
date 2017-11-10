@@ -23,7 +23,7 @@ $(document).ready(function() {
 			validating : 'glyphicon glyphicon-refresh'
 		},
 		fields : {
-			statitle : {
+			filetitle : {
 				validators : {
 					notEmpty : {
 						message : '标题不能为空'

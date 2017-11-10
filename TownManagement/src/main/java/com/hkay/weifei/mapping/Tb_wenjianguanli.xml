@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkay.weifei.Dao.FileDao">
+    <resultMap id="BaseResultMap" type="com.hkay.weifei.pojo.Tb_wenjianguanli" />
+    <insert id="insertFileInfo" parameterType="com.hkay.weifei.pojo.Tb_wenjianguanli">
+		insert into tb_wenjianguanli
+		(
+		filetitle,
+		filetext,
+		filecreator,
+		createtime)
+		values
+		(
+		#{filetitle},
+		#{filetext},
+		#{filecreator},
+		now())
+	</insert>
+	<!-- 查询信息总数 -->
+	<select id="queryfilecnt" parameterType="com.hkay.weifei.pojo.Tb_wenjianguanli"
+		resultType="Integer">
+		select count(*) from (		
+		SELECT
+			a.fileid,
+			a.filetitle,
+			a.filetext,
+			a.filecreator,
+			a.createtime
+		FROM
+			tb_wenjianguanli a
+		where 1=1
+		and a.state=1
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
+		) t
+	</select>
+	<select id="queryFileList" parameterType="com.hkay.weifei.pojo.Tb_wenjianguanli"
+	resultMap="BaseResultMap">
+		SELECT
+			a.fileid,
+			a.filetitle,
+			a.filetext,
+			a.filecreator,
+			DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
+		FROM
+			tb_wenjianguanli a
+		where 1=1
+		and a.state=1
+		<if test="supersearch!=null and supersearch!=''">
+			${supersearch}
+		</if>
+		order by a.createtime desc
+	</select>
+	<select id="queryFileDetail" parameterType="com.hkay.weifei.pojo.Tb_wenjianguanli"
+	resultMap="BaseResultMap">
+		select 	a.fileid,
+				a.filetitle,
+				a.filetext,
+				DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
+				from tb_wenjianguanli a where a.fileid = #{fileid}
+	</select>
+	<!-- 更新系统公告信息 -->
+	<update id="updateFileInfo" parameterType="com.hkay.weifei.pojo.Tb_wenjianguanli">
+		update tb_wenjianguanli set
+		filetitle=#{filetitle},
+		filetext=#{filetext},
+		updatetime=now()
+		where fileid=#{fileid}
+	</update>
+	<update id="updateFileState" parameterType="com.hkay.weifei.pojo.Tb_wenjianguanli">
+		update tb_wenjianguanli 
+		set
+		state = 0
+		where fileid in (${_parameter})
+	</update>
+</mapper>
