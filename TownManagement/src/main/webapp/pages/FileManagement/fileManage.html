@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>文件管理</title>
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
 <link rel="stylesheet" href="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.min.css" />
 </head>
 <body>
@@ -16,9 +17,6 @@
 			<div id="toolbar">
 				<button id="delfile" class="btn btn-default">
 					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-				</button>
-				<button id="fileSearch_bar" class="btn btn-default">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>高级查询
 				</button>
 			</div>
 			<table id="filemanagetable" ></table>
@@ -37,7 +35,33 @@
 					<h3 class="modal-title">文件管理</h3>
 				</div>
 				<div class="modal-body" id="fileinfobody">
-					页面初始化失败
+					<div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header" id="fileHeader">文件管理</h3>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<form class="form-horizontal" role="form" enctype="multipart/form-data" id="fileform" method="post">
+			<fieldset id="filefieldset">
+		  		<div class="form-group">
+		  			<label class="col-sm-2 control-label">标题</label>
+			  		<div class="col-sm-6">
+				  		<input name="filetitle"  id="filetitle"  class="form-control" type="text" placeholder="请填写标题"/>
+			  		</div>
+		  		</div>
+		  		<div class="form-group">
+					<label class="col-sm-2 control-label">附件</label>
+					<div class="col-sm-6">
+						<input name="filetext"	id="filetext"class="form-control" type="text"  >
+						<button type="button" id="file_download" class=" btn btn-primary"
+						style="width: auto; min-width: 90px; margin-top: 20px;">下载</button>
+					</div>
+				</div>
+				</fieldset>
+	  		</form>
+	 	</div>
+	</div>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -68,6 +92,7 @@
 <!-- 			</div> -->
 <!-- 		</div> -->
 <!-- 	</div> -->
+<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 	<script type="text/javascript" src="/TownManagement/js/filemanagement/fileManage.js"></script>

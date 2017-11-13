@@ -89,7 +89,7 @@ public class FileController {
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		//处理高级搜索
-		tb_wenjianguanli.setSupersearch(GetSuperSearchSql(tb_wenjianguanli));
+//		tb_wenjianguanli.setSupersearch(GetSuperSearchSql(tb_wenjianguanli));
 		List<Tb_wenjianguanli> tb_wenjianguanlis = this.fileService.queryFileList(tb_wenjianguanli);
 		if(tb_wenjianguanlis!=null){
 			for(int i=0;i<tb_wenjianguanlis.size();i++){
@@ -106,17 +106,17 @@ public class FileController {
 		return result;
 	}
 
-	private String GetSuperSearchSql(Tb_wenjianguanli wjgl) {
-		StringBuilder sql = new StringBuilder();
-		if(CommonUtil.JudgeEmpty(wjgl.getSearch())){
-			String search = wjgl.getSearch();
-			sql.append(" and (a.filetitle like '%"+search+"%')");
-		}
-		if(CommonUtil.JudgeEmpty(wjgl.getFiletitle())){
-			sql.append(" and a.filetitle like '%"+wjgl.getFiletitle()+"%'");
-		}
-		return sql.toString();
-	}
+//	private String GetSuperSearchSql(Tb_wenjianguanli wjgl) {
+//		StringBuilder sql = new StringBuilder();
+//		if(CommonUtil.JudgeEmpty(wjgl.getSearch())){
+//			String search = wjgl.getSearch();
+//			sql.append(" and (a.filetitle like '%"+search+"%')");
+//		}
+//		if(CommonUtil.JudgeEmpty(wjgl.getFiletitle())){
+//			sql.append(" and a.filetitle like '%"+wjgl.getFiletitle()+"%'");
+//		}
+//		return sql.toString();
+//	}
 	
 	/**
 	 * 
