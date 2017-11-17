@@ -92,16 +92,7 @@ $(document).ready(function() {
             title : '操作',
             width :	'20%',
             field : 'operation',
-            align : 'center',
-//            formatter:function(value,row,index){
-//            	if(sysOfUserPermission==3){
-//	            	var query = '<a href="javascript:void(0)" onclick="querydetail('+row.staid+')">查看</a>';
-//	            	var update = '<a href="javascript:void(0)" onclick="updateinfo('+row.staid+')">修改</a>'
-//	            	return query+"&nbsp"+update;
-//            }else{
-//            	return  '<a href="javascript:void(0)" onclick="querydetail('+row.staid+')">查看</a>';
-//            	}
-//            }
+            align : 'center'
 		} ]
 	});
 //新增弹出框
@@ -158,7 +149,6 @@ function querydetail(id) {
 			$("#stainfobody").html(html);
 			$("#staHeader").remove();
 			
-			$("#stafieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/statutemanage/queryStaDetail",
 				data : {"staid":id},

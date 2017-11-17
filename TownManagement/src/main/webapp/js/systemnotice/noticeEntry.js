@@ -1,16 +1,16 @@
 $(document).ready(function() {
 	
 	initToolbarBootstrapBindings();  
-	$('#editor').wysiwyg(); 
+	$('#noc_editor').wysiwyg(); 
 	
 	//表单提交
 	$('#notice_submit').click(function() {
-		var html = $('#editor').html();
+		var html = $('#noc_editor').html();
 		$('#noctext').val(html);
 		formSubmit('#nocform','noticemanage/insertNocInfo','SystemNotice/noticeEntry.html');
 	});
 	$('#notice_update').click(function() {
-		var html = $('#editor').html();
+		var html = $('#noc_editor').html();
 		$('#noctext').val(html);
 		formSubmit('#nocform','noticemanage/updateNocInfo','SystemNotice/noticeManage.html');
 	});
@@ -51,8 +51,8 @@ function initToolbarBootstrapBindings() {
     });
     $('#voiceBtn').hide();
 	if ("onwebkitspeechchange"  in document.createElement("input")) {
-	  var editorOffset = $('#editor').offset();
-	  $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+	  var noc_editorOffset = $('#noc_editor').offset();
+	  $('#voiceBtn').css('position','absolute').offset({top: noc_editorOffset.top, left: noc_editorOffset.left+$('#noc_editor').innerWidth()-35});
 	} else {
 	  $('#voiceBtn').hide();
 	}

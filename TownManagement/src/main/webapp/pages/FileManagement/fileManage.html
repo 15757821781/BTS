@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>文件管理</title>
-<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
 <link rel="stylesheet" href="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.min.css" />
 </head>
 <body>
@@ -19,13 +18,14 @@
 					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
 				</button>
 			</div>
-			<table id="filemanagetable" ></table>
+			<table id="filemanagetable"></table>
 		</div>
 	</div>
 	<!-- 模态框（Modal） 详情-->
 	<div class="modal fade" id="fileinfomodal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" style="padding-top: 5%;" data-backdrop="static">
-		<div class="modal-dialog" style="width:96%;">
+		aria-labelledby="myModalLabel" style="padding-top: 5%;"
+		data-backdrop="static">
+		<div class="modal-dialog" style="width: 96%;">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="btn btn-default btn-close pull-right"
@@ -35,65 +35,40 @@
 					<h3 class="modal-title">文件管理</h3>
 				</div>
 				<div class="modal-body" id="fileinfobody">
-					<div class="row">
-		<div class="col-lg-12">
-			<h3 class="page-header" id="fileHeader">文件管理</h3>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<form class="form-horizontal" role="form" enctype="multipart/form-data" id="fileform" method="post">
-			<fieldset id="filefieldset">
-		  		<div class="form-group">
-		  			<label class="col-sm-2 control-label">标题</label>
-			  		<div class="col-sm-6">
-				  		<input name="filetitle"  id="filetitle"  class="form-control" type="text" placeholder="请填写标题"/>
-			  		</div>
-		  		</div>
-		  		<div class="form-group">
-					<label class="col-sm-2 control-label">附件</label>
-					<div class="col-sm-6">
-						<input name="filetext"	id="filetext"class="form-control" type="text"  >
-						<button type="button" id="file_download" class=" btn btn-primary"
-						style="width: auto; min-width: 90px; margin-top: 20px;">下载</button>
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-lg-12"> -->
+<!-- 							<h3 class="page-header" id="fileHeader">文件管理</h3> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form class="form-horizontal " role="form"
+								enctype="multipart/form-data" id="fileform" method="post">
+									<div class="form-group">
+										<label class="col-sm-3 control-label">标题</label>
+										<div class="col-sm-4">
+											<input name="filetitle" id="filetitle" class="form-control"
+												type="text" disabled="disabled" placeholder="请填写标题" />
+										</div>
+									</div>
+								<div class="form-group addel-target">
+<!-- 									<label class="col-sm-3 control-label">附件</label> -->
+									<div class="col-sm-4">
+										<input name="filetext" class="form-control" id="filetext" type="hidden">
+									</div>
+<!-- 									<div class="col-sm-2"> -->
+<!-- 										<button type="button" id="file_download" class=" btn btn-primary" onclick="fileDownLoad1()">下载</button> -->
+<!-- 									</div> -->
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
-				</fieldset>
-	  		</form>
-	 	</div>
-	</div>
-				</div>
 			</div>
-			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal -->
 	</div>
-<!-- 	<div class="modal fade" id="importcom_modal" tabindex="-1" role="dialog" -->
-<!-- 		aria-labelledby="myModalLabel" style="padding-top: 10%;"> -->
-<!-- 		<div class="modal-dialog"> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<button type="button" class="close" data-dismiss="modal" -->
-<!-- 						aria-hidden="true">&times;</button> -->
-<!-- 					<h4 class="modal-title" id="myModalLabel">新增危废信息</h4> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body"> -->
-<!-- 					<form enctype="multipart/form-data" id="comUpload" method="post"> -->
-<!-- 						<label for="name">文件:</label> -->
-<!-- 						<div class="form-goup"> -->
-<!-- 							<input id="comFile" type="file" name="comFile"> -->
-<!-- 						</div> -->
-<!-- 					</form> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-footer"> -->
-<!-- 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> -->
-<!-- 					<button type="button" class="btn btn-primary" id="btsubmit">提交更改</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.js"></script>
 	<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
 	<script type="text/javascript" src="/TownManagement/js/filemanagement/fileManage.js"></script>
 </body>

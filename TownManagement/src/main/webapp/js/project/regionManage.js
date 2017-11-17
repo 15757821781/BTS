@@ -225,11 +225,11 @@ function querydetail(regid) {
 								+'<i class="fa fa-remove"></i></button>'
 								+'<label class="control-label">联系人</label></div>'
 								+'<div class="col-sm-2">'
-								+'<input name="regcontact" id="regcontact"  class="form-control" type="text" value='+comcontact[i]+'></div>'
+								+'<input name="regcontact" id="regcontact"  class="form-control" type="text" value='+regcontact[i]+'></div>'
 								+'<label class="col-sm-2 control-label">职务</label>'
-								+'<div class="col-sm-2"><input name="regpost" id="regpost" class="form-control" type="text" value='+compost[i]+'>'
+								+'<div class="col-sm-2"><input name="regpost" id="regpost" class="form-control" type="text" value='+regpost[i]+'>'
 								+'</div><label class="col-sm-2 control-label">联系电话</label>'
-								+'<div class="col-sm-2"><input name="regcontenttel" id="regcontenttel" class="form-control" type="text" value='+comcontacttel[i]+'>'
+								+'<div class="col-sm-2"><input name="regcontenttel" id="regcontenttel" class="form-control" type="text" value='+regcontenttel[i]+'>'
 								+'</div></div>').insertAfter(".addel-target:last");
 						}
 					});
