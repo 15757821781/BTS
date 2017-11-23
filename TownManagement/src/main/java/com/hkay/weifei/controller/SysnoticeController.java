@@ -80,7 +80,7 @@ public class SysnoticeController {
 		Page<?> page = PageUtil.getPage(pageindex, limit, true);
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		//处理高级搜索
-		tb_xitonggonggao.setSupersearch(GetSuperSearchSql(tb_xitonggonggao));
+//		tb_xitonggonggao.setSupersearch(GetSuperSearchSql(tb_xitonggonggao));
 		List<Tb_xitonggonggao> tb_xitonggonggaos = this.systemNoticeService.queryNocList(tb_xitonggonggao);
 		if(tb_xitonggonggaos!=null){
 			for(int i=0;i<tb_xitonggonggaos.size();i++){
@@ -97,27 +97,27 @@ public class SysnoticeController {
 		return result;
 	}
 	
-	/**
-	 * 
-	 *方法名称:
-	 *内容：处理高级搜索内容
-	 *创建人:caixuyang
-	 *创建日期:2017年11月6日
-	 */
-	private String GetSuperSearchSql(Tb_xitonggonggao xtgg) {
-		StringBuilder sql = new StringBuilder();
-		if(CommonUtil.JudgeEmpty(xtgg.getSearch())){
-			String search = xtgg.getSearch();
-			sql.append(" and (a.noctitle like '%"+search+"%' or a.noctext like '%"+search+"%')");
-		}
-		if(CommonUtil.JudgeEmpty(xtgg.getNoctitle())){
-			sql.append(" and a.noctitle like '%"+xtgg.getNoctitle()+"%'");
-		}
-		if(CommonUtil.JudgeEmpty(xtgg.getNoctext())){
-			sql.append(" and a.noctext like '%"+xtgg.getNoctext()+"%'");
-		}
-		return sql.toString();
-	}
+//	/**
+//	 * 
+//	 *方法名称:
+//	 *内容：处理高级搜索内容
+//	 *创建人:caixuyang
+//	 *创建日期:2017年11月6日
+//	 */
+//	private String GetSuperSearchSql(Tb_xitonggonggao xtgg) {
+//		StringBuilder sql = new StringBuilder();
+//		if(CommonUtil.JudgeEmpty(xtgg.getSearch())){
+//			String search = xtgg.getSearch();
+//			sql.append(" and (a.noctitle like '%"+search+"%' or a.noctext like '%"+search+"%')");
+//		}
+//		if(CommonUtil.JudgeEmpty(xtgg.getNoctitle())){
+//			sql.append(" and a.noctitle like '%"+xtgg.getNoctitle()+"%'");
+//		}
+//		if(CommonUtil.JudgeEmpty(xtgg.getNoctext())){
+//			sql.append(" and a.noctext like '%"+xtgg.getNoctext()+"%'");
+//		}
+//		return sql.toString();
+//	}
 	/**
 	 * 
 		 * 方法名称: queryNocDetail

@@ -64,6 +64,7 @@ $(document).ready(function() {
 		});
 	});
 })
+
 //表格批量事件
 	$('#delfile').click(function(){
 		var obj = $('#filemanagetable').bootstrapTable('getSelections');
@@ -99,14 +100,11 @@ function queryParams(params){
 //展示详情modal
 function querydetail(id) {
 	$.ajax({
-//		url : "/TownManagement/pages/FileManagement/fileEntry.html",
+		url : "/TownManagement/pages/FileManagement/fileDetail.html",
 		cache : false,
 		success : function(html) {
-//			$("#fileinfobody").html(html);
-			$("#fileHeader").remove();
+			$("#fileinfobody").html(html);
 			
-			
-			$("#filefieldset").removeAttr("disabled");
 			tk.ajax({
 				url : "/TownManagement/filemanage/queryFileDetail",
 				data : {"fileid":id},
@@ -114,17 +112,32 @@ function querydetail(id) {
 				cache : false,
 				succ : function(data, status) {
 					fillForm('#fileform',data);
-					var param={
-							tbname : 'tb_wenjianguanli',
-							field : 'filetext',
-							id : 'fileid' ,
-							value : data.data[0].filetext,
-							showdelete : false
+					var filetexts=data.data[0].filetext;
+					// 多行展示
+					var files = filetexts.substring(0,filetexts.length-1).split(',');
+					$(".addel-target:gt(0)").remove();
+					for(var i=0;i<files.length;i++){
+						var url = "'"+files[i]+"'";
+						if(i==0){
+							$('<div class="form-group addel-target has-feedback">'
+									+'<label class="col-sm-3 control-label">附件</label>'
+									+'<div class="col-sm-4">'
+									+'<input "id="filetext" class="form-control" type="text" value='+files[i]+'></div>'
+									+'<div class="col-sm-2">'
+									+'<button type="button" class=" btn btn-primary" onclick="fileDownLoad('+url+')" >下载</button></div>'
+									+'</div>').insertAfter(".addel-target:last");
+						}else{
+							$('<div class="form-group addel-target has-feedback">'
+									+'<label class="col-sm-3 control-label"></label>'
+									+'<div class="col-sm-4">'
+									+'<input "id="filetext_'+i+'" class="form-control" type="text" value='+files[i]+'></div>'
+									+'<div class="col-sm-2">'
+									+'<button type="button" class=" btn btn-primary" onclick="fileDownLoad('+url+')" >下载</button></div>'
+									+'</div>').insertAfter(".addel-target:last");
+						}
+						
 					}
-					initDeatilFileInput('comcertificatepic',param);
-					data = data.data[0];
-					$("#filetitle").text(data.noctitle);
-					$("#createtime").text(data.createtime);
+//					$('').html(html);
 					$('#filefieldset').attr("disabled","disabled");
 					$("#fileinfomodal").modal('show');
 					$("#file_submit").hide();
@@ -169,3 +182,8 @@ function updateinfo(id){
 		}
 	});
 }
+//文件下载事件
+function fileDownLoad(v){
+	 window.open(v);
+}
+
