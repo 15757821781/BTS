@@ -52,4 +52,10 @@ public class StatuteServiceImpl implements StatuteService{
 		return this.statuteDao.updateStaState(staObj);
 	}
 
+	@Override
+	public List<Tb_zhengcefagui> queryhomestatute() {
+		// TODO Auto-generated method stub
+		return this.statuteDao.queryhomestatute();
+	}
+
 }

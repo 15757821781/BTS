@@ -18,4 +18,6 @@ public interface FileDao {
 
 	int updateFileState(String fileObj);
 
+	List<Tb_wenjianguanli> queryhomefile();
+
 }
