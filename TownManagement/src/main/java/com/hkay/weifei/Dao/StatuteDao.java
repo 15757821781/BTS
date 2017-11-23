@@ -19,5 +19,7 @@ public interface StatuteDao {
 
 	int updateStaState(String staObj);
 
+	List<Tb_zhengcefagui> queryhomestatute();
+
 
 }

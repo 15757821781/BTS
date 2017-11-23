@@ -35,6 +35,18 @@
 		</if>
 		) t
 	</select>
+	<!-- 查询首页信息 -->
+	<select id="queryhomenotice" parameterType="com.hkay.weifei.pojo.Tb_xitonggonggao"
+	resultMap="BaseResultMap">
+		SELECT
+			a.nocid,
+			a.noctitle,
+			DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
+		FROM
+			tb_xitonggonggao a
+		where 1=1
+		order by a.createtime desc
+	</select>
 	<select id="queryNocList" parameterType="com.hkay.weifei.pojo.Tb_xitonggonggao"
 	resultMap="BaseResultMap">
 		SELECT

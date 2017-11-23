@@ -18,4 +18,6 @@ public interface SystemNoticeDao {
 
 	int updateNocInfo(Tb_xitonggonggao tb_xitonggonggao);
 
+	List<Tb_xitonggonggao> queryhomenotice();
+
 }

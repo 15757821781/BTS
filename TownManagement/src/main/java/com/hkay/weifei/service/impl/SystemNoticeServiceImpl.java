@@ -50,4 +50,10 @@ public class SystemNoticeServiceImpl implements SystemNoticeService{
 		// TODO Auto-generated method stub
 		return this.systemnoticeDao.updateNocInfo(tb_xitonggonggao);
 	}
+
+	@Override
+	public List<Tb_xitonggonggao> queryhomenotice() {
+		// TODO Auto-generated method stub
+		return this.systemnoticeDao.queryhomenotice();
+	}
 }

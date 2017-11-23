@@ -35,6 +35,19 @@
 		</if>
 		) t
 	</select>
+	<!-- 查询首页信息 -->
+	<select id="queryhomefile" parameterType="com.hkay.weifei.pojo.Tb_wenjianguanli"
+	resultMap="BaseResultMap">
+		SELECT
+			a.fileid,
+			a.filetitle,
+			DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
+		FROM
+			tb_wenjianguanli a
+		where 1=1
+		and a.state=1
+		order by a.createtime desc
+	</select>
 	<select id="queryFileList" parameterType="com.hkay.weifei.pojo.Tb_wenjianguanli"
 	resultMap="BaseResultMap">
 		SELECT

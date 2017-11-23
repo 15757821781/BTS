@@ -51,4 +51,10 @@ public class FileServiceImpl implements FileService{
 		// TODO Auto-generated method stub
 		return this.fileDao.updateFileState(fileObj);
 	}
+
+	@Override
+	public List<Tb_wenjianguanli> queryhomefile() {
+		// TODO Auto-generated method stub
+		return this.fileDao.queryhomefile();
+	}
 }
