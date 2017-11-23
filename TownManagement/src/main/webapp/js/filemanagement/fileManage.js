@@ -100,9 +100,10 @@ function queryParams(params){
 //展示详情modal
 function querydetail(id) {
 	$.ajax({
-//		url : "/TownManagement/pages/FileManagement/fileEntry.html",
+		url : "/TownManagement/pages/FileManagement/fileDetail.html",
 		cache : false,
 		success : function(html) {
+			$("#fileinfobody").html(html);
 			
 			tk.ajax({
 				url : "/TownManagement/filemanage/queryFileDetail",
