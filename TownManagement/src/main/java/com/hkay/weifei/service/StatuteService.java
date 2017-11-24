@@ -17,6 +17,8 @@ public interface StatuteService {
 
 	int updateStaState(String staObj);
 
+	List<Tb_zhengcefagui> queryhomestatute();
+
 	
 
 }

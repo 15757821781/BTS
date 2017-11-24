@@ -18,4 +18,6 @@ public interface FileService {
 
 	int updateFileState(String fileObj);
 
+	List<Tb_wenjianguanli> queryhomefile();
+
 }
