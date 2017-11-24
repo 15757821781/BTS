@@ -7,6 +7,7 @@ public class Tb_zhengcefagui {
 	private String statheme; // 主题分类
 	private String statext; // 正文
 	private String stainscribe; // 落款
+	private String stafile; // 附件
 	private String stacreator;//录入员
 	private String staupdator;//修改者
 	private String createtime;//创建时间
@@ -14,6 +15,16 @@ public class Tb_zhengcefagui {
 	private String search;// 查询条件
 	private String operation;// 操作
 	private String supersearch;// 高级搜索
+	
+	
+	
+	
+	public String getStafile() {
+		return stafile;
+	}
+	public void setStafile(String stafile) {
+		this.stafile = stafile;
+	}
 	public String getStaid() {
 		return staid;
 	}

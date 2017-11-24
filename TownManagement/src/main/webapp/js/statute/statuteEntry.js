@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	//初始化文件上传控件
+	initFileInput("comcertificatepic","选择",5,[]);
 	//初始化下拉框
 	$('.selectpicker').selectpicker({
 		noneSelectedText : "请选择"
