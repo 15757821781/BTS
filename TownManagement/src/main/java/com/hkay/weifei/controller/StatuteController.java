@@ -18,8 +18,10 @@ import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_zhengcefagui;
 import com.hkay.weifei.service.StatuteService;
 import com.hkay.weifei.util.CommonUtil;
+import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
+import com.hkay.weifei.util.TypeStatusConstant;
 
 @Controller
 @RequestMapping("/statutemanage")
@@ -28,6 +30,7 @@ public class StatuteController {
 	@Resource
 	private StatuteService statuteservice;
 	private RetAjax result;
+	private FileUpload fileupload = new FileUpload();
 	/**
 	 * 
 		 * 方法名称: insertStaInfo
@@ -44,6 +47,7 @@ public class StatuteController {
 		try {
 			HttpSession session = request.getSession();
 			Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
+//			String imgpath = fileupload.fileUploadForCn(files, request, TypeStatusConstant.file, "");
 			zhengcefagui.setStacreator(user.getNumber());
 			int flag = this.statuteservice.insertstainfo(zhengcefagui);
 			result = RetAjax.onDataBase(flag,1);
