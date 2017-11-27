@@ -16,12 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.hkay.weifei.pojo.Tb_qiyedanwei;
 import com.hkay.weifei.pojo.Tb_user;
 import com.hkay.weifei.pojo.Tb_wenjianguanli;
-import com.hkay.weifei.pojo.Tb_xitonggonggao;
 import com.hkay.weifei.service.FileService;
-import com.hkay.weifei.util.CommonUtil;
 import com.hkay.weifei.util.FileUpload;
 import com.hkay.weifei.util.PageUtil;
 import com.hkay.weifei.util.RetAjax;
