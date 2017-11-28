@@ -97,6 +97,10 @@ public class TypeStatusConstant {
 	 */
 	public static final String sta_img="staImg/";
 	/**
+	 * 政策法规文件
+	 */
+	public static final String stafile="stafile/";
+	/**
 	 * 
 	 */
 	public static final String file="file/";

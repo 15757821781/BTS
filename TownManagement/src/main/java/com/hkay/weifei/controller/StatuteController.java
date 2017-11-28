@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -43,11 +44,13 @@ public class StatuteController {
 	 */
 	@RequestMapping("/insertStaInfo")
 	@ResponseBody
-	public RetAjax insertstainfo(HttpServletRequest request, Tb_zhengcefagui zhengcefagui) {
+	public RetAjax insertstainfo(HttpServletRequest request, Tb_zhengcefagui zhengcefagui,
+			@RequestParam("comcertificatepic") MultipartFile[] files) {
 		try {
 			HttpSession session = request.getSession();
 			Tb_user user = (Tb_user) session.getAttribute("town_LoginData");
-//			String imgpath = fileupload.fileUploadForCn(files, request, TypeStatusConstant.file, "");
+			String stafiles = fileupload.fileUploadForCn(files, request, TypeStatusConstant.stafile, "");
+			zhengcefagui.setStafile(stafiles);
 			zhengcefagui.setStacreator(user.getNumber());
 			int flag = this.statuteservice.insertstainfo(zhengcefagui);
 			result = RetAjax.onDataBase(flag,1);

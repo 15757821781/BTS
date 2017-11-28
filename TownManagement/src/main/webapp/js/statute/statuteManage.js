@@ -156,6 +156,29 @@ function querydetail(id) {
 				cache : false,
 				succ : function(data, status) {
 					data = data.data[0];
+					var stafiles=data.stafile;
+					var files=stafiles.substring(0,stafiles.length-1).split(',');
+					$(".addel-target:gt(0)").remove();
+					for(var i=0;i<files.length;i++){
+						var url = "'"+files[i]+"'";
+						var filenameurl=files[i].substring(files[i].lastIndexOf("/") + 1, files[i] .length);
+						if(i==0){
+							$('<div class="form-group addel-target has-feedback">'
+									+'<label class="col-sm-3 control-label">附件</label>'
+									+'<div class="col-sm-4" id="statutefile">'
+									+'<a class="col-sm-12" href="#"onclick="fileDownLoad('+url+')">'
+									+'<i></i>'+filenameurl
+									+'</a></div>').insertAfter(".addel-target:last");
+						}else{
+							$('<div class="form-group addel-target has-feedback">'
+									+'<label class="col-sm-3 control-label"></label>'
+									+'<div class="col-sm-4" id="statutefile">'
+									+'<a href="#" class="col-sm-12" onclick="fileDownLoad('+url+')">'
+									+'<i id="stafile'+i+'"></i>'+filenameurl
+									+'</a></div>').insertAfter(".addel-target:last");
+						}
+						
+					}
 					$("#statitle").text(data.statitle);
 					$("#createtime").text(data.createtime);
 					$("#statext").html(data.statext);
@@ -187,6 +210,14 @@ function updateinfo(id){
 				succ : function(data, status) {
 					$("#sta_editor").html(data.data[0].statext);
 					fillForm('#staform',data);
+					var param={
+							tbname : 'tb_zhengcefagui',
+							field : 'stafile',
+							id : 'staid' ,
+							value : data.data[0].stafile,
+							showdelete : true
+					}
+					initDeatilFileInput('comcertificatepic',param);
 					$("#stainfomodal").modal('show');
 					$("#statute_submit").hide();
 					$("#statute_update").show();
@@ -194,4 +225,8 @@ function updateinfo(id){
 			});
 		}
 	});
+}
+//文件下载事件
+function fileDownLoad(v){
+	 window.open(v);
 }

@@ -118,11 +118,12 @@ function querydetail(id) {
 					$(".addel-target:gt(0)").remove();
 					for(var i=0;i<files.length;i++){
 						var url = "'"+files[i]+"'";
+						var filenameurl=files[i].substring(files[i].lastIndexOf("/") + 1, files[i] .length);
 						if(i==0){
 							$('<div class="form-group addel-target has-feedback">'
 									+'<label class="col-sm-3 control-label">附件</label>'
 									+'<div class="col-sm-4">'
-									+'<input "id="filetext" class="form-control" type="text" value='+files[i]+'></div>'
+									+'<input "id="filetext" class="form-control" type="text" value='+filenameurl+'></div>'
 									+'<div class="col-sm-2">'
 									+'<button type="button" class=" btn btn-primary" onclick="fileDownLoad('+url+')" >下载</button></div>'
 									+'</div>').insertAfter(".addel-target:last");
@@ -130,7 +131,7 @@ function querydetail(id) {
 							$('<div class="form-group addel-target has-feedback">'
 									+'<label class="col-sm-3 control-label"></label>'
 									+'<div class="col-sm-4">'
-									+'<input "id="filetext_'+i+'" class="form-control" type="text" value='+files[i]+'></div>'
+									+'<input "id="filetext_'+i+'" class="form-control" type="text" value='+filenameurl+'></div>'
 									+'<div class="col-sm-2">'
 									+'<button type="button" class=" btn btn-primary" onclick="fileDownLoad('+url+')" >下载</button></div>'
 									+'</div>').insertAfter(".addel-target:last");
