@@ -25,6 +25,8 @@
 	background-position: center;
 }
 </style>
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
+<link rel="stylesheet" href="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.min.css" />
 </head>
 
 <body class="loginbackimg">
@@ -315,6 +317,30 @@
 		<!-- /.col-lg-4 -->
 	</div>
 	<!-- /.row -->
+	<!-- 模态框（Modal） 详情-->
+	<div class="modal fade" id="homemodal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" style="padding-top: 5%;" data-backdrop="static">
+		<div class="modal-dialog" style="width:80%;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="btn btn-default btn-close pull-right"
+						title="关闭" data-dismiss="modal" aria-hidden="true">
+						<i class="glyphicon glyphicon-remove"></i>
+					</button>
+					<h3 class="modal-title"></h3>
+				</div>
+				<div class="modal-body" id="homeinfobody">
+					页面初始化失败
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
+<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.js"></script>
+<script type="text/javascript" src="/TownManagement/tools/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
 <script type="text/javascript" src="/TownManagement/js/homepage/homepage.js"></script>
 </body>
 
