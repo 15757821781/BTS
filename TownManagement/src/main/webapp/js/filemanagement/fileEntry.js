@@ -1,9 +1,6 @@
 $(document).ready(function() {
-	
-	
 	//初始化文件上传控件
 	initFileInput("comcertificatepic","选择",5,[]);
-	
 	//表单提交
 	$('#file_submit').click(function() {
 		formSubmit('#fileform','filemanage/insertFileInfo','FileManagement/fileEntry.html');
