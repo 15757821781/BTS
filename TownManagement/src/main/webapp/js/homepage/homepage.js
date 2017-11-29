@@ -63,16 +63,16 @@ function staview(id){
 						var filenameurl=files[i].substring(files[i].lastIndexOf("/") + 1, files[i] .length);
 						if(i==0){
 							$('<div class="form-group addel-target has-feedback">'
-									+'<label class="col-sm-3 control-label">附件</label>'
-									+'<div class="col-sm-4" id="statutefile">'
-									+'<a class="col-sm-12" href="#"onclick="fileDownLoad('+url+')">'
+									+'<label class="col-sm-2 control-label">附件</label>'
+									+'<div class="col-sm-8" id="statutefile">'
+									+'<a href="#"onclick="fileDownLoad('+url+')">'
 									+'<i></i>'+filenameurl
 									+'</a></div>').insertAfter(".addel-target:last");
 						}else{
 							$('<div class="form-group addel-target has-feedback">'
-									+'<label class="col-sm-3 control-label"></label>'
-									+'<div class="col-sm-4" id="statutefile">'
-									+'<a href="#" class="col-sm-12" onclick="fileDownLoad('+url+')">'
+									+'<label class="col-sm-2 control-label"></label>'
+									+'<div class="col-sm-8" id="statutefile">'
+									+'<a href="#" onclick="fileDownLoad('+url+')">'
 									+'<i id="stafile'+i+'"></i>'+filenameurl
 									+'</a></div>').insertAfter(".addel-target:last");
 						}
