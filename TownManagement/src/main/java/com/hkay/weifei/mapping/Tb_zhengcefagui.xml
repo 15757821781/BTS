@@ -10,6 +10,7 @@
 		statheme,
 		statext,
 		stainscribe,
+		stafile,
 		stacreator,
 		createtime)
 		values
@@ -19,6 +20,7 @@
 		#{statheme},
 		#{statext},
 		#{stainscribe},
+		#{stafile},
 		#{stacreator},
 		now())
 	</insert>
@@ -33,6 +35,7 @@
 			a.statheme,
 			a.statext,
 			a.stainscribe,
+			a.stafile,
 			a.stacreator
 		FROM
 			tb_zhengcefagui a
@@ -65,6 +68,7 @@
 			a.statheme,
 			a.statext,
 			a.stainscribe,
+			a.stafile,
 			a.stacreator
 		FROM
 			tb_zhengcefagui a
@@ -83,6 +87,7 @@
 				a.statheme,
 				a.statext,
 				a.stainscribe,
+				a.stafile,
 				DATE_FORMAT(a.createtime, '%Y-%m-%d') as createtime
 				from tb_zhengcefagui a where a.staid = #{staid}
 	</select>
@@ -94,6 +99,7 @@
 		statheme=#{statheme},
 		statext=#{statext},
 		stainscribe=#{stainscribe},
+		stafile=#{stafile},
 		staupdator=#{staupdator},
 		updatetime=now()
 		where staid=#{staid}
