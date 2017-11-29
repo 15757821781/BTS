@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>政策法规</title>
+	<link rel="stylesheet" href="/TownManagement/tools/bootstrap-fileinput/css/fileinput.css" />
 	<link href="/TownManagement/dist/css/bootstrap-select.css" rel="stylesheet">
    	<link href="/TownManagement/css/bootstrap-wysiwyg.css" rel="stylesheet">
 </head>
@@ -18,21 +19,22 @@
 			<form class="form-horizontal" role="form" enctype="multipart/form-data" id="staform" method="post">
 		  		<h3 align="center"id="statitle"></h3>
 		  		<div class="form-group">
-		  			<label class="col-sm-3 control-label">发布时间:</label>
+		  			<label class="col-sm-2 control-label">发布时间:</label>
 					<label class="col-sm-2 control-label" id="createtime"></label>
-					<label class="col-sm-1 control-label">发文字号:</label>
+					<label class="col-sm-2 control-label">发文字号:</label>
 					<label class="col-sm-2 control-label" id="stanumber"></label>
-					<label class="col-sm-1 control-label">主题分类:</label>
-					<label class="col-sm-2 control-label" id="statheme"></label>
+					<label class="col-sm-2 control-label">主题分类:</label>
+					<label class="col-sm-1 control-label" id="statheme"></label>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label"></label>
-					<div id="statext" class="col-sm-6">
+					<label class="col-sm-2 control-label"></label>
+					<div id="statext" class="col-sm-9">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-7 control-label">落款:</label>
-					<label class="col-sm-2 control-label" id="stainscribe"></label>
+					<label style="width:56.66666667%"></label>
+					<label >落款:</label>
+					<label  id="stainscribe"></label>
 				</div>
 				<div class="form-group addel-target">
 					<div class="col-sm-4" id="statutefile">
@@ -51,7 +53,7 @@
 	  		</fieldset>
 	 	</div>
 	</div>
-<script type="text/javascript" src="/TownManagement/tools/addel.jquery.js"></script>
+<script type="text/javascript" src="/TownManagement/tools/bootstrap-fileinput/js/fileinput.js"></script>
 <script type="text/javascript" src="/TownManagement/dist/js/bootstrap-select.js"></script>
 <script type="text/javascript" src="/TownManagement/dist/js/bootstrapValidator.js"></script>
 <script type="text/javascript" src="/TownManagement/dist/js/language/zh_CN.js"></script>
