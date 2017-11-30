@@ -6,11 +6,12 @@ $(document).ready(function(){
 		succ : function(data, status) {
 			var statute = data.data.statute;
 			var html='';
+			// 政策法规
 			for(var i in statute){
 				html+='<div class="list-group" id="homestatute">'
 					+'<a href="#" class="list-group-item" onclick="staview('+statute[i].staid+')">'
-					+'<i class="fa fa-navicon fa-fw"></i>'+statute[i].statitle
-					+'<span class="pull-right text-muted small"><em>'+statute[i].createtime+'</em> </span>'
+					+'<i class="fa fa-navicon fa-fw"></i>'+'<span>'+statute[i].statitle+'</span>'
+					+'<span class="pull-right text-muted small" style="line-height: 1;"><em>'+statute[i].createtime+'</em> </span>'
 					+'</a></div>';
 			}
 			$('#homestatute').html(html);
