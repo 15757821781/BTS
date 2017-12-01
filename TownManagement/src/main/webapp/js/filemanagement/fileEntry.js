@@ -6,7 +6,10 @@ $(document).ready(function() {
 		formSubmit('#fileform','filemanage/insertFileInfo','FileManagement/fileEntry.html');
 	});
 	$('#file_update').click(function() {
-		formSubmit('#fileform','filemanage/updateFileInfo','FileManagement/fileManage.html');
+		formSubmit('#fileform','filemanage/updateFileInfo',null,function(){
+			$('#fileinfomodal').modal('hide');
+			$("#filemanagetable").bootstrapTable('refresh');
+		});
 	});
 	$('#fileform').bootstrapValidator({
 		message : 'This value is not valid',

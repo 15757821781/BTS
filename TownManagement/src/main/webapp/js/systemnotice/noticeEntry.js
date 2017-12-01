@@ -12,7 +12,10 @@ $(document).ready(function() {
 	$('#notice_update').click(function() {
 		var html = $('#noc_editor').html();
 		$('#noctext').val(html);
-		formSubmit('#nocform','noticemanage/updateNocInfo','SystemNotice/noticeManage.html');
+		formSubmit('#nocform','noticemanage/updateNocInfo',null,function(){
+			$('#nocinfomodal').modal('hide');
+			$("#nocmanagetable").bootstrapTable('refresh');
+		});
 	});
 	$('#nocform').bootstrapValidator({
 		message : 'This value is not valid',

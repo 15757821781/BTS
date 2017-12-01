@@ -177,14 +177,38 @@ function noticeview(id) {
 		}
 	});
 }
-//首页展示表格
-function showGridForHomePage(){
+//首页政策法规展示表格
+function stashowGridForHomePage(){
 	$.ajax({
 		url : "/TownManagement/pages/Statute/statuteManage.html",
 		cache : false,
 		success : function(html) {
 			$("#homeinfobody").html(html);
 			$("#staHead").remove();
+			$("#homemodal").modal('show');
+		}
+	});
+}
+//首页系统公告展示表格
+function nocshowGridForHomePage(){
+	$.ajax({
+		url : "/TownManagement/pages/SystemNotice/noticeManage.html",
+		cache : false,
+		success : function(html) {
+			$("#homeinfobody").html(html);
+			$("#nocHead").remove();
+			$("#homemodal").modal('show');
+		}
+	});
+}
+//首页文件管理展示表格
+function fileshowGridForHomePage(){
+	$.ajax({
+		url : "/TownManagement/pages/FileManagement/fileManage.html",
+		cache : false,
+		success : function(html) {
+			$("#homeinfobody").html(html);
+			$("#fileHead").remove();
 			$("#homemodal").modal('show');
 		}
 	});
