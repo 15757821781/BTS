@@ -2297,11 +2297,12 @@
             this.$selectItem.length === this.$selectItem.filter(':checked').length);
 
         if (this.options.height) {
-            var toolbarHeight = getRealHeight(this.$toolbar),
-                paginationHeight = getRealHeight(this.$pagination),
-                height = this.options.height - toolbarHeight - paginationHeight;
+        	//
+//            var toolbarHeight = getRealHeight(this.$toolbar),
+//                paginationHeight = getRealHeight(this.$pagination),
+//                height = this.options.height - toolbarHeight - paginationHeight;
 
-            this.$tableContainer.css('height', height + 'px');
+            this.$tableContainer.css('height', this.options.height + 'px');
         }
 
         if (this.options.cardView) {
