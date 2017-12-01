@@ -19,7 +19,10 @@ $(document).ready(function() {
 	$('#statute_update').click(function() {
 		var html = $('#sta_editor').html();
 		$('#statext').val(html);
-		formSubmit('#staform','statutemanage/updateStaInfo','Statute/statuteManage.html');
+		formSubmit('#staform','statutemanage/updateStaInfo',null,function(){
+			$('#stainfomodal').modal('hide');
+			$("#stamanagetable").bootstrapTable('refresh');
+		});
 	});
 	$('#staform').bootstrapValidator({
 		message : 'This value is not valid',

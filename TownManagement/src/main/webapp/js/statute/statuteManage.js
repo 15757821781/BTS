@@ -107,24 +107,29 @@ $(document).ready(function() {
 			}
 		});
 	});
-})
-//表格批量事件
-$('#delstatute').click(function(){
-	var obj = $('#stamanagetable').bootstrapTable('getSelections');
-	var ids = [];
-	$.each(obj,function(i){
-		if(obj[i].staid!=null&&obj[i].staid!=''){
-			ids.push(obj[i].staid);
-		}
+	//表格批量事件
+	$('#delstatute').click(function(){
+		var obj = $('#stamanagetable').bootstrapTable('getSelections');
+		var ids = [];
+		$.each(obj,function(i){
+			if(obj[i].staid!=null&&obj[i].staid!=''){
+				ids.push(obj[i].staid);
+			}
+		});
+		tk.ajax({
+			url : "/TownManagement/statutemanage/updateStaState",
+	        data : {"staObj":ids},
+	        succ :function(){
+	        	$('#stamanagetable').bootstrapTable('refresh');
+	        }
+		})
 	});
-	tk.ajax({
-		url : "/TownManagement/statutemanage/updateStaState",
-        data : {"staObj":ids},
-        succ :function(){
-        	$('#stamanagetable').bootstrapTable('refresh');
-        }
-	})
+	// 关闭模态框的方法
+	$('#staModClose').click(function(){
+		$("#stainfomodal").modal('hide');
+	});
 });
+
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/TownManagement/tools/bootstrap-table/dist/bootstrap-table.min.css" />
 </head>
 <body>
-	<div class="row">
+	<div class="row" id="staHead">
 		<div class="col-lg-12">
 			<h3 class="page-header">政策法规管理</h3>
 		</div>
@@ -17,9 +17,6 @@
 				<button id="delstatute" class="btn btn-default">
 					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
 				</button>
-<!-- 				<button id="statuteSearch_bar" class="btn btn-default"> -->
-<!-- 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>高级查询 -->
-<!-- 				</button> -->
 			</div>
 			<table id="stamanagetable" ></table>
 		</div>
@@ -30,8 +27,8 @@
 		<div class="modal-dialog" style="width:80%;">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="btn btn-default btn-close pull-right"
-						title="关闭" data-dismiss="modal" aria-hidden="true">
+					<button id="staModClose" type="button" class="btn btn-default btn-close pull-right"
+						title="关闭" aria-hidden="true">
 						<i class="glyphicon glyphicon-remove"></i>
 					</button>
 					<h3 class="modal-title">政策法规</h3>

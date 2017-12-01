@@ -11,6 +11,11 @@ $(function() {
 //collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size
 $(function() {
+	//初始化执行一次
+	var height = ((window.innerHeight > 0) ? window.innerHeight : screen.height) - 1;
+	height = height - 50;
+	$("#page-wrapper").css("min-height", (height) + "px");
+	//窗口大小变换的时候触发
     $(window).bind("load resize", function() {
         var topOffset = 50;
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
@@ -28,7 +33,6 @@ $(function() {
             $("#page-wrapper").css("min-height", (height) + "px");
         }
     });
-
     var url = window.location;
     // var element = $('ul.nav a').filter(function() {
     //     return this.href == url;
