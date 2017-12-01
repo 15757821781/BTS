@@ -7,36 +7,42 @@ $(document).ready(function(){
 			var statute = data.data.statute;
 			var html='';
 			// 政策法规
-			for(var i in statute){
-				html+='<div class="list-group" id="homestatute">'
-					+'<a href="#" class="list-group-item" onclick="staview('+statute[i].staid+')">'
-					+'<i class="fa fa-navicon fa-fw"></i>'+'<span>'+statute[i].statitle+'</span>'
-					+'<span class="pull-right text-muted small" style="line-height: 1;"><em>'+statute[i].createtime+'</em> </span>'
-					+'</a></div>';
+			if(statute!= null&&statute!=''){
+				for(var i in statute){
+					html+='<div class="list-group" id="homestatute">'
+						+'<a href="#" class="list-group-item" onclick="staview('+statute[i].staid+')">'
+						+'<i class="fa fa-navicon fa-fw"></i>'+'<span>'+statute[i].statitle+'</span>'
+						+'<span class="pull-right text-muted small" style="line-height: 1;"><em>'+statute[i].createtime+'</em> </span>'
+						+'</a></div>';
+				}
+				$('#homestatute').html(html);
 			}
-			$('#homestatute').html(html);
 			var file = data.data.file;
 			var html='';
-			for(var i in file){
-				html+='<div class="list-group" id="homefile">'
-					+'<a href="#" class="list-group-item" onclick="fileview('+file[i].fileid+')">'
-					+'<i class="fa fa-navicon fa-fw"></i>'+file[i].filetitle
-					+'<span class="pull-right text-muted small"><em>'+file[i].createtime+'</em> </span>'
-					+'</a></div>';
-				
+			if(file!= null&&file!=''){
+				for(var i in file){
+					html+='<div class="list-group" id="homefile">'
+						+'<a href="#" class="list-group-item" onclick="fileview('+file[i].fileid+')">'
+						+'<i class="fa fa-navicon fa-fw"></i>'+file[i].filetitle
+						+'<span class="pull-right text-muted small"><em>'+file[i].createtime+'</em> </span>'
+						+'</a></div>';
+					
+				}
+				$('#homefile').html(html);	
 			}
-			$('#homefile').html(html);
 			var notice = data.data.notice;
 			var html='';
-			for(var i in notice){
-				html+='<div class="list-group" id="homenotice">'
-					+'<a href="#" class="list-group-item" onclick="noticeview('+notice[i].nocid+')">'
-					+'<i class="fa fa-navicon fa-fw"></i>'+notice[i].noctitle
-					+'<span class="pull-right text-muted small"><em>'+notice[i].createtime+'</em> </span>'
-					+'</a></div>';
-				
+			if(notice!= null&&notice!=''){
+				for(var i in notice){
+					html+='<div class="list-group" id="homenotice">'
+						+'<a href="#" class="list-group-item" onclick="noticeview('+notice[i].nocid+')">'
+						+'<i class="fa fa-navicon fa-fw"></i>'+notice[i].noctitle
+						+'<span class="pull-right text-muted small"><em>'+notice[i].createtime+'</em> </span>'
+						+'</a></div>';
+					
+				}
+				$('#homenotice').html(html);
 			}
-			$('#homenotice').html(html);
 		}
 	});
 })
