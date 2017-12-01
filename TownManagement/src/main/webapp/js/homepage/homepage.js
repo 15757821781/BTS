@@ -177,3 +177,15 @@ function noticeview(id) {
 		}
 	});
 }
+//首页展示表格
+function showGridForHomePage(){
+	$.ajax({
+		url : "/TownManagement/pages/Statute/statuteManage.html",
+		cache : false,
+		success : function(html) {
+			$("#homeinfobody").html(html);
+			$("#staHead").remove();
+			$("#homemodal").modal('show');
+		}
+	});
+}
