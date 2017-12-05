@@ -235,11 +235,18 @@ public class OrganizeController {
 	@ResponseBody
 	public RetAjax updateOrgState(HttpServletRequest request,Tb_shehuizuzhidanwei tb_shehuizuzhidanwei,@RequestParam("orgObj[]") String orgObj) { 
 		try {
-			int flag = this.organizeService.updateOrgState(orgObj);
-			if(flag!=0){
-				flag=1;
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			// 若是管理员
+			if(user.getUserdata().equals("3")){
+				int flag = this.organizeService.updateOrgState(orgObj);
+				if(flag!=0){
+					flag=1;
+				}
+				result = RetAjax.onDataBase(flag,3);
+			}else{
+				result = RetAjax.onFail("权限不足！");
 			}
-			result = RetAjax.onDataBase(flag,3);
 		} catch (Exception e) {
 			Log.error("error----------updateOrgState:" + e.getMessage());
 			e.printStackTrace();

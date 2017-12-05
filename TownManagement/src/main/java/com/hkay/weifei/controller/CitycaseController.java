@@ -260,11 +260,18 @@ public class CitycaseController {
 	@ResponseBody
 	public RetAjax updateCityState(HttpServletRequest request,Tb_xianshiqingkuang tb_xianshiqingkuang ,@RequestParam("cityObj[]") String cityObj) { 
 		try {
-			int flag = this.citycaseService.updateCityState(cityObj);
-			if(flag!=0){
-				flag=1;
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			// 若是管理员
+			if(user.getUserdata().equals("3")){
+				int flag = this.citycaseService.updateCityState(cityObj);
+				if(flag!=0){
+					flag=1;
+				}
+				result = RetAjax.onDataBase(flag,3);
+			}else{
+				result = RetAjax.onFail("权限不足！");
 			}
-			result = RetAjax.onDataBase(flag,3);
 		} catch (Exception e) {
 			Log.error("error----------updateCityState:" + e.getMessage());
 			e.printStackTrace();

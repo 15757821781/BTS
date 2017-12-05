@@ -299,11 +299,18 @@ public class FeaturetownController {
 	@ResponseBody
 	public RetAjax updatefeatownState(HttpServletRequest request,Tb_tesexiaozhen tb_tesexiaozhen,@RequestParam("featownObj[]") String featownObj) { 
 		try {
-			int flag = this.featuretownservice.updatefeatownState(featownObj);
-			if(flag!=0){
-				flag=1;
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			// 若是管理员
+			if(user.getUserdata().equals("3")){
+				int flag = this.featuretownservice.updatefeatownState(featownObj);
+				if(flag!=0){
+					flag=1;
+				}
+				result = RetAjax.onDataBase(flag,3);
+			}else{
+				result = RetAjax.onFail("权限不足！");
 			}
-			result = RetAjax.onDataBase(flag,3);
 		} catch (Exception e) {
 			Log.error("error----------updatefeatownState:" + e.getMessage());
 			e.printStackTrace();
