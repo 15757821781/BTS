@@ -63,9 +63,7 @@ $(document).ready(function() {
 			}
 		});
 	});
-})
-
-//表格批量事件
+	//表格批量事件
 	$('#delfile').click(function(){
 		var obj = $('#filemanagetable').bootstrapTable('getSelections');
 		var ids = [];
@@ -82,6 +80,11 @@ $(document).ready(function() {
 	        }
 		})
 	});
+	// 关闭模态框的方法
+	$('#fileModClose').click(function(){
+		$("#fileinfomodal").modal('hide');
+	});
+})
 //查询方法
 function queryParams(params){
 	if (params.searchText == undefined) {
