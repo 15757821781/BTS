@@ -314,11 +314,18 @@ public class TownController {
 	@ResponseBody
 	public RetAjax updateTownState(HttpServletRequest request,Tb_zhongxinzhen tb_zhongxinzhen,@RequestParam("townObj[]") String townObj) { 
 		try {
-			int flag = this.townservice.updateTownState(townObj);
-			if(flag!=0){
-				flag=1;
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			// 若是管理员
+			if(user.getUserdata().equals("3")){
+				int flag = this.townservice.updateTownState(townObj);
+				if(flag!=0){
+					flag=1;
+				}
+				result = RetAjax.onDataBase(flag,3);
+			}else{
+				result = RetAjax.onFail("权限不足！");
 			}
-			result = RetAjax.onDataBase(flag,3);
 		} catch (Exception e) {
 			Log.error("error----------updateTownState:" + e.getMessage());
 			e.printStackTrace();

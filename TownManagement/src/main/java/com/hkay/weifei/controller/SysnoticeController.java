@@ -176,11 +176,18 @@ public class SysnoticeController {
 	@ResponseBody
 	public RetAjax updateNocState(HttpServletRequest request,Tb_xitonggonggao tb_xitonggonggao,@RequestParam("nocObj[]") String nocObj) { 
 		try {
-			int flag = this.systemNoticeService.updateNocState(nocObj);
-			if(flag!=0){
-				flag=1;
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			// 若是管理员
+			if(user.getUserdata().equals("3")){
+				int flag = this.systemNoticeService.updateNocState(nocObj);
+				if(flag!=0){
+					flag=1;
+				}
+				result = RetAjax.onDataBase(flag,3);
+			}else{
+				result = RetAjax.onFail("权限不足！");
 			}
-			result = RetAjax.onDataBase(flag,3);
 		} catch (Exception e) {
 			Log.error("error----------updateNocState:" + e.getMessage());
 			e.printStackTrace();

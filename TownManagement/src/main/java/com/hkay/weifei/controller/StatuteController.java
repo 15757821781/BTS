@@ -185,11 +185,18 @@ public class StatuteController {
 	@ResponseBody
 	public RetAjax updateStaState(HttpServletRequest request,Tb_zhengcefagui Tb_zhengcefagui,@RequestParam("staObj[]") String staObj) { 
 		try {
-			int flag = this.statuteservice.updateStaState(staObj);
-			if(flag!=0){
-				flag=1;
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			// 若是管理员
+			if(user.getUserdata().equals("3")){
+				int flag = this.statuteservice.updateStaState(staObj);
+				if(flag!=0){
+					flag=1;
+				}
+				result = RetAjax.onDataBase(flag,3);
+			}else{
+				result = RetAjax.onFail("权限不足！");
 			}
-			result = RetAjax.onDataBase(flag,3);
 		} catch (Exception e) {
 			Log.error("error----------updateStaState:" + e.getMessage());
 			e.printStackTrace();
