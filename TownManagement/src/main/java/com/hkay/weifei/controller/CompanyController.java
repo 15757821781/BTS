@@ -347,11 +347,18 @@ public class CompanyController {
 	@ResponseBody
 	public RetAjax updateComState(HttpServletRequest request,Tb_qiyedanwei tb_qiyedanwei,@RequestParam("comObj[]") String comObj) { 
 		try {
-			int flag = this.companyService.updateComState(comObj);
-			if(flag!=0){
-				flag=1;
+			HttpSession session = request.getSession();
+			Tb_user user=(Tb_user)session.getAttribute("town_LoginData");
+			// 若是管理员
+			if(user.getUserdata().equals("3")){
+				int flag = this.companyService.updateComState(comObj);
+				if(flag!=0){
+					flag=1;
+				}
+				result = RetAjax.onDataBase(flag,3);
+			}else{
+				result = RetAjax.onFail("权限不足！");
 			}
-			result = RetAjax.onDataBase(flag,3);
 		} catch (Exception e) {
 			Log.error("error----------updateComState:" + e.getMessage());
 			e.printStackTrace();
