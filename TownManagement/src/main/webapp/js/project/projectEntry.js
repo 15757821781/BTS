@@ -143,17 +143,17 @@ $(document).ready(function() {
 //		formSubmit('#featuretown','featuretownmanage/insertfeaturetown',loadpage);
 //	});
 	//区域性项目表单提交
-	$('#regitem_submit').click(function() {
-		formSubmit('#regionitem','regionmanage/insertregion',loadpage);
-	});
+//	$('#regitem_submit').click(function() {
+//		formSubmit('#regionitem','regionmanage/insertregion',loadpage);
+//	});
 	//招商项目表单提交
-	$('#invitem_submit').click(function() {
-		formSubmit('#invitem','invitemmanage/insertinvitem',loadpage);
-	});
+//	$('#invitem_submit').click(function() {
+//		formSubmit('#invitem','invitemmanage/insertinvitem',loadpage);
+//	});
 	//储备项目表单提交
-	$('#resitem_submit').click(function() {
-		formSubmit('#resitem','resitemmanage/insertresitem',loadpage);
-	});
+//	$('#resitem_submit').click(function() {
+//		formSubmit('#resitem','resitemmanage/insertresitem',loadpage);
+//	});
 	setTimeout(function() {
 		validatorProjectForm();
 	}, 500);
@@ -984,4 +984,16 @@ function resAddFieldValidator(){
 			}
 		}
 	});
+}
+//区域性项目提交
+function regSumbit(){
+	formSubmit('#regionitem','regionmanage/insertregion',loadpage);
+}
+//招商项目提交
+function invSumbit(){
+	formSubmit('#invitem','invitemmanage/queryinvinfo','ProjectLibrary/invitem.html');
+}
+//储备项目提交
+function resSumbit(){
+	formSubmit('#resitem','resitemmanage/insertresitem',loadpage);
 }

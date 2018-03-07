@@ -11,19 +11,19 @@ $(document).ready(function() {
 	$('#sta_editor').wysiwyg(); 
 	
 	//表单提交
-	$('#statute_submit').click(function() {
-		var html = $('#sta_editor').html();
-		$('#statext').val(html);
-		formSubmit('#staform','statutemanage/insertStaInfo','Statute/statuteEntry.html');
-	});
-	$('#statute_update').click(function() {
-		var html = $('#sta_editor').html();
-		$('#statext').val(html);
-		formSubmit('#staform','statutemanage/updateStaInfo',null,function(){
-			$('#stainfomodal').modal('hide');
-			$("#stamanagetable").bootstrapTable('refresh');
-		});
-	});
+//	$('#statute_submit').click(function() {
+//		var html = $('#sta_editor').html();
+//		$('#statext').val(html);
+//		formSubmit('#staform','statutemanage/insertStaInfo','Statute/statuteEntry.html');
+//	});
+//	$('#statute_update').click(function() {
+//		var html = $('#sta_editor').html();
+//		$('#statext').val(html);
+//		formSubmit('#staform','statutemanage/updateStaInfo',null,function(){
+//			$('#stainfomodal').modal('hide');
+//			$("#stamanagetable").bootstrapTable('refresh');
+//		});
+//	});
 	$('#staform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -67,3 +67,16 @@ function initToolbarBootstrapBindings() {
 	  $('#voiceBtn').hide();
 	}
 };
+function statuteSumbit(){
+	var html = $('#sta_editor').html();
+	$('#statext').val(html);
+	formSubmit('#staform','statutemanage/insertStaInfo','Statute/statuteEntry.html');
+}
+function statuteUpdate(){
+	var html = $('#sta_editor').html();
+	$('#statext').val(html);
+	formSubmit('#staform','statutemanage/updateStaInfo',null,function(){
+		$('#stainfomodal').modal('hide');
+		$("#stamanagetable").bootstrapTable('refresh');
+	});
+}

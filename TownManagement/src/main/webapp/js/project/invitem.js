@@ -25,13 +25,13 @@ $(document).ready(function() {
 		}
 	});
 	//表单提交
-	$('#invitem_submit').click(function() {
-		formSubmit('#invitem','invitemmanage/queryinvinfo','ProjectLibrary/invitem.html');
-	});
-	//政府招商项目表单更新
-	$('#invitem_update').click(function() {
-		formSubmit('#invitem','invitemmanage/updateinv','ProjectLibrary/invManage.html');
-	});
+//	$('#invitem_submit').click(function() {
+//		formSubmit('#invitem','invitemmanage/queryinvinfo','ProjectLibrary/invitem.html');
+//	});
+//	//政府招商项目表单更新
+//	$('#invitem_update').click(function() {
+//		formSubmit('#invitem','invitemmanage/updateinv','ProjectLibrary/invManage.html');
+//	});
 	$('#invitem').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -271,4 +271,10 @@ function invAddFieldValidator(){
 			}
 		}
 	});
+}
+function invSumbit(){
+	formSubmit('#invitem','invitemmanage/queryinvinfo','ProjectLibrary/invitem.html');
+}
+function invUpdate(){
+	formSubmit('#invitem','invitemmanage/updateinv','ProjectLibrary/invManage.html');
 }

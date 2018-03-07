@@ -31,12 +31,12 @@ $(document).ready(function() {
 		    }
 	    });
 	//表单提交
-	$('#orgentry_submit').click(function() {
-		formSubmit('#orgform','orgmanage/insertOrgInfo','Alliance/organizeEntry.html');
-	});
-	$('#orgentry_update').click(function() {
-		formSubmit('#orgform','orgmanage/updateOrgInfo','Alliance/organizeManage.html');
-	});
+//	$('#orgentry_submit').click(function() {
+//		formSubmit('#orgform','orgmanage/insertOrgInfo','Alliance/organizeEntry.html');
+//	});
+//	$('#orgentry_update').click(function() {
+//		formSubmit('#orgform','orgmanage/updateOrgInfo','Alliance/organizeManage.html');
+//	});
 	//表单验证
 	$('#orgform').bootstrapValidator({
 		message : 'This value is not valid',
@@ -313,4 +313,10 @@ function orgAddFieldValidator(){
 			}
 		}
 	});
+}
+function orgSumbit(){
+	formSubmit('#orgform','orgmanage/insertOrgInfo','Alliance/organizeEntry.html');
+}
+function orgUpdate(){
+	formSubmit('#orgform','orgmanage/updateOrgInfo','Alliance/organizeManage.html');
 }

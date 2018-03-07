@@ -24,13 +24,13 @@ $(document).ready(function() {
 	// 加载区县信息下拉框
     createAreaSelect("resprovince","rescity","restown");
     //储备项目表单提交
-	$('#resitem_submit').click(function() {
-		formSubmit('#resitem','resitemmanage/insertresitem','ProjectLibrary/resitem.html');
-	});
-	//储备性项目表单更新
-	$('#resitem_update').click(function() {
-		formSubmit('#resitem','resitemmanage/updateres','ProjectLibrary/resManage.html');
-	});
+//	$('#resitem_submit').click(function() {
+//		formSubmit('#resitem','resitemmanage/insertresitem','ProjectLibrary/resitem.html');
+//	});
+//	//储备性项目表单更新
+//	$('#resitem_update').click(function() {
+//		formSubmit('#resitem','resitemmanage/updateres','ProjectLibrary/resManage.html');
+//	});
 	// 动态增减行初始化
 	 $('.addel-res').addel({
 		animation: {
@@ -271,4 +271,10 @@ function resAddFieldValidator(){
 			}
 		}
 	});
+}
+function resSumbit(){
+	formSubmit('#resitem','resitemmanage/insertresitem','ProjectLibrary/resitem.html');
+}
+function resUpdate(){
+	formSubmit('#resitem','resitemmanage/updateres','ProjectLibrary/resManage.html');
 }

@@ -20,12 +20,12 @@ $(document).ready(function() {
 //		formSubmit('#basicform','citymanage/insertCityInfo',loadpage);
 //	});
 	//表单提交
-	$('#basicform_submit').click(function() {
-		formSubmit('#basicform','citymanage/insertCityInfo',loadpage);
-	});
-	$('#basicform_update').click(function() {
-		formSubmit('#basicform','citymanage/updateCityInfo',"ProjectPlan/citycaseManage.html");
-	});
+//	$('#basicform_submit').click(function() {
+//		formSubmit('#basicform','citymanage/insertCityInfo',loadpage);
+//	});
+//	$('#basicform_update').click(function() {
+//		formSubmit('#basicform','citymanage/updateCityInfo',"ProjectPlan/citycaseManage.html");
+//	});
 	$('#basicform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -182,4 +182,10 @@ function changeTab(){
 	$('#BasicSituation').removeClass("active in");
 	$('#ExploreSituation_tab').addClass("active");
 	$('#ExploreSituation').addClass("active in");
+}
+function basicformSumbit(){
+	formSubmit('#basicform','citymanage/insertCityInfo',loadpage);
+}
+function basicformUpdate(){
+	formSubmit('#basicform','citymanage/updateCityInfo',"ProjectPlan/citycaseManage.html");
 }

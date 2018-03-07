@@ -392,10 +392,16 @@ $(document).ready(function() {
 		}
 	});
 	//表单提交
-	$('#townentry_submit').click(function() {
-		formSubmit('#townform','townmanage/inserttowninfo','town/townEntry.html');
-	});
-	$('#townentry_update').click(function() {
-		formSubmit('#townform','townmanage/updatetowninfo','town/townManage.html');
-	});
+//	$('#townentry_submit').click(function() {
+//		formSubmit('#townform','townmanage/inserttowninfo','town/townEntry.html');
+//	});
+//	$('#townentry_update').click(function() {
+//		formSubmit('#townform','townmanage/updatetowninfo','town/townManage.html');
+//	});
 });
+function townSumbit(){
+	formSubmit('#townform','townmanage/inserttowninfo','town/townEntry.html');
+}
+function townUpdate(){
+	formSubmit('#townform','townmanage/updatetowninfo','town/townManage.html');
+}

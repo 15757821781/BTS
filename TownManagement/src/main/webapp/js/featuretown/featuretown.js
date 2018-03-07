@@ -37,12 +37,12 @@ $(document).ready(function() {
 	initFileInput("feafile6","详细规划图",1);
 	
 	//特色小镇表单提交
-	$('#featuretown_submit').click(function() {
-		formSubmit('#featuretown','featuretownmanage/insertfeaturetown','FeatureTown/featuretown.html');
-	});
-	$('#featuretown_update').click(function() {
-		formSubmit('#featuretown','featuretownmanage/updatefeaturetown','FeatureTown/featuretownManage.html');
-	});
+//	$('#featuretown_submit').click(function() {
+//		formSubmit('#featuretown','featuretownmanage/insertfeaturetown','FeatureTown/featuretown.html');
+//	});
+//	$('#featuretown_update').click(function() {
+//		formSubmit('#featuretown','featuretownmanage/updatefeaturetown','FeatureTown/featuretownManage.html');
+//	});
 	//特色小镇表单验证
 	$('#featuretown').bootstrapValidator({
 		message : 'This value is not valid',
@@ -348,4 +348,10 @@ function feaAddFieldValidator(){
 			}
 		}
 	});
+}
+function feaSumbit(){
+	formSubmit('#featuretown','featuretownmanage/insertfeaturetown','FeatureTown/featuretown.html');
+}
+function feaUpdate(){
+	formSubmit('#featuretown','featuretownmanage/updatefeaturetown','FeatureTown/featuretownManage.html');
 }

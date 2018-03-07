@@ -61,12 +61,12 @@ $(document).ready(function() {
 	    }
     });
 	//表单提交
-	$('#comentry_submit').click(function() {
-		formSubmit('#comform','commanage/insertComInfo','Alliance/companyEntry.html');
-	});
-	$('#comentry_update').click(function() {
-		formSubmit('#comform','commanage/updateComInfo','Alliance/companyManage.html');
-	});
+//	$('#comentry_submit').click(function() {
+//		formSubmit('#comform','commanage/insertComInfo','Alliance/companyEntry.html');
+//	});
+//	$('#comentry_update').click(function() {
+//		formSubmit('#comform','commanage/updateComInfo','Alliance/companyManage.html');
+//	});
 	$('#comform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -510,4 +510,10 @@ function comAddFieldValidator(){
 			}
 		}
 	});
+}
+function comSumbit(){
+	formSubmit('#comform','commanage/insertComInfo','Alliance/companyEntry.html');
+}
+function comUpdate(){
+	formSubmit('#comform','commanage/updateComInfo','Alliance/companyManage.html');
 }
