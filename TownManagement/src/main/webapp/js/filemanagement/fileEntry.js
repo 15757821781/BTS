@@ -30,3 +30,12 @@ $(document).ready(function() {
 		}
 	});
 })
+function fileSumbit(){
+	formSubmit('#fileform','filemanage/insertFileInfo','FileManagement/fileEntry.html');
+}
+function fileUpdate(){
+	formSubmit('#fileform','filemanage/updateFileInfo',null,function(){
+		$('#fileinfomodal').modal('hide');
+		$("#filemanagetable").bootstrapTable('refresh');
+	});
+}

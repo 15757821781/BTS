@@ -73,9 +73,9 @@ $(document).ready(function() {
 	// 产业方向
 	selectCreate("regprimeindustry",sysDirIndustry);
 	//区域性项目表单更新
-	$('#regitem_update').click(function() {
-		formSubmit('#regionitem','regionmanage/updateregion','ProjectLibrary/regionManage.html');
-	});
+//	$('#regitem_update').click(function() {
+//		formSubmit('#regionitem','regionmanage/updateregion','ProjectLibrary/regionManage.html');
+//	});
 	$('#regionitem').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -437,4 +437,7 @@ function regAddFieldValidator(){
 			}
 		}
 	});
+}
+function regUpdate(){
+	formSubmit('#regionitem','regionmanage/updateregion','ProjectLibrary/regionManage.html');
 }

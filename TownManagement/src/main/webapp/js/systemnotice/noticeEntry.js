@@ -4,19 +4,19 @@ $(document).ready(function() {
 	$('#noc_editor').wysiwyg(); 
 	
 	//表单提交
-	$('#notice_submit').click(function() {
-		var html = $('#noc_editor').html();
-		$('#noctext').val(html);
-		formSubmit('#nocform','noticemanage/insertNocInfo','SystemNotice/noticeEntry.html');
-	});
-	$('#notice_update').click(function() {
-		var html = $('#noc_editor').html();
-		$('#noctext').val(html);
-		formSubmit('#nocform','noticemanage/updateNocInfo',null,function(){
-			$('#nocinfomodal').modal('hide');
-			$("#nocmanagetable").bootstrapTable('refresh');
-		});
-	});
+//	$('#notice_submit').click(function() {
+//		var html = $('#noc_editor').html();
+//		$('#noctext').val(html);
+//		formSubmit('#nocform','noticemanage/insertNocInfo','SystemNotice/noticeEntry.html');
+//	});
+//	$('#notice_update').click(function() {
+//		var html = $('#noc_editor').html();
+//		$('#noctext').val(html);
+//		formSubmit('#nocform','noticemanage/updateNocInfo',null,function(){
+//			$('#nocinfomodal').modal('hide');
+//			$("#nocmanagetable").bootstrapTable('refresh');
+//		});
+//	});
 	$('#nocform').bootstrapValidator({
 		message : 'This value is not valid',
 		excluded : [ ':disabled' ],
@@ -60,3 +60,16 @@ function initToolbarBootstrapBindings() {
 	  $('#voiceBtn').hide();
 	}
 };
+function nocSumbit(){
+	var html = $('#noc_editor').html();
+	$('#noctext').val(html);
+	formSubmit('#nocform','noticemanage/insertNocInfo','SystemNotice/noticeEntry.html');
+}
+function nocUpdate(){
+	var html = $('#noc_editor').html();
+	$('#noctext').val(html);
+	formSubmit('#nocform','noticemanage/updateNocInfo',null,function(){
+		$('#nocinfomodal').modal('hide');
+		$("#nocmanagetable").bootstrapTable('refresh');
+	});
+}
